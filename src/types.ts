@@ -113,16 +113,20 @@ export interface TriageResult {
 export interface Service {
   id: string;
   name: string;
+  category: string;
   type: string;
-  tags?: string[];
-  address: string;
-  phone: string;
-  coordinates: {
-    lat: number;
-    lng: number;
+  contact: {
+    phone: string | null;
+    email?: string | null;
+    website?: string | null;
+    alternatePhone?: string | null;
   };
-  mapPinColor: string;
-  priorityLevel: number;
+  location: {
+    name?: string;
+    address: string;
+    lat: number | null;
+    lng: number | null;
+  };
 }
 
 export interface OrientationBlock {

@@ -1,1 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+
+  /* Accessibility Classes */
+  :root.text-small { font-size: 14px; }
+  :root.text-medium { font-size: 16px; }
+  :root.text-large { font-size: 18px; }
+  :root.text-extra-large { font-size: 20px; }
+
+  .high-contrast {
+    --bg-slate-50: #ffffff;
+    --bg-slate-900: #000000;
+    --text-slate-900: #000000;
+    --text-slate-100: #ffffff;
+    filter: contrast(1.2);
+  }
+
+  .dyslexic-font {
+    font-family: 'OpenDyslexic', sans-serif !important;
+  }
+}
+
+@layer components {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media print {
+  .print\:hidden {
+    display: none !important;
+  }
+}

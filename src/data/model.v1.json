@@ -1,8 +1,10 @@
 {
   "meta": {
     "appName": "Protocolo Bússola",
-    "version": "MVP v1.0",
+    "version": "1.0",
     "scope": "MVP Consulta",
+    "region": "Ermelino Matarazzo – São Paulo/SP",
+    "lastUpdated": "2026-02",
     "guardrailEnabled": true,
     "emergencyButton": {
       "label": "Emergência",
@@ -643,8 +645,8 @@
         "moderado": {
           "severity": "moderado",
           "primaryService": {
-            "id": "ubs-vila-paranagua",
-            "name": "UBS Vila Paranaguá"
+            "id": "ubs-ermelino",
+            "name": "UBS Ermelino Matarazzo"
           },
           "secondaryService": null,
           "schoolActions": [
@@ -716,8 +718,8 @@
             "name": "SAMU – 192"
           },
           "secondaryService": {
-            "id": "hospital-alipio",
-            "name": "Hospital Municipal Alípio Corrêa Netto"
+            "id": "upa-ermelino",
+            "name": "UPA III 24h Ermelino Matarazzo"
           },
           "schoolActions": [
             "Acionar 192 imediatamente",
@@ -789,8 +791,8 @@
             "name": "SAMU – 192"
           },
           "secondaryService": {
-            "id": "hospital-alipio",
-            "name": "Hospital Municipal Alípio Corrêa Netto"
+            "id": "upa-ermelino",
+            "name": "UPA III 24h Ermelino Matarazzo"
           },
           "schoolActions": [
             "Acionar emergência imediatamente"
@@ -2134,207 +2136,496 @@
           ]
         }
       }
+    },
+    {
+      "meta": {
+        "id": "flow_violencia_armada",
+        "categoryId": "seguranca_institucional_complementar",
+        "subcategory": "violencia_armada",
+        "type": "security_emergency",
+        "title": "Violência Armada ou Tiroteio"
+      },
+      "riskModel": {
+        "usedLevels": ["iminente"],
+        "defaultLevel": "iminente"
+      },
+      "triage": {
+        "maxQuestions": 1,
+        "questions": [
+          {
+            "id": "q1",
+            "text": "Há tiroteio ou ameaça armada ativa?",
+            "options": [
+              { "label": "Sim", "level": "iminente" }
+            ]
+          }
+        ]
+      },
+      "results": {
+        "iminente": {
+          "severity": "iminente",
+          "primaryService": { "id": "policia-militar", "name": "Polícia Militar – 190" },
+          "secondaryService": null,
+          "schoolActions": [
+            "Protocolo de abrigo seguro",
+            "Não evacuar (manter todos abrigados)",
+            "Acionar 190"
+          ]
+        }
+      }
+    },
+    {
+      "meta": {
+        "id": "flow_emergencia_medica",
+        "categoryId": "saude_fisica",
+        "subcategory": "emergencia_medica",
+        "type": "medical_emergency",
+        "title": "Emergência Médica Geral"
+      },
+      "riskModel": {
+        "usedLevels": ["alto", "iminente"],
+        "defaultLevel": "alto"
+      },
+      "triage": {
+        "maxQuestions": 2,
+        "questions": [
+          {
+            "id": "q1",
+            "text": "O estudante está inconsciente ou não respira?",
+            "options": [
+              { "label": "Sim", "level": "iminente" },
+              { "label": "Não", "next": "q2" }
+            ]
+          },
+          {
+            "id": "q2",
+            "text": "Há sinais de choque ou hemorragia incontrolável?",
+            "options": [
+              { "label": "Sim", "level": "iminente" },
+              { "label": "Não", "level": "alto" }
+            ]
+          }
+        ]
+      },
+      "results": {
+        "alto": {
+          "severity": "alto",
+          "primaryService": { "id": "upa-ermelino", "name": "UPA III 24h" },
+          "secondaryService": { "id": "samu", "name": "SAMU – 192" },
+          "schoolActions": ["Monitorar sinais vitais", "Acionar emergência se piorar"]
+        },
+        "iminente": {
+          "severity": "iminente",
+          "primaryService": { "id": "samu", "name": "SAMU – 192" },
+          "secondaryService": null,
+          "schoolActions": ["RCP se necessário", "Acionar 192 imediatamente"]
+        }
+      }
     }
   ],
 
   "services": [
     {
-      "id": "caps-ij",
-      "name": "CAPS Infantojuvenil II Ermelino Matarazzo",
-      "type": "Saúde Mental",
-      "tags": ["caps", "saude_mental"],
-      "address": "Rua ...",
-      "phone": "(11) 2000-0000",
-      "coordinates": { "lat": -23.50240, "lng": -46.47080 },
-      "mapPinColor": "purple",
-      "priorityLevel": 1
-    },
-    {
-      "id": "ubs-local",
-      "name": "UBS Local",
-      "type": "Saúde",
-      "tags": ["ubs", "saude"],
-      "address": "Rua da Saúde, 123",
-      "phone": "(11) 2111-1111",
-      "coordinates": { "lat": -23.50000, "lng": -46.47000 },
-      "mapPinColor": "green",
-      "priorityLevel": 2
-    },
-    {
       "id": "gestao-direcao",
       "name": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "type": "Interno",
-      "tags": ["gestao_escolar"],
-      "address": "Sala da Direção",
-      "phone": "Ramal 100",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "blue",
-      "priorityLevel": 1
+      "category": "institucional",
+      "type": "interno",
+      "contact": {
+        "phone": "(11) 2546-4961",
+        "email": "e000000a@educacao.sp.gov.br"
+      },
+      "location": {
+        "name": "E.E. Ermelino Matarazzo",
+        "address": "Rua Miguel Rachid, 200, Ermelino Matarazzo, São Paulo/SP",
+        "lat": -23.50135,
+        "lng": -46.47070
+      }
+    },
+    {
+      "id": "gestao-vice-direcao",
+      "name": "Vice-Direção Escolar – E.E. Ermelino Matarazzo",
+      "category": "institucional",
+      "type": "interno",
+      "contact": {
+        "phone": "(11) 2546-4961"
+      },
+      "location": {
+        "name": "E.E. Ermelino Matarazzo",
+        "address": "Rua Miguel Rachid, 200, Ermelino Matarazzo, São Paulo/SP",
+        "lat": -23.50135,
+        "lng": -46.47070
+      }
     },
     {
       "id": "gestao-coordenacao",
       "name": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "type": "Interno",
-      "tags": ["gestao_escolar"],
-      "address": "Sala da Coordenação",
-      "phone": "Ramal 101",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "blue",
-      "priorityLevel": 1
-    },
-    {
-      "id": "samu",
-      "name": "SAMU – 192",
-      "type": "Emergência",
-      "tags": ["samu", "emergencia"],
-      "address": "192",
-      "phone": "192",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "red",
-      "priorityLevel": 1
-    },
-    {
-      "id": "conselho-tutelar",
-      "name": "Conselho Tutelar de Ermelino Matarazzo",
-      "type": "Proteção",
-      "tags": ["conselho_tutelar"],
-      "address": "Rua da Proteção, 456",
-      "phone": "(11) 3333-3333",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "orange",
-      "priorityLevel": 1
-    },
-    {
-      "id": "policia-militar",
-      "name": "Polícia Militar – 190",
-      "type": "Segurança",
-      "tags": ["policia", "emergencia"],
-      "address": "190",
-      "phone": "190",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "black",
-      "priorityLevel": 1
-    },
-    {
-      "id": "cras-ermelino",
-      "name": "CRAS Ermelino Matarazzo",
-      "type": "Assistência Social",
-      "tags": ["cras"],
-      "address": "Rua do CRAS, 789",
-      "phone": "(11) 4444-4444",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "yellow",
-      "priorityLevel": 2
-    },
-    {
-      "id": "creas-ermelino",
-      "name": "CREAS Ermelino Matarazzo",
-      "type": "Assistência Social",
-      "tags": ["creas"],
-      "address": "Rua do CREAS, 012",
-      "phone": "(11) 5555-5555",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "orange",
-      "priorityLevel": 1
-    },
-    {
-      "id": "upa-ermelino",
-      "name": "UPA III 24h Ermelino Matarazzo",
-      "type": "Saúde",
-      "tags": ["upa", "saude"],
-      "address": "Rua da UPA, 345",
-      "phone": "(11) 6666-6666",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "green",
-      "priorityLevel": 1
+      "category": "institucional",
+      "type": "interno",
+      "contact": {
+        "phone": "(11) 2546-4961"
+      },
+      "location": {
+        "name": "E.E. Ermelino Matarazzo",
+        "address": "Rua Miguel Rachid, 200, Ermelino Matarazzo, São Paulo/SP",
+        "lat": -23.50135,
+        "lng": -46.47070
+      }
     },
     {
       "id": "ubs-ermelino",
       "name": "UBS Ermelino Matarazzo",
-      "type": "Saúde",
-      "tags": ["ubs", "saude"],
-      "address": "Rua da UBS, 123",
-      "phone": "(11) 7777-7777",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "green",
-      "priorityLevel": 2
+      "category": "saude",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2545-8235",
+        "alternatePhone": "(11) 2544-0051"
+      },
+      "location": {
+        "address": "Rua Antônio de Freitas Toledo, 185, Ermelino Matarazzo, São Paulo/SP, 03809-060",
+        "lat": -23.50043,
+        "lng": -46.48740
+      }
     },
     {
-      "id": "ubs-vila-paranagua",
-      "name": "UBS Vila Paranaguá",
-      "type": "Saúde",
-      "tags": ["ubs", "saude"],
-      "address": "Rua da Vila, 456",
-      "phone": "(11) 8888-8888",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "green",
-      "priorityLevel": 2
+      "id": "caps-ij",
+      "name": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "category": "saude_mental",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 3294-3828"
+      },
+      "location": {
+        "address": "Rua Antônio Bonici, 18, Jardim Matarazzo, São Paulo/SP, 03811-060",
+        "lat": -23.50240,
+        "lng": -46.47080
+      }
     },
     {
-      "id": "hospital-alipio",
-      "name": "Hospital Municipal Alípio Corrêa Netto",
-      "type": "Saúde",
-      "tags": ["hospital", "saude"],
-      "address": "Rua do Hospital, 789",
-      "phone": "(11) 9999-9999",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "red",
-      "priorityLevel": 1
-    },
-    {
-      "id": "cvv",
-      "name": "CVV – 188",
-      "type": "Apoio Emocional",
-      "tags": ["apoio", "saude_mental"],
-      "address": "Telefone 188",
-      "phone": "188",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "yellow",
-      "priorityLevel": 1
+      "id": "caps-adulto",
+      "name": "CAPS Adulto II Ermelino Matarazzo",
+      "category": "saude_mental",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2546-6787",
+        "alternatePhone": "(11) 2542-0693"
+      },
+      "location": {
+        "address": "Avenida Boturussu, 168, Ermelino Matarazzo, São Paulo/SP, 03802-000",
+        "lat": -23.50450,
+        "lng": -46.48420
+      }
     },
     {
       "id": "caps-ad",
       "name": "CAPS AD II Ermelino Matarazzo",
-      "type": "Saúde Mental",
-      "tags": ["caps", "ad", "saude_mental"],
-      "address": "Rua do CAPS AD, 123",
-      "phone": "(11) 1234-5678",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "purple",
-      "priorityLevel": 1
+      "category": "saude_mental",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2943-9276"
+      },
+      "location": {
+        "address": "Rua João Antônio de Andrade, 804, Parque Boturussu, São Paulo/SP, 03805-070",
+        "lat": -23.50120,
+        "lng": -46.47770
+      }
     },
     {
-      "id": "disque-100",
-      "name": "Disque 100 – Direitos Humanos",
-      "type": "Proteção",
-      "tags": ["direitos_humanos", "emergencia"],
-      "address": "100",
-      "phone": "100",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "orange",
-      "priorityLevel": 1
+      "id": "upa-ermelino",
+      "name": "UPA III 24h Ermelino Matarazzo",
+      "category": "saude",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2574-3343",
+        "alternatePhone": "(11) 2574-4132"
+      },
+      "location": {
+        "address": "Rua Miguel Novais, 113, Vila Paranaguá, São Paulo/SP, 03807-370",
+        "lat": -23.50295,
+        "lng": -46.47155
+      }
+    },
+    {
+      "id": "ubs-paranagua",
+      "name": "UBS Vila Paranaguá",
+      "category": "saude",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2574-3258"
+      },
+      "location": {
+        "address": "Rua José Góes Nogueira, 70, Vila Paranaguá, São Paulo/SP, 03807-380",
+        "lat": -23.50355,
+        "lng": -46.46940
+      }
+    },
+    {
+      "id": "hospital-alipio",
+      "name": "Hospital Municipal Prof. Dr. Alípio Corrêa Netto",
+      "category": "saude",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 5178-2000",
+        "alternatePhone": "(11) 3394-8030"
+      },
+      "location": {
+        "address": "Alameda Rodrigo de Brum, 1989, Vila Paranaguá, São Paulo/SP, 03807-230",
+        "lat": -23.50470,
+        "lng": -46.46290
+      }
+    },
+    {
+      "id": "cras-ermelino",
+      "name": "CRAS Ermelino Matarazzo",
+      "category": "assistencia_social",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2545-3211",
+        "alternatePhone": "(11) 2545-2866"
+      },
+      "location": {
+        "address": "Avenida Paranaguá, 1492, Ermelino Matarazzo, São Paulo/SP, 03806-000",
+        "lat": -23.50110,
+        "lng": -46.47640
+      }
+    },
+    {
+      "id": "creas-ermelino",
+      "name": "CREAS Ermelino Matarazzo",
+      "category": "assistencia_social",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2545-3211"
+      },
+      "location": {
+        "address": "Avenida Boturussu, 1626, Ermelino Matarazzo, São Paulo/SP, 03802-010",
+        "lat": -23.50560,
+        "lng": -46.48240
+      }
+    },
+    {
+      "id": "scfv-ermelino",
+      "name": "SCFV – Ermelino Matarazzo",
+      "category": "assistencia_social",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2545-3211"
+      },
+      "location": {
+        "address": "Avenida Paranaguá, 1492, Ermelino Matarazzo, São Paulo/SP, 03806-000",
+        "lat": -23.50110,
+        "lng": -46.47640
+      }
+    },
+    {
+      "id": "conselho-tutelar",
+      "name": "Conselho Tutelar de Ermelino Matarazzo",
+      "category": "protecao",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2214-9050",
+        "alternatePhone": "(11) 97283-6692"
+      },
+      "location": {
+        "address": "Rua Chesira Maltauro, 342, Parque Boturussú, São Paulo/SP, 03811-100",
+        "lat": -23.49780,
+        "lng": -46.47290
+      }
+    },
+    {
+      "id": "dp-62",
+      "name": "62° DP – Ermelino Matarazzo",
+      "category": "seguranca",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2546-4961"
+      },
+      "location": {
+        "address": "Rua Ruy Pirozzelli, 250, Jardim Belém, São Paulo/SP, 03811-020",
+        "lat": -23.50135,
+        "lng": -46.47070
+      }
+    },
+    {
+      "id": "ddm-sao-miguel",
+      "name": "DDM São Miguel Paulista",
+      "category": "seguranca",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 6154-1362"
+      },
+      "location": {
+        "address": "Rua Dríades, 50, São Miguel Paulista, São Paulo/SP, 08010-190",
+        "lat": -23.49510,
+        "lng": -46.43860
+      }
+    },
+    {
+      "id": "mp-infancia",
+      "name": "Ministério Público – Infância e Juventude",
+      "category": "protecao",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 3150-3600"
+      },
+      "location": {
+        "address": "Rua da Consolação, 1921, Consolação, São Paulo/SP, 01301-100",
+        "lat": -23.55320,
+        "lng": -46.65840
+      }
+    },
+    {
+      "id": "policia-civil-197",
+      "name": "Polícia Civil – Disque 197",
+      "category": "seguranca",
+      "type": "externo",
+      "contact": {
+        "phone": "197"
+      },
+      "location": {
+        "address": "Atendimento remoto estadual",
+        "lat": null,
+        "lng": null
+      }
+    },
+    {
+      "id": "defensoria-publica",
+      "name": "Defensoria Pública do Estado",
+      "category": "protecao",
+      "type": "externo",
+      "contact": {
+        "phone": "0800 773 4340"
+      },
+      "location": {
+        "address": "Atendimento remoto estadual",
+        "lat": null,
+        "lng": null
+      }
+    },
+    {
+      "id": "diretoria-ensino-leste1",
+      "name": "Diretoria de Ensino – Região Leste 1",
+      "category": "institucional",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2296-0122"
+      },
+      "location": {
+        "address": "Rua Caetano de Campos, 220, Tatuapé, São Paulo/SP, 03088-010",
+        "lat": -23.54060,
+        "lng": -46.57470
+      }
+    },
+    {
+      "id": "plataforma-conviva",
+      "name": "Plataforma Conviva / SED",
+      "category": "institucional",
+      "type": "externo",
+      "contact": {
+        "phone": "0800 777 0333"
+      },
+      "location": {
+        "address": "Ambiente on-line da SEE-SP",
+        "lat": null,
+        "lng": null
+      }
+    },
+    {
+      "id": "policia-militar",
+      "name": "Polícia Militar – 190",
+      "category": "emergencia",
+      "type": "externo",
+      "contact": {
+        "phone": "190"
+      },
+      "location": {
+        "address": "Emergência estadual",
+        "lat": null,
+        "lng": null
+      }
+    },
+    {
+      "id": "samu",
+      "name": "SAMU – 192",
+      "category": "emergencia",
+      "type": "externo",
+      "contact": {
+        "phone": "192"
+      },
+      "location": {
+        "address": "Emergência nacional",
+        "lat": null,
+        "lng": null
+      }
     },
     {
       "id": "bombeiros",
       "name": "Corpo de Bombeiros – 193",
-      "type": "Emergência",
-      "tags": ["bombeiros", "emergencia"],
-      "address": "193",
-      "phone": "193",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "red",
-      "priorityLevel": 1
+      "category": "emergencia",
+      "type": "externo",
+      "contact": {
+        "phone": "193"
+      },
+      "location": {
+        "address": "Emergência estadual",
+        "lat": null,
+        "lng": null
+      }
     },
     {
-      "id": "diretoria-ensino-leste1",
-      "name": "Diretoria de Ensino Leste 1",
-      "type": "Institucional",
-      "tags": ["diretoria_ensino"],
-      "address": "Rua da Diretoria, 100",
-      "phone": "(11) 3000-0000",
-      "coordinates": { "lat": 0, "lng": 0 },
-      "mapPinColor": "blue",
-      "priorityLevel": 2
+      "id": "disque-100",
+      "name": "Disque 100 – Direitos Humanos",
+      "category": "denuncia",
+      "type": "externo",
+      "contact": {
+        "phone": "100"
+      },
+      "location": {
+        "address": "Canal nacional de denúncia",
+        "lat": null,
+        "lng": null
+      }
+    },
+    {
+      "id": "cvv",
+      "name": "CVV – 188",
+      "category": "saude_mental",
+      "type": "externo",
+      "contact": {
+        "phone": "188"
+      },
+      "location": {
+        "address": "Atendimento nacional 24h",
+        "lat": null,
+        "lng": null
+      }
+    },
+    {
+      "id": "disque-denuncia-181",
+      "name": "Disque Denúncia – 181",
+      "category": "denuncia",
+      "type": "externo",
+      "contact": {
+        "phone": "181"
+      },
+      "location": {
+        "address": "Canal remoto estadual",
+        "lat": null,
+        "lng": null
+      }
+    },
+    {
+      "id": "disque-180",
+      "name": "Disque 180 – Central da Mulher",
+      "category": "denuncia",
+      "type": "externo",
+      "contact": {
+        "phone": "180"
+      },
+      "location": {
+        "address": "Central nacional de atendimento",
+        "lat": null,
+        "lng": null
+      }
     }
   ],
 
