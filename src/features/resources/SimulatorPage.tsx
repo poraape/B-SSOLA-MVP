@@ -1,133 +1,161 @@
 import React, { useState } from 'react';
-import { Play, RotateCcw, CheckCircle2, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle2, AlertTriangle, ShieldCheck, ChevronRight } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
+import { simulatorCases, SimulatorCase } from './data/simulatorCases';
 
-type SimStep = 'start' | 'situation' | 'action' | 'result';
+type SimState = 'intro' | 'selection' | 'case' | 'result';
 
 export const SimulatorPage: React.FC = () => {
-  const [step, setStep] = useState<SimStep>('start');
-  const [situation, setSituation] = useState<string | null>(null);
-  const [action, setAction] = useState<string | null>(null);
+  const [state, setState] = useState<SimState>('intro');
+  const [currentCase, setCurrentCase] = useState<SimulatorCase | null>(null);
+  const [selectedChoiceId, setSelectedChoiceId] = useState<string | null>(null);
 
-  const reset = () => {
-    setStep('start');
-    setSituation(null);
-    setAction(null);
+  const handleStart = () => setState('selection');
+  
+  const handleSelectCase = (simCase: SimulatorCase) => {
+    setCurrentCase(simCase);
+    setState('case');
   };
+
+  const handleSelectChoice = (choiceId: string) => {
+    setSelectedChoiceId(choiceId);
+    setState('result');
+  };
+
+  const handleReset = () => {
+    setState('intro');
+    setCurrentCase(null);
+    setSelectedChoiceId(null);
+  };
+
+  const selectedChoice = currentCase?.choices.find(c => c.id === selectedChoiceId);
 
   return (
     <div className="max-w-3xl mx-auto">
-      <Card className="p-10 border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl rounded-[3rem] overflow-hidden relative">
+      <Card className="p-8 md:p-12 border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl rounded-[3rem] overflow-hidden relative min-h-[500px] flex flex-col">
         {/* Background Decoration */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16" />
+        <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 rounded-full -mr-24 -mt-24 pointer-events-none" />
         
-        <div className="relative z-10 space-y-8">
-          {step === 'start' && (
-            <div className="text-center space-y-8 py-10">
-              <div className="w-20 h-20 bg-blue-100 dark:bg-blue-900/30 rounded-3xl flex items-center justify-center mx-auto">
-                <Play className="w-10 h-10 text-blue-600" />
+        <div className="relative z-10 flex-1 flex flex-col">
+          {state === 'intro' && (
+            <div className="text-center space-y-8 py-10 my-auto">
+              <div className="w-24 h-24 bg-blue-100 dark:bg-blue-900/30 rounded-[2rem] flex items-center justify-center mx-auto shadow-inner">
+                <Play className="w-12 h-12 text-blue-600" />
               </div>
               <div className="space-y-4">
                 <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Simulador de Protocolos</h3>
-                <p className="text-slate-500 dark:text-slate-400 font-medium max-w-md mx-auto">
-                  Treine sua tomada de decisão em cenários hipotéticos baseados no protocolo institucional.
+                <p className="text-slate-500 dark:text-slate-400 font-medium max-w-md mx-auto leading-relaxed">
+                  Coloque seus conhecimentos em prática com cenários reais do cotidiano escolar. Escolha a melhor conduta baseada no protocolo.
                 </p>
               </div>
-              <Button onClick={() => setStep('situation')} variant="primary" className="px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-xs">
-                Começar Simulação
+              <Button onClick={handleStart} variant="primary" className="px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-blue-200 dark:shadow-none">
+                Iniciar Treinamento
               </Button>
             </div>
           )}
 
-          {step === 'situation' && (
+          {state === 'selection' && (
             <div className="space-y-8">
               <div className="space-y-2">
-                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em]">Passo 01</span>
-                <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Selecione um cenário:</h3>
+                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">Fase de Seleção</span>
+                <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Escolha um cenário:</h3>
               </div>
               <div className="grid grid-cols-1 gap-4">
-                {[
-                  { id: 'bullying', label: 'Estudante relata bullying persistente', icon: '🗣️' },
-                  { id: 'injury', label: 'Estudante sofre queda com sangramento', icon: '🩹' },
-                  { id: 'anxiety', label: 'Estudante apresenta crise de choro intensa', icon: '🧠' }
-                ].map((s) => (
+                {simulatorCases.map((s) => (
                   <button
                     key={s.id}
-                    onClick={() => { setSituation(s.id); setStep('action'); }}
-                    className="flex items-center gap-4 p-6 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all text-left group"
+                    onClick={() => handleSelectCase(s)}
+                    className="flex items-center gap-6 p-6 rounded-[2rem] border-2 border-slate-100 dark:border-slate-800 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all text-left group bg-white dark:bg-slate-900 shadow-sm"
                   >
-                    <span className="text-3xl">{s.icon}</span>
-                    <span className="font-bold text-slate-700 dark:text-slate-200 group-hover:text-blue-600">{s.label}</span>
+                    <div className="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                      {s.icon}
+                    </div>
+                    <div className="flex-1">
+                      <span className="block font-black text-slate-900 dark:text-white text-lg group-hover:text-blue-600 transition-colors">{s.title}</span>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-1 font-medium">{s.situation}</p>
+                    </div>
+                    <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
                   </button>
                 ))}
               </div>
             </div>
           )}
 
-          {step === 'action' && (
-            <div className="space-y-8">
-              <div className="space-y-2">
-                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em]">Passo 02</span>
-                <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Qual sua primeira ação?</h3>
-              </div>
-              <div className="grid grid-cols-1 gap-4">
-                {[
-                  { id: 'direct', label: 'Resolver a situação sozinho imediatamente' },
-                  { id: 'protocol', label: 'Acolher e acionar a coordenação pedagógica' },
-                  { id: 'ignore', label: 'Aguardar o final da aula para avaliar' }
-                ].map((a) => (
-                  <button
-                    key={a.id}
-                    onClick={() => { setAction(a.id); setStep('result'); }}
-                    className="p-6 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all text-left font-bold text-slate-700 dark:text-slate-200"
-                  >
-                    {a.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {step === 'result' && (
-            <div className="space-y-10 py-4">
-              <div className="flex items-center gap-4">
-                {action === 'protocol' ? (
-                  <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center shrink-0">
-                    <CheckCircle2 className="w-8 h-8 text-emerald-600" />
+          {state === 'case' && currentCase && (
+            <div className="space-y-10 flex-1 flex flex-col">
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-2xl">
+                    {currentCase.icon}
                   </div>
-                ) : (
-                  <div className="w-16 h-16 bg-rose-100 dark:bg-rose-900/30 rounded-2xl flex items-center justify-center shrink-0">
-                    <AlertTriangle className="w-8 h-8 text-rose-600" />
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Situação Atual</span>
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">{currentCase.title}</h3>
                   </div>
-                )}
-                <div>
-                  <h3 className={`text-2xl font-black tracking-tight ${action === 'protocol' ? 'text-emerald-600' : 'text-rose-600'}`}>
-                    {action === 'protocol' ? 'Ação Correta!' : 'Ação Incorreta'}
-                  </h3>
-                  <p className="text-slate-500 dark:text-slate-400 font-medium">
-                    {action === 'protocol' 
-                      ? 'Você seguiu o protocolo de acolhimento e rede de apoio.' 
-                      : 'O protocolo exige acolhimento imediato e notificação da gestão.'}
+                </div>
+                
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 relative">
+                  <p className="text-lg text-slate-700 dark:text-slate-200 leading-relaxed font-medium italic">
+                    "{currentCase.situation}"
                   </p>
                 </div>
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-100 dark:border-slate-700 space-y-4">
-                <div className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
-                  <ShieldCheck className="w-4 h-4" /> Justificativa Técnica
+              <div className="space-y-4 mt-auto">
+                <h4 className="text-sm font-black text-slate-400 uppercase tracking-widest text-center">Qual sua conduta?</h4>
+                <div className="grid grid-cols-1 gap-3">
+                  {currentCase.choices.map((choice) => (
+                    <button
+                      key={choice.id}
+                      onClick={() => handleSelectChoice(choice.id)}
+                      className="p-6 rounded-2xl border-2 border-slate-100 dark:border-slate-800 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all text-left font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 shadow-sm"
+                    >
+                      {choice.label}
+                    </button>
+                  ))}
                 </div>
-                <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
-                  {situation === 'bullying' && action === 'protocol' && 'O bullying requer intervenção institucional mediada pela coordenação para garantir a proteção de todos os envolvidos e o registro adequado.'}
-                  {situation === 'bullying' && action !== 'protocol' && 'Tentar resolver sozinho pode expor os envolvidos ou omitir a necessidade de acompanhamento pedagógico e psicológico de longo prazo.'}
-                  {situation === 'injury' && 'Em casos de saúde física, o primeiro socorro deve ser acompanhado de notificação imediata para que a família seja avisada e o seguro escolar acionado.'}
-                  {situation === 'anxiety' && 'Crises emocionais exigem escuta qualificada e ambiente privativo, o que deve ser providenciado pela equipe de apoio ou gestão.'}
+              </div>
+            </div>
+          )}
+
+          {state === 'result' && currentCase && selectedChoice && (
+            <div className="space-y-10 py-4 my-auto">
+              <div className="flex items-center gap-6">
+                <div className={`w-20 h-20 rounded-[2rem] flex items-center justify-center shrink-0 shadow-lg ${
+                  selectedChoice.isCorrect 
+                    ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600' 
+                    : 'bg-rose-100 dark:bg-rose-900/30 text-rose-600'
+                }`}>
+                  {selectedChoice.isCorrect ? <CheckCircle2 className="w-10 h-10" /> : <AlertTriangle className="w-10 h-10" />}
+                </div>
+                <div>
+                  <h3 className={`text-3xl font-black tracking-tight ${selectedChoice.isCorrect ? 'text-emerald-600' : 'text-rose-600'}`}>
+                    {selectedChoice.isCorrect ? 'Conduta Adequada!' : 'Conduta Inadequada'}
+                  </h3>
+                  <p className="text-slate-500 dark:text-slate-400 font-bold uppercase text-[10px] tracking-widest mt-1">
+                    Avaliação Baseada no Protocolo Institucional
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-700 space-y-4">
+                <div className="flex items-center gap-2 text-[10px] font-black text-blue-600 uppercase tracking-widest">
+                  <ShieldCheck className="w-4 h-4" /> Justificativa e Feedback
+                </div>
+                <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                  {selectedChoice.feedback}
                 </p>
               </div>
 
-              <Button onClick={reset} variant="outline" className="w-full py-4 rounded-xl font-black uppercase tracking-widest text-[10px]">
-                <RotateCcw className="w-4 h-4 mr-2" /> Reiniciar Simulação
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button onClick={() => setState('selection')} variant="outline" className="flex-1 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px]">
+                  Tentar Outro Cenário
+                </Button>
+                <Button onClick={handleReset} variant="ghost" className="flex-1 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] text-slate-400">
+                  <RotateCcw className="w-4 h-4 mr-2" /> Reiniciar Tudo
+                </Button>
+              </div>
             </div>
           )}
         </div>

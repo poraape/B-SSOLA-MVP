@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Book, HelpCircle, PlayCircle, ChevronRight } from 'lucide-react';
+import { Book, HelpCircle, PlayCircle } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 import { GlossaryPage } from './GlossaryPage';
 import { FAQPage } from './FAQPage';
 import { SimulatorPage } from './SimulatorPage';
-import { Card } from '../../components/ui/Card';
 
 type ResourceTab = 'glossary' | 'faq' | 'simulator';
 
 export const ResourcesPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ResourceTab>('glossary');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeTab = (searchParams.get('tab') as ResourceTab) || 'glossary';
+
+  const setActiveTab = (tab: ResourceTab) => {
+    setSearchParams({ tab }, { replace: true });
+  };
 
   const tabs = [
     { id: 'glossary', label: 'Glossário', icon: <Book className="w-5 h-5" />, description: 'Termos técnicos e definições' },
