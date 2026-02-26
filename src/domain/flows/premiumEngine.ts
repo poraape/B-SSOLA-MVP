@@ -8,6 +8,7 @@ export interface PremiumResult extends TriageResult {
   institutionalScript?: string[];
   internalServicesRelevant?: Service[];
   externalServicesRelevant?: Service[];
+  appliedRules?: string[];
 }
 
 function calculatePriority(params: {

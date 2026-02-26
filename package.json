@@ -13,7 +13,8 @@
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "model:check": "tsx src/scripts/modelCheck.ts",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "heuristic:audit": "tsx src/scripts/compareHeuristics.ts"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
