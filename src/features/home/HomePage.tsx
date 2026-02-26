@@ -79,7 +79,7 @@ export const HomePage: React.FC = () => {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <button 
-              onClick={() => navigate('/categoria/saude_fisica')}
+              onClick={() => navigate('/fluxo/flow_gateway')}
               className="bg-white text-slate-900 px-6 md:px-8 py-4 md:py-6 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-3"
             >
               Iniciar Atendimento Guiado 🧭
@@ -112,8 +112,15 @@ export const HomePage: React.FC = () => {
                 }`}
               >
                 <div className="relative z-10">
-                  <div className={`mb-6 w-14 h-14 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 ${colorClasses}`}>
-                    {getIcon(cat.icon)}
+                  <div className="relative inline-block">
+                    <div className={`mb-6 w-14 h-14 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 ${colorClasses}`}>
+                      {getIcon(cat.icon)}
+                    </div>
+                    {cat.isEmergencyCategory && (
+                      <div className="absolute -top-2 -right-2 bg-rose-600 text-white p-1.5 rounded-full shadow-lg animate-pulse border-2 border-white dark:border-slate-900 z-20">
+                        <AlertTriangle className="w-3 h-3" />
+                      </div>
+                    )}
                   </div>
                   <h3 className="text-2xl font-black mb-3 text-slate-900 dark:text-white tracking-tight">{cat.label}</h3>
                   <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6 line-clamp-2">

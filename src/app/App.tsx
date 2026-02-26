@@ -14,11 +14,13 @@ export default function App() {
   const [validation, setValidation] = useState<{ isValid: boolean; errors: string[] } | null>(null);
 
   useEffect(() => {
-    const result = validateModel(model);
-    if (!result.isValid) {
-      console.error('Model Validation Errors:', result.errors);
+    try {
+      validateModel(model as any);
+      setValidation({ isValid: true, errors: [] });
+    } catch (error: any) {
+      console.error('Model Validation Error:', error.message);
+      setValidation({ isValid: false, errors: [error.message] });
     }
-    setValidation(result);
   }, []);
 
   if (validation && !validation.isValid) {

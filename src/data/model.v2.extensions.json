@@ -1,0 +1,22 @@
+{
+  "resultExtensions": {
+    "LOW": {
+      "explanationTemplate": "Situação classificada como baixa complexidade.",
+      "institutionalScript": [
+        "Realizar escuta inicial",
+        "Registrar no sistema interno",
+        "Monitorar evolução"
+      ],
+      "complementaryServices": []
+    },
+    "HIGH": {
+      "explanationTemplate": "Situação exige atenção prioritária.",
+      "institutionalScript": [
+        "Acionar equipe gestora",
+        "Registrar formalmente",
+        "Avaliar necessidade de rede externa"
+      ],
+      "complementaryServices": []
+    }
+  }
+}

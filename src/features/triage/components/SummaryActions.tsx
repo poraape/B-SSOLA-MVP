@@ -9,21 +9,55 @@ interface SummaryActionsProps {
 }
 
 export const SummaryActions: React.FC<SummaryActionsProps> = ({ flow, result }) => {
-  const handleCopy = () => {
-    const text = `
-RESUMO DE ORIENTAÇÃO - BÚSSOLA
+  const now = new Date().toLocaleString('pt-BR');
+
+  const buildTechnicalText = () => `
+RELATÓRIO TÉCNICO - BÚSSOLA (SEM DADOS PESSOAIS)
 ---
-Situação: ${flow.meta.title}
-Nível de Risco: ${result.severity.toUpperCase()}
-Encaminhamento: ${result.primaryService?.name || 'N/A'}
-Data/Hora: ${new Date().toLocaleString('pt-BR')}
+Situação/Fluxo: ${flow.meta.title}
+Risco (exibido): ${result.severity.toUpperCase()}
+Nível (interno): ${(result as any).level || 'N/A'}
+Data/Hora: ${now}
 
-Ações Escolares:
+Roteiro institucional:
 ${result.schoolActions.map(a => `- ${a}`).join('\n')}
-    `.trim();
 
-    navigator.clipboard.writeText(text);
-    alert('Resumo copiado para a área de transferência!');
+Serviço prioritário: ${result.primaryService?.name || 'N/A'}
+Serviço complementar: ${result.secondaryService?.name || 'N/A'}
+
+Aviso: Ferramenta de apoio institucional. Não substitui avaliação técnica especializada.
+`.trim();
+
+  const buildOrientativeText = () => {
+    const pts = (result as any).explanationPoints as string[] | undefined;
+    return `
+RELATÓRIO ORIENTATIVO - BÚSSOLA (FORMAÇÃO)
+---
+Situação/Fluxo: ${flow.meta.title}
+Data/Hora: ${now}
+
+Por que essa classificação:
+${pts?.length ? pts.map(p => `- ${p}`).join('\n') : '- Classificação definida pelo protocolo institucional'}
+
+Boas práticas:
+- Escuta qualificada, sem julgamentos
+- Registro objetivo (sem interpretações)
+- Não prometer sigilo absoluto
+- Evitar exposição e repetição desnecessária do relato
+
+Roteiro institucional:
+${result.schoolActions.map(a => `- ${a}`).join('\n')}
+`.trim();
+  };
+
+  const handleCopyTechnical = () => {
+    navigator.clipboard.writeText(buildTechnicalText());
+    alert('Versão técnica copiada!');
+  };
+
+  const handleCopyOrientative = () => {
+    navigator.clipboard.writeText(buildOrientativeText());
+    alert('Versão orientativa copiada!');
   };
 
   const handlePrint = () => {
@@ -34,11 +68,19 @@ ${result.schoolActions.map(a => `- ${a}`).join('\n')}
     <div className="flex flex-wrap gap-3 pt-6 border-t border-slate-100 print:hidden">
       <Button 
         variant="outline" 
-        onClick={handleCopy}
+        onClick={handleCopyTechnical}
         className="flex-1 min-w-[200px]"
       >
         <Copy className="w-4 h-4 mr-2" />
-        Copiar resumo
+        Copiar técnica
+      </Button>
+      <Button 
+        variant="outline" 
+        onClick={handleCopyOrientative}
+        className="flex-1 min-w-[200px]"
+      >
+        <Copy className="w-4 h-4 mr-2" />
+        Copiar orientativa
       </Button>
       <Button 
         variant="outline" 

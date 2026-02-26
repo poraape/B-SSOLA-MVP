@@ -93,10 +93,13 @@ export interface TriageQuestion {
     label: string;
     next?: string;
     level?: string;
+    nextFlow?: string;
+    redirectToCategories?: boolean;
   }>;
 }
 
 export interface TriageResult {
+  level?: string; // NOVO — necessário para motor premium
   severity: string;
   notifyManagement?: boolean;
   primaryService: { id: string; name: string } | null;

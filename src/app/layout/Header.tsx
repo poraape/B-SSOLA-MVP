@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
 
   const navItems = [
     { label: 'Início', path: '/' },
-    { label: 'Decisor', path: '/categoria/saude_fisica' }, // Example path
+    { label: 'Decisor', path: '/fluxo/flow_gateway' }, // Correct path to gateway
     { label: 'Rede', path: '/rede' },
     { label: 'Recursos', path: '/recursos' },
   ];

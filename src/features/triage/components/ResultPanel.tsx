@@ -1,17 +1,22 @@
 import React from 'react';
-import { MapPin, Info, ShieldAlert, Heart, CheckCircle2 } from 'lucide-react';
+import { MapPin, Info, ShieldAlert, Heart } from 'lucide-react';
 import { TriageResult, Flow } from '../../../types';
 import { getServiceById } from '../../../domain/flows/selectors';
 import { Link } from 'react-router-dom';
+import { PremiumResult } from '../../../domain/flows/premiumEngine';
+import { Collapsible } from '../../../components/ui/Collapsible';
 
 interface ResultPanelProps {
   flow: Flow;
-  result: TriageResult;
+  result: TriageResult | PremiumResult;
 }
 
 export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
   const primaryService = result.primaryService ? getServiceById(result.primaryService.id) : null;
   const secondaryService = result.secondaryService ? getServiceById(result.secondaryService.id) : null;
+
+  const internalRelevant = (result as PremiumResult).internalServicesRelevant || [];
+  const externalRelevant = (result as PremiumResult).externalServicesRelevant || [];
 
   return (
     <div className="space-y-10">
@@ -70,22 +75,24 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
       </div>
 
       {/* School Actions */}
-      <div className="space-y-4">
-        <h3 className="text-xl font-bold flex items-center gap-2 text-slate-900">
-          <div className="w-1.5 h-6 bg-blue-600 rounded-full" />
-          Ações Escolares Recomendadas
-        </h3>
-        <ul className="space-y-3">
-          {result.schoolActions.map((item, i) => (
-            <li key={i} className="flex gap-3 items-start bg-slate-50 p-4 rounded-2xl border border-slate-100">
-              <div className="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">
-                {i + 1}
-              </div>
-              <p className="text-slate-800 font-medium">{item}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {result.schoolActions.length > 0 && (
+        <Collapsible title="Recomendações Institucionais" defaultOpen={true}>
+          <ul className="space-y-3 mt-4">
+            {result.schoolActions.map((item, i) => (
+              <li key={i} className="flex gap-3 items-start bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                <div className="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">
+                  {i + 1}
+                </div>
+                <p className="text-slate-800 font-medium">{item}</p>
+              </li>
+            ))}
+          </ul>
+        </Collapsible>
+      )}
+
+      <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest leading-relaxed">
+        O Bússola é uma ferramenta de apoio à tomada de decisão institucional. As orientações não substituem avaliação técnica especializada quando necessária.
+      </p>
     </div>
   );
 };

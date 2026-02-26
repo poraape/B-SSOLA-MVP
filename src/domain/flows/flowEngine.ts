@@ -1,14 +1,17 @@
 import { Flow, TriageResult } from '../../types';
 
 export interface FlowState {
+  flowId?: string | null;
   currentQuestionId: string | null;
   answers: Record<string, string>;
   result: TriageResult | null;
   isComplete: boolean;
+  redirectToCategories?: boolean;
 }
 
 export const initFlow = (flow: Flow): FlowState => {
   return {
+    flowId: flow.meta.id,
     currentQuestionId: flow.triage.questions[0]?.id || null,
     answers: {},
     result: null,
@@ -28,13 +31,36 @@ export const processAnswer = (
   const option = question.options.find(o => o.label === optionLabel);
   if (!option) return state;
 
+  if (option.nextFlow) {
+    return {
+      ...state,
+      flowId: option.nextFlow,
+      currentQuestionId: null,
+      answers: {},
+      result: null,
+      isComplete: false
+    };
+  }
+
+  if (option.redirectToCategories) {
+    return {
+      ...state,
+      flowId: null,
+      redirectToCategories: true
+    };
+  }
+
   const newAnswers = { ...state.answers, [questionId]: optionLabel };
 
   if (option.level) {
+    const baseResult = flow.results[option.level] || null;
+
     return {
       ...state,
       answers: newAnswers,
-      result: flow.results[option.level] || null,
+      result: baseResult
+        ? { ...baseResult, level: option.level }
+        : null,
       isComplete: true,
       currentQuestionId: null
     };

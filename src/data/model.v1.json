@@ -1,4 +1,5 @@
 {
+  "version": "1.0.0",
   "meta": {
     "appName": "Protocolo Bússola",
     "version": "1.0",
@@ -11,7 +12,7 @@
       "color": "red",
       "fixed": true,
       "priorityRouteIds": [
-        "flow_emergencia_medica",
+        "flow_emergencia",
         "flow_violencia_armada",
         "flow_incendio"
       ]
@@ -59,6 +60,16 @@
   },
 
   "categories": [
+    {
+      "id": "emergencia",
+      "label": "Emergência",
+      "name": "Emergência",
+      "isEmergencyCategory": true,
+      "icon": "alert",
+      "color": "red",
+      "description": "Situações de risco imediato à vida ou integridade física.",
+      "subcategories": []
+    },
     {
       "id": "violencia_conflitos",
       "label": "Violências e Conflitos",
@@ -183,6 +194,30 @@
   ],
 
   "flows": [
+    {
+      "id": "flow_gateway",
+      "meta": {
+        "id": "flow_gateway",
+        "title": "Situação de risco imediato?",
+        "type": "standard",
+        "categoryId": "emergencia"
+      },
+      "triage": {
+        "maxQuestions": 1,
+        "questions": [
+          {
+            "id": "q1",
+            "text": "Existe risco imediato à integridade física ou psicológica?",
+            "options": [
+              { "label": "Sim", "nextFlow": "flow_emergencia" },
+              { "label": "Não sei", "nextFlow": "flow_emergencia" },
+              { "label": "Não", "redirectToCategories": true }
+            ]
+          }
+        ]
+      },
+      "results": {}
+    },
     {
       "meta": {
         "id": "flow_bullying",
@@ -2175,50 +2210,49 @@
       }
     },
     {
+      "id": "flow_emergencia",
       "meta": {
-        "id": "flow_emergencia_medica",
-        "categoryId": "saude_fisica",
-        "subcategory": "emergencia_medica",
+        "id": "flow_emergencia",
+        "title": "Tipo de emergência",
         "type": "medical_emergency",
-        "title": "Emergência Médica Geral"
-      },
-      "riskModel": {
-        "usedLevels": ["alto", "iminente"],
-        "defaultLevel": "alto"
+        "categoryId": "emergencia"
       },
       "triage": {
-        "maxQuestions": 2,
+        "maxQuestions": 1,
         "questions": [
           {
-            "id": "q1",
-            "text": "O estudante está inconsciente ou não respira?",
+            "id": "emergencia_tipo",
+            "text": "Qual tipo de emergência melhor descreve a situação?",
             "options": [
-              { "label": "Sim", "level": "iminente" },
-              { "label": "Não", "next": "q2" }
-            ]
-          },
-          {
-            "id": "q2",
-            "text": "Há sinais de choque ou hemorragia incontrolável?",
-            "options": [
-              { "label": "Sim", "level": "iminente" },
-              { "label": "Não", "level": "alto" }
+              { "label": "Agressão física em andamento", "level": "CRITICAL" },
+              { "label": "Aluno em crise emocional grave", "level": "HIGH" },
+              { "label": "Possível risco de autoagressão", "level": "CRITICAL" },
+              { "label": "Situação de violência verbal intensa", "level": "HIGH" },
+              { "label": "Outro risco imediato", "level": "HIGH" }
             ]
           }
         ]
       },
       "results": {
-        "alto": {
-          "severity": "alto",
-          "primaryService": { "id": "upa-ermelino", "name": "UPA III 24h" },
+        "CRITICAL": {
+          "severity": "critico",
+          "primaryService": { "id": "gestao-direcao", "name": "Direção Escolar" },
           "secondaryService": { "id": "samu", "name": "SAMU – 192" },
-          "schoolActions": ["Monitorar sinais vitais", "Acionar emergência se piorar"]
+          "schoolActions": [
+            "Acionar imediatamente a Direção ou Gestão.",
+            "Garantir segurança física das pessoas envolvidas.",
+            "Se necessário, acionar serviço externo de emergência."
+          ]
         },
-        "iminente": {
-          "severity": "iminente",
-          "primaryService": { "id": "samu", "name": "SAMU – 192" },
-          "secondaryService": null,
-          "schoolActions": ["RCP se necessário", "Acionar 192 imediatamente"]
+        "HIGH": {
+          "severity": "alto",
+          "primaryService": { "id": "gestao-coordenacao", "name": "Coordenação Pedagógica" },
+          "secondaryService": { "id": "gestao-direcao", "name": "Direção Escolar" },
+          "schoolActions": [
+            "Encaminhar imediatamente à Orientação Educacional.",
+            "Registrar ocorrência objetiva.",
+            "Avaliar necessidade de acionamento externo."
+          ]
         }
       }
     }

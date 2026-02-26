@@ -1,10 +1,11 @@
 import React from 'react';
 import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
-import { getFlowById } from '../../domain/flows/selectors';
+import { getFlowById, getCategoryById } from '../../domain/flows/selectors';
 import { ResultPanel } from './components/ResultPanel';
 import { SummaryActions } from './components/SummaryActions';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { TriageResult } from '../../types';
+import { enrichPremium } from '../../domain/flows/premiumEngine';
 
 export const ResultPage: React.FC = () => {
   const { flowId } = useParams<{ flowId: string }>();
@@ -20,6 +21,9 @@ export const ResultPage: React.FC = () => {
     // If no result in state, redirect back to flow to restart
     return <Navigate to={`/fluxo/${flowId}`} replace />;
   }
+
+  const category = getCategoryById(flow.meta.categoryId);
+  const premiumResult = enrichPremium(result, flow, category);
 
   return (
     <div className="max-w-3xl mx-auto space-y-8 print:p-0">
@@ -45,8 +49,8 @@ export const ResultPage: React.FC = () => {
         </div>
 
         <div className="p-6 md:p-10 space-y-10">
-          <ResultPanel flow={flow} result={result} />
-          <SummaryActions flow={flow} result={result} />
+          <ResultPanel flow={flow} result={premiumResult || result} />
+          <SummaryActions flow={flow} result={premiumResult || result} />
         </div>
       </div>
       

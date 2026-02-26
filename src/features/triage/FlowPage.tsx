@@ -22,10 +22,25 @@ export const FlowPage: React.FC = () => {
     return <div className="text-center py-20">Fluxo não encontrado.</div>;
   }
 
+  if (!flow.triage || !flow.triage.questions || flow.triage.questions.length === 0) {
+    return <div className="text-center py-20">Fluxo sem perguntas configuradas.</div>;
+  }
+
   const handleAnswer = (optionLabel: string) => {
     if (!state.currentQuestionId) return;
     
     const newState = processAnswer(flow, state, state.currentQuestionId, optionLabel);
+    
+    if (newState.redirectToCategories) {
+      navigate('/'); // Redirect to home/categories
+      return;
+    }
+
+    if (newState.flowId && newState.flowId !== flow.meta.id) {
+      navigate(`/fluxo/${newState.flowId}`);
+      return;
+    }
+
     setState(newState);
 
     if (newState.isComplete && newState.result) {
