@@ -2,6 +2,7 @@ import React from 'react';
 import { Copy, Printer, CheckCircle2 } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 import { Flow, TriageResult } from '../../../types';
+import { useAppMode } from '../../../domain/appMode/AppModeContext';
 
 interface SummaryActionsProps {
   flow: Flow;
@@ -9,6 +10,7 @@ interface SummaryActionsProps {
 }
 
 export const SummaryActions: React.FC<SummaryActionsProps> = ({ flow, result }) => {
+  const { mode } = useAppMode();
   const now = new Date().toLocaleString('pt-BR');
 
   const buildTechnicalText = () => `
@@ -72,16 +74,18 @@ ${result.schoolActions.map(a => `- ${a}`).join('\n')}
         className="flex-1 min-w-[200px]"
       >
         <Copy className="w-4 h-4 mr-2" />
-        Copiar técnica
+        {mode === 'formacao' ? 'Copiar versão técnica (gestão)' : 'Copiar relatório técnico'}
       </Button>
-      <Button 
-        variant="outline" 
-        onClick={handleCopyOrientative}
-        className="flex-1 min-w-[200px]"
-      >
-        <Copy className="w-4 h-4 mr-2" />
-        Copiar orientativa
-      </Button>
+      {mode === 'formacao' && (
+        <Button 
+          variant="outline" 
+          onClick={handleCopyOrientative}
+          className="flex-1 min-w-[200px]"
+        >
+          <Copy className="w-4 h-4 mr-2" />
+          Copiar versão orientativa
+        </Button>
+      )}
       <Button 
         variant="outline" 
         onClick={handlePrint}

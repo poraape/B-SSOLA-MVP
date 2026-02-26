@@ -8,6 +8,7 @@ import { useSearch } from '../../features/search/context/SearchContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { CompassIcon } from '../../features/shared/assets/CompassIcon';
 import schoolLogo from '../../features/shared/assets/logoescola.png';
+import { useAppMode } from '../../domain/appMode/AppModeContext';
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const { isSearchOpen, toggleSearch, closeSearch } = useSearch();
   const [isAccessibilityOpen, setIsAccessibilityOpen] = useState(false);
+  const { mode, setMode } = useAppMode();
 
   const navItems = [
     { label: 'Início', path: '/' },
@@ -72,6 +74,30 @@ export const Header: React.FC = () => {
 
         {/* Right Section: School Info & Actions */}
         <div className="flex items-center gap-3 md:gap-6 order-2 lg:order-3">
+          {/* App Mode */}
+          <div className="flex items-center gap-2 text-xs font-bold uppercase">
+            <button
+              onClick={() => setMode('operacional')}
+              className={`px-3 py-1 rounded-full transition-colors ${
+                mode === 'operacional'
+                  ? 'bg-slate-800 text-white'
+                  : 'bg-slate-200 text-slate-700'
+              }`}
+            >
+              Operacional
+            </button>
+            <button
+              onClick={() => setMode('formacao')}
+              className={`px-3 py-1 rounded-full transition-colors ${
+                mode === 'formacao'
+                  ? 'bg-emerald-600 text-white'
+                  : 'bg-slate-200 text-slate-700'
+              }`}
+            >
+              Formação
+            </button>
+          </div>
+
           {/* School Info */}
           <div className="flex items-center gap-2 md:gap-4 border-l border-slate-200 dark:border-slate-700 pl-3 md:pl-6">
             <div className="hidden sm:block text-right">
