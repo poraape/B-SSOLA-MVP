@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { getFlowById, getCategoryById } from '../../domain/flows/selectors';
 import { ResultPanel } from './components/ResultPanel';
@@ -6,11 +6,13 @@ import { SummaryActions } from './components/SummaryActions';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { TriageResult } from '../../types';
 import { enrichPremium } from '../../domain/flows/premiumEngine';
+import { logTriageEvent } from '../../domain/metrics/logger';
 
 export const ResultPage: React.FC = () => {
   const { flowId } = useParams<{ flowId: string }>();
   const location = useLocation();
   const flow = getFlowById(flowId || '');
+  const hasLoggedRef = useRef(false);
   const result = location.state?.result as TriageResult;
 
   if (!flow) {
@@ -24,6 +26,28 @@ export const ResultPage: React.FC = () => {
 
   const category = getCategoryById(flow.meta.categoryId);
   const premiumResult = enrichPremium(result, flow, category);
+
+  useEffect(() => {
+    hasLoggedRef.current = false;
+  }, [flow.meta.id]);
+
+  useEffect(() => {
+    if (!premiumResult || hasLoggedRef.current) return;
+
+    logTriageEvent({
+      flowId: flow.meta.id,
+      categoryId: flow.meta.categoryId,
+      flowType: flow.meta.type,
+      level: (premiumResult as any).level,
+      priority: (premiumResult as any).priority,
+      timestamp: Date.now()
+    });
+    hasLoggedRef.current = true;
+  }, [flow.meta.id, premiumResult]);
+
+  const safePriority = ['low', 'moderate', 'high', 'critical'].includes(premiumResult?.priority || '')
+    ? premiumResult?.priority
+    : 'low';
 
   return (
     <div className="max-w-3xl mx-auto space-y-8 print:p-0">
@@ -44,7 +68,7 @@ export const ResultPage: React.FC = () => {
           </div>
           <h2 className="text-3xl font-black leading-tight tracking-tight">{flow.meta.title}</h2>
           <div className="mt-4 inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-widest">
-            Risco: {result.severity}
+            Risco: {safePriority}
           </div>
         </div>
 

@@ -5,6 +5,23 @@ import { ProtocolModel } from './schema';
 
 let cachedModel: ProtocolModel | null = null;
 
+function deepFreeze(obj: any) {
+  Object.freeze(obj);
+
+  Object.getOwnPropertyNames(obj).forEach(prop => {
+    if (
+      obj[prop] !== null &&
+      (typeof obj[prop] === 'object' || typeof obj[prop] === 'function') &&
+      !Object.isFrozen(obj[prop])
+    ) {
+      deepFreeze(obj[prop]);
+    }
+  });
+
+  return obj;
+}
+
+
 export function getValidatedModel(): ProtocolModel {
   if (cachedModel) return cachedModel;
 
@@ -20,7 +37,8 @@ export function getValidatedModel(): ProtocolModel {
     }
   }
 
-  cachedModel = normalized;
+  const frozen = deepFreeze(normalized);
+  cachedModel = frozen;
   return cachedModel;
 }
 

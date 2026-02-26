@@ -1,5 +1,6 @@
 import { TriageResult, Flow, Category, Service } from '../../types';
 import { getServiceById } from './selectors';
+import { applyRiskHeuristics } from '../risk/riskRules';
 
 export interface PremiumResult extends TriageResult {
   priority?: 'low' | 'moderate' | 'high' | 'critical';
@@ -70,7 +71,7 @@ export function enrichPremium(
   // Roteiro institucional: reaproveita schoolActions como “etapas”
   const script = (result.schoolActions || []).map((s, i) => `${i + 1}. ${s}`);
 
-  return {
+  const enriched = {
     ...result,
     priority,
     explanationPoints,
@@ -78,4 +79,6 @@ export function enrichPremium(
     internalServicesRelevant: internal,
     externalServicesRelevant: external
   };
+
+  return applyRiskHeuristics(enriched, flow);
 }

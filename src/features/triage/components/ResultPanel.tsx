@@ -5,6 +5,7 @@ import { getServiceById } from '../../../domain/flows/selectors';
 import { Link } from 'react-router-dom';
 import { PremiumResult } from '../../../domain/flows/premiumEngine';
 import { Collapsible } from '../../../components/ui/Collapsible';
+import { useAppMode } from '../../../domain/appMode/AppModeContext';
 
 interface ResultPanelProps {
   flow: Flow;
@@ -12,11 +13,13 @@ interface ResultPanelProps {
 }
 
 export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
+  const { mode } = useAppMode();
   const primaryService = result.primaryService ? getServiceById(result.primaryService.id) : null;
   const secondaryService = result.secondaryService ? getServiceById(result.secondaryService.id) : null;
 
   const internalRelevant = (result as PremiumResult).internalServicesRelevant || [];
   const externalRelevant = (result as PremiumResult).externalServicesRelevant || [];
+  const explanationPoints = (result as PremiumResult).explanationPoints || [];
 
   return (
     <div className="space-y-10">
@@ -49,7 +52,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
             <p className="text-lg font-bold text-blue-900 leading-snug">{primaryService.name}</p>
             <p className="text-sm text-blue-700 mt-2 font-medium">{primaryService.contact.phone}</p>
             <Link 
-              to={`/rede/servico/${primaryService.id}`}
+              to={`/rede?type=interno&highlight=${result.primaryService.id}`}
               className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
             >
               Ver no mapa →
@@ -65,7 +68,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
             <p className="text-lg font-bold text-slate-900 leading-snug">{secondaryService.name}</p>
             <p className="text-sm text-slate-700 mt-2 font-medium">{secondaryService.contact.phone}</p>
             <Link 
-              to={`/rede/servico/${secondaryService.id}`}
+              to={`/rede?highlight=${result.secondaryService.id}`}
               className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
             >
               Ver no mapa →
@@ -74,9 +77,34 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
         )}
       </div>
 
+      {mode === 'formacao' && (
+        <Collapsible title="Como essa classificação foi definida?" defaultOpen={false}>
+          <ul className="space-y-3 mt-4">
+            {explanationPoints.length > 0 ? (
+              explanationPoints.map((point, index) => (
+                <li key={index} className="text-sm text-slate-700 leading-relaxed">
+                  • {point}
+                </li>
+              ))
+            ) : (
+              <li className="text-sm text-slate-700 leading-relaxed">
+                • Classificação definida conforme protocolo institucional vigente.
+              </li>
+            )}
+          </ul>
+        </Collapsible>
+      )}
+
       {/* School Actions */}
       {result.schoolActions.length > 0 && (
-        <Collapsible title="Recomendações Institucionais" defaultOpen={true}>
+        <Collapsible
+          title={
+            mode === 'formacao'
+              ? 'Recomendações Institucionais e Boas Práticas'
+              : 'Recomendações Institucionais'
+          }
+          defaultOpen={mode === 'operacional'}
+        >
           <ul className="space-y-3 mt-4">
             {result.schoolActions.map((item, i) => (
               <li key={i} className="flex gap-3 items-start bg-slate-50 p-4 rounded-2xl border border-slate-100">
@@ -91,7 +119,9 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
       )}
 
       <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest leading-relaxed">
-        O Bússola é uma ferramenta de apoio à tomada de decisão institucional. As orientações não substituem avaliação técnica especializada quando necessária.
+        {mode === 'formacao'
+          ? 'Modo Formação ativo — Conteúdo ampliado para fins pedagógicos.'
+          : 'Ferramenta de apoio institucional. Não substitui avaliação técnica especializada.'}
       </p>
     </div>
   );

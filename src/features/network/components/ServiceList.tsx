@@ -6,12 +6,14 @@ interface ServiceListProps {
   services: Service[];
   onSelect: (service: Service) => void;
   selectedId?: string;
+  highlightId?: string | null;
 }
 
 export const ServiceList: React.FC<ServiceListProps> = ({ 
   services, 
   onSelect,
-  selectedId 
+  selectedId,
+  highlightId
 }) => {
   if (services.length === 0) {
     return (
@@ -27,9 +29,11 @@ export const ServiceList: React.FC<ServiceListProps> = ({
         <button
           key={service.id}
           onClick={() => onSelect(service)}
-          className={`w-full text-left p-4 hover:bg-slate-50 transition-colors flex items-center justify-between group ${
-            selectedId === service.id ? 'bg-blue-50 border-l-4 border-l-blue-600' : ''
-          }`}
+          className={`w-full text-left p-4 transition-colors flex items-center justify-between group ${
+            service.id === highlightId
+              ? 'ring-2 ring-emerald-500 bg-emerald-50'
+              : 'hover:bg-slate-50'
+          } ${selectedId === service.id ? 'bg-blue-50 border-l-4 border-l-blue-600' : ''}`}
         >
           <div className="space-y-1">
             <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">

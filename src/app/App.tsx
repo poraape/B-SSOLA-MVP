@@ -9,6 +9,7 @@ import { AlertCircle, Loader2 } from 'lucide-react';
 import { ThemeProvider } from './context/ThemeContext';
 import { AccessibilityProvider } from './context/AccessibilityContext';
 import { SearchProvider } from '../features/search/context/SearchContext';
+import { AppModeProvider } from '../domain/appMode/AppModeContext';
 
 export default function App() {
   const [validation, setValidation] = useState<{ isValid: boolean; errors: string[] } | null>(null);
@@ -53,18 +54,20 @@ export default function App() {
     <ThemeProvider>
       <AccessibilityProvider>
         <SearchProvider>
-          <BrowserRouter>
-            <Shell>
-              <Suspense fallback={
-                <div className="flex flex-col items-center justify-center min-h-[400px] space-y-4">
-                  <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
-                  <p className="text-xs font-black uppercase tracking-widest text-slate-400">Carregando módulo...</p>
-                </div>
-              }>
-                <AppRoutes />
-              </Suspense>
-            </Shell>
-          </BrowserRouter>
+          <AppModeProvider>
+            <BrowserRouter>
+              <Shell>
+                <Suspense fallback={
+                  <div className="flex flex-col items-center justify-center min-h-[400px] space-y-4">
+                    <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
+                    <p className="text-xs font-black uppercase tracking-widest text-slate-400">Carregando módulo...</p>
+                  </div>
+                }>
+                  <AppRoutes />
+                </Suspense>
+              </Shell>
+            </BrowserRouter>
+          </AppModeProvider>
         </SearchProvider>
       </AccessibilityProvider>
     </ThemeProvider>
