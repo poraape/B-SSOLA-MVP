@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Compass, Sun, Moon, Settings, Search as SearchIcon, Menu, X } from 'lucide-react';
+import { Sun, Moon, Settings, Search as SearchIcon, Menu, X } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { SearchBar } from '../../features/search/components/SearchBar';
 import { AccessibilityMenu } from '../../features/accessibility/components/AccessibilityMenu';
 import { useSearch } from '../../features/search/context/SearchContext';
 import { motion, AnimatePresence } from 'motion/react';
+import { CompassIcon } from '../../features/shared/assets/CompassIcon';
+import schoolLogo from '../../features/shared/assets/logoescola.png';
 
 export const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -25,11 +27,11 @@ export const Header: React.FC = () => {
     <header className={`sticky top-0 z-[1001] transition-colors duration-300 border-b ${
       theme === 'dark' ? 'bg-slate-900/80 border-slate-800' : 'bg-white/80 border-slate-200'
     } backdrop-blur-md shadow-sm`}>
-      <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 min-h-[5rem] flex flex-wrap items-center justify-between py-3 lg:h-20 lg:py-0">
         {/* Logo Section */}
-        <Link to="/" className="flex items-center gap-3 shrink-0" onClick={closeSearch}>
-          <div className="w-12 h-12 bg-white border-2 border-slate-900 rounded-full flex items-center justify-center shadow-md">
-            <Compass className="text-slate-900 w-8 h-8" />
+        <Link to="/" className="flex items-center gap-3 shrink-0 group order-1" onClick={closeSearch}>
+          <div className="w-12 h-12 bg-white border-2 border-slate-900 rounded-full flex items-center justify-center shadow-md overflow-hidden">
+            <CompassIcon className="text-slate-900 w-10 h-10" />
           </div>
           <div className="hidden md:block">
             <h1 className="text-xl font-black tracking-tighter leading-none text-slate-900 dark:text-white">Bússola</h1>
@@ -38,55 +40,53 @@ export const Header: React.FC = () => {
         </Link>
         
         {/* Navigation Menu */}
-        <nav className="hidden lg:flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-full">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              to={item.path}
-              onClick={closeSearch}
-              className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${
-                location.pathname === item.path
-                  ? 'bg-slate-900 text-white shadow-md'
+        <nav className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-full order-3 lg:order-2 w-full lg:w-auto overflow-x-auto no-scrollbar mt-4 lg:mt-0">
+          <div className="flex items-center min-w-max">
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                to={item.path}
+                onClick={closeSearch}
+                className={`px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-bold transition-all whitespace-nowrap ${
+                  location.pathname === item.path
+                    ? 'bg-slate-900 text-white shadow-md'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <button
+              onClick={toggleSearch}
+              className={`px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
+                isSearchOpen 
+                  ? 'bg-blue-600 text-white shadow-md' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              {item.label}
-            </Link>
-          ))}
-          <button
-            onClick={toggleSearch}
-            className={`px-6 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${
-              isSearchOpen 
-                ? 'bg-blue-600 text-white shadow-md' 
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            {isSearchOpen ? <X className="w-4 h-4" /> : <SearchIcon className="w-4 h-4" />}
-            {isSearchOpen ? 'Fechar' : 'Busca'}
-          </button>
+              {isSearchOpen ? <X className="w-4 h-4" /> : <SearchIcon className="w-4 h-4" />}
+              {isSearchOpen ? 'Fechar' : 'Busca'}
+            </button>
+          </div>
         </nav>
 
         {/* Right Section: School Info & Actions */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 md:gap-6 order-2 lg:order-3">
           {/* School Info */}
-          <div className="hidden xl:flex items-center gap-3 border-l border-slate-200 dark:border-slate-700 pl-6">
-            <div className="text-right">
-              <p className="text-[10px] font-black text-blue-600 uppercase tracking-tighter leading-none">Unidade Escolar</p>
-              <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">E.E. Ermelino Matarazzo</p>
+          <div className="flex items-center gap-2 md:gap-4 border-l border-slate-200 dark:border-slate-700 pl-3 md:pl-6">
+            <div className="hidden sm:block text-right">
+              <p className="text-[9px] md:text-[10px] font-black text-blue-600 uppercase tracking-tighter leading-none">Unidade Escolar</p>
+              <p className="text-[10px] md:text-[11px] font-bold text-slate-700 dark:text-slate-300">E.E. Ermelino Matarazzo</p>
             </div>
-            <div className="w-12 h-12 bg-yellow-400 rounded-lg flex items-center justify-center shadow-sm overflow-hidden border border-slate-200">
-              <img 
-                src="https://images.tcdn.com.br/img/img_prod/1043126/adesivo_brasao_escola_estadual_ermelino_matarazzo_1013_1_86567f80590453580498704987049870.jpg" 
-                alt="Logo E.E. Ermelino Matarazzo"
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-                onError={(e) => {
-                  // Fallback if image fails to load
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-slate-900 font-black text-xs">EM</span>';
-                }}
-              />
-            </div>
+            <img 
+              src={schoolLogo} 
+              alt="Logo Escola" 
+              className="h-8 md:h-12 w-auto object-contain shrink-0"
+              onError={(e) => {
+                // Fallback if local image is empty or fails
+                e.currentTarget.src = "https://images.tcdn.com.br/img/img_prod/1043126/adesivo_brasao_escola_estadual_ermelino_matarazzo_1013_1_86567f80590453580498704987049870.jpg";
+              }}
+            />
           </div>
 
           {/* Theme & Accessibility */}

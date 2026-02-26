@@ -31,7 +31,7 @@ export const TriageQuestion: React.FC<TriageQuestionProps> = ({
           <button
             key={idx}
             onClick={() => onAnswer(option.label)}
-            className={`p-6 rounded-3xl border-2 border-slate-100 transition-all flex flex-col items-center gap-3 group ${
+            className={`p-4 md:p-6 rounded-2xl md:rounded-3xl border-2 border-slate-100 transition-all flex flex-col items-center gap-3 group ${
               isEmergency 
                 ? 'hover:border-rose-500 hover:bg-rose-50' 
                 : 'hover:border-blue-500 hover:bg-blue-50'

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SearchBar } from '../../features/search/components/SearchBar';
 import { Card } from '../../components/ui/Card';
@@ -6,7 +6,7 @@ import { Button } from '../../components/ui/Button';
 import { getCategories } from '../../domain/flows/selectors';
 import { useTheme } from '../../app/context/ThemeContext';
 import { 
-  Shield, 
+  Shield,
   Brain, 
   Home, 
   BookOpen, 
@@ -16,9 +16,9 @@ import {
   Puzzle,
   ChevronRight,
   Info,
-  Compass,
   Phone
 } from 'lucide-react';
+import { CompassIcon } from '../../features/shared/assets/CompassIcon';
 
 const getIcon = (iconStr: string) => {
   switch (iconStr) {
@@ -55,51 +55,23 @@ export const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const categories = getCategories();
   const { theme } = useTheme();
-  const [role, setRole] = useState<'docente' | 'gestao'>('gestao');
 
   return (
     <div className="space-y-16">
       {/* Hero Section - Redesigned to match image */}
-      <section className="relative bg-[#0F172A] rounded-[3rem] overflow-hidden p-8 md:p-16 min-h-[450px] flex flex-col justify-center shadow-2xl">
+      <section className="relative bg-[#0F172A] rounded-[2rem] md:rounded-[3rem] overflow-hidden p-6 md:p-16 min-h-[400px] md:min-h-[450px] flex flex-col justify-center shadow-2xl group">
         {/* Background Compass Graphic */}
         <div className="absolute right-[-10%] top-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
-          <Compass className="w-[600px] h-[600px] text-white" />
+          <CompassIcon className="w-[600px] h-[600px] text-white" />
         </div>
 
         <div className="relative z-10 space-y-10 max-w-3xl">
-          {/* Header Label & Role Switcher */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <Shield className="w-5 h-5 text-blue-400" />
-              <span className="text-blue-400 font-black text-xs uppercase tracking-[0.3em]">Protocolo Bússola 4.5</span>
-            </div>
-            
-            <div className="bg-slate-800/50 p-1 rounded-xl flex self-start sm:self-auto">
-              <button 
-                onClick={() => setRole('docente')}
-                className={`px-6 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${
-                  role === 'docente' ? 'bg-white text-slate-900 shadow-lg' : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                Docente
-              </button>
-              <button 
-                onClick={() => setRole('gestao')}
-                className={`px-6 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${
-                  role === 'gestao' ? 'bg-white text-slate-900 shadow-lg' : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                Gestão
-              </button>
-            </div>
-          </div>
-
           {/* Title & Subtitle */}
-          <div className="space-y-6">
-            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9]">
+          <div className="space-y-4 md:space-y-6">
+            <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter leading-[0.9]">
               O que fazer <span className="text-yellow-400">agora?</span>
             </h2>
-            <p className="text-xl text-slate-400 font-medium max-w-xl leading-relaxed">
+            <p className="text-lg md:text-xl text-slate-400 font-medium max-w-xl leading-relaxed">
               Identifique a situação do estudante e saiba os próximos passos.
             </p>
           </div>
@@ -108,13 +80,13 @@ export const HomePage: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <button 
               onClick={() => navigate('/categoria/saude_fisica')}
-              className="bg-white text-slate-900 px-8 py-6 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-3"
+              className="bg-white text-slate-900 px-6 md:px-8 py-4 md:py-6 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-3"
             >
               Iniciar Atendimento Guiado 🧭
             </button>
             <button 
               onClick={() => navigate('/rede')}
-              className="bg-slate-800/50 border border-slate-700 text-white px-8 py-6 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-slate-800 transition-all flex items-center justify-center gap-3"
+              className="bg-slate-800/50 border border-slate-700 text-white px-6 md:px-8 py-4 md:py-6 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest hover:bg-slate-800 transition-all flex items-center justify-center gap-3"
             >
               Consultar Rede de Apoio 📞
             </button>
@@ -127,7 +99,7 @@ export const HomePage: React.FC = () => {
         <div className="flex items-center justify-between">
           <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Navegar por Categorias</h3>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {categories.map((cat) => {
             const colorClasses = getColorClass(cat.color || 'blue');
             return (
@@ -135,7 +107,7 @@ export const HomePage: React.FC = () => {
                 key={cat.id}
                 hoverable
                 onClick={() => navigate(`/categoria/${cat.id}`)}
-                className={`p-8 relative group border-2 ${
+                className={`p-6 md:p-8 relative group border-2 ${
                   theme === 'dark' ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-100'
                 }`}
               >

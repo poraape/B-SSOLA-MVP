@@ -50,7 +50,7 @@ export const FlowPage: React.FC = () => {
         </div>
       </div>
 
-      <div className={`bg-white border ${isEmergency ? 'border-rose-200 shadow-rose-100' : 'border-slate-200 shadow-slate-200/50'} rounded-[2.5rem] p-10 shadow-xl relative overflow-hidden`}>
+      <div className={`bg-white border ${isEmergency ? 'border-rose-200 shadow-rose-100' : 'border-slate-200 shadow-slate-200/50'} rounded-3xl md:rounded-[2.5rem] p-6 md:p-10 shadow-xl relative overflow-hidden`}>
         {/* Progress indicator or context */}
         <div className="flex items-center gap-2 mb-8">
           {isEmergency ? (

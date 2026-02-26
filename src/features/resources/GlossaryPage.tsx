@@ -51,7 +51,7 @@ export const GlossaryPage: React.FC = () => {
       {/* Grid Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filteredItems.map((item, index) => (
-          <Card key={index} className="p-8 space-y-4 border-2 border-slate-100 dark:border-slate-800 flex flex-col h-full">
+          <Card key={index} className="p-6 md:p-8 space-y-4 border-2 border-slate-100 dark:border-slate-800 flex flex-col h-full">
             <div className="flex items-center justify-between">
               <div className={`p-2 rounded-lg ${
                 item.category === 'Gírias Estudantis' 

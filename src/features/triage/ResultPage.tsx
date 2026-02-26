@@ -29,9 +29,9 @@ export const ResultPage: React.FC = () => {
         </Link>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/50">
+      <div className="bg-white border border-slate-200 rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/50">
         {/* Result Header */}
-        <div className="p-10 text-white bg-blue-600">
+        <div className="p-6 md:p-10 text-white bg-blue-600">
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm">
               <CheckCircle2 className="w-6 h-6" />
@@ -44,7 +44,7 @@ export const ResultPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-10 space-y-10">
+        <div className="p-6 md:p-10 space-y-10">
           <ResultPanel flow={flow} result={result} />
           <SummaryActions flow={flow} result={result} />
         </div>

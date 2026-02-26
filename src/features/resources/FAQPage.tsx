@@ -92,7 +92,7 @@ export const FAQPage: React.FC = () => {
               <div className={`transition-all duration-300 ease-in-out overflow-hidden ${
                 isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
               }`}>
-                <div className="px-6 pb-8 pl-20">
+                <div className="px-6 pb-8 pl-14 md:pl-20">
                   <div className="h-px w-full bg-slate-100 dark:bg-slate-800 mb-6" />
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-sm md:text-base">
                     {item.answer}

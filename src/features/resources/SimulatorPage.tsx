@@ -33,7 +33,7 @@ export const SimulatorPage: React.FC = () => {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <Card className="p-8 md:p-12 border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl rounded-[3rem] overflow-hidden relative min-h-[500px] flex flex-col">
+      <Card className="p-5 md:p-12 border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl rounded-[2rem] md:rounded-[3rem] overflow-hidden relative min-h-[500px] flex flex-col">
         {/* Background Decoration */}
         <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 rounded-full -mr-24 -mt-24 pointer-events-none" />
         
@@ -95,8 +95,8 @@ export const SimulatorPage: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 relative">
-                  <p className="text-lg text-slate-700 dark:text-slate-200 leading-relaxed font-medium italic">
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-5 md:p-8 rounded-2xl md:rounded-[2rem] border-2 border-slate-100 dark:border-slate-700 relative">
+                  <p className="text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed font-medium italic">
                     "{currentCase.situation}"
                   </p>
                 </div>
@@ -139,11 +139,11 @@ export const SimulatorPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-700 space-y-4">
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-5 md:p-8 rounded-2xl md:rounded-[2.5rem] border-2 border-slate-100 dark:border-slate-700 space-y-4">
                 <div className="flex items-center gap-2 text-[10px] font-black text-blue-600 uppercase tracking-widest">
                   <ShieldCheck className="w-4 h-4" /> Justificativa e Feedback
                 </div>
-                <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
                   {selectedChoice.feedback}
                 </p>
               </div>
