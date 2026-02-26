@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Sun, Moon, Settings, Search as SearchIcon, Menu, X } from 'lucide-react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Sun, Moon, Settings, Search as SearchIcon, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { SearchBar } from '../../features/search/components/SearchBar';
 import { AccessibilityMenu } from '../../features/accessibility/components/AccessibilityMenu';
@@ -11,7 +11,6 @@ import schoolLogo from '../../features/shared/assets/logoescola.png';
 import { useAppMode } from '../../domain/appMode/AppModeContext';
 
 export const Header: React.FC = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const { isSearchOpen, toggleSearch, closeSearch } = useSearch();
@@ -29,27 +28,27 @@ export const Header: React.FC = () => {
     <header className={`sticky top-0 z-[1001] transition-colors duration-300 border-b ${
       theme === 'dark' ? 'bg-slate-900/80 border-slate-800' : 'bg-white/80 border-slate-200'
     } backdrop-blur-md shadow-sm`}>
-      <div className="max-w-7xl mx-auto px-4 min-h-[5rem] flex flex-wrap items-center justify-between py-3 lg:h-20 lg:py-0">
+      <div className="max-w-[112rem] mx-auto px-4 py-3 flex items-center gap-3 lg:gap-4 overflow-x-auto no-scrollbar whitespace-nowrap">
         {/* Logo Section */}
-        <Link to="/" className="flex items-center gap-3 shrink-0 group order-1" onClick={closeSearch}>
+        <Link to="/" className="flex items-center gap-3 shrink-0 group" onClick={closeSearch}>
           <div className="w-12 h-12 bg-white border-2 border-slate-900 rounded-full flex items-center justify-center shadow-md overflow-hidden">
             <CompassIcon className="text-slate-900 w-10 h-10" />
           </div>
-          <div className="hidden md:block">
+          <div className="hidden md:block min-w-0">
             <h1 className="text-xl font-black tracking-tighter leading-none text-slate-900 dark:text-white">Bússola</h1>
-            <p className="text-[9px] text-slate-500 font-bold uppercase tracking-widest">Guia de Acolhimento</p>
+            <p className="text-[0.65rem] text-slate-500 font-bold uppercase tracking-widest">Guia de Acolhimento</p>
           </div>
         </Link>
         
         {/* Navigation Menu */}
-        <nav className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-full order-3 lg:order-2 w-full lg:w-auto overflow-x-auto no-scrollbar mt-4 lg:mt-0">
+        <nav className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-full shrink-0">
           <div className="flex items-center min-w-max">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.path}
                 onClick={closeSearch}
-                className={`px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-bold transition-all whitespace-nowrap ${
+                className={`px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap ${
                   location.pathname === item.path
                     ? 'bg-slate-900 text-white shadow-md'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -60,7 +59,7 @@ export const Header: React.FC = () => {
             ))}
             <button
               onClick={toggleSearch}
-              className={`px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
+              className={`px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap ${
                 isSearchOpen 
                   ? 'bg-blue-600 text-white shadow-md' 
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -73,12 +72,12 @@ export const Header: React.FC = () => {
         </nav>
 
         {/* Right Section: School Info & Actions */}
-        <div className="flex items-center gap-3 md:gap-6 order-2 lg:order-3">
+        <div className="flex items-center gap-3 md:gap-4 shrink-0">
           {/* App Mode */}
-          <div className="flex items-center gap-2 text-xs font-bold uppercase">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase shrink-0">
             <button
               onClick={() => setMode('operacional')}
-              className={`px-3 py-1 rounded-full transition-colors ${
+              className={`px-3 py-1.5 rounded-full transition-colors ${
                 mode === 'operacional'
                   ? 'bg-slate-800 text-white'
                   : 'bg-slate-200 text-slate-700'
@@ -88,7 +87,7 @@ export const Header: React.FC = () => {
             </button>
             <button
               onClick={() => setMode('formacao')}
-              className={`px-3 py-1 rounded-full transition-colors ${
+              className={`px-3 py-1.5 rounded-full transition-colors ${
                 mode === 'formacao'
                   ? 'bg-emerald-600 text-white'
                   : 'bg-slate-200 text-slate-700'
@@ -99,15 +98,15 @@ export const Header: React.FC = () => {
           </div>
 
           {/* School Info */}
-          <div className="flex items-center gap-2 md:gap-4 border-l border-slate-200 dark:border-slate-700 pl-3 md:pl-6">
-            <div className="hidden sm:block text-right">
-              <p className="text-[9px] md:text-[10px] font-black text-blue-600 uppercase tracking-tighter leading-none">Unidade Escolar</p>
-              <p className="text-[10px] md:text-[11px] font-bold text-slate-700 dark:text-slate-300">E.E. Ermelino Matarazzo</p>
+          <div className="flex items-center gap-2 md:gap-3 border-l border-slate-200 dark:border-slate-700 pl-3 md:pl-4">
+            <div className="text-right">
+              <p className="text-[0.65rem] md:text-[0.7rem] font-black text-blue-600 uppercase tracking-tighter leading-none">Unidade Escolar</p>
+              <p className="text-xs font-bold text-slate-700 dark:text-slate-300">E.E. Ermelino Matarazzo</p>
             </div>
             <img 
               src={schoolLogo} 
               alt="Logo Escola" 
-              className="h-8 md:h-12 w-auto object-contain shrink-0"
+              className="h-10 md:h-12 w-auto object-contain shrink-0"
               onError={(e) => {
                 // Fallback if local image is empty or fails
                 e.currentTarget.src = "https://images.tcdn.com.br/img/img_prod/1043126/adesivo_brasao_escola_estadual_ermelino_matarazzo_1013_1_86567f80590453580498704987049870.jpg";
@@ -119,14 +118,14 @@ export const Header: React.FC = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"
+              className="w-11 h-11 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"
               title="Alternar Tema"
             >
               {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5 text-yellow-500" />}
             </button>
             <button
               onClick={() => setIsAccessibilityOpen(!isAccessibilityOpen)}
-              className={`w-10 h-10 rounded-full transition-all flex items-center justify-center ${
+              className={`w-11 h-11 rounded-full transition-all flex items-center justify-center ${
                 isAccessibilityOpen 
                   ? 'bg-blue-600 text-white shadow-lg shadow-blue-200' 
                   : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
@@ -157,7 +156,7 @@ export const Header: React.FC = () => {
             <div className="max-w-4xl mx-auto px-4 py-8">
               <SearchBar />
               <div className="mt-4 flex justify-center">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                   Pressione ESC para fechar a busca
                 </p>
               </div>

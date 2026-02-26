@@ -59,34 +59,34 @@ export const HomePage: React.FC = () => {
   return (
     <div className="space-y-16">
       {/* Hero Section - Redesigned to match image */}
-      <section className="relative bg-[#0F172A] rounded-[2rem] md:rounded-[3rem] overflow-hidden p-6 md:p-16 min-h-[400px] md:min-h-[450px] flex flex-col justify-center shadow-2xl group">
+      <section className="relative bg-[#0F172A] rounded-[2rem] md:rounded-[3rem] overflow-hidden p-6 md:p-12 lg:p-16 min-h-[22rem] md:min-h-[28rem] flex flex-col justify-center shadow-2xl group">
         {/* Background Compass Graphic */}
-        <div className="absolute right-[-10%] top-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
-          <CompassIcon className="w-[600px] h-[600px] text-white" />
+        <div className="absolute right-[-18%] md:right-[-10%] top-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
+          <CompassIcon className="w-[22rem] h-[22rem] md:w-[38rem] md:h-[38rem] text-white" />
         </div>
 
-        <div className="relative z-10 space-y-10 max-w-3xl">
+        <div className="relative z-10 space-y-8 md:space-y-10 max-w-4xl">
           {/* Title & Subtitle */}
           <div className="space-y-4 md:space-y-6">
-            <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter leading-[0.9]">
+            <h2 className="text-[clamp(2.25rem,8vw,6rem)] font-black text-white tracking-tighter leading-[0.95]">
               O que fazer <span className="text-yellow-400">agora?</span>
             </h2>
-            <p className="text-lg md:text-xl text-slate-400 font-medium max-w-xl leading-relaxed">
+            <p className="text-[clamp(1.05rem,2.6vw,1.75rem)] text-slate-400 font-medium max-w-2xl leading-relaxed">
               Identifique a situação do estudante e saiba os próximos passos.
             </p>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <div className="flex flex-col lg:flex-row gap-4 pt-2 md:pt-4">
             <button 
               onClick={() => navigate('/fluxo/flow_gateway')}
-              className="bg-white text-slate-900 px-6 md:px-8 py-4 md:py-6 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-3"
+              className="bg-white text-slate-900 px-6 md:px-8 py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-sm md:text-base uppercase tracking-[0.08em] hover:scale-[1.02] transition-all shadow-xl flex items-center justify-center gap-3 text-center leading-tight"
             >
               Iniciar Atendimento Guiado 🧭
             </button>
             <button 
               onClick={() => navigate('/rede')}
-              className="bg-slate-800/50 border border-slate-700 text-white px-6 md:px-8 py-4 md:py-6 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest hover:bg-slate-800 transition-all flex items-center justify-center gap-3"
+              className="bg-slate-800/50 border border-slate-700 text-white px-6 md:px-8 py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-sm md:text-base uppercase tracking-[0.08em] hover:bg-slate-800 transition-all flex items-center justify-center gap-3 text-center leading-tight"
             >
               Consultar Rede de Apoio 📞
             </button>
@@ -99,7 +99,7 @@ export const HomePage: React.FC = () => {
         <div className="flex items-center justify-between">
           <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Navegar por Categorias</h3>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {categories.map((cat) => {
             const colorClasses = getColorClass(cat.color || 'blue');
             return (
