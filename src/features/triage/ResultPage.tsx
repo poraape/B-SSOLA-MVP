@@ -5,8 +5,8 @@ import { ResultPanel } from './components/ResultPanel';
 import { SummaryActions } from './components/SummaryActions';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { TriageResult } from '../../types';
-import { enrichPremium } from '../../domain/flows/premiumEngine';
-import { logTriageEvent } from '../../domain/metrics/logger';
+import { runDecision } from '../../application/decisionOrchestrator';
+import { logDecisionEvent } from '../../application/loggerService';
 
 export const ResultPage: React.FC = () => {
   const { flowId } = useParams<{ flowId: string }>();
@@ -25,7 +25,12 @@ export const ResultPage: React.FC = () => {
   }
 
   const category = getCategoryById(flow.meta.categoryId);
-  const premiumResult = enrichPremium(result, flow, category);
+  const premiumResult = runDecision({
+    mode: 'result',
+    result,
+    flow,
+    category
+  }) as any;
 
   useEffect(() => {
     hasLoggedRef.current = false;
@@ -34,13 +39,13 @@ export const ResultPage: React.FC = () => {
   useEffect(() => {
     if (!premiumResult || hasLoggedRef.current) return;
 
-    logTriageEvent({
-      flowId: flow.meta.id,
-      categoryId: flow.meta.categoryId,
-      flowType: flow.meta.type,
+    logDecisionEvent({
+      category: flow.meta.categoryId,
       level: (premiumResult as any).level,
-      priority: (premiumResult as any).priority,
-      timestamp: Date.now()
+      type: flow.meta.type,
+      emergency: flow.meta.type === 'medical_emergency' || flow.meta.type === 'security_emergency',
+      flowId: flow.meta.id,
+      priority: (premiumResult as any).priority
     });
     hasLoggedRef.current = true;
   }, [flow.meta.id, premiumResult]);
