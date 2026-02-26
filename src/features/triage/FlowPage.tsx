@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getFlowById } from '../../domain/flows/selectors';
-import { initFlow, processAnswer, FlowState } from '../../domain/flows/flowEngine';
+import { initFlow, FlowState } from '../../domain/flows/flowEngine';
+import { runDecision } from '../../application/decisionOrchestrator';
 import { TriageQuestion } from './components/TriageQuestion';
 import { ArrowLeft, AlertTriangle, ShieldCheck } from 'lucide-react';
 
@@ -29,7 +30,13 @@ export const FlowPage: React.FC = () => {
   const handleAnswer = (optionLabel: string) => {
     if (!state.currentQuestionId) return;
     
-    const newState = processAnswer(flow, state, state.currentQuestionId, optionLabel);
+    const newState = runDecision({
+      mode: 'flow',
+      flow,
+      state,
+      questionId: state.currentQuestionId,
+      optionLabel
+    }) as FlowState;
     
     if (newState.redirectToCategories) {
       navigate('/'); // Redirect to home/categories

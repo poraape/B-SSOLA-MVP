@@ -21,20 +21,24 @@ function deepFreeze(obj: any) {
   return obj;
 }
 
-
 export function getValidatedModel(): ProtocolModel {
   if (cachedModel) return cachedModel;
 
   const normalized = normalizeModel(rawModel as unknown as ProtocolModel);
+  const isProduction = process.env.NODE_ENV === 'production';
 
-  if (process.env.NODE_ENV !== 'production') {
-    try {
-      validateModel(normalized);
+  try {
+    validateModel(normalized);
+
+    if (!isProduction) {
       console.info('[Protocol Model] Estrutura validada com sucesso.');
-    } catch (e) {
-      console.error('[Protocol Model] Erro de validação:', e);
-      throw e;
     }
+  } catch (e) {
+    if (!isProduction) {
+      console.error('[Protocol Model] Erro de validação:', e);
+    }
+
+    throw e;
   }
 
   const frozen = deepFreeze(normalized);
