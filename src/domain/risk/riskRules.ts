@@ -1,11 +1,7 @@
 import { PremiumResult } from '../flows/premiumEngine';
 import { Flow } from '../../types';
-
-export interface RiskAdjustment {
-  priority?: 'low' | 'moderate' | 'high' | 'critical';
-  forceNotify?: boolean;
-  additionalScript?: string[];
-}
+import { riskRules } from './ruleset';
+import { computeRiskScore, minPriorityForScore } from './riskScore';
 
 const PRIORITY_ORDER: Array<'low' | 'moderate' | 'high' | 'critical'> = ['low', 'moderate', 'high', 'critical'];
 
@@ -21,50 +17,61 @@ export function applyRiskHeuristics(
     ...result,
     institutionalScript: [...(result.institutionalScript || [])]
   };
-  const adjustments: RiskAdjustment = {};
+  const appliedRules: string[] = [];
+
+  const score = computeRiskScore(adjusted, flow);
+  const minPriority = minPriorityForScore(score.total);
+
+  if (minPriority) {
+    const currentIndex = PRIORITY_ORDER.indexOf(adjusted.priority || 'low');
+    const minIndex = PRIORITY_ORDER.indexOf(minPriority);
+    if (minIndex > currentIndex) {
+      adjusted.priority = minPriority;
+      adjusted.institutionalScript = [
+        ...(adjusted.institutionalScript || []),
+        'Atenção: sinais combinados elevam o nível de prioridade desta orientação.'
+      ];
+    }
+  }
+
+  if (score.total >= 5) {
+    adjusted.notifyManagement = true;
+  }
+
+  for (const rule of riskRules) {
+    if (rule.condition(adjusted, flow)) {
+      const beforePriority = adjusted.priority;
+
+      rule.apply(adjusted);
+
+      if (beforePriority && adjusted.priority) {
+        const beforeIndex = PRIORITY_ORDER.indexOf(beforePriority);
+        const afterIndex = PRIORITY_ORDER.indexOf(adjusted.priority);
+
+        if (afterIndex < beforeIndex) {
+          adjusted.priority = beforePriority;
+        }
+      }
+
+      appliedRules.push(rule.code);
+    }
+  }
 
   if (flow.meta.type === 'medical_emergency' || flow.meta.type === 'security_emergency') {
-    if (adjusted.priority === 'low' || adjusted.priority === 'moderate') {
-      adjustments.priority = 'high';
-    }
-
-    adjustments.forceNotify = true;
-    adjustments.additionalScript = [
+    adjusted.notifyManagement = true;
+    adjusted.institutionalScript = [
+      ...(adjusted.institutionalScript || []),
       'Acionar imediatamente protocolo de emergência e comunicação com a gestão.'
     ];
   }
 
-  if (adjusted.priority === 'critical') {
-    adjustments.forceNotify = true;
-  }
+  adjusted.appliedRules = [
+    ...(adjusted.appliedRules || []),
+    ...appliedRules
+  ];
 
-  if (
-    flow.meta.type === 'standard' &&
-    adjusted.priority === 'low' &&
-    flow.meta.categoryId.includes('emergencia')
-  ) {
-    adjustments.priority = 'moderate';
-  }
-
-  if (adjustments.priority) {
-    const currentIndex = PRIORITY_ORDER.indexOf(adjusted.priority);
-    const newIndex = PRIORITY_ORDER.indexOf(adjustments.priority);
-
-    if (newIndex > currentIndex) {
-      adjusted.priority = adjustments.priority;
-    }
-  }
-
-  if (adjustments.forceNotify) {
-    adjusted.notifyManagement = true;
-  }
-
-  if (adjustments.additionalScript?.length) {
-    adjusted.institutionalScript = [
-      ...(adjusted.institutionalScript || []),
-      ...adjustments.additionalScript
-    ];
-  }
+  (adjusted as any).riskScore = score.total;
+  (adjusted as any).riskScoreFactors = score.factors.map(f => f.code);
 
   return adjusted;
 }

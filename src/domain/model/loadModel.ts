@@ -47,3 +47,7 @@ export function getValidatedModel(): ProtocolModel {
 }
 
 export const model = getValidatedModel() as any;
+
+export function loadModel(): ProtocolModel {
+  return getValidatedModel();
+}

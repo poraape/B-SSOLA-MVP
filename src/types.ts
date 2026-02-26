@@ -49,6 +49,15 @@ export interface AppModel {
   };
 }
 
+export type RiskGroup =
+  | 'violence'
+  | 'psychosocial'
+  | 'medical'
+  | 'social'
+  | 'rights'
+  | 'structural'
+  | 'emergency';
+
 export interface GuardrailQuestion {
   id: string;
   text: string;
@@ -59,6 +68,7 @@ export interface GuardrailQuestion {
 export interface Category {
   id: string;
   label: string;
+  riskGroup: RiskGroup;
   description?: string;
   icon: string;
   color?: string;

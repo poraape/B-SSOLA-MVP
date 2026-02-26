@@ -1,5 +1,14 @@
 export type FlowType = 'standard' | 'medical_emergency' | 'security_emergency';
 
+export type RiskGroup =
+  | 'violence'
+  | 'psychosocial'
+  | 'medical'
+  | 'social'
+  | 'rights'
+  | 'structural'
+  | 'emergency';
+
 export interface ModelService {
   id: string;
   name: string;
@@ -14,6 +23,7 @@ export interface ModelService {
 export interface ModelCategory {
   id: string;
   label: string; // Adjusted from 'name' to match JSON
+  riskGroup: RiskGroup;
   isEmergencyCategory?: boolean;
 }
 

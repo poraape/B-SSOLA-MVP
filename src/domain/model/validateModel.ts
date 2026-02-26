@@ -1,11 +1,21 @@
 import semver from 'semver';
 import { SUPPORTED_MODEL_RANGE } from './supportedRange';
-import { ProtocolModel, FlowType, ModelResult } from './schema';
+import { ProtocolModel, FlowType, ModelResult, RiskGroup } from './schema';
 
 const ALLOWED_FLOW_TYPES = new Set<FlowType>([
   'standard',
   'medical_emergency',
   'security_emergency'
+]);
+
+const ALLOWED_RISK_GROUPS = new Set<RiskGroup>([
+  'violence',
+  'psychosocial',
+  'medical',
+  'social',
+  'rights',
+  'structural',
+  'emergency'
 ]);
 
 function isNonEmptyString(value: unknown): value is string {
@@ -65,6 +75,10 @@ export function validateModel(model: ProtocolModel): void {
 
     if (!isNonEmptyString(category.label)) {
       throw new Error(`Model inválido: category ${category.id} com label ausente.`);
+    }
+
+    if (!isNonEmptyString(category.riskGroup) || !ALLOWED_RISK_GROUPS.has(category.riskGroup as RiskGroup)) {
+      throw new Error(`Model inválido: category ${category.id} com riskGroup inválido.`);
     }
 
     if (categoryIds.has(category.id)) {
