@@ -85,7 +85,9 @@ export function toLegacyFlow(runtime: FlowRuntimeV2): Flow {
     meta: {
       id: runtime.meta.id,
       categoryId: runtime.meta.categoryId,
+      subcategoryId: runtime.meta.subcategoryId,
       subcategory: runtime.meta.subcategoryId,
+      severity: runtime.meta.severity,
       type: typeFromRuntime(runtime),
       title: runtime.meta.title,
       keywords: runtime.meta.keywords,

@@ -72,6 +72,7 @@ export interface Category {
   description?: string;
   icon: string;
   color?: string;
+  weight?: number;
   subcategories: Array<{ id: string; label: string }>;
   isEmergencyCategory?: boolean;
 }
@@ -80,7 +81,9 @@ export interface Flow {
   meta: {
     id: string;
     categoryId: string; // Added to maintain relationship
+    subcategoryId?: string;
     subcategory: string;
+    severity?: 'CRITICAL' | 'HIGH' | 'MODERATE';
     type: 'standard' | 'medical_emergency' | 'security_emergency';
     title: string;
     keywords: string[];

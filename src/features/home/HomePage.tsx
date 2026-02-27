@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { SearchBar } from '../../features/search/components/SearchBar';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
-import { getCategories } from '../../domain/flows/selectors';
+import { getCategories } from '@/domain/model';
 import { useTheme } from '../../app/context/ThemeContext';
 import { 
   Shield,
@@ -53,7 +53,7 @@ const getColorClass = (color: string) => {
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const categories = getCategories();
+  const categories = [...getCategories()].sort((a, b) => (b.weight || 0) - (a.weight || 0));
   const { theme } = useTheme();
 
   return (
