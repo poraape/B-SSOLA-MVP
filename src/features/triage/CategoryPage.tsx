@@ -2,39 +2,9 @@ import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getCategories } from '@/domain/model';
 import { getFlowsByCategory } from '../../domain/flows/selectors';
-import { ArrowLeft, ChevronRight, Shield, Brain, Home, BookOpen, Heart, Scale, AlertTriangle, Puzzle, Info } from 'lucide-react';
+import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { Card } from '../../components/ui/Card';
-
-const getIcon = (iconStr: string) => {
-  switch (iconStr) {
-    case 'alert': return <AlertTriangle className="w-6 h-6" />;
-    case 'shield': return <Shield className="w-6 h-6" />;
-    case 'brain': return <Brain className="w-6 h-6" />;
-    case 'home': return <Home className="w-6 h-6" />;
-    case 'book': return <BookOpen className="w-6 h-6" />;
-    case 'heart': return <Heart className="w-6 h-6" />;
-    case 'balance': return <Scale className="w-6 h-6" />;
-    case 'scales': return <Scale className="w-6 h-6" />;
-    case 'warning': return <AlertTriangle className="w-6 h-6" />;
-    case 'puzzle': return <Puzzle className="w-6 h-6" />;
-    case 'accessibility': return <Puzzle className="w-6 h-6" />;
-    case 'handshake': return <BookOpen className="w-6 h-6" />;
-    default: return <Info className="w-6 h-6" />;
-  }
-};
-
-const getColorClass = (color: string) => {
-  switch (color) {
-    case 'red': return 'text-rose-500 bg-rose-50 border-rose-100';
-    case 'orange': return 'text-orange-500 bg-orange-50 border-orange-100';
-    case 'purple': return 'text-purple-500 bg-purple-50 border-purple-100';
-    case 'blue': return 'text-blue-500 bg-blue-50 border-blue-100';
-    case 'teal': return 'text-teal-500 bg-teal-50 border-teal-100';
-    case 'yellow': return 'text-yellow-500 bg-yellow-50 border-yellow-100';
-    case 'indigo': return 'text-indigo-500 bg-indigo-50 border-indigo-100';
-    default: return 'text-slate-500 bg-slate-50 border-slate-100';
-  }
-};
+import { getPremiumCategoryColorClass, getPremiumCategoryIcon } from '../shared/components/PremiumCategoryIcons';
 
 const severityWeight: Record<'CRITICAL' | 'HIGH' | 'MODERATE', number> = {
   CRITICAL: 3,
@@ -85,8 +55,8 @@ export const CategoryPage: React.FC = () => {
       
       <div className="bg-white border border-slate-200 rounded-[2.5rem] p-8 sm:p-12 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-12">
-          <div className={`p-4 rounded-3xl shrink-0 ${getColorClass(category.color || 'blue')}`}>
-            {getIcon(category.icon)}
+          <div className={`p-4 rounded-3xl shrink-0 ${getPremiumCategoryColorClass(category.color || 'blue')}`}>
+            {getPremiumCategoryIcon(category.icon)}
           </div>
           <div className="space-y-2">
             <h2 className="text-3xl font-black text-slate-900 tracking-tight">{category.label}</h2>
