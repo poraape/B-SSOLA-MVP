@@ -4,12 +4,12 @@ import emergencyData from "../../../data/v2/emergency.json";
 import heuristicsData from "../../../data/v2/heuristics.json";
 import servicesData from "../../../data/v2/services.json";
 import flowSpecRegistry from "../../../../docs/domain/flows-v2-spec.json";
-import type { FlowSpec } from "../../flows/flowSpec";
+import type { FlowSpecV2 } from "../../flows/flowSpecV2";
+import { buildRuntimeV2 } from "../../flows/runtimeV2";
+import { toLegacyFlow } from "../../flows/toLegacyUI";
 import type { AppModel, Category, Flow, RiskGroup, Service } from "../../../types";
 
 const flowModules = import.meta.glob("../../flows/flow_*.ts", { eager: true });
-
-type FlowType = "standard" | "medical_emergency" | "security_emergency";
 
 interface RawCategory {
   id?: unknown;
@@ -32,7 +32,7 @@ interface SpecRegistryFlow {
 
 interface SpecRegistry {
   flows: SpecRegistryFlow[];
-  draftFlowSpecs?: FlowSpec[];
+  draftFlowSpecs?: FlowSpecV2[];
 }
 
 const ALLOWED_RISK_GROUPS = new Set<RiskGroup>([
@@ -146,7 +146,7 @@ function buildCategorySubIndex(categories: Category[]): Map<string, Set<string>>
   return index;
 }
 
-function validateFlowSpec(flow: FlowSpec, index: number): void {
+function validateFlowSpec(flow: FlowSpecV2, index: number): void {
   if (!isRecord(flow.meta)) {
     throw new Error(`FlowSpec[${index}] invalido: meta ausente.`);
   }
@@ -177,8 +177,16 @@ function validateFlowSpec(flow: FlowSpec, index: number): void {
       throw new Error(`FlowSpec "${flow.meta.id}" invalido: step.id obrigatorio.`);
     }
 
-    if (step.type !== "alert" && step.type !== "question" && step.type !== "action") {
+    if (
+      step.type !== "alert" &&
+      step.type !== "question" &&
+      step.type !== "action"
+    ) {
       throw new Error(`FlowSpec "${flow.meta.id}" invalido: step.type nao suportado.`);
+    }
+
+    if (!Array.isArray(step.riskSignals)) {
+      throw new Error(`FlowSpec "${flow.meta.id}" invalido: step.riskSignals deve ser array.`);
     }
 
     if (step.type === "question") {
@@ -214,21 +222,22 @@ function validateFlowSpec(flow: FlowSpec, index: number): void {
   }
 }
 
-function extractGeneratedSpecs(): FlowSpec[] {
-  const specs: FlowSpec[] = [];
+function extractGeneratedSpecs(): FlowSpecV2[] {
+  const specs: FlowSpecV2[] = [];
 
   for (const [path, mod] of Object.entries(flowModules)) {
     const moduleRecord = ensureRecord(mod, `Modulo invalido (${path}).`);
 
-    let found: FlowSpec | null = null;
+    let found: FlowSpecV2 | null = null;
     for (const value of Object.values(moduleRecord)) {
       if (
         isRecord(value) &&
         isRecord(value.meta) &&
+        isRecord(value.risk) &&
         Array.isArray(value.steps) &&
         Array.isArray(value.outcomes)
       ) {
-        found = value as unknown as FlowSpec;
+        found = value as FlowSpecV2;
         break;
       }
     }
@@ -241,108 +250,6 @@ function extractGeneratedSpecs(): FlowSpec[] {
   }
 
   return specs;
-}
-
-function typeFromSpec(flow: FlowSpec): FlowType {
-  if (flow.meta.categoryId === "emergencias_seguranca") {
-    if (
-      flow.meta.subcategoryId === "emergencia_medica" ||
-      flow.meta.subcategoryId === "convulsao_perda_consciencia"
-    ) {
-      return "medical_emergency";
-    }
-    return "security_emergency";
-  }
-
-  if (flow.meta.severity === "CRITICAL" && flow.meta.categoryId === "saude_bem_estar") {
-    return "medical_emergency";
-  }
-
-  return "standard";
-}
-
-function defaultLevelBySeverity(severity: string): string {
-  if (severity === "CRITICAL") return "iminente";
-  if (severity === "HIGH") return "alto";
-  return "moderado";
-}
-
-function levelPoolBySeverity(severity: string): string[] {
-  if (severity === "CRITICAL") return ["alto", "iminente", "critico"];
-  if (severity === "HIGH") return ["moderado", "alto", "alto_2"];
-  return ["baixo", "moderado", "alto"];
-}
-
-function normalizeToFlow(flow: FlowSpec): Flow {
-  const outcomeLevelMap = new Map<string, string>();
-  const levels = levelPoolBySeverity(flow.meta.severity);
-
-  flow.outcomes.forEach((outcome, index) => {
-    outcomeLevelMap.set(outcome.id, levels[index] || `nivel_${index + 1}`);
-  });
-
-  const questionSteps = flow.steps.filter(step => step.type === "question");
-  const triageQuestions = questionSteps.map(step => ({
-    id: step.id,
-    text: step.question || "",
-    options: (step.actions || []).map(action => {
-      const next = action.next;
-      const targetLevel = outcomeLevelMap.get(next);
-
-      if (targetLevel) {
-        return {
-          label: action.label,
-          level: targetLevel,
-        };
-      }
-
-      if (next.startsWith("flow_")) {
-        return {
-          label: action.label,
-          nextFlow: next,
-        };
-      }
-
-      return {
-        label: action.label,
-        next,
-      };
-    }),
-  }));
-
-  const results: Flow["results"] = {};
-  flow.outcomes.forEach(outcome => {
-    const key = outcomeLevelMap.get(outcome.id) || `nivel_${Object.keys(results).length + 1}`;
-    results[key] = {
-      severity: key,
-      primaryService: null,
-      secondaryService: null,
-      schoolActions: outcome.actions,
-      summaryTag: outcome.label,
-    };
-  });
-
-  const usedLevels = Object.keys(results);
-
-  return {
-    meta: {
-      id: flow.meta.id,
-      categoryId: flow.meta.categoryId,
-      subcategory: flow.meta.subcategoryId,
-      type: typeFromSpec(flow),
-      title: flow.meta.title,
-      keywords: flow.meta.keywords,
-    },
-    riskModel: {
-      usedLevels,
-      defaultLevel: usedLevels[0] || defaultLevelBySeverity(flow.meta.severity),
-    },
-    triage: {
-      maxQuestions: triageQuestions.length,
-      questions: triageQuestions,
-    },
-    results,
-  };
 }
 
 function validateFlowRelations(flows: Flow[], categorySubIndex: Map<string, Set<string>>): void {
@@ -385,7 +292,7 @@ function validateExtensionsShape(): void {
   }
 }
 
-function mergeAndValidateSpecs(): FlowSpec[] {
+function mergeAndValidateSpecs(): FlowSpecV2[] {
   const registry = flowSpecRegistry as SpecRegistry;
   if (!Array.isArray(registry.flows)) {
     throw new Error("docs/domain/flows-v2-spec.json invalido: flows deve ser array.");
@@ -401,7 +308,7 @@ function mergeAndValidateSpecs(): FlowSpec[] {
     );
   }
 
-  const byId = new Map<string, FlowSpec>();
+  const byId = new Map<string, FlowSpecV2>();
   merged.forEach((spec, index) => {
     validateFlowSpec(spec, index);
 
@@ -434,7 +341,7 @@ function mergeAndValidateSpecs(): FlowSpec[] {
     }
   }
 
-  return registry.flows.map(row => byId.get(row.id) as FlowSpec);
+  return registry.flows.map(row => byId.get(row.id) as FlowSpecV2);
 }
 
 export function composeModelV2(): AppModel {
@@ -444,7 +351,10 @@ export function composeModelV2(): AppModel {
   const categorySubIndex = buildCategorySubIndex(categories);
 
   const specs = mergeAndValidateSpecs();
-  const flows = specs.map(normalizeToFlow);
+  const flows = specs.map(spec => {
+    const runtimeV2 = buildRuntimeV2(spec);
+    return toLegacyFlow(runtimeV2);
+  });
 
   validateFlowRelations(flows, categorySubIndex);
 
