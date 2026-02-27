@@ -5,51 +5,9 @@ import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { getCategories } from '@/domain/model';
 import { useTheme } from '../../app/context/ThemeContext';
-import { 
-  Shield,
-  Brain, 
-  Home, 
-  BookOpen, 
-  Heart,
-  Scale,
-  AlertTriangle,
-  Puzzle,
-  ChevronRight,
-  Info,
-  Phone
-} from 'lucide-react';
+import { AlertTriangle, ChevronRight, Phone } from 'lucide-react';
 import { CompassIcon } from '../../features/shared/assets/CompassIcon';
-
-const getIcon = (iconStr: string) => {
-  switch (iconStr) {
-    case 'alert': return <AlertTriangle className="w-6 h-6" />;
-    case 'shield': return <Shield className="w-6 h-6" />;
-    case 'brain': return <Brain className="w-6 h-6" />;
-    case 'home': return <Home className="w-6 h-6" />;
-    case 'book': return <BookOpen className="w-6 h-6" />;
-    case 'heart': return <Heart className="w-6 h-6" />;
-    case 'balance': return <Scale className="w-6 h-6" />;
-    case 'scales': return <Scale className="w-6 h-6" />;
-    case 'warning': return <AlertTriangle className="w-6 h-6" />;
-    case 'puzzle': return <Puzzle className="w-6 h-6" />;
-    case 'accessibility': return <Puzzle className="w-6 h-6" />;
-    case 'handshake': return <BookOpen className="w-6 h-6" />;
-    default: return <Info className="w-6 h-6" />;
-  }
-};
-
-const getColorClass = (color: string) => {
-  switch (color) {
-    case 'red': return 'text-rose-500 bg-rose-50 border-rose-100';
-    case 'orange': return 'text-orange-500 bg-orange-50 border-orange-100';
-    case 'purple': return 'text-purple-500 bg-purple-50 border-purple-100';
-    case 'blue': return 'text-blue-500 bg-blue-50 border-blue-100';
-    case 'teal': return 'text-teal-500 bg-teal-50 border-teal-100';
-    case 'yellow': return 'text-yellow-500 bg-yellow-50 border-yellow-100';
-    case 'indigo': return 'text-indigo-500 bg-indigo-50 border-indigo-100';
-    default: return 'text-slate-500 bg-slate-50 border-slate-100';
-  }
-};
+import { getPremiumCategoryColorClass, getPremiumCategoryIcon } from '../shared/components/PremiumCategoryIcons';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -101,7 +59,7 @@ export const HomePage: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {categories.map((cat) => {
-            const colorClasses = getColorClass(cat.color || 'blue');
+            const colorClasses = getPremiumCategoryColorClass(cat.color || 'blue');
             return (
               <Card
                 key={cat.id}
@@ -114,7 +72,7 @@ export const HomePage: React.FC = () => {
                 <div className="relative z-10">
                   <div className="relative inline-block">
                     <div className={`mb-6 w-14 h-14 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 ${colorClasses}`}>
-                      {getIcon(cat.icon)}
+                      {getPremiumCategoryIcon(cat.icon)}
                     </div>
                     {cat.isEmergencyCategory && (
                       <div className="absolute -top-2 -right-2 bg-rose-600 text-white p-1.5 rounded-full shadow-lg animate-pulse border-2 border-white dark:border-slate-900 z-20">
