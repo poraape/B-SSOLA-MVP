@@ -1,0 +1,129 @@
+{
+  "layers": {
+    "emergencia": {
+      "id": "emergencia",
+      "label": "Emergências 24h",
+      "serviceIds": [
+        "policia-militar",
+        "samu",
+        "bombeiros"
+      ],
+      "icon": "triangle-alert",
+      "color": "#B91C1C",
+      "priority": 0,
+      "style": "glow",
+      "defaultVisible": true
+    },
+    "denuncia": {
+      "id": "denuncia",
+      "label": "Canais de Denúncia",
+      "serviceIds": [
+        "disque-100",
+        "disque-denuncia-181",
+        "disque-180"
+      ],
+      "icon": "megaphone",
+      "color": "#DC2626",
+      "priority": 1,
+      "style": "solid",
+      "defaultVisible": true
+    },
+    "protecao": {
+      "id": "protecao",
+      "label": "Proteção e Direitos",
+      "serviceIds": [
+        "conselho-tutelar",
+        "mp-infancia",
+        "defensoria-publica"
+      ],
+      "icon": "shield-check",
+      "color": "#2563EB",
+      "priority": 2,
+      "style": "solid",
+      "defaultVisible": true
+    },
+    "seguranca": {
+      "id": "seguranca",
+      "label": "Segurança Pública",
+      "serviceIds": [
+        "dp-62",
+        "dp-63",
+        "ddm-sao-miguel",
+        "policia-civil-197"
+      ],
+      "icon": "badge-alert",
+      "color": "#F97316",
+      "priority": 2,
+      "style": "solid",
+      "defaultVisible": true
+    },
+    "saude": {
+      "id": "saude",
+      "label": "Saúde",
+      "serviceIds": [
+        "ubs-ermelino",
+        "ubs-paranagua",
+        "upa-ermelino",
+        "hospital-alipio"
+      ],
+      "icon": "hospital",
+      "color": "#16A34A",
+      "priority": 3,
+      "style": "solid",
+      "defaultVisible": true
+    },
+    "saude_mental": {
+      "id": "saude_mental",
+      "label": "Saúde Mental",
+      "serviceIds": [
+        "caps-ij",
+        "caps-adulto",
+        "caps-ad",
+        "cvv"
+      ],
+      "icon": "brain",
+      "color": "#7C3AED",
+      "priority": 3,
+      "style": "solid",
+      "defaultVisible": true
+    },
+    "assistencia_social": {
+      "id": "assistencia_social",
+      "label": "Assistência Social",
+      "serviceIds": [
+        "cras-ermelino",
+        "creas-ermelino",
+        "scfv-ermelino"
+      ],
+      "icon": "users",
+      "color": "#0EA5E9",
+      "priority": 3,
+      "style": "solid",
+      "defaultVisible": true
+    },
+    "institucional": {
+      "id": "institucional",
+      "label": "Rede Institucional",
+      "serviceIds": [
+        "gestao-direcao",
+        "gestao-vice-direcao",
+        "gestao-coordenacao",
+        "diretoria-ensino-leste1",
+        "sed-atendimento",
+        "plataforma-conviva"
+      ],
+      "icon": "school",
+      "color": "#1E3A8A",
+      "priority": 4,
+      "style": "solid",
+      "defaultVisible": false
+    }
+  },
+  "schoolReference": {
+    "name": "E.E. Ermelino Matarazzo",
+    "address": "Rua Abel Tavares, s/n, Jardim Belém, São Paulo/SP, 03810-110",
+    "lat": -23.50043,
+    "lng": -46.4874,
+    "proximityRadiusMeters": 2000
+  }
+}

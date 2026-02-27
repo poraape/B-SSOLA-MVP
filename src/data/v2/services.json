@@ -1,1 +1,692 @@
-[]
+{
+  "services": [
+    {
+      "id": "gestao-direcao",
+      "name": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "category": "institucional",
+      "type": "interno",
+      "contact": {
+        "phone": "(11) 2546-5969",
+        "email": "e002835a@educacao.sp.gov.br"
+      },
+      "location": {
+        "name": "E.E. Ermelino Matarazzo",
+        "address": "Rua Abel Tavares, s/n, Jardim Belém, São Paulo/SP, 03810-110",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": true,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "gestao-vice-direcao",
+      "name": "Vice-Direção Escolar – E.E. Ermelino Matarazzo",
+      "category": "institucional",
+      "type": "interno",
+      "contact": {
+        "phone": "(11) 2546-5969",
+        "email": "e002835a@educacao.sp.gov.br"
+      },
+      "location": {
+        "name": "E.E. Ermelino Matarazzo",
+        "address": "Rua Abel Tavares, s/n, Jardim Belém, São Paulo/SP, 03810-110",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": true,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "gestao-coordenacao",
+      "name": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "category": "institucional",
+      "type": "interno",
+      "contact": {
+        "phone": "(11) 2546-5969",
+        "email": "e002835a@educacao.sp.gov.br"
+      },
+      "location": {
+        "name": "E.E. Ermelino Matarazzo",
+        "address": "Rua Abel Tavares, s/n, Jardim Belém, São Paulo/SP, 03810-110",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": true,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "ubs-ermelino",
+      "name": "UBS Ermelino Matarazzo",
+      "category": "saude",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2545-8235",
+        "alternatePhone": "(11) 2544-0051",
+        "otherPhones": [
+          "(11) 2214-1718"
+        ]
+      },
+      "location": {
+        "address": "Rua Antônio de Freitas Toledo, 185, Ermelino Matarazzo, São Paulo/SP, 03809-060",
+        "lat": -23.50043,
+        "lng": -46.4874
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": true,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "caps-ij",
+      "name": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "category": "saude_mental",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 3294-3828",
+        "alternatePhone": "(11) 3294-4007",
+        "email": "capi.ermelino@sas-seconci.org.br"
+      },
+      "location": {
+        "address": "Rua Antônio Bonici, 18, Jardim Matarazzo, São Paulo/SP, 03811-060",
+        "lat": -23.5024,
+        "lng": -46.4708
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": true,
+        "hasEmail": true,
+        "hasWebsite": false,
+        "completenessScore": 80
+      }
+    },
+    {
+      "id": "caps-adulto",
+      "name": "CAPS Adulto II Ermelino Matarazzo",
+      "category": "saude_mental",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2546-6787",
+        "email": "capsa.ermelino@sas-seconci.org.br"
+      },
+      "location": {
+        "address": "Avenida Boturussu, 168, Parque Boturussu, São Paulo/SP, 03802-000",
+        "lat": -23.5045,
+        "lng": -46.4842
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": true,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "caps-ad",
+      "name": "CAPS AD II Ermelino Matarazzo (Álcool e Drogas)",
+      "category": "saude_mental",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2943-9276",
+        "email": "capsad.ermelino@sas-seconci.org.br"
+      },
+      "location": {
+        "address": "Rua João Antônio de Andrade, 804, Parque Boturussu, São Paulo/SP, 03805-070",
+        "lat": -23.5012,
+        "lng": -46.4777
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": true,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "upa-ermelino",
+      "name": "UPA III 24h Ermelino Matarazzo",
+      "category": "saude",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2574-3343",
+        "alternatePhone": "(11) 2574-4132"
+      },
+      "location": {
+        "address": "Rua Miguel Novais, 113, Vila Paranaguá, São Paulo/SP, 03807-370",
+        "lat": -23.50295,
+        "lng": -46.47155
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": true,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "ubs-paranagua",
+      "name": "UBS Vila Paranaguá",
+      "category": "saude",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2546-0098"
+      },
+      "location": {
+        "address": "Rua José Góes Nogueira, 70, Vila Paranaguá, São Paulo/SP, 03807-380",
+        "lat": -23.50355,
+        "lng": -46.4694
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "hospital-alipio",
+      "name": "Hospital Municipal Prof. Dr. Alípio Corrêa Netto",
+      "category": "saude",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 3394-8030",
+        "alternatePhone": "(11) 3394-8192"
+      },
+      "location": {
+        "address": "Alameda Rodrigo de Brum, 1989, Ermelino Matarazzo, São Paulo/SP, 03807-230",
+        "lat": -23.5047,
+        "lng": -46.4629
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": true,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "cras-ermelino",
+      "name": "CRAS Ermelino Matarazzo",
+      "category": "assistencia_social",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2545-3211",
+        "alternatePhone": "(11) 2545-2866",
+        "otherPhones": [
+          "(11) 2363-9735",
+          "(11) 2545-3506"
+        ]
+      },
+      "location": {
+        "address": "Avenida Paranaguá, 1492, Ermelino Matarazzo, São Paulo/SP, 03806-000",
+        "lat": -23.5011,
+        "lng": -46.4764
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": true,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "creas-ermelino",
+      "name": "CREAS Ermelino Matarazzo",
+      "category": "assistencia_social",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2541-7882"
+      },
+      "location": {
+        "address": "Avenida Boturussu, 1626, Ermelino Matarazzo, São Paulo/SP, 03802-010",
+        "lat": -23.5056,
+        "lng": -46.4824
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "scfv-ermelino",
+      "name": "SCFV – Serviço de Convivência e Fortalecimento de Vínculos (referência CRAS Ermelino Matarazzo)",
+      "category": "assistencia_social",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2545-3211",
+        "alternatePhone": "(11) 2545-2866"
+      },
+      "location": {
+        "address": "Avenida Paranaguá, 1492, Ermelino Matarazzo, São Paulo/SP, 03806-000",
+        "lat": -23.5011,
+        "lng": -46.4764
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": true,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "conselho-tutelar",
+      "name": "Conselho Tutelar de Ermelino Matarazzo",
+      "category": "protecao",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2214-9050",
+        "alternatePhone": "(11) 97283-6692",
+        "otherPhones": [
+          "(11) 97283-6705"
+        ],
+        "email": "ctematarazzo@prefeitura.sp.gov.br"
+      },
+      "location": {
+        "address": "Rua Chesira Maltauro, 342, Parque Boturussú, São Paulo/SP",
+        "lat": -23.4978,
+        "lng": -46.4729
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": true,
+        "hasEmail": true,
+        "hasWebsite": false,
+        "completenessScore": 80
+      }
+    },
+    {
+      "id": "dp-62",
+      "name": "62º DP – Ermelino Matarazzo",
+      "category": "seguranca",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2546-4961"
+      },
+      "location": {
+        "address": "Rua Ruy Pirozzelli, 250, Jardim Belém, São Paulo/SP, 03811-020",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "dp-63",
+      "name": "63º DP – Vila Jacuí",
+      "category": "seguranca",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2051-9463"
+      },
+      "location": {
+        "address": "Rua Dríades, 50, Vila Jacuí, São Paulo/SP",
+        "lat": -23.4951,
+        "lng": -46.4386
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "ddm-sao-miguel",
+      "name": "7ª DDM – São Miguel Paulista (Leste)",
+      "category": "seguranca",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 6154-1362",
+        "alternatePhone": "(11) 6153-7666"
+      },
+      "location": {
+        "address": "Rua Dríades, 50, 2º andar, Vila Jacuí, São Paulo/SP, 08040-620",
+        "lat": -23.4951,
+        "lng": -46.4386
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": true,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 60
+      }
+    },
+    {
+      "id": "mp-infancia",
+      "name": "Ministério Público do Estado de São Paulo (MPSP) – Referência para Infância e Juventude",
+      "category": "protecao",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 3119-9000"
+      },
+      "location": {
+        "address": "Rua Riachuelo, 115, Sé, São Paulo/SP, 01007-904",
+        "lat": -23.5509,
+        "lng": -46.6366
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "defensoria-publica",
+      "name": "Defensoria Pública do Estado de São Paulo – Agendamento/Orientação",
+      "category": "protecao",
+      "type": "externo",
+      "contact": {
+        "phone": "0800 773 4340"
+      },
+      "location": {
+        "address": "Atendimento/Agendamento (canal estadual)",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "diretoria-ensino-leste1",
+      "name": "Diretoria de Ensino – Região Leste 1",
+      "category": "institucional",
+      "type": "externo",
+      "contact": {
+        "phone": "(11) 2090-5842"
+      },
+      "location": {
+        "address": "Rua Caetano de Campos, 220, Tatuapé, São Paulo/SP, 03088-010",
+        "lat": -23.5406,
+        "lng": -46.5747
+      },
+      "needsGeoReview": false,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "sed-atendimento",
+      "name": "Secretaria da Educação SP – Central de Atendimento (SED/Acessos)",
+      "category": "institucional",
+      "type": "externo",
+      "contact": {
+        "phone": "0800 770 0012"
+      },
+      "location": {
+        "address": "Atendimento remoto oficial SEE-SP",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "plataforma-conviva",
+      "name": "CONVIVA SP – Contato do Programa",
+      "category": "institucional",
+      "type": "externo",
+      "contact": {
+        "email": "convivasp@educacao.sp.gov.br"
+      },
+      "location": {
+        "address": "Ambiente on-line / contato por e-mail (SEE-SP)",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": false,
+        "hasAlternate": false,
+        "hasEmail": true,
+        "hasWebsite": false,
+        "completenessScore": 20
+      }
+    },
+    {
+      "id": "policia-civil-197",
+      "name": "Polícia Civil – 197",
+      "category": "seguranca",
+      "type": "externo",
+      "contact": {
+        "phone": "197"
+      },
+      "location": {
+        "address": "Canal estadual (SSP-SP)",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "policia-militar",
+      "name": "Polícia Militar – 190",
+      "category": "emergencia",
+      "type": "externo",
+      "contact": {
+        "phone": "190"
+      },
+      "location": {
+        "address": "Emergência estadual",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "samu",
+      "name": "SAMU – 192",
+      "category": "emergencia",
+      "type": "externo",
+      "contact": {
+        "phone": "192"
+      },
+      "location": {
+        "address": "Emergência nacional",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "bombeiros",
+      "name": "Corpo de Bombeiros – 193",
+      "category": "emergencia",
+      "type": "externo",
+      "contact": {
+        "phone": "193"
+      },
+      "location": {
+        "address": "Emergência estadual",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "disque-100",
+      "name": "Disque 100 – Direitos Humanos",
+      "category": "denuncia",
+      "type": "externo",
+      "contact": {
+        "phone": "100"
+      },
+      "location": {
+        "address": "Canal nacional de denúncias (Governo Federal)",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "disque-denuncia-181",
+      "name": "Disque Denúncia – 181 (SSP-SP)",
+      "category": "denuncia",
+      "type": "externo",
+      "contact": {
+        "phone": "181"
+      },
+      "location": {
+        "address": "Canal estadual (SSP-SP)",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "disque-180",
+      "name": "Ligue 180 – Central de Atendimento à Mulher",
+      "category": "denuncia",
+      "type": "externo",
+      "contact": {
+        "phone": "180"
+      },
+      "location": {
+        "address": "Canal nacional (Governo Federal)",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    },
+    {
+      "id": "cvv",
+      "name": "CVV – 188 (Apoio emocional 24h)",
+      "category": "saude_mental",
+      "type": "externo",
+      "contact": {
+        "phone": "188"
+      },
+      "location": {
+        "address": "Atendimento nacional 24h",
+        "lat": null,
+        "lng": null
+      },
+      "needsGeoReview": true,
+      "contactAvailability": {
+        "hasPhone": true,
+        "hasAlternate": false,
+        "hasEmail": false,
+        "hasWebsite": false,
+        "completenessScore": 40
+      }
+    }
+  ]
+}
