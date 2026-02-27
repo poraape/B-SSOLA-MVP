@@ -15,7 +15,10 @@ export const flow_trabalho_infantil: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Trabalho Infantil ou Exploracao. Fazer acolhimento, avisar a gestao e seguir os proximos passos."
+      "content": "Situacao identificada: Trabalho Infantil ou Exploracao. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "riskSignals": [
+        "relato_violacao"
+      ]
     },
     {
       "id": "q1",
@@ -30,6 +33,10 @@ export const flow_trabalho_infantil: FlowSpec = {
           "label": "Nao",
           "next": "outcome_alto"
         }
+      ],
+      "riskSignals": [
+        "relato_violacao",
+        "indicio_negligencia"
       ]
     }
   ],
@@ -42,7 +49,12 @@ export const flow_trabalho_infantil: FlowSpec = {
         "Registro institucional",
         "Avisar a gestao escolar"
       ],
-      "timeline": "Imediato"
+      "timeline": "Imediato",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management",
+        "contact_council"
+      ]
     },
     {
       "id": "outcome_iminente",
@@ -51,7 +63,82 @@ export const flow_trabalho_infantil: FlowSpec = {
       "actions": [
         "Acionar imediatamente orgao competente"
       ],
-      "timeline": "Imediato"
+      "timeline": "Imediato",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management",
+        "contact_council"
+      ]
     }
-  ]
+  ],
+  "risk": {
+    "modelVersion": "risk-heuristic-v1",
+    "baselineSeverity": "HIGH",
+    "escalationRules": [
+      {
+        "id": "rule_relato_violacao",
+        "ifAny": [
+          "relato_violacao"
+        ],
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management",
+            "contact_council"
+          ]
+        },
+        "rationale": "Relato de violacao requer acionamento institucional e de protecao."
+      },
+      {
+        "id": "rule_default_baseline",
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management",
+            "contact_council"
+          ]
+        },
+        "rationale": "Aplica severidade base definida no fluxo."
+      },
+      {
+        "id": "rule_default",
+        "toRiskLevel": "HIGH",
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+      }
+    ],
+    "protectiveFactors": [],
+    "riskSignals": [
+      {
+        "id": "relato_violacao",
+        "label": "Relato de violacao",
+        "weight": 3
+      },
+      {
+        "id": "indicio_negligencia",
+        "label": "Indicio de negligencia",
+        "weight": 2
+      },
+      {
+        "id": "vulnerabilidade_grave",
+        "label": "Vulnerabilidade grave",
+        "weight": 3
+      }
+    ],
+    "recommendedActionsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    },
+    "recommendedServiceTagsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    }
+  }
 };

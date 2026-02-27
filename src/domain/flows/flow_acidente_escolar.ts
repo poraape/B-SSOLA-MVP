@@ -11,11 +11,112 @@ export const flow_acidente_escolar: FlowSpec = {
     "keywords": [],
     "status": "EXISTING"
   },
+  "risk": {
+    "modelVersion": "risk-heuristic-v1",
+    "baselineSeverity": "MODERATE",
+    "escalationRules": [
+      {
+        "id": "rule_moderate",
+        "ifAny": [
+          "dor_persistente",
+          "impacto_funcional"
+        ],
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Sinais de dor e limitacao funcional demandam acompanhamento institucional."
+      },
+      {
+        "id": "rule_high",
+        "ifAny": [
+          "fratura_suspeita",
+          "sangramento_relevante"
+        ],
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "encaminhamento_prioritario"
+          ]
+        },
+        "rationale": "Suspeita de lesao relevante exige encaminhamento rapido e protecao."
+      },
+      {
+        "id": "rule_critical",
+        "ifAny": [
+          "risco_iminente",
+          "agravamento_agudo"
+        ],
+        "then": {
+          "riskLevel": "CRITICAL",
+          "flags": [
+            "acionar_emergencia"
+          ]
+        },
+        "rationale": "Risco imediato ou agravamento agudo exige acao emergencial."
+      },
+      {
+        "id": "rule_default",
+        "toRiskLevel": "MODERATE",
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+      }
+    ],
+    "protectiveFactors": [],
+    "riskSignals": [
+      {
+        "id": "dor_persistente",
+        "label": "Dor persistente",
+        "weight": 1
+      },
+      {
+        "id": "impacto_funcional",
+        "label": "Dificuldade de locomocao",
+        "weight": 1
+      },
+      {
+        "id": "fratura_suspeita",
+        "label": "Suspeita de fratura",
+        "weight": 2
+      },
+      {
+        "id": "sangramento_relevante",
+        "label": "Sangramento intenso",
+        "weight": 2
+      },
+      {
+        "id": "risco_iminente",
+        "label": "Risco fisico iminente",
+        "weight": 3
+      },
+      {
+        "id": "agravamento_agudo",
+        "label": "Agravamento agudo do quadro",
+        "weight": 3
+      }
+    ],
+    "recommendedActionsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    },
+    "recommendedServiceTagsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    }
+  },
   "steps": [
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Acidente ou Lesao Fisica. Fazer acolhimento, avisar a gestao e seguir os proximos passos."
+      "content": "Situacao identificada: Acidente ou Lesao Fisica. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "riskSignals": [
+        "dor_persistente"
+      ]
     },
     {
       "id": "q1",
@@ -30,6 +131,10 @@ export const flow_acidente_escolar: FlowSpec = {
           "label": "Nao",
           "next": "q2"
         }
+      ],
+      "riskSignals": [
+        "fratura_suspeita",
+        "sangramento_relevante"
       ]
     },
     {
@@ -45,6 +150,10 @@ export const flow_acidente_escolar: FlowSpec = {
           "label": "Nao",
           "next": "outcome_moderado"
         }
+      ],
+      "riskSignals": [
+        "dor_persistente",
+        "impacto_funcional"
       ]
     }
   ],
@@ -57,7 +166,9 @@ export const flow_acidente_escolar: FlowSpec = {
         "Primeiros socorros basicos",
         "Comunicar responsavel"
       ],
-      "timeline": "Horas"
+      "timeline": "Horas",
+      "riskLevel": "MODERATE",
+      "flags": []
     },
     {
       "id": "outcome_alto",
@@ -66,7 +177,11 @@ export const flow_acidente_escolar: FlowSpec = {
       "actions": [
         "Encaminhar para avaliacao urgente"
       ],
-      "timeline": "Imediato"
+      "timeline": "Imediato",
+      "riskLevel": "HIGH",
+      "flags": [
+        "encaminhamento_prioritario"
+      ]
     },
     {
       "id": "outcome_iminente",
@@ -75,7 +190,11 @@ export const flow_acidente_escolar: FlowSpec = {
       "actions": [
         "Acionar 192 (SAMU) em emergencia de saude ou 190 em risco de violencia imediatamente"
       ],
-      "timeline": "Imediato"
+      "timeline": "Imediato",
+      "riskLevel": "CRITICAL",
+      "flags": [
+        "acionar_emergencia"
+      ]
     }
   ]
 };

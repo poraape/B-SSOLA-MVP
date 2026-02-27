@@ -15,7 +15,10 @@ export const flow_depressao: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Tristeza Persistente ou Depressao. Fazer acolhimento, avisar a gestao e seguir os proximos passos."
+      "content": "Situacao identificada: Tristeza Persistente ou Depressao. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "riskSignals": [
+        "sofrimento_intenso"
+      ]
     },
     {
       "id": "q1",
@@ -30,6 +33,10 @@ export const flow_depressao: FlowSpec = {
           "label": "Nao",
           "next": "outcome_baixo"
         }
+      ],
+      "riskSignals": [
+        "sofrimento_intenso",
+        "isolamento"
       ]
     },
     {
@@ -45,6 +52,10 @@ export const flow_depressao: FlowSpec = {
           "label": "Nao",
           "next": "outcome_moderado"
         }
+      ],
+      "riskSignals": [
+        "sofrimento_intenso",
+        "isolamento"
       ]
     }
   ],
@@ -52,12 +63,16 @@ export const flow_depressao: FlowSpec = {
     {
       "id": "outcome_baixo",
       "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedag\u00f3gico.",
+      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Acompanhamento pedagogico",
         "Observacao continua"
       ],
-      "timeline": "Horas"
+      "timeline": "Horas",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management"
+      ]
     },
     {
       "id": "outcome_moderado",
@@ -67,7 +82,11 @@ export const flow_depressao: FlowSpec = {
         "Encaminhamento para avaliacao psicologica",
         "Entrar em contato com os responsaveis"
       ],
-      "timeline": "Horas"
+      "timeline": "Horas",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management"
+      ]
     },
     {
       "id": "outcome_alto",
@@ -77,7 +96,93 @@ export const flow_depressao: FlowSpec = {
         "Protecao ativa",
         "Avisar a gestao escolar imediatamente"
       ],
-      "timeline": "Imediato"
+      "timeline": "Imediato",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management"
+      ]
     }
-  ]
+  ],
+  "risk": {
+    "modelVersion": "risk-heuristic-v1",
+    "baselineSeverity": "HIGH",
+    "escalationRules": [
+      {
+        "id": "rule_fala_autolesiva",
+        "ifAny": [
+          "fala_autolesiva"
+        ],
+        "then": {
+          "riskLevel": "CRITICAL",
+          "flags": [
+            "notify_management",
+            "do_not_leave_alone"
+          ]
+        },
+        "rationale": "Fala autolesiva exige protecao imediata e supervisao constante."
+      },
+      {
+        "id": "rule_sofrimento_intenso",
+        "ifAny": [
+          "sofrimento_intenso"
+        ],
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Sofrimento intenso demanda resposta institucional prioritaria."
+      },
+      {
+        "id": "rule_default_baseline",
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Aplica severidade base definida no fluxo."
+      },
+      {
+        "id": "rule_default",
+        "toRiskLevel": "HIGH",
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+      }
+    ],
+    "protectiveFactors": [],
+    "riskSignals": [
+      {
+        "id": "sofrimento_intenso",
+        "label": "Sofrimento intenso",
+        "weight": 2
+      },
+      {
+        "id": "isolamento",
+        "label": "Isolamento",
+        "weight": 1
+      },
+      {
+        "id": "fala_autolesiva",
+        "label": "Fala autolesiva",
+        "weight": 3
+      }
+    ],
+    "recommendedActionsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    },
+    "recommendedServiceTagsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    }
+  }
 };

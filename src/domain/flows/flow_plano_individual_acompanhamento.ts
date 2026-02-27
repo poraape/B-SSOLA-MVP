@@ -15,7 +15,10 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Plano Individual de Acompanhamento. Fazer acolhimento, avisar a gestao e seguir os proximos passos."
+      "content": "Situacao identificada: Plano Individual de Acompanhamento. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "riskSignals": [
+        "conflito_recorrente"
+      ]
     },
     {
       "id": "q1",
@@ -30,6 +33,10 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
           "label": "Nao",
           "next": "outcome_baixo"
         }
+      ],
+      "riskSignals": [
+        "conflito_recorrente",
+        "agressividade"
       ]
     }
   ],
@@ -37,11 +44,13 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
     {
       "id": "outcome_baixo",
       "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedag\u00f3gico.",
+      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Monitoramento leve"
       ],
-      "timeline": "Dias"
+      "timeline": "Dias",
+      "riskLevel": "MODERATE",
+      "flags": []
     },
     {
       "id": "outcome_moderado",
@@ -51,7 +60,73 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
         "Construir PIA com metas claras",
         "Revisao mensal"
       ],
-      "timeline": "Horas"
+      "timeline": "Horas",
+      "riskLevel": "MODERATE",
+      "flags": []
     }
-  ]
+  ],
+  "risk": {
+    "modelVersion": "risk-heuristic-v1",
+    "baselineSeverity": "MODERATE",
+    "escalationRules": [
+      {
+        "id": "rule_agressividade",
+        "ifAny": [
+          "agressividade"
+        ],
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Sinais de agressividade exigem intervencao institucional."
+      },
+      {
+        "id": "rule_default_baseline",
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Aplica severidade base definida no fluxo."
+      },
+      {
+        "id": "rule_default",
+        "toRiskLevel": "MODERATE",
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+      }
+    ],
+    "protectiveFactors": [],
+    "riskSignals": [
+      {
+        "id": "conflito_recorrente",
+        "label": "Conflito recorrente",
+        "weight": 1
+      },
+      {
+        "id": "agressividade",
+        "label": "Agressividade",
+        "weight": 3
+      },
+      {
+        "id": "escalada_tensao",
+        "label": "Escalada de tensao",
+        "weight": 2
+      }
+    ],
+    "recommendedActionsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    },
+    "recommendedServiceTagsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    }
+  }
 };

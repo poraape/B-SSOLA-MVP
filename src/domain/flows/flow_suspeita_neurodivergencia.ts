@@ -15,7 +15,10 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Suspeita de TEA, TDAH ou Neurodivergencia. Fazer acolhimento, avisar a gestao e seguir os proximos passos."
+      "content": "Situacao identificada: Suspeita de TEA, TDAH ou Neurodivergencia. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "riskSignals": [
+        "barreira_acesso"
+      ]
     },
     {
       "id": "q1",
@@ -30,6 +33,10 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
           "label": "Nao",
           "next": "outcome_baixo"
         }
+      ],
+      "riskSignals": [
+        "barreira_acesso",
+        "dificuldade_persistente"
       ]
     }
   ],
@@ -37,11 +44,13 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
     {
       "id": "outcome_baixo",
       "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedag\u00f3gico.",
+      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Observacao estruturada"
       ],
-      "timeline": "Dias"
+      "timeline": "Dias",
+      "riskLevel": "MODERATE",
+      "flags": []
     },
     {
       "id": "outcome_moderado",
@@ -51,7 +60,60 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
         "Orientar responsaveis para avaliacao clinica",
         "Registrar plano pedagogico adaptado"
       ],
-      "timeline": "Horas"
+      "timeline": "Horas",
+      "riskLevel": "MODERATE",
+      "flags": []
     }
-  ]
+  ],
+  "risk": {
+    "modelVersion": "risk-heuristic-v1",
+    "baselineSeverity": "MODERATE",
+    "escalationRules": [
+      {
+        "id": "rule_default_baseline",
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Aplica severidade base definida no fluxo."
+      },
+      {
+        "id": "rule_default",
+        "toRiskLevel": "MODERATE",
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+      }
+    ],
+    "protectiveFactors": [],
+    "riskSignals": [
+      {
+        "id": "barreira_acesso",
+        "label": "Barreira de acesso",
+        "weight": 1
+      },
+      {
+        "id": "dificuldade_persistente",
+        "label": "Dificuldade persistente",
+        "weight": 2
+      },
+      {
+        "id": "necessidade_adaptacao",
+        "label": "Necessidade de adaptacao",
+        "weight": 2
+      }
+    ],
+    "recommendedActionsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    },
+    "recommendedServiceTagsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    }
+  }
 };

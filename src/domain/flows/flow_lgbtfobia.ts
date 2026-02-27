@@ -20,7 +20,10 @@ export const flow_lgbtfobia: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Discriminacao ou Violencia LGBTQIA+. Fazer acolhimento, avisar a gestao e seguir os proximos passos."
+      "content": "Situacao identificada: Discriminacao ou Violencia LGBTQIA+. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "riskSignals": [
+        "conflito_recorrente"
+      ]
     },
     {
       "id": "q1",
@@ -35,6 +38,10 @@ export const flow_lgbtfobia: FlowSpec = {
           "label": "Nao",
           "next": "q2"
         }
+      ],
+      "riskSignals": [
+        "conflito_recorrente",
+        "agressividade"
       ]
     },
     {
@@ -50,6 +57,10 @@ export const flow_lgbtfobia: FlowSpec = {
           "label": "Nao",
           "next": "outcome_baixo"
         }
+      ],
+      "riskSignals": [
+        "conflito_recorrente",
+        "agressividade"
       ]
     }
   ],
@@ -57,13 +68,17 @@ export const flow_lgbtfobia: FlowSpec = {
     {
       "id": "outcome_baixo",
       "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedag\u00f3gico.",
+      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Intervencao pedagogica imediata",
         "Acolhimento e validacao do estudante",
         "Acordo de convivencia e monitoramento"
       ],
-      "timeline": "Horas"
+      "timeline": "Horas",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management"
+      ]
     },
     {
       "id": "outcome_moderado",
@@ -74,7 +89,11 @@ export const flow_lgbtfobia: FlowSpec = {
         "Plano de protecao e acompanhamento",
         "Contato com os responsaveis quando apropriado e seguro"
       ],
-      "timeline": "Horas"
+      "timeline": "Horas",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management"
+      ]
     },
     {
       "id": "outcome_alto",
@@ -85,7 +104,79 @@ export const flow_lgbtfobia: FlowSpec = {
         "Acionar gestao com confidencialidade",
         "Encaminhar para apoio especializado quando necessario"
       ],
-      "timeline": "Imediato"
+      "timeline": "Imediato",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management"
+      ]
     }
-  ]
+  ],
+  "risk": {
+    "modelVersion": "risk-heuristic-v1",
+    "baselineSeverity": "HIGH",
+    "escalationRules": [
+      {
+        "id": "rule_agressividade",
+        "ifAny": [
+          "agressividade"
+        ],
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Sinais de agressividade exigem intervencao institucional."
+      },
+      {
+        "id": "rule_default_baseline",
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Aplica severidade base definida no fluxo."
+      },
+      {
+        "id": "rule_default",
+        "toRiskLevel": "HIGH",
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+      }
+    ],
+    "protectiveFactors": [],
+    "riskSignals": [
+      {
+        "id": "conflito_recorrente",
+        "label": "Conflito recorrente",
+        "weight": 1
+      },
+      {
+        "id": "agressividade",
+        "label": "Agressividade",
+        "weight": 3
+      },
+      {
+        "id": "escalada_tensao",
+        "label": "Escalada de tensao",
+        "weight": 2
+      }
+    ],
+    "recommendedActionsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    },
+    "recommendedServiceTagsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    }
+  }
 };

@@ -15,7 +15,10 @@ export const flow_febre: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Febre ou Suspeita de Infeccao. Fazer acolhimento, avisar a gestao e seguir os proximos passos."
+      "content": "Situacao identificada: Febre ou Suspeita de Infeccao. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "riskSignals": [
+        "sintoma_agudo"
+      ]
     },
     {
       "id": "q1",
@@ -30,6 +33,10 @@ export const flow_febre: FlowSpec = {
           "label": "Nao",
           "next": "q2"
         }
+      ],
+      "riskSignals": [
+        "sintoma_agudo",
+        "agravamento_progressivo"
       ]
     },
     {
@@ -45,6 +52,10 @@ export const flow_febre: FlowSpec = {
           "label": "Nao",
           "next": "outcome_baixo"
         }
+      ],
+      "riskSignals": [
+        "sintoma_agudo",
+        "agravamento_progressivo"
       ]
     }
   ],
@@ -52,12 +63,14 @@ export const flow_febre: FlowSpec = {
     {
       "id": "outcome_baixo",
       "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedag\u00f3gico.",
+      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Aguardar retirada por responsavel",
         "Monitorar temperatura"
       ],
-      "timeline": "Dias"
+      "timeline": "Dias",
+      "riskLevel": "MODERATE",
+      "flags": []
     },
     {
       "id": "outcome_moderado",
@@ -67,7 +80,9 @@ export const flow_febre: FlowSpec = {
         "Orientar responsavel",
         "Encaminhar para UBS"
       ],
-      "timeline": "Horas"
+      "timeline": "Horas",
+      "riskLevel": "MODERATE",
+      "flags": []
     },
     {
       "id": "outcome_alto",
@@ -77,7 +92,73 @@ export const flow_febre: FlowSpec = {
         "Encaminhamento imediato",
         "Monitorar sinais vitais"
       ],
-      "timeline": "Imediato"
+      "timeline": "Imediato",
+      "riskLevel": "MODERATE",
+      "flags": []
     }
-  ]
+  ],
+  "risk": {
+    "modelVersion": "risk-heuristic-v1",
+    "baselineSeverity": "MODERATE",
+    "escalationRules": [
+      {
+        "id": "rule_sintoma_agudo",
+        "ifAny": [
+          "sintoma_agudo"
+        ],
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Sintoma agudo requer avaliacao e monitoramento prioritario."
+      },
+      {
+        "id": "rule_default_baseline",
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Aplica severidade base definida no fluxo."
+      },
+      {
+        "id": "rule_default",
+        "toRiskLevel": "MODERATE",
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+      }
+    ],
+    "protectiveFactors": [],
+    "riskSignals": [
+      {
+        "id": "sintoma_agudo",
+        "label": "Sintoma agudo",
+        "weight": 3
+      },
+      {
+        "id": "agravamento_progressivo",
+        "label": "Agravamento progressivo",
+        "weight": 2
+      },
+      {
+        "id": "necessidade_avaliacao",
+        "label": "Necessidade de avaliacao",
+        "weight": 2
+      }
+    ],
+    "recommendedActionsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    },
+    "recommendedServiceTagsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    }
+  }
 };
