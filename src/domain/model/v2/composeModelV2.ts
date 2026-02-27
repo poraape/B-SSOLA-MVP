@@ -35,6 +35,10 @@ interface SpecRegistry {
   draftFlowSpecs?: FlowSpecV2[];
 }
 
+interface ServicesPayload {
+  services?: Service[];
+}
+
 const ALLOWED_RISK_GROUPS = new Set<RiskGroup>([
   "violence",
   "psychosocial",
@@ -403,8 +407,9 @@ function validateExtensionsShape(): void {
     throw new Error("src/data/v2/heuristics.json invalido: esperado objeto.");
   }
 
-  if (!Array.isArray(servicesData)) {
-    throw new Error("src/data/v2/services.json invalido: esperado array.");
+  const servicesPayload = servicesData as ServicesPayload;
+  if (!servicesPayload || !Array.isArray(servicesPayload.services)) {
+    throw new Error('src/data/v2/services.json invalido: esperado objeto com array "services".');
   }
 }
 
@@ -480,7 +485,7 @@ export function composeModelV2(): AppModel {
     version: "1.0.0",
     ...base,
     categories,
-    services: servicesData as Service[],
+    services: (servicesData as ServicesPayload).services as Service[],
     flows,
   } as AppModel;
 }
