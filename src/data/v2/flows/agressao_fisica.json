@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "id": "flow_agressao_fisica",
+    "title": "Agressao Fisica entre Estudantes",
+    "type": "standard",
+    "categoryId": "convivencia_conflitos",
+    "subcategoryId": "agressao_fisica",
+    "keywords": [
+      "agressao fisica",
+      "briga",
+      "violencia entre estudantes",
+      "lesao"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Houve lesao fisica?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "alto"
+        },
+        {
+          "label": "Nao",
+          "level": "moderado"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "moderado": {
+      "severity": "moderado",
+      "primaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar - E.E. Ermelino Matarazzo"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Separar envolvidos",
+        "Registrar ocorrencia institucional",
+        "Acionar responsaveis para acompanhamento"
+      ]
+    },
+    "alto": {
+      "severity": "alto",
+      "notifyManagement": true,
+      "primaryService": {
+        "id": "upa-ermelino",
+        "name": "UPA III 24h Ermelino Matarazzo"
+      },
+      "secondaryService": {
+        "id": "samu",
+        "name": "SAMU - 192"
+      },
+      "schoolActions": [
+        "Avaliacao medica imediata",
+        "Garantir protecao fisica dos estudantes",
+        "Comunicar responsaveis e registrar encaminhamento"
+      ]
+    }
+  }
+}

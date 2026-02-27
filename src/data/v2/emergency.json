@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "priorityRouteIds": [],
+  "contacts": {
+    "medical": "192",
+    "security": "190"
+  }
+}

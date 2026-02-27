@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "id": "flow_acidente_escolar",
+    "title": "Acidente Escolar",
+    "type": "medical_emergency",
+    "categoryId": "saude_bem_estar",
+    "subcategoryId": "acidente_lesao",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ha sangramento intenso ou fratura aparente?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        },
+        {
+          "label": "Nao",
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Ha dor persistente ou dificuldade de locomocao?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "alto"
+        },
+        {
+          "label": "Nao",
+          "level": "moderado"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "moderado": {
+      "severity": "moderado",
+      "primaryService": {
+        "id": "ubs-ermelino",
+        "name": "UBS Ermelino"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Primeiros socorros basicos",
+        "Comunicar responsavel"
+      ]
+    },
+    "alto": {
+      "severity": "alto",
+      "primaryService": {
+        "id": "upa-ermelino",
+        "name": "UPA III 24h"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Encaminhar para avaliacao urgente"
+      ]
+    },
+    "iminente": {
+      "severity": "iminente",
+      "primaryService": {
+        "id": "samu",
+        "name": "SAMU - 192"
+      },
+      "secondaryService": {
+        "id": "upa-ermelino",
+        "name": "UPA III 24h Ermelino Matarazzo"
+      },
+      "schoolActions": [
+        "Acionar emergencia imediatamente"
+      ]
+    }
+  }
+}

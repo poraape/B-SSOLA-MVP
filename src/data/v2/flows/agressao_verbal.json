@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "id": "flow_agressao_verbal",
+    "title": "Agressao Verbal ou Ameacas",
+    "type": "standard",
+    "categoryId": "convivencia_conflitos",
+    "subcategoryId": "agressao_verbal",
+    "keywords": [
+      "agressao verbal",
+      "ameaca",
+      "intimidacao",
+      "humilhacao"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ha ameaca de violencia fisica?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "moderado"
+        },
+        {
+          "label": "Nao",
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "E um episodio recorrente?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "moderado"
+        },
+        {
+          "label": "Nao",
+          "level": "baixo"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "baixo": {
+      "severity": "baixo",
+      "primaryService": {
+        "id": "gestao-coordenacao",
+        "name": "Coordenacao Pedagogica"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Realizar mediacao de conflito",
+        "Orientar estudantes sobre convivencia respeitosa",
+        "Monitorar reincidencia"
+      ]
+    },
+    "moderado": {
+      "severity": "moderado",
+      "notifyManagement": true,
+      "primaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Registrar formalmente a ocorrencia",
+        "Comunicar responsaveis",
+        "Definir plano de acompanhamento com a equipe escolar"
+      ]
+    }
+  }
+}

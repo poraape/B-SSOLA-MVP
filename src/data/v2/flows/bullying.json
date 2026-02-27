@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "id": "flow_bullying_piloto_v2",
+    "title": "Bullying e Cyberbullying",
+    "type": "standard",
+    "categoryId": "convivencia_conflitos",
+    "subcategoryId": "bullying",
+    "keywords": [
+      "bullying",
+      "cyberbullying",
+      "humilhacao",
+      "zoacao recorrente",
+      "exposicao em rede social"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "A situacao de bullying e recorrente?",
+      "options": [
+        {
+          "label": "Sim, ocorre com frequencia",
+          "next": "q2"
+        },
+        {
+          "label": "Nao, foi episodio isolado",
+          "level": "baixo"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "O estudante apresenta sofrimento emocional importante (choro, medo, isolamento, queda de rendimento)?",
+      "options": [
+        {
+          "label": "Sim",
+          "next": "q3"
+        },
+        {
+          "label": "Nao",
+          "level": "moderado"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Ha ameaca explicita, exposicao humilhante online ou risco de agressao?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "alto"
+        },
+        {
+          "label": "Nao",
+          "level": "moderado"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "baixo": {
+      "severity": "baixo",
+      "primaryService": null,
+      "secondaryService": null,
+      "schoolActions": [
+        "Realizar escuta inicial com estudante",
+        "Registrar episodio e monitorar recorrencia",
+        "Orientar turma sobre convivencia respeitosa"
+      ],
+      "summaryTag": "Convivencia - Intervencao inicial"
+    },
+    "moderado": {
+      "severity": "moderado",
+      "primaryService": null,
+      "secondaryService": null,
+      "schoolActions": [
+        "Acionar coordenacao pedagogica e familia",
+        "Conduzir mediacao estruturada com acompanhamento",
+        "Definir plano de protecao e seguimento por periodo letivo"
+      ],
+      "summaryTag": "Convivencia - Acompanhamento ativo"
+    },
+    "alto": {
+      "severity": "alto",
+      "notifyManagement": true,
+      "primaryService": null,
+      "secondaryService": null,
+      "schoolActions": [
+        "Acionar gestao imediatamente",
+        "Proteger estudante e interromper contato com agressor",
+        "Formalizar encaminhamento institucional e avaliar rede de protecao"
+      ],
+      "summaryTag": "Convivencia - Risco elevado"
+    }
+  }
+}

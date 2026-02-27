@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "id": "flow_negligencia",
+    "title": "Negligencia Familiar",
+    "type": "standard",
+    "categoryId": "protecao_direitos",
+    "subcategoryId": "negligencia_familiar",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "A situacao compromete saude ou integridade do estudante?",
+      "options": [
+        {
+          "label": "Sim",
+          "next": "q2"
+        },
+        {
+          "label": "Nao",
+          "level": "moderado"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Ha risco imediato de abandono ou violencia?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        },
+        {
+          "label": "Nao",
+          "level": "alto"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "moderado": {
+      "severity": "moderado",
+      "primaryService": {
+        "id": "cras-ermelino",
+        "name": "CRAS Ermelino Matarazzo"
+      },
+      "secondaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "schoolActions": [
+        "Escuta qualificada",
+        "Contato com responsaveis"
+      ]
+    },
+    "alto": {
+      "severity": "alto",
+      "primaryService": {
+        "id": "creas-ermelino",
+        "name": "CREAS Ermelino Matarazzo"
+      },
+      "secondaryService": {
+        "id": "conselho-tutelar",
+        "name": "Conselho Tutelar"
+      },
+      "schoolActions": [
+        "Comunicar gestao",
+        "Encaminhamento formal"
+      ]
+    },
+    "iminente": {
+      "severity": "iminente",
+      "primaryService": {
+        "id": "conselho-tutelar",
+        "name": "Conselho Tutelar"
+      },
+      "secondaryService": {
+        "id": "policia-militar",
+        "name": "Policia Militar - 190"
+      },
+      "schoolActions": [
+        "Garantir protecao imediata",
+        "Acionar autoridade competente"
+      ]
+    }
+  }
+}

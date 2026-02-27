@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "id": "flow_porte_objeto",
+    "title": "Porte de Objeto Perigoso",
+    "type": "security_emergency",
+    "categoryId": "emergencias_seguranca",
+    "subcategoryId": "ameaca_com_arma",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "O objeto e uma arma de fogo ou arma branca de grande porte?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        },
+        {
+          "label": "Nao",
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Houve ameaca de uso?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        },
+        {
+          "label": "Nao",
+          "level": "alto"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "alto": {
+      "severity": "alto",
+      "primaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "secondaryService": {
+        "id": "policia-militar",
+        "name": "Policia Militar - 190"
+      },
+      "schoolActions": [
+        "Isolar estudante",
+        "Recolher objeto se seguro",
+        "Comunicar responsaveis"
+      ]
+    },
+    "iminente": {
+      "severity": "iminente",
+      "primaryService": {
+        "id": "policia-militar",
+        "name": "Policia Militar - 190"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Evacuar area",
+        "Acionar 190 imediatamente"
+      ]
+    }
+  }
+}

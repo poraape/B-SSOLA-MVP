@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "flow_mal_estar",
+    "title": "Mal-estar ou Sintomas Leves",
+    "type": "standard",
+    "categoryId": "saude_bem_estar",
+    "subcategoryId": "mal_estar_sintomas",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "O estudante esta consciente e orientado?",
+      "options": [
+        {
+          "label": "Sim",
+          "next": "q2"
+        },
+        {
+          "label": "Nao",
+          "level": "moderado"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Os sintomas persistem ou pioram?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "moderado"
+        },
+        {
+          "label": "Nao",
+          "level": "baixo"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "baixo": {
+      "severity": "baixo",
+      "primaryService": {
+        "id": "ubs-ermelino",
+        "name": "UBS Ermelino Matarazzo"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Acolher estudante",
+        "Oferecer repouso supervisionado"
+      ]
+    },
+    "moderado": {
+      "severity": "moderado",
+      "primaryService": {
+        "id": "upa-ermelino",
+        "name": "UPA III 24h Ermelino Matarazzo"
+      },
+      "secondaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "schoolActions": [
+        "Comunicar responsaveis",
+        "Encaminhar para avaliacao medica"
+      ]
+    }
+  }
+}

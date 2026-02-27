@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "id": "flow_mediacao_restaurativa",
+    "title": "Mediacao Restaurativa entre Estudantes",
+    "type": "standard",
+    "categoryId": "convivencia_conflitos",
+    "subcategoryId": "mediacao_restaurativa",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "O conflito ja cessou e nao ha risco fisico?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "baixo"
+        },
+        {
+          "label": "Nao",
+          "level": "moderado"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "baixo": {
+      "severity": "baixo",
+      "primaryService": {
+        "id": "gestao-coordenacao",
+        "name": "Coordenacao Pedagogica"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Reuniao mediada com ambas as partes",
+        "Registro pedagogico minimo",
+        "Acompanhamento por 30 dias"
+      ]
+    },
+    "moderado": {
+      "severity": "moderado",
+      "primaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Plano formal de reparacao",
+        "Comunicacao aos responsaveis"
+      ]
+    }
+  }
+}

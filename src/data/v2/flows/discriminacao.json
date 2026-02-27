@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "id": "flow_discriminacao",
+    "title": "Discriminacao ou Racismo",
+    "type": "standard",
+    "categoryId": "convivencia_conflitos",
+    "subcategoryId": "discriminacao_racismo",
+    "keywords": [
+      "discriminacao",
+      "racismo",
+      "preconceito",
+      "ofensa"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "O episodio ocorreu agora e ainda ha conflito ativo?",
+      "options": [
+        {
+          "label": "Sim",
+          "next": "q2"
+        },
+        {
+          "label": "Nao",
+          "next": "q3"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Ha ameaca, perseguicao ou risco de agressao?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "alto"
+        },
+        {
+          "label": "Nao",
+          "level": "moderado"
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Foi um evento pontual sem repeticao aparente?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "baixo"
+        },
+        {
+          "label": "Nao / Reincidente",
+          "level": "moderado"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "baixo": {
+      "severity": "baixo",
+      "primaryService": {
+        "id": "gestao-coordenacao",
+        "name": "Coordenacao Pedagogica"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Intervencao pedagogica e orientacao imediata",
+        "Apoio ao estudante afetado",
+        "Acordo de convivencia e monitoramento"
+      ],
+      "uiFlags": {
+        "confidential": false,
+        "showGuardrail": true
+      }
+    },
+    "moderado": {
+      "severity": "moderado",
+      "primaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Registrar ocorrencia institucional minima",
+        "Comunicar responsaveis quando apropriado",
+        "Plano de acompanhamento e prevencao"
+      ],
+      "uiFlags": {
+        "confidential": false,
+        "showGuardrail": true
+      }
+    },
+    "alto": {
+      "severity": "alto",
+      "notifyManagement": true,
+      "primaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "secondaryService": {
+        "id": "creas-ermelino",
+        "name": "CREAS Ermelino Matarazzo"
+      },
+      "schoolActions": [
+        "Proteger estudante e cessar situacao imediatamente",
+        "Acao institucional com gestao",
+        "Encaminhar para apoio especializado quando necessario"
+      ],
+      "uiFlags": {
+        "confidential": true,
+        "showGuardrail": true
+      }
+    }
+  }
+}

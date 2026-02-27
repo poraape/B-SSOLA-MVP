@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "id": "flow_inseguranca_alimentar",
+    "title": "Inseguranca Alimentar",
+    "type": "standard",
+    "categoryId": "apoio_social_familiar",
+    "subcategoryId": "inseguranca_alimentar",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "A situacao e recorrente e compromete saude?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "moderado"
+        },
+        {
+          "label": "Nao",
+          "level": "baixo"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "baixo": {
+      "severity": "baixo",
+      "primaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Orientacao interna",
+        "Acompanhamento"
+      ]
+    },
+    "moderado": {
+      "severity": "moderado",
+      "primaryService": {
+        "id": "cras-ermelino",
+        "name": "CRAS"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Encaminhamento para beneficios socioassistenciais"
+      ]
+    }
+  }
+}

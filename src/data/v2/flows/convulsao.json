@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "id": "flow_convulsao",
+    "title": "Convulsao",
+    "type": "medical_emergency",
+    "categoryId": "emergencias_seguranca",
+    "subcategoryId": "convulsao_perda_consciencia",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "A convulsao esta acontecendo agora?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        },
+        {
+          "label": "Nao",
+          "level": "alto"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "alto": {
+      "severity": "alto",
+      "primaryService": {
+        "id": "upa-ermelino",
+        "name": "UPA III 24h"
+      },
+      "secondaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "schoolActions": [
+        "Posicao lateral de seguranca",
+        "Monitorar respiracao"
+      ]
+    },
+    "iminente": {
+      "severity": "iminente",
+      "primaryService": {
+        "id": "samu",
+        "name": "SAMU - 192"
+      },
+      "secondaryService": {
+        "id": "upa-ermelino",
+        "name": "UPA III 24h Ermelino Matarazzo"
+      },
+      "schoolActions": [
+        "Acionar 192 imediatamente",
+        "Nao colocar nada na boca do estudante"
+      ]
+    }
+  }
+}

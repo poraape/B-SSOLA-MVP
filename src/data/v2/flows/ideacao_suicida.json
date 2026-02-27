@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "id": "flow_ideacao_suicida",
+    "title": "Ideacao Suicida",
+    "type": "standard",
+    "categoryId": "saude_emocional",
+    "subcategoryId": "ideacao_suicida",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "O estudante expressou intencao clara de se machucar?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        },
+        {
+          "label": "Nao",
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Ha plano definido ou acesso a meios?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        },
+        {
+          "label": "Nao",
+          "level": "alto"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "alto": {
+      "severity": "alto",
+      "primaryService": {
+        "id": "caps-ij",
+        "name": "CAPS Infantojuvenil II"
+      },
+      "secondaryService": {
+        "id": "cvv",
+        "name": "CVV - 188"
+      },
+      "schoolActions": [
+        "Nao deixar estudante sozinho",
+        "Comunicar gestao imediatamente"
+      ]
+    },
+    "iminente": {
+      "severity": "iminente",
+      "primaryService": {
+        "id": "samu",
+        "name": "SAMU - 192"
+      },
+      "secondaryService": {
+        "id": "caps-ij",
+        "name": "CAPS Infantojuvenil II"
+      },
+      "schoolActions": [
+        "Acionar emergencia",
+        "Garantir supervisao constante"
+      ]
+    }
+  }
+}

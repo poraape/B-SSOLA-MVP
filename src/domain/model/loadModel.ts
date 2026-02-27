@@ -1,4 +1,5 @@
 import rawModel from '../../data/model.v1.json';
+import { composeModelV2 } from './v2/composeModelV2';
 import { validateModel } from './validateModel';
 import { normalizeModel } from './normalizeModel';
 import { ProtocolModel } from './schema';
@@ -24,7 +25,22 @@ function deepFreeze(obj: any) {
 export function getValidatedModel(): ProtocolModel {
   if (cachedModel) return cachedModel;
 
-  const normalized = normalizeModel(rawModel as unknown as ProtocolModel);
+  const useModelV2 =
+    ((import.meta as { env?: Record<string, string> }).env?.VITE_USE_MODEL_V2 === 'true') ||
+    process.env.VITE_USE_MODEL_V2 === 'true';
+
+  let sourceModel = rawModel as unknown as ProtocolModel;
+
+  if (useModelV2) {
+    try {
+      sourceModel = composeModelV2() as unknown as ProtocolModel;
+    } catch (e) {
+      console.error('[Protocol Model] Falha ao compor MODEL V2. Fallback para V1.', e);
+      sourceModel = rawModel as unknown as ProtocolModel;
+    }
+  }
+
+  const normalized = normalizeModel(sourceModel);
   const isProduction = process.env.NODE_ENV === 'production';
 
   try {

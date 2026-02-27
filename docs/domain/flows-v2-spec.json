@@ -1,0 +1,683 @@
+{
+  "meta": {
+    "document": "flows-v2-spec",
+    "version": "2.0.0",
+    "normalizedAt": "2026-02-27",
+    "notes": [
+      "Placeholder flow_id_unico removed",
+      "Typo flow_ameata_externa normalized to flow_ameaca_externa",
+      "meta.subcategory normalized to meta.subcategoryId",
+      "Duplicate outcome IDs normalized in draft flow_intoxicacao"
+    ]
+  },
+  "organization": [
+    {
+      "categoryId": "emergencias_seguranca",
+      "flowsCount": 7
+    },
+    {
+      "categoryId": "saude_bem_estar",
+      "flowsCount": 6
+    },
+    {
+      "categoryId": "saude_emocional",
+      "flowsCount": 6
+    },
+    {
+      "categoryId": "convivencia_conflitos",
+      "flowsCount": 8
+    },
+    {
+      "categoryId": "protecao_direitos",
+      "flowsCount": 6
+    },
+    {
+      "categoryId": "apoio_social_familiar",
+      "flowsCount": 3
+    },
+    {
+      "categoryId": "inclusao_acessibilidade",
+      "flowsCount": 3
+    }
+  ],
+  "flows": [
+    {
+      "id": "flow_emergencia_medica",
+      "categoryId": "emergencias_seguranca",
+      "subcategoryId": "emergencia_medica",
+      "status": "TO_CREATE",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "flow_convulsao",
+      "categoryId": "emergencias_seguranca",
+      "subcategoryId": "convulsao_perda_consciencia",
+      "status": "EXISTING",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "flow_violencia_armada",
+      "categoryId": "emergencias_seguranca",
+      "subcategoryId": "violencia_armada",
+      "status": "EXISTING",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "flow_porte_objeto",
+      "categoryId": "emergencias_seguranca",
+      "subcategoryId": "ameaca_com_arma",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_incendio",
+      "categoryId": "emergencias_seguranca",
+      "subcategoryId": "incendio_evacuacao",
+      "status": "EXISTING",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "flow_risco_estrutural",
+      "categoryId": "emergencias_seguranca",
+      "subcategoryId": "risco_estrutural",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_ameaca_externa",
+      "categoryId": "emergencias_seguranca",
+      "subcategoryId": "ameaca_externa",
+      "status": "TO_CREATE",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_mal_estar",
+      "categoryId": "saude_bem_estar",
+      "subcategoryId": "mal_estar_sintomas",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_febre",
+      "categoryId": "saude_bem_estar",
+      "subcategoryId": "febre_infeccao",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_crise_respiratoria",
+      "categoryId": "saude_bem_estar",
+      "subcategoryId": "crise_respiratoria",
+      "status": "TO_CREATE",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_desmaio",
+      "categoryId": "saude_bem_estar",
+      "subcategoryId": "desmaio_tontura",
+      "status": "TO_CREATE",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_acidente_escolar",
+      "categoryId": "saude_bem_estar",
+      "subcategoryId": "acidente_lesao",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_intoxicacao",
+      "categoryId": "saude_bem_estar",
+      "subcategoryId": "intoxicacao",
+      "status": "TO_CREATE",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_ansiedade",
+      "categoryId": "saude_emocional",
+      "subcategoryId": "ansiedade_crise",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_depressao",
+      "categoryId": "saude_emocional",
+      "subcategoryId": "tristeza_depressao",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_ideacao_suicida",
+      "categoryId": "saude_emocional",
+      "subcategoryId": "ideacao_suicida",
+      "status": "EXISTING",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "flow_autolesao",
+      "categoryId": "saude_emocional",
+      "subcategoryId": "autolesao",
+      "status": "CONSOLIDATED",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "flow_isolamento",
+      "categoryId": "saude_emocional",
+      "subcategoryId": "isolamento_social",
+      "status": "TO_CREATE",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_uso_substancias",
+      "categoryId": "saude_emocional",
+      "subcategoryId": "uso_substancias",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_bullying",
+      "categoryId": "convivencia_conflitos",
+      "subcategoryId": "bullying",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_agressao_fisica",
+      "categoryId": "convivencia_conflitos",
+      "subcategoryId": "agressao_fisica",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_agressao_verbal",
+      "categoryId": "convivencia_conflitos",
+      "subcategoryId": "agressao_verbal",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_discriminacao",
+      "categoryId": "convivencia_conflitos",
+      "subcategoryId": "discriminacao_racismo",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_lgbtfobia",
+      "categoryId": "convivencia_conflitos",
+      "subcategoryId": "lgbtfobia",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_mediacao_restaurativa",
+      "categoryId": "convivencia_conflitos",
+      "subcategoryId": "mediacao_restaurativa",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_reintegracao_pos_suspensao",
+      "categoryId": "convivencia_conflitos",
+      "subcategoryId": "reintegracao_pos_suspensao",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_plano_individual_acompanhamento",
+      "categoryId": "convivencia_conflitos",
+      "subcategoryId": "plano_acompanhamento",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_violencia_domestica",
+      "categoryId": "protecao_direitos",
+      "subcategoryId": "violencia_domestica",
+      "status": "EXISTING",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "flow_abuso_sexual",
+      "categoryId": "protecao_direitos",
+      "subcategoryId": "abuso_sexual",
+      "status": "EXISTING",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "flow_negligencia",
+      "categoryId": "protecao_direitos",
+      "subcategoryId": "negligencia_familiar",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_trabalho_infantil",
+      "categoryId": "protecao_direitos",
+      "subcategoryId": "trabalho_infantil",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_abandono",
+      "categoryId": "protecao_direitos",
+      "subcategoryId": "abandono_rua",
+      "status": "EXISTING",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "flow_violacao_direitos",
+      "categoryId": "protecao_direitos",
+      "subcategoryId": "outras_violacoes_direitos",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_evasao",
+      "categoryId": "apoio_social_familiar",
+      "subcategoryId": "evasao_faltas",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_inseguranca_alimentar",
+      "categoryId": "apoio_social_familiar",
+      "subcategoryId": "inseguranca_alimentar",
+      "status": "EXISTING",
+      "severity": "HIGH"
+    },
+    {
+      "id": "flow_vulnerabilidade_social",
+      "categoryId": "apoio_social_familiar",
+      "subcategoryId": "vulnerabilidade_social_geral",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_suspeita_neurodivergencia",
+      "categoryId": "inclusao_acessibilidade",
+      "subcategoryId": "suspeita_neurodivergencia",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_adaptacao_pedagogica",
+      "categoryId": "inclusao_acessibilidade",
+      "subcategoryId": "adaptacao_pedagogica",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    },
+    {
+      "id": "flow_barreira_acessibilidade",
+      "categoryId": "inclusao_acessibilidade",
+      "subcategoryId": "barreira_acessibilidade",
+      "status": "EXISTING",
+      "severity": "MODERATE"
+    }
+  ],
+  "draftFlowSpecs": [
+    {
+      "meta": {
+        "id": "flow_emergencia_medica",
+        "categoryId": "emergencias_seguranca",
+        "subcategoryId": "emergencia_medica",
+        "title": "Emergencia Medica Grave",
+        "description": "Gateway de triagem para emergencias medicas",
+        "severity": "CRITICAL",
+        "keywords": [
+          "emergencia",
+          "medica",
+          "grave",
+          "infarto",
+          "derrame"
+        ],
+        "status": "TO_CREATE"
+      },
+      "steps": [
+        {
+          "id": "step_1",
+          "type": "alert",
+          "content": "Confirmar emergencia e garantir seguranca do local"
+        },
+        {
+          "id": "step_2",
+          "type": "action",
+          "action": "Chamar SAMU 192 imediatamente"
+        },
+        {
+          "id": "step_3",
+          "type": "question",
+          "question": "A pessoa esta consciente e respirando?",
+          "actions": [
+            {
+              "label": "Sim",
+              "next": "step_4"
+            },
+            {
+              "label": "Nao",
+              "next": "outcome_alerta_rcp"
+            }
+          ]
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "outcome_alerta_rcp",
+          "label": "RCP",
+          "description": "Iniciar suporte de vida",
+          "actions": [
+            "Iniciar compressao toracica",
+            "Aguardar SAMU"
+          ],
+          "timeline": "Segundos"
+        },
+        {
+          "id": "outcome_aguardar_samu",
+          "label": "Aguardar SAMU",
+          "description": "Monitorar ate chegada",
+          "actions": [
+            "Monitorar sinais vitais",
+            "Avisar responsaveis"
+          ],
+          "timeline": "Continuo"
+        }
+      ]
+    },
+    {
+      "meta": {
+        "id": "flow_ameaca_externa",
+        "categoryId": "emergencias_seguranca",
+        "subcategoryId": "ameaca_externa",
+        "title": "Ameaca Externa a Escola",
+        "description": "Protocolo para riscos externos a instituicao",
+        "severity": "HIGH",
+        "keywords": [
+          "ameaca",
+          "risco externo",
+          "lockdown"
+        ],
+        "status": "TO_CREATE"
+      },
+      "steps": [
+        {
+          "id": "step_1",
+          "type": "question",
+          "question": "A ameaca e imediata?",
+          "actions": [
+            {
+              "label": "Sim",
+              "next": "step_lockdown"
+            },
+            {
+              "label": "Nao",
+              "next": "step_2"
+            }
+          ]
+        },
+        {
+          "id": "step_lockdown",
+          "type": "alert",
+          "content": "Ativar lockdown e acionar 190"
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "outcome_evacuacao_total",
+          "label": "Evacuacao Total",
+          "description": "Evacuar para ponto de encontro seguro",
+          "actions": [
+            "Ativar plano de evacuacao",
+            "Contabilizar estudantes"
+          ],
+          "timeline": "Imediato"
+        },
+        {
+          "id": "outcome_registrar_boletim",
+          "label": "Registrar Ameaca",
+          "description": "Registrar formalmente a ameaca",
+          "actions": [
+            "Salvar evidencias",
+            "Registrar BO"
+          ],
+          "timeline": "Horas"
+        }
+      ]
+    },
+    {
+      "meta": {
+        "id": "flow_crise_respiratoria",
+        "categoryId": "saude_bem_estar",
+        "subcategoryId": "crise_respiratoria",
+        "title": "Crise Respiratoria ou Asmatica",
+        "description": "Protocolo para dificuldade respiratoria aguda",
+        "severity": "HIGH",
+        "keywords": [
+          "asma",
+          "falta de ar",
+          "chiado"
+        ],
+        "status": "TO_CREATE"
+      },
+      "steps": [
+        {
+          "id": "step_1",
+          "type": "question",
+          "question": "Ha melhora apos medicacao de resgate?",
+          "actions": [
+            {
+              "label": "Sim",
+              "next": "outcome_repouso_monitoramento"
+            },
+            {
+              "label": "Nao",
+              "next": "outcome_encaminhar_samu"
+            }
+          ]
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "outcome_repouso_monitoramento",
+          "label": "Repouso e Monitoramento",
+          "description": "Acompanhar recuperacao inicial",
+          "actions": [
+            "Manter em repouso",
+            "Avisar responsaveis"
+          ],
+          "timeline": "Imediato"
+        },
+        {
+          "id": "outcome_encaminhar_samu",
+          "label": "Encaminhar SAMU",
+          "description": "Sem melhora ou piora",
+          "actions": [
+            "Acionar SAMU 192",
+            "Aguardar equipe medica"
+          ],
+          "timeline": "Imediato"
+        }
+      ]
+    },
+    {
+      "meta": {
+        "id": "flow_desmaio",
+        "categoryId": "saude_bem_estar",
+        "subcategoryId": "desmaio_tontura",
+        "title": "Desmaio, Tontura ou Fraqueza",
+        "description": "Triagem para perda de consciencia e pre-sincope",
+        "severity": "HIGH",
+        "keywords": [
+          "desmaio",
+          "tontura",
+          "fraqueza",
+          "sincope"
+        ],
+        "status": "TO_CREATE"
+      },
+      "steps": [
+        {
+          "id": "step_1",
+          "type": "question",
+          "question": "A pessoa esta consciente?",
+          "actions": [
+            {
+              "label": "Sim",
+              "next": "outcome_observacao"
+            },
+            {
+              "label": "Nao",
+              "next": "outcome_samu_imediato"
+            }
+          ]
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "outcome_observacao",
+          "label": "Observacao",
+          "description": "Acompanhar evolucao e causa",
+          "actions": [
+            "Posicionar em seguranca",
+            "Monitorar sinais"
+          ],
+          "timeline": "Minutos"
+        },
+        {
+          "id": "outcome_samu_imediato",
+          "label": "SAMU Imediato",
+          "description": "Inconsciencia persistente",
+          "actions": [
+            "Acionar SAMU 192",
+            "Monitorar sinais vitais"
+          ],
+          "timeline": "Imediato"
+        }
+      ]
+    },
+    {
+      "meta": {
+        "id": "flow_intoxicacao",
+        "categoryId": "saude_bem_estar",
+        "subcategoryId": "intoxicacao",
+        "title": "Intoxicacao ou Ingestao Suspeita",
+        "description": "Triagem para ingestao de substancia toxica",
+        "severity": "HIGH",
+        "keywords": [
+          "intoxicacao",
+          "veneno",
+          "ingestao"
+        ],
+        "status": "TO_CREATE"
+      },
+      "steps": [
+        {
+          "id": "step_1",
+          "type": "alert",
+          "content": "Remover fonte de intoxicacao e acionar emergencia"
+        },
+        {
+          "id": "step_2",
+          "type": "question",
+          "question": "Qual foi a substancia ingerida?",
+          "actions": [
+            {
+              "label": "Medicamento",
+              "next": "outcome_medicamento_excessivo"
+            },
+            {
+              "label": "Desconhecido",
+              "next": "outcome_suspeita_grave"
+            }
+          ]
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "outcome_medicamento_excessivo",
+          "label": "Sobredose de Medicamento",
+          "description": "Encaminhar para atendimento imediato",
+          "actions": [
+            "Acionar SAMU 192",
+            "Guardar embalagem"
+          ],
+          "timeline": "Imediato"
+        },
+        {
+          "id": "outcome_suspeita_grave",
+          "label": "Intoxicacao Grave",
+          "description": "Substancia desconhecida com risco alto",
+          "actions": [
+            "Acionar SAMU 192",
+            "Nao induzir vomito"
+          ],
+          "timeline": "Imediato"
+        },
+        {
+          "id": "outcome_pos_intoxicacao",
+          "label": "Acompanhamento Pos-Intoxicacao",
+          "description": "Seguimento apos alta/retorno",
+          "actions": [
+            "Registrar evento",
+            "Acompanhar retorno escolar"
+          ],
+          "timeline": "Dias"
+        }
+      ]
+    },
+    {
+      "meta": {
+        "id": "flow_isolamento",
+        "categoryId": "saude_emocional",
+        "subcategoryId": "isolamento_social",
+        "title": "Isolamento Social Intenso",
+        "description": "Triagem para isolamento e retraimento persistente",
+        "severity": "HIGH",
+        "keywords": [
+          "isolamento",
+          "reclusao",
+          "sozinho"
+        ],
+        "status": "TO_CREATE"
+      },
+      "steps": [
+        {
+          "id": "step_1",
+          "type": "question",
+          "question": "Ha quanto tempo o isolamento persiste?",
+          "actions": [
+            {
+              "label": "Semanas",
+              "next": "outcome_acolhimento"
+            },
+            {
+              "label": "Meses",
+              "next": "outcome_encaminhamento_psicologia"
+            }
+          ]
+        }
+      ],
+      "outcomes": [
+        {
+          "id": "outcome_acolhimento",
+          "label": "Acolhimento Estruturado",
+          "description": "Iniciar plano de acolhimento e observacao",
+          "actions": [
+            "Escuta acolhedora e sem julgamento",
+            "Plano de integracao gradual"
+          ],
+          "timeline": "Dias"
+        },
+        {
+          "id": "outcome_encaminhamento_psicologia",
+          "label": "Encaminhar Psicologia",
+          "description": "Isolamento cronico com risco psicossocial",
+          "actions": [
+            "Encaminhar psicologo",
+            "Acionar familia"
+          ],
+          "timeline": "Imediato a dias"
+        }
+      ]
+    }
+  ]
+}

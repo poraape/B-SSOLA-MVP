@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "id": "flow_violencia_domestica",
+    "title": "Suspeita de Violencia Domestica",
+    "type": "standard",
+    "categoryId": "protecao_direitos",
+    "subcategoryId": "violencia_domestica",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ha risco imediato a integridade do estudante?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        },
+        {
+          "label": "Nao",
+          "level": "alto"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "alto": {
+      "severity": "alto",
+      "primaryService": {
+        "id": "conselho-tutelar",
+        "name": "Conselho Tutelar de Ermelino Matarazzo"
+      },
+      "secondaryService": {
+        "id": "creas-ermelino",
+        "name": "CREAS Ermelino Matarazzo"
+      },
+      "schoolActions": [
+        "Escuta protegida",
+        "Comunicar gestao"
+      ]
+    },
+    "iminente": {
+      "severity": "iminente",
+      "primaryService": {
+        "id": "policia-militar",
+        "name": "Policia Militar - 190"
+      },
+      "secondaryService": {
+        "id": "conselho-tutelar",
+        "name": "Conselho Tutelar"
+      },
+      "schoolActions": [
+        "Acionar 190 imediatamente",
+        "Garantir protecao fisica"
+      ]
+    }
+  }
+}

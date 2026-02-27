@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "id": "flow_lgbtfobia",
+    "title": "Discriminacao ou Violencia LGBTQIA+",
+    "type": "standard",
+    "categoryId": "convivencia_conflitos",
+    "subcategoryId": "lgbtfobia",
+    "keywords": [
+      "lgbtfobia",
+      "discriminacao lgbtqia+",
+      "homofobia",
+      "transfobia"
+    ]
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ha ameaca, perseguicao ou risco de agressao?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "alto"
+        },
+        {
+          "label": "Nao",
+          "next": "q2"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "O episodio e recorrente (apelidos, exclusao, humilhacao repetida)?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "moderado"
+        },
+        {
+          "label": "Nao",
+          "level": "baixo"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "baixo": {
+      "severity": "baixo",
+      "primaryService": {
+        "id": "gestao-coordenacao",
+        "name": "Coordenacao Pedagogica"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Intervencao pedagogica imediata",
+        "Acolhimento e validacao do estudante",
+        "Acordo de convivencia e monitoramento"
+      ],
+      "uiFlags": {
+        "confidential": false,
+        "showGuardrail": true
+      }
+    },
+    "moderado": {
+      "severity": "moderado",
+      "notifyManagement": true,
+      "primaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "secondaryService": {
+        "id": "caps-ij",
+        "name": "CAPS Infantojuvenil II"
+      },
+      "schoolActions": [
+        "Acolhimento com escuta qualificada",
+        "Plano de protecao e acompanhamento",
+        "Contato com responsaveis quando apropriado e seguro"
+      ],
+      "uiFlags": {
+        "confidential": true,
+        "showGuardrail": true
+      }
+    },
+    "alto": {
+      "severity": "alto",
+      "notifyManagement": true,
+      "primaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "secondaryService": {
+        "id": "creas-ermelino",
+        "name": "CREAS Ermelino Matarazzo"
+      },
+      "schoolActions": [
+        "Cessar situacao imediatamente e proteger o estudante",
+        "Acionar gestao com confidencialidade",
+        "Encaminhar para apoio especializado quando necessario"
+      ],
+      "uiFlags": {
+        "confidential": true,
+        "showGuardrail": true
+      }
+    }
+  }
+}

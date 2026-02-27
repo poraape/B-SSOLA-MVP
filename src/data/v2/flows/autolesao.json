@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "id": "flow_autolesao",
+    "title": "Autolesao",
+    "type": "standard",
+    "categoryId": "saude_emocional",
+    "subcategoryId": "autolesao",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Ha risco imediato de agravamento?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        },
+        {
+          "label": "Nao",
+          "level": "alto"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "alto": {
+      "severity": "alto",
+      "primaryService": {
+        "id": "caps-ij",
+        "name": "CAPS Infantojuvenil II Ermelino Matarazzo"
+      },
+      "secondaryService": {
+        "id": "gestao-direcao",
+        "name": "Direcao Escolar"
+      },
+      "schoolActions": [
+        "Nao deixar estudante sozinho",
+        "Escuta ativa qualificada"
+      ]
+    },
+    "iminente": {
+      "severity": "iminente",
+      "primaryService": {
+        "id": "samu",
+        "name": "SAMU - 192"
+      },
+      "secondaryService": {
+        "id": "caps-ij",
+        "name": "CAPS Infantojuvenil"
+      },
+      "schoolActions": [
+        "Acionar emergencia",
+        "Garantir supervisao constante"
+      ]
+    }
+  }
+}
