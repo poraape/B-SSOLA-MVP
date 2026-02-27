@@ -12,10 +12,10 @@
       "location": {
         "name": "E.E. Ermelino Matarazzo",
         "address": "Rua Abel Tavares, s/n, Jardim Belém, São Paulo/SP, 03810-110",
-        "lat": null,
-        "lng": null
+        "lat": -23.4989,
+        "lng": -46.4854
       },
-      "needsGeoReview": true,
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -36,10 +36,10 @@
       "location": {
         "name": "E.E. Ermelino Matarazzo",
         "address": "Rua Abel Tavares, s/n, Jardim Belém, São Paulo/SP, 03810-110",
-        "lat": null,
-        "lng": null
+        "lat": -23.4989,
+        "lng": -46.4854
       },
-      "needsGeoReview": true,
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -60,10 +60,10 @@
       "location": {
         "name": "E.E. Ermelino Matarazzo",
         "address": "Rua Abel Tavares, s/n, Jardim Belém, São Paulo/SP, 03810-110",
-        "lat": null,
-        "lng": null
+        "lat": -23.4989,
+        "lng": -46.4854
       },
-      "needsGeoReview": true,
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -86,7 +86,7 @@
       },
       "location": {
         "address": "Rua Antônio de Freitas Toledo, 185, Ermelino Matarazzo, São Paulo/SP, 03809-060",
-        "lat": -23.50043,
+        "lat": -23.5004,
         "lng": -46.4874
       },
       "needsGeoReview": false,
@@ -345,10 +345,10 @@
       },
       "location": {
         "address": "Rua Ruy Pirozzelli, 250, Jardim Belém, São Paulo/SP, 03811-020",
-        "lat": null,
-        "lng": null
+        "lat": -23.4993,
+        "lng": -46.4861
       },
-      "needsGeoReview": true,
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
