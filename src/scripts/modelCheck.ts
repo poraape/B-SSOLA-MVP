@@ -36,6 +36,17 @@ try {
   assert(new Set(subcategories.map(item => `${item.categoryId}:${item.subcategoryId}`)).size === 39, 'Subcategorias duplicadas detectadas.');
 
   assert(Array.isArray(registry.flows), 'Registry inválido: flows deve ser array.');
+
+  const draftIds = Array.isArray((registry as { draftFlowSpecs?: Array<{ meta?: { id?: string } }> }).draftFlowSpecs)
+    ? ((registry as { draftFlowSpecs?: Array<{ meta?: { id?: string } }> }).draftFlowSpecs || [])
+        .map(spec => spec.meta?.id)
+        .filter((id): id is string => Boolean(id))
+    : [];
+  const draftCollisions = draftIds.filter(id => registry.flows.some(flow => flow.id === id));
+  if (draftCollisions.length > 0) {
+    console.warn(`[model:check] WARNING draftFlowSpecs colidem com IDs oficiais e serão ignorados: ${draftCollisions.join(', ')}`);
+  }
+
   assert(registry.flows.length === 39, `Esperado 39 flows no registry, recebido ${registry.flows.length}.`);
   assert(new Set(registry.flows.map(flow => flow.id)).size === 39, 'Flow IDs duplicados no registry.');
 
