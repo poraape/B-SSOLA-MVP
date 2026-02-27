@@ -1,29 +1,29 @@
 import type { FlowSpec } from './flowSpec';
 
-export const flow_uso_substancias: FlowSpec = {
+export const flow_isolamento: FlowSpec = {
   "meta": {
-    "id": "flow_uso_substancias",
+    "id": "flow_isolamento",
     "categoryId": "saude_emocional",
-    "subcategoryId": "uso_substancias",
-    "title": "Uso ou Suspeita de Uso de Alcool e Drogas",
-    "description": "Orientacoes praticas para a equipe escolar sobre Uso ou Suspeita de Alcool/Drogas.",
+    "subcategoryId": "isolamento_social",
+    "title": "Isolamento Social Persistente",
+    "description": "Orientacoes praticas para a equipe escolar sobre Isolamento Social Persistente.",
     "severity": "HIGH",
     "keywords": [],
-    "status": "EXISTING"
+    "status": "TO_CREATE"
   },
   "steps": [
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Uso ou Suspeita de Alcool/Drogas. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situacao identificada: Isolamento Social Persistente. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
       "riskSignals": [
-        "sofrimento_intenso"
+        "risco_psicossocial"
       ]
     },
     {
       "id": "q1",
       "type": "question",
-      "question": "O estudante esta sob efeito neste momento?",
+      "question": "Ha sinais de agravamento que exigem prioridade imediata?",
       "actions": [
         {
           "label": "Sim",
@@ -35,8 +35,8 @@ export const flow_uso_substancias: FlowSpec = {
         }
       ],
       "riskSignals": [
-        "sofrimento_intenso",
-        "isolamento"
+        "risco_psicossocial",
+        "sofrimento_intenso"
       ]
     }
   ],
@@ -46,8 +46,7 @@ export const flow_uso_substancias: FlowSpec = {
       "label": "Acompanhamento Institucional",
       "description": "Situacao que exige acompanhamento institucional estruturado.",
       "actions": [
-        "Escuta sem julgamento",
-        "Orientar responsavel"
+        "Registrar observacoes e manter acompanhamento com a equipe escolar"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -60,8 +59,7 @@ export const flow_uso_substancias: FlowSpec = {
       "label": "Protecao e Encaminhamento Prioritario",
       "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
       "actions": [
-        "Avaliacao medica imediata",
-        "Garantir seguranca"
+        "Acionar gestao para encaminhamento prioritario e monitoramento imediato"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",
@@ -71,27 +69,13 @@ export const flow_uso_substancias: FlowSpec = {
     }
   ],
   "risk": {
-    "modelVersion": "risk-heuristic-v1",
+    "modelVersion": "2.0",
     "baselineSeverity": "HIGH",
     "escalationRules": [
       {
-        "id": "rule_fala_autolesiva",
+        "id": "rule_signal_priority",
         "ifAny": [
-          "fala_autolesiva"
-        ],
-        "then": {
-          "riskLevel": "CRITICAL",
-          "flags": [
-            "notify_management",
-            "do_not_leave_alone"
-          ]
-        },
-        "rationale": "Fala autolesiva exige protecao imediata e supervisao constante."
-      },
-      {
-        "id": "rule_sofrimento_intenso",
-        "ifAny": [
-          "sofrimento_intenso"
+          "risco_psicossocial"
         ],
         "then": {
           "riskLevel": "HIGH",
@@ -99,17 +83,7 @@ export const flow_uso_substancias: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Sofrimento intenso demanda resposta institucional prioritaria."
-      },
-      {
-        "id": "rule_default_baseline",
-        "then": {
-          "riskLevel": "HIGH",
-          "flags": [
-            "notify_management"
-          ]
-        },
-        "rationale": "Aplica severidade base definida no fluxo."
+        "rationale": "Sinal prioritario exige tratamento no nivel de baseline."
       },
       {
         "id": "rule_default",
@@ -126,19 +100,19 @@ export const flow_uso_substancias: FlowSpec = {
     "protectiveFactors": [],
     "riskSignals": [
       {
+        "id": "risco_psicossocial",
+        "label": "risco psicossocial",
+        "weight": 3
+      },
+      {
         "id": "sofrimento_intenso",
-        "label": "Sofrimento intenso",
+        "label": "sofrimento intenso",
         "weight": 2
       },
       {
         "id": "isolamento",
-        "label": "Isolamento",
-        "weight": 1
-      },
-      {
-        "id": "fala_autolesiva",
-        "label": "Fala autolesiva",
-        "weight": 3
+        "label": "isolamento",
+        "weight": 2
       }
     ],
     "recommendedActionsByRisk": {

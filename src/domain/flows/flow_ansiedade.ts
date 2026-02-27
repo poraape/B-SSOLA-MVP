@@ -15,7 +15,10 @@ export const flow_ansiedade: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Crise de Ansiedade ou Panico. Fazer acolhimento, avisar a gestao e seguir os proximos passos."
+      "content": "Situacao identificada: Crise de Ansiedade ou Panico. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "riskSignals": [
+        "sinais_ansiedade"
+      ]
     },
     {
       "id": "q1",
@@ -30,6 +33,10 @@ export const flow_ansiedade: FlowSpec = {
           "label": "Nao",
           "next": "outcome_baixo"
         }
+      ],
+      "riskSignals": [
+        "crise_aguda",
+        "desregulacao_importante"
       ]
     },
     {
@@ -45,6 +52,10 @@ export const flow_ansiedade: FlowSpec = {
           "label": "Nao",
           "next": "outcome_moderado"
         }
+      ],
+      "riskSignals": [
+        "risco_fisico_agudo",
+        "desmaio_ou_queda"
       ]
     }
   ],
@@ -52,12 +63,14 @@ export const flow_ansiedade: FlowSpec = {
     {
       "id": "outcome_baixo",
       "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedag\u00f3gico.",
+      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Escuta ativa",
         "Orientar estrategias de regulacao emocional"
       ],
-      "timeline": "Dias"
+      "timeline": "Dias",
+      "riskLevel": "MODERATE",
+      "flags": []
     },
     {
       "id": "outcome_moderado",
@@ -67,7 +80,11 @@ export const flow_ansiedade: FlowSpec = {
         "Escuta acolhedora e sem julgamento",
         "Contato com responsavel"
       ],
-      "timeline": "Horas"
+      "timeline": "Horas",
+      "riskLevel": "HIGH",
+      "flags": [
+        "acompanhamento_prioritario"
+      ]
     },
     {
       "id": "outcome_alto",
@@ -77,7 +94,103 @@ export const flow_ansiedade: FlowSpec = {
         "Monitorar sinais vitais",
         "Nao deixar estudante sozinho"
       ],
-      "timeline": "Imediato"
+      "timeline": "Imediato",
+      "riskLevel": "CRITICAL",
+      "flags": [
+        "protecao_imediata"
+      ]
     }
-  ]
+  ],
+  "risk": {
+    "modelVersion": "risk-heuristic-v1",
+    "baselineSeverity": "MODERATE",
+    "escalationRules": [
+      {
+        "id": "rule_moderate",
+        "ifAny": [
+          "sinais_ansiedade"
+        ],
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Sinais de ansiedade sem agravamento imediato pedem acolhimento e monitoramento."
+      },
+      {
+        "id": "rule_high",
+        "ifAny": [
+          "crise_aguda",
+          "desregulacao_importante"
+        ],
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "acompanhamento_prioritario"
+          ]
+        },
+        "rationale": "Crise aguda exige acompanhamento institucional prioritario."
+      },
+      {
+        "id": "rule_critical",
+        "ifAny": [
+          "risco_fisico_agudo",
+          "desmaio_ou_queda"
+        ],
+        "then": {
+          "riskLevel": "CRITICAL",
+          "flags": [
+            "protecao_imediata"
+          ]
+        },
+        "rationale": "Risco fisico associado requer acao imediata de protecao."
+      },
+      {
+        "id": "rule_default",
+        "toRiskLevel": "MODERATE",
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+      }
+    ],
+    "protectiveFactors": [],
+    "riskSignals": [
+      {
+        "id": "sinais_ansiedade",
+        "label": "Sinais de ansiedade intensa",
+        "weight": 1
+      },
+      {
+        "id": "crise_aguda",
+        "label": "Crise emocional aguda",
+        "weight": 2
+      },
+      {
+        "id": "desregulacao_importante",
+        "label": "Desregulacao emocional importante",
+        "weight": 2
+      },
+      {
+        "id": "risco_fisico_agudo",
+        "label": "Risco fisico agudo associado",
+        "weight": 3
+      },
+      {
+        "id": "desmaio_ou_queda",
+        "label": "Desmaio ou queda",
+        "weight": 3
+      }
+    ],
+    "recommendedActionsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    },
+    "recommendedServiceTagsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    }
+  }
 };

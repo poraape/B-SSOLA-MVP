@@ -1,4 +1,4 @@
-export type { FlowSpec } from "./flowSpec";
+export type { FlowSpec, FlowSpecV2 } from "./flowSpec";
 
 export { flow_abandono } from "./flow_abandono";
 export { flow_agressao_fisica } from "./flow_agressao_fisica";
