@@ -17,6 +17,7 @@ interface RawCategory {
   riskGroup?: unknown;
   icon?: unknown;
   color?: unknown;
+  weight?: unknown;
   description?: unknown;
   isEmergencyCategory?: unknown;
   subcategories?: unknown;
@@ -45,6 +46,16 @@ const ALLOWED_RISK_GROUPS = new Set<RiskGroup>([
   "emergency",
 ]);
 
+
+const OFFICIAL_CATEGORY_IDS = [
+  "emergencias_seguranca",
+  "saude_bem_estar",
+  "saude_emocional",
+  "convivencia_conflitos",
+  "protecao_direitos",
+  "apoio_social_familiar",
+  "inclusao_acessibilidade",
+] as const;
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null;
 }
@@ -87,11 +98,9 @@ function parseCategories(raw: unknown): Category[] {
       throw new Error(`Categoria "${id}" invalida: riskGroup "${riskGroup}" nao suportado.`);
     }
 
-    if (!Array.isArray(cat.subcategories)) {
-      throw new Error(`Categoria "${id}" invalida: "subcategories" deve ser array.`);
-    }
+    const rawSubcategories = Array.isArray(cat.subcategories) ? cat.subcategories : [];
 
-    const subcategories = cat.subcategories.map((sub, subIndex) => {
+    const subcategories = rawSubcategories.map((sub, subIndex) => {
       const subRecord = ensureRecord(
         sub,
         `Categoria "${id}" invalida: subcategory[${subIndex}] deve ser objeto.`
@@ -115,9 +124,57 @@ function parseCategories(raw: unknown): Category[] {
       icon,
       riskGroup,
       color: isString(cat.color) ? cat.color : undefined,
+      weight: typeof cat.weight === "number" ? cat.weight : undefined,
       description: isString(cat.description) ? cat.description : undefined,
       isEmergencyCategory: Boolean(cat.isEmergencyCategory),
       subcategories,
+    };
+  });
+}
+
+function buildCategoriesFromRegistry(
+  parsedCategories: Category[],
+  registryFlows: SpecRegistryFlow[]
+): Category[] {
+  const byId = new Map(parsedCategories.map(category => [category.id, category]));
+
+  const categoryIdsInRegistry = Array.from(new Set(registryFlows.map(flow => flow.categoryId)));
+
+  if (categoryIdsInRegistry.length !== OFFICIAL_CATEGORY_IDS.length) {
+    throw new Error(
+      `Categorias invalidas: esperado ${OFFICIAL_CATEGORY_IDS.length}, recebido ${categoryIdsInRegistry.length}.`
+    );
+  }
+
+  OFFICIAL_CATEGORY_IDS.forEach((id, index) => {
+    if (categoryIdsInRegistry[index] !== id) {
+      throw new Error(`Categorias invalidas: ordem/id divergente no registry para "${id}".`);
+    }
+  });
+
+  return OFFICIAL_CATEGORY_IDS.map((categoryId, orderIndex) => {
+    const baseCategory = byId.get(categoryId);
+    if (!baseCategory) {
+      throw new Error(`Categoria oficial ausente em src/data/v2/categories.json: "${categoryId}".`);
+    }
+
+    const knownSubLabelById = new Map(baseCategory.subcategories.map(sub => [sub.id, sub.label]));
+    const usedSubcategories = registryFlows
+      .filter(flow => flow.categoryId === categoryId)
+      .map(flow => flow.subcategoryId)
+      .filter((subId, index, arr) => arr.indexOf(subId) === index)
+      .map(subId => ({
+        id: subId,
+        label: knownSubLabelById.get(subId) || subId,
+      }));
+
+    return {
+      ...baseCategory,
+      weight:
+        typeof baseCategory.weight === "number"
+          ? baseCategory.weight
+          : (baseCategory.isEmergencyCategory ? 100 : OFFICIAL_CATEGORY_IDS.length - orderIndex),
+      subcategories: usedSubcategories,
     };
   });
 }
@@ -302,12 +359,6 @@ function mergeAndValidateSpecs(): FlowSpecV2[] {
   const drafts = Array.isArray(registry.draftFlowSpecs) ? registry.draftFlowSpecs : [];
   const merged = [...generated, ...drafts];
 
-  if (merged.length !== 39) {
-    throw new Error(
-      `Quantidade invalida de specs: esperado 39, recebido ${merged.length}.`
-    );
-  }
-
   const byId = new Map<string, FlowSpecV2>();
   merged.forEach((spec, index) => {
     validateFlowSpec(spec, index);
@@ -317,6 +368,11 @@ function mergeAndValidateSpecs(): FlowSpecV2[] {
     }
     byId.set(spec.meta.id, spec);
   });
+
+
+  if (registry.flows.length !== 39) {
+    throw new Error(`Registry invalido: esperado 39 flows oficiais, recebido ${registry.flows.length}.`);
+  }
 
   for (const row of registry.flows) {
     const spec = byId.get(row.id);
@@ -347,10 +403,13 @@ function mergeAndValidateSpecs(): FlowSpecV2[] {
 export function composeModelV2(): AppModel {
   validateExtensionsShape();
 
-  const categories = parseCategories(categoriesData);
-  const categorySubIndex = buildCategorySubIndex(categories);
-
+  const parsedCategories = parseCategories(categoriesData);
   const specs = mergeAndValidateSpecs();
+  const categories = buildCategoriesFromRegistry(
+    parsedCategories,
+    (flowSpecRegistry as SpecRegistry).flows
+  );
+  const categorySubIndex = buildCategorySubIndex(categories);
   const flows = specs.map(spec => {
     const runtimeV2 = buildRuntimeV2(spec);
     return toLegacyFlow(runtimeV2);

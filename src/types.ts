@@ -72,6 +72,7 @@ export interface Category {
   description?: string;
   icon: string;
   color?: string;
+  weight?: number;
   subcategories: Array<{ id: string; label: string }>;
   isEmergencyCategory?: boolean;
 }

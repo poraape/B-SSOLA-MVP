@@ -1,6 +1,7 @@
-import React, { useMemo, useEffect } from 'react';
+import React from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { getCategories, getFlowsByCategory } from '../../domain/flows/selectors';
+import { getCategories } from '@/domain/model';
+import { getFlowsByCategory } from '../../domain/flows/selectors';
 import { ArrowLeft, ChevronRight, Shield, Brain, Home, BookOpen, Heart, Scale, AlertTriangle, Puzzle, Info } from 'lucide-react';
 import { Card } from '../../components/ui/Card';
 
@@ -41,53 +42,12 @@ const severityWeight: Record<'CRITICAL' | 'HIGH' | 'MODERATE', number> = {
   MODERATE: 1,
 };
 
-
-const normalizeCategoryToken = (value: string): string =>
-  value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '_')
-    .replace(/^_+|_+$/g, '');
-
 export const CategoryPage: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
   const navigate = useNavigate();
   const categories = getCategories();
   const routeCategoryId = decodeURIComponent(categoryId || '').trim();
-
-  const category = useMemo(() => {
-    if (!routeCategoryId) {
-      return undefined;
-    }
-
-    const directMatch = categories.find((cat) => cat.id === routeCategoryId);
-    if (directMatch) {
-      return directMatch;
-    }
-
-    const underscoreMatch = categories.find((cat) => cat.id === routeCategoryId.replace(/-/g, '_'));
-    if (underscoreMatch) {
-      return underscoreMatch;
-    }
-
-    const normalizedRouteId = normalizeCategoryToken(routeCategoryId);
-    return categories.find((cat) => {
-      const normalizedId = normalizeCategoryToken(cat.id);
-      const normalizedLabel = normalizeCategoryToken(cat.label);
-      return normalizedId === normalizedRouteId || normalizedLabel === normalizedRouteId;
-    });
-  }, [categories, routeCategoryId]);
-
-  useEffect(() => {
-    if (!import.meta.env.DEV) {
-      return;
-    }
-
-    console.info('[CategoryPage] categoryId param:', routeCategoryId);
-    console.info('[CategoryPage] model category ids:', categories.map((cat) => cat.id));
-    console.info('[CategoryPage] resolved category id:', category?.id ?? null);
-  }, [category?.id, categories, routeCategoryId]);
+  const category = categories.find((cat) => cat.id === routeCategoryId);
 
   if (!category) {
     return <div className="text-center py-20">Categoria não encontrada.</div>;
