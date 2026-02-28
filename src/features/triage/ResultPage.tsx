@@ -4,16 +4,28 @@ import { getFlowById, getCategoryById } from '../../domain/flows/selectors';
 import { ResultPanel } from './components/ResultPanel';
 import { SummaryActions } from './components/SummaryActions';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
-import { TriageResult } from '../../types';
+import { TriageResult, FlowPriority } from '../../types';
 import { runDecision } from '../../application/decisionOrchestrator';
 import { logDecisionEvent } from '../../application/loggerService';
+import { PremiumResult } from '../../domain/flows/premiumEngine';
+import { InstitutionalPriority } from '../../domain/metrics/types';
+
+interface ResultLocationState {
+  result?: TriageResult;
+}
+
+const isInstitutionalPriority = (value: FlowPriority | undefined): value is InstitutionalPriority =>
+  value === 'low' || value === 'moderate' || value === 'high' || value === 'critical';
+
+const isPremiumResult = (input: ReturnType<typeof runDecision>): input is PremiumResult =>
+  Boolean(input && 'schoolActions' in input);
 
 export const ResultPage: React.FC = () => {
   const { flowId } = useParams<{ flowId: string }>();
   const location = useLocation();
   const flow = getFlowById(flowId || '');
   const hasLoggedRef = useRef(false);
-  const result = location.state?.result as TriageResult;
+  const result = (location.state as ResultLocationState | null)?.result;
 
   if (!flow) {
     return <Navigate to="/" replace />;
@@ -25,12 +37,13 @@ export const ResultPage: React.FC = () => {
   }
 
   const category = getCategoryById(flow.meta.categoryId);
-  const premiumResult = runDecision({
+  const decisionResult = runDecision({
     mode: 'result',
     result,
     flow,
     category
-  }) as any;
+  });
+  const premiumResult = isPremiumResult(decisionResult) ? decisionResult : null;
 
   useEffect(() => {
     hasLoggedRef.current = false;
@@ -41,11 +54,11 @@ export const ResultPage: React.FC = () => {
 
     logDecisionEvent({
       category: flow.meta.categoryId,
-      level: (premiumResult as any).level,
+      level: premiumResult.level,
       type: flow.meta.type,
       emergency: flow.meta.type === 'medical_emergency' || flow.meta.type === 'security_emergency',
       flowId: flow.meta.id,
-      priority: (premiumResult as any).priority
+      priority: isInstitutionalPriority(premiumResult.priority) ? premiumResult.priority : undefined
     });
     hasLoggedRef.current = true;
   }, [flow.meta.id, premiumResult]);

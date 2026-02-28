@@ -16,7 +16,11 @@ export const emergencyFlow: Flow = {
 };
 
 export const emergencyResult: PremiumResult = {
+  severity: 'baixo',
   priority: 'low',
+  primaryService: null,
+  secondaryService: null,
+  schoolActions: [],
   notifyManagement: false,
   institutionalScript: []
-} as PremiumResult;
+};

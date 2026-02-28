@@ -45,7 +45,7 @@
       "id": "flow_emergencia_medica",
       "categoryId": "emergencias_seguranca",
       "subcategoryId": "emergencia_medica",
-      "status": "TO_CREATE",
+      "status": "IMPLEMENTED",
       "severity": "CRITICAL"
     },
     {
@@ -87,7 +87,7 @@
       "id": "flow_ameaca_externa",
       "categoryId": "emergencias_seguranca",
       "subcategoryId": "ameaca_externa",
-      "status": "TO_CREATE",
+      "status": "IMPLEMENTED",
       "severity": "HIGH"
     },
     {
@@ -108,14 +108,14 @@
       "id": "flow_crise_respiratoria",
       "categoryId": "saude_bem_estar",
       "subcategoryId": "crise_respiratoria",
-      "status": "TO_CREATE",
+      "status": "IMPLEMENTED",
       "severity": "HIGH"
     },
     {
       "id": "flow_desmaio",
       "categoryId": "saude_bem_estar",
       "subcategoryId": "desmaio_tontura",
-      "status": "TO_CREATE",
+      "status": "IMPLEMENTED",
       "severity": "HIGH"
     },
     {
@@ -129,7 +129,7 @@
       "id": "flow_intoxicacao",
       "categoryId": "saude_bem_estar",
       "subcategoryId": "intoxicacao",
-      "status": "TO_CREATE",
+      "status": "IMPLEMENTED",
       "severity": "HIGH"
     },
     {
@@ -164,7 +164,7 @@
       "id": "flow_isolamento",
       "categoryId": "saude_emocional",
       "subcategoryId": "isolamento_social",
-      "status": "TO_CREATE",
+      "status": "IMPLEMENTED",
       "severity": "HIGH"
     },
     {
@@ -331,7 +331,7 @@
           "infarto",
           "derrame"
         ],
-        "status": "TO_CREATE"
+        "status": "IMPLEMENTED"
       },
       "steps": [
         {
@@ -396,7 +396,7 @@
           "risco externo",
           "lockdown"
         ],
-        "status": "TO_CREATE"
+        "status": "IMPLEMENTED"
       },
       "steps": [
         {
@@ -456,7 +456,7 @@
           "falta de ar",
           "chiado"
         ],
-        "status": "TO_CREATE"
+        "status": "IMPLEMENTED"
       },
       "steps": [
         {
@@ -512,7 +512,7 @@
           "fraqueza",
           "sincope"
         ],
-        "status": "TO_CREATE"
+        "status": "IMPLEMENTED"
       },
       "steps": [
         {
@@ -567,7 +567,7 @@
           "veneno",
           "ingestao"
         ],
-        "status": "TO_CREATE"
+        "status": "IMPLEMENTED"
       },
       "steps": [
         {
@@ -637,7 +637,7 @@
           "reclusao",
           "sozinho"
         ],
-        "status": "TO_CREATE"
+        "status": "IMPLEMENTED"
       },
       "steps": [
         {

@@ -11,25 +11,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '22'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
-      - name: Typecheck
-        run: npx tsc --noEmit
+      - name: npm ci
+        run: npm ci
 
-      - name: Model validation
+      - name: npm run model:check
         run: npm run model:check
 
-      - name: Run tests
-        run: npm run test:run
+      - name: npm run typecheck
+        run: npm run typecheck
 
-      - name: Build
+      - name: npm run build
         run: npm run build
+
+      - name: npm run test:coverage
+        run: npm run test:coverage
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: npx playwright test
+        run: npx playwright test

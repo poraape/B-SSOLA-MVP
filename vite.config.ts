@@ -28,6 +28,7 @@ export default defineConfig({
     },
   },
   build: {
+    chunkSizeWarningLimit: 500,
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -40,15 +41,22 @@ export default defineConfig({
               pkg === "scheduler" ||
               pkg === "history"
             ) {
-              return "vendor-react";
+              return "vendor";
             }
             if (pkg === "leaflet" || pkg === "react-leaflet" || pkg === "@react-leaflet/core") {
-              return "vendor-map";
+              return "leaflet";
             }
             return "vendor-rest";
           }
 
-          // Domain/model split to keep entry chunk lean.
+          // Data/model split to keep entry chunk lean.
+          if (
+            id.includes("/src/data/model.v2") ||
+            id.includes("/src/data/flows.v2.json") ||
+            id.includes("/src/data/v2/")
+          ) {
+            return "model-data";
+          }
           if (id.includes("/src/registry/flowRegistry.ts")) return "registry-chunk";
           if (id.includes("/src/domain/flows/flow_")) return "flows-chunk";
           if (

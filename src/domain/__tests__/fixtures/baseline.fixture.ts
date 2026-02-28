@@ -16,7 +16,11 @@ export const baselineFlow: Flow = {
 };
 
 export const baselineResult: PremiumResult = {
+  severity: 'baixo',
   priority: 'low',
+  primaryService: null,
+  secondaryService: null,
+  schoolActions: [],
   notifyManagement: false,
   institutionalScript: []
-} as PremiumResult;
+};

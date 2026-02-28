@@ -8,6 +8,7 @@ import { useSearch } from '../../features/search/context/SearchContext';
 import { motion, AnimatePresence } from 'motion/react';
 import { CompassIcon } from '../../features/shared/assets/CompassIcon';
 import schoolLogo from '../../features/shared/assets/logoescola.png';
+import schoolLogoFallback from '../../assets/school-logo-fallback.svg';
 import { useAppMode } from '../../domain/appMode/AppModeContext';
 
 export const Header: React.FC = () => {
@@ -108,8 +109,7 @@ export const Header: React.FC = () => {
               alt="Logo Escola" 
               className="h-10 md:h-12 w-auto object-contain shrink-0"
               onError={(e) => {
-                // Fallback if local image is empty or fails
-                e.currentTarget.src = "https://images.tcdn.com.br/img/img_prod/1043126/adesivo_brasao_escola_estadual_ermelino_matarazzo_1013_1_86567f80590453580498704987049870.jpg";
+                e.currentTarget.src = schoolLogoFallback;
               }}
             />
           </div>

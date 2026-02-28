@@ -1,1 +1,34 @@
-{"version":"2.0.0","meta":{"flowLibraryVersion":"2.0","totalFlows":37,"flowsImplemented":31,"flowsToCreate":6,"date":"2026-02-26","categoriesReorganized":7},"summary":{"totalFlows":37,"byStatus":{"EXISTING":31,"TO_CREATE":6,"CONSOLIDATED":1},"byPriority":{"P0_CRITICAL":11,"P1_HIGH":6,"P2_MEDIUM":2,"OTHER":18},"creationRoadmap":{"P0Flows":"4 hours - emergencia_medica, crise_respiratoria, desmaio, intoxicacao","P1Flows":"3 hours - isolamento","P2Flows":"3 hours - ameata_externa","technicalRefactoring":"11 hours (code refactoring + testing)","TOTAL":"~25 hours"}},"description":"Complete flow library v2.0 with all 37 flows mapped to 7-category reorganized architecture. 6 flows ready for development using prioritized roadmap. See flows-detailed.v2.json for complete flow definitions with triage questions, service routing, and guidance protocols."}
+{
+  "version": "2.0.0",
+  "meta": {
+    "flowLibraryVersion": "2.0",
+    "totalFlows": 39,
+    "flowsImplemented": 39,
+    "flowsToCreate": 0,
+    "date": "2026-02-28",
+    "categoriesReorganized": 7
+  },
+  "summary": {
+    "totalFlows": 39,
+    "byStatus": {
+      "EXISTING": 32,
+      "IMPLEMENTED": 6,
+      "CONSOLIDATED": 1,
+      "STUB_NOT_IMPLEMENTED": 0
+    },
+    "byPriority": {
+      "P0_CRITICAL": 11,
+      "P1_HIGH": 6,
+      "P2_MEDIUM": 2,
+      "OTHER": 20
+    },
+    "creationRoadmap": {
+      "P0Flows": "DONE - emergencia_medica, crise_respiratoria, desmaio, intoxicacao",
+      "P1Flows": "DONE - isolamento",
+      "P2Flows": "DONE - ameaca_externa",
+      "technicalRefactoring": "11 hours (code refactoring + testing)",
+      "TOTAL": "~25 hours"
+    }
+  },
+  "description": "Flow library v2.0 frozen with 39 flows mapped to the 7-category architecture. Roadmap items from TO_CREATE are now implemented."
+}

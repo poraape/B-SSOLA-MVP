@@ -1,9 +1,13 @@
 {
   "name": "react-example",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0-rc.1",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
+    "preinstall": "node -e \"const major = Number(process.versions.node.split('.')[0]); if (major < 22) { console.error('ERROR: Node >=22 is required. Current: ' + process.version); process.exit(1); }\"",
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
     "build:registry": "node --loader ts-node/esm src/scripts/buildRegistry.ts",
@@ -14,12 +18,13 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "model:check": "tsx src/scripts/modelCheck.ts",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "model:check": "node src/scripts/modelCheck.mjs",
     "test:watch": "vitest",
     "heuristic:audit": "tsx src/scripts/compareHeuristics.ts"
   },
   "dependencies": {
-    "@google/genai": "^1.29.0",
     "@tailwindcss/vite": "^4.1.14",
     "@types/leaflet": "^1.9.21",
     "@vitejs/plugin-react": "^5.0.4",
@@ -34,6 +39,10 @@
     "vite": "^6.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/semver": "^7.7.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/node": "^22.14.0",

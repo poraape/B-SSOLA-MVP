@@ -51,7 +51,27 @@ export function getValidatedModel(): ProtocolModel {
   return cachedModel;
 }
 
-export const model: ProtocolModel = getValidatedModel();
+const lazyModelProxyHandler: ProxyHandler<ProtocolModel> = {
+  get(_target, property, receiver) {
+    return Reflect.get(getValidatedModel() as object, property, receiver);
+  },
+  set(_target, property, value) {
+    return Reflect.set(getValidatedModel() as object, property, value);
+  },
+  has(_target, property) {
+    return Reflect.has(getValidatedModel() as object, property);
+  },
+  ownKeys() {
+    return Reflect.ownKeys(getValidatedModel() as object);
+  },
+  getOwnPropertyDescriptor(_target, property) {
+    const descriptor = Object.getOwnPropertyDescriptor(getValidatedModel() as object, property);
+    if (!descriptor) return undefined;
+    return { ...descriptor, configurable: true };
+  }
+};
+
+export const model: ProtocolModel = new Proxy({} as ProtocolModel, lazyModelProxyHandler);
 
 export function loadModel(): ProtocolModel {
   return getValidatedModel();

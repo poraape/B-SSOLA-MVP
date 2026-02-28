@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { applyRiskHeuristics } from '../risk/riskRules';
-import { Flow } from '../../types';
+import { Flow, TriageResult } from '../../types';
 import { PremiumResult } from '../flows/premiumEngine';
 
 const baseFlow: Flow = {
@@ -19,16 +19,19 @@ const baseFlow: Flow = {
 
 function makeResult(
   severity: string,
-  flags: any = {},
+  flags: NonNullable<TriageResult['uiFlags']> = {},
   priority: 'low' | 'moderate' | 'high' | 'critical' = 'low'
 ): PremiumResult {
   return {
     severity,
     priority,
+    primaryService: null,
+    secondaryService: null,
+    schoolActions: [],
     notifyManagement: false,
     institutionalScript: [],
     uiFlags: flags
-  } as PremiumResult;
+  };
 }
 
 describe('Cumulative Risk Heuristics', () => {

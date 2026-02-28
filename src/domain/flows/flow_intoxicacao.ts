@@ -9,7 +9,7 @@ export const flow_intoxicacao: FlowSpec = {
     "description": "Orientacoes praticas para a equipe escolar sobre Suspeita de Intoxicacao.",
     "severity": "HIGH",
     "keywords": [],
-    "status": "TO_CREATE"
+    "status": "IMPLEMENTED"
   },
   "steps": [
     {

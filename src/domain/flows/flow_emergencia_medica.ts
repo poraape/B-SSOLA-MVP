@@ -14,7 +14,7 @@ export const flow_emergencia_medica: FlowSpec = {
       "primeiros cuidados",
       "acionamento urgente"
     ],
-    "status": "TO_CREATE"
+    "status": "IMPLEMENTED"
   },
   "risk": {
     "modelVersion": "risk-heuristic-v1",

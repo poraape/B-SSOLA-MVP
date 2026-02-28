@@ -7,14 +7,14 @@
     "region": "Ermelino Matarazzo – São Paulo/SP",
     "lastUpdated": "2026-02-26T18:12:00Z",
     "guardrailEnabled": true,
-    "architecture": {
-      "strategy": "7-category model optimized for clarity and UX",
-      "principlesCognitiveLoad": "Reduced from 10 to 7 categories",
-      "duplicationsRemoved": 3,
-      "categoriesOrphaned": 0,
-      "flowsExisting": 31,
-      "flowsToCreate": 6
-    },
+      "architecture": {
+        "strategy": "7-category model optimized for clarity and UX",
+        "principlesCognitiveLoad": "Reduced from 10 to 7 categories",
+        "duplicationsRemoved": 3,
+        "categoriesOrphaned": 0,
+        "flowsExisting": 39,
+        "flowsToCreate": 0
+      },
     "emergencyButton": {
       "label": "🔴 EMERGÊNCIA",
       "color": "red",
@@ -43,7 +43,7 @@
           "id": "emergencia_medica",
           "label": "Emergência Médica Grave",
           "flowId": "flow_emergencia_medica",
-          "status": "TO_CREATE",
+          "status": "IMPLEMENTED",
           "severity": "CRITICAL"
         },
         {
@@ -85,7 +85,7 @@
           "id": "ameaca_externa",
           "label": "Ameaça Externa à Escola",
           "flowId": "flow_ameaca_externa",
-          "status": "TO_CREATE",
+          "status": "IMPLEMENTED",
           "severity": "HIGH"
         }
       ],
@@ -118,7 +118,7 @@
           "id": "crise_respiratoria",
           "label": "Crise Respiratória ou Asmática",
           "flowId": "flow_crise_respiratoria",
-          "status": "TO_CREATE",
+          "status": "IMPLEMENTED",
           "severity": "HIGH",
           "basedOn": "flow_convulsao (estrutura similar)"
         },
@@ -126,7 +126,7 @@
           "id": "desmaio_tontura",
           "label": "Desmaio, Tontura ou Fraqueza",
           "flowId": "flow_desmaio",
-          "status": "TO_CREATE",
+          "status": "IMPLEMENTED",
           "severity": "HIGH",
           "basedOn": "flow_convulsao"
         },
@@ -141,7 +141,7 @@
           "id": "intoxicacao",
           "label": "Intoxicação ou Ingestão Suspeita",
           "flowId": "flow_intoxicacao",
-          "status": "TO_CREATE",
+          "status": "IMPLEMENTED",
           "severity": "HIGH",
           "basedOn": "flow_acidente_escolar"
         }
@@ -190,7 +190,7 @@
           "id": "isolamento_social",
           "label": "Isolamento Social Intenso",
           "flowId": "flow_isolamento",
-          "status": "TO_CREATE",
+          "status": "IMPLEMENTED",
           "severity": "HIGH",
           "basedOn": "flow_depressao (adaptado)"
         },
@@ -533,10 +533,10 @@
     }
   ],
   "flowsMap": {
-    "TO_CREATE": 6,
-    "EXISTING": 31,
+    "IMPLEMENTED": 6,
+    "EXISTING": 32,
     "CONSOLIDATED": 1,
-    "TOTAL": 37,
+    "TOTAL": 39,
     "note": "Complete flow definitions available in flows.v2.json. Use model.v2.json for category/subcategory navigation and flows.v2.json for detailed triage/routing/guidance."
   },
   "migrationSummary": {

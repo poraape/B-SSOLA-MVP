@@ -5,6 +5,7 @@ import { initFlow, FlowState } from '../../domain/flows/flowEngine';
 import { runDecision } from '../../application/decisionOrchestrator';
 import { TriageQuestion } from './components/TriageQuestion';
 import { ArrowLeft, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { telemetryService } from '../../application/telemetry/TelemetryService';
 
 export const FlowPage: React.FC = () => {
   const { flowId } = useParams<{ flowId: string }>();
@@ -16,8 +17,28 @@ export const FlowPage: React.FC = () => {
   useEffect(() => {
     if (flow) {
       setState(initFlow(flow));
+      telemetryService.track({
+        event: 'flow_selected',
+        flowId: flow.meta.id,
+        step: flow.triage.questions[0]?.id,
+      });
     }
   }, [flow]);
+
+  useEffect(() => {
+    if (!flow || !state || state.isComplete) return;
+
+    const handleBeforeUnload = () => {
+      telemetryService.track({
+        event: 'session_abandoned',
+        flowId: flow.meta.id,
+        step: state.currentQuestionId || undefined,
+      });
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [flow, state]);
 
   if (!flow || !state) {
     return <div className="text-center py-20">Fluxo não encontrado.</div>;
@@ -29,6 +50,15 @@ export const FlowPage: React.FC = () => {
 
   const handleAnswer = (optionLabel: string) => {
     if (!state.currentQuestionId) return;
+
+    telemetryService.track({
+      event: 'step_advance',
+      flowId: flow.meta.id,
+      step: state.currentQuestionId,
+      metadata: {
+        optionLabel,
+      },
+    });
     
     const newState = runDecision({
       mode: 'flow',

@@ -3,6 +3,7 @@ import { Copy, Printer, CheckCircle2 } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 import { Flow, TriageResult } from '../../../types';
 import { useAppMode } from '../../../domain/appMode/AppModeContext';
+import { telemetryService } from '../../../application/telemetry/TelemetryService';
 
 interface SummaryActionsProps {
   flow: Flow;
@@ -12,13 +13,15 @@ interface SummaryActionsProps {
 export const SummaryActions: React.FC<SummaryActionsProps> = ({ flow, result }) => {
   const { mode } = useAppMode();
   const now = new Date().toLocaleString('pt-BR');
+  const internalLevel = result.level || 'N/A';
+  const explanationPoints = result.explanationPoints;
 
   const buildTechnicalText = () => `
 RELATÓRIO TÉCNICO - BÚSSOLA (SEM DADOS PESSOAIS)
 ---
 Situação/Fluxo: ${flow.meta.title}
 Risco (exibido): ${result.severity.toUpperCase()}
-Nível (interno): ${(result as any).level || 'N/A'}
+Nível (interno): ${internalLevel}
 Data/Hora: ${now}
 
 Roteiro institucional:
@@ -31,7 +34,6 @@ Aviso: Ferramenta de apoio institucional. Não substitui avaliação técnica es
 `.trim();
 
   const buildOrientativeText = () => {
-    const pts = (result as any).explanationPoints as string[] | undefined;
     return `
 RELATÓRIO ORIENTATIVO - BÚSSOLA (FORMAÇÃO)
 ---
@@ -39,7 +41,7 @@ Situação/Fluxo: ${flow.meta.title}
 Data/Hora: ${now}
 
 Por que essa classificação:
-${pts?.length ? pts.map(p => `- ${p}`).join('\n') : '- Classificação definida pelo protocolo institucional'}
+${explanationPoints?.length ? explanationPoints.map(p => `- ${p}`).join('\n') : '- Classificação definida pelo protocolo institucional'}
 
 Boas práticas:
 - Escuta qualificada, sem julgamentos
@@ -54,11 +56,23 @@ ${result.schoolActions.map(a => `- ${a}`).join('\n')}
 
   const handleCopyTechnical = () => {
     navigator.clipboard.writeText(buildTechnicalText());
+    telemetryService.track({
+      event: 'referral_copied',
+      flowId: flow.meta.id,
+      step: 'summary_actions',
+      metadata: { variant: 'technical' },
+    });
     alert('Versão técnica copiada!');
   };
 
   const handleCopyOrientative = () => {
     navigator.clipboard.writeText(buildOrientativeText());
+    telemetryService.track({
+      event: 'referral_copied',
+      flowId: flow.meta.id,
+      step: 'summary_actions',
+      metadata: { variant: 'orientative' },
+    });
     alert('Versão orientativa copiada!');
   };
 

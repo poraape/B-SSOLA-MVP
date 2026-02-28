@@ -9,7 +9,7 @@ export const flow_isolamento: FlowSpec = {
     "description": "Orientacoes praticas para a equipe escolar sobre Isolamento Social Persistente.",
     "severity": "HIGH",
     "keywords": [],
-    "status": "TO_CREATE"
+    "status": "IMPLEMENTED"
   },
   "steps": [
     {

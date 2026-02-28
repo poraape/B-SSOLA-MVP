@@ -1,7 +1,6 @@
 import { InstitutionalMetricEvent, InstitutionalPriority } from './types';
 import { systemLogger } from './systemLogger';
-
-const STORAGE_KEY = 'bussola_metrics_v1';
+import { telemetryService } from '../../application/telemetry/TelemetryService';
 const VALID_PRIORITIES: InstitutionalPriority[] = ['low', 'moderate', 'high', 'critical'];
 
 function getSafePriority(priority?: string): InstitutionalPriority | undefined {
@@ -24,15 +23,18 @@ function sanitizeEvent(event: InstitutionalMetricEvent): InstitutionalMetricEven
 
 export function logTriageEvent(event: InstitutionalMetricEvent): void {
   try {
-    const existingRaw = localStorage.getItem(STORAGE_KEY);
-    const existing: InstitutionalMetricEvent[] = existingRaw
-      ? JSON.parse(existingRaw)
-      : [];
-
     const sanitized = sanitizeEvent(event);
-    existing.push(sanitized);
-
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    telemetryService.track({
+      event: 'result_reached',
+      flowId: sanitized.flowId,
+      step: sanitized.level,
+      priority: sanitized.priority,
+      metadata: {
+        categoryId: sanitized.categoryId,
+        flowType: sanitized.flowType,
+        level: sanitized.level || '',
+      },
+    });
 
     systemLogger.debug('Metrics event recorded', {
       flowId: sanitized.flowId,
@@ -46,5 +48,5 @@ export function logTriageEvent(event: InstitutionalMetricEvent): void {
 }
 
 export function clearMetrics(): void {
-  localStorage.removeItem(STORAGE_KEY);
+  telemetryService.clearLocalEvents();
 }

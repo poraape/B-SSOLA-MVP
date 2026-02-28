@@ -132,10 +132,15 @@ npm run model:check
 
 | Variável | Obrigatória | Uso atual |
 |---|---|---|
-| `GEMINI_API_KEY` | Não | Reservada para integrações futuras (não consumida pelo runtime atual). |
-| `APP_URL` | Não | Metadado de deploy (não bloqueia execução local). |
+| `VITE_TELEMETRY_ENDPOINT` | Não | Endpoint HTTP para envio de eventos de telemetria. Sem essa variável, o app continua funcional e mantém eventos localmente. |
 
 Observação: o app roda localmente sem `.env` para o fluxo principal.
+
+## Conformidade e Privacidade
+
+- Política técnica de dados: [docs/PRIVACY_POLICY.md](docs/PRIVACY_POLICY.md)
+- Aviso institucional: este software não deve ser usado para armazenar dados pessoais de estudantes sem adequação à LGPD pela instituição operadora.
+- Telemetria responsável: configure `VITE_TELEMETRY_ENDPOINT` apenas para endpoint institucional com controles de acesso, retenção e governança definidos.
 
 ### Arquivos de configuração relevantes
 - `src/data/v2/categories.json`

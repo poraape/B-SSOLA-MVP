@@ -100,6 +100,16 @@ export interface Flow {
   results: Record<string, TriageResult>;
 }
 
+export type FlowPriority =
+  | 'low'
+  | 'moderate'
+  | 'high'
+  | 'critical'
+  | 'P0'
+  | 'P1'
+  | 'P2'
+  | 'P3';
+
 export interface TriageQuestion {
   id: string;
   text: string;
@@ -113,12 +123,18 @@ export interface TriageQuestion {
 }
 
 export interface TriageResult {
-  level?: string; // NOVO — necessário para motor premium
+  level?: string;
   severity: string;
+  priority?: FlowPriority;
   notifyManagement?: boolean;
   primaryService: { id: string; name: string } | null;
   secondaryService: { id: string; name: string } | null;
   schoolActions: string[];
+  explanationPoints?: string[];
+  institutionalScript?: string[];
+  appliedRules?: string[];
+  riskScore?: number;
+  riskScoreFactors?: string[];
   summaryTag?: string;
   uiFlags?: {
     confidential?: boolean;
@@ -204,7 +220,7 @@ export const serviceExample: Service = {
     alternatePhone: '(11) 98888-0000',
     otherPhones: ['(11) 3000-0000', '(11) 97777-1111'],
     email: 'contato@caps.exemplo.br',
-    website: 'https://caps.exemplo.br',
+    website: 'caps.exemplo.br',
   },
   contactAvailability: {
     hasPhone: true,
@@ -240,4 +256,15 @@ export interface OrientationBlock {
   id: string;
   title: string;
   content: string[];
+}
+
+export interface TriageSession {
+  flowId: string;
+  categoryId: string;
+  startedAt: number;
+  updatedAt: number;
+  completedAt?: number;
+  status: 'in_progress' | 'completed' | 'aborted';
+  isComplete: boolean;
+  result: TriageResult | null;
 }

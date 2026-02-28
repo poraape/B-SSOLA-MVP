@@ -3,14 +3,29 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Service } from '../../../types';
+import mapTilesConfig from '../../../data/v2/map-tiles.json';
 
 // Fix for default marker icons in Leaflet with Webpack/Vite
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
+type LeafletDefaultIconPrototype = {
+  _getIconUrl?: () => string;
+};
+
+type LeafletDefaultIconStatic = {
+  prototype: LeafletDefaultIconPrototype;
+  mergeOptions: (options: {
+    iconRetinaUrl: string;
+    iconUrl: string;
+    shadowUrl: string;
+  }) => void;
+};
+
+const defaultIcon = L.Icon.Default as unknown as LeafletDefaultIconStatic;
+delete defaultIcon.prototype._getIconUrl;
+defaultIcon.mergeOptions({
   iconRetinaUrl: markerIcon2x,
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
@@ -50,8 +65,8 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
         zoomControl={false}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution={mapTilesConfig.attributionHtml}
+          url={mapTilesConfig.tileUrl}
         />
         
         {services.map(service => {

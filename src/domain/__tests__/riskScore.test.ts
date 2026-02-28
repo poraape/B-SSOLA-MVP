@@ -8,7 +8,7 @@ describe('riskScore', () => {
     const breakdown = computeRiskScore({ ...baselineResult }, baselineFlow);
 
     expect(breakdown.total).toBe(1);
-    expect(breakdown.factors.map(f => f.code)).toContain('SEVERITY_unknown');
+    expect(breakdown.factors.map(f => f.code)).toContain('SEVERITY_baixo');
   });
 
   it('adds emergency and ui flag factors', () => {
@@ -17,7 +17,7 @@ describe('riskScore', () => {
         ...emergencyResult,
         severity: 'alto',
         uiFlags: { showGuardrail: true, confidential: true, avoidRetraumatization: true }
-      } as any,
+      },
       emergencyFlow
     );
 

@@ -14,7 +14,7 @@ export const flow_crise_respiratoria: FlowSpec = {
       "falta de ar",
       "urgencia escolar"
     ],
-    "status": "TO_CREATE"
+    "status": "IMPLEMENTED"
   },
   "risk": {
     "modelVersion": "risk-heuristic-v1",

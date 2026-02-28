@@ -25,7 +25,7 @@ describe("runtime V2 adapter to legacy UI", () => {
       expect(legacy.meta.subcategory).toBe(spec.meta.subcategoryId);
       expect(Array.isArray(legacy.triage.questions)).toBe(true);
       expect(legacy.triage.maxQuestions).toBe(legacy.triage.questions.length);
-      expect(legacy.riskModel.defaultLevel).toBe(expectedLevel(spec.risk.baselineSeverity));
+      expect(legacy.riskModel.defaultLevel).toBe(expectedLevel(spec.risk?.baselineSeverity ?? 'MODERATE'));
 
       for (const q of legacy.triage.questions) {
         expect(q.text).toBeTruthy();

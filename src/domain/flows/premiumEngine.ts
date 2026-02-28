@@ -1,9 +1,9 @@
-import { TriageResult, Flow, Category, Service } from '../../types';
+import { TriageResult, Flow, Category, Service, FlowPriority } from '../../types';
 import { getServiceById } from './selectors';
 import { applyRiskHeuristics } from '../risk/riskRules';
 
 export interface PremiumResult extends TriageResult {
-  priority?: 'low' | 'moderate' | 'high' | 'critical';
+  priority?: Extract<FlowPriority, 'low' | 'moderate' | 'high' | 'critical'>;
   explanationPoints?: string[];
   institutionalScript?: string[];
   internalServicesRelevant?: Service[];

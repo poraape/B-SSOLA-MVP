@@ -52,7 +52,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
             <p className="text-lg font-bold text-blue-900 leading-snug">{primaryService.name}</p>
             <p className="text-sm text-blue-700 mt-2 font-medium">{primaryService.contact.phone}</p>
             <Link 
-              to={`/rede?type=interno&highlight=${result.primaryService.id}`}
+              to={`/rede?type=interno&highlight=${primaryService.id}`}
               className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
             >
               Ver no mapa →
@@ -68,7 +68,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
             <p className="text-lg font-bold text-slate-900 leading-snug">{secondaryService.name}</p>
             <p className="text-sm text-slate-700 mt-2 font-medium">{secondaryService.contact.phone}</p>
             <Link 
-              to={`/rede?highlight=${result.secondaryService.id}`}
+              to={`/rede?highlight=${secondaryService.id}`}
               className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
             >
               Ver no mapa →

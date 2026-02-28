@@ -3,7 +3,7 @@ import { InstitutionalPriority } from '../domain/metrics/types';
 
 export function logDecisionEvent(data: {
   category: string
-  level: string
+  level?: string
   type: string
   emergency: boolean
   flowId?: string

@@ -1,10 +1,28 @@
 import { InstitutionalMetricEvent } from './types';
+import { telemetryService } from '../../application/telemetry/TelemetryService';
+import { TelemetryEvent } from '../../application/telemetry/telemetry.types';
 
-const STORAGE_KEY = 'bussola_metrics_v1';
+function isResultEvent(event: TelemetryEvent): boolean {
+  return event.event === 'result_reached' && Boolean(event.flowId);
+}
 
 export function getAllMetrics(): InstitutionalMetricEvent[] {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  return raw ? JSON.parse(raw) : [];
+  const events = telemetryService.getLocalEvents().filter(isResultEvent);
+
+  return events.map(event => ({
+    flowId: event.flowId as string,
+    categoryId: event.metadata?.categoryId || 'unknown',
+    flowType: event.metadata?.flowType || 'unknown',
+    level: event.step || undefined,
+    priority:
+      event.priority === 'low' ||
+      event.priority === 'moderate' ||
+      event.priority === 'high' ||
+      event.priority === 'critical'
+        ? event.priority
+        : undefined,
+    timestamp: Date.parse(event.timestamp) || Date.now(),
+  }));
 }
 
 export function aggregateByPriority() {

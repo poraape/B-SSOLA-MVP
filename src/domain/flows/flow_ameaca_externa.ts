@@ -14,7 +14,7 @@ export const flow_ameaca_externa: FlowSpec = {
       "protecao coletiva",
       "seguranca"
     ],
-    "status": "TO_CREATE"
+    "status": "IMPLEMENTED"
   },
   "risk": {
     "modelVersion": "risk-heuristic-v1",

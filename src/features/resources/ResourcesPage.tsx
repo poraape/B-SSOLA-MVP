@@ -7,6 +7,12 @@ import { FAQPage } from './FAQPage';
 import { SimulatorPage } from './SimulatorPage';
 
 type ResourceTab = 'glossary' | 'faq' | 'simulator';
+type TabDefinition = {
+  id: ResourceTab;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+  description: string;
+};
 
 export const ResourcesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,10 +22,10 @@ export const ResourcesPage: React.FC = () => {
     setSearchParams({ tab }, { replace: true });
   };
 
-  const tabs = [
-    { id: 'glossary', label: 'Glossário', icon: <Book className="w-5 h-5" />, description: 'Termos técnicos e definições' },
-    { id: 'faq', label: 'FAQ', icon: <HelpCircle className="w-5 h-5" />, description: 'Perguntas frequentes' },
-    { id: 'simulator', label: 'Simulador', icon: <PlayCircle className="w-5 h-5" />, description: 'Treinamento de protocolos' },
+  const tabs: TabDefinition[] = [
+    { id: 'glossary', label: 'Glossário', icon: Book, description: 'Termos técnicos e definições' },
+    { id: 'faq', label: 'FAQ', icon: HelpCircle, description: 'Perguntas frequentes' },
+    { id: 'simulator', label: 'Simulador', icon: PlayCircle, description: 'Treinamento de protocolos' },
   ];
 
   return (
@@ -35,7 +41,9 @@ export const ResourcesPage: React.FC = () => {
 
         {/* Tab Navigation */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
-          {tabs.map((tab) => (
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as ResourceTab)}
@@ -48,16 +56,15 @@ export const ResourcesPage: React.FC = () => {
               <div className={`mb-4 w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
                 activeTab === tab.id ? 'bg-white/20' : 'bg-white dark:bg-slate-700 shadow-sm'
               }`}>
-                {React.cloneElement(tab.icon as React.ReactElement, { 
-                  className: `w-5 h-5 ${activeTab === tab.id ? 'text-white' : 'text-blue-600'}` 
-                })}
+                <Icon className={`w-5 h-5 ${activeTab === tab.id ? 'text-white' : 'text-blue-600'}`} />
               </div>
               <h3 className="text-lg font-black tracking-tight">{tab.label}</h3>
               <p className={`text-xs mt-1 font-medium ${activeTab === tab.id ? 'text-blue-100' : 'text-slate-500'}`}>
                 {tab.description}
               </p>
             </button>
-          ))}
+            );
+          })}
         </div>
       </section>
 

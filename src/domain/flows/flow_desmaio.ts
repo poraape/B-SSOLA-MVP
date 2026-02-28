@@ -9,7 +9,7 @@ export const flow_desmaio: FlowSpec = {
     "description": "Orientacoes praticas para a equipe escolar sobre Desmaio ou Tontura.",
     "severity": "HIGH",
     "keywords": [],
-    "status": "TO_CREATE"
+    "status": "IMPLEMENTED"
   },
   "steps": [
     {
