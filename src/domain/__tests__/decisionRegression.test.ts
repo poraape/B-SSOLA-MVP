@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { applyRiskHeuristics } from '../risk/riskRules';
+import type { PremiumResult } from '../flows/premiumEngine';
 import { emergencyFlow, emergencyResult } from './fixtures/emergencyMedical.fixture';
 import { baselineFlow, baselineResult } from './fixtures/baseline.fixture';
 
@@ -23,7 +24,7 @@ describe('Decision Regression Tests (P0/P1)', () => {
   });
 
   it('P0: critical priority must force notifyManagement', () => {
-    const critical = {
+    const critical: PremiumResult = {
       ...emergencyResult,
       priority: 'critical'
     };

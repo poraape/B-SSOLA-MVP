@@ -1,83 +1,83 @@
 export type RiskLevelV2 = "MODERATE" | "HIGH" | "CRITICAL";
 
 export interface FlowSpecMetaV2 {
-  id: string;
-  categoryId: string;
-  subcategoryId: string;
-  title: string;
-  description: string;
-  severity: RiskLevelV2;
-  keywords: string[];
-  status: string;
+  readonly id: string;
+  readonly categoryId: string;
+  readonly subcategoryId: string;
+  readonly title: string;
+  readonly description: string;
+  readonly severity: RiskLevelV2;
+  readonly keywords: readonly string[];
+  readonly status: string;
 }
 
 export interface RiskSignalV2 {
-  id: string;
-  label: string;
-  examples?: string[];
-  weight: 1 | 2 | 3;
+  readonly id: string;
+  readonly label: string;
+  readonly examples?: readonly string[];
+  readonly weight: 1 | 2 | 3;
 }
 
 export interface EscalationRuleV2 {
-  id: string;
-  ifAll?: string[];
-  ifAny?: string[];
-  then: {
-    riskLevel: RiskLevelV2;
-    outcome?: string;
-    flags?: string[];
+  readonly id: string;
+  readonly ifAll?: readonly string[];
+  readonly ifAny?: readonly string[];
+  readonly then: {
+    readonly riskLevel: RiskLevelV2;
+    readonly outcome?: string;
+    readonly flags?: readonly string[];
   };
-  rationale: string;
+  readonly rationale: string;
 }
 
 export interface FlowRiskModelV2 {
-  modelVersion: "risk-heuristic-v1" | "2.0";
-  baselineSeverity: RiskLevelV2;
-  escalationRules: EscalationRuleV2[];
-  protectiveFactors: string[];
-  riskSignals: RiskSignalV2[];
-  recommendedActionsByRisk: {
-    MODERATE: string[];
-    HIGH: string[];
-    CRITICAL: string[];
+  readonly modelVersion: "risk-heuristic-v1" | "2.0";
+  readonly baselineSeverity: RiskLevelV2;
+  readonly escalationRules: readonly EscalationRuleV2[];
+  readonly protectiveFactors: readonly string[];
+  readonly riskSignals: readonly RiskSignalV2[];
+  readonly recommendedActionsByRisk: {
+    readonly MODERATE: readonly string[];
+    readonly HIGH: readonly string[];
+    readonly CRITICAL: readonly string[];
   };
-  recommendedServiceTagsByRisk: {
-    MODERATE: string[];
-    HIGH: string[];
-    CRITICAL: string[];
+  readonly recommendedServiceTagsByRisk: {
+    readonly MODERATE: readonly string[];
+    readonly HIGH: readonly string[];
+    readonly CRITICAL: readonly string[];
   };
 }
 
 export interface StepActionV2 {
-  label: string;
-  next: string;
+  readonly label: string;
+  readonly next: string;
 }
 
 export interface StepV2 {
-  id: string;
-  type: "alert" | "question" | "action";
-  content?: string;
-  action?: string;
-  question?: string;
-  actions?: StepActionV2[];
-  riskSignals: string[];
+  readonly id: string;
+  readonly type: "alert" | "question" | "action";
+  readonly content?: string;
+  readonly action?: string;
+  readonly question?: string;
+  readonly actions?: readonly StepActionV2[];
+  readonly riskSignals: readonly string[];
 }
 
 export interface OutcomeV2 {
-  id: string;
-  label: string;
-  description: string;
-  actions: string[];
-  timeline: "Imediato" | "Horas" | "Dias" | "Continuo" | string;
-  riskLevel: RiskLevelV2;
-  serviceTags?: string[];
-  flags: string[];
+  readonly id: string;
+  readonly label: string;
+  readonly description: string;
+  readonly actions: readonly string[];
+  readonly timeline: "Imediato" | "Horas" | "Dias" | "Continuo" | string;
+  readonly riskLevel: RiskLevelV2;
+  readonly serviceTags?: readonly string[];
+  readonly flags: readonly string[];
 }
 
 export interface FlowSpecV2 {
-  meta: FlowSpecMetaV2;
-  risk: FlowRiskModelV2;
-  steps: StepV2[];
-  outcomes: OutcomeV2[];
-  network?: unknown;
+  readonly meta: FlowSpecMetaV2;
+  readonly risk: FlowRiskModelV2;
+  readonly steps: readonly StepV2[];
+  readonly outcomes: readonly OutcomeV2[];
+  readonly network?: unknown;
 }

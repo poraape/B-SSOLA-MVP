@@ -39,9 +39,10 @@ describe('risk invariants', () => {
     }
   ];
 
-  it.each(cases)('$name', ({ result, expectedViolationCodes }) => {
-    const violations = checkInvariants(result);
-
-    expect(violations.map(v => v.code)).toEqual(expectedViolationCodes);
-  });
+  for (const testCase of cases) {
+    it(testCase.name, () => {
+      const violations = checkInvariants(testCase.result);
+      expect(violations.map(v => v.code)).toEqual(testCase.expectedViolationCodes);
+    });
+  }
 });

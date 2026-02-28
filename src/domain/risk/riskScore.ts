@@ -1,6 +1,7 @@
 import { Flow, RiskGroup } from '../../types';
 import { PremiumResult } from '../flows/premiumEngine';
 import { model } from '../model/loadModel';
+import { systemLogger } from '../metrics/systemLogger';
 
 export interface RiskScoreBreakdown {
   total: number;
@@ -46,7 +47,10 @@ export function computeRiskScore(result: PremiumResult, flow: Flow): RiskScoreBr
   const group = category?.riskGroup;
 
   if (!group) {
-    console.warn('Category without riskGroup:', flow.meta.categoryId);
+    systemLogger.warnOnce(`missing-risk-group:${flow.meta.categoryId}`, 'Category without riskGroup', {
+      categoryId: flow.meta.categoryId,
+      flowId: flow.meta.id
+    });
   }
 
   if (group && GROUP_POINTS[group]) {

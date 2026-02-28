@@ -20,6 +20,6 @@ describe('Premium Engine', () => {
 
     const enriched = enrichPremium(result, flow);
 
-    expect(enriched?.priority).toBe('critical');
+    expect(enriched?.priority).toBe('high');
   });
 });

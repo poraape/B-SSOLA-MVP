@@ -4,6 +4,7 @@
  * DO NOT EDIT MANUALLY
  */
 
+import type { FlowSpec } from "../domain/flows/flowSpec";
 import { flow_abandono } from "../domain/flows/flow_abandono";
 import { flow_abuso_sexual } from "../domain/flows/flow_abuso_sexual";
 import { flow_acidente_escolar } from "../domain/flows/flow_acidente_escolar";
@@ -44,7 +45,7 @@ import { flow_violencia_armada } from "../domain/flows/flow_violencia_armada";
 import { flow_violencia_domestica } from "../domain/flows/flow_violencia_domestica";
 import { flow_vulnerabilidade_social } from "../domain/flows/flow_vulnerabilidade_social";
 
-export const flowRegistry = {
+export const flowRegistry: Readonly<Record<string, FlowSpec>> = Object.freeze({
   flow_abandono,
   flow_abuso_sexual,
   flow_acidente_escolar,
@@ -84,4 +85,4 @@ export const flowRegistry = {
   flow_violencia_armada,
   flow_violencia_domestica,
   flow_vulnerabilidade_social
-};
+});

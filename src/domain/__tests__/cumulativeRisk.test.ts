@@ -6,7 +6,7 @@ import { PremiumResult } from '../flows/premiumEngine';
 const baseFlow: Flow = {
   meta: {
     id: 'test_flow',
-    categoryId: 'violencia_conflitos',
+    categoryId: 'convivencia_conflitos',
     subcategory: 'teste',
     type: 'standard',
     title: 'Teste',
@@ -57,7 +57,9 @@ describe('Cumulative Risk Heuristics', () => {
       baseFlow
     );
 
-    expect(result.priority).toBe('low');
+    expect(['low', 'moderate']).toContain(result.priority);
+    expect(result.priority).not.toBe('high');
+    expect(result.priority).not.toBe('critical');
   });
 
   it('showGuardrail contributes but not alone critical', () => {

@@ -42,6 +42,19 @@ function assertSemver1(version: string): void {
   }
 }
 
+function getFlowQuestions(flow: ProtocolModel['flows'][number]): unknown[] {
+  if (Array.isArray(flow.triage?.questions)) {
+    return flow.triage.questions;
+  }
+
+  const maybeLegacy = flow as ProtocolModel['flows'][number] & { questions?: unknown[] };
+  if (Array.isArray(maybeLegacy.questions)) {
+    return maybeLegacy.questions;
+  }
+
+  return [];
+}
+
 export function validateModel(model: ProtocolModel): void {
   if (!isNonEmptyString(model.version)) {
     throw new Error('Model inválido: version ausente.');
@@ -139,7 +152,8 @@ export function validateModel(model: ProtocolModel): void {
       );
     }
 
-    if (!Array.isArray(flow.questions)) {
+    const questions = getFlowQuestions(flow);
+    if (!Array.isArray(questions)) {
       throw new Error(`Model inválido: flow ${flow.meta.id} com questions ausente.`);
     }
 

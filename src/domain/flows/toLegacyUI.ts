@@ -36,7 +36,7 @@ function buildResult(outcome: OutcomeV2) {
     severity: level,
     primaryService: null,
     secondaryService: null,
-    schoolActions: outcome.actions,
+    schoolActions: [...outcome.actions],
     summaryTag: outcome.label,
   };
 }
@@ -90,7 +90,7 @@ export function toLegacyFlow(runtime: FlowRuntimeV2): Flow {
       severity: runtime.meta.severity,
       type: typeFromRuntime(runtime),
       title: runtime.meta.title,
-      keywords: runtime.meta.keywords,
+      keywords: [...runtime.meta.keywords],
     },
     riskModel: {
       usedLevels,

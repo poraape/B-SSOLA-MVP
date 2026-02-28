@@ -13,11 +13,11 @@ function expectedLevel(riskLevel: RiskLevelV2): string {
 }
 
 describe("runtime V2 adapter to legacy UI", () => {
-  const specs: FlowSpecV2[] = [flow_abuso_sexual, flow_bullying, flow_febre];
+  const specs = [flow_abuso_sexual, flow_bullying, flow_febre];
 
   it("keeps UI-required fields and deterministic risk mapping", () => {
     for (const spec of specs) {
-      const runtime = buildRuntimeV2(spec);
+      const runtime = buildRuntimeV2(spec as unknown as FlowSpecV2);
       const legacy = toLegacyFlow(runtime);
 
       expect(legacy.meta.id).toBe(spec.meta.id);

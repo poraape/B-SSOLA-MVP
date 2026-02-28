@@ -10,11 +10,20 @@ export function normalizeModel(model: ProtocolModel): ProtocolModel {
     services: model.services.map(s => ({
       ...s,
       type: s.type || 'externo',
-      contact: s.contact || {}
+      contact: {
+        phone: s.contact?.phone ?? null,
+        otherPhones: s.contact?.otherPhones,
+        email: s.contact?.email,
+        website: s.contact?.website,
+        alternatePhone: s.contact?.alternatePhone,
+      }
     })),
     flows: model.flows.map(f => ({
       ...f,
-      questions: f.questions || [],
+      triage: {
+        ...f.triage,
+        questions: f.triage?.questions || []
+      },
       results: f.results || {}
     }))
   };

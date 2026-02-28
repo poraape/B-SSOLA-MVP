@@ -27,20 +27,20 @@ export interface FlowRuntimeV2 {
   outcomeById: Map<string, OutcomeV2>;
 }
 
-const hasAllSignals = (required: string[] | undefined, detected: Set<string>): boolean => {
+const hasAllSignals = (required: readonly string[] | undefined, detected: Set<string>): boolean => {
   if (!required || required.length === 0) return true;
   return required.every(signal => detected.has(signal));
 };
 
-const hasAnySignal = (required: string[] | undefined, detected: Set<string>): boolean => {
+const hasAnySignal = (required: readonly string[] | undefined, detected: Set<string>): boolean => {
   if (!required || required.length === 0) return true;
   return required.some(signal => detected.has(signal));
 };
 
 export function applyEscalationRules(
   baselineSeverity: RiskLevelV2,
-  detectedSignals: string[],
-  escalationRules: EscalationRuleV2[]
+  detectedSignals: readonly string[],
+  escalationRules: readonly EscalationRuleV2[]
 ): RiskLevelV2 {
   const detected = new Set(detectedSignals);
   const defaultRule = escalationRules.find(rule => rule.id === "rule_default");
@@ -62,13 +62,22 @@ export function buildRuntimeV2(spec: FlowSpecV2): FlowRuntimeV2 {
   const outcomeById = new Map<string, OutcomeV2>();
 
   const steps: RuntimeStep[] = spec.steps.map(step => {
+    if (!Array.isArray(step.riskSignals)) {
+      throw new Error(`FlowSpecV2 "${spec.meta.id}" invalido: step "${step.id}" sem riskSignals.`);
+    }
+
+    const actions = step.actions ? [...step.actions] : [];
+    if (step.type === "question" && actions.length === 0) {
+      throw new Error(`FlowSpecV2 "${spec.meta.id}" invalido: question "${step.id}" sem actions.`);
+    }
+
     const runtimeStep: RuntimeStep = {
       id: step.id,
       type: step.type,
       content: step.content,
       action: step.action,
       question: step.question,
-      actions: step.actions || [],
+      actions,
       riskSignals: [...step.riskSignals],
     };
 
@@ -89,7 +98,7 @@ export function buildRuntimeV2(spec: FlowSpecV2): FlowRuntimeV2 {
     meta: spec.meta,
     risk: spec.risk,
     steps,
-    outcomes: spec.outcomes,
+    outcomes: [...spec.outcomes],
     initialStepId: steps[0].id,
     stepById,
     outcomeById,
@@ -97,11 +106,11 @@ export function buildRuntimeV2(spec: FlowSpecV2): FlowRuntimeV2 {
 }
 
 export function buildRuntimeV2ById(flowId: string): FlowRuntimeV2 {
-  const spec = (flowRegistry as Record<string, FlowSpecV2>)[flowId];
+  const spec = flowRegistry[flowId];
   if (!spec) {
     throw new Error(`FlowSpecV2 "${flowId}" nao encontrado no flowRegistry.`);
   }
-  return buildRuntimeV2(spec);
+  return buildRuntimeV2(spec as FlowSpecV2);
 }
 
 export function getInitialStep(runtime: FlowRuntimeV2): RuntimeStep {

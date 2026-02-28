@@ -1,56 +1,24 @@
-export type FlowType = 'standard' | 'medical_emergency' | 'security_emergency';
+import type { AppModel, Category, Flow, RiskGroup, Service } from "../../types";
 
-export type RiskGroup =
-  | 'violence'
-  | 'psychosocial'
-  | 'medical'
-  | 'social'
-  | 'rights'
-  | 'structural'
-  | 'emergency';
+export type FlowType = "standard" | "medical_emergency" | "security_emergency";
 
-export interface ModelService {
-  id: string;
-  name: string;
-  type?: string;
-  category?: string;
-  contact?: {
-    phone?: string;
-    email?: string;
-  };
-}
+export type { RiskGroup };
 
-export interface ModelCategory {
-  id: string;
-  label: string; // Adjusted from 'name' to match JSON
-  riskGroup: RiskGroup;
-  isEmergencyCategory?: boolean;
-}
+export type ModelService = Service;
+export type ModelCategory = Category;
 
 export interface ModelResult {
   severity: string;
-  primaryService?: string | { id: string; name: string };
-  secondaryService?: string | { id: string; name: string };
+  primaryService?: string | { id: string; name: string } | null;
+  secondaryService?: string | { id: string; name: string } | null;
   schoolActions?: string[];
 }
 
-export interface ModelFlow {
-  meta: {
-    id: string; // Adjusted: id is inside meta in JSON
-    title: string;
-    type: FlowType;
-    categoryId: string;
-  };
-  questions: any[];
-  results: Record<string, ModelResult>;
-}
+type LegacyFlowCompat = {
+  questions?: unknown[];
+};
 
-export interface ProtocolModel {
-  version: string;
-  meta: {
-    appName: string;
-  };
-  categories: ModelCategory[];
-  services: ModelService[];
-  flows: ModelFlow[];
-}
+export type ModelFlow = Flow & LegacyFlowCompat;
+
+export type ProtocolModel = AppModel;
+

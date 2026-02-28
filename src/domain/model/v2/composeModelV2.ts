@@ -31,7 +31,7 @@ interface SpecRegistryFlow {
 
 interface SpecRegistry {
   flows: SpecRegistryFlow[];
-  draftFlowSpecs?: FlowSpecV2[];
+  draftFlowSpecs?: unknown[];
 }
 
 interface ServicesPayload {
@@ -66,6 +66,7 @@ function buildBaseModelV2(): Omit<AppModel, "categories" | "services" | "flows">
   };
 
   return {
+    version: "1.0.0",
     meta: {
       appName: "Protocolo Bússola",
       version: "1.0",
@@ -344,7 +345,7 @@ function validateFlowSpec(flow: FlowSpecV2, index: number): void {
 function extractGeneratedSpecs(): FlowSpecV2[] {
   return Object.entries(flowRegistry)
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([, spec]) => spec as FlowSpecV2);
+    .map(([, spec]) => spec as unknown as FlowSpecV2);
 }
 
 function validateFlowRelations(flows: Flow[], categorySubIndex: Map<string, Set<string>>): void {

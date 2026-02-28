@@ -4,6 +4,10 @@ import { riskRules } from './ruleset';
 import { computeRiskScore, minPriorityForScore } from './riskScore';
 
 const PRIORITY_ORDER: Array<'low' | 'moderate' | 'high' | 'critical'> = ['low', 'moderate', 'high', 'critical'];
+type RiskDiagnostics = {
+  riskScore?: number;
+  riskScoreFactors?: string[];
+};
 
 export function applyRiskHeuristics(
   result: PremiumResult,
@@ -13,7 +17,7 @@ export function applyRiskHeuristics(
     result.priority = 'low';
   }
 
-  const adjusted: PremiumResult = {
+  const adjusted: PremiumResult & RiskDiagnostics = {
     ...result,
     institutionalScript: [...(result.institutionalScript || [])]
   };
@@ -70,8 +74,8 @@ export function applyRiskHeuristics(
     ...appliedRules
   ];
 
-  (adjusted as any).riskScore = score.total;
-  (adjusted as any).riskScoreFactors = score.factors.map(f => f.code);
+  adjusted.riskScore = score.total;
+  adjusted.riskScoreFactors = score.factors.map(f => f.code);
 
-  return adjusted;
+  return adjusted as PremiumResult;
 }

@@ -2,29 +2,32 @@ import { composeModelV2 } from './v2/composeModelV2';
 import { validateModel } from './validateModel';
 import { normalizeModel } from './normalizeModel';
 import { ProtocolModel } from './schema';
+import { systemLogger } from '../metrics/systemLogger';
 
 let cachedModel: ProtocolModel | null = null;
 
-function deepFreeze(obj: any) {
+function deepFreeze<T>(obj: T): Readonly<T> {
   Object.freeze(obj);
 
-  Object.getOwnPropertyNames(obj).forEach(prop => {
+  Object.getOwnPropertyNames(obj as object).forEach(prop => {
+    const record = obj as Record<string, unknown>;
+    const value = record[prop];
     if (
-      obj[prop] !== null &&
-      (typeof obj[prop] === 'object' || typeof obj[prop] === 'function') &&
-      !Object.isFrozen(obj[prop])
+      value !== null &&
+      (typeof value === 'object' || typeof value === 'function') &&
+      !Object.isFrozen(value)
     ) {
-      deepFreeze(obj[prop]);
+      deepFreeze(value);
     }
   });
 
-  return obj;
+  return obj as Readonly<T>;
 }
 
 export function getValidatedModel(): ProtocolModel {
   if (cachedModel) return cachedModel;
 
-  const sourceModel = composeModelV2() as unknown as ProtocolModel;
+  const sourceModel = composeModelV2();
   const normalized = normalizeModel(sourceModel);
   const isProduction = process.env.NODE_ENV === 'production';
 
@@ -32,11 +35,12 @@ export function getValidatedModel(): ProtocolModel {
     validateModel(normalized);
 
     if (!isProduction) {
-      console.info('[Protocol Model] Estrutura validada com sucesso (V2).');
+      systemLogger.info('Protocol model validated (V2)', { version: normalized.version });
     }
   } catch (e) {
     if (!isProduction) {
-      console.error('[Protocol Model] Erro de validação:', e);
+      const message = e instanceof Error ? e.message : String(e);
+      systemLogger.error('Protocol model validation failed', { error: message });
     }
 
     throw e;
@@ -47,7 +51,7 @@ export function getValidatedModel(): ProtocolModel {
   return cachedModel;
 }
 
-export const model = getValidatedModel() as any;
+export const model: ProtocolModel = getValidatedModel();
 
 export function loadModel(): ProtocolModel {
   return getValidatedModel();

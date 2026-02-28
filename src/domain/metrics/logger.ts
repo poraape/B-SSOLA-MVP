@@ -1,4 +1,5 @@
 import { InstitutionalMetricEvent, InstitutionalPriority } from './types';
+import { systemLogger } from './systemLogger';
 
 const STORAGE_KEY = 'bussola_metrics_v1';
 const VALID_PRIORITIES: InstitutionalPriority[] = ['low', 'moderate', 'high', 'critical'];
@@ -33,11 +34,14 @@ export function logTriageEvent(event: InstitutionalMetricEvent): void {
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
 
-    if (process.env.NODE_ENV !== 'production') {
-      console.info('[Metrics] Evento institucional registrado:', sanitized);
-    }
+    systemLogger.debug('Metrics event recorded', {
+      flowId: sanitized.flowId,
+      categoryId: sanitized.categoryId,
+      priority: sanitized.priority,
+    });
   } catch (error) {
-    console.warn('[Metrics] Falha ao registrar evento institucional', error);
+    const message = error instanceof Error ? error.message : String(error);
+    systemLogger.error('Metrics event failed', { error: message });
   }
 }
 

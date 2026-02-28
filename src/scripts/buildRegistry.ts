@@ -28,11 +28,12 @@ const content = `
  * DO NOT EDIT MANUALLY
  */
 
+import type { FlowSpec } from "../domain/flows/flowSpec";
 ${imports.join("\n")}
 
-export const flowRegistry = {
+export const flowRegistry: Readonly<Record<string, FlowSpec>> = Object.freeze({
   ${registryEntries}
-};
+});
 `;
 
 fs.writeFileSync(outputFile, content);

@@ -1,4 +1,5 @@
 export interface AppModel {
+  version: string;
   meta: {
     appName: string;
     version: string;

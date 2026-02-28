@@ -5,7 +5,7 @@ function createValidModel(): any {
   return {
     version: '1.0.0',
     meta: { appName: 'Teste' },
-    categories: [{ id: 'cat1', label: 'Categoria 1' }],
+    categories: [{ id: 'cat1', label: 'Categoria 1', riskGroup: 'social' }],
     services: [{ id: 'svc1', name: 'Serviço 1' }],
     flows: [
       {
@@ -40,7 +40,7 @@ describe('Model Validation', () => {
     const model = { ...createValidModel(), version: '2.0.0' };
 
     expect(() => validateModel(model)).toThrow(
-      'Model inválido: version não suportada (esperado 1.x).'
+      'Modelo versão 2.0.0 incompatível com app (suporta ^1.0.0)'
     );
   });
 
