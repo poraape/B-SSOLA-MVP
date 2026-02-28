@@ -36,17 +36,23 @@ export const AtendimentoGatePage: React.FC = () => {
   const handleImmediateAnswer = (answer: 'yes' | 'no') => {
     resetUnsureState();
     const decision = evaluateMacroRisk(answer, []);
+    if (import.meta.env.DEV) {
+      console.debug('[GatewayDecision]', decision);
+    }
     routeFromDecision(decision.route);
   };
 
   const handleUnsureContinue = () => {
     const decision = evaluateMacroRisk('unsure', selectedSignals);
+    if (import.meta.env.DEV) {
+      console.debug('[GatewayDecision]', decision);
+    }
     setExplanation(decision.explanation);
     setIsNavigating(true);
 
     window.setTimeout(() => {
       routeFromDecision(decision.route);
-    }, 1000);
+    }, 600);
   };
 
   const selectedCountText = useMemo(() => {
@@ -56,6 +62,23 @@ export const AtendimentoGatePage: React.FC = () => {
 
     return `${selectedSignals.length} sinal(is) crítico(s) selecionado(s).`;
   }, [selectedSignals.length]);
+
+  const currentScore = useMemo(
+    () => evaluateMacroRisk('unsure', selectedSignals).score,
+    [selectedSignals],
+  );
+
+  const riskLabel = useMemo(() => {
+    if (currentScore >= 2) {
+      return { label: 'Elevado', className: 'text-red-600' };
+    }
+
+    if (currentScore === 1) {
+      return { label: 'Atenção', className: 'text-amber-600' };
+    }
+
+    return { label: 'Baixo', className: 'text-emerald-600' };
+  }, [currentScore]);
 
   return (
     <section className="max-w-3xl mx-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-10 space-y-6">
@@ -106,6 +129,7 @@ export const AtendimentoGatePage: React.FC = () => {
           </div>
 
           <p className="text-xs font-medium text-slate-600 dark:text-slate-300">{selectedCountText}</p>
+          <p className={`text-xs font-medium ${riskLabel.className}`}>Risco imediato: {riskLabel.label}</p>
 
           <Button onClick={handleUnsureContinue} disabled={isNavigating}>
             Continuar
