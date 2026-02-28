@@ -37,7 +37,7 @@ export const HomePage: React.FC = () => {
           {/* Action Buttons */}
           <div className="flex flex-col lg:flex-row gap-4 pt-2 md:pt-4">
             <button 
-              onClick={() => navigate('/fluxo/flow_gateway')}
+              onClick={() => navigate('/atendimento')}
               className="bg-white text-slate-900 px-6 md:px-8 py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-sm md:text-base uppercase tracking-[0.08em] hover:scale-[1.02] transition-all shadow-xl flex items-center justify-center gap-3 text-center leading-tight"
             >
               Iniciar Atendimento Guiado 🧭
