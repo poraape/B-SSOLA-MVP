@@ -4,7 +4,7 @@ import { flow_bullying } from "../flows/flow_bullying";
 import { flow_febre } from "../flows/flow_febre";
 import { buildRuntimeV2 } from "../flows/runtimeV2";
 import { toLegacyFlow } from "../flows/toLegacyUI";
-import type { FlowSpecV2, RiskLevelV2 } from "../flows/flowSpecV2";
+import type { FlowSpecV2, RiskLevelV2 } from "../contracts/flowSpecV2";
 
 function expectedLevel(riskLevel: RiskLevelV2): string {
   if (riskLevel === "CRITICAL") return "iminente";

@@ -1,5 +1,5 @@
 import type { Flow } from "../../types";
-import type { OutcomeV2, RiskLevelV2 } from "./flowSpecV2";
+import type { OutcomeV2, RiskLevelV2 } from "../contracts/flowSpecV2";
 import type { FlowRuntimeV2 } from "./runtimeV2";
 
 type LegacyFlowType = Flow["meta"]["type"];

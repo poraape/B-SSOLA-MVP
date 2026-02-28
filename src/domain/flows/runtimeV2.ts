@@ -3,7 +3,8 @@ import type {
   FlowSpecV2,
   OutcomeV2,
   RiskLevelV2,
-} from "./flowSpecV2";
+} from "../contracts/flowSpecV2";
+import { flowRegistry } from "@/registry/flowRegistry";
 
 export type RuntimeStep = {
   id: string;
@@ -93,6 +94,14 @@ export function buildRuntimeV2(spec: FlowSpecV2): FlowRuntimeV2 {
     stepById,
     outcomeById,
   };
+}
+
+export function buildRuntimeV2ById(flowId: string): FlowRuntimeV2 {
+  const spec = (flowRegistry as Record<string, FlowSpecV2>)[flowId];
+  if (!spec) {
+    throw new Error(`FlowSpecV2 "${flowId}" nao encontrado no flowRegistry.`);
+  }
+  return buildRuntimeV2(spec);
 }
 
 export function getInitialStep(runtime: FlowRuntimeV2): RuntimeStep {

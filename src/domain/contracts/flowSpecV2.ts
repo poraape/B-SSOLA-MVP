@@ -1,40 +1,41 @@
-export interface FlowSpecMeta {
+export type RiskLevelV2 = "MODERATE" | "HIGH" | "CRITICAL";
+
+export interface FlowSpecMetaV2 {
   id: string;
   categoryId: string;
   subcategoryId: string;
   title: string;
   description: string;
-  severity: "CRITICAL" | "HIGH" | "MODERATE";
+  severity: RiskLevelV2;
   keywords: string[];
   status: string;
 }
 
-export interface RiskSignal {
+export interface RiskSignalV2 {
   id: string;
   label: string;
   examples?: string[];
   weight: 1 | 2 | 3;
 }
 
-export interface EscalationRule {
+export interface EscalationRuleV2 {
   id: string;
-  toRiskLevel?: "MODERATE" | "HIGH" | "CRITICAL";
   ifAll?: string[];
   ifAny?: string[];
   then: {
-    riskLevel: "MODERATE" | "HIGH" | "CRITICAL";
+    riskLevel: RiskLevelV2;
     outcome?: string;
     flags?: string[];
   };
   rationale: string;
 }
 
-export interface FlowRiskModel {
+export interface FlowRiskModelV2 {
   modelVersion: "risk-heuristic-v1" | "2.0";
-  baselineSeverity: "MODERATE" | "HIGH" | "CRITICAL";
-  escalationRules: EscalationRule[];
+  baselineSeverity: RiskLevelV2;
+  escalationRules: EscalationRuleV2[];
   protectiveFactors: string[];
-  riskSignals: RiskSignal[];
+  riskSignals: RiskSignalV2[];
   recommendedActionsByRisk: {
     MODERATE: string[];
     HIGH: string[];
@@ -47,43 +48,36 @@ export interface FlowRiskModel {
   };
 }
 
-export interface FlowSpecStepAction {
+export interface StepActionV2 {
   label: string;
   next: string;
 }
 
-export interface FlowSpecStep {
+export interface StepV2 {
   id: string;
   type: "alert" | "question" | "action";
   content?: string;
   action?: string;
   question?: string;
-  actions?: FlowSpecStepAction[];
-  riskSignals?: string[];
+  actions?: StepActionV2[];
+  riskSignals: string[];
 }
 
-export interface FlowSpecOutcome {
+export interface OutcomeV2 {
   id: string;
   label: string;
   description: string;
   actions: string[];
   timeline: "Imediato" | "Horas" | "Dias" | "Continuo" | string;
-  riskLevel: "MODERATE" | "HIGH" | "CRITICAL";
+  riskLevel: RiskLevelV2;
   serviceTags?: string[];
-  flags?: string[];
+  flags: string[];
 }
 
-export interface FlowSpec {
-  meta: FlowSpecMeta;
-  risk?: FlowRiskModel;
-  steps: FlowSpecStep[];
-  outcomes: FlowSpecOutcome[];
+export interface FlowSpecV2 {
+  meta: FlowSpecMetaV2;
+  risk: FlowRiskModelV2;
+  steps: StepV2[];
+  outcomes: OutcomeV2[];
+  network?: unknown;
 }
-
-
-export type {
-  FlowSpecV2,
-  StepV2,
-  OutcomeV2,
-  FlowRiskModelV2,
-} from "../contracts/flowSpecV2";

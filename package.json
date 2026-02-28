@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
+    "build:registry": "node --loader ts-node/esm src/scripts/buildRegistry.ts",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
@@ -28,20 +29,21 @@
     "react-dom": "^19.0.0",
     "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.13.1",
-    "vite": "^6.2.0",
-    "semver": "^7.5.4"
+    "semver": "^7.5.4",
+    "vite": "^6.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
     "@types/node": "^22.14.0",
+    "@vitest/coverage-v8": "^1.3.0",
     "autoprefixer": "^10.4.21",
+    "jsdom": "^25.0.1",
     "tailwindcss": "^4.1.14",
+    "ts-node": "^10.9.2",
     "tsx": "^4.7.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0",
-    "vitest": "^1.3.0",
-    "@testing-library/react": "^16.1.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "jsdom": "^25.0.1",
-    "@vitest/coverage-v8": "^1.3.0"
+    "vitest": "^1.3.0"
   }
 }

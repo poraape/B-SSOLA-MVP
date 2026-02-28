@@ -3,12 +3,11 @@ import emergencyData from "../../../data/v2/emergency.json";
 import heuristicsData from "../../../data/v2/heuristics.json";
 import servicesData from "../../../data/v2/services.json";
 import flowSpecRegistry from "../../../../docs/domain/flows-v2-spec.json";
-import type { FlowSpecV2 } from "../../flows/flowSpecV2";
-import { buildRuntimeV2 } from "../../flows/runtimeV2";
+import type { FlowSpecV2 } from "../../contracts/flowSpecV2";
+import { buildRuntimeV2ById } from "../../flows/runtimeV2";
 import { toLegacyFlow } from "../../flows/toLegacyUI";
 import type { AppModel, Category, Flow, RiskGroup, Service } from "../../../types";
-
-const flowModules = import.meta.glob("../../flows/flow_*.ts", { eager: true });
+import { flowRegistry } from "@/registry/flowRegistry";
 
 interface RawCategory {
   id?: unknown;
@@ -343,33 +342,9 @@ function validateFlowSpec(flow: FlowSpecV2, index: number): void {
 }
 
 function extractGeneratedSpecs(): FlowSpecV2[] {
-  const specs: FlowSpecV2[] = [];
-
-  for (const [path, mod] of Object.entries(flowModules)) {
-    const moduleRecord = ensureRecord(mod, `Modulo invalido (${path}).`);
-
-    let found: FlowSpecV2 | null = null;
-    for (const value of Object.values(moduleRecord)) {
-      if (
-        isRecord(value) &&
-        isRecord(value.meta) &&
-        isRecord(value.risk) &&
-        Array.isArray(value.steps) &&
-        Array.isArray(value.outcomes)
-      ) {
-        found = value as FlowSpecV2;
-        break;
-      }
-    }
-
-    if (!found) {
-      throw new Error(`FlowSpec nao encontrado em ${path}.`);
-    }
-
-    specs.push(found);
-  }
-
-  return specs;
+  return Object.entries(flowRegistry)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, spec]) => spec as FlowSpecV2);
 }
 
 function validateFlowRelations(flows: Flow[], categorySubIndex: Map<string, Set<string>>): void {
@@ -473,7 +448,7 @@ export function composeModelV2(): AppModel {
   );
   const categorySubIndex = buildCategorySubIndex(categories);
   const flows = specs.map(spec => {
-    const runtimeV2 = buildRuntimeV2(spec);
+    const runtimeV2 = buildRuntimeV2ById(spec.meta.id);
     return toLegacyFlow(runtimeV2);
   });
 
