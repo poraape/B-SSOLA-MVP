@@ -4,7 +4,7 @@ import type {
   OutcomeV2,
   RiskLevelV2,
 } from "../contracts/flowSpecV2";
-import { flowRegistry } from "@/registry/flowRegistry";
+import { flowRegistry } from "../../registry/flowRegistry";
 
 export type RuntimeStep = {
   id: string;

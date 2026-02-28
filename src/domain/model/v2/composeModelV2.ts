@@ -7,7 +7,7 @@ import type { FlowSpecV2 } from "../../contracts/flowSpecV2";
 import { buildRuntimeV2ById } from "../../flows/runtimeV2";
 import { toLegacyFlow } from "../../flows/toLegacyUI";
 import type { AppModel, Category, Flow, RiskGroup, Service } from "../../../types";
-import { flowRegistry } from "@/registry/flowRegistry";
+import { flowRegistry } from "../../../registry/flowRegistry";
 
 interface RawCategory {
   id?: unknown;
