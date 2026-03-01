@@ -20,7 +20,17 @@ export const CategoryPage: React.FC = () => {
   const category = categories.find((cat) => cat.id === routeCategoryId);
 
   if (!category) {
-    return <div className="text-center py-20">Categoria não encontrada.</div>;
+    return (
+      <div className="text-center py-20 space-y-4">
+        <p>Categoria não localizada.</p>
+        <button
+          onClick={() => navigate('/')}
+          className="text-sm font-semibold text-blue-600 underline"
+        >
+          Ir para o início
+        </button>
+      </div>
+    );
   }
 
   const flows = getFlowsByCategory(category.id);

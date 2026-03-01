@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -56,8 +56,17 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
     ? [selectedService.location.lat, selectedService.location.lng] 
     : defaultCenter;
 
+  const mapServices = services.filter(
+    (service) => service.location.lat !== null && service.location.lng !== null,
+  );
+  const [hasTileError, setHasTileError] = useState(false);
+
+  if (hasTileError) {
+    throw new Error('map_tiles_unavailable');
+  }
+
   return (
-    <div className="h-full w-full rounded-3xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
+    <div className="relative h-full w-full rounded-3xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
       <MapContainer 
         center={center} 
         zoom={14} 
@@ -67,11 +76,12 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
         <TileLayer
           attribution={mapTilesConfig.attributionHtml}
           url={mapTilesConfig.tileUrl}
+          eventHandlers={{
+            tileerror: () => setHasTileError(true),
+          }}
         />
         
-        {services.map(service => {
-          if (service.location.lat === null || service.location.lng === null) return null;
-          
+        {mapServices.map(service => {
           return (
             <Marker 
               key={service.id} 
@@ -92,6 +102,11 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
 
         <ChangeView center={center} zoom={selectedService ? 16 : 14} />
       </MapContainer>
+      {mapServices.length === 0 && (
+        <div className="absolute inset-0 z-[1000] flex items-center justify-center bg-slate-100/85 p-4 text-center text-sm text-slate-600">
+          Nenhum serviço próximo encontrado. Consulte a coordenação pedagógica.
+        </div>
+      )}
     </div>
   );
 };

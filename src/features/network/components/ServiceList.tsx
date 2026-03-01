@@ -18,7 +18,7 @@ export const ServiceList: React.FC<ServiceListProps> = ({
   if (services.length === 0) {
     return (
       <div className="p-8 text-center text-slate-500">
-        Nenhum serviço encontrado com os filtros atuais.
+        Nenhum serviço próximo encontrado. Consulte a coordenação pedagógica.
       </div>
     );
   }

@@ -6,12 +6,18 @@ interface TriageQuestionProps {
   question: TriageQuestionType;
   onAnswer: (label: string) => void;
   isEmergency?: boolean;
+  currentStep?: number;
+  totalSteps?: number;
+  hasBranching?: boolean;
 }
 
 export const TriageQuestion: React.FC<TriageQuestionProps> = ({
   question,
   onAnswer,
-  isEmergency = false
+  isEmergency = false,
+  currentStep,
+  totalSteps,
+  hasBranching = false,
 }) => {
   return (
     <div className="space-y-8">
@@ -23,6 +29,11 @@ export const TriageQuestion: React.FC<TriageQuestionProps> = ({
           <p className="text-sm text-rose-500 font-bold flex items-center gap-1 mt-2">
             <AlertTriangle className="w-4 h-4" /> Decisão Crítica: Responda com agilidade.
           </p>
+        )}
+        {typeof currentStep === 'number' && typeof totalSteps === 'number' && (
+          <span className="text-xs text-gray-500">
+            Pergunta {currentStep} de {totalSteps}{hasBranching ? '+' : ''}
+          </span>
         )}
       </div>
 

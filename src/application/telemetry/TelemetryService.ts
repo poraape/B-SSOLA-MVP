@@ -67,6 +67,22 @@ export class TelemetryService {
     return this.sessionId;
   }
 
+  private isConsentGranted(): boolean {
+    try {
+      return localStorage.getItem('bssola_privacy_consent') === 'accepted';
+    } catch {
+      return false; // fallback seguro se localStorage bloqueado
+    }
+  }
+
+  public grantConsent(): void {
+    try {
+      localStorage.setItem('bssola_privacy_consent', 'accepted');
+    } catch {
+      // silencioso — não quebrar se localStorage indisponível
+    }
+  }
+
   public track(input: TrackInput): void {
     const event: TelemetryEvent = {
       sessionId: this.sessionId,
@@ -80,7 +96,10 @@ export class TelemetryService {
 
     void Promise.allSettled([
       Promise.resolve().then(() => this.localProvider.track(event)),
-      Promise.resolve().then(() => this.httpProvider.track(event)),
+      Promise.resolve().then(() => {
+        if (!this.isConsentGranted()) return;
+        return this.httpProvider.track(event);
+      }),
     ]);
   }
 

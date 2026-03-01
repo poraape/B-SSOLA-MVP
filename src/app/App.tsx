@@ -11,16 +11,27 @@ import { ThemeProvider } from './context/ThemeContext';
 import { AccessibilityProvider } from './context/AccessibilityContext';
 import { SearchProvider } from '../features/search/context/SearchContext';
 import { AppModeProvider } from '../domain/appMode/AppModeContext';
+import { TriageRecommendationProvider } from './context/TriageRecommendationContext';
 
 export default function App() {
   const [isModelReady, setIsModelReady] = useState(false);
   const [bootstrapError, setBootstrapError] = useState<Error | null>(null);
 
   useEffect(() => {
-    telemetryService.track({
-      event: 'session_start',
-      step: 'app_bootstrap',
-    });
+    const isConsentGranted = () => {
+      try {
+        return localStorage.getItem('bssola_privacy_consent') === 'accepted';
+      } catch {
+        return false;
+      }
+    };
+
+    if (isConsentGranted()) {
+      telemetryService.track({
+        event: 'session_start',
+        step: 'app_bootstrap',
+      });
+    }
 
     let isCancelled = false;
 
@@ -69,18 +80,20 @@ export default function App() {
         <AccessibilityProvider>
           <SearchProvider>
             <AppModeProvider>
-              <BrowserRouter>
-                <Shell>
-                  <Suspense fallback={
-                    <div className="flex flex-col items-center justify-center min-h-[400px] space-y-4">
-                      <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
-                      <p className="text-xs font-black uppercase tracking-widest text-slate-400">Carregando módulo...</p>
-                    </div>
-                  }>
-                    <AppRoutes />
-                  </Suspense>
-                </Shell>
-              </BrowserRouter>
+              <TriageRecommendationProvider>
+                <BrowserRouter>
+                  <Shell>
+                    <Suspense fallback={
+                      <div className="flex flex-col items-center justify-center min-h-[400px] space-y-4">
+                        <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
+                        <p className="text-xs font-black uppercase tracking-widest text-slate-400">Carregando módulo...</p>
+                      </div>
+                    }>
+                      <AppRoutes />
+                    </Suspense>
+                  </Shell>
+                </BrowserRouter>
+              </TriageRecommendationProvider>
             </AppModeProvider>
           </SearchProvider>
         </AccessibilityProvider>
