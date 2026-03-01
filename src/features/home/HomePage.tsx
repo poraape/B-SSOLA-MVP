@@ -1,21 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SearchBar } from '../../features/search/components/SearchBar';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { getCategories } from '@/domain/model';
+import { getEmergencyRoute } from '@/domain/flows/selectors';
 import { useTheme } from '../../app/context/ThemeContext';
 import { AlertTriangle, ChevronRight, Phone } from 'lucide-react';
 import { CompassIcon } from '../../features/shared/assets/CompassIcon';
 import { getPremiumCategoryColorClass, getPremiumCategoryIcon } from '../shared/components/PremiumCategoryIcons';
 
+
+const PrivacyBadge: React.FC = () => (
+  <span className="inline-flex items-center gap-1 text-xs text-gray-500">
+    🔒 Sem dados pessoais do estudante
+  </span>
+);
+
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const categories = [...getCategories()].sort((a, b) => (b.weight || 0) - (a.weight || 0));
+  const emergencyRoute = getEmergencyRoute();
   const { theme } = useTheme();
+
+  const [showFirstUseBanner, setShowFirstUseBanner] = useState(false);
+
+  useEffect(() => {
+    try {
+      setShowFirstUseBanner(localStorage.getItem('bssola_first_use') !== 'done');
+    } catch {
+      setShowFirstUseBanner(true);
+    }
+  }, []);
+
+  const handleCloseFirstUseBanner = () => {
+    try {
+      localStorage.setItem('bssola_first_use', 'done');
+    } catch {
+      // fallback seguro quando localStorage indisponível
+    }
+    setShowFirstUseBanner(false);
+  };
 
   return (
     <div className="space-y-16">
+      {showFirstUseBanner && (
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4 flex items-start justify-between text-sm">
+          <p className="text-blue-800">
+            <strong>B-SSOLA</strong> · Ferramenta institucional de apoio ao professor. Não substitui atendimento profissional.
+          </p>
+          <button
+            onClick={handleCloseFirstUseBanner}
+            className="ml-3 text-blue-500 hover:text-blue-700 font-bold"
+            aria-label="Fechar aviso"
+          >✕</button>
+        </div>
+      )}
+
       {/* Hero Section - Redesigned to match image */}
       <section className="relative bg-[#0F172A] rounded-[2rem] md:rounded-[3rem] overflow-hidden p-6 md:p-12 lg:p-16 min-h-[22rem] md:min-h-[28rem] flex flex-col justify-center shadow-2xl group">
         {/* Background Compass Graphic */}
@@ -35,6 +76,16 @@ export const HomePage: React.FC = () => {
           </div>
 
           {/* Action Buttons */}
+          <div className="flex justify-end">
+            <button
+              onClick={() => navigate(emergencyRoute)}
+              className="flex items-center gap-1 text-xs font-medium text-red-600 border border-red-200 rounded-full px-3 py-1 hover:bg-red-50 transition-colors"
+              aria-label="Acionar emergência"
+            >
+              🚨 Acionar emergência
+            </button>
+          </div>
+
           <div className="flex flex-col lg:flex-row gap-4 pt-2 md:pt-4">
             <button 
               onClick={() => navigate('/atendimento')}
@@ -51,6 +102,8 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <PrivacyBadge />
 
       {/* Categories Grid */}
       <section className="space-y-8">

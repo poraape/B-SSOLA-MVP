@@ -6,6 +6,8 @@ import { ServiceList } from './components/ServiceList';
 import { NetworkMap } from './components/NetworkMap';
 import { ServiceDrawer } from './components/ServiceDrawer';
 import { Service } from '../../types';
+import { NetworkErrorBoundary } from './NetworkErrorBoundary';
+import { useTriageRecommendation } from '../../app/context/TriageRecommendationContext';
 
 export const NetworkPage: React.FC = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -15,10 +17,15 @@ export const NetworkPage: React.FC = () => {
   const queryType = searchParams.get('type');
   const highlightId = searchParams.get('highlight');
   const allServices = getServices();
+  const { recommendation, setRecommendation } = useTriageRecommendation();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isDrawerOpen, setIsDrawerOpen] = useState(!!serviceId);
+
+  const effectiveHighlightId = highlightId || recommendation.highlightId;
+  const effectiveQueryType = queryType || recommendation.queryType;
+  const isUsingRecommendationContext = !highlightId && Boolean(recommendation.highlightId);
 
   const categories = useMemo(() => {
     return Array.from(new Set(allServices.map(s => s.category)));
@@ -27,9 +34,9 @@ export const NetworkPage: React.FC = () => {
   const filteredServices = useMemo(() => {
     let result = allServices;
 
-    if (queryType) {
+    if (effectiveQueryType) {
       result = result.filter(s =>
-        queryType === 'interno'
+        effectiveQueryType === 'interno'
           ? s.type === 'interno' || s.category === 'institucional'
           : s.type !== 'interno'
       );
@@ -46,15 +53,15 @@ export const NetworkPage: React.FC = () => {
     }
 
     return [...result].sort((a, b) => {
-      if (a.id === highlightId) return -1;
-      if (b.id === highlightId) return 1;
+      if (a.id === effectiveHighlightId) return -1;
+      if (b.id === effectiveHighlightId) return 1;
 
       if (a.type === 'interno' && b.type !== 'interno') return -1;
       if (b.type === 'interno' && a.type !== 'interno') return 1;
 
       return a.name.localeCompare(b.name);
     });
-  }, [allServices, highlightId, queryType, searchTerm, selectedCategory]);
+  }, [allServices, effectiveHighlightId, effectiveQueryType, searchTerm, selectedCategory]);
 
   const selectedService = useMemo(() => {
     return allServices.find(s => s.id === serviceId) || null;
@@ -69,6 +76,20 @@ export const NetworkPage: React.FC = () => {
     <div className="h-[calc(100vh-12rem)] flex flex-col md:flex-row gap-6">
       {/* Sidebar */}
       <div className="w-full md:w-80 bg-white border border-slate-200 rounded-3xl flex flex-col overflow-hidden shadow-sm">
+        {isUsingRecommendationContext && (
+          <div className="mx-4 mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-800">
+            <span>Mostrando serviços indicados para sua última triagem · </span>
+            <button
+              onClick={() => {
+                setRecommendation({ highlightId: null, queryType: null });
+                navigate('/rede');
+              }}
+              className="font-semibold underline"
+            >
+              Ver todos os serviços
+            </button>
+          </div>
+        )}
         <ServiceFilters 
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
@@ -81,18 +102,24 @@ export const NetworkPage: React.FC = () => {
             services={filteredServices} 
             onSelect={handleSelectService}
             selectedId={serviceId}
-            highlightId={highlightId}
+            highlightId={effectiveHighlightId}
           />
         </div>
       </div>
 
       {/* Map Area */}
       <div className="flex-1 relative">
-        <NetworkMap 
-          services={filteredServices}
-          selectedService={selectedService}
-          onMarkerClick={handleSelectService}
-        />
+        <NetworkErrorBoundary fallback={
+          <div className="p-4 text-sm text-gray-600 bg-yellow-50 rounded">
+            Mapa temporariamente indisponível.
+          </div>
+        }>
+          <NetworkMap 
+            services={filteredServices}
+            selectedService={selectedService}
+            onMarkerClick={handleSelectService}
+          />
+        </NetworkErrorBoundary>
         
         {isDrawerOpen && selectedService && (
           <ServiceDrawer 

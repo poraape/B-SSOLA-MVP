@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MapPin, Info, ShieldAlert, Heart } from 'lucide-react';
 import { TriageResult, Flow } from '../../../types';
 import { getServiceById } from '../../../domain/flows/selectors';
+import { useTriageRecommendation } from '../../../app/context/TriageRecommendationContext';
 import { Link } from 'react-router-dom';
 import { PremiumResult } from '../../../domain/flows/premiumEngine';
 import { Collapsible } from '../../../components/ui/Collapsible';
 import { useAppMode } from '../../../domain/appMode/AppModeContext';
+import { getTopFactors, translateFactor } from './translateFactors';
+
+
+const PrivacyBadge: React.FC = () => (
+  <span className="inline-flex items-center gap-1 text-xs text-gray-500">
+    🔒 Sem dados pessoais do estudante
+  </span>
+);
 
 interface ResultPanelProps {
   flow: Flow;
@@ -14,12 +23,28 @@ interface ResultPanelProps {
 
 export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
   const { mode } = useAppMode();
+  const { setRecommendation } = useTriageRecommendation();
   const primaryService = result.primaryService ? getServiceById(result.primaryService.id) : null;
   const secondaryService = result.secondaryService ? getServiceById(result.secondaryService.id) : null;
 
   const internalRelevant = (result as PremiumResult).internalServicesRelevant || [];
   const externalRelevant = (result as PremiumResult).externalServicesRelevant || [];
   const explanationPoints = (result as PremiumResult).explanationPoints || [];
+  const appliedRules = result.appliedRules || [];
+  const whyThisOrientation = explanationPoints.length > 0
+    ? explanationPoints.map(translateFactor)
+    : getTopFactors(appliedRules);
+
+  const recommendationHighlightId = primaryService?.id || secondaryService?.id || null;
+  const recommendationQueryType = primaryService ? 'interno' : null;
+
+  useEffect(() => {
+    if (!recommendationHighlightId) return;
+    setRecommendation({
+      highlightId: recommendationHighlightId,
+      queryType: recommendationQueryType,
+    });
+  }, [recommendationHighlightId, recommendationQueryType, setRecommendation]);
 
   return (
     <div className="space-y-10">
@@ -77,22 +102,19 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result }) => {
         )}
       </div>
 
-      {mode === 'formacao' && (
-        <Collapsible title="Como essa classificação foi definida?" defaultOpen={false}>
-          <ul className="space-y-3 mt-4">
-            {explanationPoints.length > 0 ? (
-              explanationPoints.map((point, index) => (
-                <li key={index} className="text-sm text-slate-700 leading-relaxed">
-                  • {point}
-                </li>
-              ))
-            ) : (
-              <li className="text-sm text-slate-700 leading-relaxed">
-                • Classificação definida conforme protocolo institucional vigente.
+      <PrivacyBadge />
+
+      {whyThisOrientation.length > 0 && (
+        <section className="space-y-2">
+          <h3 className="text-sm font-semibold text-slate-700">Por que esta orientação?</h3>
+          <ul className="list-disc pl-5 space-y-1">
+            {whyThisOrientation.map((point, index) => (
+              <li key={index} className="text-sm text-slate-600">
+                {point}
               </li>
-            )}
+            ))}
           </ul>
-        </Collapsible>
+        </section>
       )}
 
       {/* School Actions */}

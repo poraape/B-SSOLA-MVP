@@ -26,3 +26,12 @@ export const getEmergencyFlows = (): Flow[] => {
   const emergencyIds = model.meta.emergencyButton?.priorityRouteIds || [];
   return model.flows.filter(f => emergencyIds.includes(f.meta.id));
 };
+
+export const getEmergencyRoute = (): string => {
+  const emergencyIds = model.meta.emergencyButton?.priorityRouteIds || [];
+  const firstAvailableEmergencyId = emergencyIds.find(id =>
+    model.flows.some(flow => flow.meta.id === id),
+  );
+
+  return `/fluxo/${firstAvailableEmergencyId || 'flow_emergencia_medica'}`;
+};

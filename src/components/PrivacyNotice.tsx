@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { telemetryService } from '../application/telemetry/TelemetryService';
 
 const STORAGE_KEY = 'bussola_privacy_v1';
 
@@ -16,6 +17,11 @@ export const PrivacyNotice: React.FC = () => {
   }, []);
 
   const handleDismiss = () => {
+    telemetryService.grantConsent();
+    telemetryService.track({
+      event: 'session_start',
+      step: 'privacy_consent_accepted',
+    });
     if (canUseLocalStorage()) {
       window.localStorage.setItem(STORAGE_KEY, 'accepted');
     }

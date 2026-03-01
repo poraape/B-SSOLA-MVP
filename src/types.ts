@@ -110,6 +110,30 @@ export type FlowPriority =
   | 'P2'
   | 'P3';
 
+// Prioridade institucional — valores semânticos para UI e motor
+export type InstitutionalPriority = 'low' | 'moderate' | 'high' | 'critical';
+
+// Código legado — manter apenas para compatibilidade de serialização
+export type LegacyPriorityCode = 'P0' | 'P1' | 'P2' | 'P3';
+
+// Mapper explícito e único — USE ESTE em vez de conversão inline
+export function toInstitutionalPriority(
+  code: LegacyPriorityCode | string
+): InstitutionalPriority {
+  const map: Record<string, InstitutionalPriority> = {
+    P0: 'critical', P1: 'high', P2: 'moderate', P3: 'low'
+  };
+  return map[code] ?? 'low';
+}
+
+// Mapa de exibição PT-BR — USE ESTE para todo texto visível ao usuário
+export const PRIORITY_LABELS: Record<InstitutionalPriority, string> = {
+  low: 'Atenção',
+  moderate: 'Atenção Elevada',
+  high: 'Alto Risco',
+  critical: 'Crítico — Ação Imediata'
+};
+
 export interface TriageQuestion {
   id: string;
   text: string;
@@ -204,52 +228,6 @@ export interface NetworkConfig {
     lng: number;
     proximityRadiusMeters: number;
   };
-}
-
-/**
- * Example structure demonstrating a `Service` with the expanded contact model.
- */
-export const serviceExample: Service = {
-  id: 'service-001',
-  name: 'Centro de Apoio Psicossocial',
-  category: 'psychosocial',
-  type: 'public',
-  needsGeoReview: false,
-  contact: {
-    phone: '(11) 4002-8922',
-    alternatePhone: '(11) 98888-0000',
-    otherPhones: ['(11) 3000-0000', '(11) 97777-1111'],
-    email: 'contato@caps.exemplo.br',
-    website: 'caps.exemplo.br',
-  },
-  contactAvailability: {
-    hasPhone: true,
-    hasAlternate: true,
-    hasEmail: true,
-    hasWebsite: true,
-    completenessScore: 100,
-  },
-  location: {
-    name: 'Unidade Centro',
-    address: 'Rua Exemplo, 123 - Centro',
-    lat: -23.55052,
-    lng: -46.633308,
-  },
-};
-
-/**
- * Calculates a 0-100 score based on the contact channels available in a service.
- */
-export function calculateContactCompleteness(service: Service): number {
-  const checks = [
-    Boolean(service.contact.phone),
-    Boolean(service.contact.alternatePhone),
-    Boolean(service.contact.email),
-    Boolean(service.contact.website),
-  ];
-
-  const available = checks.filter(Boolean).length;
-  return Math.round((available / checks.length) * 100);
 }
 
 export interface OrientationBlock {
