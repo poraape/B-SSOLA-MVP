@@ -4,7 +4,7 @@ import { getFlowById, getCategoryById } from '../../domain/flows/selectors';
 import { ResultPanel } from './components/ResultPanel';
 import { SummaryActions } from './components/SummaryActions';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
-import { TriageResult, FlowPriority } from '../../types';
+import { TriageResult, FlowPriority, PRIORITY_LABELS } from '../../types';
 import { runDecision } from '../../application/decisionOrchestrator';
 import { logDecisionEvent } from '../../application/loggerService';
 import { PremiumResult } from '../../domain/flows/premiumEngine';
@@ -86,7 +86,7 @@ export const ResultPage: React.FC = () => {
           </div>
           <h2 className="text-3xl font-black leading-tight tracking-tight">{flow.meta.title}</h2>
           <div className="mt-4 inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-widest">
-            Risco: {safePriority}
+            Risco: {PRIORITY_LABELS[safePriority]}
           </div>
         </div>
 

@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/Button';
 import { evaluateMacroRisk, type GatewaySignal } from '@/domain/gateway/gatewayHeuristics';
+import { getEmergencyRoute } from '@/domain/flows/selectors';
 
 const SIGNAL_OPTIONS: Array<{ id: GatewaySignal; label: string }> = [
   { id: 'loss_of_consciousness', label: 'Perda de consciência' },
@@ -13,13 +14,14 @@ const SIGNAL_OPTIONS: Array<{ id: GatewaySignal; label: string }> = [
 export const AtendimentoGatePage: React.FC = () => {
   const navigate = useNavigate();
   const [isUnsureExpanded, setIsUnsureExpanded] = useState(false);
+  const emergencyRoute = getEmergencyRoute();
   const [selectedSignals, setSelectedSignals] = useState<GatewaySignal[]>([]);
   const [explanation, setExplanation] = useState<string | null>(null);
   const [isNavigating, setIsNavigating] = useState(false);
 
   const routeFromDecision = (route: 'emergency' | 'categories') => {
     if (route === 'emergency') {
-      navigate('/fluxo/flow_emergencia_medica');
+      navigate(emergencyRoute);
       return;
     }
 
@@ -83,6 +85,15 @@ export const AtendimentoGatePage: React.FC = () => {
   return (
     <section className="max-w-3xl mx-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-10 space-y-6">
       <header className="space-y-2">
+        <div className="flex justify-end">
+          <button
+            onClick={() => navigate(emergencyRoute)}
+            className="flex items-center gap-1 text-xs font-medium text-red-600 border border-red-200 rounded-full px-3 py-1 hover:bg-red-50 transition-colors"
+            aria-label="Acionar emergência"
+          >
+            🚨 Acionar emergência
+          </button>
+        </div>
         <h1 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
           Há risco de vida ou integridade neste momento?
         </h1>

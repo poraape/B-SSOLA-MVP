@@ -5,6 +5,9 @@ const VALID_PRIORITIES: InstitutionalPriority[] = ['low', 'moderate', 'high', 'c
 
 function getSafePriority(priority?: string): InstitutionalPriority | undefined {
   if (!priority) return undefined;
+  if (!VALID_PRIORITIES.includes(priority as InstitutionalPriority)) {
+    systemLogger.warn('invalid_priority', { type: 'invalid_priority', value: priority });
+  }
   return VALID_PRIORITIES.includes(priority as InstitutionalPriority)
     ? (priority as InstitutionalPriority)
     : 'low';

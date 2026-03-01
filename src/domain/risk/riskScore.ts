@@ -8,6 +8,8 @@ export interface RiskScoreBreakdown {
   factors: Array<{ code: string; points: number }>;
 }
 
+const MAX_RISK_SCORE = 100;
+
 const GROUP_POINTS: Record<RiskGroup, number> = {
   emergency: 3,
   violence: 3,
@@ -63,7 +65,10 @@ export function computeRiskScore(result: PremiumResult, flow: Flow): RiskScoreBr
   if (flags.confidential) addFactor(breakdown, 'FLAG_CONFIDENTIAL', 1);
   if (flags.avoidRetraumatization) addFactor(breakdown, 'FLAG_AVOID_RETRAUMATIZATION', 1);
 
-  return breakdown;
+  return {
+    ...breakdown,
+    total: Math.min(breakdown.total, MAX_RISK_SCORE),
+  };
 }
 
 export function minPriorityForScore(score: number): 'low' | 'moderate' | 'high' | 'critical' {

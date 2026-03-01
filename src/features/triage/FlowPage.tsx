@@ -6,6 +6,7 @@ import { runDecision } from '../../application/decisionOrchestrator';
 import { TriageQuestion } from './components/TriageQuestion';
 import { ArrowLeft, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { telemetryService } from '../../application/telemetry/TelemetryService';
+import { FeatureErrorBoundary } from '../shared/components/FeatureErrorBoundary';
 
 export const FlowPage: React.FC = () => {
   const { flowId } = useParams<{ flowId: string }>();
@@ -13,6 +14,7 @@ export const FlowPage: React.FC = () => {
   const flow = getFlowById(flowId || '');
   
   const [state, setState] = useState<FlowState | null>(null);
+  const [isProcessingTimedOut, setIsProcessingTimedOut] = useState(false);
 
   useEffect(() => {
     if (flow) {
@@ -41,11 +43,31 @@ export const FlowPage: React.FC = () => {
   }, [flow, state]);
 
   if (!flow || !state) {
-    return <div className="text-center py-20">Fluxo não encontrado.</div>;
+    return (
+      <div className="text-center py-20 space-y-4">
+        <p>Este protocolo não está disponível no momento.</p>
+        <button
+          onClick={() => navigate('/categorias')}
+          className="text-sm font-semibold text-blue-600 underline"
+        >
+          Voltar às categorias
+        </button>
+      </div>
+    );
   }
 
   if (!flow.triage || !flow.triage.questions || flow.triage.questions.length === 0) {
-    return <div className="text-center py-20">Fluxo sem perguntas configuradas.</div>;
+    return (
+      <div className="text-center py-20 space-y-4">
+        <p>Protocolo em atualização.</p>
+        <button
+          onClick={() => navigate('/')}
+          className="text-sm font-semibold text-blue-600 underline"
+        >
+          Escolher outro protocolo
+        </button>
+      </div>
+    );
   }
 
   const handleAnswer = (optionLabel: string) => {
@@ -86,9 +108,33 @@ export const FlowPage: React.FC = () => {
   };
 
   const currentQuestion = flow.triage.questions.find(q => q.id === state.currentQuestionId);
+
+  useEffect(() => {
+    if (currentQuestion) {
+      setIsProcessingTimedOut(false);
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setIsProcessingTimedOut(true);
+    }, 4000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [currentQuestion]);
   const isEmergency = flow.meta.type === 'medical_emergency' || flow.meta.type === 'security_emergency';
+  const totalSteps = flow.triage.questions.length;
+  const currentStepIndex = flow.triage.questions.findIndex(q => q.id === state.currentQuestionId);
+  const currentStep = (currentStepIndex >= 0 ? currentStepIndex : 0) + 1;
+  const hasBranching = flow.triage.questions.some(question =>
+    question.options.some(option => Boolean(option.nextFlow || option.redirectToCategories)),
+  );
 
   return (
+    <FeatureErrorBoundary 
+      featureName="triagem" 
+      recoveryPath="/" 
+      recoveryLabel="Ir para o início"
+    >
     <div className="max-w-2xl mx-auto space-y-8">
       <div className="flex items-center justify-between">
         <button 
@@ -122,11 +168,29 @@ export const FlowPage: React.FC = () => {
             question={currentQuestion} 
             onAnswer={handleAnswer}
             isEmergency={isEmergency}
+            currentStep={currentStep}
+            totalSteps={totalSteps}
+            hasBranching={hasBranching}
           />
         ) : (
-          <div className="text-center py-10 text-slate-500">Processando...</div>
+          <div className="text-center py-10 text-slate-500">
+            {isProcessingTimedOut ? (
+              <div className="space-y-3">
+                <p>Aguarde um momento...</p>
+                <button
+                  onClick={() => navigate('/')}
+                  className="text-sm font-semibold text-blue-600 underline"
+                >
+                  Ir para o início
+                </button>
+              </div>
+            ) : (
+              'Processando...'
+            )}
+          </div>
         )}
       </div>
     </div>
+    </FeatureErrorBoundary>
   );
 };
