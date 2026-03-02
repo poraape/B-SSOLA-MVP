@@ -71,7 +71,7 @@ export const ResultPage: React.FC = () => {
     <div className="max-w-3xl mx-auto space-y-8 print:p-0">
       <div className="flex items-center justify-between print:hidden">
         <Link to={`/fluxo/${flowId}`} className="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-bold text-sm uppercase tracking-widest">
-          <ArrowLeft className="w-4 h-4" /> Revisar respostas
+          <ArrowLeft className="w-4 h-4" /> Refazer triagem
         </Link>
       </div>
 
@@ -86,7 +86,7 @@ export const ResultPage: React.FC = () => {
           </div>
           <h2 className="text-3xl font-black leading-tight tracking-tight">{flow.meta.title}</h2>
           <div className="mt-4 inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-widest">
-            Risco: {PRIORITY_LABELS[safePriority]}
+            Risco: {PRIORITY_LABELS[safePriority ?? 'low']}
           </div>
         </div>
 
@@ -98,7 +98,7 @@ export const ResultPage: React.FC = () => {
       
       <div className="text-center print:hidden">
         <Link to="/" className="text-sm font-bold text-slate-400 hover:text-blue-600 transition-colors uppercase tracking-widest">
-          Finalizar e voltar ao início
+          Voltar ao início
         </Link>
       </div>
     </div>

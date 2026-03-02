@@ -65,6 +65,9 @@ export function computeRiskScore(result: PremiumResult, flow: Flow): RiskScoreBr
   if (flags.confidential) addFactor(breakdown, 'FLAG_CONFIDENTIAL', 1);
   if (flags.avoidRetraumatization) addFactor(breakdown, 'FLAG_AVOID_RETRAUMATIZATION', 1);
 
+  // Cap cosmético: score acima de 100 é impossível pela fórmula atual,
+  // mas garantimos o teto por segurança. Se os thresholds de riskRules.ts
+  // forem alterados para valores > 100, revisar este cap.
   return {
     ...breakdown,
     total: Math.min(breakdown.total, MAX_RISK_SCORE),

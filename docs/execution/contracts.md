@@ -4,6 +4,7 @@
 CI-1: NUNCA alterar lógica em src/domain/risk/riskRules.ts
 CI-2: NUNCA alterar comportamento do gateway tripartite (SIM/NÃO/NÃO SEI)
 CI-3: NUNCA alterar motor heurístico (riskScore, ruleset, riskRules)
+- riskScore.ts: 2026-03-01 — cap de 100 mantido porque os thresholds de prioridade operam em faixa muito inferior (minPriorityForScore: 3/5/8) e o teto não altera comportamento atual; se houver thresholds > 100 no futuro, revisar o cap.
 CI-4: NUNCA quebrar jornada Home→Gateway→Triage→Resultado→Rede
 CI-5: NUNCA criar campos que armazenem dados do estudante (nome, CPF, turma)
 CI-6: NUNCA tornar triagem dependente de conexão à internet
