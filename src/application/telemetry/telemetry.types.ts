@@ -4,7 +4,8 @@ export type TelemetryEventName =
   | 'flow_selected'
   | 'result_reached'
   | 'session_abandoned'
-  | 'referral_copied';
+  | 'referral_copied'
+  | 'invariant_violation';
 
 export type TelemetryEvent = {
   sessionId: string;

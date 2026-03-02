@@ -85,7 +85,7 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
           return (
             <Marker 
               key={service.id} 
-              position={[service.location.lat, service.location.lng]}
+              position={[service.location.lat!, service.location.lng!]}
               eventHandlers={{
                 click: () => onMarkerClick(service),
               }}

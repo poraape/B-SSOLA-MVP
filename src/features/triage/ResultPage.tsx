@@ -86,7 +86,7 @@ export const ResultPage: React.FC = () => {
           </div>
           <h2 className="text-3xl font-black leading-tight tracking-tight">{flow.meta.title}</h2>
           <div className="mt-4 inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-widest">
-            Risco: {PRIORITY_LABELS[safePriority]}
+            Risco: {PRIORITY_LABELS[safePriority ?? 'low']}
           </div>
         </div>
 
