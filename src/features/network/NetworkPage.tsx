@@ -6,6 +6,7 @@ import { ServiceList } from './components/ServiceList';
 import { NetworkMap } from './components/NetworkMap';
 import { ServiceDrawer } from './components/ServiceDrawer';
 import { Service } from '../../types';
+import { toSafeServiceQuery } from '../../domain/services/serviceQuery';
 import { NetworkErrorBoundary } from './NetworkErrorBoundary';
 import { useTriageRecommendation } from '../../app/context/TriageRecommendationContext';
 
@@ -17,6 +18,7 @@ export const NetworkPage: React.FC = () => {
   const queryType = searchParams.get('type');
   const highlightId = searchParams.get('highlight');
   const allServices = getServices();
+  const servicesById = useMemo(() => new Map(allServices.map(service => [service.id, service])), [allServices]);
   const { recommendation, setRecommendation } = useTriageRecommendation();
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,6 +27,10 @@ export const NetworkPage: React.FC = () => {
 
   const effectiveHighlightId = highlightId || recommendation.highlightId;
   const effectiveQueryType = queryType || recommendation.queryType;
+  const safeQuery = toSafeServiceQuery(
+    effectiveHighlightId ? `highlight=${effectiveHighlightId}` : effectiveQueryType ? `type=${effectiveQueryType}` : null,
+    servicesById
+  );
   const isUsingRecommendationContext = !highlightId && Boolean(recommendation.highlightId);
 
   const categories = useMemo(() => {
@@ -34,9 +40,9 @@ export const NetworkPage: React.FC = () => {
   const filteredServices = useMemo(() => {
     let result = allServices;
 
-    if (effectiveQueryType) {
+    if (safeQuery.kind === 'type') {
       result = result.filter(s =>
-        effectiveQueryType === 'interno'
+        safeQuery.serviceType === 'interno'
           ? s.type === 'interno' || s.category === 'institucional'
           : s.type !== 'interno'
       );
@@ -53,15 +59,16 @@ export const NetworkPage: React.FC = () => {
     }
 
     return [...result].sort((a, b) => {
-      if (a.id === effectiveHighlightId) return -1;
-      if (b.id === effectiveHighlightId) return 1;
+      const highlightServiceId = safeQuery.kind === 'highlight' ? safeQuery.id : null;
+      if (a.id === highlightServiceId) return -1;
+      if (b.id === highlightServiceId) return 1;
 
       if (a.type === 'interno' && b.type !== 'interno') return -1;
       if (b.type === 'interno' && a.type !== 'interno') return 1;
 
       return a.name.localeCompare(b.name);
     });
-  }, [allServices, effectiveHighlightId, effectiveQueryType, searchTerm, selectedCategory]);
+  }, [allServices, safeQuery, searchTerm, selectedCategory]);
 
   const selectedService = useMemo(() => {
     return allServices.find(s => s.id === serviceId) || null;
@@ -102,7 +109,7 @@ export const NetworkPage: React.FC = () => {
             services={filteredServices} 
             onSelect={handleSelectService}
             selectedId={serviceId}
-            highlightId={effectiveHighlightId}
+            highlightId={safeQuery.kind === 'highlight' ? safeQuery.id : null}
           />
         </div>
       </div>

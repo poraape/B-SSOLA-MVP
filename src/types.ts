@@ -35,6 +35,7 @@ export interface AppModel {
   categories: Category[];
   flows: Flow[];
   services: Service[];
+  flowResultMessagesByFlowIdAndLevel: Record<string, Record<FlowResultLevel, FlowResultMessage>>;
   orientationBlocks: OrientationBlock[];
   summaryTemplate: {
     title: string;
@@ -48,6 +49,29 @@ export interface AppModel {
       email: string;
     };
   };
+}
+
+export type FlowResultLevel = 'low' | 'moderate' | 'high' | 'critical';
+
+export interface FlowResultServiceRef {
+  queryType: string;
+  label: string;
+  description: string;
+}
+
+export interface FlowResultTeacherScope {
+  doThis: string[];
+  notYours: string;
+}
+
+export interface FlowResultMessage {
+  flowId: string;
+  level: FlowResultLevel;
+  headline: string;
+  nextStep: string;
+  priorityService: FlowResultServiceRef;
+  complementaryService: FlowResultServiceRef;
+  teacherScope: FlowResultTeacherScope;
 }
 
 export type RiskGroup =
