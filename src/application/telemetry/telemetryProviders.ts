@@ -44,6 +44,12 @@ export class HttpProvider implements ITelemetryProvider {
   }
 
   public async track(event: TelemetryEvent): Promise<void> {
+    try {
+      if (localStorage.getItem('bssola_privacy_consent') !== 'accepted') return;
+    } catch {
+      return;
+    }
+
     if (!this.endpoint) {
       if (!this.warnedMissingEndpoint) {
         this.warnedMissingEndpoint = true;
