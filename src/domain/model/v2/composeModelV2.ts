@@ -2,12 +2,22 @@ import categoriesData from "../../../data/v2/categories.json";
 import emergencyData from "../../../data/v2/emergency.json";
 import heuristicsData from "../../../data/v2/heuristics.json";
 import servicesData from "../../../data/v2/services.json";
+import flowResultMessagesData from "../../../data/v2/flowResultMessages.json";
 import flowSpecRegistry from "../../../../docs/domain/flows-v2-spec.json";
 import type { FlowSpecV2 } from "../../contracts/flowSpecV2";
 import { buildRuntimeV2ById } from "../../flows/runtimeV2";
 import { toLegacyFlow } from "../../flows/toLegacyUI";
-import type { AppModel, Category, Flow, RiskGroup, Service } from "../../../types";
+import type {
+  AppModel,
+  Category,
+  Flow,
+  FlowResultLevel,
+  FlowResultMessage,
+  RiskGroup,
+  Service,
+} from "../../../types";
 import { flowRegistry } from "../../../registry/flowRegistry";
+import { assertServiceQueryAllowed } from "../../services/serviceQuery";
 
 interface RawCategory {
   id?: unknown;
@@ -70,7 +80,7 @@ const OFFICIAL_CATEGORY_IDS = [
   "inclusao_acessibilidade",
 ] as const;
 
-function buildBaseModelV2(): Omit<AppModel, "categories" | "services" | "flows"> {
+function buildBaseModelV2(): Omit<AppModel, "categories" | "services" | "flows" | "flowResultMessagesByFlowIdAndLevel"> {
   const emergency = emergencyData as {
     enabled?: boolean;
     priorityRouteIds?: string[];
@@ -451,6 +461,142 @@ function mergeAndValidateSpecs(): FlowSpecV2[] {
   return registry.flows.map(row => byId.get(row.id) as FlowSpecV2);
 }
 
+
+const FLOW_RESULT_LEVELS: FlowResultLevel[] = ["low", "moderate", "high", "critical"];
+
+function validateFlowResultMessageShape(item: unknown, index: number): FlowResultMessage {
+  const record = ensureRecord(item, `flowResultMessages[${index}] invalido: esperado objeto.`);
+  const flowId = ensureString(record.flowId, `flowResultMessages[${index}] invalido: flowId obrigatorio.`);
+  const level = ensureString(record.level, `flowResultMessages[${index}] invalido: level obrigatorio.`) as FlowResultLevel;
+
+  if (!FLOW_RESULT_LEVELS.includes(level)) {
+    throw new Error(`flowResultMessages[${index}] invalido: level "${level}" nao suportado.`);
+  }
+
+  const priorityService = ensureRecord(
+    record.priorityService,
+    `flowResultMessages[${index}] invalido: priorityService obrigatorio.`
+  );
+  const complementaryService = ensureRecord(
+    record.complementaryService,
+    `flowResultMessages[${index}] invalido: complementaryService obrigatorio.`
+  );
+  const teacherScope = ensureRecord(
+    record.teacherScope,
+    `flowResultMessages[${index}] invalido: teacherScope obrigatorio.`
+  );
+
+  const doThisRaw = teacherScope.doThis;
+  if (!Array.isArray(doThisRaw) || doThisRaw.length < 1 || doThisRaw.length > 2) {
+    throw new Error(`flowResultMessages[${index}] invalido: teacherScope.doThis deve ter 1..2 itens.`);
+  }
+
+  const doThis = doThisRaw.map((entry, doThisIndex) =>
+    ensureString(
+      entry,
+      `flowResultMessages[${index}] invalido: teacherScope.doThis[${doThisIndex}] obrigatorio.`
+    )
+  );
+
+  return {
+    flowId,
+    level,
+    headline: ensureString(record.headline, `flowResultMessages[${index}] invalido: headline obrigatorio.`),
+    nextStep: ensureString(record.nextStep, `flowResultMessages[${index}] invalido: nextStep obrigatorio.`),
+    priorityService: {
+      queryType: ensureString(
+        priorityService.queryType,
+        `flowResultMessages[${index}] invalido: priorityService.queryType obrigatorio.`
+      ),
+      label: ensureString(priorityService.label, `flowResultMessages[${index}] invalido: priorityService.label obrigatorio.`),
+      description: ensureString(
+        priorityService.description,
+        `flowResultMessages[${index}] invalido: priorityService.description obrigatorio.`
+      ),
+    },
+    complementaryService: {
+      queryType: ensureString(
+        complementaryService.queryType,
+        `flowResultMessages[${index}] invalido: complementaryService.queryType obrigatorio.`
+      ),
+      label: ensureString(
+        complementaryService.label,
+        `flowResultMessages[${index}] invalido: complementaryService.label obrigatorio.`
+      ),
+      description: ensureString(
+        complementaryService.description,
+        `flowResultMessages[${index}] invalido: complementaryService.description obrigatorio.`
+      ),
+    },
+    teacherScope: {
+      doThis,
+      notYours: ensureString(teacherScope.notYours, `flowResultMessages[${index}] invalido: teacherScope.notYours obrigatorio.`),
+    },
+  };
+}
+
+function buildFlowResultMessagesLookup(
+  raw: unknown,
+  knownFlowIds: Set<string>,
+  servicesById: Map<string, Service>
+): Record<string, Record<FlowResultLevel, FlowResultMessage>> {
+  if (!Array.isArray(raw)) {
+    throw new Error("src/data/v2/flowResultMessages.json invalido: esperado array.");
+  }
+
+  const byFlow = new Map<string, Map<FlowResultLevel, FlowResultMessage>>();
+
+  raw.forEach((entry, index) => {
+    const item = validateFlowResultMessageShape(entry, index);
+
+    if (!knownFlowIds.has(item.flowId)) {
+      throw new Error(`flowResultMessages[${index}] invalido: flowId inexistente "${item.flowId}".`);
+    }
+
+    assertServiceQueryAllowed(item.priorityService.queryType, servicesById);
+    assertServiceQueryAllowed(item.complementaryService.queryType, servicesById);
+
+    if (!byFlow.has(item.flowId)) {
+      byFlow.set(item.flowId, new Map<FlowResultLevel, FlowResultMessage>());
+    }
+
+    const byLevel = byFlow.get(item.flowId) as Map<FlowResultLevel, FlowResultMessage>;
+    if (byLevel.has(item.level)) {
+      throw new Error(
+        `flowResultMessages invalido: duplicado para flowId "${item.flowId}" e level "${item.level}".`
+      );
+    }
+
+    byLevel.set(item.level, item);
+  });
+
+  for (const flowId of knownFlowIds) {
+    const levels = byFlow.get(flowId);
+    if (!levels) {
+      throw new Error(`flowResultMessages invalido: flowId "${flowId}" sem mensagens.`);
+    }
+
+    for (const level of FLOW_RESULT_LEVELS) {
+      if (!levels.has(level)) {
+        throw new Error(`flowResultMessages invalido: flowId "${flowId}" sem level "${level}".`);
+      }
+    }
+  }
+
+  const result: Record<string, Record<FlowResultLevel, FlowResultMessage>> = {};
+
+  for (const [flowId, byLevel] of byFlow.entries()) {
+    result[flowId] = {
+      low: byLevel.get("low") as FlowResultMessage,
+      moderate: byLevel.get("moderate") as FlowResultMessage,
+      high: byLevel.get("high") as FlowResultMessage,
+      critical: byLevel.get("critical") as FlowResultMessage,
+    };
+  }
+
+  return result;
+}
+
 export function composeModelV2(): AppModel {
   validateExtensionsShape();
 
@@ -469,11 +615,19 @@ export function composeModelV2(): AppModel {
   validateFlowRelations(flows, categorySubIndex);
 
   const base = buildBaseModelV2();
+  const services = (servicesData as ServicesPayload).services as Service[];
+  const servicesById = new Map(services.map(service => [service.id, service]));
+  const flowResultMessagesByFlowIdAndLevel = buildFlowResultMessagesLookup(
+    flowResultMessagesData,
+    new Set(flows.map(flow => flow.meta.id)),
+    servicesById
+  );
 
   return {
     ...base,
     categories,
-    services: (servicesData as ServicesPayload).services as Service[],
+    services,
     flows,
+    flowResultMessagesByFlowIdAndLevel,
   } as AppModel;
 }

@@ -148,9 +148,9 @@
       "description": "Acionamento de segurança escolar e isolamento do corredor."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Ronda Escolar",
-      "description": "Apoio tático em tumultos escolares."
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato de proteção e segurança pública."
     },
     "teacherScope": {
       "doThis": [
@@ -217,9 +217,9 @@
       "description": "Avaliação do risco e interdição parcial do espaço."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Defesa Civil - 199",
-      "description": "Vistoria técnica de estabilidade estrutural."
+      "queryType": "highlight=bombeiros",
+      "label": "Corpo de Bombeiros – 193",
+      "description": "Atendimento de emergência para riscos estruturais e proteção civil."
     },
     "teacherScope": {
       "doThis": [
@@ -235,9 +235,9 @@
     "headline": "Estrondo na estrutura, teto cedendo ou faíscas na rede.",
     "nextStep": "Evacue a sala imediatamente e solicite a interdição total do bloco.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "Defesa Civil - 199",
-      "description": "Interdição de prédios com risco de colapso."
+      "queryType": "highlight=bombeiros",
+      "label": "Corpo de Bombeiros – 193",
+      "description": "Atendimento de emergência para riscos estruturais e proteção civil."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -378,9 +378,9 @@
       "description": "Controle de acesso e segurança perimetral básica."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Ronda Escolar",
-      "description": "Averiguação de indivíduos suspeitos no entorno."
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato de proteção e segurança pública."
     },
     "teacherScope": {
       "doThis": [
@@ -534,9 +534,9 @@
     "headline": "Risco imediato ao aluno dentro ou fora da escola por violação grave.",
     "nextStep": "Mantenha o aluno sob supervisão e acione a direção para chamar ajuda externa.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "Emergência - 190",
-      "description": "Apoio imediato quando há risco presente à integridade."
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato de proteção e segurança pública."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -608,9 +608,9 @@
       "description": "Notificação formal da ameaça e acionamento de segurança."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Ronda Escolar",
-      "description": "Averiguação preventiva após ameaças graves à comunidade."
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato de proteção e segurança pública."
     },
     "teacherScope": {
       "doThis": [
@@ -1022,9 +1022,9 @@
       "description": "Averiguação preliminar e monitoramento preventivo."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Ronda Escolar",
-      "description": "Policiamento preventivo e diálogo com a comunidade."
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato de proteção e segurança pública."
     },
     "teacherScope": {
       "doThis": [
@@ -1038,7 +1038,7 @@
     "flowId": "flow_violencia_armada",
     "level": "moderate",
     "headline": "Ameaça verbal direta de trazer arma para a escola.",
-    "nextStep": "Informe a direção imediatamente para acionamento da Ronda Escolar.",
+    "nextStep": "Informe a direção imediatamente para acionamento da Polícia Militar.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
@@ -1643,9 +1643,9 @@
       "description": "Gestão imediata de segurança e contato com responsáveis."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Emergência - 190",
-      "description": "Apoio quando há risco imediato fora do controle da escola."
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato de proteção e segurança pública."
     },
     "teacherScope": {
       "doThis": [
@@ -2282,9 +2282,9 @@
     "headline": "Suspeito está no local ou há risco imediato de retirada forçada do aluno.",
     "nextStep": "Acione a direção agora e mantenha o aluno em sala segura com portas fechadas.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "Emergência - 190",
-      "description": "Intervenção imediata quando há risco presente à integridade do aluno."
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato de proteção e segurança pública."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -2834,9 +2834,9 @@
     "headline": "Agressor aparece na escola ou há ameaça imediata contra o aluno.",
     "nextStep": "Acione a direção na hora e mantenha o aluno em local protegido e fora de vista.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "Emergência - 190",
-      "description": "Apoio imediato quando há ameaça presente e risco de agressão."
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato de proteção e segurança pública."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -3299,9 +3299,9 @@
       "description": "Ação imediata para garantir rota segura e proteção do aluno."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Emergência - 190",
-      "description": "Apoio se a escola não conseguir garantir segurança imediata."
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato de proteção e segurança pública."
     },
     "teacherScope": {
       "doThis": [
@@ -3570,9 +3570,9 @@
     "headline": "Há coerção imediata ou retirada forçada do aluno para exploração.",
     "nextStep": "Acione a direção agora e mantenha o aluno em local seguro e supervisionado.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "Emergência - 190",
-      "description": "Apoio imediato quando há coação presente e risco ao aluno."
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato de proteção e segurança pública."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -3587,4 +3587,4 @@
       "notYours": "Não confronte o adulto coercitivo nem tente impedir sozinho à força."
     }
   }
-]  
+]
