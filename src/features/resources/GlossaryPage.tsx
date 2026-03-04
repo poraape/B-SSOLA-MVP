@@ -1,109 +1,164 @@
-import React, { useState } from 'react';
-import { Search, BookOpen, Info } from 'lucide-react';
-import { Card } from '../../components/ui/Card';
+// src/features/resources/GlossaryPage.tsx
+
+import React, { useState, useRef, useEffect } from 'react';
+import { BookOpen } from 'lucide-react';
 import { glossaryData } from './data/glossary';
+import { useGlossarySearch } from './hooks/useGlossarySearch';
+import { groupByAlphabet } from './utils/searchUtils';
+import { GlossaryFilters } from './components/GlossaryFilters';
+import { GlossaryCard } from './components/GlossaryCard';
+import { AlphabetNav } from './components/AlphabetNav';
 
 export const GlossaryPage: React.FC = () => {
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [activeLetters, setActiveLetters] = useState<string[]>([]);
+  const glossaryRef = useRef<HTMLDivElement>(null);
 
-  const categories = ['all', ...Array.from(new Set(glossaryData.map(item => item.category)))];
+  // Hook de busca otimizado com memoização
+  const { categories, filteredItems } = useGlossarySearch(
+    glossaryData,
+    search,
+    selectedCategory,
+    { regionFilter: 'ZL-SP' }
+  );
 
-  const filteredItems = glossaryData.filter(item => {
-    const matchesSearch = item.term.toLowerCase().includes(search.toLowerCase()) ||
-                         item.definition.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  // Agrupar por letra
+  const groupedByLetter = groupByAlphabet(filteredItems);
+  const availableLetters = Object.keys(groupedByLetter);
+
+  // Handler para letra selecionada
+  const handleLetterSelect = (letter: string) => {
+    setActiveLetters([letter]);
+    const element = document.getElementById(`letter-${letter}`);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Handler para termo relacionado
+  const handleRelatedClick = (relatedTerm: string) => {
+    setSearch(relatedTerm);
+    setSelectedCategory('all');
+    glossaryRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Limpar filtros
+  const handleClearFilters = () => {
+    setSearch('');
+    setSelectedCategory('all');
+    setActiveLetters([]);
+  };
 
   return (
-    <div className="space-y-8">
-      {/* Filters Section */}
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        <div className="relative w-full md:max-w-md">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-          <input
-            type="text"
-            placeholder="Pesquisar termo ou gíria..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-12 pr-4 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all"
-          />
+    <main className="space-y-8">
+      {/* Header */}
+      <section className="text-center space-y-2">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <BookOpen className="w-8 h-8 text-blue-600" />
+          <h1 className="text-4xl font-black text-slate-900 dark:text-white">
+            Glossário B-SSOLA
+          </h1>
         </div>
+        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          Dicionário de termos para educadores: protocolos, gírias estudantis, direitos e rede de proteção.
+          <br />
+          <span className="text-sm text-slate-500 italic">Contextualizado para Zona Leste, São Paulo.</span>
+        </p>
+      </section>
 
-        <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar w-full md:w-auto">
-          {categories.map(cat => (
+      {/* Filtros */}
+      <GlossaryFilters
+        search={search}
+        onSearchChange={setSearch}
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+        onClear={handleClearFilters}
+      />
+
+      {/* Navegação Alfabética */}
+      {filteredItems.length > 0 && (
+        <AlphabetNav
+          availableLetters={availableLetters}
+          onLetterSelect={handleLetterSelect}
+          activeLetters={activeLetters}
+        />
+      )}
+
+      {/* Resultados */}
+      <section ref={glossaryRef} className="space-y-8">
+        {filteredItems.length === 0 ? (
+          // Empty State
+          <div className="text-center py-20 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
+            <BookOpen className="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto mb-4" />
+            <p className="text-slate-500 font-medium mb-2">
+              Nenhum termo encontrado para "{search}"
+            </p>
+            <p className="text-slate-400 text-sm mb-4">
+              Tente procurar por: protocolo, gíria, direito ou saúde
+            </p>
             <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest whitespace-nowrap transition-all ${
-                selectedCategory === cat
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 dark:shadow-none'
-                  : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 hover:border-blue-400'
-              }`}
+              onClick={handleClearFilters}
+              className="text-blue-600 dark:text-blue-400 font-black uppercase text-[10px] tracking-widest hover:underline"
             >
-              {cat === 'all' ? 'Todos' : cat}
+              ↺ Limpar filtros e explorar tudo
             </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Grid Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredItems.map((item, index) => (
-          <Card key={index} className="p-6 md:p-8 space-y-4 border-2 border-slate-100 dark:border-slate-800 flex flex-col h-full">
-            <div className="flex items-center justify-between">
-              <div className={`p-2 rounded-lg ${
-                item.category === 'Gírias Estudantis' 
-                  ? 'bg-purple-50 dark:bg-purple-900/20' 
-                  : 'bg-blue-50 dark:bg-blue-900/20'
-              }`}>
-                <BookOpen className={`w-5 h-5 ${
-                  item.category === 'Gírias Estudantis' ? 'text-purple-600' : 'text-blue-600'
-                }`} />
-              </div>
-              <span className={`text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded ${
-                item.category === 'Gírias Estudantis'
-                  ? 'bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-400'
-              }`}>
-                {item.category}
+          </div>
+        ) : (
+          <>
+            {/* Estatísticas */}
+            <div className="flex justify-between items-center px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+              <span className="text-sm font-semibold text-slate-600 dark:text-slate-300">
+                {filteredItems.length} termo{filteredItems.length !== 1 ? 's' : ''} encontrado{filteredItems.length !== 1 ? 's' : ''}
+              </span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">
+                {selectedCategory !== 'all' && `Filtrado: ${selectedCategory}`}
               </span>
             </div>
-            
-            <div className="flex-1 space-y-3">
-              <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
-                {item.term}
-              </h3>
-              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-medium">
-                {item.definition}
-              </p>
-            </div>
 
-            {item.context && (
-              <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex gap-3 items-start">
-                <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-                <p className="text-[11px] italic text-slate-500 dark:text-slate-400 leading-snug">
-                  <span className="font-bold not-italic uppercase tracking-tighter mr-1">Contexto:</span>
-                  {item.context}
-                </p>
-              </div>
-            )}
-          </Card>
-        ))}
-      </div>
+            {/* Grid por Letra */}
+            {availableLetters.map((letter) => (
+              <section key={letter} id={`letter-${letter}`} className="space-y-4">
+                {/* Título da Letra */}
+                <div className="flex items-center gap-3 pt-4 border-t-2 border-slate-200 dark:border-slate-800">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                    <span className="font-black text-lg text-blue-600 dark:text-blue-400">
+                      {letter}
+                    </span>
+                  </div>
+                  <p className="text-xs uppercase tracking-widest font-black text-slate-500 dark:text-slate-400">
+                    {groupedByLetter[letter].length} termo{groupedByLetter[letter].length !== 1 ? 's' : ''}
+                  </p>
+                </div>
 
-      {filteredItems.length === 0 && (
-        <div className="text-center py-20 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
-          <p className="text-slate-500 font-medium">Nenhum termo encontrado para "{search}"</p>
-          <button 
-            onClick={() => { setSearch(''); setSelectedCategory('all'); }}
-            className="mt-4 text-blue-600 font-black uppercase text-[10px] tracking-widest hover:underline"
-          >
-            Limpar filtros
-          </button>
-        </div>
-      )}
-    </div>
+                {/* Grid de Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {groupedByLetter[letter].map((item, index) => (
+                    <GlossaryCard
+                      key={`${letter}-${index}`}
+                      item={item}
+                      searchQuery={search}
+                      onRelatedClick={handleRelatedClick}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))}
+          </>
+        )}
+      </section>
+
+      {/* Footer com Info */}
+      <section className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500 dark:text-slate-400 space-y-2">
+        <p>
+          📚 <strong>50 termos</strong> contextualizados para educadores da Zona Leste, SP
+        </p>
+        <p>
+          💡 Validação Multiperspectiva Fase 0-A | Atualizado 2026
+        </p>
+        <p className="text-[10px]">
+          Sugestões de novos termos? Contate coordenação pedagógica.
+        </p>
+      </section>
+    </main>
   );
 };
