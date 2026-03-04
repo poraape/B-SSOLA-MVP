@@ -116,6 +116,18 @@ npm run preview
 /recursos             -> Glossário, FAQ e simulador
 ```
 
+### Glossário refatorado (módulo de recursos)
+
+- Busca normalizada com suporte a acentos e tolerância a 1 erro de digitação.
+- Filtro por categoria com botão de limpeza rápida.
+- Índice A-Z navegável com rolagem suave para a seção da letra.
+- Cards expansíveis com termos relacionados clicáveis para busca cruzada.
+
+Arquivos principais:
+- `src/features/resources/GlossaryPage.tsx`
+- `src/features/resources/hooks/useGlossarySearch.ts`
+- `src/features/resources/utils/searchUtils.ts`
+
 ### Operações de manutenção do modelo
 
 ```bash
