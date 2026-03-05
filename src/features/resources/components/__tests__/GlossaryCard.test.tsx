@@ -1,5 +1,5 @@
 /* @vitest-environment jsdom */
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import type { GlossaryItem } from '../../data/glossary';
 import { GlossaryCard } from '../GlossaryCard';
@@ -23,18 +23,17 @@ describe('GlossaryCard', () => {
   });
 
   it('expande detalhes ao clicar', () => {
-    render(<GlossaryCard item={mockItem} searchQuery="" />);
+    const { container } = render(<GlossaryCard item={mockItem} searchQuery="" />);
 
-    const expandButtons = screen.getAllByRole('button', { name: /Ver detalhes/i });
-    fireEvent.click(expandButtons[0]);
+    fireEvent.click(within(container).getByRole('button', { name: /Ver detalhes/i }));
 
-    expect(screen.getByText(/Aluna chega chorando/)).toBeTruthy();
+    expect(within(container).getByText(/Aluna chega chorando/)).toBeTruthy();
   });
 
-  it('chama callback ao clicar em termo relacionado', () => {
+  it('chama callback ao clicar em termo relacionado', async () => {
     const onRelatedClick = vi.fn();
 
-    render(
+    const { container } = render(
       <GlossaryCard
         item={mockItem}
         searchQuery=""
@@ -42,11 +41,13 @@ describe('GlossaryCard', () => {
       />
     );
 
-    const expandButtons = screen.getAllByRole('button', { name: /Ver detalhes/i });
-    fireEvent.click(expandButtons[0]);
+    fireEvent.click(within(container).getByRole('button', { name: /Ver detalhes/i }));
 
-    const relatedButtons = screen.getAllByRole('button', { name: /Buscar termo relacionado Registro/i });
-    fireEvent.click(relatedButtons[0]);
+    await waitFor(() => {
+      expect(within(container).getByRole('button', { name: /Buscar termo relacionado Registro/i })).toBeTruthy();
+    });
+
+    fireEvent.click(within(container).getByRole('button', { name: /Buscar termo relacionado Registro/i }));
 
     expect(onRelatedClick).toHaveBeenCalledWith('Registro');
   });
