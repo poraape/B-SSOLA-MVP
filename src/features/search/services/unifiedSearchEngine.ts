@@ -1,46 +1,29 @@
+import { getCategories, getFlows } from '../../../domain/flows/selectors';
+import { searchFlows } from '../../../domain/search/searchEngine';
 import { faqData } from '../../resources/data/faq';
 import { glossaryData } from '../../resources/data/glossary';
+import type {
+  FAQSearchResult,
+  FlowSearchResult,
+  GlossarySearchResult,
+  UnifiedSearchResult,
+} from '../types/searchTypes';
 
-export interface FAQSearchResult {
-  id: string;
-  type: 'faq';
-  title: string;
-  question: string;
-  answer: string;
-  description?: string;
-  category: string;
-  tags?: string[];
-  url: string;
-  score: number;
-}
+export type SearchFilterType = 'all' | 'flow' | 'faq' | 'glossary';
 
-export interface GlossarySearchResult {
-  id: string;
-  type: 'glossary';
-  title: string;
-  term: string;
-  definition: string;
-  description?: string;
-  category: string;
-  url: string;
-  score: number;
-}
-
-export type UnifiedSearchResult = FAQSearchResult | GlossarySearchResult;
-
-function calculateScore(item: { term?: string; question?: string }, query: string): number {
-  const text = (item.term || item.question || '').toLowerCase();
+function calculateScore(item: { term?: string; question?: string; title?: string }, query: string): number {
+  const text = (item.term || item.question || item.title || '').toLowerCase();
   const lowerQuery = query.toLowerCase();
-  
+
   if (text === lowerQuery) return 100;
   if (text.startsWith(lowerQuery)) return 80;
   if (text.includes(lowerQuery)) return 60;
   return 40;
 }
 
-export function searchFAQ(query: string): FAQSearchResult[] {
+function searchFAQ(query: string): FAQSearchResult[] {
   const lowerQuery = query.toLowerCase();
-  
+
   const results = faqData
     .map((item): FAQSearchResult | null => {
       const matchesSearch =
@@ -59,18 +42,18 @@ export function searchFAQ(query: string): FAQSearchResult[] {
         description: item.answer.slice(0, 150),
         category: item.category,
         tags: item.tags,
-        url: `/recursos?tab=faq&q=${encodeURIComponent(item.id)}`,
-        score: calculateScore(item, query)
+        url: `/recursos?tab=faq&open=${encodeURIComponent(item.id)}`,
+        score: calculateScore(item, query),
       };
     })
-    .filter((r): r is FAQSearchResult => r !== null);
+    .filter((result): result is FAQSearchResult => result !== null);
 
   return results.sort((a, b) => b.score - a.score);
 }
 
-export function searchGlossary(query: string): GlossarySearchResult[] {
+function searchGlossary(query: string): GlossarySearchResult[] {
   const lowerQuery = query.toLowerCase();
-  
+
   const results = glossaryData
     .map((item): GlossarySearchResult | null => {
       const matchesSearch =
@@ -87,18 +70,46 @@ export function searchGlossary(query: string): GlossarySearchResult[] {
         definition: item.definition,
         description: item.definition.slice(0, 150),
         category: item.category,
-        url: `/recursos?tab=glossary&termo=${encodeURIComponent(item.term)}`,
-        score: calculateScore(item, query)
+        url: `/recursos?tab=glossary&term=${encodeURIComponent(item.term)}`,
+        score: calculateScore(item, query),
       };
     })
-    .filter((r): r is GlossarySearchResult => r !== null);
+    .filter((result): result is GlossarySearchResult => result !== null);
 
   return results.sort((a, b) => b.score - a.score);
 }
 
+function searchFlowResults(query: string): FlowSearchResult[] {
+  const flows = searchFlows(getFlows(), getCategories(), query);
+
+  return flows.map((flow) => ({
+    id: flow.meta.id,
+    type: 'flow',
+    title: flow.meta.title,
+    description: flow.meta.subcategory,
+    category: flow.meta.categoryId,
+    categoryLabel: flow.meta.subcategory,
+    url: `/fluxo/${flow.meta.id}`,
+    score: calculateScore({ title: flow.meta.title }, query),
+  }));
+}
+
 export function unifiedSearch(query: string): UnifiedSearchResult[] {
-  const faqResults = searchFAQ(query);
-  const glossaryResults = searchGlossary(query);
-  
-  return [...faqResults, ...glossaryResults].sort((a, b) => b.score - a.score);
+  if (query.trim().length < 2) return [];
+
+  return [
+    ...searchFAQ(query),
+    ...searchGlossary(query),
+    ...searchFlowResults(query),
+  ]
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 20);
+}
+
+export function searchByType(query: string, type: SearchFilterType): UnifiedSearchResult[] {
+  if (type === 'all') {
+    return unifiedSearch(query);
+  }
+
+  return unifiedSearch(query).filter((result) => result.type === type);
 }

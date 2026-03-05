@@ -8,11 +8,9 @@ import {
   GitBranch,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { searchByType } from '../services/unifiedSearchEngine';
+import { searchByType, type SearchFilterType } from '../services/unifiedSearchEngine';
 import type { UnifiedSearchResult } from '../types/searchTypes';
 import { useSearch } from '../context/SearchContext';
-
-type SearchFilterType = 'all' | 'flow' | 'faq' | 'glossary';
 
 const TYPE_ICONS = {
   faq: HelpCircle,
