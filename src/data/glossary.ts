@@ -623,19 +623,111 @@ export const glossaryData: GlossaryItem[] = [
     legalReference: 'LGPD (Lei 13.709/18) vs. Lei de Segurança Escolar (Lei 13.185/15)',
     relatedTerms: ['LGPD na Escola', 'Direitos da Criança', 'Convivência Escolar'],
   },
+  {
+    term: 'Exaustão Escolar / Burnout Estudantil',
+    definition: 'Estado de cansaço físico e mental causado por excesso de pressão acadêmica, cobrança constante ou sobrecarga emocional relacionada à escola.',
+    category: 'Saúde',
+    context: 'Pode aparecer em alunos que estudam muitas horas, têm medo intenso de errar ou sentem que nunca conseguem atingir expectativas. Em escolas com grande pressão por desempenho, alguns estudantes começam a perder motivação, apresentar irritabilidade ou evitar atividades escolares.',
+    practicalExample: 'Aluno que sempre teve boas notas começa a faltar provas e diz que "não aguenta mais estudar". Coordenação conversa com a família e ajusta expectativas e rotina de estudo.',
+    audienceLevel: 'leigo',
+    regionalContext: 'ZL-SP',
+    relatedTerms: ['TAG', 'Crise de Ansiedade', 'Saúde Mental'],
+  },
+  {
+    term: 'Isolamento Social Escolar',
+    definition: 'Situação em que um estudante permanece frequentemente sozinho, com pouca interação com colegas ou atividades coletivas.',
+    category: 'Saúde',
+    context: 'Pode indicar timidez, dificuldade social, bullying ou sofrimento emocional. Professores devem observar quando o aluno passa recreios sozinho, evita grupos ou demonstra desconforto constante em atividades coletivas.',
+    practicalExample: 'Durante semanas um aluno fica sozinho no recreio. Professora percebe e cria atividade em grupo onde ele possa participar com segurança.',
+    audienceLevel: 'leigo',
+    regionalContext: 'ZL-SP',
+    relatedTerms: ['Bullying', 'Inclusão Escolar'],
+  },
+  {
+    term: 'Clima Escolar',
+    definition: 'Percepção geral de segurança, respeito e bem-estar dentro da escola entre alunos, professores e funcionários.',
+    category: 'Convivência',
+    context: 'Um clima escolar positivo facilita aprendizado, cooperação e resolução de conflitos. Ambientes com medo, desrespeito ou violência frequente prejudicam o rendimento e aumentam evasão.',
+    practicalExample: 'Turmas com relações respeitosas participam mais das aulas e apresentam menos conflitos disciplinares.',
+    audienceLevel: 'leigo',
+    regionalContext: 'ZL-SP',
+    relatedTerms: ['Convivência Escolar', 'Bullying'],
+  },
+  {
+    term: 'Exclusão Social entre Alunos',
+    definition: 'Situação em que um estudante é deixado de fora de atividades, conversas ou grupos de forma repetida.',
+    category: 'Convivência',
+    context: 'Nem sempre envolve insultos diretos. Pode ocorrer quando colegas evitam convidar um aluno para trabalhos em grupo ou brincadeiras. Esse tipo de exclusão pode causar sofrimento emocional significativo.',
+    practicalExample: 'Turma sempre escolhe os mesmos colegas para trabalhos e deixa um aluno de fora. Professora organiza grupos rotativos para evitar exclusão.',
+    audienceLevel: 'leigo',
+    regionalContext: 'ZL-SP',
+    relatedTerms: ['Bullying', 'Inclusão Escolar'],
+  },
+  {
+    term: 'Rede Intersetorial',
+    definition: 'Conjunto de serviços públicos de diferentes áreas que atuam juntos para proteger crianças e adolescentes.',
+    category: 'Rede de Proteção',
+    context: 'Inclui escola, saúde (UBS, CAPS), assistência social (CRAS, CREAS), Conselho Tutelar e sistema de justiça. O trabalho em rede permite que cada serviço contribua para resolver situações complexas.',
+    practicalExample: 'Aluno em situação de violência doméstica recebe apoio da escola, acompanhamento psicológico no CAPS e acompanhamento familiar pelo CRAS.',
+    audienceLevel: 'leigo',
+    regionalContext: 'ZL-SP',
+    relatedTerms: ['CRAS e CREAS', 'Conselho Tutelar (CT)'],
+  },
+  {
+    term: 'Boato Escolar / Alarme Falso',
+    definition: 'Informação não confirmada que circula entre estudantes e causa medo ou confusão na escola.',
+    category: 'Segurança Escolar',
+    context: 'Boatos sobre violência ou ameaças podem se espalhar rapidamente por redes sociais e gerar pânico. A escola deve verificar a informação antes de agir e comunicar a comunidade com clareza.',
+    practicalExample: 'Mensagem em grupo diz que haverá ataque na escola. Direção investiga com autoridades e comunica oficialmente que a informação é falsa.',
+    audienceLevel: 'leigo',
+    regionalContext: 'ZL-SP',
+    relatedTerms: ['Comunicação de Crise'],
+  },
+  {
+    term: 'Cancelado / Cancelar',
+    definition: 'Situação em que alguém passa a ser criticado ou rejeitado publicamente nas redes sociais ou no grupo por um comportamento considerado errado.',
+    category: 'Gírias Estudantis',
+    context: 'Entre adolescentes, ser "cancelado" pode significar exclusão social temporária ou ataques online. Às vezes começa como brincadeira, mas pode evoluir para cyberbullying.',
+    practicalExample: 'Aluno faz comentário ofensivo e colegas começam a dizer que ele está "cancelado". Professora usa o momento para discutir respeito nas redes.',
+    audienceLevel: 'leigo',
+    regionalContext: 'ZL-SP',
+    relatedTerms: ['Cyberbullying'],
+  },
+  {
+    term: 'Shippar',
+    definition: 'Torcer para que duas pessoas formem um casal.',
+    category: 'Gírias Estudantis',
+    context: 'Pode aparecer como brincadeira entre alunos. Em alguns casos pode gerar constrangimento quando colegas insistem em relacionamentos que a pessoa não quer.',
+    practicalExample: 'Colegas começam a "shippar" dois alunos que ficam constrangidos. Professor intervém para evitar pressão social.',
+    audienceLevel: 'leigo',
+    regionalContext: 'ZL-SP',
+    relatedTerms: ['Convivência Escolar'],
+  },
+  {
+    term: 'Ficar na Bad',
+    definition: 'Expressão usada para indicar tristeza, desânimo ou frustração.',
+    category: 'Gírias Estudantis',
+    context: 'Pode indicar apenas um momento ruim ou, se frequente, sinalizar sofrimento emocional. Professores devem observar mudanças de comportamento quando o aluno usa essa expressão repetidamente.',
+    practicalExample: 'Aluno diz que ficou "na bad" depois de discussão com amigos. Professora conversa e ajuda a mediar o conflito.',
+    audienceLevel: 'leigo',
+    regionalContext: 'ZL-SP',
+    relatedTerms: ['Crise de Ansiedade'],
+  },
 ];
 
+
+
 /**
- * Total: 50 termos
+ * Total: 59 termos
  * Estrutura: 9 categorias
  * - Protocolo: 5 termos
  * - Legal: 4 termos
- * - Rede de Proteção: 5 termos
- * - Gírias Estudantis: 8 termos
- * - Saúde: 6 termos
+ * - Rede de Proteção: 6 termos
+ * - Gírias Estudantis: 11 termos
+ * - Saúde: 8 termos
  * - Inclusão: 8 termos
- * - Segurança Escolar: 6 termos
- * - Convivência: 4 termos
+ * - Segurança Escolar: 7 termos
+ * - Convivência: 6 termos
  * - Direitos & Cidadania: 4 termos
  */
 

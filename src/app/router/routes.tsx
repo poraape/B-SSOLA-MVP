@@ -10,6 +10,15 @@ const ResultPage = lazy(() => import('../../features/triage/ResultPage').then(m 
 const NetworkPage = lazy(() => import('../../features/network/NetworkPage').then(m => ({ default: m.NetworkPage })));
 const ServiceDetailsPage = lazy(() => import('../../features/network/ServiceDetailsPage').then(m => ({ default: m.ServiceDetailsPage })));
 const ResourcesPage = lazy(() => import('../../features/resources/ResourcesPage').then(m => ({ default: m.ResourcesPage })));
+const GlossaryGraphTermRoutePage = lazy(() =>
+  import('../../features/resources/glossaryGraph/pages/GlossaryGraphTermRoutePage').then((m) => ({ default: m.GlossaryGraphTermRoutePage }))
+);
+const GlossaryGraphExplorerPage = lazy(() =>
+  import('../../features/resources/glossaryGraph/pages/GlossaryGraphExplorerPage').then((m) => ({ default: m.GlossaryGraphExplorerPage }))
+);
+const GlossaryCategoryHubPage = lazy(() =>
+  import('../../features/resources/glossaryGraph/pages/GlossaryCategoryHubPage').then((m) => ({ default: m.GlossaryCategoryHubPage }))
+);
 const NotFoundPage = lazy(() => import('../../features/shared/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 export const AppRoutes: React.FC = () => {
@@ -25,6 +34,9 @@ export const AppRoutes: React.FC = () => {
       <Route path="/rede/servico/:serviceId" element={<NetworkPage />} />
       <Route path="/servico/:serviceId" element={<ServiceDetailsPage />} />
       <Route path="/recursos" element={<ResourcesPage />} />
+      <Route path="/recursos/glossario/grafo" element={<GlossaryGraphExplorerPage />} />
+      <Route path="/recursos/glossario/categoria/:category" element={<GlossaryCategoryHubPage />} />
+      <Route path="/recursos/glossario/:slug" element={<GlossaryGraphTermRoutePage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

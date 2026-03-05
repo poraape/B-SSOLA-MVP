@@ -7,6 +7,7 @@ import {
   type FC,
 } from 'react';
 import { BookOpen } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { glossaryData } from './data/glossary';
 import { useGlossarySearch } from './hooks/useGlossarySearch';
 import { groupByAlphabet } from './utils/searchUtils';
@@ -89,11 +90,19 @@ export const GlossaryPage: FC = () => {
   return (
     <main className="space-y-6" aria-label="Glossário educacional">
       <section className="rounded-[2rem] border border-slate-200 bg-white p-6 md:p-8">
-        <div className="flex items-center gap-3">
-          <BookOpen className="size-7 text-blue-700" aria-hidden="true" />
-          <h1 className="text-2xl font-black text-slate-900 md:text-3xl">
-            Glossário Educacional
-          </h1>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <BookOpen className="size-7 text-blue-700" aria-hidden="true" />
+            <h1 className="text-2xl font-black text-slate-900 md:text-3xl">
+              Glossário Educacional
+            </h1>
+          </div>
+          <Link
+            to="/recursos/glossario/grafo"
+            className="rounded-xl border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700 hover:border-blue-400"
+          >
+            Explorar grafo
+          </Link>
         </div>
         <p className="mt-3 max-w-3xl text-sm text-slate-600 md:text-base">
           50 termos essenciais para triagem e acolhimento escolar.
