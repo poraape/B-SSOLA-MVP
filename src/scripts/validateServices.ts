@@ -70,10 +70,18 @@ export function validateServices(): ValidationResult {
 
     const lat = service.location?.lat;
     const lng = service.location?.lng;
-    const hasLat = typeof lat === 'number' && Number.isFinite(lat);
-    const hasLng = typeof lng === 'number' && Number.isFinite(lng);
+    const hasLat = typeof lat === 'number';
+    const hasLng = typeof lng === 'number';
+    const latIsFinite = hasLat && Number.isFinite(lat);
+    const lngIsFinite = hasLng && Number.isFinite(lng);
 
-    if (!hasLat || !hasLng) {
+    if ((hasLat && !latIsFinite) || (hasLng && !lngIsFinite)) {
+      errors.push(
+        `Service "${service.name ?? service.id ?? `#${index}`}": coordinates must be finite numbers`
+      );
+    }
+
+    if (!latIsFinite || !lngIsFinite) {
       if (!service.needsGeoReview) {
         warnings.push(
           `Service "${service.name ?? service.id ?? `#${index}`}": missing coordinates, should set needsGeoReview=true`
