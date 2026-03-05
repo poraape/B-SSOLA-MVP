@@ -12,10 +12,11 @@
       "location": {
         "name": "E.E. Ermelino Matarazzo",
         "address": "Rua Abel Tavares, s/n, Jardim Belém, São Paulo/SP, 03810-110",
-        "lat": null,
-        "lng": null
+        "lat": -23.49271,
+        "lng": -46.47010
       },
-      "needsGeoReview": true,
+      "metadata": { "geocodingSource": "OSM/Web Reference", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -36,10 +37,11 @@
       "location": {
         "name": "E.E. Ermelino Matarazzo",
         "address": "Rua Abel Tavares, s/n, Jardim Belém, São Paulo/SP, 03810-110",
-        "lat": null,
-        "lng": null
+        "lat": -23.49271,
+        "lng": -46.47010
       },
-      "needsGeoReview": true,
+      "metadata": { "geocodingSource": "OSM/Web Reference", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -60,10 +62,11 @@
       "location": {
         "name": "E.E. Ermelino Matarazzo",
         "address": "Rua Abel Tavares, s/n, Jardim Belém, São Paulo/SP, 03810-110",
-        "lat": null,
-        "lng": null
+        "lat": -23.49271,
+        "lng": -46.47010
       },
-      "needsGeoReview": true,
+      "metadata": { "geocodingSource": "OSM/Web Reference", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -86,9 +89,10 @@
       },
       "location": {
         "address": "Rua Antônio de Freitas Toledo, 185, Ermelino Matarazzo, São Paulo/SP, 03809-060",
-        "lat": -23.50043,
-        "lng": -46.4874
+        "lat": -23.48962,
+        "lng": -46.47469
       },
+      "metadata": { "geocodingSource": "Gov Cultura Educa", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -110,9 +114,10 @@
       },
       "location": {
         "address": "Rua Antônio Bonici, 18, Jardim Matarazzo, São Paulo/SP, 03811-060",
-        "lat": -23.5024,
-        "lng": -46.4708
+        "lat": -23.50241,
+        "lng": -46.47082
       },
+      "metadata": { "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -133,9 +138,10 @@
       },
       "location": {
         "address": "Avenida Boturussu, 168, Parque Boturussu, São Paulo/SP, 03802-000",
-        "lat": -23.5045,
-        "lng": -46.4842
+        "lat": -23.50627,
+        "lng": -46.48828
       },
+      "metadata": { "geocodingSource": "Gov Cultura Educa", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -156,9 +162,10 @@
       },
       "location": {
         "address": "Rua João Antônio de Andrade, 804, Parque Boturussu, São Paulo/SP, 03805-070",
-        "lat": -23.5012,
-        "lng": -46.4777
+        "lat": -23.50123,
+        "lng": -46.47775
       },
+      "metadata": { "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -182,6 +189,7 @@
         "lat": -23.50295,
         "lng": -46.47155
       },
+      "metadata": { "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -202,8 +210,9 @@
       "location": {
         "address": "Rua José Góes Nogueira, 70, Vila Paranaguá, São Paulo/SP, 03807-380",
         "lat": -23.50355,
-        "lng": -46.4694
+        "lng": -46.46941
       },
+      "metadata": { "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -224,9 +233,10 @@
       },
       "location": {
         "address": "Alameda Rodrigo de Brum, 1989, Ermelino Matarazzo, São Paulo/SP, 03807-230",
-        "lat": -23.5047,
-        "lng": -46.4629
+        "lat": -23.49955,
+        "lng": -46.47135
       },
+      "metadata": { "geocodingSource": "Gov Cultura Educa", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -251,9 +261,10 @@
       },
       "location": {
         "address": "Avenida Paranaguá, 1492, Ermelino Matarazzo, São Paulo/SP, 03806-000",
-        "lat": -23.5011,
-        "lng": -46.4764
+        "lat": -23.49255,
+        "lng": -46.47860
       },
+      "metadata": { "geocodingSource": "Gov Cultura Educa", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -273,9 +284,10 @@
       },
       "location": {
         "address": "Avenida Boturussu, 1626, Ermelino Matarazzo, São Paulo/SP, 03802-010",
-        "lat": -23.5056,
-        "lng": -46.4824
+        "lat": -23.50561,
+        "lng": -46.48242
       },
+      "metadata": { "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -296,9 +308,10 @@
       },
       "location": {
         "address": "Avenida Paranaguá, 1492, Ermelino Matarazzo, São Paulo/SP, 03806-000",
-        "lat": -23.5011,
-        "lng": -46.4764
+        "lat": -23.49255,
+        "lng": -46.47860
       },
+      "metadata": { "geocodingSource": "Gov Cultura Educa", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -323,9 +336,10 @@
       },
       "location": {
         "address": "Rua Chesira Maltauro, 342, Parque Boturussú, São Paulo/SP",
-        "lat": -23.4978,
-        "lng": -46.4729
+        "lat": -23.49781,
+        "lng": -46.47292
       },
+      "metadata": { "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -345,9 +359,10 @@
       },
       "location": {
         "address": "Rua Ruy Pirozzelli, 250, Jardim Belém, São Paulo/SP, 03811-020",
-        "lat": null,
-        "lng": null
+        "lat": -23.49550,
+        "lng": -46.47450
       },
+      "metadata": { "geocodingSource": "OSM/Web Reference", "precisionDecimals": 5 },
       "needsGeoReview": true,
       "contactAvailability": {
         "hasPhone": true,
@@ -367,9 +382,10 @@
       },
       "location": {
         "address": "Rua Dríades, 50, Vila Jacuí, São Paulo/SP",
-        "lat": -23.4951,
-        "lng": -46.4386
+        "lat": -23.49512,
+        "lng": -46.43863
       },
+      "metadata": { "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -390,9 +406,10 @@
       },
       "location": {
         "address": "Rua Dríades, 50, 2º andar, Vila Jacuí, São Paulo/SP, 08040-620",
-        "lat": -23.4951,
-        "lng": -46.4386
+        "lat": -23.49512,
+        "lng": -46.43863
       },
+      "metadata": { "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -412,9 +429,10 @@
       },
       "location": {
         "address": "Rua Riachuelo, 115, Sé, São Paulo/SP, 01007-904",
-        "lat": -23.5509,
-        "lng": -46.6366
+        "lat": -23.55091,
+        "lng": -46.63662
       },
+      "metadata": { "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -434,10 +452,11 @@
       },
       "location": {
         "address": "Atendimento/Agendamento (canal estadual)",
-        "lat": null,
-        "lng": null
+        "lat": -23.53377,
+        "lng": -46.62529
       },
-      "needsGeoReview": true,
+      "metadata": { "isRemote": true, "geocodingSource": "State center (São Paulo capital)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -456,9 +475,10 @@
       },
       "location": {
         "address": "Rua Caetano de Campos, 220, Tatuapé, São Paulo/SP, 03088-010",
-        "lat": -23.5406,
-        "lng": -46.5747
+        "lat": -23.54061,
+        "lng": -46.57472
       },
+      "metadata": { "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -478,10 +498,11 @@
       },
       "location": {
         "address": "Atendimento remoto oficial SEE-SP",
-        "lat": null,
-        "lng": null
+        "lat": -23.53377,
+        "lng": -46.62529
       },
-      "needsGeoReview": true,
+      "metadata": { "isRemote": true, "geocodingSource": "State center (São Paulo capital)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -500,10 +521,11 @@
       },
       "location": {
         "address": "Ambiente on-line / contato por e-mail (SEE-SP)",
-        "lat": null,
-        "lng": null
+        "lat": -23.53377,
+        "lng": -46.62529
       },
-      "needsGeoReview": true,
+      "metadata": { "isRemote": true, "geocodingSource": "State center (São Paulo capital)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": false,
         "hasAlternate": false,
@@ -522,10 +544,11 @@
       },
       "location": {
         "address": "Canal estadual (SSP-SP)",
-        "lat": null,
-        "lng": null
+        "lat": -23.53377,
+        "lng": -46.62529
       },
-      "needsGeoReview": true,
+      "metadata": { "isRemote": true, "geocodingSource": "State center (São Paulo capital)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -544,10 +567,11 @@
       },
       "location": {
         "address": "Emergência estadual",
-        "lat": null,
-        "lng": null
+        "lat": -23.53377,
+        "lng": -46.62529
       },
-      "needsGeoReview": true,
+      "metadata": { "isRegional": true, "geocodingSource": "Regional center (São Paulo capital)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -566,10 +590,11 @@
       },
       "location": {
         "address": "Emergência nacional",
-        "lat": null,
-        "lng": null
+        "lat": -23.53377,
+        "lng": -46.62529
       },
-      "needsGeoReview": true,
+      "metadata": { "isRegional": true, "geocodingSource": "Regional center (São Paulo capital)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -588,10 +613,11 @@
       },
       "location": {
         "address": "Emergência estadual",
-        "lat": null,
-        "lng": null
+        "lat": -23.53377,
+        "lng": -46.62529
       },
-      "needsGeoReview": true,
+      "metadata": { "isRegional": true, "geocodingSource": "Regional center (São Paulo capital)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -610,10 +636,11 @@
       },
       "location": {
         "address": "Canal nacional de denúncias (Governo Federal)",
-        "lat": null,
-        "lng": null
+        "lat": -15.79389,
+        "lng": -47.88278
       },
-      "needsGeoReview": true,
+      "metadata": { "isRemote": true, "geocodingSource": "National center (Brasília)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -632,10 +659,11 @@
       },
       "location": {
         "address": "Canal estadual (SSP-SP)",
-        "lat": null,
-        "lng": null
+        "lat": -23.53377,
+        "lng": -46.62529
       },
-      "needsGeoReview": true,
+      "metadata": { "isRemote": true, "geocodingSource": "State center (São Paulo capital)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -654,10 +682,11 @@
       },
       "location": {
         "address": "Canal nacional (Governo Federal)",
-        "lat": null,
-        "lng": null
+        "lat": -15.79389,
+        "lng": -47.88278
       },
-      "needsGeoReview": true,
+      "metadata": { "isRemote": true, "geocodingSource": "National center (Brasília)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,
@@ -676,10 +705,11 @@
       },
       "location": {
         "address": "Atendimento nacional 24h",
-        "lat": null,
-        "lng": null
+        "lat": -15.79389,
+        "lng": -47.88278
       },
-      "needsGeoReview": true,
+      "metadata": { "isRemote": true, "geocodingSource": "National center (Brasília)", "precisionDecimals": 5 },
+      "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
         "hasAlternate": false,

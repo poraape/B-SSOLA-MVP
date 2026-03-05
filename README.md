@@ -106,15 +106,17 @@ npm run preview
 
 ### Navegação por rotas (frontend)
 
-```txt
-/                     -> Home
-/atendimento          -> Gateway de risco imediato
-/categoria/:categoryId -> Lista de situações da categoria
-/fluxo/:flowId        -> Triagem de um protocolo
-/resultado/:flowId    -> Saída consolidada do caso
-/rede                 -> Rede de apoio
-/recursos             -> Glossário, FAQ e simulador
-```
+## Rotas da Aplicação
+
+Rotas principais (PT-BR):
+- `/recursos` - Glossário, FAQ e simulador
+- `/rede` - Mapa de serviços
+- `/atendimento` - Triagem/Gateway
+- `/categoria/:categoryId` - Lista de situações da categoria
+- `/fluxo/:flowId` - Triagem de um protocolo
+- `/resultado/:flowId` - Saída consolidada do caso
+
+> **Nota**: Aliases EN (`/resources`, `/network`, `/gateway`) redirecionam automaticamente para rotas PT-BR.
 
 ### Glossário refatorado (módulo de recursos)
 

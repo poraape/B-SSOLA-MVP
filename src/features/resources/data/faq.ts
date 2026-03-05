@@ -8,8 +8,8 @@ export const faqData: FAQItem[] = [
     answer:
       'O Atendimento Guiado (Decisor) é uma ferramenta interativa que faz perguntas simples sobre a situação observada. Com base nas suas respostas, o sistema indica o nível de risco e as ações imediatas que devem ser tomadas conforme o protocolo institucional.',
     relatedLinks: [
-      { text: 'Acessar simulador de casos', href: '/resources/simulator', type: 'internal' },
-      { text: 'Ver glossário de termos', href: '/resources/glossary', type: 'internal' },
+      { text: 'Acessar simulador de casos', href: '/recursos?tab=simulator', type: 'internal' },
+      { text: 'Ver glossário de termos', href: '/recursos?tab=glossary', type: 'internal' },
     ],
     tags: ['decisor', 'triagem', 'protocolo'],
     lastUpdated: '2026-03-04',
@@ -30,8 +30,8 @@ export const faqData: FAQItem[] = [
     answer:
       'Após concluir uma triagem no Decisor, o sistema sugere automaticamente os contatos da Rede de Apoio mais adequados para o nível de risco identificado. Você pode acessar telefones e endereços diretamente na seção "Rede de Apoio".',
     relatedLinks: [
-      { text: 'Ver Rede de Apoio completa', href: '/network', type: 'internal' },
-      { text: 'Entender níveis de risco', href: '/resources/glossary', type: 'internal' },
+      { text: 'Ver Rede de Apoio completa', href: '/rede', type: 'internal' },
+      { text: 'Entender níveis de risco', href: '/recursos?tab=glossary', type: 'internal' },
     ],
     tags: ['decisor', 'rede', 'integração'],
     lastUpdated: '2026-03-04',
@@ -51,7 +51,7 @@ export const faqData: FAQItem[] = [
     question: 'Qual o papel do professor ao identificar uma situação crítica?',
     answer:
       'O papel primordial do docente é o acolhimento inicial e a proteção do estudante. O professor deve garantir que o aluno esteja em segurança e reportar imediatamente à coordenação ou direção, que seguirá com os trâmites do protocolo.',
-    relatedLinks: [{ text: 'Ver protocolos de emergência', href: '/resources/simulator', type: 'internal' }],
+    relatedLinks: [{ text: 'Ver protocolos de emergência', href: '/recursos?tab=simulator', type: 'internal' }],
     tags: ['acolhimento', 'emergência', 'papel'],
     lastUpdated: '2026-03-04',
   },
@@ -97,7 +97,7 @@ export const faqData: FAQItem[] = [
     question: 'Quando devo acionar o Conselho Tutelar?',
     answer:
       'O Conselho Tutelar deve ser acionado em casos de suspeita de negligência, violência física/psicológica, abuso sexual ou situações onde a família não garante direitos básicos da criança/adolescente. A coordenação deve mediar o contato.',
-    relatedLinks: [{ text: 'Ver contatos da Rede de Apoio', href: '/network', type: 'internal' }],
+    relatedLinks: [{ text: 'Ver contatos da Rede de Apoio', href: '/rede', type: 'internal' }],
     tags: ['conselho-tutelar', 'escalação', 'violência'],
     lastUpdated: '2026-03-04',
   },
@@ -116,7 +116,7 @@ export const faqData: FAQItem[] = [
     question: 'Quais serviços compõem a Rede de Apoio?',
     answer:
       'A Rede de Apoio inclui: Conselho Tutelar, CRAS/CREAS, UBS/CAPS, Delegacias especializadas (Mulher, Criança), Defensoria Pública, Ministério Público, e serviços voluntários locais. Cada caso requer articulação específica.',
-    relatedLinks: [{ text: 'Ver lista completa de contatos', href: '/network', type: 'internal' }],
+    relatedLinks: [{ text: 'Ver lista completa de contatos', href: '/rede', type: 'internal' }],
     tags: ['rede', 'serviços', 'contatos'],
     lastUpdated: '2026-03-04',
   },
@@ -126,7 +126,7 @@ export const faqData: FAQItem[] = [
     question: 'Como saber qual serviço acionar primeiro?',
     answer:
       'O Decisor indica automaticamente a ordem de acionamento conforme o risco. Em geral: emergências médicas -> SAMU/UBS; violência iminente -> Polícia; vulnerabilidade social -> CRAS; violação de direitos -> Conselho Tutelar.',
-    relatedLinks: [{ text: 'Simular casos reais', href: '/resources/simulator', type: 'internal' }],
+    relatedLinks: [{ text: 'Simular casos reais', href: '/recursos?tab=simulator', type: 'internal' }],
     tags: ['triagem', 'priorização', 'fluxo'],
     lastUpdated: '2026-03-04',
   },
@@ -221,6 +221,185 @@ export const faqData: FAQItem[] = [
     tags: ['atualização', 'revisão', 'manutenção'],
     lastUpdated: '2026-03-04',
   },
+
+  {
+    id: 'pos-triagem-001',
+    category: 'Pós-Triagem e Resultados',
+    question: 'Recebi um resultado de risco "alto". O que isso significa na prática?',
+    answer: `Os níveis de risco indicam a **urgência do encaminhamento**:
+
+- **Baixo**: Situação sob controle, monitoramento preventivo suficiente
+- **Moderado**: Atenção necessária, encaminhar em até 7 dias úteis
+- **Alto**: Risco iminente, encaminhar em até 24-48h
+- **Crítico**: Emergência, acionar imediatamente (SAMU 192, Polícia 190, Bombeiros 193)
+
+**Exemplo prático:**
+"Risco alto - Suspeita de violência física" → Acionar Conselho Tutelar + CREAS no mesmo dia, documentar horário do contato.
+
+**Importante:** O nível é uma recomendação técnica. Use seu julgamento profissional para casos limítrofes e sempre priorize a segurança do estudante.`,
+    relatedLinks: [
+      { text: 'Ver serviços na rede', href: '/rede', type: 'internal' },
+      { text: 'Protocolos de encaminhamento', href: '/recursos?tab=simulator', type: 'internal' },
+    ],
+    tags: ['risco', 'alto', 'crítico', 'urgência', 'resultado', 'triagem'],
+    lastUpdated: '2026-03-05',
+  },
+  {
+    id: 'pos-triagem-002',
+    category: 'Pós-Triagem e Resultados',
+    question: 'O resultado indica "encaminhamento imediato". Quais são os próximos passos?',
+    answer: `Siga este fluxo prioritário:
+
+1. **Acionar o serviço indicado** (consulte Rede de Apoio para contatos atualizados)
+2. **Documentar data/hora** do encaminhamento em registro oficial da escola
+3. **Informar a família** (se for seguro fazer isso - em casos de violência intrafamiliar, avaliar com direção)
+4. **Notificar direção escolar** imediatamente via canal interno
+
+**Prazos esperados de resposta:**
+- Emergencial (risco crítico): 24-48h
+- Alta prioridade: 7 dias úteis
+- Moderada: 15 dias úteis
+
+Se o prazo for ultrapassado: religar para o serviço, escalar para gestor, registrar nova tentativa em ata.`,
+    relatedLinks: [
+      { text: 'Contatos da Rede de Apoio', href: '/rede', type: 'internal' },
+      { text: 'Ver glossário de termos', href: '/recursos?tab=glossary', type: 'internal' },
+    ],
+    tags: ['encaminhamento', 'imediato', 'fluxo', 'prazo', 'documentação'],
+    lastUpdated: '2026-03-05',
+  },
+  {
+    id: 'pos-triagem-003',
+    category: 'Pós-Triagem e Resultados',
+    question: 'Quando sou obrigado(a) a notificar o Conselho Tutelar?',
+    answer: `Segundo o **Art. 13 do ECA (Estatuto da Criança e Adolescente)**, a notificação é **obrigatória** em casos de:
+
+1. Suspeita ou confirmação de **maus-tratos** (físicos, psicológicos, negligência)
+2. Suspeita de **abuso sexual**
+3. Faltas escolares superiores a **30% do permitido** (≈15 dias em 200 letivos)
+4. **Evasão escolar** após esgotados recursos pedagógicos
+5. Qualquer situação de **violação de direitos fundamentais**
+
+**Prazo:** Imediato (boa prática = até 24h)
+
+**Importante:** A notificação é dever institucional intransferível. Não fazer pode configurar infração administrativa (Art. 245 ECA). Sempre documente data/hora do contato.`,
+    relatedLinks: [
+      { text: 'Contato do Conselho Tutelar', href: '/rede', type: 'internal' },
+      {
+        text: 'Texto completo do ECA Art. 13',
+        href: 'https://www.planalto.gov.br/ccivil_03/leis/l8069.htm',
+        type: 'external',
+      },
+    ],
+    tags: ['conselho-tutelar', 'eca', 'notificação', 'obrigatória', 'maus-tratos', 'legal'],
+    lastUpdated: '2026-03-05',
+  },
+  {
+    id: 'pos-triagem-004',
+    category: 'Pós-Triagem e Resultados',
+    question: 'Posso compartilhar o resultado da triagem com outros professores?',
+    answer: `**Não, exceto se houver necessidade pedagógica comprovada.**
+
+Segundo a **LGPD (Lei Geral de Proteção de Dados) Art. 11 e 14**, dados sobre saúde/vulnerabilidade de crianças são **dados sensíveis** e exigem consentimento específico dos responsáveis.
+
+**Princípio "Need to Know":**
+✅ **PODE compartilhar com:** Direção, orientação pedagógica, professor regente, psicólogo escolar
+❌ **NÃO PODE compartilhar com:** Colegas não envolvidos no caso, outros pais, grupos de WhatsApp, sem base legal
+
+**Exceção:** Situações de **risco iminente** onde compartilhar informação é necessário para proteção do estudante (ex: alerta de crise suicida para professor de plantão).
+
+**Importante:** Sempre use canais oficiais e seguros. Evite conversas informais sobre casos sensíveis.`,
+    relatedLinks: [
+      {
+        text: 'LGPD nas escolas - guia prático',
+        href: 'https://www.gov.br/mec/pt-br/acesso-a-informacao/lgpd',
+        type: 'external',
+      },
+    ],
+    tags: ['lgpd', 'sigilo', 'privacidade', 'compartilhamento', 'dados-sensíveis', 'consentimento'],
+    lastUpdated: '2026-03-05',
+  },
+  {
+    id: 'pos-triagem-005',
+    category: 'Pós-Triagem e Resultados',
+    question: 'Como conversar com a família sobre o resultado da triagem?',
+    answer: `Utilize princípios de **Comunicação Não-Violenta (CNV)** para criar parceria:
+
+**1. Prepare o contexto:**
+- Escolha ambiente privado e acolhedor
+- Evite tom acusatório ou alarmista
+- Tenha dados objetivos em mãos (não apenas impressões)
+
+**2. Durante a conversa:**
+- **Evite:** "Seu filho está com problema grave", "Vocês precisam fazer algo urgente"
+- **Prefira:** "Observamos [situação concreta] e queremos construir juntos um plano de apoio"
+- Explique o resultado **sem jargão técnico** (substitua "risco moderado" por "necessita atenção")
+
+**3. Foque em ações concretas:**
+- Liste serviços disponíveis (CRAS, UBS, psicólogo)
+- **Ofereça acompanhar** a família no primeiro contato
+- Agende retorno para acompanhamento em 15 dias
+
+**Importante:** Se houver suspeita de violência intrafamiliar, NÃO exponha o caso diretamente. Consulte direção antes.`,
+    relatedLinks: [
+      { text: 'Ver serviços de apoio disponíveis', href: '/rede', type: 'internal' },
+    ],
+    tags: ['família', 'comunicação', 'cnv', 'reunião', 'responsáveis', 'diálogo'],
+    lastUpdated: '2026-03-05',
+  },
+  {
+    id: 'pos-triagem-006',
+    category: 'Pós-Triagem e Resultados',
+    question: 'Encaminhei o caso há 2 semanas e não tive retorno. O que fazer?',
+    answer: `**Prazos esperados por categoria:**
+
+- **Emergencial (risco crítico):** 24-48h
+- **Alta prioridade:** 7 dias úteis
+- **Moderada prioridade:** 15 dias úteis
+- **Baixa (monitoramento):** 30 dias
+
+**Se o prazo for ultrapassado:**
+
+1. **Religar para o serviço** (use canais alternativos: WhatsApp institucional, e-mail)
+2. **Escalar para gestor** da rede (ex: coordenador CREAS, supervisor CT)
+3. **Registrar nova tentativa** em ata/sistema oficial com data/hora
+4. **Informar direção escolar** para possível ofício formal
+5. Se persistir >30 dias: considerar notificar Ministério Público (casos graves)
+
+**Documentação é essencial:** Guarde protocolos, números de ofício, nomes de quem atendeu.`,
+    relatedLinks: [
+      { text: 'Contatos completos da Rede', href: '/rede', type: 'internal' },
+    ],
+    tags: ['prazo', 'retorno', 'sem-resposta', 'escalação', 'documentação', 'contingência'],
+    lastUpdated: '2026-03-05',
+  },
+  {
+    id: 'pos-triagem-007',
+    category: 'Pós-Triagem e Resultados',
+    question: 'O resultado foi "risco baixo, monitorar". Quais ações tomar?',
+    answer: `**Monitoramento ativo ≠ não fazer nada.** O acompanhamento preventivo é essencial.
+
+**Plano de Monitoramento (Template):**
+
+1. **Definir indicadores** (ex: frequência, participação em aula, interação social)
+2. **Designar responsável** (professor regente ou orientação)
+3. **Periodicidade:** Reavaliação a cada **30 dias**
+4. **Registro:** Anotar evolução em sistema oficial ou caderno de acompanhamento
+
+**Ações concretas:**
+- Check-in semanal informal com estudante ("Como você está?")
+- Observar mudanças de comportamento
+- Manter diálogo aberto com família (contato mensal)
+- Se houver piora: reavaliar risco e intensificar ações
+
+**Importante:** Risco baixo hoje pode evoluir. Monitoramento é proteção proativa.`,
+    relatedLinks: [
+      { text: 'Simular casos de monitoramento', href: '/recursos?tab=simulator', type: 'internal' },
+      { text: 'Glossário de termos', href: '/recursos?tab=glossary', type: 'internal' },
+    ],
+    tags: ['risco-baixo', 'monitoramento', 'acompanhamento', 'preventivo', 'plano', 'follow-up'],
+    lastUpdated: '2026-03-05',
+  },
 ];
 
 export function searchFAQ(query: string, category?: string): FAQItem[] {
@@ -238,6 +417,7 @@ export function searchFAQ(query: string, category?: string): FAQItem[] {
 export const FAQ_CATEGORIES = [
   'all',
   'Geral',
+  'Pós-Triagem e Resultados',
   'Uso do App',
   'Protocolos',
   'Docentes',
