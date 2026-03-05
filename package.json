@@ -22,7 +22,8 @@
     "test:e2e:ui": "playwright test --ui",
     "model:check": "node src/scripts/modelCheck.mjs",
     "test:watch": "vitest",
-    "heuristic:audit": "tsx src/scripts/compareHeuristics.ts"
+    "heuristic:audit": "tsx src/scripts/compareHeuristics.ts",
+    "validate:services": "tsx src/scripts/validateServices.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",

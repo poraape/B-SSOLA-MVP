@@ -12,6 +12,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { glossaryData } from './data/glossary';
 import { useGlossarySearch } from './hooks/useGlossarySearch';
 import { groupByAlphabet } from './utils/searchUtils';
+import { GlossarySearch } from '../../components/GlossarySearch';
 
 const GlossaryFilters = lazy(() =>
   import('./components/GlossaryFilters').then((module) => ({
@@ -121,6 +122,21 @@ export const GlossaryPage: FC = () => {
     setSelectedLetters([]);
   };
 
+  const handleSearchResultClick = (result: { id: string; term: string }) => {
+    setSearch(result.term);
+    setSelectedCategory('all');
+    setSelectedLetters([]);
+
+    requestAnimationFrame(() => {
+      const element = document.getElementById(result.id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        resultSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  };
+
   return (
     <main className="space-y-6" aria-label="Glossário educacional">
       <section className="rounded-[2rem] border border-slate-200 bg-white p-6 md:p-8">
@@ -142,6 +158,8 @@ export const GlossaryPage: FC = () => {
           50 termos essenciais para triagem e acolhimento escolar.
         </p>
       </section>
+
+      <GlossarySearch onResultClick={handleSearchResultClick} className="mb-6" />
 
       <Suspense fallback={<div className="h-20 animate-pulse rounded-2xl bg-slate-100" />}>
         <GlossaryFilters

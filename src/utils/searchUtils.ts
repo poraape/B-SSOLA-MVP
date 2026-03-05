@@ -1,3 +1,5 @@
+import { Fragment, createElement, type ReactNode } from 'react';
+
 // src/features/resources/utils/searchUtils.ts
 
 /**
@@ -55,7 +57,7 @@ export const groupByAlphabet = <T extends { term: string }>(
 /**
  * Destaca termo buscado no texto
  */
-export const highlightTerm = (text: string, query: string): React.ReactNode => {
+export const highlightTerm = (text: string, query: string): ReactNode => {
   if (!query) return text;
 
   const normalizedQuery = normalizeText(query);
@@ -66,13 +68,15 @@ export const highlightTerm = (text: string, query: string): React.ReactNode => {
 
   const endIdx = startIdx + query.length;
 
-  return (
-    <>
-      {text.substring(0, startIdx)}
-      <mark className="bg-yellow-200 dark:bg-yellow-900 font-semibold">
-        {text.substring(startIdx, endIdx)}
-      </mark>
-      {text.substring(endIdx)}
-    </>
+  return createElement(
+    Fragment,
+    null,
+    text.substring(0, startIdx),
+    createElement(
+      'mark',
+      { className: 'bg-yellow-200 dark:bg-yellow-900 font-semibold' },
+      text.substring(startIdx, endIdx)
+    ),
+    text.substring(endIdx)
   );
 };
