@@ -20,10 +20,30 @@ export const Header: React.FC = () => {
 
   const navItems = [
     { label: 'Início', path: '/' },
-    { label: 'Decisor', path: '/fluxo/flow_gateway' }, // Correct path to gateway
+    { label: 'Decisor', path: '/atendimento' },
     { label: 'Rede', path: '/rede' },
     { label: 'Recursos', path: '/recursos' },
   ];
+
+  const isNavItemActive = (path: string): boolean => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    if (path === '/atendimento') {
+      return (
+        location.pathname === '/atendimento' ||
+        location.pathname.startsWith('/fluxo/') ||
+        location.pathname.startsWith('/resultado/')
+      );
+    }
+    if (path === '/rede') {
+      return location.pathname === '/rede' || location.pathname.startsWith('/rede/');
+    }
+    if (path === '/recursos') {
+      return location.pathname === '/recursos' || location.pathname.startsWith('/recursos/');
+    }
+    return location.pathname === path;
+  };
 
   return (
     <header className={`sticky top-0 z-[1001] transition-colors duration-300 border-b ${
@@ -50,7 +70,7 @@ export const Header: React.FC = () => {
                 to={item.path}
                 onClick={closeSearch}
                 className={`px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap ${
-                  location.pathname === item.path
+                  isNavItemActive(item.path)
                     ? 'bg-slate-900 text-white shadow-md'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
