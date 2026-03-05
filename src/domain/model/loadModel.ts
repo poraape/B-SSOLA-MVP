@@ -1,5 +1,5 @@
 import { composeModelV2 } from './v2/composeModelV2';
-import { validateModel } from './validateModel';
+import { validateModel } from '../validation/validateModel';
 import { normalizeModel } from './normalizeModel';
 import { ProtocolModel } from './schema';
 import { systemLogger } from '../metrics/systemLogger';

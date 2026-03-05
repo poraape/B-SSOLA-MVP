@@ -23,7 +23,8 @@
     "model:check": "node src/scripts/modelCheck.mjs",
     "test:watch": "vitest",
     "heuristic:audit": "tsx src/scripts/compareHeuristics.ts",
-    "validate:services": "tsx src/scripts/validateServices.ts"
+    "validate:services": "tsx src/scripts/validateServices.ts",
+    "validate:model": "tsx src/scripts/validateModelData.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
@@ -37,16 +38,17 @@
     "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.13.1",
     "semver": "^7.5.4",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "@types/semver": "^7.7.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/semver": "^7.7.1",
     "@vitest/coverage-v8": "^1.3.0",
     "autoprefixer": "^10.4.21",
     "jsdom": "^25.0.1",
