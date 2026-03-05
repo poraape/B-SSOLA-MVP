@@ -1,10 +1,12 @@
 /* @vitest-environment jsdom */
-import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
-import type { GlossaryItem } from '../../data/glossary';
+import { fireEvent, render, screen, waitFor, cleanup } from '@testing-library/react';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import type { GlossaryItem } from '../../../data/glossary';
 import { GlossaryCard } from '../GlossaryCard';
 
 describe('GlossaryCard', () => {
+  afterEach(cleanup);
+
   const mockItem: GlossaryItem = {
     term: 'Acolhimento Inicial',
     definition: 'Primeira conversa reservada com estudante.',
@@ -23,17 +25,18 @@ describe('GlossaryCard', () => {
   });
 
   it('expande detalhes ao clicar', () => {
-    const { container } = render(<GlossaryCard item={mockItem} searchQuery="" />);
+    render(<GlossaryCard item={mockItem} searchQuery="" />);
 
-    fireEvent.click(within(container).getByRole('button', { name: /Ver detalhes/i }));
+    const expandButtons = screen.getAllByRole('button', { name: /Ver detalhes/i });
+    fireEvent.click(expandButtons[0]);
 
-    expect(within(container).getByText(/Aluna chega chorando/)).toBeTruthy();
+    expect(screen.getByText(/Aluna chega chorando/)).toBeTruthy();
   });
 
   it('chama callback ao clicar em termo relacionado', async () => {
     const onRelatedClick = vi.fn();
 
-    const { container } = render(
+    render(
       <GlossaryCard
         item={mockItem}
         searchQuery=""
@@ -41,15 +44,23 @@ describe('GlossaryCard', () => {
       />
     );
 
-    fireEvent.click(within(container).getByRole('button', { name: /Ver detalhes/i }));
+    // 1. Expandir card
+    const expandButtons = screen.getAllByRole('button', { name: /Ver detalhes/i });
+    fireEvent.click(expandButtons[0]);
 
+    // 2. Aguardar renderização dos termos relacionados
     await waitFor(() => {
-      expect(within(container).getByRole('button', { name: /Buscar termo relacionado Registro/i })).toBeTruthy();
+      expect(screen.getByText(/Registro/)).toBeTruthy();
     });
 
-    fireEvent.click(within(container).getByRole('button', { name: /Buscar termo relacionado Registro/i }));
+    // 3. Clicar no termo relacionado
+    const relatedButtons = screen.getAllByRole('button', { name: /Buscar termo relacionado Registro/i });
+    fireEvent.click(relatedButtons[0]);
 
-    expect(onRelatedClick).toHaveBeenCalledWith('Registro');
+    // 4. Verificar callback
+    await waitFor(() => {
+      expect(onRelatedClick).toHaveBeenCalledWith('Registro');
+    });
   });
 
   it('destaca termo buscado', () => {
