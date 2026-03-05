@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getFlowById } from '../../domain/flows/selectors';
 import { initFlow, FlowState } from '../../domain/flows/flowEngine';
 import { runDecision } from '../../application/decisionOrchestrator';
@@ -41,6 +41,25 @@ export const FlowPage: React.FC = () => {
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [flow, state]);
+
+  const currentQuestion = flow && state
+    ? flow.triage.questions.find(q => q.id === state.currentQuestionId)
+    : undefined;
+
+  useEffect(() => {
+    if (!flow || !state) return;
+
+    if (currentQuestion) {
+      setIsProcessingTimedOut(false);
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setIsProcessingTimedOut(true);
+    }, 4000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [flow, state, currentQuestion]);
 
   if (!flow || !state) {
     return (
@@ -107,20 +126,6 @@ export const FlowPage: React.FC = () => {
     }
   };
 
-  const currentQuestion = flow.triage.questions.find(q => q.id === state.currentQuestionId);
-
-  useEffect(() => {
-    if (currentQuestion) {
-      setIsProcessingTimedOut(false);
-      return;
-    }
-
-    const timeoutId = window.setTimeout(() => {
-      setIsProcessingTimedOut(true);
-    }, 4000);
-
-    return () => window.clearTimeout(timeoutId);
-  }, [currentQuestion]);
   const isEmergency = flow.meta.type === 'medical_emergency' || flow.meta.type === 'security_emergency';
   const totalSteps = flow.triage.questions.length;
   const currentStepIndex = flow.triage.questions.findIndex(q => q.id === state.currentQuestionId);
