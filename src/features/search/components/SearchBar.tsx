@@ -12,8 +12,6 @@ import { searchByType, type SearchFilterType } from '../services/unifiedSearchEn
 import type { UnifiedSearchResult } from '../types/searchTypes';
 import { useSearch } from '../context/SearchContext';
 
-type SearchFilterType = 'all' | 'flow' | 'faq' | 'glossary';
-
 const TYPE_ICONS = {
   faq: HelpCircle,
   glossary: BookOpen,

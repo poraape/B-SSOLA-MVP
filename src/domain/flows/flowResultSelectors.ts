@@ -16,7 +16,7 @@ export const getFlowResultMessage = (
 
   return  flowResultMessages.find(
     message => message.flowId === flowId && message.level === level
-  );
+  ) as FlowResultMessage | undefined;
 };
 
 export const buildNetworkServiceLink = (queryType: string): string => {
