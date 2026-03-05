@@ -74,5 +74,16 @@ export const processAnswer = (
     };
   }
 
-  return state;
+  const fallbackLevel = flow.riskModel.defaultLevel;
+  const fallbackResult = flow.results[fallbackLevel] ?? Object.values(flow.results)[0] ?? null;
+
+  return {
+    ...state,
+    answers: newAnswers,
+    result: fallbackResult
+      ? { ...fallbackResult, level: fallbackResult.level ?? fallbackLevel }
+      : null,
+    isComplete: true,
+    currentQuestionId: null
+  };
 };
