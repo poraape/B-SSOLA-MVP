@@ -6,6 +6,7 @@ export interface FAQItem {
     | 'Geral'
     | 'Uso do App'
     | 'Protocolos'
+    | 'Pós-Triagem e Resultados'
     | 'Docentes'
     | 'Troubleshooting'
     | 'Rede de Apoio';
