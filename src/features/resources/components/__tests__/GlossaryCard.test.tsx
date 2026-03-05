@@ -1,7 +1,7 @@
 /* @vitest-environment jsdom */
 import { fireEvent, render, screen, waitFor, cleanup } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import type { GlossaryItem } from '../../../data/glossary';
+import type { GlossaryItem } from '../../data/glossary';
 import { GlossaryCard } from '../GlossaryCard';
 
 describe('GlossaryCard', () => {

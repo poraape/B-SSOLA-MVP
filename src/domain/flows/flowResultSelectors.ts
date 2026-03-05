@@ -14,7 +14,7 @@ export const getFlowResultMessage = (
     return undefined;
   }
 
-  return flowResultMessages.find(
+  return  flowResultMessages.find(
     message => message.flowId === flowId && message.level === level
   );
 };

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, BookOpen, Info, Link as LinkIcon } from 'lucide-react';
 import { GlossaryItem } from '../data/glossary';
-import { Card } from '../../components/ui/Card';
+import { Card } from '../ui/Card';
 import { highlightTerm } from '../utils/searchUtils';
 
 interface GlossaryCardProps {

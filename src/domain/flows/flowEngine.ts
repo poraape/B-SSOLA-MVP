@@ -62,8 +62,8 @@ export const processAnswer = (
     const finalResult: TriageResult = baseResult || {
       severity: option.level,
       message: `Resultado para nível: ${option.level}`,
-      category: flow.meta.category,
-      priority: flow.meta.priority || 'A1',
+      category: flow.meta.categoryId,
+      priority: flow.meta.severity || 'A1',
       protocol: [],
       requiredActions: []
     };
@@ -91,8 +91,8 @@ export const processAnswer = (
   const fallbackResult = flow.results[fallbackLevel] ?? Object.values(flow.results)[0] ?? {
     severity: fallbackLevel || 'iminente',
     message: 'Fluxo concluído.',
-    category: flow.meta.category,
-    priority: flow.meta.priority || 'A1',
+    category: flow.meta.categoryId,
+    priority: flow.meta.severity || 'A1',
     protocol: [],
     requiredActions: []
   };

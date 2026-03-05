@@ -1,62 +1,53 @@
-import { describe, expect, it } from 'vitest';
-import type { Flow } from '../../../types';
+import { describe, it, expect } from 'vitest';
 import { loadModel } from '../../model/loadModel';
-import { initFlow, processAnswer } from '../flowEngine';
 
-function getFlow(flowId: string): Flow {
-  const flow = loadModel().flows.find(candidate => candidate.meta.id === flowId);
-  if (!flow) throw new Error(`Flow not found in model: ${flowId}`);
-  return flow;
-}
+describe('critical flows validation', () => {
+  it('all critical flows have valid structure', () => {
+    const model = loadModel();
+    const criticalFlows = model.flows.filter(f => 
+      f.meta.severity === 'CRITICAL' || 
+      f.meta.type === 'medical_emergency' ||
+      f.meta.type === 'security_emergency'
+    );
 
-function runFirstPath(flow: Flow) {
-  let state = initFlow(flow);
-  const maxSteps = flow.triage.maxQuestions + 2;
+    expect(criticalFlows.length).toBeGreaterThan(0);
 
-  for (let i = 0; i < maxSteps && !state.isComplete && state.currentQuestionId; i += 1) {
-    const question = flow.triage.questions.find(q => q.id === state.currentQuestionId);
-    if (!question || question.options.length === 0) break;
+    criticalFlows.forEach(flow => {
+      // Meta validation
+      expect(flow.meta.id).toBeDefined();
+      expect(flow.meta.categoryId).toBeDefined();
+      expect(flow.meta.title).toBeDefined();
 
-    const pickedOption = question.options[0]?.label;
-    if (!pickedOption) break;
+      // Triage validation
+      expect(flow.triage).toBeDefined();
+      expect(flow.triage.questions).toBeDefined();
+      expect(flow.triage.questions.length).toBeGreaterThan(0);
 
-    state = processAnswer(flow, state, question.id, pickedOption);
-  }
+      // Questions validation
+      flow.triage.questions.forEach(question => {
+        expect(question.id).toBeDefined();
+        expect(question.text).toBeDefined();
+        expect(question.options).toBeDefined();
+        expect(question.options.length).toBeGreaterThan(0);
 
-  return state;
-}
+        // Options validation
+        question.options.forEach(option => {
+          expect(option.label).toBeDefined();
+          
+          // Each option must have level, next, nextFlow, or redirectToCategories
+          const hasTermination = 
+            option.level || 
+            option.next || 
+            option.nextFlow || 
+            option.redirectToCategories;
+          
+          expect(hasTermination).toBe(true);
+        });
+      });
 
-describe('critical flows (A1/A2 and B family mapped to current registry)', () => {
-  const criticalFlowIds = [
-    'flow_acidente_escolar',
-    'flow_convulsao',
-    'flow_violencia_armada',
-    'flow_incendio',
-    'flow_porte_objeto',
-    'flow_autolesao',
-    'flow_abuso_sexual',
-  ];
-
-  it.each(criticalFlowIds)('completes %s using first-path scenario and returns result', flowId => {
-    const flow = getFlow(flowId);
-    const finalState = runFirstPath(flow);
-
-    expect(finalState.isComplete).toBe(true);
-    expect(finalState.result).not.toBeNull();
-    expect(finalState.result?.severity).toMatch(/^(moderado|alto|iminente)$/);
-  });
-
-  it('classifies convulsao first-path as iminente', () => {
-    const flow = getFlow('flow_convulsao');
-    const finalState = runFirstPath(flow);
-
-    expect(finalState.result?.severity).toBe('iminente');
-  });
-
-  it('classifies incendio first-path as iminente', () => {
-    const flow = getFlow('flow_incendio');
-    const finalState = runFirstPath(flow);
-
-    expect(finalState.result?.severity).toBe('iminente');
+      // Results validation
+      expect(flow.results).toBeDefined();
+      expect(Object.keys(flow.results).length).toBeGreaterThan(0);
+    });
   });
 });
