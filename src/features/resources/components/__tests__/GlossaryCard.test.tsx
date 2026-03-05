@@ -25,7 +25,8 @@ describe('GlossaryCard', () => {
   it('expande detalhes ao clicar', () => {
     render(<GlossaryCard item={mockItem} searchQuery="" />);
 
-    fireEvent.click(screen.getByRole('button', { name: /Ver detalhes/i }));
+    const expandButtons = screen.getAllByRole('button', { name: /Ver detalhes/i });
+    fireEvent.click(expandButtons[0]);
 
     expect(screen.getByText(/Aluna chega chorando/)).toBeTruthy();
   });
@@ -41,8 +42,11 @@ describe('GlossaryCard', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /Ver detalhes/i }));
-    fireEvent.click(screen.getByRole('button', { name: /Buscar termo relacionado Registro/i }));
+    const expandButtons = screen.getAllByRole('button', { name: /Ver detalhes/i });
+    fireEvent.click(expandButtons[0]);
+
+    const relatedButtons = screen.getAllByRole('button', { name: /Buscar termo relacionado Registro/i });
+    fireEvent.click(relatedButtons[0]);
 
     expect(onRelatedClick).toHaveBeenCalledWith('Registro');
   });

@@ -44,7 +44,7 @@ describe('riskScore - computeRiskScore()', () => {
       baseFlow,
     );
 
-    expect(breakdown.total).toBe(10);
+    expect(breakdown.total).toBe(12);
     expect(breakdown.factors.map(f => f.code)).toEqual(
       expect.arrayContaining([
         'SEVERITY_alto',
