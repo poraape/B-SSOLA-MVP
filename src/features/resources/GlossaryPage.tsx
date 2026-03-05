@@ -4,10 +4,11 @@ import {
   useMemo,
   useRef,
   useState,
+  useEffect,
   type FC,
 } from 'react';
 import { BookOpen } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { glossaryData } from './data/glossary';
 import { useGlossarySearch } from './hooks/useGlossarySearch';
 import { groupByAlphabet } from './utils/searchUtils';
@@ -31,10 +32,13 @@ const GlossaryCard = lazy(() =>
 );
 
 export const GlossaryPage: FC = () => {
+  const [searchParams] = useSearchParams();
+  const termFromUrl = searchParams.get('term');
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedLetters, setSelectedLetters] = useState<string[]>([]);
   const resultSectionRef = useRef<HTMLElement | null>(null);
+  const lastScrolledTermRef = useRef<string | null>(null);
 
   const { categories, filteredItems, totalResults } = useGlossarySearch(
     glossaryData,
@@ -57,6 +61,36 @@ export const GlossaryPage: FC = () => {
 
     return availableLetters.filter((letter) => selectedLetters.includes(letter));
   }, [availableLetters, selectedLetters]);
+
+  const buildGlossaryTermId = (term: string) =>
+    `glossary-term-${term
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')}`;
+
+  useEffect(() => {
+    if (!termFromUrl) return;
+    setSearch(termFromUrl);
+    setSelectedCategory('all');
+    setSelectedLetters([]);
+  }, [termFromUrl]);
+
+  useEffect(() => {
+    if (!termFromUrl || lastScrolledTermRef.current === termFromUrl) return;
+
+    const targetId = buildGlossaryTermId(termFromUrl);
+    const frame = requestAnimationFrame(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        lastScrolledTermRef.current = termFromUrl;
+      }
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [termFromUrl, filteredItems]);
 
   const handleLetterSelect = (letter: string) => {
     if (!availableLetters.includes(letter)) {
