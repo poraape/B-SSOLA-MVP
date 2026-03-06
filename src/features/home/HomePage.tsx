@@ -8,10 +8,13 @@ import { CategoryGridPreview } from './components/CategoryGridPreview';
 import { HeroDecisionSurface } from './components/HeroDecisionSurface';
 import { ResourcesSupportLayer } from './components/ResourcesSupportLayer';
 import { TrustLayer } from './components/TrustLayer';
+import { InstitutionalFooter } from './components/InstitutionalFooter';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const categories = [...getCategories()].sort((a, b) => (b.weight || 0) - (a.weight || 0));
+  const categories = [...getCategories()]
+    .sort((a, b) => (b.weight || 0) - (a.weight || 0))
+    .slice(0, 7); // CRÍTICO: Limitar a exatamente 7 categorias conforme spec
   const emergencyRoute = getEmergencyRoute();
 
   return (
@@ -35,6 +38,8 @@ export const HomePage: React.FC = () => {
       />
 
       <TrustLayer onStartGuidedCare={() => navigate('/atendimento')} />
+
+      <InstitutionalFooter />
     </div>
   );
 };
