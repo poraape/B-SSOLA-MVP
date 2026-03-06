@@ -113,18 +113,20 @@ export default function App() {
                     </p>
                   </div>
                 ) : (
-                  <BrowserRouter>
-                    <Shell>
-                      <Suspense fallback={
-                        <div className="flex flex-col items-center justify-center min-h-[400px] space-y-4">
+                  <div className="min-h-screen bg-slate-100 dark:bg-slate-950">
+                    <BrowserRouter>
+                      <Shell>
+                        <Suspense fallback={
+                          <div className="flex flex-col items-center justify-center min-h-[400px] space-y-4">
                           <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
                           <p className="text-xs font-black uppercase tracking-widest text-slate-400">Carregando módulo...</p>
                         </div>
                       }>
-                        <AppRoutes />
-                      </Suspense>
-                    </Shell>
-                  </BrowserRouter>
+                          <AppRoutes />
+                        </Suspense>
+                      </Shell>
+                    </BrowserRouter>
+                  </div>
                 )}
               </TriageRecommendationProvider>
             </AppModeProvider>
