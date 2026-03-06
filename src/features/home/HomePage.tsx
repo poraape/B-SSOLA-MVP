@@ -2,17 +2,19 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 
+import { useTheme } from '@/app/context/ThemeContext';
 import { CompassIcon } from '@/features/shared/assets/CompassIcon';
 import { getEmergencyRoute } from '@/domain/flows/selectors';
 import { getCategories } from '@/domain/model';
+import { Card } from '@/components/ui/Card';
 
 import { CategoryGridPreview } from './components/CategoryGridPreview';
-import { ResourcesSupportLayer } from './components/ResourcesSupportLayer';
 import { TrustLayer } from './components/TrustLayer';
 import { InstitutionalFooter } from './components/InstitutionalFooter';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const { theme } = useTheme();
   const categories = [...getCategories()]
     .sort((a, b) => (b.weight || 0) - (a.weight || 0))
     .slice(0, 7); // CRÍTICO: Limitar a exatamente 7 categorias conforme spec
@@ -156,11 +158,125 @@ export const HomePage: React.FC = () => {
         onOpenAllCategories={() => navigate('/categorias')}
       />
 
-      <ResourcesSupportLayer
-        onStartGuidedCare={() => navigate('/atendimento')}
-        onOpenNetwork={() => navigate('/rede')}
-        onOpenResources={() => navigate('/recursos')}
-      />
+      {/* "Como você quer começar?" Section — Premium */}
+      <section className="space-y-6">
+        <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black tracking-tight text-slate-900 dark:text-white">
+          Como você quer começar?
+        </h3>
+        <p className="max-w-3xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
+          Entradas por intenção de uso, sem duplicar a navegação global do sistema.
+        </p>
+
+        <div className="grid grid-cols-1 gap-5 pt-2 md:grid-cols-3">
+          {/* Card 1: Decidir agora */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <Card
+              hoverable
+              onClick={() => navigate('/atendimento')}
+              className={`group border-2 p-6 transition-all hover:shadow-xl ${
+                theme === 'dark'
+                  ? 'border-slate-800 bg-slate-900 hover:border-blue-700'
+                  : 'border-slate-200 bg-white hover:border-blue-400 hover:shadow-blue-100'
+              }`}
+            >
+              <div className="flex items-start gap-4">
+                {/* Avatar letra D */}
+                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-lg font-black transition-all group-hover:scale-110 ${
+                  theme === 'dark'
+                    ? 'bg-blue-500/20 text-blue-400'
+                    : 'bg-blue-100 text-blue-700'
+                }`}>
+                  D
+                </div>
+                <div className="flex-1 space-y-2">
+                  <h4 className="text-lg font-black text-slate-900 dark:text-white">
+                    Decidir agora
+                  </h4>
+                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                    Receba orientação passo a passo para a situação observada, com foco no próximo passo.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+
+          {/* Card 2: Encontrar apoio */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Card
+              hoverable
+              onClick={() => navigate('/rede')}
+              className={`group border-2 p-6 transition-all hover:shadow-xl ${
+                theme === 'dark'
+                  ? 'border-slate-800 bg-slate-900 hover:border-emerald-700'
+                  : 'border-slate-200 bg-white hover:border-emerald-400 hover:shadow-emerald-100'
+              }`}
+            >
+              <div className="flex items-start gap-4">
+                {/* Avatar letra A */}
+                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-lg font-black transition-all group-hover:scale-110 ${
+                  theme === 'dark'
+                    ? 'bg-emerald-500/20 text-emerald-400'
+                    : 'bg-emerald-100 text-emerald-700'
+                }`}>
+                  A
+                </div>
+                <div className="flex-1 space-y-2">
+                  <h4 className="text-lg font-black text-slate-900 dark:text-white">
+                    Encontrar apoio
+                  </h4>
+                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                    Acesse serviços, contatos e encaminhamentos de forma contextual e rápida.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+
+          {/* Card 3: Aprender e consultar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Card
+              hoverable
+              onClick={() => navigate('/recursos')}
+              className={`group border-2 p-6 transition-all hover:shadow-xl ${
+                theme === 'dark'
+                  ? 'border-slate-800 bg-slate-900 hover:border-violet-700'
+                  : 'border-slate-200 bg-white hover:border-violet-400 hover:shadow-violet-100'
+              }`}
+            >
+              <div className="flex items-start gap-4">
+                {/* Avatar letra L */}
+                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-lg font-black transition-all group-hover:scale-110 ${
+                  theme === 'dark'
+                    ? 'bg-violet-500/20 text-violet-400'
+                    : 'bg-violet-100 text-violet-700'
+                }`}>
+                  L
+                </div>
+                <div className="flex-1 space-y-2">
+                  <h4 className="text-lg font-black text-slate-900 dark:text-white">
+                    Aprender e consultar
+                  </h4>
+                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                    Consulte conteúdos, simulações e respostas rápidas enquanto usa o app.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
 
       <TrustLayer onStartGuidedCare={() => navigate('/atendimento')} />
 
