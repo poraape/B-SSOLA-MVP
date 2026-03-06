@@ -80,12 +80,18 @@ export const NetworkPage: React.FC = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-12rem)] flex flex-col md:flex-row gap-6">
+    <div className="space-y-4">
+      <header className="rounded-2xl border border-slate-200/80 bg-white/90 px-5 py-4 shadow-[0_10px_24px_-20px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/85">
+        <h1 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">Rede de apoio</h1>
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Localize serviços e encaminhamentos com mais rapidez.</p>
+      </header>
+
+      <div className="h-[calc(100vh-16rem)] flex flex-col md:flex-row gap-6">
       {/* Sidebar */}
       <div className="w-full md:w-80 bg-white border border-slate-200 rounded-3xl flex flex-col overflow-hidden shadow-sm">
         {isUsingRecommendationContext && (
           <div className="mx-4 mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-800">
-            <span>Mostrando serviços indicados para sua última triagem · </span>
+            <span>Serviços recomendados para esta situação · </span>
             <button
               onClick={() => {
                 setRecommendation({ highlightId: null, queryType: null });
@@ -138,6 +144,7 @@ export const NetworkPage: React.FC = () => {
           />
         )}
       </div>
+    </div>
     </div>
   );
 };

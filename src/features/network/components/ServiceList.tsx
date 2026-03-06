@@ -29,31 +29,31 @@ export const ServiceList: React.FC<ServiceListProps> = ({
         <button
           key={service.id}
           onClick={() => onSelect(service)}
-          className={`w-full text-left p-4 transition-colors flex items-center justify-between group ${
+          className={`group flex w-full items-center justify-between p-4 text-left transition-all ${
             service.id === highlightId
-              ? 'ring-2 ring-emerald-500 bg-emerald-50'
+              ? 'bg-emerald-50 ring-2 ring-emerald-500/80'
               : 'hover:bg-slate-50'
-          } ${selectedId === service.id ? 'bg-blue-50 border-l-4 border-l-blue-600' : ''}`}
+          } ${selectedId === service.id ? 'border-l-4 border-l-blue-600 bg-blue-50 shadow-[inset_0_0_0_1px_rgba(59,130,246,0.16)]' : ''}`}
         >
-          <div className="space-y-1">
-            <h4 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+          <div className="space-y-1.5">
+            <h4 className="text-sm font-black tracking-tight text-slate-900 transition-colors group-hover:text-blue-700">
               {service.name}
             </h4>
-            <div className="flex flex-col gap-1.5 pt-1">
-              <div className="flex items-start gap-2 text-xs text-slate-500 dark:text-slate-400">
-                <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-blue-500" />
+            <div className="flex flex-col gap-2 pt-1">
+              <div className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
+                <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-blue-500" />
                 <span className="leading-tight">{service.location.address}</span>
               </div>
               {service.contact.phone && (
-                <div className="flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-300">
+                <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-200">
                   <Phone className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
                   <span>{service.contact.phone}</span>
                 </div>
               )}
             </div>
           </div>
-          <ChevronRight className={`w-5 h-5 transition-all ${
-            selectedId === service.id ? 'text-blue-600' : 'text-slate-300 group-hover:text-blue-500'
+          <ChevronRight className={`h-5 w-5 transition-all ${
+            selectedId === service.id ? 'translate-x-0.5 text-blue-600' : 'text-slate-300 group-hover:translate-x-0.5 group-hover:text-blue-500'
           }`} />
         </button>
       ))}
