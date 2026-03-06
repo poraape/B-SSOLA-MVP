@@ -89,24 +89,24 @@ export const FAQPage: React.FC = () => {
           ) : (
             <span>
               {filteredItems.length}{' '}
-              {filteredItems.length === 1 ? 'pergunta encontrada' : 'perguntas encontradas'}
+              {filteredItems.length === 1 ? 'resultado encontrado' : 'resultados encontrados'}
             </span>
           )}
         </div>
       )}
 
-      <div className="space-y-4">
+      <div className="space-y-5">
         {filteredItems.map((item) => {
           const isOpen = openIndex === item.id;
           return (
-            <div key={item.id} className="space-y-4">
+            <div key={item.id} className="space-y-4 rounded-2xl border border-slate-200/80 bg-white/90 p-3 shadow-[0_10px_24px_-20px_rgba(15,23,42,0.35)] dark:border-slate-700 dark:bg-slate-900/70 md:p-4">
               <FAQAccordionItem
                 item={item}
                 isOpen={isOpen}
                 onToggle={() => setOpenIndex(isOpen ? null : item.id)}
               />
               {isOpen && (
-                <div className="pl-14 md:pl-20">
+                <div className="pl-12 md:pl-16">
                   <FAQFeedback questionId={item.id} onFeedback={handleFeedback} />
                 </div>
               )}
@@ -117,10 +117,10 @@ export const FAQPage: React.FC = () => {
         {filteredItems.length === 0 && (
           <div className="text-center py-20 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
             <p className="text-slate-500 font-medium mb-2">
-              Nenhuma pergunta encontrada {searchTerm && `para "${searchTerm}"`}
+              Nenhum resultado encontrado {searchTerm && `para "${searchTerm}"`}
             </p>
             <p className="text-sm text-slate-400 mb-6">
-              Tente usar termos diferentes ou navegue pelas categorias
+              Tente outro termo ou explore as categorias disponíveis.
             </p>
             <button
               onClick={handleClearFilters}
