@@ -107,22 +107,25 @@ export const getPremiumCategoryIcon = (iconStr: string, className = 'w-6 h-6') =
 };
 
 export const getPremiumCategoryColorClass = (color: string) => {
+  // Estilo iOS 26: gradientes radiais + inner shadow + border sutil
   switch (color) {
     case 'red':
-      return 'text-rose-700 dark:text-rose-200 bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-500/30 dark:to-rose-700/20 border-rose-200/80 dark:border-rose-300/20 shadow-inner shadow-rose-200/50';
+      return 'bg-gradient-to-br from-rose-400 via-rose-500 to-rose-600 shadow-[inset_0_2px_8px_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.15),0_4px_12px_rgba(244,63,94,0.4)] border border-rose-300/30';
     case 'orange':
-      return 'text-orange-700 dark:text-orange-200 bg-gradient-to-br from-orange-100 to-amber-50 dark:from-orange-500/30 dark:to-amber-600/20 border-orange-200/80 dark:border-orange-300/20 shadow-inner shadow-orange-200/50';
+      return 'bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 shadow-[inset_0_2px_8px_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.15),0_4px_12px_rgba(249,115,22,0.4)] border border-orange-300/30';
     case 'purple':
-      return 'text-purple-700 dark:text-purple-200 bg-gradient-to-br from-purple-100 to-fuchsia-50 dark:from-purple-500/30 dark:to-fuchsia-600/20 border-purple-200/80 dark:border-purple-300/20 shadow-inner shadow-purple-200/50';
+      return 'bg-gradient-to-br from-purple-400 via-purple-500 to-purple-600 shadow-[inset_0_2px_8px_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.15),0_4px_12px_rgba(168,85,247,0.4)] border border-purple-300/30';
     case 'blue':
-      return 'text-blue-700 dark:text-blue-200 bg-gradient-to-br from-blue-100 to-sky-50 dark:from-blue-500/30 dark:to-sky-600/20 border-blue-200/80 dark:border-blue-300/20 shadow-inner shadow-blue-200/50';
+      return 'bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 shadow-[inset_0_2px_8px_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.15),0_4px_12px_rgba(59,130,246,0.4)] border border-blue-300/30';
     case 'teal':
-      return 'text-teal-700 dark:text-teal-200 bg-gradient-to-br from-teal-100 to-cyan-50 dark:from-teal-500/30 dark:to-cyan-600/20 border-teal-200/80 dark:border-teal-300/20 shadow-inner shadow-teal-200/50';
+      return 'bg-gradient-to-br from-teal-400 via-teal-500 to-teal-600 shadow-[inset_0_2px_8px_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.15),0_4px_12px_rgba(20,184,166,0.4)] border border-teal-300/30';
     case 'yellow':
-      return 'text-yellow-700 dark:text-yellow-200 bg-gradient-to-br from-yellow-100 to-amber-50 dark:from-yellow-500/30 dark:to-amber-600/20 border-yellow-200/80 dark:border-yellow-300/20 shadow-inner shadow-yellow-200/50';
+      return 'bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-500 shadow-[inset_0_2px_8px_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.15),0_4px_12px_rgba(234,179,8,0.4)] border border-yellow-300/30';
     case 'indigo':
-      return 'text-indigo-700 dark:text-indigo-200 bg-gradient-to-br from-indigo-100 to-violet-50 dark:from-indigo-500/30 dark:to-violet-600/20 border-indigo-200/80 dark:border-indigo-300/20 shadow-inner shadow-indigo-200/50';
+      return 'bg-gradient-to-br from-indigo-400 via-indigo-500 to-indigo-600 shadow-[inset_0_2px_8px_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.15),0_4px_12px_rgba(99,102,241,0.4)] border border-indigo-300/30';
+    case 'green':
+      return 'bg-gradient-to-br from-green-400 via-green-500 to-green-600 shadow-[inset_0_2px_8px_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.15),0_4px_12px_rgba(34,197,94,0.4)] border border-green-300/30';
     default:
-      return 'text-slate-700 dark:text-slate-200 bg-gradient-to-br from-slate-100 to-slate-50 dark:from-slate-500/30 dark:to-slate-700/20 border-slate-200/80 dark:border-slate-300/20 shadow-inner shadow-slate-200/50';
+      return 'bg-gradient-to-br from-slate-400 via-slate-500 to-slate-600 shadow-[inset_0_2px_8px_rgba(255,255,255,0.3),inset_0_-2px_6px_rgba(0,0,0,0.15),0_4px_12px_rgba(100,116,139,0.4)] border border-slate-300/30';
   }
 };
