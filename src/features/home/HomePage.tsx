@@ -9,9 +9,6 @@ import { Card } from '@/components/ui/Card';
 import { getEmergencyRoute } from '@/domain/flows/selectors';
 import { getCategories } from '@/domain/model';
 import { CompassIcon } from '@/features/shared/assets/CompassIcon';
-import {
-  getPremiumCategoryIcon,
-} from '@/features/shared/components/PremiumCategoryIcons';
 
 import { InstitutionalFooter } from './components/InstitutionalFooter';
 import { TrustLayer } from './components/TrustLayer';
@@ -27,34 +24,34 @@ export const HomePage: React.FC = () => {
   return (
     <div className="space-y-12 md:space-y-16 lg:space-y-20">
       {/* Hero Section — Premium Edition */}
-      <section className="relative min-h-[28rem] overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] p-6 shadow-2xl md:min-h-[34rem] md:rounded-[3rem] md:p-12 lg:min-h-[38rem] lg:p-16">
+      <section className="relative min-h-[28rem] overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] p-6 shadow-2xl md:min-h-[36rem] md:rounded-[3rem] md:p-12 lg:min-h-[40rem] lg:p-16">
         {/* Ambient gradient overlays */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-blue-500/5 via-transparent to-transparent opacity-60" />
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent" />
 
-        {/* Compass — REPOSICIONADO E VISÍVEL */}
-        <div className="pointer-events-none absolute right-[-5%] top-1/2 -translate-y-1/2 opacity-[0.24] md:right-[3%] lg:right-[8%]">
+        {/* Compass — VISÍVEL E POSICIONADO */}
+        <div className="pointer-events-none absolute right-[-8%] top-1/2 -translate-y-1/2 opacity-[0.25] md:right-[5%] lg:right-[10%]">
           <motion.div
             animate={{
               rotate: [0, 2, 0, -2, 0],
               scale: [1, 1.01, 1],
-              y: [0, -3, 0, 3, 0],
+              y: [0, -4, 0, 4, 0],
             }}
-            transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-            className="drop-shadow-[0_0_70px_rgba(255,255,255,0.2)]"
+            transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+            className="drop-shadow-[0_0_80px_rgba(255,255,255,0.22)]"
           >
-            <CompassIcon className="h-[28rem] w-[28rem] text-white md:h-[40rem] md:w-[40rem] lg:h-[46rem] lg:w-[46rem]" />
+            <CompassIcon className="h-[30rem] w-[30rem] text-white md:h-[42rem] md:w-[42rem] lg:h-[48rem] lg:w-[48rem]" />
           </motion.div>
         </div>
 
-        {/* Floating context labels — Glassmorphism */}
-        {/* Label 1: TOP-RIGHT (Decida) */}
-        <div className="pointer-events-none absolute right-[16%] top-[20%] hidden lg:block xl:right-[18%]">
+        {/* Floating Labels — Glassmorphism */}
+        {/* Label 1: TOP-RIGHT */}
+        <div className="pointer-events-none absolute right-[18%] top-[22%] hidden xl:block">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="rounded-2xl border border-white/15 bg-white/[0.10] px-5 py-3 shadow-2xl backdrop-blur-2xl"
+            transition={{ delay: 0.7, duration: 0.9 }}
+            className="rounded-2xl border border-white/[0.18] bg-white/[0.12] px-5 py-3 shadow-2xl backdrop-blur-3xl"
           >
             <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/95">
               Decida<br />com orientação clara
@@ -62,13 +59,13 @@ export const HomePage: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Label 2: MIDDLE-RIGHT (Encontre) */}
-        <div className="pointer-events-none absolute right-[10%] top-[48%] hidden lg:block xl:right-[12%]">
+        {/* Label 2: MIDDLE-RIGHT */}
+        <div className="pointer-events-none absolute right-[12%] top-[50%] hidden xl:block">
           <motion.div
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="rounded-2xl border border-white/15 bg-white/[0.10] px-5 py-3 shadow-2xl backdrop-blur-2xl"
+            transition={{ delay: 0.9, duration: 0.9 }}
+            className="rounded-2xl border border-white/[0.18] bg-white/[0.12] px-5 py-3 shadow-2xl backdrop-blur-3xl"
           >
             <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/95">
               Encontre apoio<br />sem perder tempo
@@ -76,13 +73,13 @@ export const HomePage: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Label 3: BOTTOM-RIGHT (Aprenda) */}
-        <div className="pointer-events-none absolute bottom-[18%] right-[16%] hidden lg:block xl:right-[18%]">
+        {/* Label 3: BOTTOM-RIGHT */}
+        <div className="pointer-events-none absolute bottom-[20%] right-[18%] hidden xl:block">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.8 }}
-            className="rounded-2xl border border-white/15 bg-white/[0.10] px-5 py-3 shadow-2xl backdrop-blur-2xl"
+            transition={{ delay: 1.1, duration: 0.9 }}
+            className="rounded-2xl border border-white/[0.18] bg-white/[0.12] px-5 py-3 shadow-2xl backdrop-blur-3xl"
           >
             <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/95">
               Aprenda<br />enquanto usa
@@ -186,11 +183,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="flex items-start gap-4">
                 {/* Avatar letra D */}
-                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.125rem] text-lg font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
-                  theme === 'dark'
-                    ? 'bg-blue-500/20 text-blue-400'
-                    : 'bg-blue-100 text-blue-700'
-                }`}>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.125rem] border border-white/20 bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 text-lg font-black text-white shadow-[inset_0_1px_6px_rgba(255,255,255,0.4),inset_0_-1px_4px_rgba(0,0,0,0.25),0_4px_12px_-2px_rgba(59,130,246,0.4)] transition-all group-hover:scale-110">
                   D
                 </div>
                 <div className="flex-1 space-y-2">
@@ -222,11 +215,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="flex items-start gap-4">
                 {/* Avatar letra A */}
-                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.125rem] text-lg font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
-                  theme === 'dark'
-                    ? 'bg-emerald-500/20 text-emerald-400'
-                    : 'bg-emerald-100 text-emerald-700'
-                }`}>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.125rem] border border-white/20 bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600 text-lg font-black text-white shadow-[inset_0_1px_6px_rgba(255,255,255,0.4),inset_0_-1px_4px_rgba(0,0,0,0.25),0_4px_12px_-2px_rgba(34,197,94,0.4)] transition-all group-hover:scale-110">
                   A
                 </div>
                 <div className="flex-1 space-y-2">
@@ -258,11 +247,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="flex items-start gap-4">
                 {/* Avatar letra L */}
-                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.125rem] text-lg font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
-                  theme === 'dark'
-                    ? 'bg-violet-500/20 text-violet-400'
-                    : 'bg-violet-100 text-violet-700'
-                }`}>
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.125rem] border border-white/20 bg-gradient-to-br from-violet-400 via-violet-500 to-violet-600 text-lg font-black text-white shadow-[inset_0_1px_6px_rgba(255,255,255,0.4),inset_0_-1px_4px_rgba(0,0,0,0.25),0_4px_12px_-2px_rgba(139,92,246,0.4)] transition-all group-hover:scale-110">
                   L
                 </div>
                 <div className="flex-1 space-y-2">
@@ -308,11 +293,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="space-y-4">
                 {/* Avatar letra G */}
-                <div className={`flex h-14 w-14 items-center justify-center rounded-[1.25rem] text-2xl font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
-                  theme === 'dark'
-                    ? 'bg-indigo-500/20 text-indigo-400'
-                    : 'bg-indigo-100 text-indigo-700'
-                }`}>
+                <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] border border-white/20 bg-gradient-to-br from-indigo-400 via-indigo-500 to-indigo-600 text-2xl font-black text-white shadow-[inset_0_1px_8px_rgba(255,255,255,0.4),inset_0_-2px_5px_rgba(0,0,0,0.25),0_6px_16px_-3px_rgba(99,102,241,0.5)] transition-all group-hover:scale-110">
                   G
                 </div>
                 <div className="space-y-2">
@@ -344,11 +325,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="space-y-4">
                 {/* Avatar letra F */}
-                <div className={`flex h-14 w-14 items-center justify-center rounded-[1.25rem] text-2xl font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
-                  theme === 'dark'
-                    ? 'bg-pink-500/20 text-pink-400'
-                    : 'bg-pink-100 text-pink-700'
-                }`}>
+                <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] border border-white/20 bg-gradient-to-br from-pink-400 via-pink-500 to-pink-600 text-2xl font-black text-white shadow-[inset_0_1px_8px_rgba(255,255,255,0.4),inset_0_-2px_5px_rgba(0,0,0,0.25),0_6px_16px_-3px_rgba(236,72,153,0.5)] transition-all group-hover:scale-110">
                   F
                 </div>
                 <div className="space-y-2">
@@ -380,11 +357,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="space-y-4">
                 {/* Avatar letra S */}
-                <div className={`flex h-14 w-14 items-center justify-center rounded-[1.25rem] text-2xl font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
-                  theme === 'dark'
-                    ? 'bg-orange-500/20 text-orange-400'
-                    : 'bg-orange-100 text-orange-700'
-                }`}>
+                <div className="flex h-14 w-14 items-center justify-center rounded-[1.25rem] border border-white/20 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 text-2xl font-black text-white shadow-[inset_0_1px_8px_rgba(255,255,255,0.4),inset_0_-2px_5px_rgba(0,0,0,0.25),0_6px_16px_-3px_rgba(249,115,22,0.5)] transition-all group-hover:scale-110">
                   S
                 </div>
                 <div className="space-y-2">
@@ -452,13 +425,13 @@ export const HomePage: React.FC = () => {
                 >
                   {/* Content */}
                   <div className="relative z-10">
-                    <div className="relative mb-5 inline-block">
-                      {/* Ícone iOS Style */}
+                    <div className="relative inline-block mb-5">
+                      {/* Ícone iOS Style com gradiente nativo */}
                       <div className="transition-all duration-300 group-hover:scale-[1.08] group-hover:drop-shadow-2xl">
-                        {getPremiumCategoryIcon(cat.icon, 'h-20 w-20')}
+                        {getCategoryIcon(cat.icon, 'h-20 w-20 drop-shadow-xl')}
                       </div>
 
-                      {/* Emergency badge */}
+                      {/* Badge emergência */}
                       {cat.isEmergencyCategory && (
                         <div className="absolute -right-1 -top-1 z-20 animate-pulse rounded-full border-2 border-white bg-rose-600 p-1.5 shadow-lg dark:border-slate-900">
                           <AlertTriangle className="h-3.5 w-3.5 text-white" aria-hidden="true" />
