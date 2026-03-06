@@ -25,63 +25,66 @@ export const HomePage: React.FC = () => {
   const emergencyRoute = getEmergencyRoute();
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-12 md:space-y-16 lg:space-y-20">
       {/* Hero Section — Premium Edition */}
       <section className="relative min-h-[26rem] overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] p-6 shadow-2xl md:min-h-[32rem] md:rounded-[3rem] md:p-12 lg:p-16">
         {/* Ambient gradient overlays */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-blue-500/5 via-transparent to-transparent opacity-60" />
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent" />
 
-        {/* Compass — Enhanced positioning */}
-        <div className="pointer-events-none absolute right-[-15%] top-1/2 -translate-y-1/2 opacity-[0.18] md:right-[-8%] lg:right-[-5%]">
+        {/* Compass — Repositioned and Enhanced */}
+        <div className="pointer-events-none absolute right-[-5%] top-1/2 -translate-y-1/2 opacity-20 md:right-[2%] lg:right-[5%]">
           <motion.div
             animate={{
-              rotate: [0, 3, 0, -3, 0],
-              scale: [1, 1.015, 1],
-              y: [0, -4, 0, 4, 0],
+              rotate: [0, 2, 0, -2, 0],
+              scale: [1, 1.01, 1],
+              y: [0, -3, 0, 3, 0],
             }}
-            transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-            className="drop-shadow-[0_0_40px_rgba(255,255,255,0.12)]"
+            transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
+            className="drop-shadow-[0_0_50px_rgba(255,255,255,0.15)]"
           >
-            <CompassIcon className="h-[24rem] w-[24rem] text-white md:h-[42rem] md:w-[42rem]" />
+            <CompassIcon className="h-[22rem] w-[22rem] text-white md:h-[36rem] md:w-[36rem] lg:h-[40rem] lg:w-[40rem]" />
           </motion.div>
         </div>
 
-        {/* Floating context labels — Glassmorphism */}
-        <div className="absolute right-[8%] top-[18%] hidden md:block">
+        {/* Floating context labels — Repositioned AROUND Compass */}
+        {/* Label 1: Decida (TOP of compass) */}
+        <div className="pointer-events-none absolute right-[8%] top-[20%] hidden lg:block">
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 shadow-lg backdrop-blur-xl"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.7 }}
+            className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 shadow-xl backdrop-blur-xl"
           >
-            <p className="whitespace-nowrap text-xs font-semibold text-white/90">
+            <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/90">
               Decida<br />com orientação clara
             </p>
           </motion.div>
         </div>
 
-        <div className="absolute right-[22%] top-[48%] hidden lg:block">
+        {/* Label 2: Encontre (MIDDLE-RIGHT of compass) */}
+        <div className="pointer-events-none absolute right-[3%] top-[47%] hidden lg:block">
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 shadow-lg backdrop-blur-xl"
+            transition={{ delay: 0.7, duration: 0.7 }}
+            className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 shadow-xl backdrop-blur-xl"
           >
-            <p className="whitespace-nowrap text-xs font-semibold text-white/90">
+            <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/90">
               Encontre apoio<br />sem perder tempo
             </p>
           </motion.div>
         </div>
 
-        <div className="absolute bottom-[22%] right-[12%] hidden md:block">
+        {/* Label 3: Aprenda (BOTTOM of compass) */}
+        <div className="pointer-events-none absolute bottom-[20%] right-[8%] hidden lg:block">
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-            className="rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 shadow-lg backdrop-blur-xl"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.7 }}
+            className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 shadow-xl backdrop-blur-xl"
           >
-            <p className="whitespace-nowrap text-xs font-semibold text-white/90">
+            <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/90">
               Aprenda<br />enquanto usa
             </p>
           </motion.div>
@@ -158,7 +161,7 @@ export const HomePage: React.FC = () => {
 
       {/* "Como você quer começar?" Section — Premium */}
       <section className="space-y-6">
-        <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black tracking-tight text-slate-900 dark:text-white">
+        <h3 className="text-[clamp(1.625rem,3.5vw,2.25rem)] font-black tracking-tight text-slate-900 dark:text-white">
           Como você quer começar?
         </h3>
         <p className="max-w-3xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
@@ -175,7 +178,7 @@ export const HomePage: React.FC = () => {
             <Card
               hoverable
               onClick={() => navigate('/atendimento')}
-              className={`group border-2 p-6 transition-all hover:shadow-xl ${
+              className={`group border-2 p-5 transition-all hover:shadow-xl md:p-6 ${
                 theme === 'dark'
                   ? 'border-slate-800 bg-slate-900 hover:border-blue-700'
                   : 'border-slate-200 bg-white hover:border-blue-400 hover:shadow-blue-100'
@@ -183,7 +186,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="flex items-start gap-4">
                 {/* Avatar letra D */}
-                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-lg font-black transition-all group-hover:scale-110 ${
+                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.125rem] text-lg font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
                   theme === 'dark'
                     ? 'bg-blue-500/20 text-blue-400'
                     : 'bg-blue-100 text-blue-700'
@@ -211,7 +214,7 @@ export const HomePage: React.FC = () => {
             <Card
               hoverable
               onClick={() => navigate('/rede')}
-              className={`group border-2 p-6 transition-all hover:shadow-xl ${
+              className={`group border-2 p-5 transition-all hover:shadow-xl md:p-6 ${
                 theme === 'dark'
                   ? 'border-slate-800 bg-slate-900 hover:border-emerald-700'
                   : 'border-slate-200 bg-white hover:border-emerald-400 hover:shadow-emerald-100'
@@ -219,7 +222,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="flex items-start gap-4">
                 {/* Avatar letra A */}
-                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-lg font-black transition-all group-hover:scale-110 ${
+                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.125rem] text-lg font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
                   theme === 'dark'
                     ? 'bg-emerald-500/20 text-emerald-400'
                     : 'bg-emerald-100 text-emerald-700'
@@ -247,7 +250,7 @@ export const HomePage: React.FC = () => {
             <Card
               hoverable
               onClick={() => navigate('/recursos')}
-              className={`group border-2 p-6 transition-all hover:shadow-xl ${
+              className={`group border-2 p-5 transition-all hover:shadow-xl md:p-6 ${
                 theme === 'dark'
                   ? 'border-slate-800 bg-slate-900 hover:border-violet-700'
                   : 'border-slate-200 bg-white hover:border-violet-400 hover:shadow-violet-100'
@@ -255,7 +258,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="flex items-start gap-4">
                 {/* Avatar letra L */}
-                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-lg font-black transition-all group-hover:scale-110 ${
+                <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.125rem] text-lg font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
                   theme === 'dark'
                     ? 'bg-violet-500/20 text-violet-400'
                     : 'bg-violet-100 text-violet-700'
@@ -279,7 +282,7 @@ export const HomePage: React.FC = () => {
       {/* Recursos para apoiar a decisão — Premium */}
       <section className="space-y-6">
         <div className="space-y-3">
-          <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black tracking-tight text-slate-900 dark:text-white">
+          <h3 className="text-[clamp(1.625rem,3.5vw,2.25rem)] font-black tracking-tight text-slate-900 dark:text-white">
             Recursos para apoiar a decisão
           </h3>
           <p className="max-w-3xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
@@ -297,7 +300,7 @@ export const HomePage: React.FC = () => {
             <Card
               hoverable
               onClick={() => navigate('/recursos/glossario')}
-              className={`group border-2 p-6 transition-all hover:shadow-xl ${
+              className={`group border-2 p-5 transition-all hover:shadow-xl md:p-6 ${
                 theme === 'dark'
                   ? 'border-slate-800 bg-slate-900 hover:border-indigo-700'
                   : 'border-slate-200 bg-white hover:border-indigo-400 hover:shadow-indigo-100'
@@ -305,7 +308,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="space-y-4">
                 {/* Avatar letra G */}
-                <div className={`flex h-14 w-14 items-center justify-center rounded-2xl text-2xl font-black transition-all group-hover:scale-110 ${
+                <div className={`flex h-14 w-14 items-center justify-center rounded-[1.25rem] text-2xl font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
                   theme === 'dark'
                     ? 'bg-indigo-500/20 text-indigo-400'
                     : 'bg-indigo-100 text-indigo-700'
@@ -333,7 +336,7 @@ export const HomePage: React.FC = () => {
             <Card
               hoverable
               onClick={() => navigate('/recursos/faq')}
-              className={`group border-2 p-6 transition-all hover:shadow-xl ${
+              className={`group border-2 p-5 transition-all hover:shadow-xl md:p-6 ${
                 theme === 'dark'
                   ? 'border-slate-800 bg-slate-900 hover:border-pink-700'
                   : 'border-slate-200 bg-white hover:border-pink-400 hover:shadow-pink-100'
@@ -341,7 +344,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="space-y-4">
                 {/* Avatar letra F */}
-                <div className={`flex h-14 w-14 items-center justify-center rounded-2xl text-2xl font-black transition-all group-hover:scale-110 ${
+                <div className={`flex h-14 w-14 items-center justify-center rounded-[1.25rem] text-2xl font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
                   theme === 'dark'
                     ? 'bg-pink-500/20 text-pink-400'
                     : 'bg-pink-100 text-pink-700'
@@ -369,7 +372,7 @@ export const HomePage: React.FC = () => {
             <Card
               hoverable
               onClick={() => navigate('/recursos/simulador')}
-              className={`group border-2 p-6 transition-all hover:shadow-xl ${
+              className={`group border-2 p-5 transition-all hover:shadow-xl md:p-6 ${
                 theme === 'dark'
                   ? 'border-slate-800 bg-slate-900 hover:border-orange-700'
                   : 'border-slate-200 bg-white hover:border-orange-400 hover:shadow-orange-100'
@@ -377,7 +380,7 @@ export const HomePage: React.FC = () => {
             >
               <div className="space-y-4">
                 {/* Avatar letra S */}
-                <div className={`flex h-14 w-14 items-center justify-center rounded-2xl text-2xl font-black transition-all group-hover:scale-110 ${
+                <div className={`flex h-14 w-14 items-center justify-center rounded-[1.25rem] text-2xl font-black shadow-[inset_0_1px_4px_rgba(255,255,255,0.4),inset_0_-1px_3px_rgba(0,0,0,0.2),0_2px_8px_rgba(0,0,0,0.15)] transition-all group-hover:scale-110 ${
                   theme === 'dark'
                     ? 'bg-orange-500/20 text-orange-400'
                     : 'bg-orange-100 text-orange-700'
@@ -413,7 +416,7 @@ export const HomePage: React.FC = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-[clamp(1.75rem,4vw,2.5rem)] font-black tracking-tight text-slate-900 dark:text-white"
+              className="text-[clamp(1.625rem,3.5vw,2.25rem)] font-black tracking-tight text-slate-900 dark:text-white"
             >
               Navegar por categoria
             </motion.h3>
@@ -429,7 +432,7 @@ export const HomePage: React.FC = () => {
         </div>
 
         {/* Grid de 7 categorias */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-5">
           {categories.map((cat, index) => {
             const colorClasses = getPremiumCategoryColorClass(cat.color || 'blue');
 
@@ -443,7 +446,7 @@ export const HomePage: React.FC = () => {
                 <Card
                   hoverable
                   onClick={() => navigate(`/categoria/${cat.id}`)}
-                  className={`group relative overflow-hidden border-2 p-6 transition-all hover:scale-[1.02] md:p-8 ${
+                  className={`group relative overflow-hidden border-2 p-5 transition-all hover:scale-[1.02] md:p-6 lg:p-8 ${
                     theme === 'dark'
                       ? 'border-slate-800 bg-slate-900/80 backdrop-blur-sm hover:border-slate-700 hover:shadow-2xl hover:shadow-slate-950/60'
                       : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-2xl hover:shadow-slate-200/60'
@@ -459,9 +462,9 @@ export const HomePage: React.FC = () => {
                     <div className="relative inline-block">
                       {/* Icon container */}
                       <div
-                        className={`mb-5 flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl ${colorClasses}`}
+                        className={`mb-5 flex h-16 w-16 items-center justify-center rounded-[1.25rem] shadow-lg transition-all duration-300 group-hover:scale-[1.12] group-hover:shadow-2xl ${colorClasses}`}
                       >
-                        {getPremiumCategoryIcon(cat.icon)}
+                        {getPremiumCategoryIcon(cat.icon, 'h-8 w-8 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]')}
                       </div>
 
                       {/* Emergency badge */}
