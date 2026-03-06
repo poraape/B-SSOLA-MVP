@@ -1,7 +1,7 @@
 import { Flow, RiskGroup } from '../../types';
 import { PremiumResult } from '../flows/premiumEngine';
-import { model } from '../model/loadModel';
 import { systemLogger } from '../metrics/systemLogger';
+import { model } from '../model/loadModel';
 
 export interface RiskScoreBreakdown {
   total: number;
@@ -26,6 +26,12 @@ function addFactor(b: RiskScoreBreakdown, code: string, points: number) {
   b.factors.push({ code, points });
 }
 
+/**
+ * Calcula score heurístico acumulado para suporte às regras de prioridade.
+ * @param result - Resultado de triagem enriquecido pelo motor premium.
+ * @param flow - Fluxo de triagem atualmente avaliado.
+ * @returns Breakdown com score total e fatores aplicados no cálculo.
+ */
 export function computeRiskScore(result: PremiumResult, flow: Flow): RiskScoreBreakdown {
   const breakdown: RiskScoreBreakdown = { total: 0, factors: [] };
 
@@ -74,6 +80,11 @@ export function computeRiskScore(result: PremiumResult, flow: Flow): RiskScoreBr
   };
 }
 
+/**
+ * Define a prioridade institucional mínima com base no score agregado.
+ * @param score - Score numérico calculado pelo motor de risco.
+ * @returns Prioridade mínima obrigatória para o resultado final.
+ */
 export function minPriorityForScore(score: number): 'low' | 'moderate' | 'high' | 'critical' {
   if (score >= 8) return 'critical';
   if (score >= 5) return 'high';

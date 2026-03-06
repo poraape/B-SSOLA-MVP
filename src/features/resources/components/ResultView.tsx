@@ -1,7 +1,8 @@
 // src/features/resources/components/ResultView.tsx
 
-import React, { useState } from 'react';
 import { CheckCircle2, AlertTriangle, XCircle, RotateCcw, BarChart3, BookOpen, ExternalLink, Clock, Target } from 'lucide-react';
+import React, { useState } from 'react';
+
 import { Button } from '../../../components/ui/Button';
 import { Card } from '../../../components/ui/Card';
 import { SimulatorCase, SimulatorChoice } from '../data/simulatorTypes';
@@ -17,7 +18,6 @@ interface ResultViewProps {
 type TabType = 'decision' | 'analysis' | 'resources';
 
 export const ResultView: React.FC<ResultViewProps> = ({
-  case: simCase,
   choice,
   timeSpent,
   onBackToDashboard,

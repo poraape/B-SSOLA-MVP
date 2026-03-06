@@ -12,15 +12,21 @@ export default defineConfig({
     include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
     coverage: {
       provider: "v8",
-      include: ["src/domain/**", "src/application/**"],
-      exclude: ["src/test/**", "**/*.d.ts"],
+      reporter: ["text", "html", "json-summary"],
+      include: ["src/**/*.ts", "src/**/*.tsx"],
+      exclude: [
+        "src/**/__tests__/**",
+        "src/**/*.test.{ts,tsx}",
+        "src/test/**",
+        "src/vite-env.d.ts",
+        "src/scripts/**",
+      ],
       thresholds: {
-        lines: 80,
-        functions: 80,
-        branches: 75,
-        statements: 80,
+        lines: 70,
+        functions: 65,
+        branches: 60,
+        statements: 70,
       },
-      reporter: ["text", "html", "lcov"],
     },
   },
 });

@@ -21,6 +21,12 @@ export const SIGNAL_WEIGHTS: Record<GatewaySignal, number> = {
   imminent_integrity_risk: 1,
 };
 
+/**
+ * Classifica macro-risco no gateway mantendo a lógica tripartite SIM/NÃO/NÃO SEI.
+ * @param answer - Resposta principal do usuário no gateway.
+ * @param selectedSignals - Sinais críticos adicionais selecionados em caso de dúvida.
+ * @returns Decisão de rota (`emergency` ou `categories`) com explicação e score.
+ */
 export const evaluateMacroRisk = (answer: GatewayAnswer, selectedSignals: GatewaySignal[]): GatewayDecision => {
   if (answer === 'yes') {
     return {

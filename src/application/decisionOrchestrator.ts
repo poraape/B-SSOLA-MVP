@@ -1,9 +1,10 @@
-import { Flow, TriageResult, Category } from '../types';
 import { FlowState, processAnswer } from '../domain/flows/flowEngine';
 import { enrichPremium, PremiumResult } from '../domain/flows/premiumEngine';
-import { applyRiskHeuristics } from '../domain/risk/riskRules';
-import { assertInvariants } from '../domain/risk/invariants';
 import { getValidatedModel } from '../domain/model/loadModel';
+import { assertInvariants } from '../domain/risk/invariants';
+import { applyRiskHeuristics } from '../domain/risk/riskRules';
+import { Flow, TriageResult, Category } from '../types';
+
 import { telemetryService } from './telemetry/TelemetryService';
 
 export type FlowInput =
@@ -22,6 +23,11 @@ export type FlowInput =
       guardrailTriggered?: boolean;
     };
 
+/**
+ * Orquestra a execução do fluxo (resposta de pergunta) e o pós-processamento de resultado.
+ * @param input - Payload de execução em modo `flow` ou `result`.
+ * @returns Próximo estado do fluxo, resultado premium enriquecido ou `null` em falha segura.
+ */
 export function runDecision(input: FlowInput): FlowState | PremiumResult | null {
   // Garante que o modelo carregado continue passando pelo pipeline validado atual.
   const model = getValidatedModel();

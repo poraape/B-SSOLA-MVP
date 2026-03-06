@@ -1,4 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+import { clearMetrics, logTriageEvent } from '../logger';
 import type { InstitutionalMetricEvent } from '../types';
 
 const {
@@ -29,8 +31,6 @@ vi.mock('../systemLogger', () => ({
     error: mockError,
   },
 }));
-
-import { clearMetrics, logTriageEvent } from '../logger';
 
 describe('metrics logger', () => {
   beforeEach(() => {

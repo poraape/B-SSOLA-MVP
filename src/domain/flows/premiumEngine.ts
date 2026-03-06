@@ -1,6 +1,7 @@
 import { TriageResult, Flow, Category, Service, FlowPriority } from '../../types';
-import { getServiceById } from './selectors';
 import { applyRiskHeuristics } from '../risk/riskRules';
+
+import { getServiceById } from './selectors';
 
 export interface PremiumResult extends TriageResult {
   priority?: Extract<FlowPriority, 'low' | 'moderate' | 'high' | 'critical'>;
@@ -56,6 +57,14 @@ function resolveRelevantServices(result: TriageResult): { internal: Service[]; e
   return { internal, external };
 }
 
+/**
+ * Enriquece o resultado base com prioridade institucional, explicações e serviços relevantes.
+ * @param result - Resultado original da triagem.
+ * @param flow - Fluxo utilizado para cálculo de contexto.
+ * @param category - Categoria opcional para ajustes adicionais de prioridade.
+ * @param guardrailTriggered - Indicador de disparo de guardrail no gateway.
+ * @returns Resultado enriquecido e ajustado por heurísticas de risco.
+ */
 export function enrichPremium(
   result: TriageResult | null,
   flow: Flow,

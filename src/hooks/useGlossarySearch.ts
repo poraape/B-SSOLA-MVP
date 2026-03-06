@@ -1,8 +1,9 @@
 // src/features/resources/hooks/useGlossarySearch.ts
 
 import { useMemo } from 'react';
+
 import { GlossaryItem } from '../data/glossary';
-import { normalizeText, fuzzyMatch } from '../utils/searchUtils';
+import { fuzzyMatch } from '../utils/searchUtils';
 
 interface UseGlossarySearchOptions {
   includeRelated?: boolean;

@@ -1,12 +1,15 @@
+import { ArrowLeft, AlertTriangle, ShieldCheck } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getFlowById } from '../../domain/flows/selectors';
-import { initFlow, FlowState } from '../../domain/flows/flowEngine';
+
 import { runDecision } from '../../application/decisionOrchestrator';
-import { TriageQuestion } from './components/TriageQuestion';
-import { ArrowLeft, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { telemetryService } from '../../application/telemetry/TelemetryService';
+import { initFlow, FlowState } from '../../domain/flows/flowEngine';
+import { getFlowById } from '../../domain/flows/selectors';
 import { FeatureErrorBoundary } from '../shared/components/FeatureErrorBoundary';
+
+import { TriageQuestion } from './components/TriageQuestion';
+import { TriageErrorBoundary } from './TriageErrorBoundary';
 
 export const FlowPage: React.FC = () => {
   const { flowId } = useParams<{ flowId: string }>();
@@ -140,62 +143,64 @@ export const FlowPage: React.FC = () => {
       recoveryPath="/" 
       recoveryLabel="Ir para o início"
     >
-    <div className="max-w-2xl mx-auto space-y-8">
-      <div className="flex items-center justify-between">
-        <button 
-          onClick={() => navigate(-1)} 
-          className="text-slate-500 hover:text-blue-600 transition-colors font-bold text-sm uppercase tracking-widest flex items-center gap-2"
-        >
-          <ArrowLeft className="w-5 h-5" /> Voltar
-        </button>
-        <div className="flex items-center gap-2">
-          <div className={`h-1.5 w-24 rounded-full ${isEmergency ? 'bg-rose-600 animate-pulse' : 'bg-blue-600'}`} />
-        </div>
-      </div>
-
-      <div className={`bg-white border ${isEmergency ? 'border-rose-200 shadow-rose-100' : 'border-slate-200 shadow-slate-200/50'} rounded-3xl md:rounded-[2.5rem] p-6 md:p-10 shadow-xl relative overflow-hidden`}>
-        {/* Progress indicator or context */}
-        <div className="flex items-center gap-2 mb-8">
-          {isEmergency ? (
-            <div className="bg-rose-100 text-rose-700 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-tighter animate-pulse flex items-center gap-1">
-              <AlertTriangle className="w-3 h-3" /> Emergência Crítica
+      <TriageErrorBoundary>
+        <div className="max-w-2xl mx-auto space-y-8">
+          <div className="flex items-center justify-between">
+            <button 
+              onClick={() => navigate(-1)} 
+              className="text-slate-500 hover:text-blue-600 transition-colors font-bold text-sm uppercase tracking-widest flex items-center gap-2"
+            >
+              <ArrowLeft className="w-5 h-5" /> Voltar
+            </button>
+            <div className="flex items-center gap-2">
+              <div className={`h-1.5 w-24 rounded-full ${isEmergency ? 'bg-rose-600 animate-pulse' : 'bg-blue-600'}`} />
             </div>
-          ) : (
-            <div className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-tighter flex items-center gap-1">
-              <ShieldCheck className="w-3 h-3" /> Protocolo Padrão
-            </div>
-          )}
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{flow.meta.title}</span>
-        </div>
+          </div>
 
-        {currentQuestion ? (
-          <TriageQuestion 
-            question={currentQuestion} 
-            onAnswer={handleAnswer}
-            isEmergency={isEmergency}
-            currentStep={currentStep}
-            totalSteps={totalSteps}
-            hasBranching={hasBranching}
-          />
-        ) : (
-          <div className="text-center py-10 text-slate-500">
-            {isProcessingTimedOut ? (
-              <div className="space-y-3">
-                <p>Aguarde um momento...</p>
-                <button
-                  onClick={() => navigate('/')}
-                  className="text-sm font-semibold text-blue-600 underline"
-                >
-                  Ir para o início
-                </button>
-              </div>
+          <div className={`bg-white border ${isEmergency ? 'border-rose-200 shadow-rose-100' : 'border-slate-200 shadow-slate-200/50'} rounded-3xl md:rounded-[2.5rem] p-6 md:p-10 shadow-xl relative overflow-hidden`}>
+            {/* Progress indicator or context */}
+            <div className="flex items-center gap-2 mb-8">
+              {isEmergency ? (
+                <div className="bg-rose-100 text-rose-700 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-tighter animate-pulse flex items-center gap-1">
+                  <AlertTriangle className="w-3 h-3" /> Emergência Crítica
+                </div>
+              ) : (
+                <div className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-tighter flex items-center gap-1">
+                  <ShieldCheck className="w-3 h-3" /> Protocolo Padrão
+                </div>
+              )}
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{flow.meta.title}</span>
+            </div>
+
+            {currentQuestion ? (
+              <TriageQuestion 
+                question={currentQuestion} 
+                onAnswer={handleAnswer}
+                isEmergency={isEmergency}
+                currentStep={currentStep}
+                totalSteps={totalSteps}
+                hasBranching={hasBranching}
+              />
             ) : (
-              'Processando...'
+              <div className="text-center py-10 text-slate-500">
+                {isProcessingTimedOut ? (
+                  <div className="space-y-3">
+                    <p>Aguarde um momento...</p>
+                    <button
+                      onClick={() => navigate('/')}
+                      className="text-sm font-semibold text-blue-600 underline"
+                    >
+                      Ir para o início
+                    </button>
+                  </div>
+                ) : (
+                  'Processando...'
+                )}
+              </div>
             )}
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      </TriageErrorBoundary>
     </FeatureErrorBoundary>
   );
 };

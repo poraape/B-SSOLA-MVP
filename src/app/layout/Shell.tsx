@@ -1,14 +1,15 @@
-import React from 'react';
-import { Header } from './Header';
 import { motion, AnimatePresence } from 'motion/react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
+
 import { PrivacyNotice } from '../../components/PrivacyNotice';
+import { useTheme } from '../context/ThemeContext';
+
+import { Header } from './Header';
 
 interface ShellProps {
   children: React.ReactNode;
 }
-
-import { useTheme } from '../context/ThemeContext';
 
 export const Shell: React.FC<ShellProps> = ({ children }) => {
   const location = useLocation();

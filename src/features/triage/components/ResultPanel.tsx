@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
 import { MapPin, Info, ShieldAlert, Heart } from 'lucide-react';
-import { TriageResult, Flow, FlowResultMessage } from '../../../types';
-import { getServiceById } from '../../../domain/flows/selectors';
-import { useTriageRecommendation } from '../../../app/context/TriageRecommendationContext';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { PremiumResult } from '../../../domain/flows/premiumEngine';
+
+import { useTriageRecommendation } from '../../../app/context/TriageRecommendationContext';
 import { Collapsible } from '../../../components/ui/Collapsible';
 import { useAppMode } from '../../../domain/appMode/AppModeContext';
-import { getTopFactors, translateFactor } from './translateFactors';
 import { buildNetworkServiceLink } from '../../../domain/flows/flowResultSelectors';
+import { PremiumResult } from '../../../domain/flows/premiumEngine';
+import { getServiceById } from '../../../domain/flows/selectors';
+import { TriageResult, Flow, FlowResultMessage } from '../../../types';
+
+import { getTopFactors, translateFactor } from './translateFactors';
 
 
 const PrivacyBadge: React.FC = () => (
@@ -23,14 +25,12 @@ interface ResultPanelProps {
   flowResultMessage?: FlowResultMessage;
 }
 
-export const ResultPanel: React.FC<ResultPanelProps> = ({ flow, result, flowResultMessage }) => {
+export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMessage }) => {
   const { mode } = useAppMode();
   const { setRecommendation } = useTriageRecommendation();
   const primaryService = result.primaryService ? getServiceById(result.primaryService.id) : null;
   const secondaryService = result.secondaryService ? getServiceById(result.secondaryService.id) : null;
 
-  const internalRelevant = (result as PremiumResult).internalServicesRelevant || [];
-  const externalRelevant = (result as PremiumResult).externalServicesRelevant || [];
   const explanationPoints = (result as PremiumResult).explanationPoints || [];
   const appliedRules = result.appliedRules || [];
   const whyThisOrientation = explanationPoints.length > 0

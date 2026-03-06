@@ -1,6 +1,6 @@
 // src/features/resources/components/AlphabetNav.tsx
 
-import React, { useCallback } from 'react';
+import React from 'react';
 
 interface AlphabetNavProps {
   availableLetters: string[];

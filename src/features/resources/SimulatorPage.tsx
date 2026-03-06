@@ -1,15 +1,17 @@
 // src/features/resources/SimulatorPage.tsx
 
+import { Play, Clock, BarChart3 } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, RotateCcw, Clock, BarChart3 } from 'lucide-react';
+
 import { Button } from '../../components/ui/Button';
 import { Card } from '../../components/ui/Card';
+
+import { CaseView } from './components/CaseView';
+import { ResultView } from './components/ResultView';
+import { SimulatorDashboard } from './components/SimulatorDashboard';
 import { simulatorCases } from './data/simulatorCases';
 import { SimulatorCase, SimulatorChoice, CaseCategory } from './data/simulatorTypes';
 import { useSimulatorProgress } from './hooks/useSimulatorProgress';
-import { SimulatorDashboard } from './components/SimulatorDashboard';
-import { CaseView } from './components/CaseView';
-import { ResultView } from './components/ResultView';
 
 type SimState = 'intro' | 'dashboard' | 'case' | 'result';
 

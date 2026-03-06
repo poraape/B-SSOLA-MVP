@@ -1,10 +1,10 @@
+import { ArrowLeft, MapPin, Phone, ExternalLink, Clock, Shield } from 'lucide-react';
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { getServiceById } from '../../domain/flows/selectors';
-import { ArrowLeft, MapPin, Phone, Globe, Mail, ExternalLink, Clock, Shield } from 'lucide-react';
-import { Button } from '../../components/ui/Button';
 
 import { useTheme } from '../../app/context/ThemeContext';
+import { Button } from '../../components/ui/Button';
+import { getServiceById } from '../../domain/flows/selectors';
 
 export const ServiceDetailsPage: React.FC = () => {
   const { serviceId } = useParams<{ serviceId: string }>();

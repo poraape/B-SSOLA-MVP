@@ -1,14 +1,14 @@
+import { AlertTriangle, ChevronRight } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SearchBar } from '../../features/search/components/SearchBar';
-import { Card } from '../../components/ui/Card';
-import { Button } from '../../components/ui/Button';
-import { getCategories } from '@/domain/model';
-import { getEmergencyRoute } from '@/domain/flows/selectors';
+
 import { useTheme } from '../../app/context/ThemeContext';
-import { AlertTriangle, ChevronRight, Phone } from 'lucide-react';
+import { Card } from '../../components/ui/Card';
 import { CompassIcon } from '../../features/shared/assets/CompassIcon';
 import { getPremiumCategoryColorClass, getPremiumCategoryIcon } from '../shared/components/PremiumCategoryIcons';
+
+import { getEmergencyRoute } from '@/domain/flows/selectors';
+import { getCategories } from '@/domain/model';
 
 
 const PrivacyBadge: React.FC = () => (

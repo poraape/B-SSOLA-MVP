@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { Book, HelpCircle, PlayCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { GlossaryPage } from './GlossaryPage';
+
 import { FAQPage } from './FAQPage';
+import { GlossaryPage } from './GlossaryPage';
 import { SimulatorPage } from './SimulatorPage';
 
 type ResourceTab = 'glossary' | 'faq' | 'simulator';
