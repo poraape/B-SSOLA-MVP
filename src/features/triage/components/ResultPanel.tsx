@@ -114,7 +114,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
           {result.uiFlags?.avoidRetraumatization && (
             <div className="bg-rose-50 border border-rose-200 p-4 rounded-2xl flex items-center gap-3 text-rose-800">
               <Heart className="w-5 h-5 shrink-0" />
-              <p className="text-xs font-bold uppercase tracking-widest">Atenção: Evitar Revitalização / Escuta Única</p>
+              <p className="text-xs font-bold uppercase tracking-widest">Atenção: Evitar Revitimização / Escuta Única</p>
             </div>
           )}
         </div>
@@ -134,7 +134,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
               to={`/rede?type=interno&highlight=${primaryService.id}`}
               className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
             >
-              Ver no mapa →
+              Ver serviços indicados →
             </Link>
           </div>
         )}
@@ -150,7 +150,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
               to={`/rede?highlight=${secondaryService.id}`}
               className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
             >
-              Ver no mapa →
+              Ver serviços indicados →
             </Link>
           </div>
         )}

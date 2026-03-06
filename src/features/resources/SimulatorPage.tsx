@@ -93,25 +93,24 @@ export const SimulatorPage: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto">
       {state === 'intro' && (
-        <Card className="p-8 md:p-12 border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl rounded-[3rem] relative min-h-[500px] flex flex-col">
-          <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/5 rounded-full -mr-24 -mt-24 pointer-events-none" />
+        <Card className="relative flex min-h-[460px] flex-col rounded-[2.5rem] border border-slate-200/80 bg-white/95 p-8 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/90 md:p-10">
+          <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-blue-500/5" />
 
-          <div className="relative z-10 text-center space-y-8 py-10 my-auto">
-            <div className="w-24 h-24 bg-blue-100 dark:bg-blue-900/30 rounded-[2rem] flex items-center justify-center mx-auto shadow-inner">
-              <Play className="w-12 h-12 text-blue-600" />
+          <div className="relative z-10 my-auto space-y-6 py-8 text-center">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-100 dark:bg-blue-900/30">
+              <Play className="h-10 w-10 text-blue-600" />
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3">
               <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-                Simulador de Protocolos Escolares
+                Simulador
               </h3>
               <p className="text-slate-500 dark:text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
-                Treine suas habilidades de resposta a situações desafiadoras do cotidiano escolar.
-                Cada decisão é baseada em protocolos reais e legislação vigente.
+                Treine decisões e encaminhamentos em situações simuladas do cotidiano escolar.
               </p>
               <div className="flex items-center justify-center gap-6 text-sm text-slate-400 pt-4">
                 <div className="flex items-center gap-2">
                   <BarChart3 className="w-4 h-4" />
-                  <span>Progresso Salvo</span>
+                  <span>Progresso salvo</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
@@ -122,9 +121,9 @@ export const SimulatorPage: React.FC = () => {
             <Button
               onClick={handleStart}
               variant="primary"
-              className="px-12 py-6 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-blue-200 dark:shadow-none"
+              className="rounded-2xl px-10 py-5 text-sm font-bold shadow-xl shadow-blue-200 dark:shadow-none"
             >
-              {progress.completedCases.length > 0 ? 'Continuar Treinamento' : 'Iniciar Treinamento'}
+              {progress.completedCases.length > 0 ? 'Continuar simulação' : 'Iniciar simulação'}
             </Button>
           </div>
         </Card>
