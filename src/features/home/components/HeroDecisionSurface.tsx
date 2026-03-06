@@ -75,11 +75,12 @@ export const HeroDecisionSurface: React.FC<HeroDecisionSurfaceProps> = ({
 
       <div className="relative z-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div className="space-y-7">
-          <h1 className="text-[clamp(2.1rem,8vw,5.4rem)] font-black leading-[0.95] tracking-tight text-white">
-            O que fazer agora?
+          <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-slate-300 md:text-xs">DECISÃO ESCOLAR ASSISTIDA</p>
+          <h1 className="text-[clamp(2.75rem,7.5vw,6rem)] font-black leading-[0.92] tracking-[-0.02em] text-white">
+            O que fazer <span className="inline-block bg-gradient-to-r from-amber-300 to-amber-400 bg-clip-text text-transparent">agora?</span>
           </h1>
-          <p className="max-w-2xl text-[clamp(1rem,2.5vw,1.35rem)] font-medium leading-relaxed text-slate-200">
-            Identifique a situação e receba orientação segura.
+          <p className="max-w-2xl text-[clamp(1.125rem,2.8vw,1.625rem)] font-medium leading-[1.45] text-slate-200">
+            Identifique a situação, priorize o cuidado e siga com segurança.
           </p>
 
           <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
