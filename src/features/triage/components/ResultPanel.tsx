@@ -134,7 +134,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
               to={`/rede?type=interno&highlight=${primaryService.id}`}
               className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
             >
-              Ver no mapa →
+              Ver serviços indicados →
             </Link>
           </div>
         )}
@@ -150,7 +150,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
               to={`/rede?highlight=${secondaryService.id}`}
               className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
             >
-              Ver no mapa →
+              Ver serviços indicados →
             </Link>
           </div>
         )}
