@@ -9,7 +9,6 @@ import { getEmergencyRoute } from '@/domain/flows/selectors';
 import { getCategories } from '@/domain/model';
 import { CompassIcon } from '@/features/shared/assets/CompassIcon';
 import {
-  getPremiumCategoryColorClass,
   getPremiumCategoryIcon,
 } from '@/features/shared/components/PremiumCategoryIcons';
 
@@ -27,13 +26,13 @@ export const HomePage: React.FC = () => {
   return (
     <div className="space-y-12 md:space-y-16 lg:space-y-20">
       {/* Hero Section — Premium Edition */}
-      <section className="relative min-h-[26rem] overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] p-6 shadow-2xl md:min-h-[32rem] md:rounded-[3rem] md:p-12 lg:p-16">
+      <section className="relative min-h-[28rem] overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] p-6 shadow-2xl md:min-h-[34rem] md:rounded-[3rem] md:p-12 lg:min-h-[38rem] lg:p-16">
         {/* Ambient gradient overlays */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-radial from-blue-500/5 via-transparent to-transparent opacity-60" />
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent" />
 
-        {/* Compass — Repositioned and Enhanced */}
-        <div className="pointer-events-none absolute right-[-5%] top-1/2 -translate-y-1/2 opacity-20 md:right-[2%] lg:right-[5%]">
+        {/* Compass — REPOSICIONADO E VISÍVEL */}
+        <div className="pointer-events-none absolute right-[-5%] top-1/2 -translate-y-1/2 opacity-[0.24] md:right-[3%] lg:right-[8%]">
           <motion.div
             animate={{
               rotate: [0, 2, 0, -2, 0],
@@ -41,50 +40,50 @@ export const HomePage: React.FC = () => {
               y: [0, -3, 0, 3, 0],
             }}
             transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-            className="drop-shadow-[0_0_50px_rgba(255,255,255,0.15)]"
+            className="drop-shadow-[0_0_70px_rgba(255,255,255,0.2)]"
           >
-            <CompassIcon className="h-[22rem] w-[22rem] text-white md:h-[36rem] md:w-[36rem] lg:h-[40rem] lg:w-[40rem]" />
+            <CompassIcon className="h-[28rem] w-[28rem] text-white md:h-[40rem] md:w-[40rem] lg:h-[46rem] lg:w-[46rem]" />
           </motion.div>
         </div>
 
-        {/* Floating context labels — Repositioned AROUND Compass */}
-        {/* Label 1: Decida (TOP of compass) */}
-        <div className="pointer-events-none absolute right-[8%] top-[20%] hidden lg:block">
+        {/* Floating context labels — Glassmorphism */}
+        {/* Label 1: TOP-RIGHT (Decida) */}
+        <div className="pointer-events-none absolute right-[16%] top-[20%] hidden lg:block xl:right-[18%]">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.7 }}
-            className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 shadow-xl backdrop-blur-xl"
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="rounded-2xl border border-white/15 bg-white/[0.10] px-5 py-3 shadow-2xl backdrop-blur-2xl"
           >
-            <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/90">
+            <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/95">
               Decida<br />com orientação clara
             </p>
           </motion.div>
         </div>
 
-        {/* Label 2: Encontre (MIDDLE-RIGHT of compass) */}
-        <div className="pointer-events-none absolute right-[3%] top-[47%] hidden lg:block">
+        {/* Label 2: MIDDLE-RIGHT (Encontre) */}
+        <div className="pointer-events-none absolute right-[10%] top-[48%] hidden lg:block xl:right-[12%]">
           <motion.div
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.7, duration: 0.7 }}
-            className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 shadow-xl backdrop-blur-xl"
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="rounded-2xl border border-white/15 bg-white/[0.10] px-5 py-3 shadow-2xl backdrop-blur-2xl"
           >
-            <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/90">
+            <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/95">
               Encontre apoio<br />sem perder tempo
             </p>
           </motion.div>
         </div>
 
-        {/* Label 3: Aprenda (BOTTOM of compass) */}
-        <div className="pointer-events-none absolute bottom-[20%] right-[8%] hidden lg:block">
+        {/* Label 3: BOTTOM-RIGHT (Aprenda) */}
+        <div className="pointer-events-none absolute bottom-[18%] right-[16%] hidden lg:block xl:right-[18%]">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.7 }}
-            className="rounded-2xl border border-white/10 bg-white/[0.08] px-4 py-2.5 shadow-xl backdrop-blur-xl"
+            transition={{ delay: 1.0, duration: 0.8 }}
+            className="rounded-2xl border border-white/15 bg-white/[0.10] px-5 py-3 shadow-2xl backdrop-blur-2xl"
           >
-            <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/90">
+            <p className="whitespace-nowrap text-xs font-semibold leading-relaxed text-white/95">
               Aprenda<br />enquanto usa
             </p>
           </motion.div>
@@ -434,8 +433,6 @@ export const HomePage: React.FC = () => {
         {/* Grid de 7 categorias */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-5">
           {categories.map((cat, index) => {
-            const colorClasses = getPremiumCategoryColorClass(cat.color || 'blue');
-
             return (
               <motion.div
                 key={cat.id}
@@ -452,24 +449,17 @@ export const HomePage: React.FC = () => {
                       : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-2xl hover:shadow-slate-200/60'
                   }`}
                 >
-                  {/* Decorative gradient overlay on hover */}
-                  <div
-                    className={`absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-5 ${colorClasses}`}
-                  />
-
                   {/* Content */}
                   <div className="relative z-10">
-                    <div className="relative inline-block">
-                      {/* Icon container */}
-                      <div
-                        className={`mb-5 flex h-16 w-16 items-center justify-center rounded-[1.25rem] shadow-lg transition-all duration-300 group-hover:scale-[1.12] group-hover:shadow-2xl ${colorClasses}`}
-                      >
-                        {getPremiumCategoryIcon(cat.icon, 'h-8 w-8 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]')}
+                    <div className="relative mb-5 inline-block">
+                      {/* Ícone iOS Style */}
+                      <div className="transition-all duration-300 group-hover:scale-[1.08] group-hover:drop-shadow-2xl">
+                        {getPremiumCategoryIcon(cat.icon, 'h-20 w-20')}
                       </div>
 
                       {/* Emergency badge */}
                       {cat.isEmergencyCategory && (
-                        <div className="absolute -right-2 -top-2 z-20 animate-pulse rounded-full border-2 border-white bg-rose-600 p-1.5 shadow-lg dark:border-slate-900">
+                        <div className="absolute -right-1 -top-1 z-20 animate-pulse rounded-full border-2 border-white bg-rose-600 p-1.5 shadow-lg dark:border-slate-900">
                           <AlertTriangle className="h-3.5 w-3.5 text-white" aria-hidden="true" />
                         </div>
                       )}

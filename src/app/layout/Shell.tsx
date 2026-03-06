@@ -2,7 +2,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { PrivacyNotice } from '../../components/PrivacyNotice';
 import { useTheme } from '../context/ThemeContext';
 
 import { Header } from './Header';
@@ -20,7 +19,6 @@ export const Shell: React.FC<ShellProps> = ({ children }) => {
       theme === 'dark' ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'
     }`}>
       <Header />
-      <PrivacyNotice />
       <main className="flex-1 w-full max-w-6xl mx-auto px-4 py-8 relative">
         <AnimatePresence mode="wait">
           <motion.div

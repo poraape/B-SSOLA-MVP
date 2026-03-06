@@ -46,9 +46,11 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
     // Dyslexic Font
     if (settings.dyslexicFont) {
       root.classList.add('dyslexic-font');
+      root.setAttribute('data-dyslexic-font', 'true');
       body.classList.add('dyslexia');
     } else {
       root.classList.remove('dyslexic-font');
+      root.removeAttribute('data-dyslexic-font');
       body.classList.remove('dyslexia');
     }
 

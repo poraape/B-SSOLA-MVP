@@ -60,7 +60,21 @@ export const Header: React.FC = () => {
         {/* Logo Section */}
         <Link to="/" className="flex items-center gap-3 shrink-0 group" onClick={closeSearch}>
           <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-white/70 bg-gradient-to-b from-white to-slate-100 shadow-[0_6px_18px_-12px_rgba(15,23,42,0.7)] dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">
-            <CompassIcon className="text-slate-900 w-10 h-10" />
+            <motion.div
+              animate={{ 
+                rotate: [0, 1.5, 0, -1.5, 0],
+                scale: [1, 1.008, 1]
+              }}
+              transition={{ 
+                duration: 10, 
+                repeat: Infinity, 
+                ease: 'easeInOut',
+                repeatType: 'loop'
+              }}
+              className="flex items-center justify-center"
+            >
+              <CompassIcon className="text-slate-900 dark:text-slate-100 w-10 h-10" />
+            </motion.div>
           </div>
           <div className="hidden md:block min-w-0">
             <h1 className="leading-none text-xl font-black tracking-tight text-slate-900 dark:text-slate-100">Bússola</h1>
