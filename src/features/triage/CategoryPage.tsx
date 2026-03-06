@@ -4,7 +4,7 @@ import { getCategories } from '@/domain/model';
 import { getFlowsByCategory } from '../../domain/flows/selectors';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { Card } from '../../components/ui/Card';
-import { getPremiumCategoryColorClass, getPremiumCategoryIcon } from '../shared/components/PremiumCategoryIcons';
+import { getPremiumCategoryIcon } from '../shared/components/PremiumCategoryIcons';
 
 const severityWeight: Record<'CRITICAL' | 'HIGH' | 'MODERATE', number> = {
   CRITICAL: 3,
@@ -65,8 +65,8 @@ export const CategoryPage: React.FC = () => {
       
       <div className="bg-white border border-slate-200 rounded-[2.5rem] p-8 sm:p-12 shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-12">
-          <div className={`p-4 rounded-3xl shrink-0 ${getPremiumCategoryColorClass(category.color || 'blue')}`}>
-            {getPremiumCategoryIcon(category.icon)}
+          <div className="shrink-0">
+            {getPremiumCategoryIcon(category.icon, 'h-20 w-20')}
           </div>
           <div className="space-y-2">
             <h2 className="text-3xl font-black text-slate-900 tracking-tight">{category.label}</h2>
