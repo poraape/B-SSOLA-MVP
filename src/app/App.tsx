@@ -106,7 +106,7 @@ export default function App() {
                 {bootstrapError ? (
                   <InternalErrorScreen error={bootstrapError} onRetry={handleRetry} />
                 ) : !isModelReady ? (
-                  <div className="flex flex-col items-center justify-center min-h-screen space-y-4 bg-slate-50">
+                  <div className="flex flex-col items-center justify-center min-h-screen space-y-4 bg-slate-100">
                     <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />
                     <p className="text-xs font-black uppercase tracking-widest text-slate-400">
                       Carregando modelo...
