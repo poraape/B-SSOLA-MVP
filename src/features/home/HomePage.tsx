@@ -54,9 +54,9 @@ export const HomePage: React.FC = () => {
         <div className="relative z-10 flex h-full max-w-4xl flex-col justify-center space-y-8 md:space-y-10">
           <div className="space-y-4 md:space-y-6">
             <p className="text-xs font-bold tracking-[0.2em] text-slate-300">DECISÃO ESCOLAR ASSISTIDA</p>
-            <h2 className="text-[clamp(2.25rem,8vw,6rem)] font-black leading-[0.95] tracking-tighter text-white">
-              Saiba qual é o próximo passo.
-            </h2>
+            <h1 className="text-[clamp(2.25rem,8vw,6rem)] font-black leading-[0.95] tracking-tighter text-white">
+              O que fazer <span className="text-amber-300">agora?</span>
+            </h1>
             <p className="max-w-2xl text-[clamp(1.05rem,2.6vw,1.75rem)] font-medium leading-relaxed text-slate-300">
               O Bússola ajuda a identificar a situação, priorizar o cuidado e seguir com mais segurança.
             </p>
