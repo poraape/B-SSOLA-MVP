@@ -2,7 +2,6 @@ import React, { useEffect, useState, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Shell } from './layout/Shell';
 import { AppRoutes } from './router/routes';
-import { loadModel } from '../domain/model/loadModel';
 import { Loader2, AlertCircle, RotateCcw } from 'lucide-react';
 import { ModelErrorBoundary } from './ModelErrorBoundary';
 import { telemetryService } from '../application/telemetry/TelemetryService';
@@ -68,8 +67,8 @@ export default function App() {
 
     const bootstrap = async () => {
       try {
-        // Defer model load to runtime so failures are surfaced inside React.
-        await Promise.resolve(loadModel());
+        const modelModule = await import('../domain/model/loadModel');
+        await Promise.resolve(modelModule.loadModel());
 
         if (!isCancelled) {
           setIsModelReady(true);

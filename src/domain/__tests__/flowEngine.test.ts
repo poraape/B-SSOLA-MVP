@@ -105,13 +105,14 @@ describe('Flow Engine', () => {
     expect(output.flowId).toBeNull();
   });
 
-  it('completa com result null quando level não existe em flow.results', () => {
+  it('completa com fallback de resultado quando level não existe em flow.results', () => {
     const flow = createBaseFlow();
     flow.triage.questions[0]!.options = [{ label: 'Sem resultado', level: 'LOW' }];
 
     const output = processAnswer(flow, createBaseState(), 'q1', 'Sem resultado');
     expect(output.isComplete).toBe(true);
-    expect(output.result).toBeNull();
+    expect(output.result).toBeTruthy();
+    expect(output.result?.severity).toBe('LOW');
     expect(output.currentQuestionId).toBeNull();
   });
 });

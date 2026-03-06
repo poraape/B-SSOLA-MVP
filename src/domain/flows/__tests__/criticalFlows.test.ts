@@ -35,11 +35,12 @@ describe('critical flows validation', () => {
           expect(option.label).toBeDefined();
           
           // Each option must have level, next, nextFlow, or redirectToCategories
-          const hasTermination = 
-            option.level || 
-            option.next || 
-            option.nextFlow || 
-            option.redirectToCategories;
+          const hasTermination = Boolean(
+            option.level ||
+            option.next ||
+            option.nextFlow ||
+            option.redirectToCategories
+          );
           
           expect(hasTermination).toBe(true);
         });

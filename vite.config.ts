@@ -20,6 +20,10 @@ function getPackageName(id: string): string | null {
   return parts[0];
 }
 
+function normalizeChunkName(name: string): string {
+  return name.replace("@", "").replace("/", "-");
+}
+
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
@@ -34,6 +38,7 @@ export default defineConfig({
         manualChunks(id) {
           if (id.includes("node_modules")) {
             const pkg = getPackageName(id);
+            if (!pkg) return "vendor-misc";
             if (
               pkg === "react" ||
               pkg === "react-dom" ||
@@ -41,12 +46,16 @@ export default defineConfig({
               pkg === "scheduler" ||
               pkg === "history"
             ) {
-              return "vendor";
+              return "vendor-core";
             }
             if (pkg === "leaflet" || pkg === "react-leaflet" || pkg === "@react-leaflet/core") {
               return "leaflet";
             }
-            return "vendor-rest";
+            if (pkg === "cookie" || pkg === "set-cookie-parser") return undefined;
+            if (pkg === "motion" || pkg === "framer-motion") return "vendor-motion";
+            if (pkg === "lucide-react") return "vendor-icons";
+            if (pkg === "zod" || pkg === "semver") return "vendor-model-utils";
+            return `vendor-${normalizeChunkName(pkg)}`;
           }
 
           // Data/model split to keep entry chunk lean.

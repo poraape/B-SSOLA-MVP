@@ -28,6 +28,11 @@ function createStorage() {
   };
 }
 
+function grantPrivacyConsent() {
+  vi.stubGlobal('localStorage', createStorage());
+  localStorage.setItem('bssola_privacy_consent', 'accepted');
+}
+
 describe('LocalStorageProvider', () => {
   beforeEach(() => {
     vi.unstubAllGlobals();
@@ -79,6 +84,7 @@ describe('HttpProvider', () => {
   });
 
   it('warns once and does not throw when endpoint is not configured', async () => {
+    grantPrivacyConsent();
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const provider = new HttpProvider();
 
@@ -90,6 +96,7 @@ describe('HttpProvider', () => {
   });
 
   it('posts telemetry event when endpoint is configured', async () => {
+    grantPrivacyConsent();
     const fetchMock = vi.fn(async () => ({ ok: true }));
     vi.stubGlobal('fetch', fetchMock);
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
@@ -103,6 +110,7 @@ describe('HttpProvider', () => {
   });
 
   it('warns when HTTP response is not ok', async () => {
+    grantPrivacyConsent();
     const fetchMock = vi.fn(async () => ({ ok: false, status: 500 }));
     vi.stubGlobal('fetch', fetchMock);
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
@@ -115,6 +123,7 @@ describe('HttpProvider', () => {
   });
 
   it('warns and recovers from network errors', async () => {
+    grantPrivacyConsent();
     const fetchMock = vi.fn(async () => {
       throw new Error('network down');
     });

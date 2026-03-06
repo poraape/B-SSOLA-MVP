@@ -84,6 +84,7 @@ describe('TelemetryService', () => {
   it('sanitizes metadata and sends event to both providers', async () => {
     const sessionStorage = createStorage({ bussola_session_id: 'sess-telemetry' });
     vi.stubGlobal('window', { sessionStorage });
+    vi.stubGlobal('localStorage', createStorage({ bssola_privacy_consent: 'accepted' }));
 
     const localTrack = vi.fn();
     const httpTrack = vi.fn();

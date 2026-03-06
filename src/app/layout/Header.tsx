@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { Sun, Moon, Settings, Search as SearchIcon, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-import { SearchBar } from '../../features/search/components/SearchBar';
 import { AccessibilityMenu } from '../../features/accessibility/components/AccessibilityMenu';
 import { useSearch } from '../../features/search/context/SearchContext';
 import { motion, AnimatePresence } from 'motion/react';
@@ -10,6 +9,12 @@ import { CompassIcon } from '../../features/shared/assets/CompassIcon';
 import schoolLogo from '../../features/shared/assets/logoescola.png';
 import schoolLogoFallback from '../../assets/school-logo-fallback.svg';
 import { useAppMode } from '../../domain/appMode/AppModeContext';
+
+const SearchBar = lazy(() =>
+  import('../../features/search/components/SearchBar').then((module) => ({
+    default: module.SearchBar,
+  })),
+);
 
 export const Header: React.FC = () => {
   const location = useLocation();
@@ -174,7 +179,9 @@ export const Header: React.FC = () => {
             className="overflow-hidden bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800"
           >
             <div className="max-w-4xl mx-auto px-4 py-8">
-              <SearchBar />
+              <Suspense fallback={<div className="h-28 animate-pulse rounded-2xl bg-slate-100 dark:bg-slate-800" />}>
+                <SearchBar />
+              </Suspense>
               <div className="mt-4 flex justify-center">
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                   Pressione ESC para fechar a busca

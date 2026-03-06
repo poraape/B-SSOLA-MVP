@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { searchFAQ, searchGlossary, unifiedSearch } from '../unifiedSearchEngine';
-import type { FAQSearchResult, GlossarySearchResult } from '../unifiedSearchEngine';
+import type { UnifiedSearchResult } from '../unifiedSearchEngine';
 
 describe('unifiedSearchEngine', () => {
   describe('searchFAQ', () => {
     it('returns FAQ results matching query', () => {
-      const results = searchFAQ('convulsão');
+      const results = searchFAQ('atendimento guiado');
       
       expect(results.length).toBeGreaterThan(0);
       expect(results[0]).toHaveProperty('type', 'faq');
@@ -57,8 +57,8 @@ describe('unifiedSearchEngine', () => {
       
       expect(results.length).toBeGreaterThan(0);
       
-      const hasFAQ = results.some((r: FAQSearchResult | GlossarySearchResult) => r.type === 'faq');
-      const hasGlossary = results.some((r: FAQSearchResult | GlossarySearchResult) => r.type === 'glossary');
+      const hasFAQ = results.some((r: UnifiedSearchResult) => r.type === 'faq');
+      const hasGlossary = results.some((r: UnifiedSearchResult) => r.type === 'glossary');
       
       expect(hasFAQ || hasGlossary).toBe(true);
     });
@@ -78,7 +78,7 @@ describe('unifiedSearchEngine', () => {
       
       expect(results.length).toBeGreaterThan(0);
       
-      results.forEach((result: FAQSearchResult | GlossarySearchResult) => {
+      results.forEach((result: UnifiedSearchResult) => {
         expect(result).toHaveProperty('id');
         expect(result).toHaveProperty('type');
         expect(result).toHaveProperty('title');

@@ -37,6 +37,13 @@ const hasAnySignal = (required: readonly string[] | undefined, detected: Set<str
   return required.some(signal => detected.has(signal));
 };
 
+/**
+ * Resolve o nível final de risco com base nas regras de escalonamento do protocolo.
+ * @param {RiskLevelV2} baselineSeverity - Nível base de severidade do fluxo.
+ * @param {readonly string[]} detectedSignals - Lista de sinais detectados na execução.
+ * @param {readonly EscalationRuleV2[]} escalationRules - Regras de escalonamento do fluxo.
+ * @returns {RiskLevelV2} Nível de risco final após aplicar as regras.
+ */
 export function applyEscalationRules(
   baselineSeverity: RiskLevelV2,
   detectedSignals: readonly string[],
@@ -57,6 +64,11 @@ export function applyEscalationRules(
   return matchingRule?.then.riskLevel || defaultRule.then.riskLevel || baselineSeverity;
 }
 
+/**
+ * Constrói o runtime executável de um FlowSpecV2 validando estrutura mínima.
+ * @param {FlowSpecV2} spec - Especificação canônica do fluxo.
+ * @returns {FlowRuntimeV2} Runtime com índices para steps e outcomes.
+ */
 export function buildRuntimeV2(spec: FlowSpecV2): FlowRuntimeV2 {
   const stepById = new Map<string, RuntimeStep>();
   const outcomeById = new Map<string, OutcomeV2>();
@@ -90,7 +102,7 @@ export function buildRuntimeV2(spec: FlowSpecV2): FlowRuntimeV2 {
   });
 
   if (steps.length === 0) {
-    throw new Error(`FlowSpecV2 \"${spec.meta.id}\" invalido: nao ha steps.`);
+    throw new Error(`FlowSpecV2 "${spec.meta.id}" invalido: nao ha steps.`);
   }
 
   return {
@@ -105,6 +117,11 @@ export function buildRuntimeV2(spec: FlowSpecV2): FlowRuntimeV2 {
   };
 }
 
+/**
+ * Constrói um runtime V2 a partir do identificador do fluxo no registry.
+ * @param {string} flowId - Identificador único do protocolo.
+ * @returns {FlowRuntimeV2} Runtime correspondente ao fluxo informado.
+ */
 export function buildRuntimeV2ById(flowId: string): FlowRuntimeV2 {
   const spec = flowRegistry[flowId];
   if (!spec) {
@@ -113,14 +130,26 @@ export function buildRuntimeV2ById(flowId: string): FlowRuntimeV2 {
   return buildRuntimeV2(spec as FlowSpecV2);
 }
 
+/**
+ * Retorna o primeiro step executável do runtime.
+ * @param {FlowRuntimeV2} runtime - Runtime montado do fluxo.
+ * @returns {RuntimeStep} Step inicial para execução.
+ */
 export function getInitialStep(runtime: FlowRuntimeV2): RuntimeStep {
   const step = runtime.stepById.get(runtime.initialStepId);
   if (!step) {
-    throw new Error(`RuntimeV2 invalido: initialStepId \"${runtime.initialStepId}\" nao encontrado.`);
+    throw new Error(`RuntimeV2 invalido: initialStepId "${runtime.initialStepId}" nao encontrado.`);
   }
   return step;
 }
 
+/**
+ * Resolve a próxima transição de estado a partir da resposta selecionada.
+ * @param {FlowRuntimeV2} runtime - Runtime em execução.
+ * @param {string} currentStepId - Step atual.
+ * @param {string} answer - Resposta/ação selecionada.
+ * @returns {{ nextStep?: RuntimeStep; outcome?: OutcomeV2; finalRiskLevel: RiskLevelV2 }} Próximo estado computado.
+ */
 export function resolveNext(
   runtime: FlowRuntimeV2,
   currentStepId: string,
@@ -128,7 +157,7 @@ export function resolveNext(
 ): { nextStep?: RuntimeStep; outcome?: OutcomeV2; finalRiskLevel: RiskLevelV2 } {
   const currentStep = runtime.stepById.get(currentStepId);
   if (!currentStep) {
-    throw new Error(`Step atual \"${currentStepId}\" nao encontrado.`);
+    throw new Error(`Step atual "${currentStepId}" nao encontrado.`);
   }
 
   const detectedSignals = [...currentStep.riskSignals];
@@ -148,7 +177,7 @@ export function resolveNext(
   );
 
   if (!selectedAction) {
-    throw new Error(`Resposta \"${answer}\" nao encontrada no step \"${currentStepId}\".`);
+    throw new Error(`Resposta "${answer}" nao encontrada no step "${currentStepId}".`);
   }
 
   const nextStep = runtime.stepById.get(selectedAction.next);

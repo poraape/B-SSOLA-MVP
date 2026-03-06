@@ -2,7 +2,12 @@ export interface DecisionLike {
   emergency?: boolean;
   priority?: string;
   notifyManagement?: boolean;
-  services?: { primary?: any; secondary?: any } | any;
+  services?:
+    | {
+        primary?: unknown;
+        secondary?: unknown;
+      }
+    | Record<string, unknown>;
   justification?: string;
 }
 

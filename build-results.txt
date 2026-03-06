@@ -1,0 +1,43 @@
+
+> react-example@0.1.0-rc.1 build
+> vite build
+
+[36mvite v6.4.1 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 2346 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                                     [39m[1m[2m    1.00 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m
+[2mdist/[22m[32massets/logoescola-Br2DLloG.png                 [39m[1m[2m1,396.25 kB[22m[1m[22m
+[2mdist/[22m[35massets/leaflet-CIGW-MKW.css                    [39m[1m[2m   15.61 kB[22m[1m[22m[2m │ gzip:  6.46 kB[22m
+[2mdist/[22m[35massets/index-Njck00GX.css                      [39m[1m[2m   79.87 kB[22m[1m[22m[2m │ gzip: 12.96 kB[22m
+[2mdist/[22m[36massets/NotFoundPage-DYgfKdQT.js                [39m[1m[2m    0.88 kB[22m[1m[22m[2m │ gzip:  0.48 kB[22m
+[2mdist/[22m[36massets/AlphabetNav-LxMlG3hG.js                 [39m[1m[2m    0.97 kB[22m[1m[22m[2m │ gzip:  0.59 kB[22m
+[2mdist/[22m[36massets/suggestedPaths-DMbEitcs.js              [39m[1m[2m    1.13 kB[22m[1m[22m[2m │ gzip:  0.53 kB[22m
+[2mdist/[22m[36massets/registry-chunk-BIWnHSgO.js              [39m[1m[2m    1.22 kB[22m[1m[22m[2m │ gzip:  0.65 kB[22m
+[2mdist/[22m[36massets/ui-chunk-aQ30kYUi.js                    [39m[1m[2m    1.99 kB[22m[1m[22m[2m │ gzip:  0.85 kB[22m
+[2mdist/[22m[36massets/GlossaryFilters-D_DNFb8m.js             [39m[1m[2m    2.03 kB[22m[1m[22m[2m │ gzip:  0.85 kB[22m
+[2mdist/[22m[36massets/runtime-chunk-DyRYBimq.js               [39m[1m[2m    2.19 kB[22m[1m[22m[2m │ gzip:  0.98 kB[22m
+[2mdist/[22m[36massets/CategoryPage-C9INojJf.js                [39m[1m[2m    2.72 kB[22m[1m[22m[2m │ gzip:  1.21 kB[22m
+[2mdist/[22m[36massets/GlossaryCategoryHubPage-CjVu8RXJ.js     [39m[1m[2m    3.26 kB[22m[1m[22m[2m │ gzip:  1.21 kB[22m
+[2mdist/[22m[36massets/GlossaryCard-upDw3Zb6.js                [39m[1m[2m    3.95 kB[22m[1m[22m[2m │ gzip:  1.51 kB[22m
+[2mdist/[22m[36massets/AtendimentoGatePage-CnMlYPO-.js         [39m[1m[2m    4.33 kB[22m[1m[22m[2m │ gzip:  1.74 kB[22m
+[2mdist/[22m[36massets/PremiumCategoryIcons-CtAQq5NF.js        [39m[1m[2m    4.57 kB[22m[1m[22m[2m │ gzip:  1.45 kB[22m
+[2mdist/[22m[36massets/HomePage-CYfBLAnB.js                    [39m[1m[2m    5.01 kB[22m[1m[22m[2m │ gzip:  1.97 kB[22m
+[2mdist/[22m[36massets/GlossaryGraphExplorerPage-Bf70I_uw.js   [39m[1m[2m    5.49 kB[22m[1m[22m[2m │ gzip:  2.05 kB[22m
+[2mdist/[22m[36massets/index-CZveUeiV.js                       [39m[1m[2m    5.94 kB[22m[1m[22m[2m │ gzip:  2.60 kB[22m
+[2mdist/[22m[36massets/ServiceDetailsPage-DHhJ61pn.js          [39m[1m[2m    6.18 kB[22m[1m[22m[2m │ gzip:  1.76 kB[22m
+[2mdist/[22m[36massets/decisionOrchestrator-Dds4T5Tw.js        [39m[1m[2m    6.37 kB[22m[1m[22m[2m │ gzip:  2.63 kB[22m
+[2mdist/[22m[36massets/FlowPage-BT6VAiju.js                    [39m[1m[2m    6.41 kB[22m[1m[22m[2m │ gzip:  2.34 kB[22m
+[2mdist/[22m[36massets/GlossaryGraphTermRoutePage-DpPKqtNr.js  [39m[1m[2m    9.18 kB[22m[1m[22m[2m │ gzip:  3.00 kB[22m
+[2mdist/[22m[36massets/NetworkPage-CIYe5JcT.js                 [39m[1m[2m   11.11 kB[22m[1m[22m[2m │ gzip:  3.60 kB[22m
+[2mdist/[22m[36massets/model-chunk-DLWIj6BZ.js                 [39m[1m[2m   23.39 kB[22m[1m[22m[2m │ gzip:  6.18 kB[22m
+[2mdist/[22m[36massets/index-BLgt9RkR.js                       [39m[1m[2m  103.61 kB[22m[1m[22m[2m │ gzip: 34.43 kB[22m
+[2mdist/[22m[36massets/ResourcesPage-dAXZvEVP.js               [39m[1m[2m  112.45 kB[22m[1m[22m[2m │ gzip: 34.29 kB[22m
+[2mdist/[22m[36massets/flows-chunk-CwYv4WlA.js                 [39m[1m[2m  131.23 kB[22m[1m[22m[2m │ gzip: 19.65 kB[22m
+[2mdist/[22m[36massets/ResultPage-CoBbTDrT.js                  [39m[1m[2m  131.61 kB[22m[1m[22m[2m │ gzip: 28.38 kB[22m
+[2mdist/[22m[36massets/model-data-CLDoW3tj.js                  [39m[1m[2m  136.31 kB[22m[1m[22m[2m │ gzip: 27.31 kB[22m
+[2mdist/[22m[36massets/leaflet-BvcqNSUc.js                     [39m[1m[2m  160.36 kB[22m[1m[22m[2m │ gzip: 50.14 kB[22m
+[2mdist/[22m[36massets/vendor-K0fH_qHe.js                      [39m[1m[2m  193.84 kB[22m[1m[22m[2m │ gzip: 60.55 kB[22m
+[2mdist/[22m[36massets/vendor-rest-CKH_bjhy.js                 [39m[1m[2m  262.04 kB[22m[1m[22m[2m │ gzip: 79.40 kB[22m
+[32m✓ built in 14.68s[39m

@@ -5,11 +5,13 @@ const {
   mockTrack,
   mockClearLocalEvents,
   mockDebug,
+  mockWarn,
   mockError,
 } = vi.hoisted(() => ({
   mockTrack: vi.fn(),
   mockClearLocalEvents: vi.fn(),
   mockDebug: vi.fn(),
+  mockWarn: vi.fn(),
   mockError: vi.fn(),
 }));
 
@@ -23,6 +25,7 @@ vi.mock('../../../application/telemetry/TelemetryService', () => ({
 vi.mock('../systemLogger', () => ({
   systemLogger: {
     debug: mockDebug,
+    warn: mockWarn,
     error: mockError,
   },
 }));

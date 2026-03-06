@@ -6,7 +6,7 @@ describe('flowEngine - initFlow()', () => {
   it('initializes 5 critical flows with first question and clean state', () => {
     const model = loadModel();
     const criticalFlows = model.flows.filter(f => 
-      f.meta.severity === 'A1' || f.meta.severity === 'CRITICAL'
+      f.meta.severity === 'CRITICAL'
     ).slice(0, 5);
 
     expect(criticalFlows.length).toBeGreaterThanOrEqual(1);

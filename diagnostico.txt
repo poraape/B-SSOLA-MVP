@@ -1,0 +1,149 @@
+
+> react-example@0.1.0-rc.1 test:run
+> vitest run
+
+
+[7m[1m[36m RUN [39m[22m[27m [36mv1.6.1[39m [90mX:/NutriInsight/B-SSOLA-MVP[39m
+
+ [32m✓[39m src/domain/__tests__/flowEngine.test.ts [2m ([22m[2m7 tests[22m[2m)[22m[90m 11[2mms[22m[39m
+ [32m✓[39m src/application/__tests__/telemetryProviders.test.ts [2m ([22m[2m7 tests[22m[2m)[22m[90m 25[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/premiumEngine.test.ts [2m ([22m[2m4 tests[22m[2m)[22m[90m 18[2mms[22m[39m
+ [32m✓[39m src/application/__tests__/TelemetryService.test.ts [2m ([22m[2m6 tests[22m[2m)[22m[90m 28[2mms[22m[39m
+ [32m✓[39m src/application/__tests__/decisionOrchestrator.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 20[2mms[22m[39m
+ [32m✓[39m src/domain/metrics/__tests__/aggregate.test.ts [2m ([22m[2m2 tests[22m[2m)[22m[90m 15[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/validateModel.test.ts [2m ([22m[2m6 tests[22m[2m)[22m[90m 23[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/runtimeV2.core.test.ts [2m ([22m[2m5 tests[22m[2m)[22m[90m 22[2mms[22m[39m
+ [32m✓[39m src/domain/contracts/__tests__/modelSchema.test.ts [2m ([22m[2m2 tests[22m[2m)[22m[90m 32[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/cumulativeRisk.test.ts [2m ([22m[2m5 tests[22m[2m)[22m[90m 91[2mms[22m[39m
+ [32m✓[39m src/domain/flows/__tests__/flowEngine.test.ts [2m ([22m[2m6 tests[22m[2m)[22m[90m 169[2mms[22m[39m
+ [32m✓[39m src/features/search/services/__tests__/unifiedSearchEngine.test.ts [2m ([22m[2m9 tests[22m[2m)[22m[90m 124[2mms[22m[39m
+ [32m✓[39m src/domain/metrics/__tests__/logger.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 15[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/runtimeV2.adapter.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 16[2mms[22m[39m
+ [32m✓[39m src/domain/search/__tests__/searchEngine.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 14[2mms[22m[39m
+ [32m✓[39m src/application/__tests__/loggerService.test.ts [2m ([22m[2m2 tests[22m[2m)[22m[90m 21[2mms[22m[39m
+ [32m✓[39m src/domain/flows/__tests__/criticalFlows.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 134[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/decisionRegression.test.ts [2m ([22m[2m5 tests[22m[2m)[22m[90m 74[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/goldens.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 74[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/invariants.test.ts [2m ([22m[2m6 tests[22m[2m)[22m[90m 25[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/riskRules.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 75[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/riskScore.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 76[2mms[22m[39m
+ [32m✓[39m src/domain/contracts/__tests__/flowSchema.test.ts [2m ([22m[2m2 tests[22m[2m)[22m[90m 20[2mms[22m[39m
+ [32m✓[39m src/features/resources/utils/__tests__/searchUtils.test.ts [2m ([22m[2m6 tests[22m[2m)[22m[90m 17[2mms[22m[39m
+ [32m✓[39m src/features/resources/glossaryGraph/utils/__tests__/mentionDetection.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 13[2mms[22m[39m
+ [32m✓[39m src/features/resources/glossaryGraph/utils/__tests__/similarity.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 13[2mms[22m[39m
+ [32m✓[39m src/domain/gateway/__tests__/gatewayHeuristics.test.ts [2m ([22m[2m4 tests[22m[2m)[22m[90m 13[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/flowRegistry.sanity.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 26[2mms[22m[39m
+ [32m✓[39m src/features/resources/glossaryGraph/utils/__tests__/slugify.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 10[2mms[22m[39m
+ [32m✓[39m src/domain/model/__tests__/loadPremiumExtensions.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 9[2mms[22m[39m
+ [32m✓[39m src/domain/risk/__tests__/riskScore.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 9[2mms[22m[39m
+ [32m✓[39m src/domain/model/__tests__/index.test.ts [2m ([22m[2m2 tests[22m[2m)[22m[90m 11[2mms[22m[39m
+ [32m✓[39m src/features/resources/hooks/__tests__/useGlossarySearch.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 45[2mms[22m[39m
+ [32m✓[39m src/domain/appMode/__tests__/AppModeContext.test.tsx [2m ([22m[2m2 tests[22m[2m)[22m[90m 225[2mms[22m[39m
+ [32m✓[39m src/features/resources/components/__tests__/GlossaryCard.test.tsx [2m ([22m[2m4 tests[22m[2m)[22m[33m 315[2mms[22m[39m
+ [32m✓[39m src/features/gateway/__tests__/AtendimentoGatePage.test.tsx [2m ([22m[2m4 tests[22m[2m)[22m[90m 260[2mms[22m[39m
+[90mstdout[2m | src/features/gateway/__tests__/AtendimentoGatePage.test.tsx[2m > [22m[2mAtendimentoGatePage[2m > [22m[2mSIM deve ir para emergência[22m[39m
+[GatewayDecision] {
+  route: [32m'emergency'[39m,
+  explanation: [32m'Usuário identificou risco imediato.'[39m,
+  score: [33m2[39m
+}
+
+[90mstdout[2m | src/features/gateway/__tests__/AtendimentoGatePage.test.tsx[2m > [22m[2mAtendimentoGatePage[2m > [22m[2mNÃO deve ir para categorias[22m[39m
+[GatewayDecision] {
+  route: [32m'categories'[39m,
+  explanation: [32m'Usuário não identificou risco imediato.'[39m,
+  score: [33m0[39m
+}
+
+[90mstdout[2m | src/features/gateway/__tests__/AtendimentoGatePage.test.tsx[2m > [22m[2mAtendimentoGatePage[2m > [22m[2mNÃO SEI com sinal marcado deve ir para emergência[22m[39m
+[GatewayDecision] {
+  route: [32m'emergency'[39m,
+  explanation: [32m'Sinal crítico identificado.'[39m,
+  score: [33m2[39m
+}
+
+[90mstdout[2m | src/features/gateway/__tests__/AtendimentoGatePage.test.tsx[2m > [22m[2mAtendimentoGatePage[2m > [22m[2mNÃO SEI sem sinal marcado deve ir para categorias[22m[39m
+[GatewayDecision] {
+  route: [32m'categories'[39m,
+  explanation: [32m'Nenhum sinal crítico detectado.'[39m,
+  score: [33m0[39m
+}
+
+
+[2m Test Files [22m [1m[32m36 passed[39m[22m[90m (36)[39m
+[2m      Tests [22m [1m[32m127 passed[39m[22m[90m (127)[39m
+[2m   Start at [22m 20:31:00
+[2m   Duration [22m 13.15s[2m (transform 4.19s, setup 12ms, collect 19.89s, tests 2.09s, environment 11.44s, prepare 22.90s)[22m
+
+
+> react-example@0.1.0-rc.1 build
+> vite build
+
+[36mvite v6.4.1 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 2346 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                                     [39m[1m[2m    1.00 kB[22m[1m[22m[2m │ gzip:  0.42 kB[22m
+[2mdist/[22m[32massets/logoescola-Br2DLloG.png                 [39m[1m[2m1,396.25 kB[22m[1m[22m
+[2mdist/[22m[35massets/leaflet-CIGW-MKW.css                    [39m[1m[2m   15.61 kB[22m[1m[22m[2m │ gzip:  6.46 kB[22m
+[2mdist/[22m[35massets/index-Njck00GX.css                      [39m[1m[2m   79.87 kB[22m[1m[22m[2m │ gzip: 12.96 kB[22m
+[2mdist/[22m[36massets/NotFoundPage-DYgfKdQT.js                [39m[1m[2m    0.88 kB[22m[1m[22m[2m │ gzip:  0.48 kB[22m
+[2mdist/[22m[36massets/AlphabetNav-LxMlG3hG.js                 [39m[1m[2m    0.97 kB[22m[1m[22m[2m │ gzip:  0.59 kB[22m
+[2mdist/[22m[36massets/suggestedPaths-DMbEitcs.js              [39m[1m[2m    1.13 kB[22m[1m[22m[2m │ gzip:  0.53 kB[22m
+[2mdist/[22m[36massets/registry-chunk-BIWnHSgO.js              [39m[1m[2m    1.22 kB[22m[1m[22m[2m │ gzip:  0.65 kB[22m
+[2mdist/[22m[36massets/ui-chunk-aQ30kYUi.js                    [39m[1m[2m    1.99 kB[22m[1m[22m[2m │ gzip:  0.85 kB[22m
+[2mdist/[22m[36massets/GlossaryFilters-D_DNFb8m.js             [39m[1m[2m    2.03 kB[22m[1m[22m[2m │ gzip:  0.85 kB[22m
+[2mdist/[22m[36massets/runtime-chunk-DyRYBimq.js               [39m[1m[2m    2.19 kB[22m[1m[22m[2m │ gzip:  0.98 kB[22m
+[2mdist/[22m[36massets/CategoryPage-C9INojJf.js                [39m[1m[2m    2.72 kB[22m[1m[22m[2m │ gzip:  1.21 kB[22m
+[2mdist/[22m[36massets/GlossaryCategoryHubPage-CjVu8RXJ.js     [39m[1m[2m    3.26 kB[22m[1m[22m[2m │ gzip:  1.21 kB[22m
+[2mdist/[22m[36massets/GlossaryCard-upDw3Zb6.js                [39m[1m[2m    3.95 kB[22m[1m[22m[2m │ gzip:  1.51 kB[22m
+[2mdist/[22m[36massets/AtendimentoGatePage-CnMlYPO-.js         [39m[1m[2m    4.33 kB[22m[1m[22m[2m │ gzip:  1.74 kB[22m
+[2mdist/[22m[36massets/PremiumCategoryIcons-CtAQq5NF.js        [39m[1m[2m    4.57 kB[22m[1m[22m[2m │ gzip:  1.45 kB[22m
+[2mdist/[22m[36massets/HomePage-CYfBLAnB.js                    [39m[1m[2m    5.01 kB[22m[1m[22m[2m │ gzip:  1.97 kB[22m
+[2mdist/[22m[36massets/GlossaryGraphExplorerPage-Bf70I_uw.js   [39m[1m[2m    5.49 kB[22m[1m[22m[2m │ gzip:  2.05 kB[22m
+[2mdist/[22m[36massets/index-CZveUeiV.js                       [39m[1m[2m    5.94 kB[22m[1m[22m[2m │ gzip:  2.60 kB[22m
+[2mdist/[22m[36massets/ServiceDetailsPage-DHhJ61pn.js          [39m[1m[2m    6.18 kB[22m[1m[22m[2m │ gzip:  1.76 kB[22m
+[2mdist/[22m[36massets/decisionOrchestrator-Dds4T5Tw.js        [39m[1m[2m    6.37 kB[22m[1m[22m[2m │ gzip:  2.63 kB[22m
+[2mdist/[22m[36massets/FlowPage-BT6VAiju.js                    [39m[1m[2m    6.41 kB[22m[1m[22m[2m │ gzip:  2.34 kB[22m
+[2mdist/[22m[36massets/GlossaryGraphTermRoutePage-DpPKqtNr.js  [39m[1m[2m    9.18 kB[22m[1m[22m[2m │ gzip:  3.00 kB[22m
+[2mdist/[22m[36massets/NetworkPage-CIYe5JcT.js                 [39m[1m[2m   11.11 kB[22m[1m[22m[2m │ gzip:  3.60 kB[22m
+[2mdist/[22m[36massets/model-chunk-DLWIj6BZ.js                 [39m[1m[2m   23.39 kB[22m[1m[22m[2m │ gzip:  6.18 kB[22m
+[2mdist/[22m[36massets/index-BLgt9RkR.js                       [39m[1m[2m  103.61 kB[22m[1m[22m[2m │ gzip: 34.43 kB[22m
+[2mdist/[22m[36massets/ResourcesPage-dAXZvEVP.js               [39m[1m[2m  112.45 kB[22m[1m[22m[2m │ gzip: 34.29 kB[22m
+[2mdist/[22m[36massets/flows-chunk-CwYv4WlA.js                 [39m[1m[2m  131.23 kB[22m[1m[22m[2m │ gzip: 19.65 kB[22m
+[2mdist/[22m[36massets/ResultPage-CoBbTDrT.js                  [39m[1m[2m  131.61 kB[22m[1m[22m[2m │ gzip: 28.38 kB[22m
+[2mdist/[22m[36massets/model-data-CLDoW3tj.js                  [39m[1m[2m  136.31 kB[22m[1m[22m[2m │ gzip: 27.31 kB[22m
+[2mdist/[22m[36massets/leaflet-BvcqNSUc.js                     [39m[1m[2m  160.36 kB[22m[1m[22m[2m │ gzip: 50.14 kB[22m
+[2mdist/[22m[36massets/vendor-K0fH_qHe.js                      [39m[1m[2m  193.84 kB[22m[1m[22m[2m │ gzip: 60.55 kB[22m
+[2mdist/[22m[36massets/vendor-rest-CKH_bjhy.js                 [39m[1m[2m  262.04 kB[22m[1m[22m[2m │ gzip: 79.40 kB[22m
+[32m✓ built in 14.68s[39m
+-rw-r--r-- 1 jotav 197609  971 Mar  5 20:31 dist/assets/AlphabetNav-LxMlG3hG.js
+-rw-r--r-- 1 jotav 197609 4.3K Mar  5 20:31 dist/assets/AtendimentoGatePage-CnMlYPO-.js
+-rw-r--r-- 1 jotav 197609 2.7K Mar  5 20:31 dist/assets/CategoryPage-C9INojJf.js
+-rw-r--r-- 1 jotav 197609 6.3K Mar  5 20:31 dist/assets/decisionOrchestrator-Dds4T5Tw.js
+-rw-r--r-- 1 jotav 197609 6.3K Mar  5 20:31 dist/assets/FlowPage-BT6VAiju.js
+-rw-r--r-- 1 jotav 197609 129K Mar  5 20:31 dist/assets/flows-chunk-CwYv4WlA.js
+-rw-r--r-- 1 jotav 197609 3.9K Mar  5 20:31 dist/assets/GlossaryCard-upDw3Zb6.js
+-rw-r--r-- 1 jotav 197609 3.2K Mar  5 20:31 dist/assets/GlossaryCategoryHubPage-CjVu8RXJ.js
+-rw-r--r-- 1 jotav 197609 2.0K Mar  5 20:31 dist/assets/GlossaryFilters-D_DNFb8m.js
+-rw-r--r-- 1 jotav 197609 5.4K Mar  5 20:31 dist/assets/GlossaryGraphExplorerPage-Bf70I_uw.js
+-rw-r--r-- 1 jotav 197609 9.0K Mar  5 20:31 dist/assets/GlossaryGraphTermRoutePage-DpPKqtNr.js
+-rw-r--r-- 1 jotav 197609 4.9K Mar  5 20:31 dist/assets/HomePage-CYfBLAnB.js
+-rw-r--r-- 1 jotav 197609 102K Mar  5 20:31 dist/assets/index-BLgt9RkR.js
+-rw-r--r-- 1 jotav 197609 5.8K Mar  5 20:31 dist/assets/index-CZveUeiV.js
+-rw-r--r-- 1 jotav 197609 157K Mar  5 20:31 dist/assets/leaflet-BvcqNSUc.js
+-rw-r--r-- 1 jotav 197609  23K Mar  5 20:31 dist/assets/model-chunk-DLWIj6BZ.js
+-rw-r--r-- 1 jotav 197609 134K Mar  5 20:31 dist/assets/model-data-CLDoW3tj.js
+-rw-r--r-- 1 jotav 197609  11K Mar  5 20:31 dist/assets/NetworkPage-CIYe5JcT.js
+-rw-r--r-- 1 jotav 197609  879 Mar  5 20:31 dist/assets/NotFoundPage-DYgfKdQT.js
+-rw-r--r-- 1 jotav 197609 4.5K Mar  5 20:31 dist/assets/PremiumCategoryIcons-CtAQq5NF.js
+-rw-r--r-- 1 jotav 197609 1.2K Mar  5 20:31 dist/assets/registry-chunk-BIWnHSgO.js
+-rw-r--r-- 1 jotav 197609 110K Mar  5 20:31 dist/assets/ResourcesPage-dAXZvEVP.js
+-rw-r--r-- 1 jotav 197609 129K Mar  5 20:31 dist/assets/ResultPage-CoBbTDrT.js
+-rw-r--r-- 1 jotav 197609 2.2K Mar  5 20:31 dist/assets/runtime-chunk-DyRYBimq.js
+-rw-r--r-- 1 jotav 197609 6.1K Mar  5 20:31 dist/assets/ServiceDetailsPage-DHhJ61pn.js
+-rw-r--r-- 1 jotav 197609 1.2K Mar  5 20:31 dist/assets/suggestedPaths-DMbEitcs.js
+-rw-r--r-- 1 jotav 197609 2.0K Mar  5 20:31 dist/assets/ui-chunk-aQ30kYUi.js
+-rw-r--r-- 1 jotav 197609 190K Mar  5 20:31 dist/assets/vendor-K0fH_qHe.js
+-rw-r--r-- 1 jotav 197609 256K Mar  5 20:31 dist/assets/vendor-rest-CKH_bjhy.js

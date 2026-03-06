@@ -9,6 +9,11 @@ export interface FlowState {
   redirectToCategories?: boolean;
 }
 
+/**
+ * Inicializa o estado de execução de um fluxo de triagem.
+ * @param {Flow} flow - Fluxo que será iniciado.
+ * @returns {FlowState} Estado inicial do fluxo.
+ */
 export const initFlow = (flow: Flow): FlowState => {
   return {
     flowId: flow.meta.id,
@@ -19,6 +24,14 @@ export const initFlow = (flow: Flow): FlowState => {
   };
 };
 
+/**
+ * Processa a resposta de uma pergunta e calcula o próximo estado do fluxo.
+ * @param {Flow} flow - Fluxo atual com perguntas e resultados.
+ * @param {FlowState} state - Estado corrente da sessão de triagem.
+ * @param {string} questionId - Identificador da pergunta respondida.
+ * @param {string} optionLabel - Rótulo da opção selecionada pelo usuário.
+ * @returns {FlowState} Novo estado após aplicar a resposta.
+ */
 export const processAnswer = (
   flow: Flow, 
   state: FlowState, 

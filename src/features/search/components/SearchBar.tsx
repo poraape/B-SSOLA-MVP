@@ -8,9 +8,24 @@ import {
   GitBranch,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { searchByType, type SearchFilterType } from '../services/unifiedSearchEngine';
+import type { SearchFilterType } from '../services/unifiedSearchEngine';
 import type { UnifiedSearchResult } from '../types/searchTypes';
 import { useSearch } from '../context/SearchContext';
+
+type SearchByTypeFn = (
+  query: string,
+  type: SearchFilterType,
+) => UnifiedSearchResult[];
+
+let searchByTypeFn: SearchByTypeFn | null = null;
+
+async function getSearchByType(): Promise<SearchByTypeFn> {
+  if (searchByTypeFn) return searchByTypeFn;
+
+  const module = await import('../services/unifiedSearchEngine');
+  searchByTypeFn = module.searchByType;
+  return searchByTypeFn;
+}
 
 const TYPE_ICONS = {
   faq: HelpCircle,
@@ -41,14 +56,31 @@ export const SearchBar: React.FC = () => {
   const { closeSearch, isSearchOpen } = useSearch();
 
   useEffect(() => {
-    if (term.trim().length >= 2) {
-      setResults(searchByType(term, filterType));
-      setIsOpen(true);
-      return;
-    }
+    let isCancelled = false;
 
-    setResults([]);
-    setIsOpen(false);
+    const executeSearch = async () => {
+      if (term.trim().length < 2) {
+        if (!isCancelled) {
+          setResults([]);
+          setIsOpen(false);
+        }
+        return;
+      }
+
+      const searchByType = await getSearchByType();
+      const nextResults = searchByType(term, filterType);
+
+      if (!isCancelled) {
+        setResults(nextResults);
+        setIsOpen(true);
+      }
+    };
+
+    void executeSearch();
+
+    return () => {
+      isCancelled = true;
+    };
   }, [term, filterType]);
 
   useEffect(() => {
