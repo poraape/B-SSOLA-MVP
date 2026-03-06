@@ -1,3 +1,4 @@
+import { getCategoryIcon } from '@/features/shared/assets/IOSCategoryIcons';
 import React from 'react';
 import { AlertTriangle, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
