@@ -24,24 +24,24 @@ export const ResourcesPage: React.FC = () => {
   };
 
   const tabs: TabDefinition[] = [
-    { id: 'glossary', label: 'Glossário', icon: Book, description: 'Termos técnicos e definições' },
-    { id: 'faq', label: 'FAQ', icon: HelpCircle, description: 'Perguntas frequentes' },
-    { id: 'simulator', label: 'Simulador', icon: PlayCircle, description: 'Treinamento de protocolos' },
+    { id: 'glossary', label: 'Glossário', icon: Book, description: 'Termos e conceitos' },
+    { id: 'faq', label: 'FAQ', icon: HelpCircle, description: 'Respostas rápidas' },
+    { id: 'simulator', label: 'Simulador', icon: PlayCircle, description: 'Treino guiado' },
   ];
 
   return (
     <div className="space-y-10">
       {/* Header Section */}
-      <section className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 shadow-sm">
+      <section className="rounded-[2rem] border border-slate-200/90 bg-white/95 p-6 shadow-[0_10px_28px_-22px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/90 md:rounded-[3rem] md:p-10">
         <div className="max-w-3xl space-y-4">
-          <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Recursos e Apoio</h2>
+          <h2 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white md:text-4xl">Recursos</h2>
           <p className="text-lg text-slate-500 dark:text-slate-400 font-medium">
-            Base de conhecimento, respostas rápidas e ferramentas de treinamento para a equipe escolar.
+            Consulte definições, respostas rápidas e simulações.
           </p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
+        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
