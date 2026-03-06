@@ -40,6 +40,153 @@
   }
 }
 
+@layer utilities {
+  /* ═══════════════════════════════════════════════════════════
+     MATERIAL HIERARCHY — Apple-Quality Surface System
+     ═══════════════════════════════════════════════════════════ */
+
+  /* Base Surface — Main content plane */
+  .surface-base {
+    @apply bg-white dark:bg-slate-950;
+  }
+
+  /* Elevated Surface — Cards, panels */
+  .surface-elevated {
+    @apply backdrop-blur-xl bg-white/80 dark:bg-slate-900/80;
+    @apply border border-slate-200/60 dark:border-slate-700/60;
+  }
+
+  /* Overlay Surface — Hero, modals, floating UI */
+  .surface-overlay {
+    @apply backdrop-blur-2xl bg-white/90 dark:bg-slate-900/90;
+    @apply border border-white/40 dark:border-slate-700/40;
+  }
+
+  /* Glass Surface (legacy, mantém compatibilidade) */
+  .glass-surface {
+    @apply backdrop-blur-xl bg-white/80 dark:bg-slate-900/80;
+    @apply border border-slate-200/60 dark:border-slate-700/60;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     SHADOW SYSTEM — Depth & Elevation
+     ═══════════════════════════════════════════════════════════ */
+
+  .shadow-soft {
+    box-shadow: 0 2px 12px -2px rgba(15, 23, 42, 0.08),
+                0 1px 4px -1px rgba(15, 23, 42, 0.04);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.12),
+                0 4px 12px -3px rgba(15, 23, 42, 0.08);
+  }
+
+  .shadow-overlay {
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.2),
+                0 8px 20px -5px rgba(15, 23, 42, 0.15);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     MOTION SYSTEM — Bússola Signature
+     ═══════════════════════════════════════════════════════════ */
+
+  .motion-signature-compass {
+    animation: gentle-rotate 120s linear infinite;
+  }
+
+  @keyframes gentle-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Disable all motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .motion-signature-compass,
+    .motion-safe-spin,
+    .motion-safe-pulse {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     INTERACTION FEEDBACK SYSTEM
+     ═══════════════════════════════════════════════════════════ */
+
+  /* Focus Ring — WCAG 2.2 Enhanced */
+  .focus-ring {
+    @apply outline-none;
+    @apply focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2;
+    @apply dark:focus-visible:ring-blue-400 dark:focus-visible:ring-offset-slate-900;
+  }
+
+  /* Press Feedback — Button Active State */
+  .press-scale {
+    @apply active:scale-[0.98];
+    @apply transition-transform duration-100;
+  }
+
+  /* Card Lift — Hover Elevation */
+  .card-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.12),
+                0 4px 12px -3px rgba(15, 23, 42, 0.08);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     TOUCH TARGETS — WCAG 2.2 AA Minimum
+     ═══════════════════════════════════════════════════════════ */
+
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     SEMANTIC COLOR TOKENS
+     ═══════════════════════════════════════════════════════════ */
+
+  .text-primary {
+    @apply text-slate-900 dark:text-white;
+  }
+
+  .text-secondary {
+    @apply text-slate-600 dark:text-slate-300;
+  }
+
+  .text-tertiary {
+    @apply text-slate-500 dark:text-slate-400;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ROOT TOKENS — Design System Variables
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --radius-card: 1rem;
+  --radius-chip: 9999px;
+  --radius-button: 0.75rem;
+
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+}
+
 @media print {
   .print\:hidden {
     display: none !important;
