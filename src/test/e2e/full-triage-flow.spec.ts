@@ -16,16 +16,16 @@ test.describe('Jornada completa de triagem', () => {
     });
 
     await page.goto('/atendimento');
-    await expect(page.getByRole('heading', { name: /Há risco de vida ou integridade/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Há risco imediato neste momento\?/i })).toBeVisible();
 
     await page.getByRole('button', { name: /^NÃO$/i }).click();
-    await expect(page).toHaveURL('/');
+    await expect(page).toHaveURL(/\/categorias$/);
 
     await page.getByRole('heading', { name: /Situações por tema|Situacoes por tema/i }).click();
     await page.getByRole('heading', { name: /Saúde e Bem-Estar|Saude e Bem-Estar/i }).click();
     await expect(page).toHaveURL(/\/categoria\/saude_bem_estar$/);
 
-    await page.getByRole('heading', { name: /Febre ou Suspeita de Infeccao/i }).click();
+    await page.getByRole('heading', { name: /Febre ou Suspeita de Infec[cç][aã]o/i }).click();
     await expect(page).toHaveURL(/\/fluxo\/flow_febre$/);
 
     await page.getByRole('button', { name: /Não|Nao/i }).click();
@@ -34,7 +34,7 @@ test.describe('Jornada completa de triagem', () => {
     await expect(page).toHaveURL(/\/resultado\/flow_febre$/);
 
     await expect(page.getByText('Resultado da Orientação')).toBeVisible();
-    await expect(page.getByText(/Risco:\s*(low|moderate|high|critical)/i)).toBeVisible();
+    await expect(page.getByText(/Risco:\s*(Atenção(?: Elevada)?|Alto Risco|Crítico\s*[—-]\s*Ação Imediata)/i)).toBeVisible();
     await expect(page.getByText(/Recomendações Institucionais/)).toBeVisible();
 
     page.on('dialog', async dialog => {

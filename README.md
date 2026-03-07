@@ -1,208 +1,291 @@
-# Bússola: Protocolo de Ação
+# Bússola
 
-_Plataforma de apoio à decisão para equipes escolares que precisam agir rápido em situações sensíveis, com fluxo guiado, linguagem prática e consistência institucional._
+## 1. Visão geral
+Bússola é um webapp institucional de navegação cognitiva para apoiar decisão, acolhimento inicial, triagem e encaminhamento em contexto escolar.
 
-O Bússola organiza decisões críticas em protocolos navegáveis para reduzir incerteza operacional no ambiente escolar. O projeto nasce para apoiar coordenação, gestão e atendimento direto a estudantes em cenários de saúde, segurança, convivência, proteção de direitos e inclusão.  
-Em vez de depender de memória individual ou interpretação ad hoc, a equipe segue trilhas estruturadas com orientações acionáveis e rastreáveis.
+No estado atual do repositório, o produto está em fase de MVP operacional para piloto real, com arquitetura local-first preservada e migração incremental para backend leve via endpoints same-origin em `/api/*`.
 
-## Sumário
+Usuário primário atual:
+- professores
+- equipe multiprofissional / equipe de apoio
+- gestão escolar
 
-- [Visão geral](#visão-geral)
-- [Arquitetura e conceitos-chave](#arquitetura-e-conceitos-chave)
-- [Funcionalidades principais](#funcionalidades-principais)
-- [Getting started](#getting-started)
-- [Exemplos de uso](#exemplos-de-uso)
-- [Configuração e ambiente](#configuração-e-ambiente)
-- [Qualidade, testes e observabilidade](#qualidade-testes-e-observabilidade)
-- [Roadmap e estado de maturidade](#roadmap-e-estado-de-maturidade)
-- [Limitações e riscos conhecidos](#limitações-e-riscos-conhecidos)
-- [Licença e créditos](#licença-e-créditos)
+Contexto institucional atual no dataset e na configuração:
+- modelo e rede de serviços estão ancorados em cenário escolar real (referências a E.E. Ermelino Matarazzo e território de Ermelino Matarazzo/SP)
+- O Bússola não é prontuário, não substitui avaliação clínica ou especializada e não opera, neste estágio, como sistema completo de gestão de casos.
 
-## Visão geral
+## 2. Problema que o Bússola resolve
+O Bússola reduz ambiguidade operacional em situações sensíveis que exigem resposta rápida e coerente entre profissionais.
 
-### O que é
-Aplicação web front-end (React + TypeScript) para triagem e encaminhamento em contextos escolares.
+Problemas atacados hoje:
+- incerteza na decisão inicial de risco imediato
+- dificuldade de padronizar acolhimento inicial
+- variação de encaminhamento entre turnos/equipes
+- fricção para encontrar serviços de rede adequados ao nível de risco
 
-### Problema que resolve
-- Reduz ambiguidades na tomada de decisão em casos complexos.
-- Padroniza encaminhamentos e linguagem entre diferentes profissionais.
-- Diminui tempo de resposta para situações de maior criticidade.
+## 3. O que o sistema faz hoje
+Escopo implementado e ativo:
+- jornada completa Home -> Gateway -> Triagem -> Resultado -> Rede
+- gateway tripartite (SIM / NÃO / NÃO SEI) com desvio para emergência ou categorias
+- 7 categorias oficiais, 39 subcategorias e 39 fluxos de triagem (validados por `model:check`)
+- resultado com priorização institucional, ações escolares e encaminhamentos
+- rede de apoio com lista + mapa (com fallback visual quando mapa não está disponível)
+- módulo de recursos com glossário, FAQ e simulador
+- busca unificada (fluxos, FAQ e glossário)
 
-### Para quem é
-- Coordenação pedagógica
-- Gestão escolar
-- Equipes de apoio e atendimento
-- Profissionais de referência em contexto escolar
+## 4. Jornada principal do usuário
+### Home
+- entrada institucional com acesso rápido para atendimento guiado, rede e recursos
 
-### Relevância estratégica
-O Bússola funciona como camada operacional entre política institucional e ação cotidiana. Ele ajuda a transformar diretrizes em decisões reproduzíveis, com menor variação entre turnos, equipes e unidades.
+### Gateway
+- pergunta inicial de risco imediato
+- decisões possíveis:
+  - `SIM` -> rota emergencial
+  - `NÃO` -> categorias
+  - `NÃO SEI` -> sinais críticos + recomendação inicial
 
-## Arquitetura e conceitos-chave
+### Triage / Fluxos
+- seleção de categoria/subcategoria
+- execução sequencial das perguntas do fluxo
+- suporte a redirecionamento entre fluxos e retorno ao início quando aplicável
 
-### Stack principal
+### Resultado
+- consolidação da decisão
+- exibição de risco com taxonomia institucional PT-BR (`Atenção`, `Atenção Elevada`, `Alto Risco`, `Crítico — Ação Imediata`)
+- ações institucionais e serviços recomendados
+
+### Rede
+- exibição de serviços com filtros e busca
+- mapa Leaflet com tratamento de erro de tile e fallback para experiência em lista
+
+### Recursos complementares
+- glossário (com busca e navegação por termos)
+- FAQ
+- simulador de cenários
+
+## 5. Arquitetura atual
+### 5.1 Frontend
+Stack principal:
 - React 19 + TypeScript
 - Vite 6
 - React Router 7
 - Tailwind CSS 4
-- Vitest + Testing Library
-- Leaflet (módulo de rede de apoio geográfica)
+- Vitest + Playwright
+- Leaflet / React-Leaflet
 
-### Visão de arquitetura
-- `src/app`: composição da aplicação, roteamento, layout e providers.
-- `src/domain/model`: montagem, normalização e validação do `Model.v2`.
-- `src/domain/flows`: motor de fluxo (`flowEngine`) e protocolos por arquivo (`flow_*.ts`).
-- `src/domain/risk` e `src/domain/gateway`: heurísticas de risco e gateway inicial de urgência.
-- `src/data/v2`: dados declarativos de categorias, serviços, heurísticas e emergência.
+Frontend responsável por:
+- roteamento e shell da aplicação (`src/app/*`)
+- features de jornada (`src/features/*`)
+- execução local do motor de decisão e busca
+- fallback obrigatório quando fachada `/api` está indisponível
 
-### Conceitos-chave
-- **Model.v2 declarativo**: dados e regras separáveis do shell de interface.
-- **Gateway universal de risco imediato**: primeira decisão para rota de emergência vs. navegação por categorias.
-- **Composição validada em runtime**: o app valida modelo ao iniciar e bloqueia execução em caso de inconsistência crítica.
-- **Cobertura estrutural completa**: 7 categorias, 39 subcategorias e 39 fluxos mapeados.
+### 5.2 Backend leve
+Backend leve atual está em `api/*` (funções serverless same-origin):
+- `POST /api/triage/resolve`
+- `POST /api/search`
+- `POST /api/network/services`
+- `POST /api/content/bootstrap`
 
-## Funcionalidades principais
+Responsabilidades:
+- expor fachada opcional do motor local
+- validar payload com contratos tipados em `src/server/contracts/*`
+- delegar execução para serviços locais em `src/server/services/*`
 
-- Atendimento guiado por perguntas e desfechos acionáveis.
-- Navegação por categorias priorizadas por criticidade.
-- Motor de decisão com regras de risco e sinalização de ações institucionais.
-- Página de resultado com orientações e encaminhamentos.
-- Módulo de rede de apoio com mapa, filtros e detalhes de serviço.
-- Módulo de recursos com glossário, FAQ e simulador de cenários.
+### 5.3 Domínio e motor de decisão
+Camada de domínio principal:
+- `src/domain/model/*`: composição, normalização e validação do modelo
+- `src/domain/flows/*`: execução de fluxo
+- `src/domain/risk/*`: heurística de risco e invariantes
+- `src/application/decisionOrchestrator.ts`: orquestração da decisão (fonte única usada por frontend e backend leve)
 
-## Getting started
+### 5.4 Busca e conhecimento
+- engine unificada em `src/application/search/unifiedSearchEngine.ts`
+- fontes atuais: fluxos, FAQ e glossário
+- fachada opcional por `POST /api/search`, com fallback local obrigatório
 
-### Pré-requisitos
-- Node.js 22+
-- npm 10+
+### 5.5 Rede de serviços
+- dados em `src/data/v2/services.json` (30 serviços)
+- consulta local por seletores de domínio
+- fachada opcional por `POST /api/network/services`, com fallback local obrigatório
+- mapa com filtro de coordenadas válidas e proteção por error boundary
 
-### Instalação
+### 5.6 Fallback local / local-first
+Padrão implementado nos clients de fachada (`triageClient`, `searchClient`, `networkClient`, `contentBootstrapClient`):
+- usa local quando flag está desligada
+- usa local quando `fetch` não existe
+- usa local em timeout (~3s)
+- usa local em HTTP não-2xx
+- usa local em payload/resposta inválida
+- usa local em exceções de rede/execução
 
+Conclusão arquitetural atual: o backend leve atua como fachada opcional e incremental. O modo local-first permanece como garantia estrutural do sistema.
+
+## 6. Backend leve incremental
+Por que existe:
+- viabilizar evolução operacional, padronização de contratos e observabilidade mínima, sem romper o modelo local-first
+- manter mesma UI e mesma jornada independentemente da origem da decisão
+
+O que foi migrado para fachada opcional:
+- resolução de triagem (`/api/triage/resolve`)
+- busca (`/api/search`)
+- carregamento de serviços de rede (`/api/network/services`)
+- bootstrap de conteúdo (`/api/content/bootstrap`)
+
+Endpoints disponíveis hoje:
+- todos aceitam apenas `POST`
+- respostas seguem envelope `{ ok, traceId, data | error }`
+- `GET` retorna `405`
+- payload inválido retorna `400`
+
+Limites atuais do backend leve:
+- não existe persistência de casos
+- não existe autenticação/autorização de usuários
+- não substitui o motor local nem a execução offline
+- não deve receber dados de estudante (nome, CPF, turma, escola_id)
+
+## 7. Feature flags
+Flags reais de `.env.example`:
+
+| Variável | Padrão | Efeito |
+|---|---|---|
+| `VITE_FEATURE_DECISION_API` | `false` | Habilita fachada da triagem em `/api/triage/resolve`. |
+| `VITE_FEATURE_TRIAGE_API` | `false` | Alias para o mesmo comportamento da triagem. |
+| `VITE_FEATURE_SEARCH_API` | `false` | Habilita fachada de busca em `/api/search`. |
+| `VITE_FEATURE_NETWORK_API` | `false` | Habilita fachada da rede em `/api/network/services`. |
+| `VITE_FEATURE_CONTENT_BOOTSTRAP_API` | `false` | Habilita fachada de bootstrap em `/api/content/bootstrap`. |
+| `VITE_TELEMETRY_ENDPOINT` | `""` | Endpoint opcional de envio HTTP de telemetria (com consentimento). |
+| `GEMINI_API_KEY` | comentada | Reservada; não usada no runtime atual do MVP. |
+
+Comportamento esperado para todas as flags `VITE_FEATURE_*_API`:
+- desligada -> execução local
+- ligada + sucesso HTTP válido -> usa resposta da fachada
+- ligada + qualquer falha -> fallback local automático
+
+## 8. Estrutura do repositório
+Principais diretórios:
+- `api/`: funções serverless same-origin (`/api/*`) usadas como fachada opcional.
+- `src/app/`: bootstrap, providers globais, layout e rotas.
+- `src/application/`: orquestração e serviços de aplicação (decisão, busca, telemetria, logs).
+- `src/domain/`: modelo, fluxos, risco, busca de domínio e validações.
+- `src/server/`: contratos, serviços e utilitários HTTP do backend leve.
+- `src/features/`: implementação das telas e módulos funcionais.
+- `src/data/v2/`: dados institucionais versionados (categorias, serviços, configurações de rede etc.).
+- `src/registry/`: registry de flows gerado (`flowRegistry.ts`).
+- `docs/`: contratos de execução, deploy e documentação complementar.
+- `src/test/e2e/`: cenários Playwright da jornada crítica.
+
+## 9. Como rodar localmente
+Pré-requisitos:
+- Node.js >= 22
+- npm >= 10
+
+Instalação:
 ```bash
-git clone <url-do-repositorio>
-cd B-SSOLA-MVP
 npm install
 ```
 
-### Execução local (até 15 min)
-
+Ambiente:
 ```bash
-# Desenvolvimento (http://localhost:3000)
+cp .env.example .env
+```
+
+Execução principal:
+```bash
 npm run dev
+```
 
-# Build de produção
+Build e preview:
+```bash
 npm run build
-
-# Preview da build
 npm run preview
 ```
 
-## Exemplos de uso
-
-### Fluxo principal (triagem)
-1. Acesse `http://localhost:3000`.
-2. Clique em **Iniciar Atendimento Guiado**.
-3. Responda ao gateway inicial de risco imediato.
-4. Continue no fluxo recomendado até a página de resultado.
-
-### Navegação por rotas (frontend)
-
-## Rotas da Aplicação
-
-Rotas principais (PT-BR):
-- `/recursos` - Glossário, FAQ e simulador
-- `/rede` - Mapa de serviços
-- `/atendimento` - Triagem/Gateway
-- `/categoria/:categoryId` - Lista de situações da categoria
-- `/fluxo/:flowId` - Triagem de um protocolo
-- `/resultado/:flowId` - Saída consolidada do caso
-
-> **Nota**: Aliases EN (`/resources`, `/network`, `/gateway`) redirecionam automaticamente para rotas PT-BR.
-
-### Glossário refatorado (módulo de recursos)
-
-- Busca normalizada com suporte a acentos e tolerância a 1 erro de digitação.
-- Filtro por categoria com botão de limpeza rápida.
-- Índice A-Z navegável com rolagem suave para a seção da letra.
-- Cards expansíveis com termos relacionados clicáveis para busca cruzada.
-
-Arquivos principais:
-- `src/features/resources/GlossaryPage.tsx`
-- `src/features/resources/hooks/useGlossarySearch.ts`
-- `src/features/resources/utils/searchUtils.ts`
-
-### Operações de manutenção do modelo
+## 10. Como validar a aplicação
+Comandos de validação recomendados:
 
 ```bash
-# Regenerar registry de flows
-npm run build:registry
-
-# Validar consistência estrutural do Model.v2
-npm run model:check
-```
-
-## Configuração e ambiente
-
-### Variáveis de ambiente
-
-| Variável | Obrigatória | Uso atual |
-|---|---|---|
-| `VITE_TELEMETRY_ENDPOINT` | Não | Endpoint HTTP para envio de eventos de telemetria. Sem essa variável, o app continua funcional e mantém eventos localmente. |
-
-Observação: o app roda localmente sem `.env` para o fluxo principal.
-
-## Conformidade e Privacidade
-
-- Política técnica de dados: [docs/PRIVACY_POLICY.md](docs/PRIVACY_POLICY.md)
-- Aviso institucional: este software não deve ser usado para armazenar dados pessoais de estudantes sem adequação à LGPD pela instituição operadora.
-- Telemetria responsável: configure `VITE_TELEMETRY_ENDPOINT` apenas para endpoint institucional com controles de acesso, retenção e governança definidos.
-
-### Arquivos de configuração relevantes
-- `src/data/v2/categories.json`
-- `src/data/v2/services.json`
-- `src/data/v2/heuristics.json`
-- `src/data/v2/emergency.json`
-- `docs/domain/flows-v2-spec.json`
-- `src/registry/flowRegistry.ts` (gerado)
-
-## Qualidade, testes e observabilidade
-
-```bash
-# Typecheck
+npm run -s model:check
 npm run typecheck
-
-# Testes
+npm run build
 npm run test:run
-
-# Cobertura
-npm run test:coverage
-
-# Auditoria de heurísticas
-npm run heuristic:audit
+npm run test:e2e
 ```
 
-Snapshot técnico deste repositório (local): build de produção, typecheck e suíte de testes executam sem falhas.
+Status técnico executado nesta sessão (2026-03-07):
+- `model:check`: OK (7 categorias, 39 subcategorias, 39 flows)
+- `typecheck`: OK
+- `build`: OK
+- `test:run`: OK (43 arquivos, 157 testes)
+- `test:e2e`: OK (3 cenários)
 
-## Roadmap e estado de maturidade
+## 11. Deploy
+### Vercel
+O repositório já está estruturado para deploy com frontend + funções em `api/*`.
 
-**Estado atual:** MVP validável (base funcional completa de triagem + rede + recursos).
+Pontos práticos:
+- framework: Vite
+- build command: `npm ci && npm run build`
+- output: `dist/`
+- runtime de funções: `api/*` (same-origin)
+- na Vercel, o frontend e as funções em `api/*` são publicados no mesmo projeto; a ativação das fachadas deve ser feita por feature flags, preferencialmente de forma progressiva
 
-**Próximos passos sugeridos:**
-1. Revisar e promover para `EXISTING` os fluxos ainda marcados como `TO_CREATE` no spec.
-2. Rodar validação com usuários-piloto (coordenação/gestão) e ajustar microcopy.
-3. Instrumentar telemetria de uso por etapa do fluxo (tempo, abandono, retorno).
-4. Publicar guia operacional institucional por perfil de usuário.
-5. Definir trilha de hardening para produção (governança de dados e operação).
+### Preview
+- cada preview pode testar combinação de flags `VITE_FEATURE_*_API`
+- para validar local-first, manter flags desligadas em uma preview de controle
 
-## Limitações e riscos conhecidos
+### Pontos de atenção
+- sem rotas `/api/*` ativas no ambiente, o app continua funcional pelo fallback local
+- `VITE_TELEMETRY_ENDPOINT` é opcional; sem endpoint, telemetria fica apenas local
+- preservar comportamento SPA (rewrite para `index.html`) quando fora da Vercel
 
-- **Domínio sensível (educação/saúde/proteção):** o sistema é apoio decisório e não substitui julgamento profissional, protocolos legais locais ou avaliação especializada.
-- **Privacidade e conformidade:** evitar inserir dados pessoais sensíveis sem política institucional explícita; o projeto não declara conformidade legal automática.
-- **Maturidade heterogênea de conteúdo:** parte dos fluxos ainda mantém metadado `TO_CREATE` no spec, apesar de presentes no runtime.
-- **Escopo atual:** foco em suporte operacional; não inclui backend clínico, prontuário ou gestão formal de casos ponta a ponta.
+## 12. Contratos e princípios invioláveis
+Síntese operacional de `AGENTS.md`, `REFACTORING.md` e `docs/execution/contracts.md`:
+- não alterar motor heurístico crítico sem aprovação explícita (`riskRules`, `ruleset`, `riskScore`, `invariants`)
+- não quebrar gateway tripartite (SIM/NÃO/NÃO SEI)
+- não quebrar jornada principal Home -> Gateway -> Triage -> Resultado -> Rede
+- não introduzir armazenamento de dados de estudante (nome, CPF, turma, escola_id)
+- triagem não pode depender de internet
+- fachada `/api/*` é opcional e deve ter fallback local obrigatório
+- não introduzir serviços/dependências pagas para viabilizar operação
+- manter taxonomia de prioridade e labels institucionais em PT-BR
+- manter consentimento de telemetria antes de envio HTTP
 
-## Licença e créditos
+## 13. Estado atual do projeto
+O que está sólido:
+- jornada principal implementada e coberta por testes unitários e E2E
+- modelo com validação estrutural automatizada (`model:check`)
+- contratos tipados para endpoints de fachada
+- fallback local-first implementado e testado nos clients de triagem, busca, rede e bootstrap
 
-- **Licença:** código fechado (todos os direitos reservados).
-- **Maintainer do modelo:** Projeto Bússola AIS.
-- **Contexto institucional no modelo:** EE Ermelino Matarazzo.
-- **Documentação complementar:** `docs/architecture/model-v2-blueprint.md` e `docs/migrations/model-v1-to-v2.md`.
+O que está incremental:
+- backend leve (`/api/*`) ainda é fachada opcional, não camada obrigatória
+- observabilidade remota depende de configuração institucional de endpoint
+
+Pronto para piloto MVP:
+- fluxo operacional de apoio à decisão institucional em ambiente escolar
+- navegação, triagem, resultado e encaminhamento para rede
+
+## 14. Limitações atuais
+Limitações reais no estado atual:
+- sem autenticação e controle de perfil por usuário
+- sem persistência de caso/atendimento no backend
+- sem workflow formal de gestão de casos entre múltiplos atores
+- rede de serviços depende do dataset embarcado no repositório
+- telemetria HTTP é opcional e depende de endpoint institucional externo configurado
+- o sistema depende de revisão institucional contínua para manter aderência entre protocolo escrito, fluxos implementados e prática escolar real
+
+## 15. Próximos passos plausíveis
+Eixos coerentes com o estado atual:
+1. ampliar backend leve de forma incremental, mantendo contrato local-first
+2. fortalecer observabilidade institucional (sem PII e com consentimento explícito)
+3. saneamento conservador do repositório (redução de duplicidade e alinhamento entre fontes de modelo)
+4. maturação do piloto com feedback de coordenação/gestão para ajustes de conteúdo e operação
+5. consolidação do piloto técnico controlado com coleta estruturada de feedback da gestão e dos profissionais da escola
+
+## 16. Licença / governança / observações finais
+Licença:
+- não há arquivo de licença aberto no repositório; manter entendimento operacional de código fechado (todos os direitos reservados) até definição formal.
+
+Governança mínima:
+- este projeto é ferramenta de apoio institucional à decisão, não substitui julgamento profissional, protocolo legal local ou atendimento especializado.
+- alterações devem respeitar os contratos invioláveis documentados em `AGENTS.md`, `REFACTORING.md` e `docs/execution/contracts.md`.
