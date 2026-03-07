@@ -137,11 +137,19 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
               <p className="font-bold text-slate-900 m-0">{networkConfigData.schoolReference.name}</p>
               <p className="text-xs text-slate-500 m-0 mt-1">{schoolAddress}</p>
               {schoolServices.length > 0 && (
-                <ul className="mt-2 pl-4 text-xs text-slate-700">
+                <div className="mt-2 space-y-2 text-xs text-slate-700">
                   {schoolServices.map(service => (
-                    <li key={service.id}>{service.name}</li>
+                    <div key={service.id} className="rounded border border-slate-200 px-2 py-1">
+                      <p className="m-0 font-semibold text-slate-800">{service.name}</p>
+                      {service.contact.phone && (
+                        <p className="m-0 text-slate-600">Telefone: {service.contact.phone}</p>
+                      )}
+                      {service.contact.email && (
+                        <p className="m-0 text-slate-600">E-mail: {service.contact.email}</p>
+                      )}
+                    </div>
                   ))}
-                </ul>
+                </div>
               )}
             </div>
           </Popup>

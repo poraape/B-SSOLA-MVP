@@ -28,11 +28,17 @@ export const NetworkPage: React.FC = () => {
 
   const effectiveHighlightId = highlightId || recommendation.highlightId;
   const effectiveQueryType = queryType || recommendation.queryType;
-  const safeQuery = toSafeServiceQuery(
-    effectiveHighlightId ? `highlight=${effectiveHighlightId}` : effectiveQueryType ? `type=${effectiveQueryType}` : null,
-    servicesById
-  );
-  const isUsingRecommendationContext = !highlightId && Boolean(recommendation.highlightId);
+  const hasQueryContext = Boolean(effectiveHighlightId || effectiveQueryType);
+  const safeQuery = hasQueryContext
+    ? toSafeServiceQuery(
+        effectiveHighlightId
+          ? `highlight=${effectiveHighlightId}`
+          : `type=${effectiveQueryType}`,
+        servicesById,
+      )
+    : null;
+  const isUsingRecommendationContext =
+    !highlightId && Boolean(recommendation.highlightId || recommendation.queryType);
 
   const categories = useMemo(() => {
     return Array.from(new Set(allServices.map(s => s.category)));
@@ -41,7 +47,7 @@ export const NetworkPage: React.FC = () => {
   const filteredServices = useMemo(() => {
     let result = allServices;
 
-    if (safeQuery.kind === 'type') {
+    if (safeQuery?.kind === 'type') {
       result = result.filter(s =>
         safeQuery.serviceType === 'interno'
           ? s.type === 'interno' || s.category === 'institucional'
@@ -60,7 +66,7 @@ export const NetworkPage: React.FC = () => {
     }
 
     return [...result].sort((a, b) => {
-      const highlightServiceId = safeQuery.kind === 'highlight' ? safeQuery.id : null;
+      const highlightServiceId = safeQuery?.kind === 'highlight' ? safeQuery.id : null;
       if (a.id === highlightServiceId) return -1;
       if (b.id === highlightServiceId) return 1;
 
@@ -70,6 +76,11 @@ export const NetworkPage: React.FC = () => {
       return a.name.localeCompare(b.name);
     });
   }, [allServices, safeQuery, searchTerm, selectedCategory]);
+
+  const missingServices = useMemo(() => {
+    const visibleIds = new Set(filteredServices.map(service => service.id));
+    return allServices.filter(service => !visibleIds.has(service.id));
+  }, [allServices, filteredServices]);
 
   const selectedService = useMemo(() => {
     return allServices.find(s => s.id === serviceId) || null;
@@ -135,12 +146,21 @@ export const NetworkPage: React.FC = () => {
               onCategoryChange={setSelectedCategory}
               categories={categories}
             />
+            <div className="px-4 py-2 text-xs text-slate-600 dark:text-slate-300">
+              Exibindo {filteredServices.length} de {allServices.length} serviços.
+            </div>
+            {missingServices.length > 0 && (
+              <div className="mx-4 mb-3 rounded-[14px] border border-amber-200 bg-amber-50/85 px-3 py-2 text-xs text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
+                <p className="font-semibold">Serviços fora da lista atual ({missingServices.length}):</p>
+                <p>{missingServices.map(service => service.name).join(' • ')}</p>
+              </div>
+            )}
             <div className="max-h-[58vh] overflow-y-auto no-scrollbar">
               <ServiceList
                 services={filteredServices}
                 onSelect={handleSelectService}
                 selectedId={serviceId}
-                highlightId={safeQuery.kind === 'highlight' ? safeQuery.id : null}
+                highlightId={safeQuery?.kind === 'highlight' ? safeQuery.id : null}
               />
             </div>
           </div>
@@ -194,12 +214,21 @@ export const NetworkPage: React.FC = () => {
             onCategoryChange={setSelectedCategory}
             categories={categories}
           />
+          <div className="px-4 py-2 text-xs text-slate-600 dark:text-slate-300">
+            Exibindo {filteredServices.length} de {allServices.length} serviços.
+          </div>
+          {missingServices.length > 0 && (
+            <div className="mx-4 mb-3 rounded-[14px] border border-amber-200 bg-amber-50/85 px-3 py-2 text-xs text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
+              <p className="font-semibold">Serviços fora da lista atual ({missingServices.length}):</p>
+              <p>{missingServices.map(service => service.name).join(' • ')}</p>
+            </div>
+          )}
           <div className="flex-1 overflow-y-auto no-scrollbar">
             <ServiceList
               services={filteredServices}
               onSelect={handleSelectService}
               selectedId={serviceId}
-              highlightId={safeQuery.kind === 'highlight' ? safeQuery.id : null}
+              highlightId={safeQuery?.kind === 'highlight' ? safeQuery.id : null}
             />
           </div>
         </div>

@@ -138,10 +138,10 @@
       },
       "location": {
         "address": "Avenida Boturussu, 168, Parque Boturussu, São Paulo/SP, 03802-000",
-        "lat": -23.50627,
-        "lng": -46.48828
+        "lat": -23.49521,
+        "lng": -46.48459
       },
-      "metadata": { "geocodingSource": "Gov Cultura Educa", "precisionDecimals": 5 },
+      "metadata": { "geocodingSource": "OSM Nominatim (2026-03-07)", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -233,10 +233,10 @@
       },
       "location": {
         "address": "Alameda Rodrigo de Brum, 1989, Ermelino Matarazzo, São Paulo/SP, 03807-230",
-        "lat": -23.49955,
-        "lng": -46.47135
+        "lat": -23.49964,
+        "lng": -46.47292
       },
-      "metadata": { "geocodingSource": "Gov Cultura Educa", "precisionDecimals": 5 },
+      "metadata": { "geocodingSource": "OSM Nominatim (2026-03-07)", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -261,10 +261,10 @@
       },
       "location": {
         "address": "Avenida Paranaguá, 1492, Ermelino Matarazzo, São Paulo/SP, 03806-000",
-        "lat": -23.49255,
-        "lng": -46.47860
+        "lat": -23.50150,
+        "lng": -46.47654
       },
-      "metadata": { "geocodingSource": "Gov Cultura Educa", "precisionDecimals": 5 },
+      "metadata": { "geocodingSource": "OSM Nominatim (2026-03-07)", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -284,10 +284,10 @@
       },
       "location": {
         "address": "Avenida Boturussu, 1626, Ermelino Matarazzo, São Paulo/SP, 03802-010",
-        "lat": -23.50561,
-        "lng": -46.48242
+        "lat": -23.50683,
+        "lng": -46.48853
       },
-      "metadata": { "precisionDecimals": 5 },
+      "metadata": { "geocodingSource": "OSM Nominatim (2026-03-07)", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -308,10 +308,10 @@
       },
       "location": {
         "address": "Avenida Paranaguá, 1492, Ermelino Matarazzo, São Paulo/SP, 03806-000",
-        "lat": -23.49255,
-        "lng": -46.47860
+        "lat": -23.50150,
+        "lng": -46.47654
       },
-      "metadata": { "geocodingSource": "Gov Cultura Educa", "precisionDecimals": 5 },
+      "metadata": { "geocodingSource": "OSM Nominatim (2026-03-07)", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -335,11 +335,11 @@
         "email": "ctematarazzo@prefeitura.sp.gov.br"
       },
       "location": {
-        "address": "Rua Chesira Maltauro, 342, Parque Boturussú, São Paulo/SP",
-        "lat": -23.49781,
-        "lng": -46.47292
+        "address": "Rua Chesira Maltauro, 342, Parque Boturussu, São Paulo/SP",
+        "lat": -23.49505,
+        "lng": -46.48089
       },
-      "metadata": { "precisionDecimals": 5 },
+      "metadata": { "geocodingSource": "OSM Nominatim (2026-03-07)", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -382,10 +382,10 @@
       },
       "location": {
         "address": "Rua Dríades, 50, Vila Jacuí, São Paulo/SP",
-        "lat": -23.49512,
-        "lng": -46.43863
+        "lat": -23.50973,
+        "lng": -46.44688
       },
-      "metadata": { "precisionDecimals": 5 },
+      "metadata": { "geocodingSource": "OSM Nominatim (2026-03-07)", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -406,10 +406,10 @@
       },
       "location": {
         "address": "Rua Dríades, 50, 2º andar, Vila Jacuí, São Paulo/SP, 08040-620",
-        "lat": -23.49512,
-        "lng": -46.43863
+        "lat": -23.50973,
+        "lng": -46.44688
       },
-      "metadata": { "precisionDecimals": 5 },
+      "metadata": { "geocodingSource": "OSM Nominatim (2026-03-07)", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
@@ -475,10 +475,10 @@
       },
       "location": {
         "address": "Rua Caetano de Campos, 220, Tatuapé, São Paulo/SP, 03088-010",
-        "lat": -23.54061,
-        "lng": -46.57472
+        "lat": -23.52782,
+        "lng": -46.55985
       },
-      "metadata": { "precisionDecimals": 5 },
+      "metadata": { "geocodingSource": "OSM Nominatim (2026-03-07)", "precisionDecimals": 5 },
       "needsGeoReview": false,
       "contactAvailability": {
         "hasPhone": true,
