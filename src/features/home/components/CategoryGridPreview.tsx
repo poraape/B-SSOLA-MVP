@@ -4,10 +4,7 @@ import React from 'react';
 import { useTheme } from '../../../app/context/ThemeContext';
 import { Card } from '../../../components/ui/Card';
 import type { Category } from '../../../types';
-import {
-  getPremiumCategoryColorClass,
-  getPremiumCategoryIcon,
-} from '../../shared/components/PremiumCategoryIcons';
+import { getPremiumCategoryIcon } from '../../shared/components/PremiumCategoryIcons';
 
 interface CategoryGridPreviewProps {
   categories: Category[];
@@ -34,29 +31,30 @@ export const CategoryGridPreview: React.FC<CategoryGridPreviewProps> = ({
       </div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {categories.map((cat) => {
-          const colorClasses = getPremiumCategoryColorClass(cat.color || 'blue');
-
           return (
             <Card
               key={cat.id}
               hoverable
               onClick={() => onOpenCategory(cat.id)}
-              className={`relative group border ${
-                theme === 'dark' ? 'bg-slate-900/90 border-slate-800' : 'bg-white/95 border-slate-200/80'
+              className={`relative group overflow-hidden rounded-[1.65rem] border ${
+                theme === 'dark'
+                  ? 'border-slate-800 bg-slate-900/90 shadow-[0_10px_30px_-24px_rgba(15,23,42,0.9)]'
+                  : 'border-slate-200/90 bg-white/95 shadow-[0_10px_24px_-20px_rgba(15,23,42,0.35)]'
               }`}
             >
-              <div className="relative z-10 flex h-full min-h-[9.25rem] flex-col items-start justify-between p-4 transition-transform duration-200 group-hover:-translate-y-1 group-active:translate-y-0.5">
-                <div className="relative inline-flex">
-                  <div className={`mb-4 h-16 w-16 rounded-2xl border flex items-center justify-center transition-all group-hover:scale-105 group-active:scale-95 ${colorClasses}`}>
-                    {getPremiumCategoryIcon(cat.icon)}
-                  </div>
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_15%,rgba(255,255,255,0.35),transparent_38%)]" />
+
+              <div className="relative z-10 flex h-full min-h-[10.5rem] flex-col items-center justify-between px-3 pb-4 pt-5 text-center transition-transform duration-200 group-hover:-translate-y-1 group-active:translate-y-0.5">
+                <div className="relative inline-flex transition-transform duration-200 group-hover:scale-[1.06] group-active:scale-95">
+                  {getPremiumCategoryIcon(cat.icon, 'h-20 w-20 drop-shadow-[0_10px_18px_rgba(15,23,42,0.28)]')}
                   {cat.isEmergencyCategory && (
-                    <div className="absolute -top-2 -right-2 bg-rose-600 text-white p-1.5 rounded-full shadow-lg animate-pulse border-2 border-white dark:border-slate-900 z-20">
+                    <div className="absolute -right-1 -top-1 z-20 animate-pulse rounded-full border-2 border-white bg-rose-600 p-1.5 text-white shadow-lg dark:border-slate-900">
                       <AlertTriangle className="w-3 h-3" />
                     </div>
                   )}
                 </div>
-                <h3 className="text-sm font-black uppercase leading-tight tracking-wide text-slate-900 dark:text-white line-clamp-2">
+
+                <h3 className="line-clamp-2 text-[0.72rem] font-black uppercase leading-tight tracking-[0.08em] text-slate-900 dark:text-white">
                   {shortLabel(cat.label)}
                 </h3>
               </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { motion } from 'motion/react';
 
 interface HeroDecisionSurfaceProps {
   onStartGuidedCare: () => void;
@@ -11,10 +12,27 @@ interface PointerOffset {
   y: number;
 }
 
+interface PointerState {
+  offset: PointerOffset;
+  angle: number;
+}
+
 const floatingCards = [
-  { title: 'Situação', subtitle: 'Registro inicial', position: 'left-4 top-6 md:left-10 md:top-10' },
-  { title: 'Risco', subtitle: 'Avaliação guiada', position: 'right-4 top-16 md:right-16 md:top-14' },
-  { title: 'Encaminhamento', subtitle: 'Próxima ação', position: 'left-6 bottom-8 md:left-16 md:bottom-14' },
+  {
+    title: 'Decida',
+    subtitle: 'com orientação clara',
+    position: 'right-[8%] top-[8%]',
+  },
+  {
+    title: 'Encontre apoio',
+    subtitle: 'sem perder tempo',
+    position: 'bottom-[10%] left-[8%]',
+  },
+  {
+    title: 'Aprenda',
+    subtitle: 'enquanto usa',
+    position: 'right-0 top-[48%] md:right-[-2%]',
+  },
 ];
 
 export const HeroDecisionSurface: React.FC<HeroDecisionSurfaceProps> = ({
@@ -22,7 +40,12 @@ export const HeroDecisionSurface: React.FC<HeroDecisionSurfaceProps> = ({
   onOpenNetwork,
   onOpenEmergency,
 }) => {
-  const [pointerOffset, setPointerOffset] = useState<PointerOffset>({ x: 0, y: 0 });
+  const [pointerState, setPointerState] = useState<PointerState>({
+    offset: { x: 0, y: 0 },
+    angle: 35,
+  });
+  const [isHoveringCompass, setIsHoveringCompass] = useState(false);
+  const [idleTick, setIdleTick] = useState(Date.now());
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -36,19 +59,41 @@ export const HeroDecisionSurface: React.FC<HeroDecisionSurfaceProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (reducedMotion || isHoveringCompass) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setIdleTick(Date.now());
+    }, 90);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [reducedMotion, isHoveringCompass]);
+
+  const idleNeedleAngle = useMemo(() => {
+    if (reducedMotion || isHoveringCompass) {
+      return 35;
+    }
+
+    return 35 + Math.sin(idleTick / 900) * 7;
+  }, [idleTick, isHoveringCompass, reducedMotion]);
+
   const compassTransform = useMemo(() => {
     if (reducedMotion) {
       return {
-        wrapper: 'translate3d(0px, 0px, 0px)',
+        wrapper: 'perspective(900px) rotateX(0deg) rotateY(0deg) translate3d(0px, 0px, 0px)',
         needle: 'translate3d(-50%, -50%, 0) rotate(35deg)',
       };
     }
 
     return {
-      wrapper: `translate3d(${pointerOffset.x * 0.45}px, ${pointerOffset.y * 0.45}px, 0)`,
-      needle: `translate3d(-50%, -50%, 0) rotate(${35 + pointerOffset.x * 0.9}deg)`,
+      wrapper: `perspective(900px) rotateX(${-pointerState.offset.y * 0.9}deg) rotateY(${pointerState.offset.x * 0.9}deg) translate3d(${pointerState.offset.x * 0.45}px, ${pointerState.offset.y * 0.45}px, 0)`,
+      needle: `translate3d(-50%, -50%, 0) rotate(${isHoveringCompass ? pointerState.angle : idleNeedleAngle}deg)`,
     };
-  }, [pointerOffset, reducedMotion]);
+  }, [idleNeedleAngle, isHoveringCompass, pointerState, reducedMotion]);
 
   const handlePointerMove: React.MouseEventHandler<HTMLElement> = (event) => {
     if (reducedMotion) {
@@ -58,26 +103,37 @@ export const HeroDecisionSurface: React.FC<HeroDecisionSurfaceProps> = ({
     const rect = event.currentTarget.getBoundingClientRect();
     const relativeX = (event.clientX - rect.left) / rect.width;
     const relativeY = (event.clientY - rect.top) / rect.height;
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const angle = (Math.atan2(event.clientY - centerY, event.clientX - centerX) * 180) / Math.PI;
 
-    setPointerOffset({
-      x: (relativeX - 0.5) * 18,
-      y: (relativeY - 0.5) * 18,
+    setPointerState({
+      offset: {
+        x: (relativeX - 0.5) * 18,
+        y: (relativeY - 0.5) * 18,
+      },
+      angle,
     });
   };
 
   return (
     <section
       onMouseMove={handlePointerMove}
-      onMouseLeave={() => setPointerOffset({ x: 0, y: 0 })}
-      className="relative overflow-hidden rounded-[2rem] border border-white/35 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 p-6 shadow-[0_24px_60px_-32px_rgba(15,23,42,0.55)] ring-1 ring-white/20 backdrop-blur-sm md:min-h-[28rem] md:rounded-[3rem] md:p-12 lg:p-16"
+      onMouseEnter={() => setIsHoveringCompass(true)}
+      onMouseLeave={() => {
+        setIsHoveringCompass(false);
+        setPointerState({ offset: { x: 0, y: 0 }, angle: 35 });
+      }}
+      className="relative mb-12 min-h-[520px] overflow-hidden rounded-[20px] border border-white/30 bg-gradient-to-br from-[#07122b] via-[#12214d] to-[#1b2d63] p-6 shadow-[0_18px_40px_-26px_rgba(15,23,42,0.55)] ring-1 ring-white/20 backdrop-blur-xl md:p-12 lg:p-16"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(148,163,184,0.22),transparent_42%),radial-gradient(circle_at_80%_75%,rgba(59,130,246,0.22),transparent_36%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(15,23,42,0.2),rgba(30,64,175,0.24)),radial-gradient(circle_at_78%_48%,rgba(246,201,76,0.16),transparent_38%),radial-gradient(circle_at_20%_20%,rgba(148,163,184,0.16),transparent_42%)]" />
 
       <div className="relative z-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div className="space-y-7">
           <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-slate-300 md:text-xs">DECISÃO ESCOLAR ASSISTIDA</p>
-          <h1 className="text-[clamp(2.75rem,7.5vw,6rem)] font-black leading-[0.92] tracking-[-0.02em] text-white">
-            O que fazer <span className="inline-block bg-gradient-to-r from-amber-300 to-amber-400 bg-clip-text text-transparent">agora?</span>
+          <h1 className="text-[clamp(2.75rem,7.5vw,6rem)] font-black leading-[1.04] tracking-[-0.02em] text-white">
+            <span className="block">O que fazer</span>
+            <span className="block pb-[0.06em] bg-gradient-to-r from-amber-300 to-amber-400 bg-clip-text text-transparent">agora?</span>
           </h1>
           <p className="max-w-2xl text-[clamp(1.125rem,2.8vw,1.625rem)] font-medium leading-[1.45] text-slate-200">
             Identifique a situação, priorize o cuidado e siga com segurança.
@@ -86,48 +142,69 @@ export const HeroDecisionSurface: React.FC<HeroDecisionSurfaceProps> = ({
           <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
             <button
               onClick={onStartGuidedCare}
-              className="rounded-xl bg-white px-6 py-4 text-sm font-bold text-slate-900 shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl md:rounded-2xl md:px-8 md:text-base"
+              className="rounded-[18px] bg-amber-300 px-[26px] py-4 text-sm font-bold text-black shadow-[0_12px_28px_-16px_rgba(251,191,36,0.65)] transition-all hover:-translate-y-[1px] hover:brightness-105 md:text-base"
             >
               Iniciar atendimento guiado
             </button>
             <button
               onClick={onOpenNetwork}
-              className="rounded-xl border border-slate-400/70 bg-slate-700/35 px-6 py-4 text-sm font-semibold text-white transition-all hover:bg-slate-700/55 md:rounded-2xl md:px-8 md:text-base"
+              className="rounded-[18px] border border-white/20 bg-white/10 px-6 py-4 text-sm font-semibold text-white shadow-[0_10px_24px_-18px_rgba(15,23,42,0.65)] backdrop-blur-[20px] transition-all hover:-translate-y-[1px] hover:bg-white/14 md:px-8 md:text-base"
             >
               Ver rede de apoio
             </button>
             <button
               onClick={onOpenEmergency}
-              className="rounded-xl border border-rose-300/60 bg-rose-950/20 px-6 py-4 text-sm font-semibold text-rose-100 transition-all hover:bg-rose-900/35 md:rounded-2xl md:px-8 md:text-base"
+              className="rounded-[18px] border border-white/20 bg-white/10 px-6 py-4 text-sm font-semibold text-rose-100 shadow-[0_10px_24px_-18px_rgba(190,24,93,0.45)] backdrop-blur-[20px] transition-all hover:-translate-y-[1px] hover:bg-white/14 md:px-8 md:text-base"
               aria-label="Acionar emergência"
             >
               Protocolo de emergência
             </button>
           </div>
+          <p className="max-w-2xl text-sm font-medium text-slate-200/75">
+            Sem registro de dados pessoais do estudante · Baseado em protocolo e encaminhamento seguro
+          </p>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[27rem]">
+        <div className="relative mx-auto mt-4 w-full max-w-[15rem] sm:max-w-[17rem] md:max-w-[20rem] lg:mt-0 lg:max-w-[27rem]">
           <div
             style={{ transform: compassTransform.wrapper, transition: reducedMotion ? 'none' : 'transform 180ms ease-out' }}
             className="relative mx-auto aspect-square w-full"
           >
-            <div className="absolute inset-[5%] rounded-full border border-white/30 bg-white/10 shadow-[0_0_40px_rgba(56,189,248,0.28)] backdrop-blur-md" />
-            <div className="absolute inset-[17%] rounded-full border border-blue-200/35" />
-            <div className="absolute inset-[29%] rounded-full border border-slate-200/30" />
-            <div className="absolute inset-[41%] rounded-full border border-white/35 bg-white/10" />
+            <div className="absolute inset-[4%] rounded-full border border-[#8aa4d5]/24 bg-[radial-gradient(circle,rgba(92,126,191,0.12)_0%,rgba(52,85,150,0.1)_36%,rgba(26,52,106,0.06)_100%)]" />
+            <div className="absolute inset-[17%] rounded-full border border-[#8aa4d5]/24" />
+            <div className="absolute inset-[31%] rounded-full border border-[#8aa4d5]/24" />
+            <div className="absolute inset-[45%] rounded-full border border-[#8aa4d5]/24" />
+            <div className="absolute left-1/2 top-[12%] h-[76%] w-px -translate-x-1/2 bg-[#8aa4d5]/22" />
+            <div className="absolute left-[12%] top-1/2 h-px w-[76%] -translate-y-1/2 bg-[#8aa4d5]/22" />
 
-            <div className="absolute left-1/2 top-1/2 h-[2px] w-[38%] -translate-y-1/2 rounded-full bg-gradient-to-r from-cyan-200 to-blue-500 shadow-[0_0_18px_rgba(56,189,248,0.6)]" style={{ transform: compassTransform.needle }} />
-            <div className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/40 bg-white/90 shadow-md" />
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.22)_0%,rgba(15,23,42,0)_62%)]" />
+            <div
+              className="absolute left-1/2 top-1/2 h-[4px] w-[52%] -translate-y-1/2 rounded-full bg-gradient-to-r from-[#F6C94C] via-[#f4ca59] to-[#f4ca59]/0 shadow-[0_0_8px_rgba(246,201,76,0.35)]"
+              style={{ transform: compassTransform.needle }}
+            />
+            <div className="absolute left-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/40 bg-slate-900/45" />
+            <div className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/60 bg-slate-100/90" />
+            <div className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F6C94C]" />
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: 'radial-gradient(circle, rgba(242,248,255,0.1) 0%, rgba(15,23,42,0) 62%)',
+                transform: reducedMotion
+                  ? 'translate3d(0px, 0px, 0px)'
+                  : `translate3d(${pointerState.offset.x * 0.2}px, ${pointerState.offset.y * 0.2}px, 0)`,
+                transition: reducedMotion ? 'none' : 'transform 180ms ease-out',
+              }}
+            />
 
-            {floatingCards.map((card) => (
-              <div
+            {floatingCards.map((card, index) => (
+              <motion.div
                 key={card.title}
-                className={`absolute ${card.position} rounded-2xl border border-white/25 bg-white/12 px-3 py-2 shadow-lg backdrop-blur-md`}
+                className={`absolute ${card.position} rounded-[18px] border border-white/20 bg-white/8 px-4 py-3 shadow-[0_10px_16px_-14px_rgba(15,23,42,0.65)] backdrop-blur-md`}
+                animate={reducedMotion ? undefined : { y: [0, -4, 0, 4, 0] }}
+                transition={reducedMotion ? undefined : { duration: 5, repeat: Infinity, ease: 'easeInOut', delay: index * 0.4 }}
               >
-                <p className="text-[0.62rem] font-black uppercase tracking-[0.14em] text-cyan-100">{card.title}</p>
-                <p className="text-xs font-semibold text-slate-100">{card.subtitle}</p>
-              </div>
+                <p className="text-xs font-semibold text-cyan-100">{card.title}</p>
+                <p className="mt-0.5 text-[0.8rem] font-normal text-slate-200">{card.subtitle}</p>
+              </motion.div>
             ))}
           </div>
         </div>

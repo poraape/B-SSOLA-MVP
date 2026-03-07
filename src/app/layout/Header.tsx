@@ -53,12 +53,12 @@ export const Header: React.FC = () => {
   return (
     <header className={`sticky top-0 z-[1001] border-b transition-colors duration-300 ${
       theme === 'dark'
-        ? 'border-slate-700/80 bg-slate-900/70 shadow-[0_8px_24px_-20px_rgba(15,23,42,0.85)]'
-        : 'border-white/60 bg-white/70 shadow-[0_8px_24px_-20px_rgba(15,23,42,0.35)]'
-    } backdrop-blur-xl`}>
-      <div className="mx-auto flex max-w-[112rem] items-center gap-3 overflow-x-auto whitespace-nowrap px-4 py-3.5 lg:gap-4 no-scrollbar">
+        ? 'border-slate-700/80 bg-slate-900/70 shadow-[0_12px_30px_-22px_rgba(15,23,42,0.9)]'
+        : 'border-white/60 bg-white/70 shadow-[0_12px_30px_-22px_rgba(15,23,42,0.4)]'
+    } backdrop-blur-2xl`}>
+      <div className="mx-auto grid w-full max-w-[112rem] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 lg:gap-6 lg:px-6">
         {/* Logo Section */}
-        <Link to="/" className="flex items-center gap-3 shrink-0 group" onClick={closeSearch}>
+        <Link to="/" className="flex shrink-0 items-center gap-3.5 group" onClick={closeSearch}>
           <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-white/70 bg-gradient-to-b from-white to-slate-100 shadow-[0_6px_18px_-12px_rgba(15,23,42,0.7)] dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">
             <motion.div
               animate={{ 
@@ -83,7 +83,7 @@ export const Header: React.FC = () => {
         </Link>
         
         {/* Navigation Menu */}
-        <nav className="shrink-0 rounded-full border border-white/65 bg-white/65 p-1 shadow-[0_6px_18px_-14px_rgba(15,23,42,0.45)] backdrop-blur-md dark:border-slate-700/80 dark:bg-slate-800/70">
+        <nav className="max-w-full justify-self-center rounded-full border border-white/65 bg-white/65 p-1.5 shadow-[0_10px_24px_-18px_rgba(15,23,42,0.45)] backdrop-blur-lg dark:border-slate-700/80 dark:bg-slate-800/70">
           <div className="flex items-center min-w-max">
             {navItems.map((item) => (
               <Link
@@ -114,7 +114,7 @@ export const Header: React.FC = () => {
         </nav>
 
         {/* Right Section: School Info & Actions */}
-        <div className="flex shrink-0 items-center gap-3 md:gap-4">
+        <div className="flex shrink-0 items-center gap-3.5 justify-self-end md:gap-4.5">
           {/* App Mode — Hidden per design spec, context preserved for future use */}
           {false && (
             <div className="flex shrink-0 items-center gap-2 rounded-full border border-slate-200/80 bg-slate-50/70 p-1 text-xs font-bold uppercase shadow-[0_6px_16px_-14px_rgba(15,23,42,0.5)] dark:border-slate-700 dark:bg-slate-800/70">
@@ -142,7 +142,7 @@ export const Header: React.FC = () => {
           )}
 
           {/* School Info */}
-          <div className="flex items-center gap-2 rounded-2xl border border-slate-200/90 bg-white/80 px-3 py-2 shadow-[0_10px_18px_-16px_rgba(15,23,42,0.75)] dark:border-slate-700 dark:bg-slate-800/80 md:gap-3">
+          <div className="flex items-center gap-2.5 rounded-[20px] border border-slate-200/90 bg-white/80 px-3.5 py-2 shadow-[0_12px_24px_-18px_rgba(15,23,42,0.75)] dark:border-slate-700 dark:bg-slate-800/80 md:gap-3">
             <div className="text-right">
               <p className="text-[0.65rem] font-black uppercase leading-none tracking-[0.14em] text-blue-600 md:text-[0.7rem]">Unidade Escolar</p>
               <p className="text-xs font-bold text-slate-700 dark:text-slate-200">E.E. Ermelino Matarazzo</p>
@@ -158,7 +158,7 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Theme & Accessibility */}
-          <div className="flex items-center gap-2 rounded-full border border-slate-200/80 bg-slate-50/80 p-1 shadow-[0_6px_16px_-14px_rgba(15,23,42,0.5)] dark:border-slate-700 dark:bg-slate-800/70">
+          <div className="flex items-center gap-2 rounded-[20px] border border-slate-200/80 bg-slate-50/80 p-1.5 shadow-[0_10px_20px_-16px_rgba(15,23,42,0.5)] dark:border-slate-700 dark:bg-slate-800/70">
             <button
               onClick={toggleTheme}
               className="flex h-11 w-11 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-all hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"

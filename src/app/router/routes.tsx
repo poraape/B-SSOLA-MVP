@@ -3,6 +3,9 @@ import { Route, Routes, Navigate, useParams } from 'react-router-dom';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('../../features/home/HomePage').then(m => ({ default: m.HomePage })));
+const CategoriesIndexPage = lazy(() =>
+  import('../../features/home/CategoriesIndexPage').then(m => ({ default: m.CategoriesIndexPage }))
+);
 const AtendimentoGatePage = lazy(() => import('../../features/gateway/AtendimentoGatePage').then(m => ({ default: m.AtendimentoGatePage })));
 const CategoryPage = lazy(() => import('../../features/triage/CategoryPage').then(m => ({ default: m.CategoryPage })));
 const FlowPage = lazy(() => import('../../features/triage/FlowPage').then(m => ({ default: m.FlowPage })));
@@ -33,7 +36,7 @@ export const AppRoutes: React.FC = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/atendimento" element={<AtendimentoGatePage />} />
-      <Route path="/categorias" element={<Navigate to="/" replace />} />
+      <Route path="/categorias" element={<CategoriesIndexPage />} />
       <Route path="/categoria/:categoryId" element={<CategoryPage />} />
       <Route path="/fluxo/:flowId" element={<FlowPage />} />
       <Route path="/resultado/:flowId" element={<ResultPage />} />
