@@ -56,10 +56,10 @@ export const Header: React.FC = () => {
         ? 'border-slate-700/80 bg-slate-900/70 shadow-[0_12px_30px_-22px_rgba(15,23,42,0.9)]'
         : 'border-white/60 bg-white/70 shadow-[0_12px_30px_-22px_rgba(15,23,42,0.4)]'
     } backdrop-blur-2xl`}>
-      <div className="mx-auto grid w-full max-w-[112rem] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 lg:gap-6 lg:px-6">
+      <div className="mx-auto grid w-full max-w-[112rem] grid-cols-[minmax(0,1fr)_auto] items-center gap-2.5 px-3 py-2.5 sm:px-4 sm:py-3 md:grid-cols-[auto_minmax(0,1fr)_auto] md:gap-4 lg:gap-6 lg:px-6">
         {/* Logo Section */}
-        <Link to="/" className="flex shrink-0 items-center gap-3.5 group" onClick={closeSearch}>
-          <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-white/70 bg-gradient-to-b from-white to-slate-100 shadow-[0_6px_18px_-12px_rgba(15,23,42,0.7)] dark:border-slate-700 dark:from-slate-800 dark:to-slate-900">
+        <Link to="/" className="group flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3.5" onClick={closeSearch}>
+          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-white/70 bg-gradient-to-b from-white to-slate-100 shadow-[0_6px_18px_-12px_rgba(15,23,42,0.7)] dark:border-slate-700 dark:from-slate-800 dark:to-slate-900 sm:h-12 sm:w-12">
             <motion.div
               animate={{ 
                 rotate: [0, 1.5, 0, -1.5, 0],
@@ -73,24 +73,40 @@ export const Header: React.FC = () => {
               }}
               className="flex items-center justify-center"
             >
-              <CompassIcon className="text-slate-900 dark:text-slate-100 w-10 h-10" />
+              <CompassIcon className="h-8 w-8 text-slate-900 dark:text-slate-100 sm:h-10 sm:w-10" />
             </motion.div>
           </div>
-          <div className="hidden md:block min-w-0">
-            <h1 className="leading-none text-xl font-black tracking-tight text-slate-900 dark:text-slate-100">Bússola</h1>
-            <p className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Decisão e encaminhamento escolar</p>
+          <div className="min-w-0">
+            <h1 className="leading-none text-base font-black tracking-tight text-slate-900 dark:text-slate-100 sm:text-lg md:text-xl">Bússola</h1>
+            <p className="hidden text-[0.65rem] font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400 md:block">Decisão e encaminhamento escolar</p>
           </div>
         </Link>
         
-        {/* Navigation Menu */}
-        <nav className="max-w-full justify-self-center rounded-full border border-white/65 bg-white/65 p-1.5 shadow-[0_10px_24px_-18px_rgba(15,23,42,0.45)] backdrop-blur-lg dark:border-slate-700/80 dark:bg-slate-800/70">
-          <div className="flex items-center min-w-max">
+        {/* School Info (mobile: first line right) */}
+        <div className="flex items-center gap-2 rounded-[18px] border border-slate-200/90 bg-white/80 px-2.5 py-1.5 shadow-[0_10px_20px_-16px_rgba(15,23,42,0.75)] dark:border-slate-700 dark:bg-slate-800/80 md:hidden">
+          <div className="text-right leading-tight">
+            <p className="text-[0.55rem] font-black uppercase tracking-[0.1em] text-blue-600">Unidade</p>
+            <p className="text-[0.65rem] font-bold text-slate-700 dark:text-slate-200">E.E. Ermelino</p>
+          </div>
+          <img
+            src={schoolLogo}
+            alt="Logo Escola"
+            className="h-7 w-auto shrink-0 object-contain"
+            onError={(e) => {
+              e.currentTarget.src = schoolLogoFallback;
+            }}
+          />
+        </div>
+
+        {/* Navigation Menu (mobile: second line left) */}
+        <nav className="max-w-full justify-self-stretch overflow-x-auto rounded-full border border-white/65 bg-white/65 p-1.5 shadow-[0_10px_24px_-18px_rgba(15,23,42,0.45)] backdrop-blur-lg no-scrollbar dark:border-slate-700/80 dark:bg-slate-800/70 md:col-span-1 md:justify-self-center">
+          <div className="flex min-w-max items-center">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.path}
                 onClick={closeSearch}
-                className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-all md:px-6 ${
+                className={`whitespace-nowrap rounded-full px-3 py-2 text-xs font-semibold transition-all sm:px-4 sm:text-sm md:px-6 ${
                   isNavItemActive(item.path)
                     ? 'bg-blue-600 text-white shadow-[0_8px_16px_-12px_rgba(37,99,235,0.9)]'
                     : 'text-slate-600 hover:bg-white/70 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700/70 dark:hover:text-white'
@@ -101,20 +117,20 @@ export const Header: React.FC = () => {
             ))}
             <button
               onClick={toggleSearch}
-              className={`flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-all md:px-6 ${
+              className={`flex items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-2 text-xs font-semibold transition-all sm:gap-2 sm:px-4 sm:text-sm md:px-6 ${
                 isSearchOpen
                   ? 'bg-blue-600 text-white shadow-[0_8px_16px_-12px_rgba(37,99,235,0.9)]'
                   : 'text-slate-600 hover:bg-white/70 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700/70 dark:hover:text-white'
               }`}
             >
               {isSearchOpen ? <X className="w-4 h-4" /> : <SearchIcon className="w-4 h-4" />}
-              {isSearchOpen ? 'Fechar' : 'Busca'}
+              <span className="hidden sm:inline">{isSearchOpen ? 'Fechar' : 'Busca'}</span>
             </button>
           </div>
         </nav>
 
         {/* Right Section: School Info & Actions */}
-        <div className="flex shrink-0 items-center gap-3.5 justify-self-end md:gap-4.5">
+        <div className="hidden shrink-0 items-center gap-2 justify-self-end sm:gap-3.5 md:flex md:gap-4.5">
           {/* App Mode — Hidden per design spec, context preserved for future use */}
           {false && (
             <div className="flex shrink-0 items-center gap-2 rounded-full border border-slate-200/80 bg-slate-50/70 p-1 text-xs font-bold uppercase shadow-[0_6px_16px_-14px_rgba(15,23,42,0.5)] dark:border-slate-700 dark:bg-slate-800/70">
@@ -158,26 +174,48 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Theme & Accessibility */}
-          <div className="flex items-center gap-2 rounded-[20px] border border-slate-200/80 bg-slate-50/80 p-1.5 shadow-[0_10px_20px_-16px_rgba(15,23,42,0.5)] dark:border-slate-700 dark:bg-slate-800/70">
+          <div className="flex items-center gap-1.5 rounded-[20px] border border-slate-200/80 bg-slate-50/80 p-1 shadow-[0_10px_20px_-16px_rgba(15,23,42,0.5)] dark:border-slate-700 dark:bg-slate-800/70 sm:gap-2 sm:p-1.5">
             <button
               onClick={toggleTheme}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-all hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-all hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700 sm:h-11 sm:w-11"
               title="Alternar Tema"
             >
-              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5 text-yellow-500" />}
+              {theme === 'light' ? <Moon className="h-4 w-4 sm:h-5 sm:w-5" /> : <Sun className="h-4 w-4 text-yellow-500 sm:h-5 sm:w-5" />}
             </button>
             <button
               onClick={() => setIsAccessibilityOpen(!isAccessibilityOpen)}
-              className={`flex h-11 w-11 items-center justify-center rounded-full transition-all ${
+              className={`flex h-9 w-9 items-center justify-center rounded-full transition-all sm:h-11 sm:w-11 ${
                 isAccessibilityOpen
                   ? 'bg-blue-600 text-white shadow-[0_8px_16px_-10px_rgba(59,130,246,0.7)]'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
               }`}
               title="Acessibilidade"
             >
-              <Settings className="w-5 h-5" />
+              <Settings className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
           </div>
+        </div>
+
+        {/* Theme & Accessibility (mobile: second line right) */}
+        <div className="flex items-center gap-1.5 justify-self-end rounded-[20px] border border-slate-200/80 bg-slate-50/80 p-1 shadow-[0_10px_20px_-16px_rgba(15,23,42,0.5)] dark:border-slate-700 dark:bg-slate-800/70 sm:gap-2 sm:p-1.5 md:hidden">
+          <button
+            onClick={toggleTheme}
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-all hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+            title="Alternar Tema"
+          >
+            {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4 text-yellow-500" />}
+          </button>
+          <button
+            onClick={() => setIsAccessibilityOpen(!isAccessibilityOpen)}
+            className={`flex h-9 w-9 items-center justify-center rounded-full transition-all ${
+              isAccessibilityOpen
+                ? 'bg-blue-600 text-white shadow-[0_8px_16px_-10px_rgba(59,130,246,0.7)]'
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
+            }`}
+            title="Acessibilidade"
+          >
+            <Settings className="h-4 w-4" />
+          </button>
         </div>
       </div>
 

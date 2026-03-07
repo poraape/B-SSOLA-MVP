@@ -24,6 +24,7 @@ export const NetworkPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isDrawerOpen, setIsDrawerOpen] = useState(!!serviceId);
+  const [mobileView, setMobileView] = useState<'list' | 'map'>('list');
 
   const effectiveHighlightId = highlightId || recommendation.highlightId;
   const effectiveQueryType = queryType || recommendation.queryType;
@@ -77,6 +78,7 @@ export const NetworkPage: React.FC = () => {
   const handleSelectService = (service: Service) => {
     navigate(`/rede/servico/${service.id}`);
     setIsDrawerOpen(true);
+    setMobileView('map');
   };
 
   return (
@@ -86,65 +88,146 @@ export const NetworkPage: React.FC = () => {
         <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Localize serviços e encaminhamentos com mais rapidez.</p>
       </header>
 
-      <div className="h-[calc(100vh-16rem)] flex flex-col md:flex-row gap-6">
-      {/* Sidebar */}
-      <div className="flex w-full flex-col overflow-hidden rounded-[20px] border border-slate-200/85 bg-white/85 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/80 md:w-80">
-        {isUsingRecommendationContext && (
-          <div className="mx-4 mt-4 rounded-[14px] border border-emerald-200 bg-emerald-50/85 px-3 py-2 text-xs text-emerald-800 dark:border-emerald-800 dark:bg-emerald-900/25 dark:text-emerald-300">
-            <span>Serviços recomendados para esta situação · </span>
-            <button
-              onClick={() => {
-                setRecommendation({ highlightId: null, queryType: null });
-                navigate('/rede');
-              }}
-              className="font-semibold underline decoration-emerald-500/70 underline-offset-2"
-            >
-              Ver todos os serviços
-            </button>
+      <div className="md:hidden space-y-4">
+        <div className="inline-flex rounded-[18px] border border-slate-200/85 bg-white/85 p-1 shadow-[0_10px_20px_-16px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/80">
+          <button
+            onClick={() => setMobileView('list')}
+            className={`rounded-[14px] px-4 py-2 text-sm font-semibold transition-all ${
+              mobileView === 'list'
+                ? 'bg-blue-600 text-white shadow-[0_8px_16px_-12px_rgba(37,99,235,0.9)]'
+                : 'text-slate-600 dark:text-slate-300'
+            }`}
+          >
+            Lista
+          </button>
+          <button
+            onClick={() => setMobileView('map')}
+            className={`rounded-[14px] px-4 py-2 text-sm font-semibold transition-all ${
+              mobileView === 'map'
+                ? 'bg-blue-600 text-white shadow-[0_8px_16px_-12px_rgba(37,99,235,0.9)]'
+                : 'text-slate-600 dark:text-slate-300'
+            }`}
+          >
+            Mapa
+          </button>
+        </div>
+
+        {mobileView === 'list' ? (
+          <div className="flex w-full flex-col overflow-hidden rounded-[20px] border border-slate-200/85 bg-white/85 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/80">
+            {isUsingRecommendationContext && (
+              <div className="mx-4 mt-4 rounded-[14px] border border-emerald-200 bg-emerald-50/85 px-3 py-2 text-xs text-emerald-800 dark:border-emerald-800 dark:bg-emerald-900/25 dark:text-emerald-300">
+                <span>Serviços recomendados para esta situação · </span>
+                <button
+                  onClick={() => {
+                    setRecommendation({ highlightId: null, queryType: null });
+                    navigate('/rede');
+                  }}
+                  className="font-semibold underline decoration-emerald-500/70 underline-offset-2"
+                >
+                  Ver todos os serviços
+                </button>
+              </div>
+            )}
+            <ServiceFilters
+              searchTerm={searchTerm}
+              onSearchChange={setSearchTerm}
+              selectedCategory={selectedCategory}
+              onCategoryChange={setSelectedCategory}
+              categories={categories}
+            />
+            <div className="max-h-[58vh] overflow-y-auto no-scrollbar">
+              <ServiceList
+                services={filteredServices}
+                onSelect={handleSelectService}
+                selectedId={serviceId}
+                highlightId={safeQuery.kind === 'highlight' ? safeQuery.id : null}
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="relative h-[58vh] min-h-[360px]">
+            <NetworkErrorBoundary fallback={
+              <div className="rounded-[16px] border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
+                Mapa temporariamente indisponível.
+              </div>
+            }>
+              <NetworkMap
+                services={filteredServices}
+                selectedService={selectedService}
+                onMarkerClick={handleSelectService}
+              />
+            </NetworkErrorBoundary>
+
+            {isDrawerOpen && selectedService && (
+              <ServiceDrawer
+                service={selectedService}
+                onClose={() => {
+                  setIsDrawerOpen(false);
+                  navigate('/rede');
+                }}
+              />
+            )}
           </div>
         )}
-        <ServiceFilters 
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          categories={categories}
-        />
-        <div className="flex-1 overflow-y-auto no-scrollbar">
-          <ServiceList 
-            services={filteredServices} 
-            onSelect={handleSelectService}
-            selectedId={serviceId}
-            highlightId={safeQuery.kind === 'highlight' ? safeQuery.id : null}
-          />
-        </div>
       </div>
 
-      {/* Map Area */}
-      <div className="flex-1 relative">
-        <NetworkErrorBoundary fallback={
-          <div className="rounded-[16px] border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
-            Mapa temporariamente indisponível.
+      <div className="hidden h-[calc(100vh-16rem)] md:flex md:flex-row gap-6">
+        <div className="flex w-full flex-col overflow-hidden rounded-[20px] border border-slate-200/85 bg-white/85 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/80 md:w-80">
+          {isUsingRecommendationContext && (
+            <div className="mx-4 mt-4 rounded-[14px] border border-emerald-200 bg-emerald-50/85 px-3 py-2 text-xs text-emerald-800 dark:border-emerald-800 dark:bg-emerald-900/25 dark:text-emerald-300">
+              <span>Serviços recomendados para esta situação · </span>
+              <button
+                onClick={() => {
+                  setRecommendation({ highlightId: null, queryType: null });
+                  navigate('/rede');
+                }}
+                className="font-semibold underline decoration-emerald-500/70 underline-offset-2"
+              >
+                Ver todos os serviços
+              </button>
+            </div>
+          )}
+          <ServiceFilters
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            categories={categories}
+          />
+          <div className="flex-1 overflow-y-auto no-scrollbar">
+            <ServiceList
+              services={filteredServices}
+              onSelect={handleSelectService}
+              selectedId={serviceId}
+              highlightId={safeQuery.kind === 'highlight' ? safeQuery.id : null}
+            />
           </div>
-        }>
-          <NetworkMap 
-            services={filteredServices}
-            selectedService={selectedService}
-            onMarkerClick={handleSelectService}
-          />
-        </NetworkErrorBoundary>
-        
-        {isDrawerOpen && selectedService && (
-          <ServiceDrawer 
-            service={selectedService} 
-            onClose={() => {
-              setIsDrawerOpen(false);
-              navigate('/rede');
-            }} 
-          />
-        )}
+        </div>
+
+        <div className="relative flex-1">
+          <NetworkErrorBoundary fallback={
+            <div className="rounded-[16px] border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
+              Mapa temporariamente indisponível.
+            </div>
+          }>
+            <NetworkMap
+              services={filteredServices}
+              selectedService={selectedService}
+              onMarkerClick={handleSelectService}
+            />
+          </NetworkErrorBoundary>
+
+          {isDrawerOpen && selectedService && (
+            <ServiceDrawer
+              service={selectedService}
+              onClose={() => {
+                setIsDrawerOpen(false);
+                navigate('/rede');
+              }}
+            />
+          )}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

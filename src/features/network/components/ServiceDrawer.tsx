@@ -15,7 +15,7 @@ export const ServiceDrawer: React.FC<ServiceDrawerProps> = ({ service, onClose }
   if (!service) return null;
 
   return (
-    <div className={`absolute inset-y-4 right-4 z-[1000] flex w-80 flex-col overflow-hidden rounded-[20px] border shadow-[0_16px_36px_-24px_rgba(15,23,42,0.55)] backdrop-blur-xl animate-in slide-in-from-right duration-300 transition-colors ${
+    <div className={`absolute inset-x-2 bottom-2 top-2 z-[1000] flex w-auto flex-col overflow-hidden rounded-[20px] border shadow-[0_16px_36px_-24px_rgba(15,23,42,0.55)] backdrop-blur-xl animate-in slide-in-from-right duration-300 transition-colors md:inset-y-4 md:right-4 md:left-auto md:w-80 ${
       theme === 'dark' ? 'bg-slate-900/90 border-slate-700' : 'bg-white/90 border-slate-200/90'
     }`}>
       <div className={`p-4 border-b flex items-center justify-between ${
@@ -30,7 +30,7 @@ export const ServiceDrawer: React.FC<ServiceDrawerProps> = ({ service, onClose }
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-6 space-y-6">
+      <div className="flex-1 overflow-y-auto p-5 space-y-5 sm:p-6 sm:space-y-6">
         <div className="space-y-2">
           <div className="inline-block rounded-md bg-blue-100 px-2 py-1 text-[10px] font-black uppercase tracking-tighter text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
             {service.category.replace('_', ' ')}

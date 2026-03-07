@@ -19,7 +19,7 @@ export const HomePage: React.FC = () => {
     .slice(0, 7);
 
   return (
-    <div className="space-y-8 md:space-y-10">
+    <div className="space-y-6 md:space-y-10">
       <HeroDecisionSurface
         onStartGuidedCare={() => navigate('/atendimento')}
         onOpenNetwork={() => navigate('/rede')}
