@@ -463,11 +463,11 @@
     "flowId": "flow_violacao_direitos",
     "level": "low",
     "headline": "Queixa de desrespeito a direitos no cotidiano, sem risco imediato.",
-    "nextStep": "Registre a queixa e comunique a coordenação para encaminhar pela gestão.",
+    "nextStep": "Registre a queixa de forma objetiva e comunique a coordenação para que a gestão avalie e registre formalmente o caso.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Organização do registro e encaminhamento interno inicial."
+      "description": "Organização do registro e encaminhamento interno inicial à gestão."
     },
     "complementaryService": {
       "queryType": "highlight=disque-100",
@@ -479,7 +479,7 @@
         "Anote quem, quando e onde",
         "Preserve sigilo e privacidade"
       ],
-      "notYours": "Não exponha a queixa para a turma nem tente resolver sozinho com terceiros."
+      "notYours": "Não exponha a queixa para a turma nem tente resolver sozinho com terceiros; não prometa que nada será comunicado à gestão."
     }
   },
   {
@@ -785,11 +785,11 @@
     "flowId": "flow_bullying",
     "level": "high",
     "headline": "Ataques intensos na internet (cyberbullying) causando sofrimento severo à vítima.",
-    "nextStep": "Oriente a vítima a salvar as provas digitais e comunique a direção com urgência.",
+    "nextStep": "Oriente a vítima a salvar as provas digitais e comunique a direção com urgência para registro formal e contato com a família.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Registro institucional da denúncia cibernética e apoio à família."
+      "description": "Registro institucional da denúncia cibernética, contato com a família e avaliação de necessidade de acionar outros órgãos."
     },
     "complementaryService": {
       "queryType": "highlight=disque-100",
@@ -799,7 +799,7 @@
     "teacherScope": {
       "doThis": [
         "Aconselhe a não apagar as mensagens",
-        "Repasse prints à gestão"
+        "Repasse prints à gestão para anexar ao registro formal"
       ],
       "notYours": "Não interaja com perfis agressores online ou redes sociais."
     }
@@ -1437,8 +1437,8 @@
     },
     "complementaryService": {
       "queryType": "highlight=ubs-ermelino",
-      "label": "UBS Ermelino Matarazzo",
-      "description": "Avaliação primária de crise aguda de pânico social."
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Avaliação e acolhimento especializado em crise aguda de saúde mental."
     },
     "teacherScope": {
       "doThis": [
@@ -1452,16 +1452,16 @@
     "flowId": "flow_isolamento",
     "level": "critical",
     "headline": "Fuga ou trancamento desesperado em banheiros com ameaça de se machucar.",
-    "nextStep": "Converse pelo lado de fora e solicite à direção abertura emergencial da porta.",
+    "nextStep": "Converse pelo lado de fora, solicite à direção abertura emergencial da porta e prepare encaminhamento imediato à rede de saúde mental.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
-      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Acesso seguro ao local e contenção de danos físicos."
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Avaliação de risco de autolesão e acolhimento imediato após a contenção da crise."
     },
     "complementaryService": {
       "queryType": "highlight=policia-militar",
       "label": "Polícia Militar – 190",
-      "description": "Arrombamento em caso de vida em risco extremo."
+      "description": "Apoio para abertura forçada da porta e proteção física em caso de risco extremo."
     },
     "teacherScope": {
       "doThis": [
@@ -1544,7 +1544,7 @@
     "flowId": "flow_febre",
     "level": "critical",
     "headline": "Convulsão associada a quadro febril intenso.",
-    "nextStep": "Proteja a cabeça do aluno de impactos e peça que chamem o 192 urgently.",
+    "nextStep": "Proteja a cabeça do aluno de impactos e peça que chamem o 192 urgentemente.",
     "priorityService": {
       "queryType": "highlight=samu",
       "label": "SAMU – 192",
@@ -1590,16 +1590,16 @@
     "flowId": "flow_suspeita_neurodivergencia",
     "level": "moderate",
     "headline": "Dificuldade contínua que prejudica avaliações e convivência, sem melhora.",
-    "nextStep": "Comunique a direção para reunião com a família e plano de apoio em sala.",
+    "nextStep": "Comunique a direção para reunião com a família, definir plano de apoio em sala e orientar a busca de avaliação na rede de saúde.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Reunião com responsáveis e encaminhamento para apoio externo."
+      "description": "Reunião com responsáveis e definição do encaminhamento para avaliação externa."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-coordenacao",
-      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Construção de estratégias e materiais de apoio pedagógico."
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Orientação à família sobre avaliação médica ou neuropsicológica, quando indicada."
     },
     "teacherScope": {
       "doThis": [
