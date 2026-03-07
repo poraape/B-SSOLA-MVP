@@ -8,7 +8,7 @@
 - NUNCA altere o fluxo tripartite do gateway em `src/features/gateway/AtendimentoGatePage.tsx` (SIM/NÃO/NÃO SEI).
 - NUNCA altere o comportamento de jornada principal definido por `src/app/router/routes.tsx` sem aprovação humana.
 - NUNCA introduza novos dados de estudante (nome, CPF, turma, escola_id) em `src/types.ts`, `src/data/` ou qualquer `src/features/`.
-- NUNCA introduza `fetch`/`axios` novos fora do padrão atual de telemetria em `src/application/telemetry/telemetryProviders.ts`.
+- NUNCA introduza `fetch`/`axios` novos fora do padrão atual de telemetria em `src/application/telemetry/telemetryProviders.ts`, EXCETO na fachada controlada de backend leve em endpoints same-origin `/api/*`, com fallback local obrigatório.
 - NUNCA adicione dependências pagas no `package.json`.
 - NUNCA converta prioridade inválida para `low` silenciosamente; registre evento no logger/telemetria.
 - NUNCA altere `src/data/v2/flows/*.json` sem validação de `npm run -s model:check`.
@@ -79,6 +79,10 @@
 - SEMPRE confirmar que `riskRules.ts` não foi tocado se o prompt não autorizou.
 - SEMPRE confirmar que nenhum campo de aluno foi criado.
 - SEMPRE manter `fetch` externo restrito ao que já existe no projeto.
+- SEMPRE manter feature flag por capacidade de fachada (`VITE_FEATURE_*_API`) com padrão seguro desligado quando aplicável.
+- SEMPRE garantir degrade para execução local quando houver erro HTTP, timeout, payload inválido, ausência de `fetch` ou flag desativada.
+- SEMPRE definir contrato tipado em `src/server/contracts/*` para qualquer endpoint `/api/*` novo ou alterado.
+- SEMPRE cobrir testes de client com, no mínimo: (a) flag desativada => local, (b) API ok => remoto, (c) falha API => fallback local.
 - SEMPRE usar paths reais do repositório em documentação.
 - SEMPRE usar linguagem PT-BR alinhada ao glossário para estados e CTAs.
 - SEMPRE fazer diff mínimo: somente linhas necessárias.

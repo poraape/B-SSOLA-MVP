@@ -2,7 +2,6 @@ import { ArrowLeft, AlertTriangle, ShieldCheck } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { runDecision } from '../../application/decisionOrchestrator';
 import { telemetryService } from '../../application/telemetry/TelemetryService';
 import { initFlow, FlowState } from '../../domain/flows/flowEngine';
 import { getCategoryById, getFlowById } from '../../domain/flows/selectors';
@@ -10,6 +9,7 @@ import { FeatureErrorBoundary } from '../shared/components/FeatureErrorBoundary'
 import { getPremiumCategoryIconByName } from '../shared/components/PremiumCategoryIcons';
 import { getCategoryDisplayLabel, getCategoryIcon } from '../shared/utils/categoryPresentation';
 
+import { runTriageWithFacade } from './clients/triageClient';
 import { TriageQuestion } from './components/TriageQuestion';
 import { TriageErrorBoundary } from './TriageErrorBoundary';
 
@@ -95,7 +95,7 @@ export const FlowPage: React.FC = () => {
     );
   }
 
-  const handleAnswer = (optionLabel: string) => {
+  const handleAnswer = async (optionLabel: string) => {
     if (!state.currentQuestionId) return;
 
     telemetryService.track({
@@ -107,13 +107,17 @@ export const FlowPage: React.FC = () => {
       },
     });
     
-    const newState = runDecision({
+    const newState = await runTriageWithFacade({
       mode: 'flow',
       flow,
       state,
       questionId: state.currentQuestionId,
       optionLabel
-    }) as FlowState;
+    });
+
+    if (!newState) {
+      return;
+    }
     
     if (newState.redirectToCategories) {
       navigate('/'); // Redirect to home/categories

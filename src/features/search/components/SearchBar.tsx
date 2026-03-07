@@ -11,21 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import type { SearchFilterType } from '../services/unifiedSearchEngine';
 import type { UnifiedSearchResult } from '../types/searchTypes';
 import { useSearch } from '../context/SearchContext';
-
-type SearchByTypeFn = (
-  query: string,
-  type: SearchFilterType,
-) => UnifiedSearchResult[];
-
-let searchByTypeFn: SearchByTypeFn | null = null;
-
-async function getSearchByType(): Promise<SearchByTypeFn> {
-  if (searchByTypeFn) return searchByTypeFn;
-
-  const module = await import('../services/unifiedSearchEngine');
-  searchByTypeFn = module.searchByType;
-  return searchByTypeFn;
-}
+import { searchWithFacade } from '../clients/searchClient';
 
 const TYPE_ICONS = {
   faq: HelpCircle,
@@ -67,8 +53,7 @@ export const SearchBar: React.FC = () => {
         return;
       }
 
-      const searchByType = await getSearchByType();
-      const nextResults = searchByType(term, filterType);
+      const nextResults = await searchWithFacade(term, filterType);
 
       if (!isCancelled) {
         setResults(nextResults);

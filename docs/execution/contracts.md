@@ -10,6 +10,14 @@ CI-5: NUNCA criar campos que armazenem dados do estudante (nome, CPF, turma)
 CI-6: NUNCA tornar triagem dependente de conexão à internet
 CI-7: NUNCA introduzir dependências pagas ou serviços externos com custo
 
+## ADENDO A CI-6 E CI-7 — BACKEND LEVE CONTROLADO (FACHADA OPCIONAL)
+- A aplicação pode usar endpoints same-origin em `/api/*` como fachada opcional, sem substituir o motor local-first.
+- CI-6 permanece inviolável: a triagem NUNCA pode depender de internet; em qualquer indisponibilidade remota, a execução local é obrigatória.
+- CI-7 permanece inviolável: a fachada `/api/*` não pode exigir serviços externos pagos nem aumentar custo obrigatório de operação.
+- Toda rota `/api/*` deve ter contrato tipado em `src/server/contracts/*` e validação de payload/resposta.
+- A UI e a jornada Home→Gateway→Triage→Resultado→Rede devem permanecer idênticas independentemente da origem (local ou `/api`).
+- É vedado transmitir dados de estudante (nome, CPF, turma, escola_id) pela fachada `/api/*`.
+
 ## REGRAS DE ESCOPO PARA TODO PROMPT FUTURO
 - Alterar APENAS arquivos explicitamente listados no prompt
 - Não refatorar código correto adjacente
