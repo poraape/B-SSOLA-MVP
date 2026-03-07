@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 
 import mapTilesConfig from '../../../data/v2/map-tiles.json';
+import networkConfigData from '../../../data/v2/network-config.json';
 import { Service } from '../../../types';
 
 type LeafletDefaultIconPrototype = {
@@ -36,6 +37,45 @@ interface NetworkMapProps {
   onMarkerClick: (service: Service) => void;
 }
 
+const categoryColorMap: Record<string, string> = Object.values(networkConfigData.layers).reduce(
+  (acc: Record<string, string>, layer) => {
+    acc[layer.id] = layer.color;
+    return acc;
+  },
+  {},
+);
+
+const schoolMarkerColor = '#FACC15';
+const defaultMarkerColor = '#2563EB';
+const schoolServiceIds = new Set([
+  'gestao-direcao',
+  'gestao-vice-direcao',
+  'gestao-coordenacao',
+]);
+
+const createPinIcon = (color: string): L.DivIcon =>
+  L.divIcon({
+    className: '',
+    html: `
+      <span style="
+        display: block;
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        border: 2px solid #ffffff;
+        background: ${color};
+        box-shadow: 0 1px 4px rgba(15,23,42,0.55);
+      "></span>
+    `,
+    iconSize: [18, 18],
+    iconAnchor: [9, 9],
+    popupAnchor: [0, -10],
+  });
+
+const getMarkerIcon = (service: Service): L.DivIcon => {
+  return createPinIcon(categoryColorMap[service.category] || defaultMarkerColor);
+};
+
 const ChangeView: React.FC<{ center: [number, number]; zoom: number }> = ({ center, zoom }) => {
   const map = useMap();
   useEffect(() => {
@@ -58,6 +98,14 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
   const mapServices = services.filter(
     (service) => service.location.lat !== null && service.location.lng !== null,
   );
+  const schoolServices = mapServices.filter(service => schoolServiceIds.has(service.id));
+  const regularServices = mapServices.filter(service => !schoolServiceIds.has(service.id));
+  const schoolPosition: [number, number] = schoolServices[0]
+    ? [schoolServices[0].location.lat!, schoolServices[0].location.lng!]
+    : [networkConfigData.schoolReference.lat, networkConfigData.schoolReference.lng];
+  const schoolAddress =
+    schoolServices[0]?.location.address || networkConfigData.schoolReference.address;
+  const duplicateCounts = new Map<string, number>();
   const [hasTileError, setHasTileError] = useState(false);
 
   if (hasTileError) {
@@ -80,11 +128,45 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
           }}
         />
         
-        {mapServices.map(service => {
+        <Marker
+          position={schoolPosition}
+          icon={createPinIcon(schoolMarkerColor)}
+        >
+          <Popup>
+            <div className="p-1">
+              <p className="font-bold text-slate-900 m-0">{networkConfigData.schoolReference.name}</p>
+              <p className="text-xs text-slate-500 m-0 mt-1">{schoolAddress}</p>
+              {schoolServices.length > 0 && (
+                <ul className="mt-2 pl-4 text-xs text-slate-700">
+                  {schoolServices.map(service => (
+                    <li key={service.id}>{service.name}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </Popup>
+        </Marker>
+
+        {regularServices.map(service => {
+          const lat = service.location.lat!;
+          const lng = service.location.lng!;
+          const key = `${lat}:${lng}`;
+          const indexAtLocation = duplicateCounts.get(key) || 0;
+          duplicateCounts.set(key, indexAtLocation + 1);
+          const spreadStep = 0.00007;
+          const position: [number, number] =
+            indexAtLocation === 0
+              ? [lat, lng]
+              : [
+                  lat + Math.cos(indexAtLocation * 1.57) * spreadStep,
+                  lng + Math.sin(indexAtLocation * 1.57) * spreadStep,
+                ];
+
           return (
             <Marker 
               key={service.id} 
-              position={[service.location.lat!, service.location.lng!]}
+              position={position}
+              icon={getMarkerIcon(service)}
               eventHandlers={{
                 click: () => onMarkerClick(service),
               }}
