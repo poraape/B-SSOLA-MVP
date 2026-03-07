@@ -1,17 +1,34 @@
 {
   "name": "react-example",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0-rc.1",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
+    "preinstall": "node -e \"const major = Number(process.versions.node.split('.')[0]); if (major < 22) { console.error('ERROR: Node >=22 is required. Current: ' + process.version); process.exit(1); }\"",
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
+    "build:registry": "node --loader ts-node/esm src/scripts/buildRegistry.ts",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "npm run lint:eslint && tsc --noEmit",
+    "lint:eslint": "eslint \"src/**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage:ui": "vitest --ui --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "model:check": "node src/scripts/modelCheck.mjs",
+    "test:watch": "vitest",
+    "heuristic:audit": "tsx src/scripts/compareHeuristics.ts",
+    "validate:services": "tsx src/scripts/validateServices.ts",
+    "validate:model": "tsx src/scripts/validateModelData.ts"
   },
   "dependencies": {
-    "@google/genai": "^1.29.0",
     "@tailwindcss/vite": "^4.1.14",
     "@types/leaflet": "^1.9.21",
     "@vitejs/plugin-react": "^5.0.4",
@@ -22,14 +39,31 @@
     "react-dom": "^19.0.0",
     "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.13.1",
-    "vite": "^6.2.0"
+    "semver": "^7.5.4",
+    "vite": "^6.2.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@types/semver": "^7.7.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/parser": "^8.46.4",
+    "@vitest/coverage-v8": "^1.3.0",
     "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "jsdom": "^25.0.1",
     "tailwindcss": "^4.1.14",
-    "tsx": "^4.21.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.7.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "vitest": "^1.3.0"
   }
 }

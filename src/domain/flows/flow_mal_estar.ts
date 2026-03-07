@@ -1,0 +1,152 @@
+import type { FlowSpec } from './flowSpec';
+
+export const flow_mal_estar: FlowSpec = {
+  "meta": {
+    "id": "flow_mal_estar",
+    "categoryId": "saude_bem_estar",
+    "subcategoryId": "mal_estar_sintomas",
+    "title": "Mal-estar ou Sintomas Leves",
+    "description": "Orientações praticas para a equipe escolar sobre Mal-estar ou Sintomas Físicos.",
+    "severity": "MODERATE",
+    "keywords": [],
+    "status": "EXISTING"
+  },
+  "steps": [
+    {
+      "id": "step_1",
+      "type": "alert",
+      "content": "Situação identificada: Mal-estar ou Sintomas Físicos. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "riskSignals": [
+        "sintoma_agudo"
+      ]
+    },
+    {
+      "id": "q1",
+      "type": "question",
+      "question": "O estudante esta consciente e orientado?",
+      "actions": [
+        {
+          "label": "Sim",
+          "next": "q2"
+        },
+        {
+          "label": "Não",
+          "next": "outcome_moderado"
+        }
+      ],
+      "riskSignals": [
+        "sintoma_agudo",
+        "agravamento_progressivo"
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "question",
+      "question": "Os sintomas persistem ou pioram?",
+      "actions": [
+        {
+          "label": "Sim",
+          "next": "outcome_moderado"
+        },
+        {
+          "label": "Não",
+          "next": "outcome_baixo"
+        }
+      ],
+      "riskSignals": [
+        "sintoma_agudo",
+        "agravamento_progressivo"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "outcome_baixo",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
+      "actions": [
+        "Acolher estudante",
+        "Oferecer repouso supervisionado"
+      ],
+      "timeline": "Dias",
+      "riskLevel": "MODERATE",
+      "flags": []
+    },
+    {
+      "id": "outcome_moderado",
+      "label": "Acompanhamento Institucional",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
+      "actions": [
+        "Entrar em contato com os responsáveis",
+        "Encaminhar para avaliação médica"
+      ],
+      "timeline": "Horas",
+      "riskLevel": "MODERATE",
+      "flags": []
+    }
+  ],
+  "risk": {
+    "modelVersion": "risk-heuristic-v1",
+    "baselineSeverity": "MODERATE",
+    "escalationRules": [
+      {
+        "id": "rule_sintoma_agudo",
+        "ifAny": [
+          "sintoma_agudo"
+        ],
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Sintoma agudo requer avaliação e monitoramento prioritario."
+      },
+      {
+        "id": "rule_default_baseline",
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Aplica severidade base definida no fluxo."
+      },
+      {
+        "id": "rule_default",
+        "toRiskLevel": "MODERATE",
+        "then": {
+          "riskLevel": "MODERATE",
+          "flags": []
+        },
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
+      }
+    ],
+    "protectiveFactors": [],
+    "riskSignals": [
+      {
+        "id": "sintoma_agudo",
+        "label": "Sintoma agudo",
+        "weight": 3
+      },
+      {
+        "id": "agravamento_progressivo",
+        "label": "Agravamento progressivo",
+        "weight": 2
+      },
+      {
+        "id": "necessidade_avaliacao",
+        "label": "Necessidade de avaliação",
+        "weight": 2
+      }
+    ],
+    "recommendedActionsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    },
+    "recommendedServiceTagsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    }
+  }
+};

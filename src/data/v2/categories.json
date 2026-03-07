@@ -1,0 +1,105 @@
+[
+  {
+    "id": "emergencias_seguranca",
+    "label": "Emergências e Segurança",
+    "riskGroup": "emergency",
+    "icon": "AlertTriangle",
+    "color": "red",
+    "isEmergencyCategory": true,
+    "subcategories": [
+      { "id": "emergencia_medica", "label": "Emergência Médica Grave" },
+      { "id": "convulsao_perda_consciencia", "label": "Convulsão ou Perda de Consciência" },
+      { "id": "violencia_armada", "label": "Violência Armada ou Tiroteio" },
+      { "id": "ameaca_com_arma", "label": "Ameaça com Arma ou Objeto Perigoso" },
+      { "id": "incendio_evacuacao", "label": "Incêndio ou Evacuação de Emergência" },
+      { "id": "risco_estrutural", "label": "Risco Estrutural" },
+      { "id": "ameaca_externa", "label": "Ameaça Externa à Escola" }
+    ]
+  },
+  {
+    "id": "saude_bem_estar",
+    "label": "Saúde e Bem-Estar",
+    "riskGroup": "medical",
+    "icon": "Heart",
+    "color": "orange",
+    "subcategories": [
+      { "id": "mal_estar_sintomas", "label": "Mal-estar ou Sintomas Físicos" },
+      { "id": "febre_infeccao", "label": "Febre ou Suspeita de Infecção" },
+      { "id": "crise_respiratoria", "label": "Crise Respiratória ou Asmática" },
+      { "id": "desmaio_tontura", "label": "Desmaio, Tontura ou Fraqueza" },
+      { "id": "acidente_lesao", "label": "Acidente ou Lesão Física" },
+      { "id": "intoxicacao", "label": "Intoxicação ou Ingestão Suspeita" }
+    ]
+  },
+  {
+    "id": "saude_emocional",
+    "label": "Saúde Emocional",
+    "riskGroup": "psychosocial",
+    "icon": "Brain",
+    "color": "purple",
+    "subcategories": [
+      { "id": "ansiedade_crise", "label": "Crise de Ansiedade ou Pânico" },
+      { "id": "tristeza_depressao", "label": "Tristeza Persistente ou Depressão" },
+      { "id": "ideacao_suicida", "label": "Ideação Suicida ou Desesperança" },
+      { "id": "autolesao", "label": "Autolesão ou Automutilação" },
+      { "id": "isolamento_social", "label": "Isolamento Social Intenso" },
+      { "id": "uso_substancias", "label": "Uso ou Suspeita de Álcool/Drogas" }
+    ]
+  },
+  {
+    "id": "convivencia_conflitos",
+    "label": "Convivência e Conflitos",
+    "riskGroup": "violence",
+    "icon": "Shield",
+    "color": "blue",
+    "subcategories": [
+      { "id": "bullying", "label": "Bullying e Cyberbullying" },
+      { "id": "agressao_fisica", "label": "Agressão Física entre Estudantes" },
+      { "id": "agressao_verbal", "label": "Agressão Verbal ou Ameaças" },
+      { "id": "discriminacao_racismo", "label": "Discriminação ou Racismo" },
+      { "id": "lgbtfobia", "label": "Discriminação ou Violência LGBTQIA+" },
+      { "id": "mediacao_restaurativa", "label": "Mediação e Diálogo Restaurativo" },
+      { "id": "reintegracao_pos_suspensao", "label": "Reintegração após Afastamento/Suspensão" },
+      { "id": "plano_acompanhamento", "label": "Plano Individual de Acompanhamento" }
+    ]
+  },
+  {
+    "id": "protecao_direitos",
+    "label": "Proteção e Direitos",
+    "riskGroup": "rights",
+    "icon": "Scale",
+    "color": "teal",
+    "subcategories": [
+      { "id": "violencia_domestica", "label": "Suspeita de Violência Doméstica" },
+      { "id": "abuso_sexual", "label": "Suspeita de Abuso Sexual" },
+      { "id": "negligencia_familiar", "label": "Negligência Familiar" },
+      { "id": "trabalho_infantil", "label": "Trabalho Infantil ou Exploração" },
+      { "id": "abandono_rua", "label": "Abandono ou Situação de Rua" },
+      { "id": "outras_violacoes_direitos", "label": "Outras Violações de Direitos" }
+    ]
+  },
+  {
+    "id": "apoio_social_familiar",
+    "label": "Apoio Social e Familiar",
+    "riskGroup": "social",
+    "icon": "Home",
+    "color": "yellow",
+    "subcategories": [
+      { "id": "evasao_faltas", "label": "Evasão ou Faltas Repetidas" },
+      { "id": "inseguranca_alimentar", "label": "Fome ou Insegurança Alimentar" },
+      { "id": "vulnerabilidade_social_geral", "label": "Outras Vulnerabilidades Sociais" }
+    ]
+  },
+  {
+    "id": "inclusao_acessibilidade",
+    "label": "Inclusão e Acessibilidade",
+    "riskGroup": "structural",
+    "icon": "Puzzle",
+    "color": "indigo",
+    "subcategories": [
+      { "id": "suspeita_neurodivergencia", "label": "Suspeita de TEA, TDAH ou Neurodivergência" },
+      { "id": "adaptacao_pedagogica", "label": "Necessidade de Adaptação Pedagógica" },
+      { "id": "barreira_acessibilidade", "label": "Barreira de Acessibilidade Física ou Digital" }
+    ]
+  }
+]

@@ -1,4 +1,5 @@
 export interface AppModel {
+  version: string;
   meta: {
     appName: string;
     version: string;
@@ -34,6 +35,7 @@ export interface AppModel {
   categories: Category[];
   flows: Flow[];
   services: Service[];
+  flowResultMessagesByFlowIdAndLevel: Record<string, Record<FlowResultLevel, FlowResultMessage>>;
   orientationBlocks: OrientationBlock[];
   summaryTemplate: {
     title: string;
@@ -49,6 +51,38 @@ export interface AppModel {
   };
 }
 
+export type FlowResultLevel = 'low' | 'moderate' | 'high' | 'critical';
+
+export interface FlowResultServiceRef {
+  queryType: string;
+  label: string;
+  description: string;
+}
+
+export interface FlowResultTeacherScope {
+  doThis: string[];
+  notYours: string;
+}
+
+export interface FlowResultMessage {
+  flowId: string;
+  level: FlowResultLevel;
+  headline: string;
+  nextStep: string;
+  priorityService: FlowResultServiceRef;
+  complementaryService: FlowResultServiceRef;
+  teacherScope: FlowResultTeacherScope;
+}
+
+export type RiskGroup =
+  | 'violence'
+  | 'psychosocial'
+  | 'medical'
+  | 'social'
+  | 'rights'
+  | 'structural'
+  | 'emergency';
+
 export interface GuardrailQuestion {
   id: string;
   text: string;
@@ -59,9 +93,11 @@ export interface GuardrailQuestion {
 export interface Category {
   id: string;
   label: string;
+  riskGroup: RiskGroup;
   description?: string;
   icon: string;
   color?: string;
+  weight?: number;
   subcategories: Array<{ id: string; label: string }>;
   isEmergencyCategory?: boolean;
 }
@@ -70,7 +106,9 @@ export interface Flow {
   meta: {
     id: string;
     categoryId: string; // Added to maintain relationship
+    subcategoryId?: string;
     subcategory: string;
+    severity?: 'CRITICAL' | 'HIGH' | 'MODERATE';
     type: 'standard' | 'medical_emergency' | 'security_emergency';
     title: string;
     keywords: string[];
@@ -86,6 +124,40 @@ export interface Flow {
   results: Record<string, TriageResult>;
 }
 
+export type FlowPriority =
+  | 'low'
+  | 'moderate'
+  | 'high'
+  | 'critical'
+  | 'P0'
+  | 'P1'
+  | 'P2'
+  | 'P3';
+
+// Prioridade institucional — valores semânticos para UI e motor
+export type InstitutionalPriority = 'low' | 'moderate' | 'high' | 'critical';
+
+// Código legado — manter apenas para compatibilidade de serialização
+export type LegacyPriorityCode = 'P0' | 'P1' | 'P2' | 'P3';
+
+// Mapper explícito e único — USE ESTE em vez de conversão inline
+export function toInstitutionalPriority(
+  code: LegacyPriorityCode | string
+): InstitutionalPriority {
+  const map: Record<string, InstitutionalPriority> = {
+    P0: 'critical', P1: 'high', P2: 'moderate', P3: 'low'
+  };
+  return map[code] ?? 'low';
+}
+
+// Mapa de exibição PT-BR — USE ESTE para todo texto visível ao usuário
+export const PRIORITY_LABELS: Record<InstitutionalPriority, string> = {
+  low: 'Atenção',
+  moderate: 'Atenção Elevada',
+  high: 'Alto Risco',
+  critical: 'Crítico — Ação Imediata'
+};
+
 export interface TriageQuestion {
   id: string;
   text: string;
@@ -99,12 +171,18 @@ export interface TriageQuestion {
 }
 
 export interface TriageResult {
-  level?: string; // NOVO — necessário para motor premium
+  level?: string;
   severity: string;
+  priority?: FlowPriority;
   notifyManagement?: boolean;
   primaryService: { id: string; name: string } | null;
   secondaryService: { id: string; name: string } | null;
   schoolActions: string[];
+  explanationPoints?: string[];
+  institutionalScript?: string[];
+  appliedRules?: string[];
+  riskScore?: number;
+  riskScoreFactors?: string[];
   summaryTag?: string;
   uiFlags?: {
     confidential?: boolean;
@@ -118,8 +196,30 @@ export interface Service {
   name: string;
   category: string;
   type: string;
+  /**
+   * Calculated availability metadata derived from the `contact` object.
+   * All values are optional to preserve compatibility with legacy datasets.
+   */
+  contactAvailability?: {
+    /** Indicates if the service has a primary phone number. */
+    hasPhone: boolean;
+    /** Indicates if the service has an alternate phone number. */
+    hasAlternate: boolean;
+    /** Indicates if the service has an email contact channel. */
+    hasEmail: boolean;
+    /** Indicates if the service has a website URL. */
+    hasWebsite: boolean;
+    /** Percentage score (0-100) of available contact channels. */
+    completenessScore: number;
+  };
+  /**
+   * Marks entries that require geolocation validation/review.
+   */
+  needsGeoReview?: boolean;
   contact: {
     phone: string | null;
+    /** Optional list of extra phone numbers for expanded contact coverage. */
+    otherPhones?: string[];
     email?: string | null;
     website?: string | null;
     alternatePhone?: string | null;
@@ -132,8 +232,41 @@ export interface Service {
   };
 }
 
+export interface NetworkLayer {
+  id: string;
+  label: string;
+  serviceIds: string[];
+  icon: string;
+  color: string;
+  /** 0 means highest urgency. */
+  priority: number;
+  style: 'solid' | 'glow';
+  defaultVisible: boolean;
+}
+
+export interface NetworkConfig {
+  layers: Record<string, NetworkLayer>;
+  schoolReference?: {
+    name: string;
+    lat: number;
+    lng: number;
+    proximityRadiusMeters: number;
+  };
+}
+
 export interface OrientationBlock {
   id: string;
   title: string;
   content: string[];
+}
+
+export interface TriageSession {
+  flowId: string;
+  categoryId: string;
+  startedAt: number;
+  updatedAt: number;
+  completedAt?: number;
+  status: 'in_progress' | 'completed' | 'aborted';
+  isComplete: boolean;
+  result: TriageResult | null;
 }

@@ -1,13 +1,14 @@
-import React from 'react';
-import { Header } from './Header';
 import { motion, AnimatePresence } from 'motion/react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
+
+import { useTheme } from '../context/ThemeContext';
+
+import { Header } from './Header';
 
 interface ShellProps {
   children: React.ReactNode;
 }
-
-import { useTheme } from '../context/ThemeContext';
 
 export const Shell: React.FC<ShellProps> = ({ children }) => {
   const location = useLocation();
@@ -38,10 +39,10 @@ export const Shell: React.FC<ShellProps> = ({ children }) => {
         theme === 'dark' ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'
       }`}>
         <div className="max-w-6xl mx-auto px-4 text-center space-y-2">
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+          <p className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">
             Protocolo Bússola © 2026 • Ermelino Matarazzo
           </p>
-          <p className="text-[10px] text-slate-300 max-w-md mx-auto">
+          <p className="mx-auto max-w-md text-[0.72rem] text-slate-500 dark:text-slate-400 sm:text-xs">
             Este aplicativo é uma ferramenta de apoio. Em situações de risco de vida, acione imediatamente os serviços de emergência (190, 192, 193).
           </p>
         </div>

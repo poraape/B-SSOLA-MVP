@@ -19,7 +19,7 @@ export const AccessibilityMenu: React.FC<AccessibilityMenuProps> = ({ onClose })
   ];
 
   return (
-    <div className={`fixed top-24 right-4 w-80 rounded-3xl shadow-2xl z-[2000] border p-6 animate-in slide-in-from-top-4 duration-200 ${
+    <div className={`fixed top-[clamp(6.5rem,12vh,8rem)] right-3 sm:right-4 w-[min(92vw,28rem)] max-h-[calc(100dvh-8rem)] overflow-y-auto rounded-3xl shadow-2xl z-[2000] border p-5 sm:p-6 animate-in slide-in-from-top-4 duration-200 ${
       theme === 'dark' ? 'bg-slate-900 border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
     }`}>
       <div className="flex items-center justify-between mb-6">
@@ -34,14 +34,14 @@ export const AccessibilityMenu: React.FC<AccessibilityMenuProps> = ({ onClose })
         <div className="space-y-4">
           <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
             <Type className="w-4 h-4" />
-            <span className="text-xs font-bold uppercase tracking-widest">Tamanho da Fonte</span>
+            <span className="text-sm font-bold uppercase tracking-widest">Tamanho da Fonte</span>
           </div>
           <div className="grid grid-cols-2 gap-2">
             {fontSizes.map((size) => (
               <button
                 key={size.value}
                 onClick={() => updateSettings({ fontSize: size.value })}
-                className={`px-3 py-2 rounded-xl text-xs font-bold transition-all border ${
+                className={`px-3 py-2 rounded-xl text-sm font-bold transition-all border leading-tight ${
                   settings.fontSize === size.value
                     ? 'bg-blue-600 border-blue-600 text-white shadow-lg'
                     : 'border-slate-200 dark:border-slate-700 hover:border-blue-400'
@@ -57,7 +57,7 @@ export const AccessibilityMenu: React.FC<AccessibilityMenuProps> = ({ onClose })
         <div className="space-y-4">
           <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
             <Eye className="w-4 h-4" />
-            <span className="text-xs font-bold uppercase tracking-widest">Opções Visuais</span>
+            <span className="text-sm font-bold uppercase tracking-widest">Opções Visuais</span>
           </div>
           <div className="space-y-2">
             <button
@@ -68,7 +68,7 @@ export const AccessibilityMenu: React.FC<AccessibilityMenuProps> = ({ onClose })
                   : 'border-slate-200 dark:border-slate-700 hover:border-blue-400'
               }`}
             >
-              <span className="text-sm font-bold">Alto Contraste</span>
+              <span className="text-base font-bold">Alto Contraste</span>
               {settings.highContrast && <Check className="w-4 h-4" />}
             </button>
             
@@ -80,7 +80,7 @@ export const AccessibilityMenu: React.FC<AccessibilityMenuProps> = ({ onClose })
                   : 'border-slate-200 dark:border-slate-700 hover:border-blue-400'
               }`}
             >
-              <span className="text-sm font-bold">Fonte para Dislexia</span>
+              <span className="text-base font-bold">Fonte para Dislexia</span>
               {settings.dyslexicFont && <Check className="w-4 h-4" />}
             </button>
           </div>
@@ -89,7 +89,7 @@ export const AccessibilityMenu: React.FC<AccessibilityMenuProps> = ({ onClose })
         {/* Reset */}
         <button
           onClick={resetSettings}
-          className="w-full flex items-center justify-center gap-2 p-4 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-xs font-bold uppercase tracking-widest"
+          className="w-full flex items-center justify-center gap-2 p-4 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
         >
           <RotateCcw className="w-4 h-4" />
           Restaurar Padrões

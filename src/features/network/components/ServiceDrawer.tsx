@@ -15,11 +15,11 @@ export const ServiceDrawer: React.FC<ServiceDrawerProps> = ({ service, onClose }
   if (!service) return null;
 
   return (
-    <div className={`absolute inset-y-4 right-4 w-80 border rounded-3xl shadow-2xl z-[1000] flex flex-col overflow-hidden animate-in slide-in-from-right duration-300 transition-colors ${
-      theme === 'dark' ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'
+    <div className={`absolute inset-x-2 bottom-2 top-2 z-[1000] flex w-auto flex-col overflow-hidden rounded-[20px] border shadow-[0_16px_36px_-24px_rgba(15,23,42,0.55)] backdrop-blur-xl animate-in slide-in-from-right duration-300 transition-colors md:inset-y-4 md:right-4 md:left-auto md:w-80 ${
+      theme === 'dark' ? 'bg-slate-900/90 border-slate-700' : 'bg-white/90 border-slate-200/90'
     }`}>
       <div className={`p-4 border-b flex items-center justify-between ${
-        theme === 'dark' ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50/50 border-slate-100'
+        theme === 'dark' ? 'bg-slate-800/60 border-slate-700' : 'bg-slate-50/75 border-slate-200'
       }`}>
         <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Detalhes do Serviço</span>
         <button 
@@ -30,9 +30,9 @@ export const ServiceDrawer: React.FC<ServiceDrawerProps> = ({ service, onClose }
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-6 space-y-6">
+      <div className="flex-1 overflow-y-auto p-5 space-y-5 sm:p-6 sm:space-y-6">
         <div className="space-y-2">
-          <div className="inline-block px-2 py-1 rounded-md bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-black uppercase tracking-tighter">
+          <div className="inline-block rounded-md bg-blue-100 px-2 py-1 text-[10px] font-black uppercase tracking-tighter text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
             {service.category.replace('_', ' ')}
           </div>
           <h3 className="text-xl font-black text-slate-900 dark:text-white leading-tight tracking-tight">{service.name}</h3>
@@ -98,10 +98,10 @@ export const ServiceDrawer: React.FC<ServiceDrawerProps> = ({ service, onClose }
       </div>
 
       <div className={`p-4 border-t ${
-        theme === 'dark' ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-100'
+        theme === 'dark' ? 'bg-slate-800/60 border-slate-700' : 'bg-slate-50/75 border-slate-200'
       }`}>
         <Link to={`/rede/servico/${service.id}`}>
-          <Button fullWidth variant="primary" className="rounded-xl font-black uppercase text-[10px] tracking-widest">
+          <Button fullWidth variant="primary" className="rounded-[16px] font-black uppercase text-[10px] tracking-widest">
             Ver Detalhes Completos
           </Button>
         </Link>

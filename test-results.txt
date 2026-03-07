@@ -1,0 +1,77 @@
+
+> react-example@0.1.0-rc.1 test:run
+> vitest run
+
+
+[7m[1m[36m RUN [39m[22m[27m [36mv1.6.1[39m [90mX:/NutriInsight/B-SSOLA-MVP[39m
+
+ [32m✓[39m src/domain/__tests__/flowEngine.test.ts [2m ([22m[2m7 tests[22m[2m)[22m[90m 11[2mms[22m[39m
+ [32m✓[39m src/application/__tests__/telemetryProviders.test.ts [2m ([22m[2m7 tests[22m[2m)[22m[90m 25[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/premiumEngine.test.ts [2m ([22m[2m4 tests[22m[2m)[22m[90m 18[2mms[22m[39m
+ [32m✓[39m src/application/__tests__/TelemetryService.test.ts [2m ([22m[2m6 tests[22m[2m)[22m[90m 28[2mms[22m[39m
+ [32m✓[39m src/application/__tests__/decisionOrchestrator.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 20[2mms[22m[39m
+ [32m✓[39m src/domain/metrics/__tests__/aggregate.test.ts [2m ([22m[2m2 tests[22m[2m)[22m[90m 15[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/validateModel.test.ts [2m ([22m[2m6 tests[22m[2m)[22m[90m 23[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/runtimeV2.core.test.ts [2m ([22m[2m5 tests[22m[2m)[22m[90m 22[2mms[22m[39m
+ [32m✓[39m src/domain/contracts/__tests__/modelSchema.test.ts [2m ([22m[2m2 tests[22m[2m)[22m[90m 32[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/cumulativeRisk.test.ts [2m ([22m[2m5 tests[22m[2m)[22m[90m 91[2mms[22m[39m
+ [32m✓[39m src/domain/flows/__tests__/flowEngine.test.ts [2m ([22m[2m6 tests[22m[2m)[22m[90m 169[2mms[22m[39m
+ [32m✓[39m src/features/search/services/__tests__/unifiedSearchEngine.test.ts [2m ([22m[2m9 tests[22m[2m)[22m[90m 124[2mms[22m[39m
+ [32m✓[39m src/domain/metrics/__tests__/logger.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 15[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/runtimeV2.adapter.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 16[2mms[22m[39m
+ [32m✓[39m src/domain/search/__tests__/searchEngine.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 14[2mms[22m[39m
+ [32m✓[39m src/application/__tests__/loggerService.test.ts [2m ([22m[2m2 tests[22m[2m)[22m[90m 21[2mms[22m[39m
+ [32m✓[39m src/domain/flows/__tests__/criticalFlows.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 134[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/decisionRegression.test.ts [2m ([22m[2m5 tests[22m[2m)[22m[90m 74[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/goldens.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 74[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/invariants.test.ts [2m ([22m[2m6 tests[22m[2m)[22m[90m 25[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/riskRules.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 75[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/riskScore.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 76[2mms[22m[39m
+ [32m✓[39m src/domain/contracts/__tests__/flowSchema.test.ts [2m ([22m[2m2 tests[22m[2m)[22m[90m 20[2mms[22m[39m
+ [32m✓[39m src/features/resources/utils/__tests__/searchUtils.test.ts [2m ([22m[2m6 tests[22m[2m)[22m[90m 17[2mms[22m[39m
+ [32m✓[39m src/features/resources/glossaryGraph/utils/__tests__/mentionDetection.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 13[2mms[22m[39m
+ [32m✓[39m src/features/resources/glossaryGraph/utils/__tests__/similarity.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 13[2mms[22m[39m
+ [32m✓[39m src/domain/gateway/__tests__/gatewayHeuristics.test.ts [2m ([22m[2m4 tests[22m[2m)[22m[90m 13[2mms[22m[39m
+ [32m✓[39m src/domain/__tests__/flowRegistry.sanity.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 26[2mms[22m[39m
+ [32m✓[39m src/features/resources/glossaryGraph/utils/__tests__/slugify.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 10[2mms[22m[39m
+ [32m✓[39m src/domain/model/__tests__/loadPremiumExtensions.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 9[2mms[22m[39m
+ [32m✓[39m src/domain/risk/__tests__/riskScore.test.ts [2m ([22m[2m1 test[22m[2m)[22m[90m 9[2mms[22m[39m
+ [32m✓[39m src/domain/model/__tests__/index.test.ts [2m ([22m[2m2 tests[22m[2m)[22m[90m 11[2mms[22m[39m
+ [32m✓[39m src/features/resources/hooks/__tests__/useGlossarySearch.test.ts [2m ([22m[2m3 tests[22m[2m)[22m[90m 45[2mms[22m[39m
+ [32m✓[39m src/domain/appMode/__tests__/AppModeContext.test.tsx [2m ([22m[2m2 tests[22m[2m)[22m[90m 225[2mms[22m[39m
+ [32m✓[39m src/features/resources/components/__tests__/GlossaryCard.test.tsx [2m ([22m[2m4 tests[22m[2m)[22m[33m 315[2mms[22m[39m
+ [32m✓[39m src/features/gateway/__tests__/AtendimentoGatePage.test.tsx [2m ([22m[2m4 tests[22m[2m)[22m[90m 260[2mms[22m[39m
+[90mstdout[2m | src/features/gateway/__tests__/AtendimentoGatePage.test.tsx[2m > [22m[2mAtendimentoGatePage[2m > [22m[2mSIM deve ir para emergência[22m[39m
+[GatewayDecision] {
+  route: [32m'emergency'[39m,
+  explanation: [32m'Usuário identificou risco imediato.'[39m,
+  score: [33m2[39m
+}
+
+[90mstdout[2m | src/features/gateway/__tests__/AtendimentoGatePage.test.tsx[2m > [22m[2mAtendimentoGatePage[2m > [22m[2mNÃO deve ir para categorias[22m[39m
+[GatewayDecision] {
+  route: [32m'categories'[39m,
+  explanation: [32m'Usuário não identificou risco imediato.'[39m,
+  score: [33m0[39m
+}
+
+[90mstdout[2m | src/features/gateway/__tests__/AtendimentoGatePage.test.tsx[2m > [22m[2mAtendimentoGatePage[2m > [22m[2mNÃO SEI com sinal marcado deve ir para emergência[22m[39m
+[GatewayDecision] {
+  route: [32m'emergency'[39m,
+  explanation: [32m'Sinal crítico identificado.'[39m,
+  score: [33m2[39m
+}
+
+[90mstdout[2m | src/features/gateway/__tests__/AtendimentoGatePage.test.tsx[2m > [22m[2mAtendimentoGatePage[2m > [22m[2mNÃO SEI sem sinal marcado deve ir para categorias[22m[39m
+[GatewayDecision] {
+  route: [32m'categories'[39m,
+  explanation: [32m'Nenhum sinal crítico detectado.'[39m,
+  score: [33m0[39m
+}
+
+
+[2m Test Files [22m [1m[32m36 passed[39m[22m[90m (36)[39m
+[2m      Tests [22m [1m[32m127 passed[39m[22m[90m (127)[39m
+[2m   Start at [22m 20:31:00
+[2m   Duration [22m 13.15s[2m (transform 4.19s, setup 12ms, collect 19.89s, tests 2.09s, environment 11.44s, prepare 22.90s)[22m
+
