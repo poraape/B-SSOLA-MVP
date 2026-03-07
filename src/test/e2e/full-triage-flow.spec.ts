@@ -19,7 +19,7 @@ test.describe('Jornada completa de triagem', () => {
     await expect(page.getByRole('heading', { name: /Há risco imediato neste momento\?/i })).toBeVisible();
 
     await page.getByRole('button', { name: /^NÃO$/i }).click();
-    await expect(page).toHaveURL('/');
+    await expect(page).toHaveURL(/\/categorias$/);
 
     await page.getByRole('heading', { name: /Situações por tema|Situacoes por tema/i }).click();
     await page.getByRole('heading', { name: /Saúde e Bem-Estar|Saude e Bem-Estar/i }).click();
