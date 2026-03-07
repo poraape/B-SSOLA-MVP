@@ -21,7 +21,7 @@ test.describe('Jornada completa de triagem', () => {
     await page.getByRole('button', { name: /^NÃO$/i }).click();
     await expect(page).toHaveURL('/');
 
-    await page.getByRole('heading', { name: /Navegar por Categorias/i }).click();
+    await page.getByRole('heading', { name: /Situações por tema|Situacoes por tema/i }).click();
     await page.getByRole('heading', { name: /Saúde e Bem-Estar|Saude e Bem-Estar/i }).click();
     await expect(page).toHaveURL(/\/categoria\/saude_bem_estar$/);
 

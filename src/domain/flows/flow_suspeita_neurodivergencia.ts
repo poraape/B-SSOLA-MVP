@@ -6,7 +6,7 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
     "categoryId": "inclusao_acessibilidade",
     "subcategoryId": "suspeita_neurodivergencia",
     "title": "Suspeita de TEA ou TDAH",
-    "description": "Orientacoes praticas para a equipe escolar sobre Suspeita de TEA, TDAH ou Neurodivergencia.",
+    "description": "Orientações praticas para a equipe escolar sobre Suspeita de TEA, TDAH ou Neurodivergencia.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Suspeita de TEA, TDAH ou Neurodivergencia. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Suspeita de TEA, TDAH ou Neurodivergencia. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "barreira_acesso"
       ]
@@ -23,14 +23,14 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Ha prejuizo significativo no aprendizado?",
+      "question": "Há prejuizo significativo no aprendizado?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -43,10 +43,10 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
-        "Observacao estruturada"
+        "Observação estruturada"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",
@@ -55,10 +55,10 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
-        "Orientar responsaveis para avaliacao clinica",
-        "Registrar plano pedagogico adaptado"
+        "Orientar responsaveis para avaliação clinica",
+        "Registrar plano pedagógico adaptado"
       ],
       "timeline": "Horas",
       "riskLevel": "MODERATE",
@@ -101,7 +101,7 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
       },
       {
         "id": "necessidade_adaptacao",
-        "label": "Necessidade de adaptacao",
+        "label": "Necessidade de adaptação",
         "weight": 2
       }
     ],

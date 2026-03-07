@@ -58,12 +58,12 @@ export const ResultView: React.FC<ResultViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Tabs */}
-      <Card className="p-2 border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 flex gap-2">
+      <Card className="flex gap-2 rounded-[20px] border border-slate-200/90 bg-white/85 p-2 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/80">
         <button
           onClick={() => setActiveTab('decision')}
           className={`flex-1 py-3 px-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all ${
             activeTab === 'decision'
-              ? 'bg-blue-600 text-white shadow-lg'
+              ? 'bg-blue-600 text-white shadow-[0_8px_16px_-12px_rgba(37,99,235,0.8)]'
               : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
           }`}
         >
@@ -73,7 +73,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
           onClick={() => setActiveTab('analysis')}
           className={`flex-1 py-3 px-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all ${
             activeTab === 'analysis'
-              ? 'bg-blue-600 text-white shadow-lg'
+              ? 'bg-blue-600 text-white shadow-[0_8px_16px_-12px_rgba(37,99,235,0.8)]'
               : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
           }`}
         >
@@ -84,7 +84,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
             onClick={() => setActiveTab('resources')}
             className={`flex-1 py-3 px-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all ${
               activeTab === 'resources'
-                ? 'bg-blue-600 text-white shadow-lg'
+                ? 'bg-blue-600 text-white shadow-[0_8px_16px_-12px_rgba(37,99,235,0.8)]'
                 : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200'
             }`}
           >
@@ -94,7 +94,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
       </Card>
 
       {/* Content */}
-      <Card className="p-6 md:p-8 border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl">
+      <Card className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/80 md:p-8">
         {/* Tab: Decision */}
         {activeTab === 'decision' && (
           <div className="space-y-8">
@@ -140,7 +140,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
               <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest mb-3">
                 Você escolheu:
               </h3>
-              <div className="p-5 rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700">
+              <div className="rounded-[16px] border border-slate-200 bg-slate-50/85 p-5 dark:border-slate-700 dark:bg-slate-800/75">
                 <p className="text-slate-700 dark:text-slate-200 font-bold">
                   {choice.label}
                 </p>
@@ -162,7 +162,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
               <Button
                 onClick={() => setActiveTab('analysis')}
                 variant="primary"
-                className="w-full py-5 rounded-2xl font-black uppercase tracking-widest text-xs"
+                className="w-full rounded-[18px] py-5 text-xs font-black uppercase tracking-widest"
               >
                 Ver Análise Completa
               </Button>
@@ -190,7 +190,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
 
             {/* Section: Protocol */}
             {choice.feedback.protocol && (
-              <div className="p-6 rounded-2xl bg-blue-50 dark:bg-blue-900/10 border-2 border-blue-200 dark:border-blue-800">
+              <div className="rounded-[16px] border border-blue-200 bg-blue-50/80 p-6 dark:border-blue-800 dark:bg-blue-900/15">
                 <div className="flex items-center gap-2 mb-4">
                   <BarChart3 className="w-5 h-5 text-blue-600" />
                   <h3 className="text-lg font-black text-blue-900 dark:text-blue-100">
@@ -228,7 +228,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
                 <Button
                   onClick={() => setActiveTab('resources')}
                   variant="outline"
-                  className="w-full py-5 rounded-2xl font-black uppercase tracking-widest text-xs"
+                  className="w-full rounded-[18px] py-5 text-xs font-black uppercase tracking-widest"
                 >
                   Ver Recursos de Aprofundamento →
                 </Button>
@@ -272,7 +272,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
                     href={resource.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block p-5 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all group"
+                    className="group block rounded-[16px] border border-slate-200/90 bg-white/80 p-5 transition-all hover:-translate-y-0.5 hover:border-blue-400 hover:bg-blue-50/70 dark:border-slate-700 dark:bg-slate-900/70 dark:hover:border-blue-500 dark:hover:bg-blue-900/15"
                   >
                     <div className="flex items-start gap-4">
                       <div className={`w-12 h-12 rounded-xl bg-${color}-100 dark:bg-${color}-900/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
@@ -303,7 +303,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
         <Button
           onClick={onBackToDashboard}
           variant="primary"
-          className="flex-1 py-5 rounded-2xl font-black uppercase tracking-widest text-xs"
+          className="flex-1 rounded-[18px] py-5 text-xs font-black uppercase tracking-widest"
         >
           <BarChart3 className="w-4 h-4 mr-2" />
           Tentar Outro Cenário
@@ -311,7 +311,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
         <Button
           onClick={onReset}
           variant="ghost"
-          className="flex-1 py-5 rounded-2xl font-black uppercase tracking-widest text-xs text-slate-400"
+          className="flex-1 rounded-[18px] py-5 text-xs font-black uppercase tracking-widest text-slate-400"
         >
           <RotateCcw className="w-4 h-4 mr-2" />
           Reiniciar Tudo

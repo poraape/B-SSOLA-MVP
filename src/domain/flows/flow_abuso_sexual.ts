@@ -6,11 +6,11 @@ export const flow_abuso_sexual: FlowSpec = {
     "categoryId": "protecao_direitos",
     "subcategoryId": "abuso_sexual",
     "title": "Suspeita de Abuso Sexual",
-    "description": "Orientacoes para proteger, registrar e acionar a rede sem revitimizar o estudante.",
+    "description": "Orientações para proteger, registrar e acionar a rede sem revitimizar o estudante.",
     "severity": "CRITICAL",
     "keywords": [
       "abuso sexual",
-      "protecao imediata",
+      "proteção imediata",
       "escuta segura",
       "preservar evidencias"
     ],
@@ -38,7 +38,7 @@ export const flow_abuso_sexual: FlowSpec = {
             "call_190"
           ]
         },
-        "rationale": "Risco imediato exige protecao integral e acionamento da rede de direitos."
+        "rationale": "Risco imediato exige proteção integral e acionamento da rede de direitos."
       },
       {
         "id": "rule_suspeita_consistente_abuso",
@@ -81,13 +81,13 @@ export const flow_abuso_sexual: FlowSpec = {
         "label": "Suspeita de agressor proximo no momento",
         "examples": [
           "agressor aguardando na escola",
-          "ameaca de retorno imediato"
+          "ameaça de retorno imediato"
         ],
         "weight": 3
       },
       {
         "id": "lesao_recente_grave",
-        "label": "Sinais fisicos recentes com risco importante",
+        "label": "Sinais físicos recentes com risco importante",
         "examples": [
           "dor intensa",
           "ferimento aparente grave"
@@ -116,17 +116,17 @@ export const flow_abuso_sexual: FlowSpec = {
     "recommendedActionsByRisk": {
       "MODERATE": [
         "Escuta acolhedora e sem julgamento",
-        "Registro pedagogico protegido",
+        "Registro pedagógico protegido",
         "Monitoramento com equipe"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Registrar formalmente",
         "Acionar Conselho Tutelar e CREAS"
       ],
       "CRITICAL": [
-        "Garantir protecao imediata",
-        "Nao deixar a pessoa sozinha",
+        "Garantir proteção imediata",
+        "Não deixar a pessoa sozinha",
         "Acionar 190/192 conforme risco atual"
       ]
     },
@@ -151,7 +151,7 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Suspeita de abuso sexual identificada. Priorize protecao, sigilo e escuta segura.",
+      "content": "Suspeita de abuso sexual identificada. Priorize proteção, sigilo e escuta segura.",
       "riskSignals": [
         "relato_consistente",
         "mudanca_comportamento_importante"
@@ -160,7 +160,7 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "step_2",
       "type": "action",
-      "action": "Nao investigar sozinho, nao repetir perguntas desnecessarias e preservar possiveis evidencias.",
+      "action": "Não investigar sozinho, não repetir perguntas desnecessarias e preservar possiveis evidencias.",
       "riskSignals": [
         "relato_consistente"
       ]
@@ -168,14 +168,14 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Existe risco imediato (agressor proximo, ameaca atual ou lesao grave)?",
+      "question": "Existe risco imediato (agressor proximo, ameaça atual ou lesão grave)?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_protecao_urgente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -187,14 +187,14 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Ha indicios consistentes para acionar formalmente a rede de protecao?",
+      "question": "Há indicios consistentes para acionar formalmente a rede de proteção?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_rede_direitos"
         },
         {
-          "label": "Ainda em observacao",
+          "label": "Ainda em observação",
           "next": "outcome_acompanhamento_protegido"
         }
       ],
@@ -207,11 +207,11 @@ export const flow_abuso_sexual: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_protecao_urgente",
-      "label": "Protecao Urgente e Rede Imediata",
-      "description": "Risco critico. Acione protecao imediata e rede de direitos sem revitimizar.",
+      "label": "Proteção Urgente e Rede Imediata",
+      "description": "Risco critico. Acione proteção imediata e rede de direitos sem revitimizar.",
       "actions": [
-        "Avisar a gestao escolar imediatamente",
-        "Nao deixar o estudante sozinho",
+        "Avisar a gestão escolar imediatamente",
+        "Não deixar o estudante sozinho",
         "Acionar Conselho Tutelar e registrar formalmente",
         "Acionar 190 ou 192 conforme risco em curso",
         "Preservar evidencias sem manipulacao desnecessaria"
@@ -237,12 +237,12 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "outcome_rede_direitos",
       "label": "Acionar Rede de Direitos",
-      "description": "Risco alto com indicios consistentes. Encaminhar formalmente e manter protecao escolar.",
+      "description": "Risco alto com indicios consistentes. Encaminhar formalmente e manter proteção escolar.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Registrar formalmente a ocorrencia",
         "Acionar Conselho Tutelar, CREAS e Delegacia quando cabivel",
-        "Organizar contato com responsaveis sem expor a vitima a novo risco"
+        "Organizar contato com responsaveis sem expor a vítima a novo risco"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -262,7 +262,7 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "outcome_acompanhamento_protegido",
       "label": "Acompanhamento Protegido",
-      "description": "Sem risco imediato identificado, com monitoramento e reavaliacao constante.",
+      "description": "Sem risco imediato identificado, com monitoramento e reavaliação constante.",
       "actions": [
         "Realizar escuta acolhedora e sem julgamento",
         "Registrar informacoes essenciais com acesso restrito",

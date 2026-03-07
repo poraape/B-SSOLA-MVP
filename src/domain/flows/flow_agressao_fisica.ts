@@ -5,14 +5,14 @@ export const flow_agressao_fisica: FlowSpec = {
     "id": "flow_agressao_fisica",
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "agressao_fisica",
-    "title": "Agressao Fisica entre Estudantes",
-    "description": "Orientacoes para interromper agressao fisica e proteger envolvidos na escola.",
+    "title": "Agressão Física entre Estudantes",
+    "description": "Orientações para interromper agressão física e proteger envolvidos na escola.",
     "severity": "HIGH",
     "keywords": [
-      "agressao fisica",
+      "agressão física",
       "briga",
-      "protecao imediata",
-      "convivencia escolar"
+      "proteção imediata",
+      "convivência escolar"
     ],
     "status": "EXISTING"
   },
@@ -38,7 +38,7 @@ export const flow_agressao_fisica: FlowSpec = {
             "do_not_leave_alone"
           ]
         },
-        "rationale": "Lesao grave ou uso de objeto pode evoluir para risco imediato a integridade."
+        "rationale": "Lesão grave ou uso de objeto pode evoluir para risco imediato a integridade."
       },
       {
         "id": "rule_reincidencia_ou_ameaca",
@@ -77,10 +77,10 @@ export const flow_agressao_fisica: FlowSpec = {
     "riskSignals": [
       {
         "id": "lesao_grave_aparente",
-        "label": "Lesao fisica aparente com dor intensa ou sangramento",
+        "label": "Lesão física aparente com dor intensa ou sangramento",
         "examples": [
           "sangramento ativo",
-          "queixa de dor intensa apos impacto"
+          "queixa de dor intensa após impacto"
         ],
         "weight": 3
       },
@@ -95,7 +95,7 @@ export const flow_agressao_fisica: FlowSpec = {
       },
       {
         "id": "reincidencia_conflito",
-        "label": "Conflito fisico recorrente entre envolvidos",
+        "label": "Conflito físico recorrente entre envolvidos",
         "examples": [
           "brigas repetidas na mesma semana"
         ],
@@ -103,7 +103,7 @@ export const flow_agressao_fisica: FlowSpec = {
       },
       {
         "id": "ameaca_pos_conflito",
-        "label": "Ameaca de nova agressao apos separacao",
+        "label": "Ameaça de nova agressão após separacao",
         "examples": [
           "vou pegar voce depois da aula"
         ],
@@ -113,17 +113,17 @@ export const flow_agressao_fisica: FlowSpec = {
     "recommendedActionsByRisk": {
       "MODERATE": [
         "Realizar escuta com envolvidos",
-        "Registrar e planejar acompanhamento pedagogico"
+        "Registrar e planejar acompanhamento pedagógico"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Acionar responsaveis",
-        "Organizar plano de convivencia com monitoramento"
+        "Organizar plano de convivência com monitoramento"
       ],
       "CRITICAL": [
         "Acionar 190/192 conforme risco",
-        "Garantir protecao fisica imediata",
-        "Nao deixar envolvidos sem supervisao"
+        "Garantir proteção física imediata",
+        "Não deixar envolvidos sem supervisao"
       ]
     },
     "recommendedServiceTagsByRisk": {
@@ -146,7 +146,7 @@ export const flow_agressao_fisica: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Agressao fisica identificada. Interrompa o conflito e priorize seguranca de todos.",
+      "content": "Agressão física identificada. Interrompa o conflito e priorize segurança de todos.",
       "riskSignals": [
         "lesao_grave_aparente",
         "uso_objeto_agressao"
@@ -155,7 +155,7 @@ export const flow_agressao_fisica: FlowSpec = {
     {
       "id": "step_2",
       "type": "action",
-      "action": "Separe os envolvidos com seguranca, sem exposicao publica, e acione a gestao.",
+      "action": "Separe os envolvidos com segurança, sem exposicao publica, e acione a gestão.",
       "riskSignals": [
         "reincidencia_conflito",
         "ameaca_pos_conflito"
@@ -164,14 +164,14 @@ export const flow_agressao_fisica: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Ha lesao grave aparente ou uso de objeto na agressao?",
+      "question": "Há lesão grave aparente ou uso de objeto na agressão?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_protecao_critica"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -183,14 +183,14 @@ export const flow_agressao_fisica: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Ha recorrencia de brigas ou ameaca de novo episodio?",
+      "question": "Há recorrencia de brigas ou ameaça de novo episodio?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_contencao_formal"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_mediacao_monitorada"
         }
       ],
@@ -203,12 +203,12 @@ export const flow_agressao_fisica: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_protecao_critica",
-      "label": "Protecao Critica e Suporte de Emergencia",
-      "description": "Risco critico com necessidade de protecao imediata e possivel urgencia externa.",
+      "label": "Proteção Critica e Suporte de Emergência",
+      "description": "Risco critico com necessidade de proteção imediata e possível urgência externa.",
       "actions": [
-        "Acionar 192 em emergencia medica e 190 se houver risco de violencia",
-        "Avisar a gestao escolar e os responsaveis",
-        "Nao deixar envolvidos sozinhos ate estabilizacao",
+        "Acionar 192 em emergência médica e 190 se houver risco de violencia",
+        "Avisar a gestão escolar e os responsaveis",
+        "Não deixar envolvidos sozinhos ate estabilizacao",
         "Registrar formalmente a ocorrencia"
       ],
       "timeline": "Imediato",
@@ -229,12 +229,12 @@ export const flow_agressao_fisica: FlowSpec = {
     },
     {
       "id": "outcome_contencao_formal",
-      "label": "Contencao Formal e Plano de Protecao",
-      "description": "Risco alto com potencial de reincidencia, exigindo acao institucional estruturada.",
+      "label": "Contencao Formal e Plano de Proteção",
+      "description": "Risco alto com potencial de reincidencia, exigindo ação institucional estruturada.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Acionar responsaveis para alinhamento",
-        "Registrar formalmente e definir plano de convivencia com acompanhamento"
+        "Registrar formalmente e definir plano de convivência com acompanhamento"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -251,11 +251,11 @@ export const flow_agressao_fisica: FlowSpec = {
     {
       "id": "outcome_mediacao_monitorada",
       "label": "Mediacao Monitorada",
-      "description": "Sem sinal de gravidade imediata, com reparacao e acompanhamento pedagogico.",
+      "description": "Sem sinal de gravidade imediata, com reparacao e acompanhamento pedagógico.",
       "actions": [
         "Realizar escuta qualificada com os envolvidos",
-        "Conduzir mediacao restaurativa com equipe pedagogica",
-        "Monitorar convivencia e registrar evolucao"
+        "Conduzir mediacao restaurativa com equipe pedagógica",
+        "Monitorar convivência e registrar evolucao"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",

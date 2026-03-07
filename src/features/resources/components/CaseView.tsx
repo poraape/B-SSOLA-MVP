@@ -104,7 +104,7 @@ export const CaseView: React.FC<CaseViewProps> = ({
       </div>
 
       {/* Case Card */}
-      <Card className="p-6 md:p-8 border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg">
+      <Card className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/80 md:p-8">
         {/* Badges */}
         <div className="flex flex-wrap items-center gap-2 mb-6">
           <span className={`px-3 py-1 rounded-lg text-xs font-bold bg-${categoryInfo.color}-100 dark:bg-${categoryInfo.color}-900/20 text-${categoryInfo.color}-700 dark:text-${categoryInfo.color}-400 flex items-center gap-1`}>
@@ -127,7 +127,7 @@ export const CaseView: React.FC<CaseViewProps> = ({
 
         {/* Context (if available) */}
         {simCase.context && (
-          <div className="mb-6 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800">
+          <div className="mb-6 rounded-[16px] border border-blue-200 bg-blue-50/80 p-4 dark:border-blue-800 dark:bg-blue-900/15">
             <div className="flex items-start gap-3">
               <MapPin className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
               <div className="space-y-1 text-sm">
@@ -144,7 +144,7 @@ export const CaseView: React.FC<CaseViewProps> = ({
         )}
 
         {/* Situation */}
-        <div className="mb-8 p-6 md:p-8 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-100 dark:border-slate-700">
+        <div className="mb-8 rounded-[16px] border border-slate-200 bg-slate-50/80 p-6 dark:border-slate-700 dark:bg-slate-800/50 md:p-8">
           <p className="text-base md:text-lg text-slate-700 dark:text-slate-200 leading-relaxed font-medium italic">
             "{simCase.situation}"
           </p>
@@ -152,7 +152,7 @@ export const CaseView: React.FC<CaseViewProps> = ({
 
         {/* Hint Display */}
         {showHint && simCase.hints && simCase.hints.length > 0 && (
-          <div className="mb-6 p-5 rounded-xl bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800">
+          <div className="mb-6 rounded-[16px] border border-amber-200 bg-amber-50/80 p-5 dark:border-amber-800 dark:bg-amber-900/15">
             <div className="flex items-start gap-3">
               <Lightbulb className="w-5 h-5 text-amber-600 mt-0.5 shrink-0" />
               <div className="flex-1">
@@ -187,8 +187,8 @@ export const CaseView: React.FC<CaseViewProps> = ({
             <button
               key={choice.id}
               onClick={() => onSelectChoice(choice)}
-              className="w-full p-5 md:p-6 rounded-2xl border-2 border-slate-200 dark:border-slate-700 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all text-left group bg-white dark:bg-slate-900 shadow-sm"
-            >
+            className="group w-full rounded-[16px] border border-slate-200/90 bg-white/85 p-5 text-left shadow-[0_10px_20px_-18px_rgba(15,23,42,0.35)] transition-all hover:-translate-y-0.5 hover:border-blue-400 hover:bg-blue-50/60 dark:border-slate-700 dark:bg-slate-900/75 dark:hover:border-blue-500 dark:hover:bg-blue-900/15 md:p-6"
+          >
               <div className="flex items-start gap-4">
                 <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-black text-slate-600 dark:text-slate-400 group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors shrink-0">
                   {String.fromCharCode(65 + index)}
@@ -202,7 +202,7 @@ export const CaseView: React.FC<CaseViewProps> = ({
         </div>
 
         {/* Warning */}
-        <div className="mt-6 p-4 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-start gap-3">
+        <div className="mt-6 flex items-start gap-3 rounded-[16px] border border-slate-200 bg-slate-50/85 p-4 dark:border-slate-700 dark:bg-slate-800/80">
           <AlertCircle className="w-5 h-5 text-slate-500 mt-0.5 shrink-0" />
           <p className="text-sm text-slate-600 dark:text-slate-400">
             <strong>Importante:</strong> Sua escolha será registrada e não poderá ser alterada nesta sessão. 

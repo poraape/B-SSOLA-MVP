@@ -5,8 +5,8 @@ export const flow_reintegracao_pos_suspensao: FlowSpec = {
     "id": "flow_reintegracao_pos_suspensao",
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "reintegracao_pos_suspensao",
-    "title": "Reintegracao apos Suspensao",
-    "description": "Orientacoes praticas para a equipe escolar sobre Reintegracao apos Afastamento/Suspensao.",
+    "title": "Reintegração após Suspensão",
+    "description": "Orientações praticas para a equipe escolar sobre Reintegração após Afastamento/Suspensão.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_reintegracao_pos_suspensao: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Reintegracao apos Afastamento/Suspensao. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Reintegração após Afastamento/Suspensão. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "conflito_recorrente"
       ]
@@ -23,7 +23,7 @@ export const flow_reintegracao_pos_suspensao: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Suspensao cumprida integralmente?",
+      "question": "Suspensão cumprida integralmente?",
       "actions": [
         {
           "label": "Sim",
@@ -39,10 +39,10 @@ export const flow_reintegracao_pos_suspensao: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
-        "Reuniao de reintegracao",
+        "Reuniao de reintegração",
         "Plano de acompanhamento inicial"
       ],
       "timeline": "Dias",
@@ -65,7 +65,7 @@ export const flow_reintegracao_pos_suspensao: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Sinais de agressividade exigem intervencao institucional."
+        "rationale": "Sinais de agressividade exigem intervenção institucional."
       },
       {
         "id": "rule_default_baseline",

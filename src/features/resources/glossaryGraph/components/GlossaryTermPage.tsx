@@ -50,7 +50,7 @@ export const GlossaryTermPage = ({ slug, term }: GlossaryTermPageProps) => {
 
   if (!node) {
     return (
-      <section className="rounded-2xl border border-dashed border-slate-300 bg-white p-6">
+      <section className="rounded-[20px] border border-dashed border-slate-300 bg-white/85 p-6 dark:border-slate-700 dark:bg-slate-900/75">
         <h2 className="text-xl font-bold text-slate-900">Termo não localizado</h2>
         <p className="mt-2 text-sm text-slate-600">
           Este conceito não está disponível no momento.
@@ -87,7 +87,7 @@ export const GlossaryTermPage = ({ slug, term }: GlossaryTermPageProps) => {
 
   return (
     <main className="space-y-6">
-      <header className="rounded-2xl border border-slate-200 bg-white p-6">
+      <header className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <h1 className="text-2xl font-black text-slate-900">{item.term}</h1>
@@ -99,7 +99,7 @@ export const GlossaryTermPage = ({ slug, term }: GlossaryTermPageProps) => {
           <button
             type="button"
             onClick={copyLink}
-            className="rounded-lg border border-slate-300 px-3 py-1 text-sm text-slate-700 hover:bg-slate-50"
+            className="rounded-[14px] border border-slate-300/90 bg-white/80 px-3 py-1 text-sm text-slate-700 hover:border-blue-400 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-300"
           >
             {copyStatus === 'copied' ? 'Link copiado' : copyStatus === 'error' ? 'Falha ao copiar' : 'Copiar link'}
           </button>
@@ -119,32 +119,32 @@ export const GlossaryTermPage = ({ slug, term }: GlossaryTermPageProps) => {
         </div>
       </header>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6">
+      <section className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <h2 className="text-lg font-bold text-slate-900">Conceitos relacionados</h2>
         <div className="mt-3">
           <RelatedConceptsPanel currentSlug={node.slug} edges={edges} nodes={glossaryGraph.nodes} itemBySlug={itemBySlug} />
         </div>
       </section>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6">
+      <section className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <h2 className="text-lg font-bold text-slate-900">Mencionado em</h2>
         <div className="mt-3">
           <BacklinksPanel currentSlug={node.slug} backlinks={backlinks} nodes={glossaryGraph.nodes} />
         </div>
       </section>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6">
+      <section className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <h2 className="text-lg font-bold text-slate-900">Grafo ao redor deste termo</h2>
         <div className="mt-3">
           <MiniGraph centerSlug={node.slug} nodes={glossaryGraph.nodes} edges={miniGraphEdges} />
         </div>
       </section>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6">
+      <section className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <h2 className="text-lg font-bold text-slate-900">Explorar por caminhos sugeridos</h2>
         <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
           {paths.map((path) => (
-            <article key={path.id} className="rounded-xl border border-slate-200 p-3">
+            <article key={path.id} className="rounded-[14px] border border-slate-200/90 bg-white/80 p-3 dark:border-slate-700 dark:bg-slate-900/70">
               <h3 className="text-sm font-semibold text-slate-900">{path.label}</h3>
               <ol className="mt-2 space-y-1 text-sm text-slate-700">
                 {path.slugs.map((pathSlug) => (
@@ -160,7 +160,7 @@ export const GlossaryTermPage = ({ slug, term }: GlossaryTermPageProps) => {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6">
+      <section className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <h2 className="text-lg font-bold text-slate-900">Resumo das conexões</h2>
         <ul className="mt-3 grid grid-cols-2 gap-3 text-sm text-slate-700 md:grid-cols-4">
           <li>Explícitas: {grouped.explicit.length}</li>

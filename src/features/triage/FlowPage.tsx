@@ -5,8 +5,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { runDecision } from '../../application/decisionOrchestrator';
 import { telemetryService } from '../../application/telemetry/TelemetryService';
 import { initFlow, FlowState } from '../../domain/flows/flowEngine';
-import { getFlowById } from '../../domain/flows/selectors';
+import { getCategoryById, getFlowById } from '../../domain/flows/selectors';
 import { FeatureErrorBoundary } from '../shared/components/FeatureErrorBoundary';
+import { getPremiumCategoryIconByName } from '../shared/components/PremiumCategoryIcons';
+import { getCategoryDisplayLabel, getCategoryIcon } from '../shared/utils/categoryPresentation';
 
 import { TriageQuestion } from './components/TriageQuestion';
 import { TriageErrorBoundary } from './TriageErrorBoundary';
@@ -15,6 +17,7 @@ export const FlowPage: React.FC = () => {
   const { flowId } = useParams<{ flowId: string }>();
   const navigate = useNavigate();
   const flow = getFlowById(flowId || '');
+  const category = flow ? getCategoryById(flow.meta.categoryId) : undefined;
   
   const [state, setState] = useState<FlowState | null>(null);
   const [isProcessingTimedOut, setIsProcessingTimedOut] = useState(false);
@@ -160,6 +163,9 @@ export const FlowPage: React.FC = () => {
           <div className={`bg-white border ${isEmergency ? 'border-rose-200 shadow-rose-100' : 'border-slate-200 shadow-slate-200/50'} rounded-3xl md:rounded-[2.5rem] p-6 md:p-10 shadow-xl relative overflow-hidden`}>
             {/* Progress indicator or context */}
             <div className="flex items-center gap-2 mb-8">
+              <div className="shrink-0">
+                {flow && getPremiumCategoryIconByName(getCategoryIcon(flow.meta.categoryId), 'h-10 w-10')}
+              </div>
               {isEmergency ? (
                 <div className="bg-rose-100 text-rose-700 px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-tighter animate-pulse flex items-center gap-1">
                   <AlertTriangle className="w-3 h-3" /> Emergência Crítica
@@ -169,7 +175,9 @@ export const FlowPage: React.FC = () => {
                   <ShieldCheck className="w-3 h-3" /> Protocolo Padrão
                 </div>
               )}
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{flow.meta.title}</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                {getCategoryDisplayLabel(flow.meta.categoryId, category?.label || flow.meta.categoryId)} - {flow.meta.title}
+              </span>
             </div>
 
             {currentQuestion ? (

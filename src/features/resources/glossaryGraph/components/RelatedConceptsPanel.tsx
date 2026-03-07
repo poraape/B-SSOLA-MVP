@@ -59,17 +59,17 @@ export const RelatedConceptsPanel = ({
 
         return (
           <section key={type} className="space-y-2">
-            <h4 className="text-sm font-bold uppercase tracking-wide text-slate-600">{groupTitle[type]}</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wide text-slate-600 dark:text-slate-300">{groupTitle[type]}</h4>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               {typeEdges.map(({ edge, node, item }) => (
                 <Link
                   key={`${edge.from}-${edge.to}-${edge.type}`}
                   to={`/recursos/glossario/${node.slug}`}
-                  className="rounded-xl border border-slate-200 bg-white p-3 transition hover:border-blue-300 hover:bg-blue-50"
+                  className="rounded-[14px] border border-slate-200/90 bg-white/80 p-3 transition hover:border-blue-400 hover:bg-blue-50/70 dark:border-slate-700 dark:bg-slate-900/70 dark:hover:border-blue-500 dark:hover:bg-blue-900/15"
                 >
-                  <p className="text-sm font-semibold text-slate-900">{node.term}</p>
-                  <p className="mt-1 text-xs text-blue-700">{node.category}</p>
-                  <p className="mt-2 text-xs text-slate-600">{shortText(item.definition)}</p>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">{node.term}</p>
+                  <p className="mt-1 text-xs text-blue-700 dark:text-blue-300">{node.category}</p>
+                  <p className="mt-2 text-xs text-slate-600 dark:text-slate-300">{shortText(item.definition)}</p>
                 </Link>
               ))}
             </div>

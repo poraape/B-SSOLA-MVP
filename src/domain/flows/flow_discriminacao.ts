@@ -6,7 +6,7 @@ export const flow_discriminacao: FlowSpec = {
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "discriminacao_racismo",
     "title": "Discriminacao ou Racismo",
-    "description": "Orientacoes praticas para a equipe escolar sobre Discriminacao ou Racismo.",
+    "description": "Orientações praticas para a equipe escolar sobre Discriminacao ou Racismo.",
     "severity": "HIGH",
     "keywords": [
       "discriminacao",
@@ -20,7 +20,7 @@ export const flow_discriminacao: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Discriminacao ou Racismo. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Discriminacao ou Racismo. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "conflito_recorrente"
       ]
@@ -28,14 +28,14 @@ export const flow_discriminacao: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "O episodio ocorreu agora e ainda ha conflito ativo?",
+      "question": "O episodio ocorreu agora e ainda há conflito ativo?",
       "actions": [
         {
           "label": "Sim",
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q3"
         }
       ],
@@ -47,14 +47,14 @@ export const flow_discriminacao: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Ha ameaca, perseguicao ou risco de agressao?",
+      "question": "Há ameaça, perseguicao ou risco de agressão?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -73,7 +73,7 @@ export const flow_discriminacao: FlowSpec = {
           "next": "outcome_baixo"
         },
         {
-          "label": "Nao / Reincidente",
+          "label": "Não / Reincidente",
           "next": "outcome_moderado"
         }
       ],
@@ -86,12 +86,12 @@ export const flow_discriminacao: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
-        "Intervencao pedagogica e orientacao imediata",
+        "Intervenção pedagógica e orientação imediata",
         "Apoio ao estudante afetado",
-        "Acordo de convivencia e monitoramento"
+        "Acordo de convivência e monitoramento"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -102,11 +102,11 @@ export const flow_discriminacao: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Registrar ocorrencia institucional minima",
         "Entrar em contato com os responsaveis quando apropriado",
-        "Plano de acompanhamento e prevencao"
+        "Plano de acompanhamento e prevenção"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -116,11 +116,11 @@ export const flow_discriminacao: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
-        "Proteger estudante e cessar situacao imediatamente",
-        "Acao institucional com a gestao escolar",
+        "Proteger estudante e cessar situação imediatamente",
+        "Ação institucional com a gestão escolar",
         "Encaminhar para apoio especializado quando necessario"
       ],
       "timeline": "Imediato",
@@ -145,7 +145,7 @@ export const flow_discriminacao: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Sinais de agressividade exigem intervencao institucional."
+        "rationale": "Sinais de agressividade exigem intervenção institucional."
       },
       {
         "id": "rule_default_baseline",

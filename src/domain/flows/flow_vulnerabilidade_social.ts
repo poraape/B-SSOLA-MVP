@@ -6,7 +6,7 @@ export const flow_vulnerabilidade_social: FlowSpec = {
     "categoryId": "apoio_social_familiar",
     "subcategoryId": "vulnerabilidade_social_geral",
     "title": "Outras Vulnerabilidades Sociais",
-    "description": "Orientacoes praticas para a equipe escolar sobre Outras Vulnerabilidades Sociais.",
+    "description": "Orientações praticas para a equipe escolar sobre Outras Vulnerabilidades Sociais.",
     "severity": "MODERATE",
     "keywords": [
       "outras",
@@ -20,7 +20,7 @@ export const flow_vulnerabilidade_social: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Outras Vulnerabilidades Sociais. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Outras Vulnerabilidades Sociais. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "vulnerabilidade_economica"
       ]
@@ -28,14 +28,14 @@ export const flow_vulnerabilidade_social: FlowSpec = {
     {
       "id": "step_2",
       "type": "question",
-      "question": "Ha risco imediato para o estudante ou para a comunidade escolar?",
+      "question": "Há risco imediato para o estudante ou para a comunidade escolar?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_encaminhar_categoria"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_3"
         }
       ],
@@ -47,14 +47,14 @@ export const flow_vulnerabilidade_social: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "A situacao e recorrente ou esta se agravando?",
+      "question": "A situação e recorrente ou esta se agravando?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_encaminhar_categoria"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_acompanhamento"
         }
       ],
@@ -67,12 +67,12 @@ export const flow_vulnerabilidade_social: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_acompanhamento",
-      "label": "Acompanhamento Pedagogico",
+      "label": "Acompanhamento Pedagógico",
       "description": "Conduzir acompanhamento pedagógico com escuta e monitoramento.",
       "actions": [
         "Realizar escuta qualificada",
         "Registrar acompanhamento pedagógico",
-        "Monitorar evolucao da situacao",
+        "Monitorar evolucao da situação",
         "Revisar plano de apoio com a equipe"
       ],
       "timeline": "Dias",
@@ -84,7 +84,7 @@ export const flow_vulnerabilidade_social: FlowSpec = {
       "label": "Reavaliar Encaminhamento",
       "description": "Reavaliar categoria e definir fluxo institucional mais adequado.",
       "actions": [
-        "Reavaliar contexto com a gestao",
+        "Reavaliar contexto com a gestão",
         "Redirecionar para fluxo mais aderente quando necessario",
         "Registrar decisao institucional"
       ],

@@ -6,7 +6,7 @@ export const flow_depressao: FlowSpec = {
     "categoryId": "saude_emocional",
     "subcategoryId": "tristeza_depressao",
     "title": "Tristeza Persistente ou Sintomas Depressivos",
-    "description": "Orientacoes praticas para a equipe escolar sobre Tristeza Persistente ou Depressao.",
+    "description": "Orientações praticas para a equipe escolar sobre Tristeza Persistente ou Depressao.",
     "severity": "HIGH",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_depressao: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Tristeza Persistente ou Depressao. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Tristeza Persistente ou Depressao. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "sofrimento_intenso"
       ]
@@ -30,7 +30,7 @@ export const flow_depressao: FlowSpec = {
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -42,14 +42,14 @@ export const flow_depressao: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Ha relato de desesperanca intensa ou isolamento extremo?",
+      "question": "Há relato de desesperança intensa ou isolamento extremo?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -62,11 +62,11 @@ export const flow_depressao: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
-        "Acompanhamento pedagogico",
-        "Observacao continua"
+        "Acompanhamento pedagógico",
+        "Observação continua"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -77,9 +77,9 @@ export const flow_depressao: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
-        "Encaminhamento para avaliacao psicologica",
+        "Encaminhamento para avaliação psicologica",
         "Entrar em contato com os responsaveis"
       ],
       "timeline": "Horas",
@@ -90,11 +90,11 @@ export const flow_depressao: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
-        "Protecao ativa",
-        "Avisar a gestao escolar imediatamente"
+        "Proteção ativa",
+        "Avisar a gestão escolar imediatamente"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",
@@ -119,7 +119,7 @@ export const flow_depressao: FlowSpec = {
             "do_not_leave_alone"
           ]
         },
-        "rationale": "Fala autolesiva exige protecao imediata e supervisao constante."
+        "rationale": "Fala autolesiva exige proteção imediata e supervisao constante."
       },
       {
         "id": "rule_sofrimento_intenso",

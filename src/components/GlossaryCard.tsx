@@ -103,7 +103,7 @@ export const GlossaryCard: React.FC<GlossaryCardProps> = ({
           {item.relatedTerms && item.relatedTerms.length > 0 && (
             <div className="space-y-1">
               <p className="text-[11px] font-black uppercase tracking-tighter text-slate-700 dark:text-slate-300">
-                🔗 Veja Também
+                🔗 Termos relacionados
               </p>
               <div className="flex flex-wrap gap-2">
                 {item.relatedTerms.map((relatedTerm, idx) => (

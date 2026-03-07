@@ -53,10 +53,10 @@ export const FAQFeedback: React.FC<FAQFeedbackProps> = ({
           disabled={feedback !== null}
           aria-label="Sim, esta resposta foi útil"
           aria-pressed={feedback === 'helpful'}
-          className={`p-2 rounded-lg transition-all min-h-[44px] min-w-[44px] flex items-center justify-center ${
+          className={`flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2 transition-all ${
             feedback === 'helpful'
               ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
-              : 'bg-slate-100 dark:bg-slate-800 text-slate-400 hover:bg-green-50 hover:text-green-600 dark:hover:bg-green-900/20'
+              : 'border border-slate-200/90 bg-white/85 text-slate-400 hover:border-green-300 hover:bg-green-50 hover:text-green-600 dark:border-slate-700 dark:bg-slate-900/70 dark:hover:bg-green-900/20'
           } disabled:opacity-50 disabled:cursor-not-allowed focus:ring-4 focus:ring-green-500/20`}
         >
           <ThumbsUp className="w-4 h-4" />
@@ -66,10 +66,10 @@ export const FAQFeedback: React.FC<FAQFeedbackProps> = ({
           disabled={feedback !== null}
           aria-label="Não, esta resposta não foi útil"
           aria-pressed={feedback === 'not-helpful'}
-          className={`p-2 rounded-lg transition-all min-h-[44px] min-w-[44px] flex items-center justify-center ${
+          className={`flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg p-2 transition-all ${
             feedback === 'not-helpful'
               ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
-              : 'bg-slate-100 dark:bg-slate-800 text-slate-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20'
+              : 'border border-slate-200/90 bg-white/85 text-slate-400 hover:border-red-300 hover:bg-red-50 hover:text-red-600 dark:border-slate-700 dark:bg-slate-900/70 dark:hover:bg-red-900/20'
           } disabled:opacity-50 disabled:cursor-not-allowed focus:ring-4 focus:ring-red-500/20`}
         >
           <ThumbsDown className="w-4 h-4" />

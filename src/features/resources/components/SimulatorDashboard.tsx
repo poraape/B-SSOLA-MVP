@@ -94,7 +94,7 @@ export const SimulatorDashboard: React.FC<SimulatorDashboardProps> = ({
       </div>
 
       {/* Progress Card */}
-      <Card className="p-6 border-2 border-slate-100 dark:border-slate-800 bg-gradient-to-br from-blue-50 to-white dark:from-slate-900 dark:to-slate-800">
+      <Card className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/80">
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
@@ -118,7 +118,7 @@ export const SimulatorDashboard: React.FC<SimulatorDashboardProps> = ({
             onClick={handleExportReport}
             variant="outline"
             size="sm"
-            className="text-xs"
+            className="rounded-[14px] text-xs"
           >
             <FileDown className="w-3 h-3 mr-1" />
             Exportar
@@ -173,7 +173,7 @@ export const SimulatorDashboard: React.FC<SimulatorDashboardProps> = ({
             placeholder="Buscar cenário..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
+            className="w-full rounded-[16px] border border-slate-200/90 bg-white/85 py-3 pl-10 pr-4 text-slate-900 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.35)] transition-colors focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/80 dark:text-white"
           />
         </div>
 
@@ -183,7 +183,7 @@ export const SimulatorDashboard: React.FC<SimulatorDashboardProps> = ({
           <select
             value={filterCategory}
             onChange={(e) => onFilterChange(e.target.value as CaseCategory | 'all')}
-            className="px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
+            className="rounded-[16px] border border-slate-200/90 bg-white/85 px-4 py-3 text-slate-900 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.35)] transition-colors focus:border-blue-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900/80 dark:text-white"
           >
             <option value="all">Todas Categorias</option>
             {Object.entries(CATEGORY_LABELS).map(([key, { label, icon }]) => (
@@ -197,7 +197,7 @@ export const SimulatorDashboard: React.FC<SimulatorDashboardProps> = ({
 
       {/* Cases Grid */}
       {filteredCases.length === 0 ? (
-        <Card className="p-12 text-center border-2 border-dashed border-slate-200 dark:border-slate-700">
+        <Card className="rounded-[20px] border border-dashed border-slate-300 bg-white/75 p-12 text-center dark:border-slate-700 dark:bg-slate-900/60">
           <div className="text-slate-400 dark:text-slate-500 mb-2">
             <Search className="w-12 h-12 mx-auto mb-3 opacity-50" />
           </div>
@@ -237,10 +237,10 @@ export const SimulatorDashboard: React.FC<SimulatorDashboardProps> = ({
                   return (
                     <Card
                       key={simCase.id}
-                      className={`p-5 border-2 transition-all cursor-pointer group hover:shadow-lg ${
+                      className={`group cursor-pointer rounded-[20px] border p-5 transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-20px_rgba(15,23,42,0.45)] ${
                         isCompleted
-                          ? 'border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/10'
-                          : 'border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-500'
+                          ? 'border-emerald-200 bg-emerald-50/70 dark:border-emerald-800 dark:bg-emerald-900/15'
+                          : 'border-slate-200/85 bg-white/85 hover:border-blue-400 dark:border-slate-700 dark:bg-slate-900/75 dark:hover:border-blue-500'
                       }`}
                       onClick={() => onSelectCase(simCase)}
                     >

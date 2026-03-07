@@ -6,7 +6,7 @@ export const flow_acidente_escolar: FlowSpec = {
     "categoryId": "saude_bem_estar",
     "subcategoryId": "acidente_lesao",
     "title": "Acidente Escolar",
-    "description": "Orientacoes praticas para a equipe escolar sobre Acidente ou Lesao Fisica.",
+    "description": "Orientações praticas para a equipe escolar sobre Acidente ou Lesão Física.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -39,7 +39,7 @@ export const flow_acidente_escolar: FlowSpec = {
             "encaminhamento_prioritario"
           ]
         },
-        "rationale": "Suspeita de lesao relevante exige encaminhamento rapido e protecao."
+        "rationale": "Suspeita de lesão relevante exige encaminhamento rapido e proteção."
       },
       {
         "id": "rule_critical",
@@ -53,7 +53,7 @@ export const flow_acidente_escolar: FlowSpec = {
             "acionar_emergencia"
           ]
         },
-        "rationale": "Risco imediato ou agravamento agudo exige acao emergencial."
+        "rationale": "Risco imediato ou agravamento agudo exige ação emergencial."
       },
       {
         "id": "rule_default",
@@ -74,7 +74,7 @@ export const flow_acidente_escolar: FlowSpec = {
       },
       {
         "id": "impacto_funcional",
-        "label": "Dificuldade de locomocao",
+        "label": "Dificuldade de locomoção",
         "weight": 1
       },
       {
@@ -89,7 +89,7 @@ export const flow_acidente_escolar: FlowSpec = {
       },
       {
         "id": "risco_iminente",
-        "label": "Risco fisico iminente",
+        "label": "Risco físico iminente",
         "weight": 3
       },
       {
@@ -113,7 +113,7 @@ export const flow_acidente_escolar: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Acidente ou Lesao Fisica. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Acidente ou Lesão Física. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "dor_persistente"
       ]
@@ -121,14 +121,14 @@ export const flow_acidente_escolar: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Ha sangramento intenso ou fratura aparente?",
+      "question": "Há sangramento intenso ou fratura aparente?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ],
@@ -140,14 +140,14 @@ export const flow_acidente_escolar: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Ha dor persistente ou dificuldade de locomocao?",
+      "question": "Há dor persistente ou dificuldade de locomoção?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -161,7 +161,7 @@ export const flow_acidente_escolar: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Primeiros socorros basicos",
         "Comunicar responsavel"
@@ -172,10 +172,10 @@ export const flow_acidente_escolar: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
-        "Encaminhar para avaliacao urgente"
+        "Encaminhar para avaliação urgente"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",
@@ -185,10 +185,10 @@ export const flow_acidente_escolar: FlowSpec = {
     },
     {
       "id": "outcome_iminente",
-      "label": "Acao Imediata de Protecao",
+      "label": "Ação Imediata de Proteção",
       "description": "Risco imediato. Ative o protocolo interno sem atraso.",
       "actions": [
-        "Acionar 192 (SAMU) em emergencia de saude ou 190 em risco de violencia imediatamente"
+        "Acionar 192 (SAMU) em emergência de saúde ou 190 em risco de violencia imediatamente"
       ],
       "timeline": "Imediato",
       "riskLevel": "CRITICAL",

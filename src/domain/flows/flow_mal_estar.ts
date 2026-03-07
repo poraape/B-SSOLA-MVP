@@ -6,7 +6,7 @@ export const flow_mal_estar: FlowSpec = {
     "categoryId": "saude_bem_estar",
     "subcategoryId": "mal_estar_sintomas",
     "title": "Mal-estar ou Sintomas Leves",
-    "description": "Orientacoes praticas para a equipe escolar sobre Mal-estar ou Sintomas Fisicos.",
+    "description": "Orientações praticas para a equipe escolar sobre Mal-estar ou Sintomas Físicos.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_mal_estar: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Mal-estar ou Sintomas Fisicos. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Mal-estar ou Sintomas Físicos. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "sintoma_agudo"
       ]
@@ -30,7 +30,7 @@ export const flow_mal_estar: FlowSpec = {
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -49,7 +49,7 @@ export const flow_mal_estar: FlowSpec = {
           "next": "outcome_moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -62,8 +62,8 @@ export const flow_mal_estar: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Acolher estudante",
         "Oferecer repouso supervisionado"
@@ -75,10 +75,10 @@ export const flow_mal_estar: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Entrar em contato com os responsaveis",
-        "Encaminhar para avaliacao medica"
+        "Encaminhar para avaliação médica"
       ],
       "timeline": "Horas",
       "riskLevel": "MODERATE",
@@ -100,7 +100,7 @@ export const flow_mal_estar: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Sintoma agudo requer avaliacao e monitoramento prioritario."
+        "rationale": "Sintoma agudo requer avaliação e monitoramento prioritario."
       },
       {
         "id": "rule_default_baseline",
@@ -134,7 +134,7 @@ export const flow_mal_estar: FlowSpec = {
       },
       {
         "id": "necessidade_avaliacao",
-        "label": "Necessidade de avaliacao",
+        "label": "Necessidade de avaliação",
         "weight": 2
       }
     ],

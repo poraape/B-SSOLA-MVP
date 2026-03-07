@@ -33,14 +33,14 @@ export const FAQSearchBar: React.FC<FAQSearchBarProps> = ({
         onChange={(e) => onChange(e.target.value)}
         aria-label="Pesquisar perguntas frequentes"
         aria-describedby={value ? 'search-results-count' : undefined}
-        className="w-full pl-12 pr-12 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all"
+        className="w-full rounded-[16px] border border-slate-200/90 bg-white/85 py-4 pl-12 pr-12 text-slate-800 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.45)] outline-none transition-all placeholder:text-slate-400 focus:border-blue-400 focus:bg-white focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-200"
       />
       {value && (
         <>
           <button
             onClick={handleClear}
             aria-label="Limpar busca"
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-lg p-1 transition-colors hover:bg-slate-100 dark:hover:bg-slate-700"
           >
             <X className="w-4 h-4 text-slate-400" />
           </button>

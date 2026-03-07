@@ -40,10 +40,10 @@ export const FAQCategoryFilter: React.FC<FAQCategoryFilterProps> = ({
             onClick={() => onCategoryChange(cat)}
             aria-pressed={isSelected}
             aria-label={`Filtrar por ${label}${count ? ` (${count} perguntas)` : ''}`}
-            className={`px-5 py-3 rounded-full text-[10px] font-black uppercase tracking-widest whitespace-nowrap transition-all min-h-[44px] ${
+            className={`min-h-[44px] whitespace-nowrap rounded-[18px] px-5 py-3 text-[10px] font-black uppercase tracking-widest transition-all ${
               isSelected
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 dark:shadow-none'
-                : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-slate-700'
+                ? 'bg-blue-600 text-white shadow-[0_10px_24px_-18px_rgba(37,99,235,0.75)]'
+                : 'border border-slate-300/80 bg-white/80 text-slate-600 hover:border-blue-400 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-300 dark:hover:border-blue-500 dark:hover:text-blue-300'
             }`}
           >
             {label}

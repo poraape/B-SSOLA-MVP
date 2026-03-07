@@ -6,7 +6,7 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "plano_acompanhamento",
     "title": "Plano Individual de Acompanhamento",
-    "description": "Orientacoes praticas para a equipe escolar sobre Plano Individual de Acompanhamento.",
+    "description": "Orientações praticas para a equipe escolar sobre Plano Individual de Acompanhamento.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Plano Individual de Acompanhamento. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Plano Individual de Acompanhamento. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "conflito_recorrente"
       ]
@@ -23,14 +23,14 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Ha reincidencia comportamental?",
+      "question": "Há reincidencia comportamental?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -43,8 +43,8 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Monitoramento leve"
       ],
@@ -55,7 +55,7 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Construir PIA com metas claras",
         "Revisao mensal"
@@ -80,7 +80,7 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Sinais de agressividade exigem intervencao institucional."
+        "rationale": "Sinais de agressividade exigem intervenção institucional."
       },
       {
         "id": "rule_default_baseline",

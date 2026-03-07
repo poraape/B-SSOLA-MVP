@@ -6,13 +6,13 @@ export const flow_violencia_armada: FlowSpec = {
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "violencia_armada",
     "title": "Violencia Armada ou Tiroteio",
-    "description": "Orientacoes para proteger estudantes e equipe em risco armado na escola.",
+    "description": "Orientações para proteger estudantes e equipe em risco armado na escola.",
     "severity": "CRITICAL",
     "keywords": [
       "violencia armada",
       "tiroteio",
       "abrigo seguro",
-      "protecao imediata"
+      "proteção imediata"
     ],
     "status": "EXISTING"
   },
@@ -36,7 +36,7 @@ export const flow_violencia_armada: FlowSpec = {
             "do_not_leave_alone"
           ]
         },
-        "rationale": "Risco imediato a vida exige resposta de seguranca sem atraso."
+        "rationale": "Risco imediato a vida exige resposta de segurança sem atraso."
       },
       {
         "id": "rule_ameaca_na_regiao",
@@ -92,7 +92,7 @@ export const flow_violencia_armada: FlowSpec = {
       },
       {
         "id": "suspeita_ameaca_externa",
-        "label": "Ameaca recebida por mensagem ou relato confiavel",
+        "label": "Ameaça recebida por mensagem ou relato confiavel",
         "examples": [
           "aviso de ataque em rede social",
           "alerta da comunidade"
@@ -102,18 +102,18 @@ export const flow_violencia_armada: FlowSpec = {
     ],
     "recommendedActionsByRisk": {
       "MODERATE": [
-        "Manter observacao com a gestao",
+        "Manter observação com a gestão",
         "Registrar informacoes iniciais"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Restringir circulacao em areas expostas",
         "Entrar em contato com responsaveis"
       ],
       "CRITICAL": [
         "Acionar 190 imediatamente",
         "Ativar abrigo seguro/lockdown",
-        "Nao deixar estudantes desacompanhados"
+        "Não deixar estudantes desacompanhados"
       ]
     },
     "recommendedServiceTagsByRisk": {
@@ -134,7 +134,7 @@ export const flow_violencia_armada: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Risco armado identificado. Priorize protecao imediata da turma e da equipe.",
+      "content": "Risco armado identificado. Priorize proteção imediata da turma e da equipe.",
       "riskSignals": [
         "arma_visivel",
         "disparos_ouvidos"
@@ -152,14 +152,14 @@ export const flow_violencia_armada: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Ha ataque em curso ou arma visivel neste momento?",
+      "question": "Há ataque em curso ou arma visivel neste momento?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_lockdown_critico"
         },
         {
-          "label": "Nao, e uma ameaca sem ataque em curso",
+          "label": "Não, e uma ameaça sem ataque em curso",
           "next": "outcome_protecao_preventiva"
         }
       ],
@@ -172,10 +172,10 @@ export const flow_violencia_armada: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "A area foi liberada pela seguranca publica?",
+      "question": "A area foi liberada pela segurança publica?",
       "actions": [
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_lockdown_critico"
         },
         {
@@ -192,12 +192,12 @@ export const flow_violencia_armada: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_lockdown_critico",
-      "label": "Protecao Imediata com Seguranca Publica",
-      "description": "Ataque ou ameaca armada ativa. Manter abrigo seguro ate orientacao oficial.",
+      "label": "Proteção Imediata com Segurança Publica",
+      "description": "Ataque ou ameaça armada ativa. Manter abrigo seguro ate orientação oficial.",
       "actions": [
         "Acionar 190 imediatamente",
-        "Avisar a gestao escolar e manter comunicacao interna minima",
-        "Nao deixar estudantes sozinhos",
+        "Avisar a gestão escolar e manter comunicacao interna minima",
+        "Não deixar estudantes sozinhos",
         "Registrar horario e fatos principais para documento formal"
       ],
       "timeline": "Imediato",
@@ -215,10 +215,10 @@ export const flow_violencia_armada: FlowSpec = {
     },
     {
       "id": "outcome_protecao_preventiva",
-      "label": "Protecao Preventiva e Controle de Acesso",
-      "description": "Sem ataque em curso, mas com ameaca relevante para a escola.",
+      "label": "Proteção Preventiva e Controle de Acesso",
+      "description": "Sem ataque em curso, mas com ameaça relevante para a escola.",
       "actions": [
-        "Avisar a gestao escolar e reforcar controle de acesso",
+        "Avisar a gestão escolar e reforcar controle de acesso",
         "Entrar em contato com responsaveis com comunicacao objetiva",
         "Registrar formalmente a ocorrencia"
       ],
@@ -237,11 +237,11 @@ export const flow_violencia_armada: FlowSpec = {
     {
       "id": "outcome_transicao_segura",
       "label": "Retomada Segura com Acompanhamento",
-      "description": "Area liberada. Retomar rotina com cuidado e observacao da equipe.",
+      "description": "Area liberada. Retomar rotina com cuidado e observação da equipe.",
       "actions": [
-        "Realizar acolhimento coletivo e orientacoes simples",
+        "Realizar acolhimento coletivo e orientações simples",
         "Registrar medidas adotadas e pontos de melhoria",
-        "Manter monitoramento continuo no periodo seguinte"
+        "Manter monitoramento continuo no período seguinte"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",

@@ -37,7 +37,7 @@ export const GlossaryCard: FC<GlossaryCardProps> = ({ item, searchQuery, onRelat
 
   return (
     <div id={glossaryTermId}>
-      <Card className="flex h-full flex-col gap-4 border border-slate-200 p-5 shadow-sm">
+      <Card className="flex h-full flex-col gap-4 rounded-[20px] border border-slate-200/90 bg-white/85 p-5 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] transition-all hover:-translate-y-0.5 hover:border-blue-300 dark:border-slate-700 dark:bg-slate-900/75">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2 text-blue-700">
             <BookOpen className="size-5" aria-hidden="true" />
@@ -50,7 +50,7 @@ export const GlossaryCard: FC<GlossaryCardProps> = ({ item, searchQuery, onRelat
 
         <p className="text-sm leading-relaxed text-slate-700">{highlightTerm(item.definition, searchQuery)}</p>
 
-        <section aria-label="Contexto do termo" className="rounded-2xl bg-slate-50 p-3 text-sm text-slate-700">
+        <section aria-label="Contexto do termo" className="rounded-2xl border border-slate-200 bg-slate-50/80 p-3 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-800/80 dark:text-slate-200">
           <p>
             <strong>Contexto:</strong>{' '}
             {highlightTerm(item.context ?? 'Sem contexto adicional informado.', searchQuery)}
@@ -63,7 +63,7 @@ export const GlossaryCard: FC<GlossaryCardProps> = ({ item, searchQuery, onRelat
             aria-expanded={expanded}
             aria-label={expanded ? `Ocultar detalhes de ${item.term}` : `Ver detalhes de ${item.term}`}
             onClick={() => setExpanded((current) => !current)}
-            className="inline-flex w-fit items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-blue-700 hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            className="inline-flex w-fit items-center gap-2 rounded-lg px-2 py-1 text-sm font-medium text-blue-700 hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:text-blue-300 dark:hover:bg-blue-900/20"
           >
             Ver mais
             <ChevronDown
@@ -74,18 +74,18 @@ export const GlossaryCard: FC<GlossaryCardProps> = ({ item, searchQuery, onRelat
         )}
 
         {expanded && (
-          <div className="space-y-4 border-t border-slate-200 pt-4">
+          <div className="space-y-4 border-t border-slate-200 pt-4 dark:border-slate-700">
             {item.practicalExample && (
               <section aria-label="Exemplo prático" className="space-y-1">
-                <h4 className="text-sm font-semibold text-slate-900">Exemplo prático</h4>
-                <p className="text-sm text-slate-700">{highlightTerm(item.practicalExample, searchQuery)}</p>
+                <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Exemplo prático</h4>
+                <p className="text-sm text-slate-700 dark:text-slate-300">{highlightTerm(item.practicalExample, searchQuery)}</p>
               </section>
             )}
 
             {item.regionalVariations && item.regionalVariations.length > 0 && (
               <section aria-label="Variações regionais" className="space-y-1">
-                <h4 className="text-sm font-semibold text-slate-900">Variações regionais</h4>
-                <ul className="list-inside list-disc text-sm text-slate-700">
+                <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Variações regionais</h4>
+                <ul className="list-inside list-disc text-sm text-slate-700 dark:text-slate-300">
                   {item.regionalVariations.map((variation) => (
                     <li key={variation}>{highlightTerm(variation, searchQuery)}</li>
                   ))}
@@ -95,7 +95,7 @@ export const GlossaryCard: FC<GlossaryCardProps> = ({ item, searchQuery, onRelat
 
             {item.relatedTerms && item.relatedTerms.length > 0 && (
               <section aria-label="Termos relacionados" className="space-y-2">
-                <h4 className="text-sm font-semibold text-slate-900">Termos relacionados</h4>
+                <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Termos relacionados</h4>
                 <div className="flex flex-wrap gap-2">
                   {item.relatedTerms.map((relatedTerm) => (
                     <button
@@ -103,7 +103,7 @@ export const GlossaryCard: FC<GlossaryCardProps> = ({ item, searchQuery, onRelat
                       type="button"
                       onClick={() => onRelatedClick?.(relatedTerm)}
                       aria-label={`Buscar termo relacionado ${relatedTerm}`}
-                      className="inline-flex items-center gap-1 rounded-full border border-slate-300 px-2.5 py-1 text-xs font-medium text-slate-700 hover:border-blue-500 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                      className="inline-flex items-center gap-1 rounded-full border border-slate-300 px-2.5 py-1 text-xs font-medium text-slate-700 hover:border-blue-500 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:border-slate-700 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-300"
                     >
                       <Link2 className="size-3.5" aria-hidden="true" />
                       {relatedTerm}

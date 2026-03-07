@@ -5,14 +5,14 @@ export const flow_incendio: FlowSpec = {
     "id": "flow_incendio",
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "incendio_evacuacao",
-    "title": "Incendio ou Evacuacao de Emergencia",
-    "description": "Orientacoes para retirada segura da escola em caso de fogo, fumaca ou risco de explosao.",
+    "title": "Incendio ou Evacuacao de Emergência",
+    "description": "Orientações para retirada segura da escola em caso de fogo, fumaca ou risco de explosao.",
     "severity": "CRITICAL",
     "keywords": [
       "incendio",
       "fumaca",
       "evacuacao",
-      "seguranca coletiva"
+      "segurança coletiva"
     ],
     "status": "EXISTING"
   },
@@ -102,18 +102,18 @@ export const flow_incendio: FlowSpec = {
     ],
     "recommendedActionsByRisk": {
       "MODERATE": [
-        "Isolar local e reavaliar seguranca",
-        "Registrar ocorrencia com a gestao"
+        "Isolar local e reavaliar segurança",
+        "Registrar ocorrencia com a gestão"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Interditar area afetada",
         "Entrar em contato com responsaveis"
       ],
       "CRITICAL": [
         "Evacuacao imediata pela rota segura",
         "Acionar 190 e bombeiros",
-        "Nao deixar estudantes sozinhos durante deslocamento"
+        "Não deixar estudantes sozinhos durante deslocamento"
       ]
     },
     "recommendedServiceTagsByRisk": {
@@ -152,14 +152,14 @@ export const flow_incendio: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Ha fogo ativo ou fumaca intensa no local?",
+      "question": "Há fogo ativo ou fumaca intensa no local?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_evacuacao_imediata"
         },
         {
-          "label": "Nao, foco pequeno e controlado",
+          "label": "Não, foco pequeno e controlado",
           "next": "outcome_isolamento_area"
         }
       ],
@@ -175,7 +175,7 @@ export const flow_incendio: FlowSpec = {
       "question": "Todos os estudantes e profissionais foram conferidos no ponto de encontro?",
       "actions": [
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_evacuacao_imediata"
         },
         {
@@ -193,11 +193,11 @@ export const flow_incendio: FlowSpec = {
     {
       "id": "outcome_evacuacao_imediata",
       "label": "Evacuacao Imediata com Acionamento Externo",
-      "description": "Risco critico. Retirada imediata e acionamento dos servicos de emergencia.",
+      "description": "Risco critico. Retirada imediata e acionamento dos servicos de emergência.",
       "actions": [
         "Acionar 190 e suporte de bombeiros imediatamente",
-        "Avisar a gestao escolar e os responsaveis",
-        "Nao deixar estudantes sozinhos durante a evacuacao",
+        "Avisar a gestão escolar e os responsaveis",
+        "Não deixar estudantes sozinhos durante a evacuacao",
         "Registrar formalmente horarios e medidas adotadas"
       ],
       "timeline": "Imediato",
@@ -219,9 +219,9 @@ export const flow_incendio: FlowSpec = {
       "label": "Isolamento da Area e Monitoramento",
       "description": "Risco alto. Manter area interditada e monitorar possibilidade de nova ocorrencia.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Isolar area afetada e impedir circulacao",
-        "Entrar em contato com responsaveis com orientacao objetiva"
+        "Entrar em contato com responsaveis com orientação objetiva"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -237,10 +237,10 @@ export const flow_incendio: FlowSpec = {
     {
       "id": "outcome_retorno_seguro",
       "label": "Retorno Seguro com Registro",
-      "description": "Situacao estabilizada. Retomar atividades com cuidado e acompanhamento.",
+      "description": "Situação estabilizada. Retomar atividades com cuidado e acompanhamento.",
       "actions": [
         "Realizar acolhimento breve com a turma",
-        "Registrar a ocorrencia e orientar equipe para prevencao",
+        "Registrar a ocorrencia e orientar equipe para prevenção",
         "Monitorar qualquer sinal de inseguranca nos dias seguintes"
       ],
       "timeline": "Dias",

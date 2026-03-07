@@ -139,7 +139,7 @@ export const GlossaryPage: FC = () => {
 
   return (
     <main className="space-y-5" aria-label="Glossário educacional">
-      <section className="rounded-[1.5rem] border border-slate-200/90 bg-white/95 p-5 shadow-[0_10px_26px_-22px_rgba(15,23,42,0.45)] md:p-6">
+      <section className="rounded-[20px] border border-slate-200/70 bg-white/45 p-5 shadow-[0_16px_36px_-26px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/35 md:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <BookOpen className="size-6 text-blue-700" aria-hidden="true" />
@@ -149,7 +149,7 @@ export const GlossaryPage: FC = () => {
           </div>
           <Link
             to="/recursos/glossario/grafo"
-            className="rounded-xl border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700 hover:border-blue-400"
+            className="rounded-xl border border-slate-300/80 bg-white/80 px-3 py-2 text-sm font-semibold text-slate-700 shadow-[0_10px_22px_-18px_rgba(15,23,42,0.4)] transition-all hover:scale-[1.02] hover:border-blue-400 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-300"
           >
             Explorar grafo
           </Link>

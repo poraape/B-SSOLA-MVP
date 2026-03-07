@@ -93,7 +93,7 @@ export const SimulatorPage: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto">
       {state === 'intro' && (
-        <Card className="relative flex min-h-[460px] flex-col rounded-[2.5rem] border border-slate-200/80 bg-white/95 p-8 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/90 md:p-10">
+        <Card className="relative flex min-h-[460px] flex-col rounded-[20px] border border-slate-200/70 bg-white/45 p-8 shadow-[0_16px_36px_-26px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/35 md:p-10">
           <div className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-blue-500/5" />
 
           <div className="relative z-10 my-auto space-y-6 py-8 text-center">
@@ -121,7 +121,7 @@ export const SimulatorPage: React.FC = () => {
             <Button
               onClick={handleStart}
               variant="primary"
-              className="rounded-2xl px-10 py-5 text-sm font-bold shadow-xl shadow-blue-200 dark:shadow-none"
+              className="rounded-[18px] px-10 py-5 text-sm font-bold shadow-[0_12px_28px_-16px_rgba(37,99,235,0.55)]"
             >
               {progress.completedCases.length > 0 ? 'Continuar simulação' : 'Iniciar simulação'}
             </Button>

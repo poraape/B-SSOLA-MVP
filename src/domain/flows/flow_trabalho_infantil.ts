@@ -6,7 +6,7 @@ export const flow_trabalho_infantil: FlowSpec = {
     "categoryId": "protecao_direitos",
     "subcategoryId": "trabalho_infantil",
     "title": "Trabalho Infantil",
-    "description": "Orientacoes praticas para a equipe escolar sobre Trabalho Infantil ou Exploracao.",
+    "description": "Orientações praticas para a equipe escolar sobre Trabalho Infantil ou Exploração.",
     "severity": "HIGH",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_trabalho_infantil: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Trabalho Infantil ou Exploracao. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Trabalho Infantil ou Exploração. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "relato_violacao"
       ]
@@ -23,14 +23,14 @@ export const flow_trabalho_infantil: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "A atividade coloca o estudante em risco fisico ou exploracao?",
+      "question": "A atividade coloca o estudante em risco físico ou exploração?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_alto"
         }
       ],
@@ -43,11 +43,11 @@ export const flow_trabalho_infantil: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
         "Registro institucional",
-        "Avisar a gestao escolar"
+        "Avisar a gestão escolar"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",
@@ -58,7 +58,7 @@ export const flow_trabalho_infantil: FlowSpec = {
     },
     {
       "id": "outcome_iminente",
-      "label": "Acao Imediata de Protecao",
+      "label": "Ação Imediata de Proteção",
       "description": "Risco imediato. Ative o protocolo interno sem atraso.",
       "actions": [
         "Acionar imediatamente orgao competente"
@@ -87,7 +87,7 @@ export const flow_trabalho_infantil: FlowSpec = {
             "contact_council"
           ]
         },
-        "rationale": "Relato de violacao requer acionamento institucional e de protecao."
+        "rationale": "Relato de violação requer acionamento institucional e de proteção."
       },
       {
         "id": "rule_default_baseline",
@@ -116,12 +116,12 @@ export const flow_trabalho_infantil: FlowSpec = {
     "riskSignals": [
       {
         "id": "relato_violacao",
-        "label": "Relato de violacao",
+        "label": "Relato de violação",
         "weight": 3
       },
       {
         "id": "indicio_negligencia",
-        "label": "Indicio de negligencia",
+        "label": "Indicio de negligência",
         "weight": 2
       },
       {

@@ -28,7 +28,7 @@ export const BacklinksPanel = ({
 }: BacklinksPanelProps) => {
   if (backlinks.length === 0) {
     return (
-      <p className="rounded-xl border border-dashed border-slate-300 p-4 text-sm text-slate-600">
+      <p className="rounded-[14px] border border-dashed border-slate-300 bg-white/70 p-4 text-sm text-slate-600 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-300">
         Nenhum termo referencia este conceito no momento.
       </p>
     );
@@ -43,11 +43,11 @@ export const BacklinksPanel = ({
         }
 
         return (
-          <li key={`${edge.from}-${edge.to}-${edge.type}`} className="rounded-xl border border-slate-200 bg-white p-3">
+          <li key={`${edge.from}-${edge.to}-${edge.type}`} className="rounded-[14px] border border-slate-200/90 bg-white/80 p-3 dark:border-slate-700 dark:bg-slate-900/70">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <Link
                 to={`/recursos/glossario/${source.slug}`}
-                className="text-sm font-semibold text-blue-700 hover:underline"
+                className="text-sm font-semibold text-blue-700 hover:underline dark:text-blue-300"
               >
                 {source.term}
               </Link>

@@ -5,8 +5,8 @@ export const flow_febre: FlowSpec = {
     "id": "flow_febre",
     "categoryId": "saude_bem_estar",
     "subcategoryId": "febre_infeccao",
-    "title": "Febre ou Suspeita de Infeccao",
-    "description": "Orientacoes praticas para a equipe escolar sobre Febre ou Suspeita de Infeccao.",
+    "title": "Febre ou Suspeita de Infecção",
+    "description": "Orientações praticas para a equipe escolar sobre Febre ou Suspeita de Infecção.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_febre: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Febre ou Suspeita de Infeccao. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Febre ou Suspeita de Infecção. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "sintoma_agudo"
       ]
@@ -23,14 +23,14 @@ export const flow_febre: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Febre acima de 39C ou acompanhada de convulsao?",
+      "question": "Febre acima de 39C ou acompanhada de convulsão?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ],
@@ -42,14 +42,14 @@ export const flow_febre: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Ha sintomas respiratorios ou dor intensa?",
+      "question": "Há sintomas respiratórios ou dor intensa?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -62,8 +62,8 @@ export const flow_febre: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Aguardar retirada por responsavel",
         "Monitorar temperatura"
@@ -75,7 +75,7 @@ export const flow_febre: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Orientar responsavel",
         "Encaminhar para UBS"
@@ -86,8 +86,8 @@ export const flow_febre: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
         "Encaminhamento imediato",
         "Monitorar sinais vitais"
@@ -112,7 +112,7 @@ export const flow_febre: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Sintoma agudo requer avaliacao e monitoramento prioritario."
+        "rationale": "Sintoma agudo requer avaliação e monitoramento prioritario."
       },
       {
         "id": "rule_default_baseline",
@@ -146,7 +146,7 @@ export const flow_febre: FlowSpec = {
       },
       {
         "id": "necessidade_avaliacao",
-        "label": "Necessidade de avaliacao",
+        "label": "Necessidade de avaliação",
         "weight": 2
       }
     ],

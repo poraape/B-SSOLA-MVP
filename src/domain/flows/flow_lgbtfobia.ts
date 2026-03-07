@@ -6,7 +6,7 @@ export const flow_lgbtfobia: FlowSpec = {
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "lgbtfobia",
     "title": "Discriminacao ou Violencia LGBTQIA+",
-    "description": "Orientacoes praticas para a equipe escolar sobre Discriminacao ou Violencia LGBTQIA+.",
+    "description": "Orientações praticas para a equipe escolar sobre Discriminacao ou Violencia LGBTQIA+.",
     "severity": "HIGH",
     "keywords": [
       "lgbtfobia",
@@ -20,7 +20,7 @@ export const flow_lgbtfobia: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Discriminacao ou Violencia LGBTQIA+. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Discriminacao ou Violencia LGBTQIA+. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "conflito_recorrente"
       ]
@@ -28,14 +28,14 @@ export const flow_lgbtfobia: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Ha ameaca, perseguicao ou risco de agressao?",
+      "question": "Há ameaça, perseguicao ou risco de agressão?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ],
@@ -54,7 +54,7 @@ export const flow_lgbtfobia: FlowSpec = {
           "next": "outcome_moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -67,12 +67,12 @@ export const flow_lgbtfobia: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
-        "Intervencao pedagogica imediata",
+        "Intervenção pedagógica imediata",
         "Acolhimento e validacao do estudante",
-        "Acordo de convivencia e monitoramento"
+        "Acordo de convivência e monitoramento"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -83,10 +83,10 @@ export const flow_lgbtfobia: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Acolhimento com escuta qualificada",
-        "Plano de protecao e acompanhamento",
+        "Plano de proteção e acompanhamento",
         "Contato com os responsaveis quando apropriado e seguro"
       ],
       "timeline": "Horas",
@@ -97,11 +97,11 @@ export const flow_lgbtfobia: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
-        "Cessar situacao imediatamente e proteger o estudante",
-        "Acionar gestao com confidencialidade",
+        "Cessar situação imediatamente e proteger o estudante",
+        "Acionar gestão com confidencialidade",
         "Encaminhar para apoio especializado quando necessario"
       ],
       "timeline": "Imediato",
@@ -126,7 +126,7 @@ export const flow_lgbtfobia: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Sinais de agressividade exigem intervencao institucional."
+        "rationale": "Sinais de agressividade exigem intervenção institucional."
       },
       {
         "id": "rule_default_baseline",

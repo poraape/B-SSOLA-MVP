@@ -5,8 +5,8 @@ export const flow_uso_substancias: FlowSpec = {
     "id": "flow_uso_substancias",
     "categoryId": "saude_emocional",
     "subcategoryId": "uso_substancias",
-    "title": "Uso ou Suspeita de Uso de Alcool e Drogas",
-    "description": "Orientacoes praticas para a equipe escolar sobre Uso ou Suspeita de Alcool/Drogas.",
+    "title": "Uso ou Suspeita de Uso de Álcool e Drogas",
+    "description": "Orientações praticas para a equipe escolar sobre Uso ou Suspeita de Álcool/Drogas.",
     "severity": "HIGH",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_uso_substancias: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Uso ou Suspeita de Alcool/Drogas. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Uso ou Suspeita de Álcool/Drogas. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "sofrimento_intenso"
       ]
@@ -30,7 +30,7 @@ export const flow_uso_substancias: FlowSpec = {
           "next": "outcome_alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -44,7 +44,7 @@ export const flow_uso_substancias: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Escuta sem julgamento",
         "Orientar responsavel"
@@ -57,11 +57,11 @@ export const flow_uso_substancias: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
-        "Avaliacao medica imediata",
-        "Garantir seguranca"
+        "Avaliação médica imediata",
+        "Garantir segurança"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",
@@ -86,7 +86,7 @@ export const flow_uso_substancias: FlowSpec = {
             "do_not_leave_alone"
           ]
         },
-        "rationale": "Fala autolesiva exige protecao imediata e supervisao constante."
+        "rationale": "Fala autolesiva exige proteção imediata e supervisao constante."
       },
       {
         "id": "rule_sofrimento_intenso",

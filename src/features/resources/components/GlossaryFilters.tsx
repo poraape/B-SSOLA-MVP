@@ -31,7 +31,7 @@ export const GlossaryFilters: FC<GlossaryFiltersProps> = ({
           onChange={(event) => onSearchChange(event.target.value)}
           placeholder="Buscar por termo, definição ou contexto"
           aria-label="Buscar no glossário"
-          className="w-full rounded-2xl border border-slate-300 bg-white py-3 pl-12 pr-11 text-slate-800 placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+          className="w-full rounded-[16px] border border-slate-200/90 bg-white/85 py-3 pl-12 pr-11 text-slate-800 placeholder:text-slate-500 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-200"
         />
 
         {search && (
@@ -61,11 +61,11 @@ export const GlossaryFilters: FC<GlossaryFiltersProps> = ({
               onClick={() => onCategoryChange(category)}
               aria-pressed={isSelected}
               className={[
-                'whitespace-nowrap rounded-full border px-4 py-2 text-sm font-medium transition',
+                'whitespace-nowrap rounded-[18px] border px-4 py-2 text-sm font-medium transition',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2',
                 isSelected
-                  ? 'border-blue-600 bg-blue-600 text-white'
-                  : 'border-slate-300 bg-white text-slate-700 hover:border-blue-500 hover:text-blue-700',
+                  ? 'border-blue-600 bg-blue-600 text-white shadow-[0_8px_16px_-12px_rgba(37,99,235,0.7)]'
+                  : 'border-slate-300/90 bg-white/80 text-slate-700 hover:border-blue-500 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200',
               ].join(' ')}
             >
               {category === 'all' ? 'Todas' : category}
@@ -78,7 +78,7 @@ export const GlossaryFilters: FC<GlossaryFiltersProps> = ({
         <button
           type="button"
           onClick={onClear}
-          className="rounded-lg px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+          className="rounded-lg px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:text-blue-300 dark:hover:bg-blue-900/20"
         >
           Limpar filtros
         </button>

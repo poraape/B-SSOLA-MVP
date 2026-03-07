@@ -5,12 +5,12 @@ export const flow_agressao_verbal: FlowSpec = {
     "id": "flow_agressao_verbal",
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "agressao_verbal",
-    "title": "Agressao Verbal ou Ameacas",
-    "description": "Orientacoes praticas para a equipe escolar sobre Agressao Verbal ou Ameacas.",
+    "title": "Agressão Verbal ou Ameaças",
+    "description": "Orientações praticas para a equipe escolar sobre Agressão Verbal ou Ameaças.",
     "severity": "MODERATE",
     "keywords": [
-      "agressao verbal",
-      "ameaca",
+      "agressão verbal",
+      "ameaça",
       "intimidacao",
       "humilhacao"
     ],
@@ -20,7 +20,7 @@ export const flow_agressao_verbal: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Agressao Verbal ou Ameacas. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Agressão Verbal ou Ameaças. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "hostilidade_verbal"
       ]
@@ -28,14 +28,14 @@ export const flow_agressao_verbal: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Ha ameaca de violencia fisica?",
+      "question": "Há ameaça de violencia física?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ],
@@ -54,7 +54,7 @@ export const flow_agressao_verbal: FlowSpec = {
           "next": "outcome_moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -67,11 +67,11 @@ export const flow_agressao_verbal: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Realizar mediacao de conflito",
-        "Orientar estudantes sobre convivencia respeitosa",
+        "Orientar estudantes sobre convivência respeitosa",
         "Monitorar reincidencia"
       ],
       "timeline": "Dias",
@@ -81,7 +81,7 @@ export const flow_agressao_verbal: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Registrar formalmente a ocorrencia",
         "Entrar em contato com os responsaveis",
@@ -107,7 +107,7 @@ export const flow_agressao_verbal: FlowSpec = {
           "riskLevel": "MODERATE",
           "flags": []
         },
-        "rationale": "Conflito verbal pontual exige resposta pedagogica e monitoramento."
+        "rationale": "Conflito verbal pontual exige resposta pedagógica e monitoramento."
       },
       {
         "id": "rule_high",
@@ -135,7 +135,7 @@ export const flow_agressao_verbal: FlowSpec = {
             "protecao_imediata"
           ]
         },
-        "rationale": "Ameaca com potencial de escalada exige protecao imediata."
+        "rationale": "Ameaça com potencial de escalada exige proteção imediata."
       },
       {
         "id": "rule_default",
@@ -161,7 +161,7 @@ export const flow_agressao_verbal: FlowSpec = {
       },
       {
         "id": "ameaca_violencia",
-        "label": "Ameaca de violencia fisica",
+        "label": "Ameaça de violencia física",
         "weight": 3
       },
       {

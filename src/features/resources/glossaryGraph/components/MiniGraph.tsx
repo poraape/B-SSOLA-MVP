@@ -65,7 +65,7 @@ export const MiniGraph = ({ centerSlug, nodes, edges }: MiniGraphProps) => {
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         role="img"
         aria-label={`Grafo de relações para ${center.term}`}
-        className="h-72 w-full rounded-xl border border-slate-200 bg-slate-50"
+        className="h-72 w-full rounded-[16px] border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/60"
       >
         {edges.map((edge) => {
           const fromPosition = positionBySlug.get(edge.from);
@@ -110,7 +110,7 @@ export const MiniGraph = ({ centerSlug, nodes, edges }: MiniGraphProps) => {
       </svg>
 
       <div className="space-y-2">
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Navegação por teclado</p>
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Navegação por teclado</p>
         <ul className="grid grid-cols-1 gap-2 md:grid-cols-2">
           {layout
             .filter((entry) => !entry.isCenter)
@@ -119,7 +119,7 @@ export const MiniGraph = ({ centerSlug, nodes, edges }: MiniGraphProps) => {
                 <Link
                   to={`/recursos/glossario/${entry.slug}`}
                   aria-label={`Abrir conceito ${nodes[entry.slug]?.term}`}
-                  className="block rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-blue-700 hover:border-blue-300"
+                  className="block rounded-[14px] border border-slate-200/90 bg-white/80 px-3 py-2 text-sm text-blue-700 hover:border-blue-400 dark:border-slate-700 dark:bg-slate-900/70 dark:text-blue-300 dark:hover:border-blue-500"
                 >
                   {nodes[entry.slug]?.term}
                 </Link>

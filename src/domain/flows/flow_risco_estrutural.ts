@@ -6,7 +6,7 @@ export const flow_risco_estrutural: FlowSpec = {
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "risco_estrutural",
     "title": "Risco Estrutural",
-    "description": "Orientacoes para isolar area e proteger a comunidade em risco de colapso ou queda estrutural.",
+    "description": "Orientações para isolar area e proteger a comunidade em risco de colapso ou queda estrutural.",
     "severity": "HIGH",
     "keywords": [
       "risco estrutural",
@@ -54,7 +54,7 @@ export const flow_risco_estrutural: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Dano estrutural relevante exige isolamento e avaliacao tecnica com urgencia."
+        "rationale": "Dano estrutural relevante exige isolamento e avaliação tecnica com urgência."
       },
       {
         "id": "rule_default",
@@ -112,18 +112,18 @@ export const flow_risco_estrutural: FlowSpec = {
     ],
     "recommendedActionsByRisk": {
       "MODERATE": [
-        "Registrar observacao predial",
+        "Registrar observação predial",
         "Monitorar area com equipe de apoio"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Isolar area afetada",
         "Entrar em contato com responsaveis"
       ],
       "CRITICAL": [
         "Evacuar imediatamente",
         "Acionar 190 e defesa civil local",
-        "Nao deixar estudantes sozinhos durante retirada"
+        "Não deixar estudantes sozinhos durante retirada"
       ]
     },
     "recommendedServiceTagsByRisk": {
@@ -143,7 +143,7 @@ export const flow_risco_estrutural: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Risco estrutural identificado. Priorize seguranca da comunidade escolar.",
+      "content": "Risco estrutural identificado. Priorize segurança da comunidade escolar.",
       "riskSignals": [
         "rachadura_grave",
         "interdicao_parcial_necessaria"
@@ -161,14 +161,14 @@ export const flow_risco_estrutural: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Ha sinais de colapso imediato ou queda de partes da estrutura?",
+      "question": "Há sinais de colapso imediato ou queda de partes da estrutura?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_evacuacao_critica"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -180,14 +180,14 @@ export const flow_risco_estrutural: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "A area precisa permanecer interditada para avaliacao tecnica?",
+      "question": "A area precisa permanecer interditada para avaliação tecnica?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_isolamento_preventivo"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_monitoramento_predial"
         }
       ],
@@ -205,8 +205,8 @@ export const flow_risco_estrutural: FlowSpec = {
       "actions": [
         "Evacuar imediatamente para ponto seguro",
         "Acionar 190 e suporte tecnico emergencial",
-        "Avisar a gestao escolar e responsaveis",
-        "Nao deixar estudantes sozinhos durante a retirada"
+        "Avisar a gestão escolar e responsaveis",
+        "Não deixar estudantes sozinhos durante a retirada"
       ],
       "timeline": "Imediato",
       "riskLevel": "CRITICAL",
@@ -227,8 +227,8 @@ export const flow_risco_estrutural: FlowSpec = {
       "label": "Isolamento Preventivo com Interdicao",
       "description": "Risco alto sem colapso imediato, mantendo area interditada e monitorada.",
       "actions": [
-        "Avisar a gestao escolar",
-        "Isolar area e interromper uso ate avaliacao tecnica",
+        "Avisar a gestão escolar",
+        "Isolar area e interromper uso ate avaliação tecnica",
         "Entrar em contato com responsaveis sobre ajustes de rotina"
       ],
       "timeline": "Horas",
@@ -245,7 +245,7 @@ export const flow_risco_estrutural: FlowSpec = {
     {
       "id": "outcome_monitoramento_predial",
       "label": "Monitoramento Predial Continuo",
-      "description": "Sem risco imediato confirmado, com observacao tecnica e registro preventivo.",
+      "description": "Sem risco imediato confirmado, com observação tecnica e registro preventivo.",
       "actions": [
         "Registrar evidencias observadas pela equipe",
         "Manter monitoramento continuo da estrutura",

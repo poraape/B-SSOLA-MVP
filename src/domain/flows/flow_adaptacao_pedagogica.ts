@@ -5,8 +5,8 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
     "id": "flow_adaptacao_pedagogica",
     "categoryId": "inclusao_acessibilidade",
     "subcategoryId": "adaptacao_pedagogica",
-    "title": "Necessidade de Adaptacao Pedagogica",
-    "description": "Orientacoes praticas para a equipe escolar sobre Necessidade de Adaptacao Pedagogica.",
+    "title": "Necessidade de Adaptação Pedagógica",
+    "description": "Orientações praticas para a equipe escolar sobre Necessidade de Adaptação Pedagógica.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Necessidade de Adaptacao Pedagogica. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Necessidade de Adaptação Pedagógica. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "barreira_aprendizagem_persistente"
       ]
@@ -23,14 +23,14 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Ha laudo ou indicacao formal?",
+      "question": "Há laudo ou indicacao formal?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_baixo"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -43,10 +43,10 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
-        "Plano de adaptacao individual",
+        "Plano de adaptação individual",
         "Revisao trimestral"
       ],
       "timeline": "Dias",
@@ -96,7 +96,7 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
             "protecao_vinculo_escolar"
           ]
         },
-        "rationale": "Risco de exclusao escolar demanda acao imediata de protecao do vinculo."
+        "rationale": "Risco de exclusao escolar demanda ação imediata de proteção do vínculo."
       },
       {
         "id": "rule_default",
@@ -117,12 +117,12 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
       },
       {
         "id": "necessidade_apoio_pedagogico",
-        "label": "Necessidade de apoio pedagogico adicional",
+        "label": "Necessidade de apoio pedagógico adicional",
         "weight": 1
       },
       {
         "id": "defasagem_relevante",
-        "label": "Defasagem pedagogica relevante",
+        "label": "Defasagem pedagógica relevante",
         "weight": 2
       },
       {
@@ -132,12 +132,12 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
       },
       {
         "id": "exclusao_pedagogica_imediata",
-        "label": "Risco de exclusao pedagogica imediata",
+        "label": "Risco de exclusao pedagógica imediata",
         "weight": 3
       },
       {
         "id": "rompimento_vinculo_escolar",
-        "label": "Risco de rompimento de vinculo escolar",
+        "label": "Risco de rompimento de vínculo escolar",
         "weight": 3
       }
     ],

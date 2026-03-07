@@ -45,7 +45,7 @@ export const CategoryHub = ({ category }: CategoryHubProps) => {
 
   return (
     <main className="space-y-6">
-      <header className="rounded-2xl border border-slate-200 bg-white p-6">
+      <header className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <h1 className="text-2xl font-black text-slate-900">Hub da categoria: {category}</h1>
         <p className="mt-2 text-sm text-slate-600">
           Explore termos da mesma categoria e caminhos de navegação semântica.
@@ -55,18 +55,18 @@ export const CategoryHub = ({ category }: CategoryHubProps) => {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Buscar termo na categoria"
-          className="mt-4 w-full rounded-xl border border-slate-300 px-3 py-2 text-sm"
+          className="mt-4 w-full rounded-[16px] border border-slate-300/90 bg-white/80 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900/70"
         />
       </header>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6">
+      <section className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <h2 className="text-lg font-bold text-slate-900">Termos da categoria</h2>
         <div className="mt-3 grid grid-cols-1 gap-2 md:grid-cols-2">
           {filtered.map((node) => (
             <Link
               key={node.slug}
               to={`/recursos/glossario/${node.slug}`}
-              className="rounded-xl border border-slate-200 p-3 text-sm font-semibold text-blue-700 hover:border-blue-300"
+              className="rounded-[14px] border border-slate-300/90 bg-white/80 p-3 text-sm font-semibold text-slate-700 hover:border-blue-400 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-300"
             >
               {node.term}
             </Link>
@@ -74,11 +74,11 @@ export const CategoryHub = ({ category }: CategoryHubProps) => {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6">
+      <section className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <h2 className="text-lg font-bold text-slate-900">Termos mais conectados</h2>
         <ul className="mt-3 space-y-2">
           {topConnected.map(({ node, degree }) => (
-            <li key={node.slug} className="rounded-lg border border-slate-200 p-3">
+            <li key={node.slug} className="rounded-[14px] border border-slate-200/90 bg-white/80 p-3 dark:border-slate-700 dark:bg-slate-900/70">
               <Link to={`/recursos/glossario/${node.slug}`} className="text-sm font-semibold text-blue-700 hover:underline">
                 {node.term}
               </Link>
@@ -89,11 +89,11 @@ export const CategoryHub = ({ category }: CategoryHubProps) => {
       </section>
 
       {samplePaths.length > 0 && (
-        <section className="rounded-2xl border border-slate-200 bg-white p-6">
+        <section className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
           <h2 className="text-lg font-bold text-slate-900">Caminhos sugeridos</h2>
           <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
             {samplePaths.map((path) => (
-              <article key={path.id} className="rounded-xl border border-slate-200 p-3">
+              <article key={path.id} className="rounded-[14px] border border-slate-200/90 bg-white/80 p-3 dark:border-slate-700 dark:bg-slate-900/70">
                 <h3 className="text-sm font-semibold text-slate-900">{path.label}</h3>
                 <ol className="mt-2 space-y-1 text-sm">
                   {path.slugs.map((slug) => (

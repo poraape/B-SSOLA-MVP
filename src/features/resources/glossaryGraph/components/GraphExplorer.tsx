@@ -65,9 +65,9 @@ export const GraphExplorer = () => {
 
   return (
     <main className="space-y-6">
-      <header className="rounded-2xl border border-slate-200 bg-white p-6">
+      <header className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <h1 className="text-2xl font-black text-slate-900">Explorador de grafo do glossário</h1>
-        <p className="mt-2 text-sm text-slate-600">Navegue por conceitos conectados por relações explícitas, menções e similaridade semântica.</p>
+        <p className="mt-2 text-sm text-slate-600">Explore conceitos conectados por relações explícitas, menções e similaridade semântica.</p>
 
         <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2">
           <input
@@ -75,13 +75,13 @@ export const GraphExplorer = () => {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             placeholder="Buscar termo para centralizar"
-            className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
+            className="rounded-[16px] border border-slate-300/90 bg-white/85 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900/75"
           />
 
           <select
             value={selectedCategory}
             onChange={(event) => setSelectedCategory(event.target.value)}
-            className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
+            className="rounded-[16px] border border-slate-300/90 bg-white/85 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900/75"
           >
             <option value="all">Todas as categorias</option>
             {categories.map((category) => (
@@ -92,7 +92,7 @@ export const GraphExplorer = () => {
           <select
             value={selectedAudience}
             onChange={(event) => setSelectedAudience(event.target.value as 'all' | 'leigo' | 'técnico')}
-            className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
+            className="rounded-[16px] border border-slate-300/90 bg-white/85 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900/75"
           >
             <option value="all">Todos os públicos</option>
             <option value="leigo">Leigo</option>
@@ -103,14 +103,14 @@ export const GraphExplorer = () => {
             <button
               type="button"
               onClick={() => setViewMode('svg')}
-              className={`rounded-lg px-3 py-2 text-sm ${viewMode === 'svg' ? 'bg-blue-600 text-white' : 'border border-slate-300 text-slate-700'}`}
+              className={`rounded-[14px] px-3 py-2 text-sm ${viewMode === 'svg' ? 'bg-blue-600 text-white shadow-[0_8px_16px_-12px_rgba(37,99,235,0.8)]' : 'border border-slate-300 text-slate-700 dark:border-slate-700 dark:text-slate-300'}`}
             >
               Grafo SVG
             </button>
             <button
               type="button"
               onClick={() => setViewMode('list')}
-              className={`rounded-lg px-3 py-2 text-sm ${viewMode === 'list' ? 'bg-blue-600 text-white' : 'border border-slate-300 text-slate-700'}`}
+              className={`rounded-[14px] px-3 py-2 text-sm ${viewMode === 'list' ? 'bg-blue-600 text-white shadow-[0_8px_16px_-12px_rgba(37,99,235,0.8)]' : 'border border-slate-300 text-slate-700 dark:border-slate-700 dark:text-slate-300'}`}
             >
               Lista
             </button>
@@ -124,7 +124,7 @@ export const GraphExplorer = () => {
                 <button
                   type="button"
                   onClick={() => setSelectedSlug(node.slug)}
-                  className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700"
+                  className="rounded-[18px] border border-slate-300/80 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-700 hover:border-blue-400 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-300"
                 >
                   {node.term}
                 </button>
@@ -135,7 +135,7 @@ export const GraphExplorer = () => {
 
         <div className="mt-4 flex flex-wrap gap-2">
           {EDGE_TYPES.map((type) => (
-            <label key={type} className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-xs">
+            <label key={type} className="inline-flex items-center gap-2 rounded-[18px] border border-slate-300/80 bg-white/70 px-3 py-1 text-xs dark:border-slate-700 dark:bg-slate-900/70">
               <input
                 type="checkbox"
                 checked={edgeTypeFilter[type]}
@@ -149,7 +149,7 @@ export const GraphExplorer = () => {
         </div>
       </header>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6">
+      <section className="rounded-[20px] border border-slate-200/90 bg-white/85 p-6 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.4)] dark:border-slate-700 dark:bg-slate-900/75">
         <h2 className="text-lg font-bold text-slate-900">
           Nó central: {selectedNode?.term ?? 'Selecione um termo'}
         </h2>
@@ -160,7 +160,7 @@ export const GraphExplorer = () => {
             viewBox="0 0 760 360"
             role="img"
             aria-label={`Visualização de vizinhança para ${selectedNode?.term ?? 'termo selecionado'}`}
-            className="h-96 w-full rounded-xl border border-slate-200 bg-slate-50"
+            className="h-96 w-full rounded-[16px] border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-800/60"
           >
             <circle cx="380" cy="180" r="24" fill="#1d4ed8" />
             <text x="380" y="215" textAnchor="middle" className="fill-slate-700 text-xs font-semibold">
@@ -200,7 +200,7 @@ export const GraphExplorer = () => {
                       type="button"
                       onClick={() => setSelectedSlug(target.slug)}
                       aria-label={`Centralizar no termo ${target.term}`}
-                      className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-left text-sm font-semibold text-blue-700 hover:border-blue-300"
+                      className="w-full rounded-[14px] border border-slate-300/90 bg-white/80 px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:border-blue-400 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-300"
                     >
                       {target.term}
                     </button>
@@ -217,7 +217,7 @@ export const GraphExplorer = () => {
               }
 
               return (
-                <li key={`${edge.from}-${edge.to}-${edge.type}`} className="rounded-lg border border-slate-200 p-3">
+                <li key={`${edge.from}-${edge.to}-${edge.type}`} className="rounded-[14px] border border-slate-200/90 bg-white/80 p-3 dark:border-slate-700 dark:bg-slate-900/70">
                   <Link to={`/recursos/glossario/${target.slug}`} className="text-sm font-semibold text-blue-700 hover:underline">
                     {target.term}
                   </Link>

@@ -65,7 +65,7 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
   }
 
   return (
-    <div className="relative h-full w-full rounded-3xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
+    <div className="relative h-full w-full overflow-hidden rounded-[20px] border border-slate-200/90 bg-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_10px_24px_-20px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-800">
       <MapContainer 
         center={center} 
         zoom={14} 
@@ -102,7 +102,7 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
         <ChangeView center={center} zoom={selectedService ? 16 : 14} />
       </MapContainer>
       {mapServices.length === 0 && (
-        <div className="absolute inset-0 z-[1000] flex items-center justify-center bg-slate-100/85 p-4 text-center text-sm text-slate-600">
+        <div className="absolute inset-0 z-[1000] flex items-center justify-center bg-slate-100/85 p-4 text-center text-sm text-slate-600 dark:bg-slate-900/80 dark:text-slate-300">
           Nenhum serviço próximo encontrado. Consulte a coordenação pedagógica.
         </div>
       )}

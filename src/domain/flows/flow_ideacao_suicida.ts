@@ -5,13 +5,13 @@ export const flow_ideacao_suicida: FlowSpec = {
     "id": "flow_ideacao_suicida",
     "categoryId": "saude_emocional",
     "subcategoryId": "ideacao_suicida",
-    "title": "Ideacao Suicida ou Desesperanca",
-    "description": "Orientacoes para acolher, proteger e acionar apoio imediato em risco emocional grave.",
+    "title": "Ideacao Suicida ou Desesperança",
+    "description": "Orientações para acolher, proteger e acionar apoio imediato em risco emocional grave.",
     "severity": "CRITICAL",
     "keywords": [
       "ideacao suicida",
       "risco grave",
-      "protecao imediata",
+      "proteção imediata",
       "acolhimento"
     ],
     "status": "EXISTING"
@@ -78,7 +78,7 @@ export const flow_ideacao_suicida: FlowSpec = {
         "id": "fala_intencao_clara",
         "label": "Fala direta sobre se machucar ou morrer",
         "examples": [
-          "nao quero mais viver",
+          "não quero mais viver",
           "vou me machucar hoje"
         ],
         "weight": 3
@@ -94,16 +94,16 @@ export const flow_ideacao_suicida: FlowSpec = {
       },
       {
         "id": "desesperanca_intensa",
-        "label": "Desesperanca persistente com sofrimento evidente",
+        "label": "Desesperança persistente com sofrimento evidente",
         "examples": [
           "choro frequente",
-          "frases de sem saida"
+          "frases de sem saída"
         ],
         "weight": 2
       },
       {
         "id": "isolamento_com_risco",
-        "label": "Isolamento acentuado com perda de vinculo",
+        "label": "Isolamento acentuado com perda de vínculo",
         "examples": [
           "recusa de contato",
           "afastamento abrupto da turma"
@@ -115,16 +115,16 @@ export const flow_ideacao_suicida: FlowSpec = {
       "MODERATE": [
         "Escuta acolhedora e sem julgamento",
         "Plano de acompanhamento com equipe",
-        "Registro de observacoes"
+        "Registro de observações"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Entrar em contato com responsaveis",
         "Encaminhar ao CAPS infantojuvenil"
       ],
       "CRITICAL": [
         "Acionar 192 imediatamente",
-        "Nao deixar o estudante sozinho",
+        "Não deixar o estudante sozinho",
         "Garantir supervisao constante ate chegada de apoio"
       ]
     },
@@ -146,7 +146,7 @@ export const flow_ideacao_suicida: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Sinal de ideacao suicida identificado. Priorize protecao imediata e acolhimento sem julgamento.",
+      "content": "Sinal de ideacao suicida identificado. Priorize proteção imediata e acolhimento sem julgamento.",
       "riskSignals": [
         "fala_intencao_clara",
         "desesperanca_intensa"
@@ -155,7 +155,7 @@ export const flow_ideacao_suicida: FlowSpec = {
     {
       "id": "step_2",
       "type": "action",
-      "action": "Permaneca com o estudante em local protegido e acione a gestao escolar.",
+      "action": "Permaneca com o estudante em local protegido e acione a gestão escolar.",
       "riskSignals": [
         "isolamento_com_risco"
       ]
@@ -170,7 +170,7 @@ export const flow_ideacao_suicida: FlowSpec = {
           "next": "outcome_protecao_urgente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -182,14 +182,14 @@ export const flow_ideacao_suicida: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Ha sofrimento intenso com isolamento e piora recente?",
+      "question": "Há sofrimento intenso com isolamento e piora recente?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_apoio_prioritario"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_acompanhamento_continuo"
         }
       ],
@@ -202,13 +202,13 @@ export const flow_ideacao_suicida: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_protecao_urgente",
-      "label": "Protecao Urgente em Risco Imediato",
-      "description": "Risco critico. Acione urgencia e mantenha supervisao constante.",
+      "label": "Proteção Urgente em Risco Imediato",
+      "description": "Risco critico. Acione urgência e mantenha supervisao constante.",
       "actions": [
         "Acionar 192 imediatamente",
-        "Avisar a gestao escolar e os responsaveis",
-        "Nao deixar o estudante sozinho em nenhum momento",
-        "Registrar formalmente as acoes realizadas"
+        "Avisar a gestão escolar e os responsaveis",
+        "Não deixar o estudante sozinho em nenhum momento",
+        "Registrar formalmente as ações realizadas"
       ],
       "timeline": "Imediato",
       "riskLevel": "CRITICAL",
@@ -227,11 +227,11 @@ export const flow_ideacao_suicida: FlowSpec = {
     {
       "id": "outcome_apoio_prioritario",
       "label": "Apoio Prioritario com Rede",
-      "description": "Risco alto. Organizar suporte rapido da escola com rede de saude mental.",
+      "description": "Risco alto. Organizar suporte rapido da escola com rede de saúde mental.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Entrar em contato com responsaveis",
-        "Encaminhar ao CAPS infantojuvenil e/ou UBS de referencia",
+        "Encaminhar ao CAPS infantojuvenil e/ou UBS de referência",
         "Definir plano de acompanhamento com revisao frequente"
       ],
       "timeline": "Horas",
@@ -249,12 +249,12 @@ export const flow_ideacao_suicida: FlowSpec = {
     },
     {
       "id": "outcome_acompanhamento_continuo",
-      "label": "Acompanhamento Continuo com Protecao",
+      "label": "Acompanhamento Continuo com Proteção",
       "description": "Sem risco imediato identificado, com necessidade de monitoramento constante.",
       "actions": [
         "Realizar escuta acolhedora e sem julgamento",
-        "Registrar observacoes e combinar pontos de apoio na escola",
-        "Manter acompanhamento continuo com reavaliacao rapida se houver piora"
+        "Registrar observações e combinar pontos de apoio na escola",
+        "Manter acompanhamento continuo com reavaliação rapida se houver piora"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",

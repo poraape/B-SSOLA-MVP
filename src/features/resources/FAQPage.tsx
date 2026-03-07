@@ -71,7 +71,7 @@ export const FAQPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="max-w-4xl mx-auto space-y-8 rounded-[20px] border border-slate-200/70 bg-white/45 p-5 shadow-[0_16px_36px_-26px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/35 md:p-6">
       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
         <FAQSearchBar value={searchTerm} onChange={setSearchTerm} resultsCount={filteredItems.length} />
         <FAQCategoryFilter
@@ -99,7 +99,7 @@ export const FAQPage: React.FC = () => {
         {filteredItems.map((item) => {
           const isOpen = openIndex === item.id;
           return (
-            <div key={item.id} className="space-y-4 rounded-2xl border border-slate-200/80 bg-white/90 p-3 shadow-[0_10px_24px_-20px_rgba(15,23,42,0.35)] dark:border-slate-700 dark:bg-slate-900/70 md:p-4">
+            <div key={item.id} className="space-y-4 rounded-[20px] border border-slate-200/85 bg-white/85 p-3 shadow-[0_10px_24px_-20px_rgba(15,23,42,0.35)] dark:border-slate-700 dark:bg-slate-900/70 md:p-4">
               <FAQAccordionItem
                 item={item}
                 isOpen={isOpen}
@@ -115,7 +115,7 @@ export const FAQPage: React.FC = () => {
         })}
 
         {filteredItems.length === 0 && (
-          <div className="text-center py-20 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
+          <div className="py-16 text-center rounded-[20px] border border-dashed border-slate-300 bg-white/75 dark:border-slate-700 dark:bg-slate-900/50">
             <p className="text-slate-500 font-medium mb-2">
               Nenhum resultado encontrado {searchTerm && `para "${searchTerm}"`}
             </p>
@@ -124,7 +124,7 @@ export const FAQPage: React.FC = () => {
             </p>
             <button
               onClick={handleClearFilters}
-              className="px-6 py-3 bg-blue-600 text-white font-black uppercase text-[10px] tracking-widest rounded-full hover:bg-blue-700 transition-colors focus:ring-4 focus:ring-blue-500/20 min-h-[44px]"
+              className="min-h-[44px] rounded-[18px] border border-slate-300/80 bg-white/80 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-slate-700 shadow-[0_10px_22px_-18px_rgba(15,23,42,0.4)] transition-all hover:scale-[1.02] hover:border-blue-400 hover:text-blue-600 focus:ring-4 focus:ring-blue-500/20 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-300"
             >
               Limpar filtros
             </button>

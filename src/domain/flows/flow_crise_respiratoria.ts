@@ -5,14 +5,14 @@ export const flow_crise_respiratoria: FlowSpec = {
     "id": "flow_crise_respiratoria",
     "categoryId": "saude_bem_estar",
     "subcategoryId": "crise_respiratoria",
-    "title": "Crise Respiratoria ou Asmatica",
-    "description": "Orientacoes para resposta segura em falta de ar e crise respiratoria na escola.",
+    "title": "Crise Respiratória ou Asmatica",
+    "description": "Orientações para resposta segura em falta de ar e crise respiratória na escola.",
     "severity": "HIGH",
     "keywords": [
-      "crise respiratoria",
+      "crise respiratória",
       "asma",
       "falta de ar",
-      "urgencia escolar"
+      "urgência escolar"
     ],
     "status": "IMPLEMENTED"
   },
@@ -37,7 +37,7 @@ export const flow_crise_respiratoria: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Sinais de insuficiencia respiratoria representam risco imediato e exigem urgencia."
+        "rationale": "Sinais de insuficiencia respiratória representam risco imediato e exigem urgência."
       },
       {
         "id": "rule_crise_sem_melhora",
@@ -54,7 +54,7 @@ export const flow_crise_respiratoria: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Crise sem melhora inicial precisa de avaliacao rapida na rede de saude."
+        "rationale": "Crise sem melhora inicial precisa de avaliação rapida na rede de saúde."
       },
       {
         "id": "rule_default",
@@ -102,9 +102,9 @@ export const flow_crise_respiratoria: FlowSpec = {
       },
       {
         "id": "resposta_insuficiente_medida_inicial",
-        "label": "Sem melhora apos medidas iniciais seguras",
+        "label": "Sem melhora após medidas iniciais seguras",
         "examples": [
-          "sem alivio apos repouso e orientacao"
+          "sem alivio após repouso e orientação"
         ],
         "weight": 2
       }
@@ -112,16 +112,16 @@ export const flow_crise_respiratoria: FlowSpec = {
     "recommendedActionsByRisk": {
       "MODERATE": [
         "Acolher em local ventilado e observar",
-        "Orientar avaliacao na UBS de referencia"
+        "Orientar avaliação na UBS de referência"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Acionar responsaveis",
         "Encaminhar para UPA/Hospital ou UBS conforme gravidade"
       ],
       "CRITICAL": [
         "Acionar 192 imediatamente",
-        "Nao deixar a pessoa sozinha",
+        "Não deixar a pessoa sozinha",
         "Manter posicao confortavel e ambiente ventilado"
       ]
     },
@@ -142,7 +142,7 @@ export const flow_crise_respiratoria: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Crise respiratoria identificada. Priorize calma, ventilacao e suporte imediato.",
+      "content": "Crise respiratória identificada. Priorize calma, ventilacao e suporte imediato.",
       "riskSignals": [
         "falta_ar_intensa",
         "sinais_hipoxia"
@@ -151,7 +151,7 @@ export const flow_crise_respiratoria: FlowSpec = {
     {
       "id": "step_2",
       "type": "action",
-      "action": "Mantenha a pessoa sentada, em local ventilado, e acione a gestao escolar.",
+      "action": "Mantenha a pessoa sentada, em local ventilado, e acione a gestão escolar.",
       "riskSignals": [
         "chiado_persistente",
         "resposta_insuficiente_medida_inicial"
@@ -160,14 +160,14 @@ export const flow_crise_respiratoria: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Ha falta de ar intensa, dificuldade para falar ou sinais de baixa oxigenacao?",
+      "question": "Há falta de ar intensa, dificuldade para falar ou sinais de baixa oxigenacao?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_urgencia_respiratoria"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -179,14 +179,14 @@ export const flow_crise_respiratoria: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "A crise persiste sem melhora apos as medidas iniciais?",
+      "question": "A crise persiste sem melhora após as medidas iniciais?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_encaminhamento_prioritario"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_observacao_respiratoria"
         }
       ],
@@ -199,12 +199,12 @@ export const flow_crise_respiratoria: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_urgencia_respiratoria",
-      "label": "Urgencia Respiratoria Imediata",
-      "description": "Risco critico com necessidade de atendimento de emergencia.",
+      "label": "Urgência Respiratória Imediata",
+      "description": "Risco critico com necessidade de atendimento de emergência.",
       "actions": [
         "Acionar 192 imediatamente",
-        "Avisar a gestao escolar e os responsaveis",
-        "Nao deixar a pessoa sozinha ate chegada da equipe de urgencia",
+        "Avisar a gestão escolar e os responsaveis",
+        "Não deixar a pessoa sozinha ate chegada da equipe de urgência",
         "Registrar formalmente o ocorrido"
       ],
       "timeline": "Imediato",
@@ -222,12 +222,12 @@ export const flow_crise_respiratoria: FlowSpec = {
     },
     {
       "id": "outcome_encaminhamento_prioritario",
-      "label": "Encaminhamento Prioritario de Saude",
-      "description": "Risco alto sem colapso respiratorio no momento, com avaliacao rapida necessaria.",
+      "label": "Encaminhamento Prioritario de Saúde",
+      "description": "Risco alto sem colapso respiratório no momento, com avaliação rapida necessaria.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Entrar em contato com os responsaveis",
-        "Encaminhar para UPA/Hospital ou UBS de referencia"
+        "Encaminhar para UPA/Hospital ou UBS de referência"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -243,12 +243,12 @@ export const flow_crise_respiratoria: FlowSpec = {
     },
     {
       "id": "outcome_observacao_respiratoria",
-      "label": "Observacao Respiratoria Assistida",
-      "description": "Sem sinais de gravidade imediata, com monitoramento e orientacao para familia.",
+      "label": "Observação Respiratória Assistida",
+      "description": "Sem sinais de gravidade imediata, com monitoramento e orientação para família.",
       "actions": [
-        "Manter observacao por periodo acordado com a gestao",
+        "Manter observação por período acordado com a gestão",
         "Registrar ocorrencia no acompanhamento escolar",
-        "Orientar avaliacao na UBS de referencia"
+        "Orientar avaliação na UBS de referência"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",

@@ -5,14 +5,14 @@ export const flow_porte_objeto: FlowSpec = {
     "id": "flow_porte_objeto",
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "ameaca_com_arma",
-    "title": "Ameaca com Arma ou Objeto Perigoso",
-    "description": "Orientacoes para resposta segura diante de porte de arma ou objeto perigoso na escola.",
+    "title": "Ameaça com Arma ou Objeto Perigoso",
+    "description": "Orientações para resposta segura diante de porte de arma ou objeto perigoso na escola.",
     "severity": "HIGH",
     "keywords": [
       "porte de objeto",
       "arma",
-      "ameaca",
-      "protecao escolar"
+      "ameaça",
+      "proteção escolar"
     ],
     "status": "EXISTING"
   },
@@ -36,7 +36,7 @@ export const flow_porte_objeto: FlowSpec = {
             "do_not_leave_alone"
           ]
         },
-        "rationale": "Ameaca de uso de objeto letal exige resposta imediata de seguranca."
+        "rationale": "Ameaça de uso de objeto letal exige resposta imediata de segurança."
       },
       {
         "id": "rule_posse_sem_ameaca",
@@ -52,7 +52,7 @@ export const flow_porte_objeto: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Mesmo sem ameaca direta, o risco e significativo e requer acao formal."
+        "rationale": "Mesmo sem ameaça direta, o risco e significativo e requer ação formal."
       },
       {
         "id": "rule_default",
@@ -83,7 +83,7 @@ export const flow_porte_objeto: FlowSpec = {
       },
       {
         "id": "ameaca_de_uso",
-        "label": "Ameaca verbal ou gestual de usar o objeto",
+        "label": "Ameaça verbal ou gestual de usar o objeto",
         "examples": [
           "apontar objeto para colegas",
           "falar que vai atacar"
@@ -92,7 +92,7 @@ export const flow_porte_objeto: FlowSpec = {
       },
       {
         "id": "posse_sem_ameaca_direta",
-        "label": "Posse do objeto sem ameaca direta no momento",
+        "label": "Posse do objeto sem ameaça direta no momento",
         "examples": [
           "objeto encontrado na mochila",
           "porte sem exibicao agressiva"
@@ -102,18 +102,18 @@ export const flow_porte_objeto: FlowSpec = {
     ],
     "recommendedActionsByRisk": {
       "MODERATE": [
-        "Reavaliar contexto com a gestao",
-        "Registrar observacao inicial"
+        "Reavaliar contexto com a gestão",
+        "Registrar observação inicial"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Entrar em contato com responsaveis",
         "Registrar formalmente a ocorrencia"
       ],
       "CRITICAL": [
         "Acionar 190 imediatamente",
-        "Isolar area com seguranca",
-        "Nao deixar estudantes sozinhos"
+        "Isolar area com segurança",
+        "Não deixar estudantes sozinhos"
       ]
     },
     "recommendedServiceTagsByRisk": {
@@ -134,7 +134,7 @@ export const flow_porte_objeto: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Objeto perigoso identificado. Priorize seguranca da turma e acione a gestao.",
+      "content": "Objeto perigoso identificado. Priorize segurança da turma e acione a gestão.",
       "riskSignals": [
         "objeto_letal",
         "ameaca_de_uso"
@@ -151,14 +151,14 @@ export const flow_porte_objeto: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Ha ameaca de uso do objeto ou risco imediato de agressao?",
+      "question": "Há ameaça de uso do objeto ou risco imediato de agressão?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_protecao_critica"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -170,14 +170,14 @@ export const flow_porte_objeto: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "A posse foi identificada sem ameaca direta no momento?",
+      "question": "A posse foi identificada sem ameaça direta no momento?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_contencao_segura"
         },
         {
-          "label": "Nao ou situacao confusa",
+          "label": "Não ou situação confusa",
           "next": "outcome_protecao_critica"
         }
       ],
@@ -189,12 +189,12 @@ export const flow_porte_objeto: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_protecao_critica",
-      "label": "Protecao Critica com Seguranca Publica",
-      "description": "Risco critico. Acione seguranca publica e proteja a comunidade escolar.",
+      "label": "Proteção Critica com Segurança Publica",
+      "description": "Risco critico. Acione segurança publica e proteja a comunidade escolar.",
       "actions": [
         "Acionar 190 imediatamente",
-        "Avisar a gestao escolar",
-        "Nao deixar estudantes sozinhos em area de risco",
+        "Avisar a gestão escolar",
+        "Não deixar estudantes sozinhos em area de risco",
         "Registrar formalmente os fatos observados"
       ],
       "timeline": "Imediato",
@@ -213,9 +213,9 @@ export const flow_porte_objeto: FlowSpec = {
     {
       "id": "outcome_contencao_segura",
       "label": "Contencao Segura e Encaminhamento",
-      "description": "Risco alto sem ameaca imediata, com necessidade de acao formal e preventiva.",
+      "description": "Risco alto sem ameaça imediata, com necessidade de ação formal e preventiva.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Entrar em contato com responsaveis",
         "Registrar formalmente e avaliar encaminhamento de rede"
       ],
@@ -233,12 +233,12 @@ export const flow_porte_objeto: FlowSpec = {
     },
     {
       "id": "outcome_prevencao_continua",
-      "label": "Prevencao Continua",
-      "description": "Sem risco imediato apos contencao, mantendo acompanhamento institucional.",
+      "label": "Prevenção Continua",
+      "description": "Sem risco imediato após contencao, mantendo acompanhamento institucional.",
       "actions": [
         "Realizar escuta acolhedora com envolvidos",
-        "Reforcar orientacoes de convivencia e seguranca",
-        "Monitorar recorrencia com equipe pedagogica"
+        "Reforcar orientações de convivência e segurança",
+        "Monitorar recorrencia com equipe pedagógica"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",

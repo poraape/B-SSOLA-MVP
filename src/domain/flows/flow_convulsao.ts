@@ -5,14 +5,14 @@ export const flow_convulsao: FlowSpec = {
     "id": "flow_convulsao",
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "convulsao_perda_consciencia",
-    "title": "Convulsao ou Perda de Consciencia",
-    "description": "Orientacoes para primeiros cuidados escolares em convulsao ou desmaio prolongado.",
+    "title": "Convulsão ou Perda de Consciência",
+    "description": "Orientações para primeiros cuidados escolares em convulsão ou desmaio prolongado.",
     "severity": "CRITICAL",
     "keywords": [
-      "convulsao",
-      "perda de consciencia",
+      "convulsão",
+      "perda de consciência",
       "primeiros cuidados",
-      "protecao imediata"
+      "proteção imediata"
     ],
     "status": "EXISTING"
   },
@@ -36,7 +36,7 @@ export const flow_convulsao: FlowSpec = {
             "do_not_leave_alone"
           ]
         },
-        "rationale": "Perda de consciencia prolongada e sinal de risco imediato a integridade."
+        "rationale": "Perda de consciência prolongada e sinal de risco imediato a integridade."
       },
       {
         "id": "rule_recupera_mas_instavel",
@@ -53,7 +53,7 @@ export const flow_convulsao: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Mesmo com melhora, ha risco relevante e necessidade de avaliacao externa."
+        "rationale": "Mesmo com melhora, há risco relevante e necessidade de avaliação externa."
       },
       {
         "id": "rule_default",
@@ -77,8 +77,8 @@ export const flow_convulsao: FlowSpec = {
         "id": "inconsciente_mais_1min",
         "label": "Pessoa permanece inconsciente por mais de 1 minuto",
         "examples": [
-          "nao responde ao chamado",
-          "nao abre os olhos"
+          "não responde ao chamado",
+          "não abre os olhos"
         ],
         "weight": 3
       },
@@ -93,9 +93,9 @@ export const flow_convulsao: FlowSpec = {
       },
       {
         "id": "crise_recorrente",
-        "label": "Nova crise logo apos a primeira",
+        "label": "Nova crise logo após a primeira",
         "examples": [
-          "segunda convulsao em poucos minutos"
+          "segunda convulsão em poucos minutos"
         ],
         "weight": 2
       },
@@ -104,25 +104,25 @@ export const flow_convulsao: FlowSpec = {
         "label": "Queda com batida de cabeca ou ferimento",
         "examples": [
           "sangramento",
-          "queixa de dor forte apos queda"
+          "queixa de dor forte após queda"
         ],
         "weight": 2
       }
     ],
     "recommendedActionsByRisk": {
       "MODERATE": [
-        "Acolher e observar por periodo curto",
+        "Acolher e observar por período curto",
         "Registrar ocorrencia no acompanhamento escolar"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Entrar em contato com os responsaveis",
-        "Encaminhar para avaliacao em servico de saude"
+        "Encaminhar para avaliação em servico de saúde"
       ],
       "CRITICAL": [
         "Acionar 192 imediatamente",
-        "Nao deixar a pessoa sozinha",
-        "Manter ambiente seguro ate chegada da emergencia"
+        "Não deixar a pessoa sozinha",
+        "Manter ambiente seguro ate chegada da emergência"
       ]
     },
     "recommendedServiceTagsByRisk": {
@@ -142,7 +142,7 @@ export const flow_convulsao: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Convulsao ou perda de consciencia identificada. Priorize seguranca e calma da equipe.",
+      "content": "Convulsão ou perda de consciência identificada. Priorize segurança e calma da equipe.",
       "riskSignals": [
         "inconsciente_mais_1min",
         "respiracao_dificil"
@@ -151,7 +151,7 @@ export const flow_convulsao: FlowSpec = {
     {
       "id": "step_2",
       "type": "action",
-      "action": "Proteja a cabeca da pessoa, afaste objetos ao redor e nao coloque nada na boca.",
+      "action": "Proteja a cabeca da pessoa, afaste objetos ao redor e não coloque nada na boca.",
       "riskSignals": [
         "queda_com_trauma"
       ]
@@ -166,7 +166,7 @@ export const flow_convulsao: FlowSpec = {
           "next": "outcome_urgencia_critica"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -185,7 +185,7 @@ export const flow_convulsao: FlowSpec = {
           "next": "outcome_encaminhamento_rapido"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_observacao_orientada"
         }
       ],
@@ -198,12 +198,12 @@ export const flow_convulsao: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_urgencia_critica",
-      "label": "Urgencia Medica Imediata",
-      "description": "Risco imediato. Acione emergencia e mantenha supervisao continua.",
+      "label": "Urgência Médica Imediata",
+      "description": "Risco imediato. Acione emergência e mantenha supervisao continua.",
       "actions": [
         "Acionar 192 imediatamente",
-        "Avisar a gestao escolar e os responsaveis",
-        "Nao deixar a pessoa sozinha ate chegada da equipe de urgencia"
+        "Avisar a gestão escolar e os responsaveis",
+        "Não deixar a pessoa sozinha ate chegada da equipe de urgência"
       ],
       "timeline": "Imediato",
       "riskLevel": "CRITICAL",
@@ -220,12 +220,12 @@ export const flow_convulsao: FlowSpec = {
     },
     {
       "id": "outcome_encaminhamento_rapido",
-      "label": "Encaminhamento Rapido para Avaliacao",
-      "description": "Com melhora parcial, ainda ha risco alto e necessidade de avaliacao externa.",
+      "label": "Encaminhamento Rapido para Avaliação",
+      "description": "Com melhora parcial, ainda há risco alto e necessidade de avaliação externa.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Entrar em contato com os responsaveis para busca imediata",
-        "Encaminhar para UPA/Hospital ou UBS conforme orientacao da equipe de saude"
+        "Encaminhar para UPA/Hospital ou UBS conforme orientação da equipe de saúde"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -241,12 +241,12 @@ export const flow_convulsao: FlowSpec = {
     },
     {
       "id": "outcome_observacao_orientada",
-      "label": "Observacao com Orientacao",
-      "description": "Sem sinais graves no momento, manter acompanhamento escolar e da familia.",
+      "label": "Observação com Orientação",
+      "description": "Sem sinais graves no momento, manter acompanhamento escolar e da família.",
       "actions": [
         "Realizar escuta acolhedora e sem julgamento",
         "Registrar a ocorrencia no acompanhamento escolar",
-        "Orientar familia para avaliacao na UBS de referencia"
+        "Orientar família para avaliação na UBS de referência"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",

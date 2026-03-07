@@ -5,14 +5,14 @@ export const flow_autolesao: FlowSpec = {
     "id": "flow_autolesao",
     "categoryId": "saude_emocional",
     "subcategoryId": "autolesao",
-    "title": "Autolesao ou Automutilacao",
-    "description": "Flow consolidado de autolesao com foco em protecao imediata e rede de cuidado.",
+    "title": "Autolesão ou Automutilacao",
+    "description": "Flow consolidado de autolesão com foco em proteção imediata e rede de cuidado.",
     "severity": "CRITICAL",
     "keywords": [
-      "autolesao",
+      "autolesão",
       "automutilacao",
       "risco emocional grave",
-      "protecao imediata"
+      "proteção imediata"
     ],
     "status": "CONSOLIDATED"
   },
@@ -37,7 +37,7 @@ export const flow_autolesao: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Lesao ativa ou intencao imediata exige resposta de urgencia e supervisao continua."
+        "rationale": "Lesão ativa ou intencao imediata exige resposta de urgência e supervisao continua."
       },
       {
         "id": "rule_sinais_persistentes",
@@ -54,7 +54,7 @@ export const flow_autolesao: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Sinais persistentes exigem plano de protecao e encaminhamento de saude mental."
+        "rationale": "Sinais persistentes exigem plano de proteção e encaminhamento de saúde mental."
       },
       {
         "id": "rule_default",
@@ -76,7 +76,7 @@ export const flow_autolesao: FlowSpec = {
     "riskSignals": [
       {
         "id": "lesao_ativa",
-        "label": "Lesao recente ou comportamento de autoagressao no momento",
+        "label": "Lesão recente ou comportamento de autoagressao no momento",
         "examples": [
           "ferimento aparente",
           "tentativa de se machucar na escola"
@@ -85,16 +85,16 @@ export const flow_autolesao: FlowSpec = {
       },
       {
         "id": "intencao_repetir_ato",
-        "label": "Fala de repetir autolesao em curto prazo",
+        "label": "Fala de repetir autolesão em curto prazo",
         "examples": [
           "vou fazer de novo hoje",
-          "nao consigo parar"
+          "não consigo parar"
         ],
         "weight": 3
       },
       {
         "id": "historico_recorrente",
-        "label": "Historico repetido de autolesao",
+        "label": "Historico repetido de autolesão",
         "examples": [
           "episodios frequentes nas ultimas semanas"
         ],
@@ -105,7 +105,7 @@ export const flow_autolesao: FlowSpec = {
         "label": "Sofrimento emocional intenso e persistente",
         "examples": [
           "choro frequente",
-          "isolamento com desesperanca"
+          "isolamento com desesperança"
         ],
         "weight": 2
       }
@@ -117,13 +117,13 @@ export const flow_autolesao: FlowSpec = {
         "Plano de cuidado com equipe"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Entrar em contato com responsaveis",
         "Encaminhar ao CAPS infantojuvenil"
       ],
       "CRITICAL": [
         "Acionar 192 imediatamente",
-        "Nao deixar a pessoa sozinha",
+        "Não deixar a pessoa sozinha",
         "Garantir supervisao continua"
       ]
     },
@@ -145,7 +145,7 @@ export const flow_autolesao: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Sinal de autolesao identificado. Priorize protecao e acolhimento sem julgamento.",
+      "content": "Sinal de autolesão identificado. Priorize proteção e acolhimento sem julgamento.",
       "riskSignals": [
         "lesao_ativa",
         "sofrimento_intenso"
@@ -154,7 +154,7 @@ export const flow_autolesao: FlowSpec = {
     {
       "id": "step_2",
       "type": "action",
-      "action": "Permaneca com o estudante em local protegido e acione a gestao escolar.",
+      "action": "Permaneca com o estudante em local protegido e acione a gestão escolar.",
       "riskSignals": [
         "lesao_ativa",
         "intencao_repetir_ato"
@@ -163,14 +163,14 @@ export const flow_autolesao: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Ha lesao ativa ou risco de nova autolesao imediata?",
+      "question": "Há lesão ativa ou risco de nova autolesão imediata?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_protecao_urgente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -182,14 +182,14 @@ export const flow_autolesao: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Ha historico recorrente e sofrimento intenso?",
+      "question": "Há historico recorrente e sofrimento intenso?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_rede_apoio_prioritaria"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_acompanhamento_protegido"
         }
       ],
@@ -202,12 +202,12 @@ export const flow_autolesao: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_protecao_urgente",
-      "label": "Protecao Urgente com Suporte de Saude",
-      "description": "Risco critico. Garantir supervisao continua e acionar urgencia.",
+      "label": "Proteção Urgente com Suporte de Saúde",
+      "description": "Risco critico. Garantir supervisao continua e acionar urgência.",
       "actions": [
         "Acionar 192 imediatamente",
-        "Avisar a gestao escolar e os responsaveis",
-        "Nao deixar o estudante sozinho",
+        "Avisar a gestão escolar e os responsaveis",
+        "Não deixar o estudante sozinho",
         "Registrar formalmente as medidas adotadas"
       ],
       "timeline": "Imediato",
@@ -227,11 +227,11 @@ export const flow_autolesao: FlowSpec = {
     {
       "id": "outcome_rede_apoio_prioritaria",
       "label": "Rede de Apoio Prioritaria",
-      "description": "Risco alto. Organizar plano de protecao e encaminhamento de saude mental.",
+      "description": "Risco alto. Organizar plano de proteção e encaminhamento de saúde mental.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Entrar em contato com os responsaveis",
-        "Encaminhar ao CAPS infantojuvenil e UBS de referencia",
+        "Encaminhar ao CAPS infantojuvenil e UBS de referência",
         "Definir plano de acompanhamento com revisao frequente"
       ],
       "timeline": "Horas",
@@ -250,11 +250,11 @@ export const flow_autolesao: FlowSpec = {
     {
       "id": "outcome_acompanhamento_protegido",
       "label": "Acompanhamento Protegido",
-      "description": "Sem risco imediato, com cuidado continuo e reavaliacao frequente.",
+      "description": "Sem risco imediato, com cuidado continuo e reavaliação frequente.",
       "actions": [
         "Realizar escuta acolhedora e sem julgamento",
         "Registrar evolucao no acompanhamento escolar",
-        "Manter observacao continua e reavaliar em caso de piora"
+        "Manter observação continua e reavaliar em caso de piora"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",

@@ -6,11 +6,11 @@ export const flow_violencia_domestica: FlowSpec = {
     "categoryId": "protecao_direitos",
     "subcategoryId": "violencia_domestica",
     "title": "Suspeita de Violencia Domestica",
-    "description": "Orientacoes para proteger o estudante e acionar a rede de protecao de forma segura.",
+    "description": "Orientações para proteger o estudante e acionar a rede de proteção de forma segura.",
     "severity": "CRITICAL",
     "keywords": [
       "violencia domestica",
-      "protecao",
+      "proteção",
       "escuta segura",
       "rede de direitos"
     ],
@@ -37,7 +37,7 @@ export const flow_violencia_domestica: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Ameaca ativa exige protecao imediata e acionamento formal da rede de direitos."
+        "rationale": "Ameaça ativa exige proteção imediata e acionamento formal da rede de direitos."
       },
       {
         "id": "rule_suspeita_consistente",
@@ -77,16 +77,16 @@ export const flow_violencia_domestica: FlowSpec = {
     "riskSignals": [
       {
         "id": "ameaca_ativa",
-        "label": "Agressor proximo ou ameaca atual contra o estudante",
+        "label": "Agressor proximo ou ameaça atual contra o estudante",
         "examples": [
-          "recado de ameaca recente",
-          "responsavel agressivo aguardando na saida"
+          "recado de ameaça recente",
+          "responsavel agressivo aguardando na saída"
         ],
         "weight": 3
       },
       {
         "id": "lesao_grave_aparente",
-        "label": "Sinais fisicos importantes de violencia",
+        "label": "Sinais físicos importantes de violencia",
         "examples": [
           "hematomas extensos",
           "dor intensa com limitacao de movimento"
@@ -95,7 +95,7 @@ export const flow_violencia_domestica: FlowSpec = {
       },
       {
         "id": "relato_repetido",
-        "label": "Relatos repetidos de agressao em casa",
+        "label": "Relatos repetidos de agressão em casa",
         "examples": [
           "estudante relata episodios em diferentes dias"
         ],
@@ -106,7 +106,7 @@ export const flow_violencia_domestica: FlowSpec = {
         "label": "Medo intenso de retorno para casa",
         "examples": [
           "choro ao falar de voltar",
-          "pedido para nao ser levado"
+          "pedido para não ser levado"
         ],
         "weight": 2
       }
@@ -118,14 +118,14 @@ export const flow_violencia_domestica: FlowSpec = {
         "Monitoramento em conjunto com a equipe"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Registrar formalmente",
-        "Acionar Conselho Tutelar e rede de protecao"
+        "Acionar Conselho Tutelar e rede de proteção"
       ],
       "CRITICAL": [
         "Acionar 190 quando houver risco atual",
-        "Nao deixar o estudante sozinho",
-        "Garantir protecao fisica imediata"
+        "Não deixar o estudante sozinho",
+        "Garantir proteção física imediata"
       ]
     },
     "recommendedServiceTagsByRisk": {
@@ -147,7 +147,7 @@ export const flow_violencia_domestica: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Suspeita de violencia domestica identificada. Priorize protecao e escuta segura.",
+      "content": "Suspeita de violencia domestica identificada. Priorize proteção e escuta segura.",
       "riskSignals": [
         "relato_repetido",
         "medo_de_voltar_para_casa"
@@ -164,14 +164,14 @@ export const flow_violencia_domestica: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Ha risco imediato para o estudante agora?",
+      "question": "Há risco imediato para o estudante agora?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_protecao_imediata"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -190,7 +190,7 @@ export const flow_violencia_domestica: FlowSpec = {
           "next": "outcome_acionar_rede_protecao"
         },
         {
-          "label": "Nao, sinais iniciais",
+          "label": "Não, sinais iniciais",
           "next": "outcome_acompanhamento_protetivo"
         }
       ],
@@ -203,12 +203,12 @@ export const flow_violencia_domestica: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_protecao_imediata",
-      "label": "Protecao Imediata do Estudante",
-      "description": "Risco imediato. Garanta protecao fisica e acione a rede de emergencia.",
+      "label": "Proteção Imediata do Estudante",
+      "description": "Risco imediato. Garanta proteção física e acione a rede de emergência.",
       "actions": [
         "Acionar 190 quando houver risco atual",
-        "Avisar a gestao escolar imediatamente",
-        "Nao deixar o estudante sozinho",
+        "Avisar a gestão escolar imediatamente",
+        "Não deixar o estudante sozinho",
         "Acionar Conselho Tutelar com registro formal"
       ],
       "timeline": "Imediato",
@@ -228,13 +228,13 @@ export const flow_violencia_domestica: FlowSpec = {
     },
     {
       "id": "outcome_acionar_rede_protecao",
-      "label": "Acionar Rede de Protecao",
-      "description": "Risco alto com indicios consistentes. Organizar protecao e acompanhamento institucional.",
+      "label": "Acionar Rede de Proteção",
+      "description": "Risco alto com indicios consistentes. Organizar proteção e acompanhamento institucional.",
       "actions": [
-        "Avisar a gestao escolar",
-        "Registrar formalmente a situacao",
+        "Avisar a gestão escolar",
+        "Registrar formalmente a situação",
         "Acionar Conselho Tutelar e CREAS",
-        "Entrar em contato com responsaveis quando isso nao aumentar o risco"
+        "Entrar em contato com responsaveis quando isso não aumentar o risco"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -252,10 +252,10 @@ export const flow_violencia_domestica: FlowSpec = {
     {
       "id": "outcome_acompanhamento_protetivo",
       "label": "Acompanhamento Protetivo Inicial",
-      "description": "Sinais iniciais, sem risco imediato. Manter acompanhamento e reavaliacao frequente.",
+      "description": "Sinais iniciais, sem risco imediato. Manter acompanhamento e reavaliação frequente.",
       "actions": [
         "Realizar escuta acolhedora e sem julgamento",
-        "Registrar observacoes da equipe pedagogica",
+        "Registrar observações da equipe pedagógica",
         "Monitorar novos sinais e reavaliar rapidamente se houver agravamento"
       ],
       "timeline": "Dias",

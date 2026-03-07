@@ -6,7 +6,7 @@ export const flow_violacao_direitos: FlowSpec = {
     "categoryId": "protecao_direitos",
     "subcategoryId": "outras_violacoes_direitos",
     "title": "Outras Violacoes de Direitos",
-    "description": "Orientacoes praticas para a equipe escolar sobre Outras Violacoes de Direitos.",
+    "description": "Orientações praticas para a equipe escolar sobre Outras Violacoes de Direitos.",
     "severity": "HIGH",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_violacao_direitos: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Outras Violacoes de Direitos. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Outras Violacoes de Direitos. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "relato_violacao"
       ]
@@ -23,14 +23,14 @@ export const flow_violacao_direitos: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "A situacao envolve risco imediato a integridade do estudante?",
+      "question": "A situação envolve risco imediato a integridade do estudante?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ],
@@ -42,14 +42,14 @@ export const flow_violacao_direitos: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Ha indicio de violencia, negligencia grave ou exploracao continua?",
+      "question": "Há indicio de violencia, negligência grave ou exploração continua?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -63,9 +63,9 @@ export const flow_violacao_direitos: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
-        "Acionar gestao para triagem qualificada",
+        "Acionar gestão para triagem qualificada",
         "Encaminhar para suporte socioassistencial quando indicado"
       ],
       "timeline": "Horas",
@@ -77,11 +77,11 @@ export const flow_violacao_direitos: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
-        "Acionar gestao imediatamente",
-        "Encaminhar formalmente a rede de protecao (minimos dados necessarios)"
+        "Acionar gestão imediatamente",
+        "Encaminhar formalmente a rede de proteção (minimos dados necessarios)"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",
@@ -92,12 +92,12 @@ export const flow_violacao_direitos: FlowSpec = {
     },
     {
       "id": "outcome_iminente",
-      "label": "Acao Imediata de Protecao",
+      "label": "Ação Imediata de Proteção",
       "description": "Risco imediato. Ative o protocolo interno sem atraso.",
       "actions": [
-        "Priorizar seguranca imediata",
+        "Priorizar segurança imediata",
         "Acionar 190 quando houver risco atual",
-        "Acionar gestao imediatamente"
+        "Acionar gestão imediatamente"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",
@@ -123,7 +123,7 @@ export const flow_violacao_direitos: FlowSpec = {
             "contact_council"
           ]
         },
-        "rationale": "Relato de violacao requer acionamento institucional e de protecao."
+        "rationale": "Relato de violação requer acionamento institucional e de proteção."
       },
       {
         "id": "rule_default_baseline",
@@ -152,12 +152,12 @@ export const flow_violacao_direitos: FlowSpec = {
     "riskSignals": [
       {
         "id": "relato_violacao",
-        "label": "Relato de violacao",
+        "label": "Relato de violação",
         "weight": 3
       },
       {
         "id": "indicio_negligencia",
-        "label": "Indicio de negligencia",
+        "label": "Indicio de negligência",
         "weight": 2
       },
       {

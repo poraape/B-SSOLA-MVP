@@ -5,14 +5,14 @@ export const flow_ameaca_externa: FlowSpec = {
     "id": "flow_ameaca_externa",
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "ameaca_externa",
-    "title": "Ameaca Externa a Escola",
-    "description": "Orientacoes para resposta institucional a ameaca no entorno da escola.",
+    "title": "Ameaça Externa a Escola",
+    "description": "Orientações para resposta institucional a ameaça no entorno da escola.",
     "severity": "HIGH",
     "keywords": [
-      "ameaca externa",
+      "ameaça externa",
       "entorno escolar",
-      "protecao coletiva",
-      "seguranca"
+      "proteção coletiva",
+      "segurança"
     ],
     "status": "IMPLEMENTED"
   },
@@ -37,7 +37,7 @@ export const flow_ameaca_externa: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Ameaca imediata no entorno exige resposta de emergencia e protecao coletiva."
+        "rationale": "Ameaça imediata no entorno exige resposta de emergência e proteção coletiva."
       },
       {
         "id": "rule_alerta_confiavel",
@@ -78,7 +78,7 @@ export const flow_ameaca_externa: FlowSpec = {
         "id": "agressor_nas_proximidades",
         "label": "Pessoa agressiva nas proximidades da escola",
         "examples": [
-          "ameaca na entrada",
+          "ameaça na entrada",
           "tentativa de invasao"
         ],
         "weight": 3
@@ -94,7 +94,7 @@ export const flow_ameaca_externa: FlowSpec = {
       },
       {
         "id": "alerta_mensagem_confiavel",
-        "label": "Ameaca recebida por canal confiavel",
+        "label": "Ameaça recebida por canal confiavel",
         "examples": [
           "comunicacao oficial",
           "relato simultaneo de equipe e comunidade"
@@ -103,7 +103,7 @@ export const flow_ameaca_externa: FlowSpec = {
       },
       {
         "id": "movimentacao_suspeita_recorrente",
-        "label": "Movimentacao suspeita recorrente no entorno",
+        "label": "Movimentação suspeita recorrente no entorno",
         "examples": [
           "rondas de intimidacao",
           "tentativas repetidas de acesso indevido"
@@ -113,18 +113,18 @@ export const flow_ameaca_externa: FlowSpec = {
     ],
     "recommendedActionsByRisk": {
       "MODERATE": [
-        "Reforcar observacao e registro com a gestao",
+        "Reforcar observação e registro com a gestão",
         "Revisar controle de acesso da escola"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Restringir circulacao em areas expostas",
-        "Informar responsaveis com orientacao objetiva"
+        "Informar responsaveis com orientação objetiva"
       ],
       "CRITICAL": [
         "Acionar 190 imediatamente",
-        "Ativar protecao interna da escola",
-        "Nao deixar estudantes sozinhos em deslocamento"
+        "Ativar proteção interna da escola",
+        "Não deixar estudantes sozinhos em deslocamento"
       ]
     },
     "recommendedServiceTagsByRisk": {
@@ -145,7 +145,7 @@ export const flow_ameaca_externa: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Ameaca externa identificada. Priorize protecao da comunidade escolar.",
+      "content": "Ameaça externa identificada. Priorize proteção da comunidade escolar.",
       "riskSignals": [
         "agressor_nas_proximidades",
         "violencia_em_andamento"
@@ -154,7 +154,7 @@ export const flow_ameaca_externa: FlowSpec = {
     {
       "id": "step_2",
       "type": "action",
-      "action": "Feche acessos, mantenha estudantes em area protegida e acione a gestao.",
+      "action": "Feche acessos, mantenha estudantes em area protegida e acione a gestão.",
       "riskSignals": [
         "agressor_nas_proximidades"
       ]
@@ -162,14 +162,14 @@ export const flow_ameaca_externa: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Ha ameaca iminente ou violencia em andamento no entorno imediato?",
+      "question": "Há ameaça iminente ou violencia em andamento no entorno imediato?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_protecao_critica"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -181,14 +181,14 @@ export const flow_ameaca_externa: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Ha alerta confiavel ou recorrencia de movimentacao suspeita?",
+      "question": "Há alerta confiavel ou recorrencia de movimentação suspeita?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_contencao_preventiva"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_monitoramento_reforcado"
         }
       ],
@@ -201,11 +201,11 @@ export const flow_ameaca_externa: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_protecao_critica",
-      "label": "Protecao Critica com Acionamento de Seguranca",
+      "label": "Proteção Critica com Acionamento de Segurança",
       "description": "Risco critico no entorno com necessidade de resposta imediata.",
       "actions": [
         "Acionar 190 imediatamente",
-        "Avisar a gestao escolar e os responsaveis",
+        "Avisar a gestão escolar e os responsaveis",
         "Manter estudantes em area protegida e acompanhados",
         "Registrar formalmente os fatos e horarios"
       ],
@@ -228,8 +228,8 @@ export const flow_ameaca_externa: FlowSpec = {
       "label": "Contencao Preventiva e Comunicacao",
       "description": "Risco alto sem ataque em curso, com medidas preventivas institucionais.",
       "actions": [
-        "Avisar a gestao escolar e reforcar controle de acesso",
-        "Informar responsaveis sobre medidas de seguranca",
+        "Avisar a gestão escolar e reforcar controle de acesso",
+        "Informar responsaveis sobre medidas de segurança",
         "Registrar formalmente a ocorrencia para acompanhamento"
       ],
       "timeline": "Horas",
@@ -247,10 +247,10 @@ export const flow_ameaca_externa: FlowSpec = {
     {
       "id": "outcome_monitoramento_reforcado",
       "label": "Monitoramento Reforcado",
-      "description": "Sem risco imediato confirmado, com vigilancia e registro continuo.",
+      "description": "Sem risco imediato confirmado, com vigilância e registro continuo.",
       "actions": [
-        "Manter monitoramento do entorno em articulacao com a gestao",
-        "Registrar alertas e observacoes relevantes",
+        "Manter monitoramento do entorno em articulacao com a gestão",
+        "Registrar alertas e observações relevantes",
         "Reavaliar imediatamente se houver agravamento"
       ],
       "timeline": "Dias",

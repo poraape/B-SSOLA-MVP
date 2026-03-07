@@ -6,7 +6,7 @@ export const flow_mediacao_restaurativa: FlowSpec = {
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "mediacao_restaurativa",
     "title": "Mediacao Restaurativa entre Estudantes",
-    "description": "Orientacoes praticas para a equipe escolar sobre Mediacao e Dialogo Restaurativo.",
+    "description": "Orientações praticas para a equipe escolar sobre Mediacao e Diálogo Restaurativo.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_mediacao_restaurativa: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Mediacao e Dialogo Restaurativo. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Mediacao e Diálogo Restaurativo. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "conflito_recorrente"
       ]
@@ -23,14 +23,14 @@ export const flow_mediacao_restaurativa: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "O conflito ja cessou e nao ha risco fisico?",
+      "question": "O conflito ja cessou e não há risco físico?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_baixo"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -43,11 +43,11 @@ export const flow_mediacao_restaurativa: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Reuniao mediada com ambas as partes",
-        "Registro pedagogico minimo",
+        "Registro pedagógico minimo",
         "Acompanhamento por 30 dias"
       ],
       "timeline": "Dias",
@@ -57,7 +57,7 @@ export const flow_mediacao_restaurativa: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Plano formal de reparacao",
         "Comunicacao aos responsaveis"
@@ -82,7 +82,7 @@ export const flow_mediacao_restaurativa: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Sinais de agressividade exigem intervencao institucional."
+        "rationale": "Sinais de agressividade exigem intervenção institucional."
       },
       {
         "id": "rule_default_baseline",

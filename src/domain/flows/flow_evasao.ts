@@ -6,7 +6,7 @@ export const flow_evasao: FlowSpec = {
     "categoryId": "apoio_social_familiar",
     "subcategoryId": "evasao_faltas",
     "title": "Risco de Evasao Escolar",
-    "description": "Orientacoes praticas para a equipe escolar sobre Evasao ou Faltas Repetidas.",
+    "description": "Orientações praticas para a equipe escolar sobre Evasao ou Faltas Repetidas.",
     "severity": "HIGH",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_evasao: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Evasao ou Faltas Repetidas. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Evasao ou Faltas Repetidas. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "vulnerabilidade_economica"
       ]
@@ -30,7 +30,7 @@ export const flow_evasao: FlowSpec = {
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -42,14 +42,14 @@ export const flow_evasao: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Ha indicios de trabalho infantil ou situacao familiar grave?",
+      "question": "Há indicios de trabalho infantil ou situação familiar grave?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -62,10 +62,10 @@ export const flow_evasao: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
-        "Acompanhamento pedagogico",
+        "Acompanhamento pedagógico",
         "Contato com responsavel"
       ],
       "timeline": "Horas",
@@ -77,7 +77,7 @@ export const flow_evasao: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Encaminhar para acompanhamento socioassistencial"
       ],
@@ -89,10 +89,10 @@ export const flow_evasao: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
-        "Avisar a gestao escolar imediatamente",
+        "Avisar a gestão escolar imediatamente",
         "Encaminhamento formal"
       ],
       "timeline": "Imediato",

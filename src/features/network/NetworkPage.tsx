@@ -80,24 +80,24 @@ export const NetworkPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4">
-      <header className="rounded-2xl border border-slate-200/80 bg-white/90 px-5 py-4 shadow-[0_10px_24px_-20px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/85">
+    <div className="space-y-5">
+      <header className="rounded-[20px] border border-slate-200/70 bg-white/45 px-5 py-4 shadow-[0_16px_36px_-26px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/35">
         <h1 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">Rede de apoio</h1>
         <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Localize serviços e encaminhamentos com mais rapidez.</p>
       </header>
 
       <div className="h-[calc(100vh-16rem)] flex flex-col md:flex-row gap-6">
       {/* Sidebar */}
-      <div className="w-full md:w-80 bg-white border border-slate-200 rounded-3xl flex flex-col overflow-hidden shadow-sm">
+      <div className="flex w-full flex-col overflow-hidden rounded-[20px] border border-slate-200/85 bg-white/85 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/80 md:w-80">
         {isUsingRecommendationContext && (
-          <div className="mx-4 mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs text-emerald-800">
+          <div className="mx-4 mt-4 rounded-[14px] border border-emerald-200 bg-emerald-50/85 px-3 py-2 text-xs text-emerald-800 dark:border-emerald-800 dark:bg-emerald-900/25 dark:text-emerald-300">
             <span>Serviços recomendados para esta situação · </span>
             <button
               onClick={() => {
                 setRecommendation({ highlightId: null, queryType: null });
                 navigate('/rede');
               }}
-              className="font-semibold underline"
+              className="font-semibold underline decoration-emerald-500/70 underline-offset-2"
             >
               Ver todos os serviços
             </button>
@@ -123,7 +123,7 @@ export const NetworkPage: React.FC = () => {
       {/* Map Area */}
       <div className="flex-1 relative">
         <NetworkErrorBoundary fallback={
-          <div className="p-4 text-sm text-gray-600 bg-yellow-50 rounded">
+          <div className="rounded-[16px] border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
             Mapa temporariamente indisponível.
           </div>
         }>

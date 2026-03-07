@@ -5,11 +5,11 @@ export const flow_emergencia_medica: FlowSpec = {
     "id": "flow_emergencia_medica",
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "emergencia_medica",
-    "title": "Emergencia Medica Grave",
-    "description": "Orientacoes para resposta imediata a situacao medica grave no ambiente escolar.",
+    "title": "Emergência Médica Grave",
+    "description": "Orientações para resposta imediata a situação médica grave no ambiente escolar.",
     "severity": "CRITICAL",
     "keywords": [
-      "emergencia medica",
+      "emergência médica",
       "risco de vida",
       "primeiros cuidados",
       "acionamento urgente"
@@ -37,7 +37,7 @@ export const flow_emergencia_medica: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Inconsciencia e dificuldade respiratoria grave indicam risco imediato a vida."
+        "rationale": "Inconsciencia e dificuldade respiratória grave indicam risco imediato a vida."
       },
       {
         "id": "rule_agravamento_rapido",
@@ -54,7 +54,7 @@ export const flow_emergencia_medica: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Sem risco imediato claro, mas com sinais de agravamento que exigem avaliacao em saude."
+        "rationale": "Sem risco imediato claro, mas com sinais de agravamento que exigem avaliação em saúde."
       },
       {
         "id": "rule_default",
@@ -76,10 +76,10 @@ export const flow_emergencia_medica: FlowSpec = {
     "riskSignals": [
       {
         "id": "inconsciencia",
-        "label": "Pessoa nao responde a estimulos e permanece inconsciente",
+        "label": "Pessoa não responde a estimulos e permanece inconsciente",
         "examples": [
-          "nao abre os olhos",
-          "nao responde quando chamada"
+          "não abre os olhos",
+          "não responde quando chamada"
         ],
         "weight": 3
       },
@@ -94,7 +94,7 @@ export const flow_emergencia_medica: FlowSpec = {
       },
       {
         "id": "dor_intensa_persistente",
-        "label": "Dor intensa que nao melhora com repouso inicial",
+        "label": "Dor intensa que não melhora com repouso inicial",
         "examples": [
           "dor no peito",
           "dor abdominal muito forte"
@@ -114,17 +114,17 @@ export const flow_emergencia_medica: FlowSpec = {
     "recommendedActionsByRisk": {
       "MODERATE": [
         "Acolher em local seguro e monitorar",
-        "Registrar ocorrencia e orientar avaliacao na UBS"
+        "Registrar ocorrencia e orientar avaliação na UBS"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Entrar em contato com responsaveis",
         "Encaminhar para UPA/Hospital ou UBS conforme gravidade"
       ],
       "CRITICAL": [
         "Acionar 192 imediatamente",
-        "Nao deixar a pessoa sozinha",
-        "Manter suporte basico ate chegada da emergencia"
+        "Não deixar a pessoa sozinha",
+        "Manter suporte basico ate chegada da emergência"
       ]
     },
     "recommendedServiceTagsByRisk": {
@@ -144,7 +144,7 @@ export const flow_emergencia_medica: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Emergencia medica identificada. Priorize protecao e acionamento rapido da equipe.",
+      "content": "Emergência médica identificada. Priorize proteção e acionamento rapido da equipe.",
       "riskSignals": [
         "inconsciencia",
         "dificuldade_respiratoria_grave"
@@ -153,7 +153,7 @@ export const flow_emergencia_medica: FlowSpec = {
     {
       "id": "step_2",
       "type": "action",
-      "action": "Mantenha a pessoa em local seguro, afaste curiosos e acione a gestao escolar.",
+      "action": "Mantenha a pessoa em local seguro, afaste curiosos e acione a gestão escolar.",
       "riskSignals": [
         "inconsciencia",
         "dor_intensa_persistente"
@@ -162,14 +162,14 @@ export const flow_emergencia_medica: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Ha inconsciencia ou dificuldade respiratoria grave neste momento?",
+      "question": "Há inconsciencia ou dificuldade respiratória grave neste momento?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_urgencia_imediata"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -181,14 +181,14 @@ export const flow_emergencia_medica: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Ha sinais de agravamento rapido (dor intensa persistente, vomitos repetidos, fraqueza acentuada)?",
+      "question": "Há sinais de agravamento rapido (dor intensa persistente, vomitos repetidos, fraqueza acentuada)?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_encaminhamento_rapido"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_observacao_orientada"
         }
       ],
@@ -201,12 +201,12 @@ export const flow_emergencia_medica: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_urgencia_imediata",
-      "label": "Urgencia Medica Imediata",
-      "description": "Risco critico com necessidade de atendimento de emergencia sem atraso.",
+      "label": "Urgência Médica Imediata",
+      "description": "Risco critico com necessidade de atendimento de emergência sem atraso.",
       "actions": [
         "Acionar 192 imediatamente",
-        "Avisar a gestao escolar e os responsaveis",
-        "Nao deixar a pessoa sozinha ate chegada da equipe de urgencia",
+        "Avisar a gestão escolar e os responsaveis",
+        "Não deixar a pessoa sozinha ate chegada da equipe de urgência",
         "Registrar formalmente horario e medidas adotadas"
       ],
       "timeline": "Imediato",
@@ -224,12 +224,12 @@ export const flow_emergencia_medica: FlowSpec = {
     },
     {
       "id": "outcome_encaminhamento_rapido",
-      "label": "Encaminhamento Rapido de Saude",
-      "description": "Risco alto sem colapso imediato, com necessidade de avaliacao externa no mesmo turno.",
+      "label": "Encaminhamento Rapido de Saúde",
+      "description": "Risco alto sem colapso imediato, com necessidade de avaliação externa no mesmo turno.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Entrar em contato com os responsaveis",
-        "Encaminhar para UPA/Hospital ou UBS de referencia conforme orientacao"
+        "Encaminhar para UPA/Hospital ou UBS de referência conforme orientação"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -245,12 +245,12 @@ export const flow_emergencia_medica: FlowSpec = {
     },
     {
       "id": "outcome_observacao_orientada",
-      "label": "Observacao com Orientacao",
-      "description": "Sem sinais graves no momento, mantendo acompanhamento e orientacao para familia.",
+      "label": "Observação com Orientação",
+      "description": "Sem sinais graves no momento, mantendo acompanhamento e orientação para família.",
       "actions": [
-        "Manter observacao ate estabilidade",
+        "Manter observação ate estabilidade",
         "Registrar ocorrencia no acompanhamento escolar",
-        "Orientar avaliacao na UBS de referencia"
+        "Orientar avaliação na UBS de referência"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",

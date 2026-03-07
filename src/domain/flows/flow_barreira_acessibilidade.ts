@@ -6,7 +6,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
     "categoryId": "inclusao_acessibilidade",
     "subcategoryId": "barreira_acessibilidade",
     "title": "Barreira de Acessibilidade",
-    "description": "Orientacoes praticas para a equipe escolar sobre Barreira de Acessibilidade Fisica ou Digital.",
+    "description": "Orientações praticas para a equipe escolar sobre Barreira de Acessibilidade Física ou Digital.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Barreira de Acessibilidade Fisica ou Digital. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Barreira de Acessibilidade Física ou Digital. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "barreira_acesso"
       ]
@@ -30,7 +30,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
           "next": "outcome_moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -43,8 +43,8 @@ export const flow_barreira_acessibilidade: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Ajuste interno imediato"
       ],
@@ -55,7 +55,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Solicitar apoio institucional",
         "Registrar demanda formal"
@@ -108,7 +108,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
             "protecao_direito_acesso"
           ]
         },
-        "rationale": "Impedimento total de acesso configura risco critico de violacao de direitos."
+        "rationale": "Impedimento total de acesso configura risco critico de violação de direitos."
       },
       {
         "id": "rule_default",
@@ -134,7 +134,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
       },
       {
         "id": "ausencia_adaptacao",
-        "label": "Ausencia de adaptacao razoavel",
+        "label": "Ausencia de adaptação razoavel",
         "weight": 2
       },
       {
@@ -144,7 +144,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
       },
       {
         "id": "violacao_direito_acesso",
-        "label": "Violacao de direito de acesso",
+        "label": "Violação de direito de acesso",
         "weight": 3
       }
     ],

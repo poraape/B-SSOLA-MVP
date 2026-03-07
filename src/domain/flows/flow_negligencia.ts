@@ -5,8 +5,8 @@ export const flow_negligencia: FlowSpec = {
     "id": "flow_negligencia",
     "categoryId": "protecao_direitos",
     "subcategoryId": "negligencia_familiar",
-    "title": "Negligencia Familiar",
-    "description": "Orientacoes praticas para a equipe escolar sobre Negligencia Familiar.",
+    "title": "Negligência Familiar",
+    "description": "Orientações praticas para a equipe escolar sobre Negligência Familiar.",
     "severity": "HIGH",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_negligencia: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Negligencia Familiar. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Negligência Familiar. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "relato_violacao"
       ]
@@ -23,14 +23,14 @@ export const flow_negligencia: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "A situacao compromete saude ou integridade do estudante?",
+      "question": "A situação compromete saúde ou integridade do estudante?",
       "actions": [
         {
           "label": "Sim",
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -42,14 +42,14 @@ export const flow_negligencia: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Ha risco imediato de abandono ou violencia?",
+      "question": "Há risco imediato de abandono ou violencia?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_alto"
         }
       ],
@@ -63,7 +63,7 @@ export const flow_negligencia: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Escuta acolhedora e sem julgamento",
         "Contato com os responsaveis"
@@ -77,10 +77,10 @@ export const flow_negligencia: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Encaminhamento formal"
       ],
       "timeline": "Imediato",
@@ -92,10 +92,10 @@ export const flow_negligencia: FlowSpec = {
     },
     {
       "id": "outcome_iminente",
-      "label": "Acao Imediata de Protecao",
+      "label": "Ação Imediata de Proteção",
       "description": "Risco imediato. Ative o protocolo interno sem atraso.",
       "actions": [
-        "Garantir protecao imediata",
+        "Garantir proteção imediata",
         "Acionar autoridade competente"
       ],
       "timeline": "Imediato",
@@ -122,7 +122,7 @@ export const flow_negligencia: FlowSpec = {
             "contact_council"
           ]
         },
-        "rationale": "Relato de violacao requer acionamento institucional e de protecao."
+        "rationale": "Relato de violação requer acionamento institucional e de proteção."
       },
       {
         "id": "rule_default_baseline",
@@ -151,12 +151,12 @@ export const flow_negligencia: FlowSpec = {
     "riskSignals": [
       {
         "id": "relato_violacao",
-        "label": "Relato de violacao",
+        "label": "Relato de violação",
         "weight": 3
       },
       {
         "id": "indicio_negligencia",
-        "label": "Indicio de negligencia",
+        "label": "Indicio de negligência",
         "weight": 2
       },
       {

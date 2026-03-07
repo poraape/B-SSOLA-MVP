@@ -6,13 +6,13 @@ export const flow_bullying: FlowSpec = {
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "bullying",
     "title": "Bullying e Cyberbullying",
-    "description": "Orientacoes para diferenciar conflito pontual de bullying e definir protecao adequada.",
+    "description": "Orientações para diferenciar conflito pontual de bullying e definir proteção adequada.",
     "severity": "HIGH",
     "keywords": [
       "bullying",
       "cyberbullying",
       "humilhacao recorrente",
-      "protecao escolar"
+      "proteção escolar"
     ],
     "status": "EXISTING"
   },
@@ -36,7 +36,7 @@ export const flow_bullying: FlowSpec = {
             "do_not_leave_alone"
           ]
         },
-        "rationale": "Ameacas graves e exposicao humilhante de alto alcance podem gerar risco imediato."
+        "rationale": "Ameaças graves e exposicao humilhante de alto alcance podem gerar risco imediato."
       },
       {
         "id": "rule_repeticao_sistematica",
@@ -53,7 +53,7 @@ export const flow_bullying: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Bullying recorrente exige resposta formal, protecao e plano estruturado."
+        "rationale": "Bullying recorrente exige resposta formal, proteção e plano estruturado."
       },
       {
         "id": "rule_default",
@@ -75,9 +75,9 @@ export const flow_bullying: FlowSpec = {
     "riskSignals": [
       {
         "id": "ameaca_grave",
-        "label": "Ameaca grave de agressao fisica ou exposicao violenta",
+        "label": "Ameaça grave de agressão física ou exposicao violenta",
         "examples": [
-          "ameaca de bater apos a aula",
+          "ameaça de bater após a aula",
           "chantagem com imagens intimas"
         ],
         "weight": 3
@@ -112,17 +112,17 @@ export const flow_bullying: FlowSpec = {
     ],
     "recommendedActionsByRisk": {
       "MODERATE": [
-        "Escuta qualificada e registro pedagogico",
-        "Acordos de convivencia e monitoramento"
+        "Escuta qualificada e registro pedagógico",
+        "Acordos de convivência e monitoramento"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Registrar formalmente",
-        "Acionar responsaveis e plano de intervencao"
+        "Acionar responsaveis e plano de intervenção"
       ],
       "CRITICAL": [
-        "Garantir protecao imediata da vitima",
-        "Nao deixar estudante sozinho em risco grave",
+        "Garantir proteção imediata da vítima",
+        "Não deixar estudante sozinho em risco grave",
         "Ativar protocolo interno imediato"
       ]
     },
@@ -147,7 +147,7 @@ export const flow_bullying: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Possivel bullying identificado. Priorize escuta segura e protecao do estudante.",
+      "content": "Possível bullying identificado. Priorize escuta segura e proteção do estudante.",
       "riskSignals": [
         "repeticao_agressoes",
         "impacto_emocional_importante"
@@ -156,14 +156,14 @@ export const flow_bullying: FlowSpec = {
     {
       "id": "step_2",
       "type": "question",
-      "question": "Ha ameaca grave ou exposicao humilhante de ampla circulacao?",
+      "question": "Há ameaça grave ou exposicao humilhante de ampla circulacao?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_protecao_imediata"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_3"
         }
       ],
@@ -175,14 +175,14 @@ export const flow_bullying: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "A situacao e repetida e esta causando impacto emocional importante?",
+      "question": "A situação e repetida e esta causando impacto emocional importante?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_plano_intervencao"
         },
         {
-          "label": "Nao, foi episodio isolado",
+          "label": "Não, foi episodio isolado",
           "next": "outcome_mediacao_preventiva"
         }
       ],
@@ -195,13 +195,13 @@ export const flow_bullying: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_protecao_imediata",
-      "label": "Protecao Imediata e Acao Formal",
-      "description": "Risco critico para integridade emocional ou fisica, com resposta institucional imediata.",
+      "label": "Proteção Imediata e Ação Formal",
+      "description": "Risco critico para integridade emocional ou física, com resposta institucional imediata.",
       "actions": [
-        "Garantir protecao imediata da vitima em local seguro",
-        "Avisar a gestao escolar e os responsaveis",
-        "Nao deixar estudante sozinho quando houver risco grave",
-        "Registrar formalmente e acionar rede de protecao quando necessario"
+        "Garantir proteção imediata da vítima em local seguro",
+        "Avisar a gestão escolar e os responsaveis",
+        "Não deixar estudante sozinho quando houver risco grave",
+        "Registrar formalmente e acionar rede de proteção quando necessario"
       ],
       "timeline": "Imediato",
       "riskLevel": "CRITICAL",
@@ -220,12 +220,12 @@ export const flow_bullying: FlowSpec = {
     },
     {
       "id": "outcome_plano_intervencao",
-      "label": "Plano Estruturado de Intervencao",
+      "label": "Plano Estruturado de Intervenção",
       "description": "Risco alto com bullying recorrente, exigindo acompanhamento estruturado.",
       "actions": [
-        "Avisar gestao escolar e registrar formalmente",
+        "Avisar gestão escolar e registrar formalmente",
         "Acionar responsaveis dos envolvidos",
-        "Implementar plano de intervencao com equipe pedagogica e monitoramento"
+        "Implementar plano de intervenção com equipe pedagógica e monitoramento"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -243,10 +243,10 @@ export const flow_bullying: FlowSpec = {
     {
       "id": "outcome_mediacao_preventiva",
       "label": "Mediacao Preventiva e Monitoramento",
-      "description": "Conflito pontual sem gravidade imediata, com foco em reparacao e prevencao de repeticao.",
+      "description": "Conflito pontual sem gravidade imediata, com foco em reparacao e prevenção de repeticao.",
       "actions": [
         "Realizar escuta com os envolvidos",
-        "Conduzir mediacao restaurativa com acordos de convivencia",
+        "Conduzir mediacao restaurativa com acordos de convivência",
         "Monitorar evolucao e registrar acompanhamento"
       ],
       "timeline": "Dias",

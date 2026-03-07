@@ -19,10 +19,10 @@ export const FAQAccordionItem: React.FC<FAQAccordionItemProps> = ({
 
   return (
     <div
-      className={`border rounded-3xl overflow-hidden transition-all duration-300 ${
+      className={`overflow-hidden rounded-[20px] border transition-all duration-300 ${
         isOpen
-          ? 'border-blue-500 bg-blue-50/30 dark:bg-blue-900/10 shadow-lg shadow-blue-500/5'
-          : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-slate-300 dark:hover:border-slate-700'
+          ? 'border-blue-400 bg-white/95 shadow-[0_10px_24px_-20px_rgba(37,99,235,0.45)] dark:border-blue-700 dark:bg-slate-900/90'
+          : 'border-slate-200/90 bg-white/85 hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900/85 dark:hover:border-slate-700'
       }`}
     >
       <h3>
@@ -31,14 +31,14 @@ export const FAQAccordionItem: React.FC<FAQAccordionItemProps> = ({
           onClick={onToggle}
           aria-expanded={isOpen}
           aria-controls={answerId}
-          className="w-full text-left p-6 flex items-center justify-between gap-4 group focus:outline-none focus:ring-4 focus:ring-blue-500/20 rounded-3xl"
+          className="group flex w-full items-center justify-between gap-4 rounded-[20px] p-6 text-left focus:outline-none focus:ring-4 focus:ring-blue-500/20"
         >
           <div className="flex items-center gap-4">
             <div
               className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                 isOpen
                   ? 'bg-blue-600 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:text-blue-500'
+                  : 'bg-slate-100 text-slate-400 group-hover:text-blue-500 dark:bg-slate-800'
               }`}
               aria-hidden="true"
             >
@@ -47,7 +47,7 @@ export const FAQAccordionItem: React.FC<FAQAccordionItemProps> = ({
             <div className="space-y-1">
               <span
                 className={`text-[9px] font-black uppercase tracking-[0.2em] ${
-                  isOpen ? 'text-blue-500' : 'text-slate-400'
+                  isOpen ? 'text-blue-600 dark:text-blue-400' : 'text-slate-400'
                 }`}
                 aria-label={`Categoria: ${item.category}`}
               >
@@ -56,7 +56,7 @@ export const FAQAccordionItem: React.FC<FAQAccordionItemProps> = ({
               <span
                 className={`font-black tracking-tight leading-tight block ${
                   isOpen
-                    ? 'text-blue-600 dark:text-blue-400'
+                    ? 'text-blue-700 dark:text-blue-300'
                     : 'text-slate-900 dark:text-white'
                 }`}
               >

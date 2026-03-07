@@ -5,13 +5,13 @@ export const flow_abandono: FlowSpec = {
     "id": "flow_abandono",
     "categoryId": "protecao_direitos",
     "subcategoryId": "abandono_rua",
-    "title": "Abandono ou Situacao de Rua",
-    "description": "Orientacoes para protecao imediata e articulacao de rede em abandono ou situacao de rua.",
+    "title": "Abandono ou Situação de Rua",
+    "description": "Orientações para proteção imediata e articulacao de rede em abandono ou situação de rua.",
     "severity": "CRITICAL",
     "keywords": [
       "abandono",
-      "situacao de rua",
-      "protecao integral",
+      "situação de rua",
+      "proteção integral",
       "rede de direitos"
     ],
     "status": "EXISTING"
@@ -36,7 +36,7 @@ export const flow_abandono: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Sem adulto responsavel e com risco em rua, a protecao deve ser imediata."
+        "rationale": "Sem adulto responsavel e com risco em rua, a proteção deve ser imediata."
       },
       {
         "id": "rule_vulnerabilidade_alta",
@@ -54,7 +54,7 @@ export const flow_abandono: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Vulnerabilidade social elevada exige acao da rede de assistencia e protecao."
+        "rationale": "Vulnerabilidade social elevada exige ação da rede de assistencia e proteção."
       },
       {
         "id": "rule_default",
@@ -76,7 +76,7 @@ export const flow_abandono: FlowSpec = {
     "riskSignals": [
       {
         "id": "sem_responsavel_agora",
-        "label": "Estudante sem responsavel de referencia no momento",
+        "label": "Estudante sem responsavel de referência no momento",
         "examples": [
           "ninguem atende contato",
           "sem adulto para busca"
@@ -112,17 +112,17 @@ export const flow_abandono: FlowSpec = {
     ],
     "recommendedActionsByRisk": {
       "MODERATE": [
-        "Escuta acolhedora e registro pedagogico",
+        "Escuta acolhedora e registro pedagógico",
         "Plano de acompanhamento com assistencia escolar"
       ],
       "HIGH": [
-        "Avisar gestao escolar",
+        "Avisar gestão escolar",
         "Acionar CRAS/CREAS e Conselho Tutelar",
-        "Entrar em contato com responsaveis quando possivel"
+        "Entrar em contato com responsaveis quando possível"
       ],
       "CRITICAL": [
-        "Garantir protecao imediata na escola",
-        "Nao deixar estudante sozinho",
+        "Garantir proteção imediata na escola",
+        "Não deixar estudante sozinho",
         "Acionar Conselho Tutelar com prioridade"
       ]
     },
@@ -146,7 +146,7 @@ export const flow_abandono: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Possivel abandono ou situacao de rua identificado. Priorize protecao e acolhimento.",
+      "content": "Possível abandono ou situação de rua identificado. Priorize proteção e acolhimento.",
       "riskSignals": [
         "sem_responsavel_agora",
         "risco_na_rua"
@@ -155,7 +155,7 @@ export const flow_abandono: FlowSpec = {
     {
       "id": "step_2",
       "type": "action",
-      "action": "Mantenha o estudante em local seguro e acione imediatamente a gestao escolar.",
+      "action": "Mantenha o estudante em local seguro e acione imediatamente a gestão escolar.",
       "riskSignals": [
         "sem_responsavel_agora"
       ]
@@ -170,7 +170,7 @@ export const flow_abandono: FlowSpec = {
           "next": "outcome_protecao_imediata"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "step_4"
         }
       ],
@@ -182,14 +182,14 @@ export const flow_abandono: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Ha sinais de vulnerabilidade recorrente (falta de abrigo, ausencia familiar frequente)?",
+      "question": "Há sinais de vulnerabilidade recorrente (falta de abrigo, ausencia familiar frequente)?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_rede_assistencia"
         },
         {
-          "label": "Nao, caso inicial",
+          "label": "Não, caso inicial",
           "next": "outcome_acompanhamento_social"
         }
       ],
@@ -202,11 +202,11 @@ export const flow_abandono: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_protecao_imediata",
-      "label": "Protecao Imediata com Conselho Tutelar",
-      "description": "Risco critico. Garantir permanencia segura e acionar rede de protecao urgente.",
+      "label": "Proteção Imediata com Conselho Tutelar",
+      "description": "Risco critico. Garantir permanencia segura e acionar rede de proteção urgente.",
       "actions": [
-        "Avisar a gestao escolar imediatamente",
-        "Nao deixar o estudante sozinho",
+        "Avisar a gestão escolar imediatamente",
+        "Não deixar o estudante sozinho",
         "Acionar Conselho Tutelar com prioridade",
         "Registrar formalmente a ocorrencia"
       ],
@@ -228,7 +228,7 @@ export const flow_abandono: FlowSpec = {
       "label": "Rede de Assistencia Prioritaria",
       "description": "Risco alto com vulnerabilidade social importante. Acionar rede socioassistencial.",
       "actions": [
-        "Avisar a gestao escolar",
+        "Avisar a gestão escolar",
         "Acionar CRAS/CREAS e Conselho Tutelar",
         "Registrar formalmente e organizar busca ativa escolar"
       ],
@@ -249,7 +249,7 @@ export const flow_abandono: FlowSpec = {
     {
       "id": "outcome_acompanhamento_social",
       "label": "Acompanhamento Social Escolar",
-      "description": "Sem risco imediato, com plano de acompanhamento e prevencao de agravamento.",
+      "description": "Sem risco imediato, com plano de acompanhamento e prevenção de agravamento.",
       "actions": [
         "Realizar escuta acolhedora e sem julgamento",
         "Registrar plano de acompanhamento com assistencia escolar",

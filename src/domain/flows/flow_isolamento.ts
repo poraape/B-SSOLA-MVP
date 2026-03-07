@@ -6,7 +6,7 @@ export const flow_isolamento: FlowSpec = {
     "categoryId": "saude_emocional",
     "subcategoryId": "isolamento_social",
     "title": "Isolamento Social Persistente",
-    "description": "Orientacoes praticas para a equipe escolar sobre Isolamento Social Persistente.",
+    "description": "Orientações praticas para a equipe escolar sobre Isolamento Social Persistente.",
     "severity": "HIGH",
     "keywords": [],
     "status": "IMPLEMENTED"
@@ -15,7 +15,7 @@ export const flow_isolamento: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Isolamento Social Persistente. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Isolamento Social Persistente. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "risco_psicossocial"
       ]
@@ -23,14 +23,14 @@ export const flow_isolamento: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Ha sinais de agravamento que exigem prioridade imediata?",
+      "question": "Há sinais de agravamento que exigem prioridade imediata?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -44,9 +44,9 @@ export const flow_isolamento: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
-        "Registrar observacoes e manter acompanhamento com a equipe escolar"
+        "Registrar observações e manter acompanhamento com a equipe escolar"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -56,10 +56,10 @@ export const flow_isolamento: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
-        "Acionar gestao para encaminhamento prioritario e monitoramento imediato"
+        "Acionar gestão para encaminhamento prioritario e monitoramento imediato"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",

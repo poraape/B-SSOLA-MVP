@@ -6,7 +6,7 @@ export const flow_ansiedade: FlowSpec = {
     "categoryId": "saude_emocional",
     "subcategoryId": "ansiedade_crise",
     "title": "Ansiedade Intensa",
-    "description": "Orientacoes praticas para a equipe escolar sobre Crise de Ansiedade ou Panico.",
+    "description": "Orientações praticas para a equipe escolar sobre Crise de Ansiedade ou Pânico.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_ansiedade: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situacao identificada: Crise de Ansiedade ou Panico. Fazer acolhimento, avisar a gestao e seguir os proximos passos.",
+      "content": "Situação identificada: Crise de Ansiedade ou Pânico. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "sinais_ansiedade"
       ]
@@ -30,7 +30,7 @@ export const flow_ansiedade: FlowSpec = {
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_baixo"
         }
       ],
@@ -42,14 +42,14 @@ export const flow_ansiedade: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Ha perda de controle, risco fisico ou desmaio?",
+      "question": "Há perda de controle, risco físico ou desmaio?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "outcome_moderado"
         }
       ],
@@ -62,11 +62,11 @@ export const flow_ansiedade: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagogica",
-      "description": "Situacao de menor complexidade com monitoramento pedagógico.",
+      "label": "Resposta Inicial Pedagógica",
+      "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Escuta ativa",
-        "Orientar estrategias de regulacao emocional"
+        "Orientar estratégias de regulação emocional"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",
@@ -75,7 +75,7 @@ export const flow_ansiedade: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situacao que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Escuta acolhedora e sem julgamento",
         "Contato com responsavel"
@@ -88,11 +88,11 @@ export const flow_ansiedade: FlowSpec = {
     },
     {
       "id": "outcome_alto",
-      "label": "Protecao e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestao.",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
         "Monitorar sinais vitais",
-        "Nao deixar estudante sozinho"
+        "Não deixar estudante sozinho"
       ],
       "timeline": "Imediato",
       "riskLevel": "CRITICAL",
@@ -142,7 +142,7 @@ export const flow_ansiedade: FlowSpec = {
             "protecao_imediata"
           ]
         },
-        "rationale": "Risco fisico associado requer acao imediata de protecao."
+        "rationale": "Risco físico associado requer ação imediata de proteção."
       },
       {
         "id": "rule_default",
@@ -173,7 +173,7 @@ export const flow_ansiedade: FlowSpec = {
       },
       {
         "id": "risco_fisico_agudo",
-        "label": "Risco fisico agudo associado",
+        "label": "Risco físico agudo associado",
         "weight": 3
       },
       {

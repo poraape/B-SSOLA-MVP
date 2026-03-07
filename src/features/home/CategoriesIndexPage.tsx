@@ -21,7 +21,7 @@ export const CategoriesIndexPage: React.FC = () => {
     <section className="space-y-8 rounded-[20px] border border-slate-200/70 bg-white/45 p-5 shadow-[0_16px_36px_-26px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/35 md:p-6">
       <header className="space-y-2">
         <h1 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white md:text-4xl">
-          Navegar por categorias
+          Situações por tema
         </h1>
         <p className="max-w-3xl text-base text-slate-600 dark:text-slate-300 md:text-lg">
           Selecione a área da situação para iniciar o atendimento guiado.
