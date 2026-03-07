@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "id": "flow_risco_estrutural",
+    "title": "Risco Estrutural (queda, rachaduras graves)",
+    "type": "standard",
+    "categoryId": "emergencias_seguranca",
+    "subcategoryId": "risco_estrutural",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Há risco imediato de colapso?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        },
+        {
+          "label": "Não",
+          "level": "alto"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "alto": {
+      "severity": "alto",
+      "primaryService": {
+        "id": "gestao-direcao",
+        "name": "Direção Escolar"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Isolar area afetada"
+      ]
+    },
+    "iminente": {
+      "severity": "iminente",
+      "primaryService": {
+        "id": "bombeiros",
+        "name": "Corpo de Bombeiros - 193"
+      },
+      "secondaryService": null,
+      "schoolActions": [
+        "Evacuação imediata",
+        "Acionar autoridades"
+      ]
+    }
+  }
+}

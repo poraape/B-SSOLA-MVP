@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "id": "flow_incendio",
+    "title": "Incendio ou Principio de Incendio",
+    "type": "security_emergency",
+    "categoryId": "emergencias_seguranca",
+    "subcategoryId": "incendio_evacuacao",
+    "keywords": []
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Há fogo ativo ou fumaca?",
+      "options": [
+        {
+          "label": "Sim",
+          "level": "iminente"
+        }
+      ]
+    }
+  ],
+  "results": {
+    "iminente": {
+      "severity": "iminente",
+      "primaryService": {
+        "id": "bombeiros",
+        "name": "Corpo de Bombeiros - 193"
+      },
+      "secondaryService": {
+        "id": "policia-militar",
+        "name": "Polícia Militar - 190"
+      },
+      "schoolActions": [
+        "Evacuação imediata",
+        "Seguir plano de abandono"
+      ]
+    }
+  }
+}

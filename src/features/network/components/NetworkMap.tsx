@@ -1,16 +1,31 @@
-import React, { useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Service } from '../../../types';
-
-// Fix for default marker icons in Leaflet with Webpack/Vite
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import React, { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
+import mapTilesConfig from '../../../data/v2/map-tiles.json';
+import networkConfigData from '../../../data/v2/network-config.json';
+import { Service } from '../../../types';
+
+type LeafletDefaultIconPrototype = {
+  _getIconUrl?: () => string;
+};
+
+type LeafletDefaultIconStatic = {
+  prototype: LeafletDefaultIconPrototype;
+  mergeOptions: (options: {
+    iconRetinaUrl: string;
+    iconUrl: string;
+    shadowUrl: string;
+  }) => void;
+};
+
+const defaultIcon = L.Icon.Default as unknown as LeafletDefaultIconStatic;
+delete defaultIcon.prototype._getIconUrl;
+defaultIcon.mergeOptions({
   iconRetinaUrl: markerIcon2x,
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
@@ -21,6 +36,45 @@ interface NetworkMapProps {
   selectedService: Service | null;
   onMarkerClick: (service: Service) => void;
 }
+
+const categoryColorMap: Record<string, string> = Object.values(networkConfigData.layers).reduce(
+  (acc: Record<string, string>, layer) => {
+    acc[layer.id] = layer.color;
+    return acc;
+  },
+  {},
+);
+
+const schoolMarkerColor = '#FACC15';
+const defaultMarkerColor = '#2563EB';
+const schoolServiceIds = new Set([
+  'gestao-direcao',
+  'gestao-vice-direcao',
+  'gestao-coordenacao',
+]);
+
+const createPinIcon = (color: string): L.DivIcon =>
+  L.divIcon({
+    className: '',
+    html: `
+      <span style="
+        display: block;
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        border: 2px solid #ffffff;
+        background: ${color};
+        box-shadow: 0 1px 4px rgba(15,23,42,0.55);
+      "></span>
+    `,
+    iconSize: [18, 18],
+    iconAnchor: [9, 9],
+    popupAnchor: [0, -10],
+  });
+
+const getMarkerIcon = (service: Service): L.DivIcon => {
+  return createPinIcon(categoryColorMap[service.category] || defaultMarkerColor);
+};
 
 const ChangeView: React.FC<{ center: [number, number]; zoom: number }> = ({ center, zoom }) => {
   const map = useMap();
@@ -41,8 +95,25 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
     ? [selectedService.location.lat, selectedService.location.lng] 
     : defaultCenter;
 
+  const mapServices = services.filter(
+    (service) => service.location.lat !== null && service.location.lng !== null,
+  );
+  const schoolServices = mapServices.filter(service => schoolServiceIds.has(service.id));
+  const regularServices = mapServices.filter(service => !schoolServiceIds.has(service.id));
+  const schoolPosition: [number, number] = schoolServices[0]
+    ? [schoolServices[0].location.lat!, schoolServices[0].location.lng!]
+    : [networkConfigData.schoolReference.lat, networkConfigData.schoolReference.lng];
+  const schoolAddress =
+    schoolServices[0]?.location.address || networkConfigData.schoolReference.address;
+  const duplicateCounts = new Map<string, number>();
+  const [hasTileError, setHasTileError] = useState(false);
+
+  if (hasTileError) {
+    throw new Error('map_tiles_unavailable');
+  }
+
   return (
-    <div className="h-full w-full rounded-3xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
+    <div className="relative h-full w-full overflow-hidden rounded-[20px] border border-slate-200/90 bg-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_10px_24px_-20px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-800">
       <MapContainer 
         center={center} 
         zoom={14} 
@@ -50,17 +121,60 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
         zoomControl={false}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution={mapTilesConfig.attributionHtml}
+          url={mapTilesConfig.tileUrl}
+          eventHandlers={{
+            tileerror: () => setHasTileError(true),
+          }}
         />
         
-        {services.map(service => {
-          if (service.location.lat === null || service.location.lng === null) return null;
-          
+        <Marker
+          position={schoolPosition}
+          icon={createPinIcon(schoolMarkerColor)}
+        >
+          <Popup>
+            <div className="p-1">
+              <p className="font-bold text-slate-900 m-0">{networkConfigData.schoolReference.name}</p>
+              <p className="text-xs text-slate-500 m-0 mt-1">{schoolAddress}</p>
+              {schoolServices.length > 0 && (
+                <div className="mt-2 space-y-2 text-xs text-slate-700">
+                  {schoolServices.map(service => (
+                    <div key={service.id} className="rounded border border-slate-200 px-2 py-1">
+                      <p className="m-0 font-semibold text-slate-800">{service.name}</p>
+                      {service.contact.phone && (
+                        <p className="m-0 text-slate-600">Telefone: {service.contact.phone}</p>
+                      )}
+                      {service.contact.email && (
+                        <p className="m-0 text-slate-600">E-mail: {service.contact.email}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </Popup>
+        </Marker>
+
+        {regularServices.map(service => {
+          const lat = service.location.lat!;
+          const lng = service.location.lng!;
+          const key = `${lat}:${lng}`;
+          const indexAtLocation = duplicateCounts.get(key) || 0;
+          duplicateCounts.set(key, indexAtLocation + 1);
+          const spreadStep = 0.00007;
+          const position: [number, number] =
+            indexAtLocation === 0
+              ? [lat, lng]
+              : [
+                  lat + Math.cos(indexAtLocation * 1.57) * spreadStep,
+                  lng + Math.sin(indexAtLocation * 1.57) * spreadStep,
+                ];
+
           return (
             <Marker 
               key={service.id} 
-              position={[service.location.lat, service.location.lng]}
+              position={position}
+              icon={getMarkerIcon(service)}
               eventHandlers={{
                 click: () => onMarkerClick(service),
               }}
@@ -77,6 +191,11 @@ export const NetworkMap: React.FC<NetworkMapProps> = ({
 
         <ChangeView center={center} zoom={selectedService ? 16 : 14} />
       </MapContainer>
+      {mapServices.length === 0 && (
+        <div className="absolute inset-0 z-[1000] flex items-center justify-center bg-slate-100/85 p-4 text-center text-sm text-slate-600 dark:bg-slate-900/80 dark:text-slate-300">
+          Nenhum serviço próximo encontrado. Consulte a coordenação pedagógica.
+        </div>
+      )}
     </div>
   );
 };

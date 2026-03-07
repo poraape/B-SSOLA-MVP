@@ -1,10 +1,10 @@
+import { ArrowLeft, MapPin, Phone, ExternalLink, Clock, Shield } from 'lucide-react';
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { getServiceById } from '../../domain/flows/selectors';
-import { ArrowLeft, MapPin, Phone, Globe, Mail, ExternalLink, Clock, Shield } from 'lucide-react';
-import { Button } from '../../components/ui/Button';
 
 import { useTheme } from '../../app/context/ThemeContext';
+import { Button } from '../../components/ui/Button';
+import { getServiceById } from '../../domain/flows/selectors';
 
 export const ServiceDetailsPage: React.FC = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -21,11 +21,11 @@ export const ServiceDetailsPage: React.FC = () => {
         <ArrowLeft className="w-4 h-4" /> Voltar para a Rede
       </Link>
 
-      <div className={`border rounded-[2.5rem] overflow-hidden shadow-sm transition-colors ${
-        theme === 'dark' ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'
+      <div className={`overflow-hidden rounded-[20px] border shadow-[0_16px_36px_-24px_rgba(15,23,42,0.45)] backdrop-blur-xl transition-colors ${
+        theme === 'dark' ? 'bg-slate-900/85 border-slate-700' : 'bg-white/85 border-slate-200/90'
       }`}>
         <div className={`p-8 sm:p-12 border-b transition-colors ${
-          theme === 'dark' ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50/50 border-slate-100'
+          theme === 'dark' ? 'bg-slate-800/60 border-slate-700' : 'bg-slate-50/75 border-slate-200'
         }`}>
           <div className="space-y-4">
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest">
@@ -48,8 +48,8 @@ export const ServiceDetailsPage: React.FC = () => {
                 <Phone className="w-5 h-5 text-emerald-500" />
                 Contatos
               </h3>
-              <div className={`space-y-3 p-6 rounded-3xl border transition-colors ${
-                theme === 'dark' ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-100'
+              <div className={`space-y-3 rounded-[20px] border p-6 transition-colors ${
+                theme === 'dark' ? 'bg-slate-800/55 border-slate-700' : 'bg-slate-50/80 border-slate-200'
               }`}>
                 {service.contact.phone && (
                   <div>
@@ -77,8 +77,8 @@ export const ServiceDetailsPage: React.FC = () => {
                 <Clock className="w-5 h-5 text-blue-500" />
                 Funcionamento
               </h3>
-              <div className={`p-6 rounded-3xl border transition-colors ${
-                theme === 'dark' ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-100'
+              <div className={`rounded-[20px] border p-6 transition-colors ${
+                theme === 'dark' ? 'bg-slate-800/55 border-slate-700' : 'bg-slate-50/80 border-slate-200'
               }`}>
                 <p className="text-slate-700 dark:text-slate-300 font-medium">
                   {service.type === 'externo' ? 'Atendimento público conforme horário da rede municipal/estadual.' : 'Atendimento interno da unidade escolar.'}
@@ -96,9 +96,9 @@ export const ServiceDetailsPage: React.FC = () => {
                 <Shield className="w-5 h-5 text-indigo-500" />
                 Orientações de Acesso
               </h3>
-              <div className={`p-6 rounded-3xl border transition-colors ${
-                theme === 'dark' ? 'bg-slate-800/50 border-slate-700' : 'bg-slate-50 border-slate-100'
-              } space-y-4`}>
+              <div className={`space-y-4 rounded-[20px] border p-6 transition-colors ${
+                theme === 'dark' ? 'bg-slate-800/55 border-slate-700' : 'bg-slate-50/80 border-slate-200'
+              }`}>
                 <p className="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
                   Este serviço faz parte da rede de proteção e atendimento de Ermelino Matarazzo. 
                   Ao realizar o encaminhamento, certifique-se de levar o resumo estruturado gerado pelo Protocolo Bússola.
@@ -109,7 +109,7 @@ export const ServiceDetailsPage: React.FC = () => {
                     target="_blank" 
                     rel="noopener noreferrer"
                   >
-                    <Button variant="outline" fullWidth className="rounded-xl font-black uppercase text-[10px] tracking-widest">
+                    <Button variant="outline" fullWidth className="rounded-[16px] font-black uppercase text-[10px] tracking-widest">
                       Acessar Website Oficial <ExternalLink className="w-4 h-4 ml-2" />
                     </Button>
                   </a>
@@ -117,7 +117,7 @@ export const ServiceDetailsPage: React.FC = () => {
               </div>
             </div>
             
-            <div className="p-8 rounded-[2rem] bg-blue-600 text-white space-y-6 shadow-2xl shadow-blue-200 dark:shadow-none">
+            <div className="space-y-6 rounded-[20px] bg-blue-600 p-8 text-white shadow-[0_14px_30px_-20px_rgba(37,99,235,0.75)]">
               <h4 className="font-black text-xl tracking-tight">Precisa de ajuda agora?</h4>
               <p className="text-sm text-blue-100 leading-relaxed font-medium">
                 Se você está em uma situação de emergência com risco imediato, acione os serviços móveis.

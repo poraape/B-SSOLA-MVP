@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-03-07T14:07:27.436Z",
+  "repo": "B-SSOLA-MVP",
+  "branch": "New",
+  "module": "features/network",
+  "totalServices": 30,
+  "auditResults": {
+    "dataValidation": {
+      "totalServices": 30,
+      "withValidCoords": 30,
+      "withNullCoords": 0,
+      "precision5plus": 24,
+      "invalidCategories": [],
+      "outOfBounds": [],
+      "schemaErrors": []
+    },
+    "modelValidation": {
+      "servicesLoadedViaGetServices": 30,
+      "pipelineWorks": true
+    }
+  },
+  "criticalIssues": [],
+  "warnings": [
+    "Apenas 24/30 com 5+ decimais"
+  ],
+  "passedChecks": 2,
+  "failedChecks": 0,
+  "overallStatus": "PASS"
+}

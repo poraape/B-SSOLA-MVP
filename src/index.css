@@ -1,4 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* OpenDyslexic Font Family */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/OpenDyslexic-Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/OpenDyslexic-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/OpenDyslexic-Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/OpenDyslexic-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 
 @theme {
@@ -9,6 +29,10 @@
 @layer base {
   body {
     @apply font-sans antialiased;
+  }
+
+  body.dyslexia {
+    font-family: 'OpenDyslexic', Arial, sans-serif;
   }
 
   /* Accessibility Classes */
@@ -40,8 +64,22 @@
   }
 }
 
+
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
+  }
+}
+
 @media print {
   .print\:hidden {
     display: none !important;
   }
+}
+
+
+/* Aplicar fonte dislexia quando data-attribute presente */
+[data-dyslexic-font="true"],
+[data-dyslexic-font="true"] * {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', Arial, sans-serif !important;
 }

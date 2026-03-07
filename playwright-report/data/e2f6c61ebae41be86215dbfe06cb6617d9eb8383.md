@@ -1,0 +1,56 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "Bússola Decisão e encaminhamento escolar" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img [ref=e9]:
+          - generic [ref=e14]:
+            - generic [ref=e15]: "N"
+            - generic [ref=e16]: S
+            - generic [ref=e17]: E
+            - generic [ref=e18]: O
+        - generic [ref=e65]:
+          - heading "Bússola" [level=1] [ref=e66]
+          - paragraph [ref=e67]: Decisão e encaminhamento escolar
+      - navigation [ref=e68]:
+        - generic [ref=e69]:
+          - link "Início" [ref=e70] [cursor=pointer]:
+            - /url: /
+          - link "Decisor" [ref=e71] [cursor=pointer]:
+            - /url: /atendimento
+          - link "Rede" [ref=e72] [cursor=pointer]:
+            - /url: /rede
+          - link "Recursos" [ref=e73] [cursor=pointer]:
+            - /url: /recursos
+          - button "Busca" [ref=e74]:
+            - img [ref=e75]
+            - text: Busca
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - paragraph [ref=e81]: Unidade Escolar
+            - paragraph [ref=e82]: E.E. Ermelino Matarazzo
+          - img "Logo Escola" [ref=e83]
+        - generic [ref=e84]:
+          - button "Alternar Tema" [ref=e85]:
+            - img [ref=e86]
+          - button "Acessibilidade" [ref=e88]:
+            - img [ref=e89]
+  - main [ref=e92]:
+    - generic [ref=e94]:
+      - generic [ref=e95]:
+        - button "Acionar emergência" [ref=e97]
+        - heading "Há risco imediato neste momento?" [level=1] [ref=e98]
+        - paragraph [ref=e99]: Escolha a opção que melhor descreve a situação agora.
+      - generic [ref=e100]:
+        - button "SIM" [ref=e101]
+        - button "NÃO" [ref=e102]
+        - button "NÃO SEI" [ref=e103]
+  - contentinfo [ref=e104]:
+    - generic [ref=e105]:
+      - paragraph [ref=e106]: Protocolo Bússola © 2026 • Ermelino Matarazzo
+      - paragraph [ref=e107]: Este aplicativo é uma ferramenta de apoio. Em situações de risco de vida, acione imediatamente os serviços de emergência (190, 192, 193).
+```

@@ -1,0 +1,179 @@
+import type { FlowSpec } from './flowSpec';
+
+export const flow_negligencia: FlowSpec = {
+  "meta": {
+    "id": "flow_negligencia",
+    "categoryId": "protecao_direitos",
+    "subcategoryId": "negligencia_familiar",
+    "title": "Negligência Familiar",
+    "description": "Orientações praticas para a equipe escolar sobre Negligência Familiar.",
+    "severity": "HIGH",
+    "keywords": [],
+    "status": "EXISTING"
+  },
+  "steps": [
+    {
+      "id": "step_1",
+      "type": "alert",
+      "content": "Situação identificada: Negligência Familiar. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "riskSignals": [
+        "relato_violacao"
+      ]
+    },
+    {
+      "id": "q1",
+      "type": "question",
+      "question": "A situação compromete saúde ou integridade do estudante?",
+      "actions": [
+        {
+          "label": "Sim",
+          "next": "q2"
+        },
+        {
+          "label": "Não",
+          "next": "outcome_moderado"
+        }
+      ],
+      "riskSignals": [
+        "relato_violacao",
+        "indicio_negligencia"
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "question",
+      "question": "Há risco imediato de abandono ou violência?",
+      "actions": [
+        {
+          "label": "Sim",
+          "next": "outcome_iminente"
+        },
+        {
+          "label": "Não",
+          "next": "outcome_alto"
+        }
+      ],
+      "riskSignals": [
+        "relato_violacao",
+        "indicio_negligencia"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "outcome_moderado",
+      "label": "Acompanhamento Institucional",
+      "description": "Situação que exige acompanhamento institucional estruturado.",
+      "actions": [
+        "Escuta acolhedora e sem julgamento",
+        "Contato com os responsáveis"
+      ],
+      "timeline": "Horas",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management",
+        "contact_council"
+      ]
+    },
+    {
+      "id": "outcome_alto",
+      "label": "Proteção e Encaminhamento Prioritario",
+      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
+      "actions": [
+        "Avisar a gestão escolar",
+        "Encaminhamento formal"
+      ],
+      "timeline": "Imediato",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management",
+        "contact_council"
+      ]
+    },
+    {
+      "id": "outcome_iminente",
+      "label": "Ação Imediata de Proteção",
+      "description": "Risco imediato. Ative o protocolo interno sem atraso.",
+      "actions": [
+        "Garantir proteção imediata",
+        "Acionar autoridade competente"
+      ],
+      "timeline": "Imediato",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management",
+        "contact_council"
+      ]
+    }
+  ],
+  "risk": {
+    "modelVersion": "risk-heuristic-v1",
+    "baselineSeverity": "HIGH",
+    "escalationRules": [
+      {
+        "id": "rule_relato_violacao",
+        "ifAny": [
+          "relato_violacao"
+        ],
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management",
+            "contact_council"
+          ]
+        },
+        "rationale": "Relato de violação requer acionamento institucional e de proteção."
+      },
+      {
+        "id": "rule_default_baseline",
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management",
+            "contact_council"
+          ]
+        },
+        "rationale": "Aplica severidade base definida no fluxo."
+      },
+      {
+        "id": "rule_default",
+        "toRiskLevel": "HIGH",
+        "then": {
+          "riskLevel": "HIGH",
+          "flags": [
+            "notify_management"
+          ]
+        },
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
+      }
+    ],
+    "protectiveFactors": [],
+    "riskSignals": [
+      {
+        "id": "relato_violacao",
+        "label": "Relato de violação",
+        "weight": 3
+      },
+      {
+        "id": "indicio_negligencia",
+        "label": "Indicio de negligência",
+        "weight": 2
+      },
+      {
+        "id": "vulnerabilidade_grave",
+        "label": "Vulnerabilidade grave",
+        "weight": 3
+      }
+    ],
+    "recommendedActionsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    },
+    "recommendedServiceTagsByRisk": {
+      "MODERATE": [],
+      "HIGH": [],
+      "CRITICAL": []
+    }
+  }
+};

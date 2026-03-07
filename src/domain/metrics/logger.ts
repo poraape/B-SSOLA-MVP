@@ -1,0 +1,55 @@
+import { InstitutionalMetricEvent, InstitutionalPriority } from './types';
+import { systemLogger } from './systemLogger';
+import { telemetryService } from '../../application/telemetry/TelemetryService';
+const VALID_PRIORITIES: InstitutionalPriority[] = ['low', 'moderate', 'high', 'critical'];
+
+function getSafePriority(priority?: string): InstitutionalPriority | undefined {
+  if (!priority) return undefined;
+  if (!VALID_PRIORITIES.includes(priority as InstitutionalPriority)) {
+    systemLogger.warn('invalid_priority', { type: 'invalid_priority', value: priority });
+  }
+  return VALID_PRIORITIES.includes(priority as InstitutionalPriority)
+    ? (priority as InstitutionalPriority)
+    : 'low';
+}
+
+function sanitizeEvent(event: InstitutionalMetricEvent): InstitutionalMetricEvent {
+  return {
+    flowId: event.flowId,
+    categoryId: event.categoryId,
+    flowType: event.flowType,
+    level: event.level,
+    priority: getSafePriority(event.priority),
+    timestamp: event.timestamp,
+  };
+}
+
+export function logTriageEvent(event: InstitutionalMetricEvent): void {
+  try {
+    const sanitized = sanitizeEvent(event);
+    telemetryService.track({
+      event: 'result_reached',
+      flowId: sanitized.flowId,
+      step: sanitized.level,
+      priority: sanitized.priority,
+      metadata: {
+        categoryId: sanitized.categoryId,
+        flowType: sanitized.flowType,
+        level: sanitized.level || '',
+      },
+    });
+
+    systemLogger.debug('Metrics event recorded', {
+      flowId: sanitized.flowId,
+      categoryId: sanitized.categoryId,
+      priority: sanitized.priority,
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    systemLogger.error('Metrics event failed', { error: message });
+  }
+}
+
+export function clearMetrics(): void {
+  telemetryService.clearLocalEvents();
+}

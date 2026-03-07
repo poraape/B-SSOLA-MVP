@@ -1,0 +1,3590 @@
+[
+  {
+    "flowId": "flow_acidente_escolar",
+    "level": "low",
+    "headline": "Escoriação leve ou batida pequena sem corte profundo.",
+    "nextStep": "Encaminhe o aluno para lavar o local com água e avise a coordenação.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Suporte básico e fornecimento de água potável."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Registro do incidente no diário da escola."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mande lavar apenas com água",
+        "Acolha emocionalmente"
+      ],
+      "notYours": "Não aplique pomadas, iodo ou medicamentos no ferimento."
+    }
+  },
+  {
+    "flowId": "flow_acidente_escolar",
+    "level": "moderate",
+    "headline": "Corte sangrante, entorse ou suspeita de fratura fechada.",
+    "nextStep": "Imobilize o membro machucado, acalme o aluno e solicite ida à gestão.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Comunicação urgente com a família para buscar o aluno."
+    },
+    "complementaryService": {
+      "queryType": "highlight=upa-ermelino",
+      "label": "UPA III 24h Ermelino Matarazzo",
+      "description": "Sutura, Raio-X e atendimento traumatológico intermediário."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Pressione cortes com pano limpo",
+        "Evite que o aluno ande"
+      ],
+      "notYours": "Não tente colocar ossos deslocados no lugar."
+    }
+  },
+  {
+    "flowId": "flow_acidente_escolar",
+    "level": "high",
+    "headline": "Queda de altura, pancada forte na cabeça ou fratura exposta.",
+    "nextStep": "Mantenha o aluno estático no chão e exija socorro imediato via SAMU.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Imobilização profissional e resgate de traumatismo severo."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acionamento do resgate e isolamento de alunos em pânico."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Não mova a cabeça do aluno",
+        "Cubra fraturas levemente"
+      ],
+      "notYours": "Não permita que o aluno levante ou seja transportado em carros."
+    }
+  },
+  {
+    "flowId": "flow_acidente_escolar",
+    "level": "critical",
+    "headline": "Amputação, hemorragia arterial ou trauma craniano grave.",
+    "nextStep": "Faça compressão forte sobre o sangramento e grite para ligarem 192 urgente.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Atendimento à vida em falência por perda extrema de sangue."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Evacuação total da área e apoio incondicional."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Comprima o ferimento com força",
+        "Isole a área por completo"
+      ],
+      "notYours": "Não retire objetos cravados profundamente no corpo."
+    }
+  },
+  {
+    "flowId": "flow_agressao_fisica",
+    "level": "low",
+    "headline": "Empurrões fortes, beliscões ou tapas leves no calor de uma discussão.",
+    "nextStep": "Intervenha com voz firme, separe os alunos e comunique a coordenação.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Manejo imediato do conflito e restabelecimento da ordem."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Apoio administrativo e aplicação das normas da escola."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Ordene o fim da confusão",
+        "Mantenha-se fisicamente no meio"
+      ],
+      "notYours": "Não exija que apontem imediatamente quem começou a briga."
+    }
+  },
+  {
+    "flowId": "flow_agressao_fisica",
+    "level": "moderate",
+    "headline": "Troca de socos, arranhões ou chutes resultando em dor ou hematomas leves.",
+    "nextStep": "Encaminhe ambos à direção, garantindo que não vão juntos pelo corredor.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Aviso imediato aos responsáveis e aplicação de medida disciplinar."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Avaliação médica ambulatorial caso haja escoriações ou dor contínua."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Solicite apoio de outro adulto",
+        "Acompanhe o trajeto"
+      ],
+      "notYours": "Não tente segurar fisicamente alunos fortes em momento de ira."
+    }
+  },
+  {
+    "flowId": "flow_agressao_fisica",
+    "level": "high",
+    "headline": "Briga generalizada ou agressão violenta resultando em cortes sangrantes.",
+    "nextStep": "Peça ajuda de outros professores, disperse a plateia e chame a direção.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acionamento de segurança escolar e isolamento do corredor."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Ronda Escolar",
+      "description": "Apoio tático em tumultos escolares."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mande os curiosos saírem",
+        "Grite orientações claras"
+      ],
+      "notYours": "Não filme a confusão para ter provas pessoais."
+    }
+  },
+  {
+    "flowId": "flow_agressao_fisica",
+    "level": "critical",
+    "headline": "Espancamento severo, uso de armas ou vítima caída e inconsciente.",
+    "nextStep": "Afaste todos imediatamente, proteja a vítima e exija ligação ao 190 e 192.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Contenção de comportamento inadequado grave e segurança do espaço."
+    },
+    "complementaryService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Resgate e suporte avançado por trauma físico grave."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Isole totalmente a vítima",
+        "Comprima cortes sangrantes"
+      ],
+      "notYours": "Não levante uma vítima inconsciente que sofreu pancadas."
+    }
+  },
+  {
+    "flowId": "flow_risco_estrutural",
+    "level": "low",
+    "headline": "Rachadura nova ou goteira pequena na sala de aula.",
+    "nextStep": "Comunique a direção ao término da aula para registro de manutenção.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Abertura de chamados de zeladoria e infraestrutura."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Ajuste na alocação de salas se necessário."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Afaste as carteiras da área",
+        "Tire foto do dano para o relato"
+      ],
+      "notYours": "Não tente consertar a estrutura ou subir em telhados."
+    }
+  },
+  {
+    "flowId": "flow_risco_estrutural",
+    "level": "moderate",
+    "headline": "Queda de reboco ou poça d'água próxima a equipamentos.",
+    "nextStep": "Isole a área afetada com as cadeiras e chame a direção imediatamente.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Avaliação do risco e interdição parcial do espaço."
+    },
+    "complementaryService": {
+      "queryType": "highlight=bombeiros",
+      "label": "Defesa Civil – 199",
+      "description": "Vistoria técnica de estabilidade estrutural."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Remova os alunos de perto",
+        "Desligue aparelhos na área molhada"
+      ],
+      "notYours": "Não mexa em fiações elétricas expostas."
+    }
+  },
+  {
+    "flowId": "flow_risco_estrutural",
+    "level": "high",
+    "headline": "Estrondo na estrutura, teto cedendo ou faíscas na rede.",
+    "nextStep": "Evacue a sala imediatamente e solicite a interdição total do bloco.",
+    "priorityService": {
+      "queryType": "highlight=bombeiros",
+      "label": "Defesa Civil – 199",
+      "description": "Interdição de prédios com risco de colapso."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Execução do plano de abandono do prédio escolar."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Garanta a saída rápida de todos",
+        "Feche a porta sem trancar"
+      ],
+      "notYours": "Não teste a firmeza das paredes ou pilares."
+    }
+  },
+  {
+    "flowId": "flow_risco_estrutural",
+    "level": "critical",
+    "headline": "Desabamento iminente com pessoas bloqueadas no local.",
+    "nextStep": "Abrigue os alunos sob mesas resistentes e grite por resgate urgente.",
+    "priorityService": {
+      "queryType": "type=externo",
+      "label": "Corpo de Bombeiros - 193",
+      "description": "Resgate em estruturas colapsadas e salvamento em soterramento."
+    },
+    "complementaryService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Atendimento a politraumatismos."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha todos abrigados",
+        "Proteja a própria cabeça"
+      ],
+      "notYours": "Não tente mover vigas de concreto pesadas."
+    }
+  },
+  {
+    "flowId": "flow_ansiedade",
+    "level": "low",
+    "headline": "Respiração ofegante ou nervosismo excessivo antes de provas.",
+    "nextStep": "Oriente o aluno a respirar devagar e autorize ida rápida ao bebedouro.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Acolhimento afetivo e apoio em momentos de tensão leve."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Aviso aos responsáveis caso a ansiedade se torne frequente."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Incentive pausas para respirar",
+        "Reduza a pressão imediata"
+      ],
+      "notYours": "Não afirme que o nervosismo é frescura ou para chamar atenção."
+    }
+  },
+  {
+    "flowId": "flow_ansiedade",
+    "level": "moderate",
+    "headline": "Choro contínuo, tremores ou agitação que impedem a participação na aula.",
+    "nextStep": "Acompanhe o aluno à direção para contato familiar e acolhimento privado.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Notificação aos responsáveis e isolamento protetivo."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Avaliação médica ambulatorial para crises persistentes."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Ofereça um copo de água",
+        "Retire o aluno do foco da turma"
+      ],
+      "notYours": "Não exija explicações sobre o motivo do choro durante a crise."
+    }
+  },
+  {
+    "flowId": "flow_ansiedade",
+    "level": "high",
+    "headline": "Falta de ar intensa, taquicardia forte ou relato de dor no peito.",
+    "nextStep": "Sente o aluno em local arejado, acalme o ambiente e peça ajuda da direção.",
+    "priorityService": {
+      "queryType": "type=externo",
+      "label": "SAMU - 192",
+      "description": "Avaliação de sintomas físicos severos associados à ansiedade."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Mediação da crise no ambiente escolar e contato familiar urgente."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha o aluno sentado",
+        "Afaste aglomerações ao redor"
+      ],
+      "notYours": "Não deite o aluno no chão se ele reclamar de falta de ar."
+    }
+  },
+  {
+    "flowId": "flow_ansiedade",
+    "level": "critical",
+    "headline": "Desmaio ou perda de consciência após extrema agitação por pânico.",
+    "nextStep": "Deite o aluno de lado e exija ligação imediata ao 192 para socorro vital.",
+    "priorityService": {
+      "queryType": "type=externo",
+      "label": "SAMU - 192",
+      "description": "Intervenção médica de emergência e estabilização clínica."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Liberação imediata dos acessos da escola para ambulância."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Vire a cabeça do aluno de lado",
+        "Acompanhe o ritmo da respiração"
+      ],
+      "notYours": "Não tente reanimar o aluno com álcool, tapas ou chacoalhões."
+    }
+  },
+  {
+    "flowId": "flow_ameaca_externa",
+    "level": "low",
+    "headline": "Pessoa não identificada rondando muros ou portão.",
+    "nextStep": "Avise a direção para monitoramento preventivo pelas câmeras.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Controle de acesso e segurança perimetral básica."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Ronda Escolar",
+      "description": "Averiguação de indivíduos suspeitos no entorno."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Observe as características visuais",
+        "Mantenha a aula normalmente"
+      ],
+      "notYours": "Não aborde ou interrogue o indivíduo do lado de fora."
+    }
+  },
+  {
+    "flowId": "flow_ameaca_externa",
+    "level": "moderate",
+    "headline": "Pessoa externa tenta interagir com alunos através de grades.",
+    "nextStep": "Afaste os alunos do perímetro externo e informe a gestão imediatamente.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Abordagem administrativa ao indivíduo externo."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Apoio se houver insistência ou desacato por parte do suspeito."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Recolha os alunos para local seguro",
+        "Feche as janelas mais baixas"
+      ],
+      "notYours": "Não confronte ou discuta com a pessoa pela grade."
+    }
+  },
+  {
+    "flowId": "flow_ameaca_externa",
+    "level": "high",
+    "headline": "Invasão do perímetro escolar por indivíduo não autorizado.",
+    "nextStep": "Tranque a sala por dentro, mantenha os alunos calmos e avise a gestão.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Prisão por invasão e garantia de segurança interna."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acionamento do botão do pânico e isolamento dos blocos."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Tranque a porta imediatamente",
+        "Conte o número de alunos na sala"
+      ],
+      "notYours": "Não saia no corredor para investigar o ocorrido."
+    }
+  },
+  {
+    "flowId": "flow_ameaca_externa",
+    "level": "critical",
+    "headline": "Confronto armado ou invasão violenta próxima à sala.",
+    "nextStep": "Exija que todos deitem no chão, longe de portas e em absoluto silêncio.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Intervenção tática contra invasor ou criminoso armado."
+    },
+    "complementaryService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Prontidão para atendimento a feridos no local."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Deite no chão junto à turma",
+        "Bloqueie o visor da porta"
+      ],
+      "notYours": "Não filme a ação policial ou exponha a posição de vocês."
+    }
+  },
+  {
+    "flowId": "flow_violacao_direitos",
+    "level": "low",
+    "headline": "Queixa de desrespeito a direitos no cotidiano, sem risco imediato.",
+    "nextStep": "Registre a queixa de forma objetiva e comunique a coordenação para que a gestão avalie e registre formalmente o caso.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Organização do registro e encaminhamento interno inicial à gestão."
+    },
+    "complementaryService": {
+      "queryType": "highlight=disque-100",
+      "label": "Disque 100 – Direitos Humanos",
+      "description": "Canal para registrar violações de direitos e orientar providências."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote quem, quando e onde",
+        "Preserve sigilo e privacidade"
+      ],
+      "notYours": "Não exponha a queixa para a turma nem tente resolver sozinho com terceiros; não prometa que nada será comunicado à gestão."
+    }
+  },
+  {
+    "flowId": "flow_violacao_direitos",
+    "level": "moderate",
+    "headline": "Violação recorrente de direitos com impacto na frequência ou segurança do aluno.",
+    "nextStep": "Comunique a direção para registrar formalmente e acionar a rede de proteção.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Encaminhamento oficial e articulação com serviços externos."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Garantia de proteção e acompanhamento do caso."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre fatos objetivos",
+        "Encaminhe imediatamente à gestão"
+      ],
+      "notYours": "Não investigue autores ou locais; preserve o aluno."
+    }
+  },
+  {
+    "flowId": "flow_violacao_direitos",
+    "level": "high",
+    "headline": "Indícios fortes de violação grave de direitos com risco de continuidade.",
+    "nextStep": "Acione a direção urgentemente para acionar CREAS e canal de denúncia.",
+    "priorityService": {
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Atuação em violações graves e acompanhamento especializado."
+    },
+    "complementaryService": {
+      "queryType": "highlight=disque-100",
+      "label": "Disque 100 – Direitos Humanos",
+      "description": "Registro de denúncia e orientação para proteção imediata."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre a fala com palavras exatas",
+        "Mantenha o aluno acompanhado"
+      ],
+      "notYours": "Não confronte suspeitos nem tente obter confissão."
+    }
+  },
+  {
+    "flowId": "flow_violacao_direitos",
+    "level": "critical",
+    "headline": "Risco imediato ao aluno dentro ou fora da escola por violação grave.",
+    "nextStep": "Mantenha o aluno sob supervisão e acione a direção para chamar ajuda externa.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Emergência - 190",
+      "description": "Apoio imediato quando há risco presente à integridade."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Proteção formal e encaminhamento após estabilizar a segurança."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Evite que o aluno saia sozinho",
+        "Peça reforço de adultos"
+      ],
+      "notYours": "Não tente resolver em confronto direto nem faça perseguições."
+    }
+  },
+  {
+    "flowId": "flow_agressao_verbal",
+    "level": "low",
+    "headline": "Palavrões esporádicos e xingamentos mútuos durante uma pequena discussão.",
+    "nextStep": "Corrija o comportamento imediatamente na sala e retome o foco da aula.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Apoio se o linguajar inadequado se tornar repetitivo."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Intervenção administrativa pontual."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Imponha limite de respeito",
+        "Mude a atividade rapidamente"
+      ],
+      "notYours": "Não retruque com xingamentos ou ironia."
+    }
+  },
+  {
+    "flowId": "flow_agressao_verbal",
+    "level": "moderate",
+    "headline": "Ofensas verbais sistemáticas, xingamentos pesados e humilhação contínua.",
+    "nextStep": "Retire o ofensor do ambiente, encaminhe à gestão e tranquilize o ofendido.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Condução disciplinar e notificação à família do agressor verbal."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Garantia de direitos quando a infração parte da falha educacional da família."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Interrompa o discurso violento",
+        "Anote as palavras exatas usadas"
+      ],
+      "notYours": "Não entre em debate acalorado com o agressor descontrolado."
+    }
+  },
+  {
+    "flowId": "flow_agressao_verbal",
+    "level": "high",
+    "headline": "Ameaça explícita de agressão física futura ou destruição de patrimônio.",
+    "nextStep": "Informe a gestão escolar imediatamente para registro e aviso aos pais.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Notificação formal da ameaça e acionamento de segurança."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Ronda Escolar",
+      "description": "Averiguação preventiva após ameaças graves à comunidade."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha tom neutro",
+        "Registre por escrito as falas"
+      ],
+      "notYours": "Não desafie o aluno dizendo para ele tentar cumprir a ameaça."
+    }
+  },
+  {
+    "flowId": "flow_agressao_verbal",
+    "level": "critical",
+    "headline": "Ameaça explícita de morte com postura de intimidação extrema no momento.",
+    "nextStep": "Afaste as vítimas, acione a direção para retirar o aluno e peça a polícia.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Ação ostensiva para contenção de ameaça à vida crível e presente."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Gestão de crise e registro formal de Boletim de Ocorrência."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Garanta barreira visual com o agressor",
+        "Mantenha distanciamento"
+      ],
+      "notYours": "Não minimize a ameaça de morte achando que é só 'fogo de palha'."
+    }
+  },
+  {
+    "flowId": "flow_discriminacao",
+    "level": "low",
+    "headline": "Uso de expressões preconceituosas arraigadas na cultura como piada.",
+    "nextStep": "Interrompa a expressão, corrija pedagogicamente o erro e informe a coordenação.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Educação em diversidade e conscientização de turma."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Intervenção se o grupo resistir a mudar o linguajar."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Explique o viés discriminatório",
+        "Anote a expressão usada"
+      ],
+      "notYours": "Não minimize rindo da piada preconceituosa junto com a turma."
+    }
+  },
+  {
+    "flowId": "flow_discriminacao",
+    "level": "moderate",
+    "headline": "Insultos diretos e intencionais utilizando racismo, xenofobia ou capacitismo.",
+    "nextStep": "Encaminhe o caso e o agressor à direção para acionamento das normas legais.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Aplicação de penalidades e notificação formal às famílias envolvidas."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Acompanhamento protetivo de vítimas de preconceito contínuo."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Preste apoio solidário à vítima",
+        "Acompanhe o agressor à gestão"
+      ],
+      "notYours": "Não force a vítima a desculpar o agressor imediatamente."
+    }
+  },
+  {
+    "flowId": "flow_discriminacao",
+    "level": "high",
+    "headline": "Ataques sistemáticos de ódio, pichações supremacistas ou exclusão grave.",
+    "nextStep": "Comunique a gestão exigindo preservação de provas e acionamento policial.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Coordenação de resposta institucional e elaboração de atas de crime."
+    },
+    "complementaryService": {
+      "queryType": "highlight=disque-100",
+      "label": "Disque 100 – Direitos Humanos",
+      "description": "Denúncia anônima de violações fundamentais aos Direitos Humanos."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Fotografe murais ou pichações",
+        "Acolha o grupo agredido"
+      ],
+      "notYours": "Não apague pichações ou rasgue papéis antes da documentação oficial."
+    }
+  },
+  {
+    "flowId": "flow_discriminacao",
+    "level": "critical",
+    "headline": "Agressão física coletiva ou espancamento motivado por ódio racial/religioso.",
+    "nextStep": "Isole a vítima, afaste os agressores e grite para acionarem o 190 urgentemente.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Contenção policial de violência agravada por crimes de ódio."
+    },
+    "complementaryService": {
+      "queryType": "type=externo",
+      "label": "SAMU - 192",
+      "description": "Suporte e resgate imediato por traumatismos decorrentes da agressão."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Garante barreira física para a vítima",
+        "Exija o fim do ataque"
+      ],
+      "notYours": "Não normalize a violência alegando 'conflitos de gangue locais'."
+    }
+  },
+  {
+    "flowId": "flow_bullying",
+    "level": "low",
+    "headline": "Apelidos incômodos, risadinhas pontuais ou exclusão em atividades normais.",
+    "nextStep": "Interrompa a atitude, reafirme as regras da sala e informe a coordenação.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Trabalho pedagógico de convivência, empatia e regras."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Advertência verbal se o comportamento persistir."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Corrija o comportamento na hora",
+        "Inclua a vítima no grupo"
+      ],
+      "notYours": "Não diga à vítima que ela deve aprender a aguentar brincadeiras."
+    }
+  },
+  {
+    "flowId": "flow_bullying",
+    "level": "moderate",
+    "headline": "Perseguição continuada, humilhação pública repetida ou espalhamento de boatos.",
+    "nextStep": "Encaminhe agressor e vítima, em momentos distintos, para registro na direção.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Mediação formal do conflito e convocação dos pais das partes."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Acompanhamento em caso de omissão familiar contínua."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Acolha a vítima em separado",
+        "Identifique alunos testemunhas"
+      ],
+      "notYours": "Não force um abraço de desculpas público diante de toda a classe."
+    }
+  },
+  {
+    "flowId": "flow_bullying",
+    "level": "high",
+    "headline": "Ataques intensos na internet (cyberbullying) causando sofrimento severo à vítima.",
+    "nextStep": "Oriente a vítima a salvar as provas digitais e comunique a direção com urgência para registro formal e contato com a família.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Registro institucional da denúncia cibernética, contato com a família e avaliação de necessidade de acionar outros órgãos."
+    },
+    "complementaryService": {
+      "queryType": "highlight=disque-100",
+      "label": "Disque 100 – Direitos Humanos",
+      "description": "Denúncia de violações de direitos de crianças e adolescentes."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Aconselhe a não apagar as mensagens",
+        "Repasse prints à gestão para anexar ao registro formal"
+      ],
+      "notYours": "Não interaja com perfis agressores online ou redes sociais."
+    }
+  },
+  {
+    "flowId": "flow_bullying",
+    "level": "critical",
+    "headline": "Incentivo em grupo a agressão física planejada contra o alvo do bullying.",
+    "nextStep": "Impeça a aproximação, proteja o alvo, grite por reforços e acione a direção.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Contenção de multidão em caso de agressões múltiplas e linchamentos."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Organização do isolamento seguro da vítima em área restrita."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Disperse os agressores com voz de comando",
+        "Acolha a vítima fisicamente"
+      ],
+      "notYours": "Não entre fisicamente na roda para lutar contra os agressores."
+    }
+  },
+  {
+    "flowId": "flow_plano_individual_acompanhamento",
+    "level": "low",
+    "headline": "Aluno não engaja com atividades simples adaptadas no plano individual.",
+    "nextStep": "Incentive o aluno com metas pequenas e informe a coordenação no intervalo.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Ajuste na metodologia inclusiva e revisão de materiais."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Cobrança de materiais especiais da rede pública se estiverem faltando."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote a recusa da atividade",
+        "Ofereça alternativa mais lúdica"
+      ],
+      "notYours": "Não diga que ele está atrasado em relação aos alunos regulares."
+    }
+  },
+  {
+    "flowId": "flow_plano_individual_acompanhamento",
+    "level": "moderate",
+    "headline": "Recusa sistemática, irritação e resistência total às adaptações pedagógicas propostas.",
+    "nextStep": "Informe a gestão escolar formalmente para agendar revisão do plano com a família.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Reunião de alinhamento e possível busca por novo observação."
+    },
+    "complementaryService": {
+      "queryType": "highlight=caps-ij",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Acompanhamento multiprofissional em casos de dificuldade grave."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Reduza a pressão sobre entregas",
+        "Registre os gatilhos da irritação"
+      ],
+      "notYours": "Não decida sozinho parar as adaptações e forçar provas comuns."
+    }
+  },
+  {
+    "flowId": "flow_plano_individual_acompanhamento",
+    "level": "high",
+    "headline": "Agitação extrema, gritos e quebra de objetos inviabilizando a dinâmica da sala.",
+    "nextStep": "Solicite intervenção urgente da coordenação para retirada cuidadosa do aluno.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Abordagem descalonadora em local calmo com neurodivergentes."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acesso imediato ao cuidador responsável para auxiliar na crise."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Diminua luzes ou sons altos",
+        "Retire o que o incomoda"
+      ],
+      "notYours": "Não segure o aluno pelos braços para forçá-lo a sentar quieto."
+    }
+  },
+  {
+    "flowId": "flow_plano_individual_acompanhamento",
+    "level": "critical",
+    "headline": "Crise refratária de agressividade e autolesão grave devido ao dificuldade.",
+    "nextStep": "Afaste colegas e carteiras e chame a direção com urgência para acionar o SAMU.",
+    "priorityService": {
+      "queryType": "type=externo",
+      "label": "SAMU - 192",
+      "description": "Manejo médico especializado em crise severa de base neuropsiquiátrica."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Isolamento da sala e apoio logístico para entrada de socorristas."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Proteja a cabeça do aluno",
+        "Desobstrua a saída da sala"
+      ],
+      "notYours": "Não tente amarrar ou subjugar o aluno, podendo causar lesões piores."
+    }
+  },
+  {
+    "flowId": "flow_vulnerabilidade_social",
+    "level": "low",
+    "headline": "Dificuldades pontuais de transporte, material ou organização familiar.",
+    "nextStep": "Registre a demanda e comunique a coordenação para orientação e apoio escolar.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Apoio escolar e articulação inicial com a gestão."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio social para benefícios e serviços para a família."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote barreiras relatadas",
+        "Ajuste prazos quando autorizado"
+      ],
+      "notYours": "Não exponha a situação social do aluno para a turma."
+    }
+  },
+  {
+    "flowId": "flow_vulnerabilidade_social",
+    "level": "moderate",
+    "headline": "Problemas financeiros e moradia precária afetando frequência e rendimento.",
+    "nextStep": "Acione a direção para encaminhar a família ao CRAS e organizar suporte escolar.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato com família e encaminhamento social pelo canal oficial."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio continuado para renda, benefícios e proteção básica."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre impactos no estudo",
+        "Encaminhe relatos à gestão"
+      ],
+      "notYours": "Não tente resolver com promessas pessoais ou doações sem coordenação."
+    }
+  },
+  {
+    "flowId": "flow_vulnerabilidade_social",
+    "level": "high",
+    "headline": "Risco de despejo, ausência de documentos e ruptura grave da rotina familiar.",
+    "nextStep": "Comunique a direção urgentemente para acionar CRAS e, se necessário, CREAS.",
+    "priorityService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio para benefícios, acolhimento e reorganização de rede."
+    },
+    "complementaryService": {
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Apoio quando há violações graves e necessidade de proteção especializada."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre urgências relatadas",
+        "Acompanhe o aluno à gestão"
+      ],
+      "notYours": "Não conduza o caso com serviços externos por conta própria."
+    }
+  },
+  {
+    "flowId": "flow_vulnerabilidade_social",
+    "level": "critical",
+    "headline": "Família sem abrigo hoje ou aluno sem lugar seguro para dormir nesta noite.",
+    "nextStep": "Acione a direção imediatamente para acionar assistência social e proteção.",
+    "priorityService": {
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Proteção especializada quando há risco extremo e violação grave."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Proteção imediata do aluno e definição de encaminhamento seguro."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha o aluno acompanhado",
+        "Registre a linha do tempo do dia"
+      ],
+      "notYours": "Não leve o aluno para casa nem faça transporte ou abrigo por conta própria."
+    }
+  },
+  {
+    "flowId": "flow_violencia_armada",
+    "level": "low",
+    "headline": "Boato ou conversa sobre armas sem evidência concreta.",
+    "nextStep": "Relate o boato discretamente à direção ao final do período de aula.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Averiguação preliminar e monitoramento preventivo."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Ronda Escolar",
+      "description": "Policiamento preventivo e diálogo com a comunidade."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Ouça atentamente sem alarmar",
+        "Comunique a gestão formalmente"
+      ],
+      "notYours": "Não reviste mochilas ou interrogue alunos."
+    }
+  },
+  {
+    "flowId": "flow_violencia_armada",
+    "level": "moderate",
+    "headline": "Ameaça verbal direta de trazer arma para a escola.",
+    "nextStep": "Informe a direção imediatamente para acionamento da Ronda Escolar.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Registro da ameaça e acionamento policial."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Verificação de ameaça grave e segurança do perímetro."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha a calma na turma",
+        "Registre as palavras exatas usadas"
+      ],
+      "notYours": "Não confronte o aluno autor da ameaça."
+    }
+  },
+  {
+    "flowId": "flow_violencia_armada",
+    "level": "high",
+    "headline": "Aluno exibe arma de fogo ou branca na escola.",
+    "nextStep": "Afaste os alunos lentamente e avise a direção para acionar a PM urgente.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Desarmamento e contenção de crise de segurança."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acionamento de protocolos de segurança e evacuação."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Fale em tom de voz baixo",
+        "Guie os demais para longe"
+      ],
+      "notYours": "Não tente desarmar o aluno nem faça movimentos bruscos."
+    }
+  },
+  {
+    "flowId": "flow_violencia_armada",
+    "level": "critical",
+    "headline": "Disparos ou ataque ativo ocorrendo na escola.",
+    "nextStep": "Tranque a porta, apague as luzes e deite no chão em silêncio absoluto.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Intervenção tática armada para neutralizar atirador."
+    },
+    "complementaryService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Resgate e atendimento a múltiplas vítimas."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Crie barricadas na porta",
+        "Exija silêncio total dos alunos"
+      ],
+      "notYours": "Não saia da sala para verificar a situação."
+    }
+  },
+  {
+    "flowId": "flow_inseguranca_alimentar",
+    "level": "low",
+    "headline": "Aluno pede comida com frequência e relata refeições insuficientes em casa.",
+    "nextStep": "Comunique a coordenação para acolher o aluno e orientar encaminhamento social.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Acolhimento e organização de encaminhamento pela gestão."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Acesso a benefícios e suporte a insegurança alimentar."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre o relato sem julgamento",
+        "Comunique a gestão no mesmo dia"
+      ],
+      "notYours": "Não faça coleta de doações pessoais sem orientação da direção."
+    }
+  },
+  {
+    "flowId": "flow_inseguranca_alimentar",
+    "level": "moderate",
+    "headline": "Relato repetido de falta de comida em casa, com queda de atenção em aula.",
+    "nextStep": "Acione a direção para contatar responsáveis e encaminhar a família ao CRAS.",
+    "priorityService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio para benefícios e acesso a serviços de assistência."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Articulação com família e ações de apoio institucional."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote frequência dos relatos",
+        "Evite expor o aluno na turma"
+      ],
+      "notYours": "Não responsabilize o aluno nem faça cobrança moral sobre a família."
+    }
+  },
+  {
+    "flowId": "flow_inseguranca_alimentar",
+    "level": "high",
+    "headline": "Aluno relata dias sem refeição e ausência total de comida no domicílio.",
+    "nextStep": "Comunique a direção urgentemente para acionar CRAS e proteção se necessário.",
+    "priorityService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Encaminhamento prioritário para apoio e benefícios emergenciais."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Atuação quando a fome se liga a falta grave de cuidados."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre a fala com precisão",
+        "Acompanhe o aluno até a gestão"
+      ],
+      "notYours": "Não tente resolver com dinheiro próprio nem leve o aluno para comer fora."
+    }
+  },
+  {
+    "flowId": "flow_inseguranca_alimentar",
+    "level": "critical",
+    "headline": "Aluno diz que hoje não tem o que comer e não tem adulto responsável presente.",
+    "nextStep": "Mantenha o aluno com a direção e solicite acionamento imediato do CRAS.",
+    "priorityService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio emergencial e ativação de rede de assistência no território."
+    },
+    "complementaryService": {
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Apoio quando há violação grave de cuidados e proteção."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Não deixe o aluno sozinho",
+        "Registre tentativas de contato familiar"
+      ],
+      "notYours": "Não transporte o aluno nem faça encaminhamento externo sem a gestão."
+    }
+  },
+  {
+    "flowId": "flow_desmaio",
+    "level": "low",
+    "headline": "Aluno relata tontura, fraqueza ou visão escura repentina.",
+    "nextStep": "Sente o aluno imediatamente no chão e peça para colocar a cabeça nos joelhos.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Apoio logístico para encaminhamento seguro à gestão."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Aviso à família sobre mal-estar."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Sente o aluno antes que caia",
+        "Ventile a área ao redor"
+      ],
+      "notYours": "Não force o aluno a caminhar até a diretoria sozinho."
+    }
+  },
+  {
+    "flowId": "flow_desmaio",
+    "level": "moderate",
+    "headline": "Desmaio rápido de poucos segundos com recuperação total.",
+    "nextStep": "Mantenha o aluno deitado de barriga para cima e eleve as pernas dele.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acionamento obrigatório dos pais para avaliação."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Exame médico investigativo sobre o evento sincopal."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Eleve as pernas do aluno",
+        "Converse de forma tranquila"
+      ],
+      "notYours": "Não dê água nem alimentos logo após o retorno à consciência."
+    }
+  },
+  {
+    "flowId": "flow_desmaio",
+    "level": "high",
+    "headline": "Desmaio demorado ou retorno com confusão mental visível.",
+    "nextStep": "Acione resgate médico imediatamente via direção e monitore a respiração.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Avaliação neurológica e cardíaca de emergência."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato familiar grave e facilitação de acesso."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Observe se o peito sobe e desce",
+        "Lateralize a cabeça gentilmente"
+      ],
+      "notYours": "Não tente levantar ou colocar o aluno sentado à força."
+    }
+  },
+  {
+    "flowId": "flow_desmaio",
+    "level": "critical",
+    "headline": "Desmaio seguido de ausência de pulso ou parada respiratória.",
+    "nextStep": "Exija chamada de urgência ao 192 e inicie compressões torácicas contínuas.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Reanimação avançada e intervenção por parada cardíaca."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Mobilização de rede externa e contenção da comunidade escolar."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Apoie as mãos no centro do peito",
+        "Grite orientações curtas"
+      ],
+      "notYours": "Não interrompa a massagem cardíaca se estiver apto a fazer."
+    }
+  },
+  {
+    "flowId": "flow_lgbtfobia",
+    "level": "low",
+    "headline": "Comentários pejorativos leves ou uso de gírias que ofendem a diversidade sexual.",
+    "nextStep": "Repreenda o uso de forma firme, educativa e avise a coordenação ao final.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Implementação de projetos de diversidade e respeito mútuo."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Apoio administrativo caso a atitude da turma não melhore."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Corte o clima de gozação",
+        "Explique o dano e desrespeito"
+      ],
+      "notYours": "Não valide os termos usando a desculpa de que 'sempre foi assim'."
+    }
+  },
+  {
+    "flowId": "flow_lgbtfobia",
+    "level": "moderate",
+    "headline": "Restrição de uso de banheiros por colegas, assédio direto e xingamentos intencionais.",
+    "nextStep": "Encaminhe o agressor à direção e garanta o acesso da vítima ao seu direito.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Garantia institucional de direitos, normativas estaduais e sanções."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Apoio a violação de direitos da criança ou adolescente LGBT+."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Defenda o direito do aluno ofendido",
+        "Registre as negativas criadas"
+      ],
+      "notYours": "Não mande o aluno usar banheiros da diretoria para 'evitar problemas'."
+    }
+  },
+  {
+    "flowId": "flow_lgbtfobia",
+    "level": "high",
+    "headline": "Ameaças diretas, exposição de fotos íntimas ou coação contra aluno LGBTQIA+.",
+    "nextStep": "Comunique a gestão na mesma hora para acolher o aluno e acionar o Estado.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Mobilização de rede externa de proteção contra violência severa."
+    },
+    "complementaryService": {
+      "queryType": "highlight=disque-100",
+      "label": "Disque 100 – Direitos Humanos",
+      "description": "Denúncia de crimes contra os Direitos Humanos e Diversidade."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Retenha material digital ou impresso",
+        "Preste apoio emocional"
+      ],
+      "notYours": "Não responsabilize a vítima alegando que seu 'comportamento' atrai agressões."
+    }
+  },
+  {
+    "flowId": "flow_lgbtfobia",
+    "level": "critical",
+    "headline": "Ataque físico ou espancamento violento motivado abertamente por LGBTfobia.",
+    "nextStep": "Afaste os agressores, proteja a vítima e mande chamar a polícia imediatamente.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Intervenção direta e prisão em flagrante por violência qualificada."
+    },
+    "complementaryService": {
+      "queryType": "type=externo",
+      "label": "SAMU - 192",
+      "description": "Apoio vital emergencial e resgate de feridos no local."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Isole a vítima dos demais",
+        "Comprima sangramentos com pano"
+      ],
+      "notYours": "Não deixe os agressores fugirem sem antes avisar a direção quem foram."
+    }
+  },
+  {
+    "flowId": "flow_isolamento",
+    "level": "low",
+    "headline": "Aluno recusa-se a formar grupos e prefere ficar sozinho sistematicamente.",
+    "nextStep": "Relate à coordenação pedagógica para pensar estratégias de inclusão sutis.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Adaptação de propostas de trabalho para acolhimento."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Reunião de rotina com familiares para mapear rotina em casa."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Ofereça atividades em duplas calmas",
+        "Elogie os pequenos esforços"
+      ],
+      "notYours": "Não puna o aluno obrigando-o a falar em público à força."
+    }
+  },
+  {
+    "flowId": "flow_isolamento",
+    "level": "moderate",
+    "headline": "Ausência total de fala com professores e colegas por dias consecutivos.",
+    "nextStep": "Comunique a gestão formalmente para convocar os pais e investigar causas.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Encaminhamento direto à rede de saúde para observação."
+    },
+    "complementaryService": {
+      "queryType": "highlight=caps-ij",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Atendimento psiquiátrico de transtornos de isolamento social."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha interações curtas e gentis",
+        "Anote os dias de silêncio"
+      ],
+      "notYours": "Não dê zero de participação apenas pela falta de comunicação verbal."
+    }
+  },
+  {
+    "flowId": "flow_isolamento",
+    "level": "high",
+    "headline": "Isolamento acompanhado de choro, tremores ou medo visível de pessoas.",
+    "nextStep": "Acompanhe o aluno até um espaço reservado e chame a direção imediatamente.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acolhimento imediato fora do ambiente de estresse."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Avaliação e acolhimento especializado em crise aguda de saúde mental."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Ofereça ir a um local vazio",
+        "Reduza estímulos visuais"
+      ],
+      "notYours": "Não coloque a turma para questionar por que ele tem medo."
+    }
+  },
+  {
+    "flowId": "flow_isolamento",
+    "level": "critical",
+    "headline": "Fuga ou trancamento desesperado em banheiros com ameaça de se machucar.",
+    "nextStep": "Converse pelo lado de fora, solicite à direção abertura emergencial da porta e prepare encaminhamento imediato à rede de saúde mental.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Avaliação de risco de autolesão e acolhimento imediato após a contenção da crise."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Apoio para abertura forçada da porta e proteção física em caso de risco extremo."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha voz firme e tranquilizadora",
+        "Garante presença de adulto"
+      ],
+      "notYours": "Não arrombe portas chutando ou usando força excessiva sozinho."
+    }
+  },
+  {
+    "flowId": "flow_febre",
+    "level": "low",
+    "headline": "Aluno apresenta corpo quente ao toque, mas continua ativo.",
+    "nextStep": "Anote o horário da queixa e comunique a coordenação para avisar a família.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Aviso telefônico preventivo aos familiares."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Monitoramento epidemiológico na escola."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Ofereça água com frequência",
+        "Reduza a exigência física"
+      ],
+      "notYours": "Não administre antitérmicos da sua própria bolsa."
+    }
+  },
+  {
+    "flowId": "flow_febre",
+    "level": "moderate",
+    "headline": "Febre confirmada acompanhada de prostração ou calafrios.",
+    "nextStep": "Encaminhe o aluno à direção para isolamento leve e aguardo dos pais.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acolhimento fora da sala até a chegada da família."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "observação de síndromes febris."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Acompanhe até a gestão",
+        "Ventile a sala de aula"
+      ],
+      "notYours": "Não obrigue o aluno a participar das atividades."
+    }
+  },
+  {
+    "flowId": "flow_febre",
+    "level": "high",
+    "headline": "Febre repentina com manchas na pele, rigidez ou dor forte.",
+    "nextStep": "Solicite imediatamente que a direção acione o resgate e isole o aluno.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Atendimento para suspeita de meningite ou febre grave."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato urgente com os pais e isolamento adequado."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Isole o aluno em local arejado",
+        "Afaste os demais com calma"
+      ],
+      "notYours": "Não aplique álcool na pele para baixar a febre."
+    }
+  },
+  {
+    "flowId": "flow_febre",
+    "level": "critical",
+    "headline": "Convulsão associada a quadro febril intenso.",
+    "nextStep": "Proteja a cabeça do aluno de impactos e peça que chamem o 192 urgentemente.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Intervenção médica avançada para convulsão febril."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Apoio logístico no corredor e entrada da ambulância."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Coloque apoio macio sob a cabeça",
+        "Afrouxe as roupas apertadas"
+      ],
+      "notYours": "Não contenha os movimentos espasmódicos do corpo."
+    }
+  },
+  {
+    "flowId": "flow_suspeita_neurodivergencia",
+    "level": "low",
+    "headline": "Dificuldade leve e persistente de atenção, organização ou interação em sala.",
+    "nextStep": "Registre exemplos concretos e comunique a coordenação para orientar adaptações.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Ajustes pedagógicos iniciais e observação organizada."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Orientação de saúde para família quando necessário."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote situações e contextos",
+        "Teste instruções mais curtas"
+      ],
+      "notYours": "Não rotule o aluno nem afirme que ele tem uma condição de saúde."
+    }
+  },
+  {
+    "flowId": "flow_suspeita_neurodivergencia",
+    "level": "moderate",
+    "headline": "Dificuldade contínua que prejudica avaliações e convivência, sem melhora.",
+    "nextStep": "Comunique a direção para reunião com a família, definir plano de apoio em sala e orientar a busca de avaliação na rede de saúde.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Reunião com responsáveis e definição do encaminhamento para avaliação externa."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Orientação à família sobre avaliação médica ou neuropsicológica, quando indicada."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Relate impactos no aprendizado",
+        "Ofereça rotinas previsíveis"
+      ],
+      "notYours": "Não pressione a família a obter laudos nem faça cobrança de saúde."
+    }
+  },
+  {
+    "flowId": "flow_suspeita_neurodivergencia",
+    "level": "high",
+    "headline": "Desorganização intensa com fugas de sala ou colapsos de rotina frequentes.",
+    "nextStep": "Acione a coordenação para retirar o aluno para um local calmo e seguro.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Apoio imediato para reduzir estímulos e organizar retorno."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Orientação de saúde para família quando episódios são frequentes."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Diminua barulho e estímulos",
+        "Peça apoio de outro adulto"
+      ],
+      "notYours": "Não segure o aluno à força nem grite para controlar comportamento."
+    }
+  },
+  {
+    "flowId": "flow_suspeita_neurodivergencia",
+    "level": "critical",
+    "headline": "Risco de fuga para a rua ou comportamento que coloca o aluno em perigo imediato.",
+    "nextStep": "Feche acessos próximos, mantenha supervisão e acione a direção imediatamente.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Gestão imediata de segurança e contato com responsáveis."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Emergência - 190",
+      "description": "Apoio quando há risco imediato fora do controle da escola."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha o aluno sempre à vista",
+        "Peça reforço de adultos"
+      ],
+      "notYours": "Não corra atrás sozinho para fora da escola nem use força desnecessária."
+    }
+  },
+  {
+    "flowId": "flow_adaptacao_pedagogica",
+    "level": "low",
+    "headline": "Aluno precisa de ajustes simples para acompanhar a aula com autonomia.",
+    "nextStep": "Aplique um ajuste imediato de instrução e comunique a coordenação para formalizar.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Organização de adaptações e apoio ao professor em sala."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Garantia de recursos e alinhamento com responsáveis."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Dê instruções em passos curtos",
+        "Permita tempo extra quando previsto"
+      ],
+      "notYours": "Não negue apoio por achar que é privilégio."
+    }
+  },
+  {
+    "flowId": "flow_adaptacao_pedagogica",
+    "level": "moderate",
+    "headline": "Sem adaptação, o aluno não consegue acompanhar avaliações e perde vínculo.",
+    "nextStep": "Solicite à coordenação um plano de adaptação por escrito para a disciplina.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Plano pedagógico e apoio para ajustes de avaliação."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Orientação à família sobre suporte de saúde quando necessário."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre barreiras na avaliação",
+        "Aplique alternativas combinadas"
+      ],
+      "notYours": "Não exija que o aluno se adapte sozinho sem suporte pedagógico."
+    }
+  },
+  {
+    "flowId": "flow_adaptacao_pedagogica",
+    "level": "high",
+    "headline": "Aluno acumula fracassos e sofrimento por não ter acesso real ao conteúdo.",
+    "nextStep": "Comunique a direção urgentemente para reunião com família e ajustes imediatos.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Garantia de recursos e alinhamento formal com responsáveis."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Revisão do plano pedagógico e acompanhamento semanal."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Reduza tarefas para o essencial",
+        "Registre impactos no rendimento"
+      ],
+      "notYours": "Não exponha o aluno com comparações nem use humilhação como motivação."
+    }
+  },
+  {
+    "flowId": "flow_adaptacao_pedagogica",
+    "level": "critical",
+    "headline": "Aluno ameaça abandonar a escola por não conseguir acompanhar sem adaptação.",
+    "nextStep": "Acione a direção imediatamente para acolher o aluno e definir plano emergencial.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acolhimento e decisão rápida para evitar abandono escolar."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio social quando há barreiras familiares e de permanência."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Acolha sem discutir",
+        "Encaminhe à gestão na hora"
+      ],
+      "notYours": "Não prometa soluções sozinho nem negocie regras fora da orientação da gestão."
+    }
+  },
+  {
+    "flowId": "flow_emergencia_medica",
+    "level": "low",
+    "headline": "Sintoma físico leve sem alteração de sinais vitais.",
+    "nextStep": "Encaminhe o aluno à coordenação para repouso breve e aviso à família.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Apoio inicial ao estudante e triagem escolar."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato primário com familiares e responsáveis."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Permita o descanso do aluno",
+        "Observe a evolução do sintoma"
+      ],
+      "notYours": "Não administre qualquer tipo de medicação."
+    }
+  },
+  {
+    "flowId": "flow_emergencia_medica",
+    "level": "moderate",
+    "headline": "Dor contínua ou mal-estar que impede a aula.",
+    "nextStep": "Acompanhe o aluno à direção para contatar os responsáveis ou a UBS.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Mediação com a família e encaminhamento de saúde."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Avaliação médica de quadros sem risco iminente de morte."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Acompanhe o aluno até a gestão",
+        "Relate a queixa com exatidão"
+      ],
+      "notYours": "Não realize diagnósticos clínicos."
+    }
+  },
+  {
+    "flowId": "flow_emergencia_medica",
+    "level": "high",
+    "headline": "Alteração súbita de consciência ou sangramento ativo.",
+    "nextStep": "Mantenha o aluno deitado, isole a área e acione o SAMU via direção.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Atendimento médico de emergência e resgate especializado."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Apoio logístico para a entrada da ambulância."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Isole a área ao redor do aluno",
+        "Solicite que alguém chame a direção"
+      ],
+      "notYours": "Não transporte o aluno em veículo particular."
+    }
+  },
+  {
+    "flowId": "flow_emergencia_medica",
+    "level": "critical",
+    "headline": "Parada respiratória ou risco iminente de morte.",
+    "nextStep": "Grite por ajuda, exija ligação ao 192 e inicie compressões se treinado.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Suporte avançado de vida e reanimação imediata."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Desobstrução urgente dos acessos da escola."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Garanta espaço ao redor da vítima",
+        "Monitore o pulso e respiração"
+      ],
+      "notYours": "Não abandone o aluno sozinho em hipótese alguma."
+    }
+  },
+  {
+    "flowId": "flow_uso_substancias",
+    "level": "low",
+    "headline": "Cheiro perceptível de cigarro, maconha ou álcool, sem alteração de atitude.",
+    "nextStep": "Anote o episódio discretamente e repasse à coordenação ao final do período.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Abordagem preventiva sobre riscos e regras escolares."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato familiar para investigar suspeita primária."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha a aula com normalidade",
+        "Registre fatos, não suposições"
+      ],
+      "notYours": "Não insinue em voz alta para a turma que o aluno usa drogas."
+    }
+  },
+  {
+    "flowId": "flow_uso_substancias",
+    "level": "moderate",
+    "headline": "Aluno apresenta sono excessivo, fala arrastada ou euforia incomum na sala.",
+    "nextStep": "Encaminhe o aluno à direção acompanhado para contato protetivo com os pais.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Aviso familiar obrigatório e orientação de suporte em saúde."
+    },
+    "complementaryService": {
+      "queryType": "highlight=caps-ad",
+      "label": "CAPS AD II Ermelino Matarazzo (Álcool e Drogas)",
+      "description": "Encaminhamento para tratamento de uso problemático de substâncias."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Garanta acompanhante no trajeto",
+        "Monitore sinais vitais visuais"
+      ],
+      "notYours": "Não faça interrogatório investigativo sobre o que foi consumido."
+    }
+  },
+  {
+    "flowId": "flow_uso_substancias",
+    "level": "high",
+    "headline": "Uso de álcool ou substâncias ilícitas dentro do ambiente escolar.",
+    "nextStep": "Solicite a presença da gestão imediatamente para intervir e apreender o material.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Ação disciplinar severa, apreensão e notificação familiar."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Aplicação de medidas protetivas e responsabilização familiar."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha distância física segura",
+        "Comunique a direção por escrito"
+      ],
+      "notYours": "Não reviste a mochila ou tente confiscar a droga sozinho."
+    }
+  },
+  {
+    "flowId": "flow_uso_substancias",
+    "level": "critical",
+    "headline": "Inconsciência, convulsão ou agressividade extrema após uso de substância.",
+    "nextStep": "Proteja o aluno de quedas, afaste os colegas e exija ligação urgente ao 192.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Atendimento para overdose, coma alcoólico ou surto severo."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Apoio logístico para isolamento rápido da cena."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Deite o aluno em segurança",
+        "Guarde sobras da substância"
+      ],
+      "notYours": "Não dê água, café ou tente provocar vômito."
+    }
+  },
+  {
+    "flowId": "flow_incendio",
+    "level": "low",
+    "headline": "Cheiro de queimado ou fumaça leve sem origem visível.",
+    "nextStep": "Comunique a direção imediatamente para inspeção predial.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Inspeção e manutenção da estrutura escolar."
+    },
+    "complementaryService": {
+      "queryType": "type=externo",
+      "label": "Corpo de Bombeiros - 193",
+      "description": "Orientação técnica e prevenção de sinistros."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha a sala ventilada",
+        "Aguarde o retorno da direção"
+      ],
+      "notYours": "Não ignore o cheiro ou libere a turma sem inspeção prévia."
+    }
+  },
+  {
+    "flowId": "flow_incendio",
+    "level": "moderate",
+    "headline": "Fumaça visível em lixeira ou equipamento elétrico.",
+    "nextStep": "Isole o local, desligue a chave geral se próxima e avise a direção.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Uso de extintores por brigadistas ou pessoal treinado."
+    },
+    "complementaryService": {
+      "queryType": "type=externo",
+      "label": "Corpo de Bombeiros - 193",
+      "description": "Contenção de princípio de incêndio antes do alastramento."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Retire os alunos de perto",
+        "Feche portas ao sair do local"
+      ],
+      "notYours": "Não jogue água em equipamentos ligados à tomada."
+    }
+  },
+  {
+    "flowId": "flow_incendio",
+    "level": "high",
+    "headline": "Fogo visível e crescente em ambiente fechado.",
+    "nextStep": "Evacue a sala ordenadamente pela rota de fuga e acione o alarme sonoro.",
+    "priorityService": {
+      "queryType": "type=externo",
+      "label": "Corpo de Bombeiros - 193",
+      "description": "Combate a incêndio estrutural."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Organização da evacuação geral do prédio."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Guie os alunos para fora",
+        "Confira se todos saíram da sala"
+      ],
+      "notYours": "Não tente apagar fogo que já alcançou o teto ou móveis."
+    }
+  },
+  {
+    "flowId": "flow_incendio",
+    "level": "critical",
+    "headline": "Incêndio alastrado bloqueando saídas ou com vítimas presas.",
+    "nextStep": "Mantenha os alunos agachados sob a fumaça e busque saídas alternativas.",
+    "priorityService": {
+      "queryType": "type=externo",
+      "label": "Corpo de Bombeiros - 193",
+      "description": "Resgate de vítimas e combate ao fogo de grande porte."
+    },
+    "complementaryService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Socorro médico para intoxicação grave e queimaduras."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Rasteje junto com a turma",
+        "Cubra o nariz com tecido seco"
+      ],
+      "notYours": "Não volte para buscar bolsas ou pertences pessoais."
+    }
+  },
+  {
+    "flowId": "flow_intoxicacao",
+    "level": "low",
+    "headline": "Contato da pele com produto de limpeza sem reação forte.",
+    "nextStep": "Lave o local afetado com água corrente abundante e comunique a gestão.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Apoio prático para higiene e troca de roupas."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Averiguação de manuseio indevido de materiais escolares."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Enxágue apenas com água",
+        "Observe irritação na pele"
+      ],
+      "notYours": "Não passe manteiga, creme ou produtos químicos caseiros."
+    }
+  },
+  {
+    "flowId": "flow_intoxicacao",
+    "level": "moderate",
+    "headline": "Ingestão de substância não letal ou alergia de pele branda.",
+    "nextStep": "Encaminhe o aluno à direção e leve junto a embalagem do produto ingerido.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contatar responsáveis e orientar contato com centro de intoxicação."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Avaliação médica clínica preventiva."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Recolha os restos do produto",
+        "Acompanhe o aluno de perto"
+      ],
+      "notYours": "Não provoque vômito de forma alguma."
+    }
+  },
+  {
+    "flowId": "flow_intoxicacao",
+    "level": "high",
+    "headline": "Ingestão de medicamentos, venenos ou reação alérgica com inchaço.",
+    "nextStep": "Peça para a direção acionar o SAMU urgente e mantenha a embalagem próxima.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Medicação antialérgica emergencial ou medicação especializada em via venosa."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Repasse de informações vitais aos paramédicos e pais."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha o aluno acordado",
+        "Observe inchaços nos lábios"
+      ],
+      "notYours": "Não dê água, leite ou comidas para tentar reverter veneno."
+    }
+  },
+  {
+    "flowId": "flow_intoxicacao",
+    "level": "critical",
+    "headline": "Inconsciência, asfixia ou convulsão após contato químico ou drogas.",
+    "nextStep": "Ligue 192 imediatamente, deite o aluno de lado e preserve a via aérea.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "suporte respiratório avançado e manutenção vital por toxicidade aguda."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Isolamento extremo do ambiente de emergência."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Lateralize a cabeça do aluno",
+        "Afaste aglomeração e pânico"
+      ],
+      "notYours": "Não realize respiração boca a boca direta se ingeriu veneno."
+    }
+  },
+  {
+    "flowId": "flow_autolesao",
+    "level": "low",
+    "headline": "Uso constante de blusas de manga longa no calor para esconder os braços.",
+    "nextStep": "Comunique a coordenação de forma confidencial para observar o padrão.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Monitoramento indireto e cuidadoso da rotina escolar."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Investigação administrativa sobre histórico familiar e mudanças."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote quando e como ocorre",
+        "Crie ambiente de confiança"
+      ],
+      "notYours": "Não exija que o aluno arregaçe as mangas na frente da classe."
+    }
+  },
+  {
+    "flowId": "flow_autolesao",
+    "level": "moderate",
+    "headline": "Visualização de cortes, queimaduras ou marcas recentes sem sangramento ativo.",
+    "nextStep": "Acompanhe o aluno à direção para notificar a família e buscar ajuda de saúde.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Convite imediato aos pais para encaminhamento ao CAPS."
+    },
+    "complementaryService": {
+      "queryType": "highlight=caps-ij",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Apoio terapêutico contínuo para comportamentos autolesivos."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Ofereça ir ao banheiro lavar o local",
+        "Acolha a dor sem espanto"
+      ],
+      "notYours": "Não faça perguntas sobre os motivos das lesões no corpo."
+    }
+  },
+  {
+    "flowId": "flow_autolesao",
+    "level": "high",
+    "headline": "Aluno cortando-se ou ferindo-se com objeto na sala de aula ativamente.",
+    "nextStep": "Solicite que pare calmamente, afaste os demais e chame a direção urgente.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Intervenção e apreensão segura do objeto."
+    },
+    "complementaryService": {
+      "queryType": "type=externo",
+      "label": "SAMU - 192",
+      "description": "Contenção médica química se agitação severa se mantiver."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Peça ao aluno para soltar o objeto",
+        "Retire a turma de perto"
+      ],
+      "notYours": "Não tente arrancar a lâmina da mão do aluno à força."
+    }
+  },
+  {
+    "flowId": "flow_autolesao",
+    "level": "critical",
+    "headline": "Hemorragia severa após corte profundo provocado por autolesão.",
+    "nextStep": "Faça compressão direta forte no sangramento e grite para acionarem o SAMU.",
+    "priorityService": {
+      "queryType": "type=externo",
+      "label": "SAMU - 192",
+      "description": "Estancamento de hemorragia grave e preservação da vida."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Liberação rápida de rotas para paramédicos."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Pressione o ferimento com pano limpo",
+        "Peça a um aluno para chamar ajuda"
+      ],
+      "notYours": "Não deixe o ferimento sangrando para ir buscar gaze na secretaria."
+    }
+  },
+  {
+    "flowId": "flow_abuso_sexual",
+    "level": "low",
+    "headline": "Mudanças de humor e falas estranhas sobre toque ou segredo com adulto.",
+    "nextStep": "Registre a fala do aluno e comunique a direção no mesmo dia, em sigilo.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acolhimento sigiloso e definição de encaminhamento protetivo."
+    },
+    "complementaryService": {
+      "queryType": "highlight=disque-100",
+      "label": "Disque 100 – Direitos Humanos",
+      "description": "Canal de denúncia de violação de direitos de crianças e adolescentes."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote palavras exatas sem interpretar",
+        "Proteja a privacidade do aluno"
+      ],
+      "notYours": "Não peça detalhes nem tente confirmar o que aconteceu."
+    }
+  },
+  {
+    "flowId": "flow_abuso_sexual",
+    "level": "moderate",
+    "headline": "Aluno indica toque indesejado ou medo específico de uma pessoa conhecida.",
+    "nextStep": "Acompanhe o aluno à direção imediatamente para acionamento de proteção.",
+    "priorityService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Proteção e encaminhamento intersetorial com prioridade."
+    },
+    "complementaryService": {
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Acompanhamento especializado de violência e proteção social."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha o aluno acompanhado",
+        "Evite contato com suspeitos"
+      ],
+      "notYours": "Não chame o suspeito para conversar nem confronte familiares."
+    }
+  },
+  {
+    "flowId": "flow_abuso_sexual",
+    "level": "high",
+    "headline": "Relato direto e recente, com medo intenso de voltar para casa hoje.",
+    "nextStep": "Comunique a direção urgentemente e mantenha o aluno sob supervisão contínua.",
+    "priorityService": {
+      "queryType": "highlight=dp-62",
+      "label": "62º DP – Ermelino Matarazzo",
+      "description": "Registro oficial e investigação por autoridade competente."
+    },
+    "complementaryService": {
+      "queryType": "highlight=mp-infancia",
+      "label": "Ministério Público do Estado de São Paulo (MPSP) – Infância",
+      "description": "Garantia de proteção e responsabilização institucional."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre a ocorrência com precisão",
+        "Evite que o aluno fique sozinho"
+      ],
+      "notYours": "Não conduza coleta de provas nem faça perguntas repetidas ao aluno."
+    }
+  },
+  {
+    "flowId": "flow_abuso_sexual",
+    "level": "critical",
+    "headline": "Suspeito está no local ou há risco imediato de retirada forçada do aluno.",
+    "nextStep": "Acione a direção agora e mantenha o aluno em sala segura com portas fechadas.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Emergência - 190",
+      "description": "Intervenção imediata quando há risco presente à integridade do aluno."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Proteção formal e definição de guarda segura após a emergência."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Retire curiosos do corredor",
+        "Peça reforço de adultos"
+      ],
+      "notYours": "Não tente impedir fisicamente sozinho nem negocie com suspeitos."
+    }
+  },
+  {
+    "flowId": "flow_crise_respiratoria",
+    "level": "low",
+    "headline": "Tosse esporádica ou coriza sem dificuldade para respirar.",
+    "nextStep": "Mantenha a sala bem ventilada e permita que o aluno hidrate-se.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Aviso rotineiro à família sobre quadro respiratório leve."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Acompanhamento ambulatorial de sintomas virais."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Abra todas as janelas e portas",
+        "Ofereça lenços de papel"
+      ],
+      "notYours": "Não proíba o aluno de tossir ou ir ao banheiro limpar narinas."
+    }
+  },
+  {
+    "flowId": "flow_crise_respiratoria",
+    "level": "moderate",
+    "headline": "Chiado no peito e tosse contínua, mas aluno consegue falar.",
+    "nextStep": "Encaminhe o aluno à direção para uso do inalador próprio com a família.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato com pais para uso de medicamentos prescritos."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Atendimento médico em caso de exacerbação de asma."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha o aluno calmo",
+        "Evite esforços físicos"
+      ],
+      "notYours": "Não administre bombinhas de asma de outros alunos."
+    }
+  },
+  {
+    "flowId": "flow_crise_respiratoria",
+    "level": "high",
+    "headline": "Dificuldade clara para respirar e fala muito entrecortada.",
+    "nextStep": "Mantenha o aluno sentado e solicite à direção socorro médico imediato.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Suporte oxigenoterápico de urgência."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Chamada do resgate e isolamento da área de intervenção."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Acalme o aluno ansioso",
+        "Afrouxe golas de camisetas"
+      ],
+      "notYours": "Não deite o aluno, mantenha as costas dele eretas."
+    }
+  },
+  {
+    "flowId": "flow_crise_respiratoria",
+    "level": "critical",
+    "headline": "Lábios roxos, incapacidade de falar ou parada respiratória.",
+    "nextStep": "Grite para acionar o 192 e inicie ventilação de resgate se for treinado.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Manobra avançada de reanimação cardiopulmonar."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Evacuação do corredor para acesso rápido da equipe."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Verifique obstrução na garganta",
+        "Eleve o queixo levemente"
+      ],
+      "notYours": "Não espere a chegada da família para iniciar socorro."
+    }
+  },
+  {
+    "flowId": "flow_ideacao_suicida",
+    "level": "low",
+    "headline": "Redações ou desenhos com temas repetitivos de morte ou despedida.",
+    "nextStep": "Recolha o material com discrição e entregue à coordenação no mesmo dia.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Análise pedagógica de materiais de risco."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Escuta atenta e convocação de familiares de forma preventiva."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Aja com naturalidade ao recolher",
+        "Retenha a produção original"
+      ],
+      "notYours": "Não mostre os desenhos para outros alunos da sala."
+    }
+  },
+  {
+    "flowId": "flow_ideacao_suicida",
+    "level": "moderate",
+    "headline": "Comentários abertos sobre não querer viver, sumir ou dormir para sempre.",
+    "nextStep": "Acompanhe o aluno à gestão imediatamente para supervisão e aviso aos pais.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acolhimento constante e contato imperativo com a família."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cvv",
+      "label": "CVV – 188 (Apoio emocional 24h)",
+      "description": "Apoio emocional sigiloso e prevenção ao suicídio."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Leve a sério qualquer ameaça",
+        "Escute de forma acolhedora"
+      ],
+      "notYours": "Não confronte o aluno dizendo que quem quer se matar não avisa."
+    }
+  },
+  {
+    "flowId": "flow_ideacao_suicida",
+    "level": "high",
+    "headline": "Aluno revela planejamento claro de método e data para tirar a própria vida.",
+    "nextStep": "Mantenha o aluno sob sua visão, afaste objetos perigosos e exija a direção.",
+    "priorityService": {
+      "queryType": "highlight=caps-ij",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Intervenção intensiva para risco de suicídio estruturado."
+    },
+    "complementaryService": {
+      "queryType": "type=externo",
+      "label": "SAMU - 192",
+      "description": "Resgate e contenção se o risco se tornar iminente."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha contato visual ininterrupto",
+        "Fale em tom suave e seguro"
+      ],
+      "notYours": "Não permita que o aluno vá ao banheiro desacompanhado."
+    }
+  },
+  {
+    "flowId": "flow_ideacao_suicida",
+    "level": "critical",
+    "headline": "Tentativa em andamento na escola ou aluno prestes a pular de altura.",
+    "nextStep": "Afaste a turma silenciosamente, não faça movimentos bruscos e mande ligar 190.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Mediação técnica de crise com risco iminente de morte."
+    },
+    "complementaryService": {
+      "queryType": "type=externo",
+      "label": "Corpo de Bombeiros - 193",
+      "description": "Resgate em altura e salvamento especializado."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Evacue os curiosos do local",
+        "Mantenha diálogo calmo à distância"
+      ],
+      "notYours": "Não tente correr para agarrar o aluno fisicamente à força."
+    }
+  },
+  {
+    "flowId": "flow_negligencia",
+    "level": "low",
+    "headline": "Falta recorrente de materiais, sono em aula ou higiene muito prejudicada.",
+    "nextStep": "Registre os sinais e comunique a coordenação para acompanhamento contínuo.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Acompanhamento escolar e articulação com a gestão."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio a famílias em vulnerabilidade e acesso a benefícios."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote padrões ao longo da semana",
+        "Acolha sem expor o aluno"
+      ],
+      "notYours": "Não julgue a família nem faça visitas por conta própria."
+    }
+  },
+  {
+    "flowId": "flow_negligencia",
+    "level": "moderate",
+    "headline": "Responsável não acompanha rotina e o aluno fica sem suporte básico repetidamente.",
+    "nextStep": "Comunique a direção para convocar responsáveis e acionar assistência social.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato com família e definição de encaminhamentos de proteção."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio social para reorganizar cuidados e acesso a serviços."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre faltas e atrasos",
+        "Encaminhe à gestão sem atrasos"
+      ],
+      "notYours": "Não faça cobranças diretas à família fora dos canais da escola."
+    }
+  },
+  {
+    "flowId": "flow_negligencia",
+    "level": "high",
+    "headline": "Aluno relata que fica sozinho por longos períodos ou sem cuidados essenciais.",
+    "nextStep": "Acione a direção imediatamente para chamar o Conselho Tutelar e registrar fatos.",
+    "priorityService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Proteção e orientação obrigatória quando há falta grave de cuidados."
+    },
+    "complementaryService": {
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Acompanhamento de situações graves e proteção social especializada."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre a fala sem interpretar",
+        "Mantenha o aluno acompanhado"
+      ],
+      "notYours": "Não investigue quem é o responsável nem faça perguntas invasivas."
+    }
+  },
+  {
+    "flowId": "flow_negligencia",
+    "level": "critical",
+    "headline": "Criança fica sem responsável na escola e não há local seguro para ir.",
+    "nextStep": "Mantenha a criança com a direção e solicite acionamento imediato do Conselho.",
+    "priorityService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Definição de proteção imediata e encaminhamento seguro."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio para rede de acolhimento e benefícios emergenciais."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Não deixe a criança sozinha",
+        "Registre tentativas de contato"
+      ],
+      "notYours": "Não leve a criança para casa nem transporte em veículo particular."
+    }
+  },
+  {
+    "flowId": "flow_depressao",
+    "level": "low",
+    "headline": "Apatia, silêncio prolongado ou desinteresse em atividades que antes gostava.",
+    "nextStep": "Anote a mudança de comportamento e repasse à coordenação no fim da aula.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Acompanhamento pedagógico e observação sistemática."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Mapeamento de histórico do aluno com outros professores."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Incentive a participação sutilmente",
+        "Acolha a falta de energia"
+      ],
+      "notYours": "Não exponha o aluno forçando participação pública."
+    }
+  },
+  {
+    "flowId": "flow_depressao",
+    "level": "moderate",
+    "headline": "Choro silencioso recorrente e isolamento total dos colegas no recreio.",
+    "nextStep": "Encaminhe o aluno à gestão para acolhimento individual e contato com a família.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Agendamento de conversa com responsáveis para encaminhamentos."
+    },
+    "complementaryService": {
+      "queryType": "highlight=caps-ij",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Início de acompanhamento psicológico especializado."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Fale em particular com o aluno",
+        "Registre o comportamento"
+      ],
+      "notYours": "Não ofereça conselhos religiosos ou diga que a tristeza é passageira."
+    }
+  },
+  {
+    "flowId": "flow_depressao",
+    "level": "high",
+    "headline": "Falta severa de higiene, recusa alimentar ou frases de desesperança intensa.",
+    "nextStep": "Comunique a direção imediatamente para reunião de urgência com a família.",
+    "priorityService": {
+      "queryType": "highlight=caps-ij",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Tratamento multiprofissional para sofrimento psíquico grave."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Garantia de que a família proverá tratamento de saúde."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Ouça o aluno sem julgamentos",
+        "Repasse falas de risco à gestão"
+      ],
+      "notYours": "Não investigue a fundo as causas familiares do sofrimento."
+    }
+  },
+  {
+    "flowId": "flow_depressao",
+    "level": "critical",
+    "headline": "Imobilidade física total e recusa em sair do lugar associadas a choro forte.",
+    "nextStep": "Mantenha companhia constante ao aluno e solicite que tragam a direção à sala.",
+    "priorityService": {
+      "queryType": "type=externo",
+      "label": "SAMU - 192",
+      "description": "avaliação de saúde mental de urgência e transporte seguro."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Apoio continuado e acionamento de rede de emergência."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Fique ao lado do aluno o tempo todo",
+        "Acalme a turma"
+      ],
+      "notYours": "Não abandone o aluno sozinho na sala em hipótese alguma."
+    }
+  },
+  {
+    "flowId": "flow_mediacao_restaurativa",
+    "level": "low",
+    "headline": "Clima de fofocas, pequenos atritos e indiretas afetando o grupo da sala.",
+    "nextStep": "Avise a coordenação para planejar roda de conversa sobre convivência saudável.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Planejamento e facilitação de diálogos preventivos em grupo."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Observação sistêmica das relações em turmas problemáticas."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Desencoraje as fofocas ativamente",
+        "Promova trabalhos em duplas novas"
+      ],
+      "notYours": "Não exija que peçam perdão uns aos outros sem resolver a questão."
+    }
+  },
+  {
+    "flowId": "flow_mediacao_restaurativa",
+    "level": "moderate",
+    "headline": "Conflito direto entre grupos, com recusa de comunicação e prejuízo na aula.",
+    "nextStep": "Solicite formalmente à direção uma mediação restaurativa com os envolvidos.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Agendamento e condução de círculo restaurativo mediado."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Estratégias para manter a paz e andamento das aulas até a mediação."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote o nome dos líderes do conflito",
+        "Evite agrupar rivais"
+      ],
+      "notYours": "Não faça mediações improvisadas durante o tempo letivo normal."
+    }
+  },
+  {
+    "flowId": "flow_mediacao_restaurativa",
+    "level": "high",
+    "headline": "Ameaças constantes entre gangues ou grupos envolvendo famílias na escola.",
+    "nextStep": "Comunique a gestão para articular rede externa de práticas restaurativas amplas.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Articulação intersetorial de rede de pacificadores."
+    },
+    "complementaryService": {
+      "queryType": "type=externo",
+      "label": "Justiça Restaurativa - MP",
+      "description": "Apoio especializado do Estado para conflitos de grande escala."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Contenha insultos paralelos em sala",
+        "Mantenha rotina disciplinar estrita"
+      ],
+      "notYours": "Não tome partido de nenhum dos grupos em conflito."
+    }
+  },
+  {
+    "flowId": "flow_mediacao_restaurativa",
+    "level": "critical",
+    "headline": "Quebra violenta de acordo restaurativo, resultando em briga iminente armada.",
+    "nextStep": "Encaminhe as partes à direção urgentemente e peça isolamento de segurança.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Afastamento preventivo, suspensão e proteção emergencial."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Contenção do conflito caso a violência física ecloda no ambiente."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Afaste os alunos em tensão",
+        "Solicite apoio de outros professores"
+      ],
+      "notYours": "Não tente forçar novo diálogo se a fúria e o ódio estiverem ativos."
+    }
+  },
+  {
+    "flowId": "flow_violencia_domestica",
+    "level": "low",
+    "headline": "Sinais indiretos de medo em casa ou mudança brusca de comportamento.",
+    "nextStep": "Registre os sinais observados e comunique a coordenação no mesmo dia.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Acolhimento inicial e organização do registro escolar."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato com responsáveis e definição de encaminhamento seguro."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote data, horário e fatos",
+        "Preserve a privacidade do aluno"
+      ],
+      "notYours": "Não pergunte detalhes íntimos nem confronte familiares."
+    }
+  },
+  {
+    "flowId": "flow_violencia_domestica",
+    "level": "moderate",
+    "headline": "Aluno relata brigas frequentes em casa e demonstra medo de voltar.",
+    "nextStep": "Comunique a direção imediatamente para acolher o aluno e acionar proteção.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acolhimento e articulação com serviços de proteção."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Proteção da criança e orientação à família quando necessário."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre a fala com palavras exatas",
+        "Acompanhe o aluno até a gestão"
+      ],
+      "notYours": "Não conduza entrevistas longas nem faça investigação sozinho."
+    }
+  },
+  {
+    "flowId": "flow_violencia_domestica",
+    "level": "high",
+    "headline": "Há relato de agressão recente e risco de o aluno voltar para o agressor.",
+    "nextStep": "Mantenha o aluno com a gestão e solicite acionamento urgente do Conselho.",
+    "priorityService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Atuação imediata para proteção e definição de passos seguros."
+    },
+    "complementaryService": {
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Acompanhamento de situações de violência e proteção social."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Evite que o aluno saia sozinho",
+        "Peça apoio de outro adulto"
+      ],
+      "notYours": "Não entregue o aluno a pessoa suspeita sem decisão da gestão."
+    }
+  },
+  {
+    "flowId": "flow_violencia_domestica",
+    "level": "critical",
+    "headline": "Agressor aparece na escola ou há ameaça imediata contra o aluno.",
+    "nextStep": "Acione a direção na hora e mantenha o aluno em local protegido e fora de vista.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Emergência - 190",
+      "description": "Apoio imediato quando há ameaça presente e risco de agressão."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Proteção formal do aluno após estabilizar a situação."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Tranque portas se for seguro",
+        "Peça ajuda a outros adultos"
+      ],
+      "notYours": "Não negocie sozinho nem tente conter fisicamente o agressor."
+    }
+  },
+  {
+    "flowId": "flow_mal_estar",
+    "level": "low",
+    "headline": "Cansaço, dor de cabeça leve ou enjoo passageiro.",
+    "nextStep": "Autorize o aluno a beber água e repousar no lugar por alguns minutos.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Apoio afetivo e triagem primária de saúde."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Notificação à família se não houver melhora."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Permita ida rápida ao bebedouro",
+        "Monitore o estado do aluno"
+      ],
+      "notYours": "Não ofereça analgésicos ou remédios caseiros."
+    }
+  },
+  {
+    "flowId": "flow_mal_estar",
+    "level": "moderate",
+    "headline": "Vômito isolado ou dor abdominal contínua.",
+    "nextStep": "Encaminhe o aluno à direção acompanhado para contato com a família.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato imediato com pais para retirada do aluno."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Apoio médico ambulatorial caso a família não possa buscar."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Garanta companhia até a direção",
+        "Solicite a limpeza do local"
+      ],
+      "notYours": "Não tente forçar a alimentação do aluno."
+    }
+  },
+  {
+    "flowId": "flow_mal_estar",
+    "level": "high",
+    "headline": "Vômitos repetidos, palidez extrema ou fraqueza severa.",
+    "nextStep": "Mantenha o aluno sentado na sala e exija a presença da direção urgente.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Avaliação médica de emergência por risco de desidratação grave."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Mediação com a equipe médica de resgate."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Ampare o aluno fisicamente",
+        "Mantenha o ambiente fresco"
+      ],
+      "notYours": "Não dê líquidos se o aluno estiver semi-inconsciente."
+    }
+  },
+  {
+    "flowId": "flow_mal_estar",
+    "level": "critical",
+    "headline": "Perda de consciência repentina após mal-estar intenso.",
+    "nextStep": "Deite o aluno de lado no chão e acione o socorro médico pelo 192.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Suporte de vida para vítima inconsciente."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Desobstrução do portão para a ambulância."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Cheque se o peito infla",
+        "Lateralize a cabeça do aluno"
+      ],
+      "notYours": "Não jogue água no rosto ou bata na cara do aluno."
+    }
+  },
+  {
+    "flowId": "flow_convulsao",
+    "level": "low",
+    "headline": "Relato de convulsão anterior ou tremor passageiro leve.",
+    "nextStep": "Registre a ocorrência no diário e comunique a coordenação no intervalo.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Registro do histórico e alerta pedagógico."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Mapeamento de alunos com necessidades de saúde."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote o que o aluno relatou",
+        "Mantenha a rotina da sala"
+      ],
+      "notYours": "Não faça interrogatórios médicos ao aluno."
+    }
+  },
+  {
+    "flowId": "flow_convulsao",
+    "level": "moderate",
+    "headline": "Ausência repentina com olhar fixo de curta duração.",
+    "nextStep": "Anote o tempo de duração e informe a direção para avisar a família.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Aviso aos responsáveis sobre possível crise de ausência."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Encaminhamento médico ambulatorial."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Proteja o aluno de quedas",
+        "Marque o tempo da ausência"
+      ],
+      "notYours": "Não chacoalhe ou assuste o aluno para despertá-lo."
+    }
+  },
+  {
+    "flowId": "flow_convulsao",
+    "level": "high",
+    "headline": "Crise convulsiva ativa com movimentos corporais bruscos.",
+    "nextStep": "Afaste móveis, proteja a cabeça do aluno e acione a direção urgente.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Gestão da crise e contato com a rede de saúde."
+    },
+    "complementaryService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Resgate caso a crise passe do tempo de segurança."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Coloque algo macio sob a cabeça",
+        "Afaste os demais alunos"
+      ],
+      "notYours": "Não segure os braços do aluno nem coloque objetos na boca."
+    }
+  },
+  {
+    "flowId": "flow_convulsao",
+    "level": "critical",
+    "headline": "Crise dura mais de 5 minutos ou se repete sem pausa.",
+    "nextStep": "Solicite imediatamente ligação ao 192 e lateralize o corpo do aluno.",
+    "priorityService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Intervenção médica de emergência para crise prolongada."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Coordenação do resgate e controle do ambiente."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Vire o aluno de lado suavemente",
+        "Acompanhe a respiração"
+      ],
+      "notYours": "Não tente medicar ou dar líquidos ao aluno."
+    }
+  },
+  {
+    "flowId": "flow_porte_objeto",
+    "level": "low",
+    "headline": "Aluno usa tesoura ou compasso de forma insegura.",
+    "nextStep": "Recolha o objeto pacificamente e oriente sobre os riscos na sala.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Apoio disciplinar e pedagógico básico."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Apoio administrativo caso o comportamento persista."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Solicite a entrega do objeto",
+        "Retome a atividade normal"
+      ],
+      "notYours": "Não aplique punições físicas ou humilhação pública."
+    }
+  },
+  {
+    "flowId": "flow_porte_objeto",
+    "level": "moderate",
+    "headline": "Aluno traz canivete ou estilete sem ameaçar ninguém.",
+    "nextStep": "Peça o objeto com calma e encaminhe o caso e o aluno à direção.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Retenção de objetos proibidos e contato familiar."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Acompanhamento protetivo se houver negligência."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Guarde o objeto longe dos outros",
+        "Avise a direção discretamente"
+      ],
+      "notYours": "Não reviste a mochila do aluno à força."
+    }
+  },
+  {
+    "flowId": "flow_porte_objeto",
+    "level": "high",
+    "headline": "Aluno recusa entregar objeto perigoso ou intimida a turma.",
+    "nextStep": "Mantenha distância, acalme o ambiente e acione a direção urgentemente.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Intervenção hierárquica e contenção de conflito."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Apoio policial caso haja ameaça iminente de agressão."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Afaste os demais alunos",
+        "Comunique-se de forma serena"
+      ],
+      "notYours": "Não tente retirar o objeto à força."
+    }
+  },
+  {
+    "flowId": "flow_porte_objeto",
+    "level": "critical",
+    "headline": "Aluno ataca ou tenta ferir alguém com o objeto.",
+    "nextStep": "Ordene evacuação imediata da sala e acione a Polícia Militar via 190.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Contenção de agressor e segurança do local."
+    },
+    "complementaryService": {
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Socorro médico urgente caso haja vítimas."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Proteja a rota de fuga",
+        "Busque abrigo seguro"
+      ],
+      "notYours": "Não lute ou tente subjugar fisicamente o agressor."
+    }
+  },
+  {
+    "flowId": "flow_reintegracao_pos_suspensao",
+    "level": "low",
+    "headline": "Aluno recém-chegado de afastamento mostra desinteresse e apatia profunda.",
+    "nextStep": "Acolha o aluno de forma neutra e repasse os conteúdos perdidos com paciência.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Suporte pedagógico para reinserção nas disciplinas sem prejuízo."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Acompanhamento formal do cumprimento do termo de retorno."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Cumprimente o aluno normalmente",
+        "Ofereça os materiais atrasados"
+      ],
+      "notYours": "Não faça discursos morais sobre o erro que gerou a punição dele."
+    }
+  },
+  {
+    "flowId": "flow_reintegracao_pos_suspensao",
+    "level": "moderate",
+    "headline": "Aluno retorna desafiando comandos e as regras combinadas em seu retorno.",
+    "nextStep": "Acione a coordenação para reafirmar limites com o aluno fora de sala.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Recalibragem do combinado disciplinar de reintegração."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Comunicação com responsáveis alertando recusa de colaboração."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Repita a orientação de forma serena",
+        "Evite embates frontais"
+      ],
+      "notYours": "Não ameace o aluno com nova suspensão de forma imediata e pública."
+    }
+  },
+  {
+    "flowId": "flow_reintegracao_pos_suspensao",
+    "level": "high",
+    "headline": "Hostilidade agressiva contra a turma ou o professor no primeiro dia de retorno.",
+    "nextStep": "Retire o aluno da sala com firmeza e encaminhe novamente à direção escolar.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Reavaliação imediata da medida socioeducativa ou suspensão."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Notificação em caso de falha grave na adaptação educacional imposta."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Acompanhe o aluno de perto",
+        "Justifique a saída de modo claro"
+      ],
+      "notYours": "Não perca o controle gritando ou xingando o aluno de incorrigível."
+    }
+  },
+  {
+    "flowId": "flow_reintegracao_pos_suspensao",
+    "level": "critical",
+    "headline": "Aluno ataca sua vítima anterior novamente ou faz ameaças de morte a docentes.",
+    "nextStep": "Isole o agressor na direção e demande acionamento da polícia imediatamente.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Polícia Militar – 190",
+      "description": "Garantia de segurança após quebra flagrante de medida de proteção."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Abertura de boletim de ocorrência e contato de emergência com a família."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Proteja a integridade da vítima",
+        "Avise a gestão por rádio ou grito"
+      ],
+      "notYours": "Não retome a aula fingindo que o ataque violento não foi grave."
+    }
+  },
+  {
+    "flowId": "flow_barreira_acessibilidade",
+    "level": "low",
+    "headline": "Barreira física ou digital dificulta participação, mas sem risco imediato.",
+    "nextStep": "Registre a barreira e comunique a direção para correção de infraestrutura.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Ajustes de acessibilidade e encaminhamento para manutenção."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Ajustes de atividade enquanto a barreira não é corrigida."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Descreva a barreira com clareza",
+        "Adapte a atividade provisoriamente"
+      ],
+      "notYours": "Não faça reformas nem improvisos perigosos com estrutura."
+    }
+  },
+  {
+    "flowId": "flow_barreira_acessibilidade",
+    "level": "moderate",
+    "headline": "Barreira impede o aluno de circular ou acessar materiais essenciais no dia.",
+    "nextStep": "Acione a direção imediatamente para realocar a turma ou espaço acessível.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Realocação de sala e medidas imediatas de acessibilidade."
+    },
+    "complementaryService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Ajuste de planejamento para não prejudicar aprendizagem."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Remaneje a atividade para local acessível",
+        "Registre o impedimento ocorrido"
+      ],
+      "notYours": "Não carregue o aluno no colo nem faça manobras arriscadas em escadas."
+    }
+  },
+  {
+    "flowId": "flow_barreira_acessibilidade",
+    "level": "high",
+    "headline": "Barreira cria risco de queda, atropelamento interno ou acidente recorrente.",
+    "nextStep": "Isole a área de risco e comunique a direção para interdição imediata do local.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Interdição e correção urgente de risco físico no prédio escolar."
+    },
+    "complementaryService": {
+      "queryType": "highlight=ubs-ermelino",
+      "label": "UBS Ermelino Matarazzo",
+      "description": "Orientação de saúde se houver dor ou lesão após queda."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Afaste alunos do ponto de risco",
+        "Peça apoio de outro adulto"
+      ],
+      "notYours": "Não mantenha o fluxo normal por cima do risco nem faça consertos improvisados."
+    }
+  },
+  {
+    "flowId": "flow_barreira_acessibilidade",
+    "level": "critical",
+    "headline": "Barreira impede saída segura em situação urgente ou deixa aluno em perigo imediato.",
+    "nextStep": "Acione a direção agora e conduza a turma para rota alternativa segura.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Ação imediata para garantir rota segura e proteção do aluno."
+    },
+    "complementaryService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Emergência - 190",
+      "description": "Apoio se a escola não conseguir garantir segurança imediata."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Use rota alternativa mais segura",
+        "Mantenha o aluno sempre junto"
+      ],
+      "notYours": "Não tente remover obstáculos pesados sozinho nem arrisque queda para liberar passagem."
+    }
+  },
+  {
+    "flowId": "flow_evasao",
+    "level": "low",
+    "headline": "Faltas pontuais e atrasos, sem padrão de abandono.",
+    "nextStep": "Registre faltas e comunique a coordenação para contato preventivo com a família.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Monitoramento de frequência e ações preventivas de permanência."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio social quando faltas se ligam a problemas familiares."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote datas e motivos informados",
+        "Ofereça recuperação de conteúdo"
+      ],
+      "notYours": "Não faça cobranças diretas à família fora dos canais da escola."
+    }
+  },
+  {
+    "flowId": "flow_evasao",
+    "level": "moderate",
+    "headline": "Faltas repetidas por semanas, com perda clara de vínculo com a escola.",
+    "nextStep": "Comunique a direção para convocar responsáveis e acionar assistência social.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato com família e definição de plano de permanência."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio familiar para reduzir barreiras de permanência escolar."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre frequência por datas",
+        "Informe mudanças de rendimento"
+      ],
+      "notYours": "Não procure o aluno em casa nem faça visitas por conta própria."
+    }
+  },
+  {
+    "flowId": "flow_evasao",
+    "level": "high",
+    "headline": "Aluno está prestes a abandonar: recusa em vir e família sem resposta.",
+    "nextStep": "Acione a direção urgentemente para registrar o risco e chamar rede de proteção.",
+    "priorityService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Atuação quando há risco de abandono escolar persistente."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio social para barreiras de transporte, renda e cuidado."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre tentativas de contato",
+        "Relate fatores escolares observados"
+      ],
+      "notYours": "Não faça busca ativa externa sem coordenação da gestão."
+    }
+  },
+  {
+    "flowId": "flow_evasao",
+    "level": "critical",
+    "headline": "Aluno some por longo período e não há retorno nem localização pela escola.",
+    "nextStep": "Comunique a direção imediatamente para acionar Conselho Tutelar e registrar o caso.",
+    "priorityService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Busca de proteção e acionamento de rede quando o aluno desaparece."
+    },
+    "complementaryService": {
+      "queryType": "highlight=dp-62",
+      "label": "62º DP – Ermelino Matarazzo",
+      "description": "Registro oficial quando há desaparecimento e risco associado."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Entregue à gestão seu registro de faltas",
+        "Relate últimas interações conhecidas"
+      ],
+      "notYours": "Não tente localizar o aluno sozinho nem expor dados pessoais em grupos."
+    }
+  },
+  {
+    "flowId": "flow_abandono",
+    "level": "low",
+    "headline": "Atrasos frequentes para buscar o aluno, com responsáveis pouco acessíveis.",
+    "nextStep": "Registre atrasos e comunique a coordenação para monitorar o padrão.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Monitoramento de rotina e acionamento da gestão quando necessário."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio social à família para organização de cuidados."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote horários de saída e atrasos",
+        "Evite expor o aluno"
+      ],
+      "notYours": "Não leve o aluno para casa nem faça contato externo sem a gestão."
+    }
+  },
+  {
+    "flowId": "flow_abandono",
+    "level": "moderate",
+    "headline": "Responsáveis não atendem e o aluno fica na escola sem destino em alguns dias.",
+    "nextStep": "Acione a direção para iniciar contatos e definir guarda segura no dia.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Gestão de contatos e definição de saída segura do aluno."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Atuação quando não há responsável disponível de forma recorrente."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Mantenha o aluno acompanhado",
+        "Registre tentativas de contato"
+      ],
+      "notYours": "Não autorize saída do aluno desacompanhado fora da regra da escola."
+    }
+  },
+  {
+    "flowId": "flow_abandono",
+    "level": "high",
+    "headline": "Aluno relata não ter onde dormir ou estar vivendo em situação de rua.",
+    "nextStep": "Comunique a direção urgentemente para acionar assistência social e proteção.",
+    "priorityService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Acesso a rede de acolhimento e benefícios para a família."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Proteção e definição de encaminhamento seguro para o aluno."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre o relato com exatidão",
+        "Evite que o aluno saia sozinho"
+      ],
+      "notYours": "Não combine abrigo por conta própria nem faça promessas pessoais."
+    }
+  },
+  {
+    "flowId": "flow_abandono",
+    "level": "critical",
+    "headline": "Aluno está sem responsável hoje e sem local seguro para ir ao final do turno.",
+    "nextStep": "Mantenha o aluno na direção e solicite acionamento imediato do Conselho Tutelar.",
+    "priorityService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Definição imediata de proteção e encaminhamento seguro."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio para rede de acolhimento e acesso a serviços sociais."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Não permita saída sem adulto autorizado",
+        "Registre toda a linha do tempo"
+      ],
+      "notYours": "Não transporte o aluno nem o leve para fora da escola por conta própria."
+    }
+  },
+  {
+    "flowId": "flow_trabalho_infantil",
+    "level": "low",
+    "headline": "Aluno relata trabalho ocasional que afeta pouco a rotina escolar.",
+    "nextStep": "Registre o relato e comunique a coordenação para orientar a família pela gestão.",
+    "priorityService": {
+      "queryType": "highlight=gestao-coordenacao",
+      "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
+      "description": "Acompanhamento escolar e orientação preventiva à família."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Apoio social e alternativas de renda para a família."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Anote dias e impactos nas aulas",
+        "Evite expor o aluno"
+      ],
+      "notYours": "Não interrogue sobre local, patrão ou detalhes do trabalho."
+    }
+  },
+  {
+    "flowId": "flow_trabalho_infantil",
+    "level": "moderate",
+    "headline": "Faltas e cansaço recorrentes por trabalho, com prejuízo claro na aprendizagem.",
+    "nextStep": "Comunique a direção para convocar responsáveis e acionar assistência social.",
+    "priorityService": {
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Contato com família e encaminhamento para rede de proteção."
+    },
+    "complementaryService": {
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Inclusão em programas e suporte para reduzir dependência de trabalho."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre faltas e atrasos",
+        "Acolha sem julgamentos"
+      ],
+      "notYours": "Não negocie diretamente com empregadores ou terceiros."
+    }
+  },
+  {
+    "flowId": "flow_trabalho_infantil",
+    "level": "high",
+    "headline": "Trabalho pesado, noturno ou perigoso, com sinais de medo e exaustão.",
+    "nextStep": "Acione a direção imediatamente para chamar proteção e registrar a situação.",
+    "priorityService": {
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Atuação em violações graves e proteção social especializada."
+    },
+    "complementaryService": {
+      "queryType": "highlight=disque-100",
+      "label": "Disque 100 – Direitos Humanos",
+      "description": "Denúncia de exploração e violações de direitos de crianças."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Registre a fala com precisão",
+        "Encaminhe à gestão sem demora"
+      ],
+      "notYours": "Não tente confirmar no local nem fazer visitas para checar."
+    }
+  },
+  {
+    "flowId": "flow_trabalho_infantil",
+    "level": "critical",
+    "headline": "Há coerção imediata ou retirada forçada do aluno para exploração.",
+    "nextStep": "Acione a direção agora e mantenha o aluno em local seguro e supervisionado.",
+    "priorityService": {
+      "queryType": "highlight=policia-militar",
+      "label": "Emergência - 190",
+      "description": "Apoio imediato quando há coação presente e risco ao aluno."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Proteção formal e encaminhamento após estabilizar a segurança."
+    },
+    "teacherScope": {
+      "doThis": [
+        "Retire curiosos do local",
+        "Peça reforço de adultos"
+      ],
+      "notYours": "Não confronte o adulto coercitivo nem tente impedir sozinho à força."
+    }
+  }
+]

@@ -30,11 +30,12 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     const root = window.document.documentElement;
-    
+    const body = window.document.body;
+
     // Font Size
     root.classList.remove('text-small', 'text-medium', 'text-large', 'text-extra-large');
     root.classList.add(`text-${settings.fontSize}`);
-    
+
     // High Contrast
     if (settings.highContrast) {
       root.classList.add('high-contrast');
@@ -45,8 +46,12 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
     // Dyslexic Font
     if (settings.dyslexicFont) {
       root.classList.add('dyslexic-font');
+      root.setAttribute('data-dyslexic-font', 'true');
+      body.classList.add('dyslexia');
     } else {
       root.classList.remove('dyslexic-font');
+      root.removeAttribute('data-dyslexic-font');
+      body.classList.remove('dyslexia');
     }
 
     localStorage.setItem('accessibility-settings', JSON.stringify(settings));

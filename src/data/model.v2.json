@@ -1,0 +1,555 @@
+{
+  "version": "2.0.0",
+  "meta": {
+    "appName": "Protocolo Bússola",
+    "version": "2.0",
+    "scope": "MVP Reorganização Estratégica de Categorias",
+    "region": "Ermelino Matarazzo – São Paulo/SP",
+    "lastUpdated": "2026-02-26T18:12:00Z",
+    "guardrailEnabled": true,
+      "architecture": {
+        "strategy": "7-category model optimized for clarity and UX",
+        "principlesCognitiveLoad": "Reduced from 10 to 7 categories",
+        "duplicationsRemoved": 3,
+        "categoriesOrphaned": 0,
+        "flowsExisting": 39,
+        "flowsToCreate": 0
+      },
+    "emergencyButton": {
+      "label": "🔴 EMERGÊNCIA",
+      "color": "red",
+      "fixed": true,
+      "alwaysVisible": true,
+      "priorityRouteIds": [
+        "flow_emergencia_medica",
+        "flow_convulsao",
+        "flow_violencia_armada",
+        "flow_incendio"
+      ]
+    }
+  },
+  "categories": [
+    {
+      "id": "emergencias_seguranca",
+      "label": "Emergências e Segurança",
+      "description": "Situações de risco imediato à vida, integridade física ou segurança coletiva. Exigem ação em minutos.",
+      "icon": "AlertTriangle",
+      "color": "red",
+      "isEmergencyCategory": true,
+      "weight": "CRITICAL",
+      "responseTime": "minutos",
+      "subcategories": [
+        {
+          "id": "emergencia_medica",
+          "label": "Emergência Médica Grave",
+          "flowId": "flow_emergencia_medica",
+          "status": "IMPLEMENTED",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "convulsao_perda_consciencia",
+          "label": "Convulsão ou Perda de Consciência",
+          "flowId": "flow_convulsao",
+          "status": "EXISTING",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "violencia_armada",
+          "label": "Violência Armada ou Tiroteio",
+          "flowId": "flow_violencia_armada",
+          "status": "EXISTING",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "ameaca_com_arma",
+          "label": "Ameaça com Arma ou Objeto Perigoso",
+          "flowId": "flow_porte_objeto",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        },
+        {
+          "id": "incendio_evacuacao",
+          "label": "Incêndio ou Evacuação de Emergência",
+          "flowId": "flow_incendio",
+          "status": "EXISTING",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "risco_estrutural",
+          "label": "Risco Estrutural (colapso, estrutura instável)",
+          "flowId": "flow_risco_estrutural",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        },
+        {
+          "id": "ameaca_externa",
+          "label": "Ameaça Externa à Escola",
+          "flowId": "flow_ameaca_externa",
+          "status": "IMPLEMENTED",
+          "severity": "HIGH"
+        }
+      ],
+      "riskGroup": "emergency"
+    },
+    {
+      "id": "saude_bem_estar",
+      "label": "Saúde e Bem-Estar",
+      "description": "Sintomas físicos, mal-estar e situações de saúde que precisam de atenção médica. Exigem ação em horas.",
+      "icon": "Heart",
+      "color": "orange",
+      "weight": "HIGH",
+      "responseTime": "horas",
+      "subcategories": [
+        {
+          "id": "mal_estar_sintomas",
+          "label": "Mal-estar ou Sintomas Físicos",
+          "flowId": "flow_mal_estar",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        },
+        {
+          "id": "febre_infeccao",
+          "label": "Febre ou Suspeita de Infecção",
+          "flowId": "flow_febre",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        },
+        {
+          "id": "crise_respiratoria",
+          "label": "Crise Respiratória ou Asmática",
+          "flowId": "flow_crise_respiratoria",
+          "status": "IMPLEMENTED",
+          "severity": "HIGH",
+          "basedOn": "flow_convulsao (estrutura similar)"
+        },
+        {
+          "id": "desmaio_tontura",
+          "label": "Desmaio, Tontura ou Fraqueza",
+          "flowId": "flow_desmaio",
+          "status": "IMPLEMENTED",
+          "severity": "HIGH",
+          "basedOn": "flow_convulsao"
+        },
+        {
+          "id": "acidente_lesao",
+          "label": "Acidente ou Lesão Física",
+          "flowId": "flow_acidente_escolar",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        },
+        {
+          "id": "intoxicacao",
+          "label": "Intoxicação ou Ingestão Suspeita",
+          "flowId": "flow_intoxicacao",
+          "status": "IMPLEMENTED",
+          "severity": "HIGH",
+          "basedOn": "flow_acidente_escolar"
+        }
+      ],
+      "riskGroup": "medical"
+    },
+    {
+      "id": "saude_emocional",
+      "label": "Saúde Emocional",
+      "description": "Sofrimento psicológico, ansiedade, tristeza e situações emocionais que precisam de acolhimento e apoio psicológico. Exigem ação em dias com acompanhamento continuado.",
+      "icon": "Brain",
+      "color": "purple",
+      "weight": "CRITICAL",
+      "responseTime": "dias",
+      "subcategories": [
+        {
+          "id": "ansiedade_crise",
+          "label": "Crise de Ansiedade ou Pânico",
+          "flowId": "flow_ansiedade",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        },
+        {
+          "id": "tristeza_depressao",
+          "label": "Tristeza Persistente ou Depressão",
+          "flowId": "flow_depressao",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        },
+        {
+          "id": "ideacao_suicida",
+          "label": "Ideação Suicida ou Desesperança",
+          "flowId": "flow_ideacao_suicida",
+          "status": "EXISTING",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "autolesao",
+          "label": "Autolesão ou Automutilação",
+          "flowId": "flow_autolesao",
+          "status": "CONSOLIDATED",
+          "consolidatedFrom": ["violencia_conflitos.autolesao", "saude_mental.automutilacao"],
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "isolamento_social",
+          "label": "Isolamento Social Intenso",
+          "flowId": "flow_isolamento",
+          "status": "IMPLEMENTED",
+          "severity": "HIGH",
+          "basedOn": "flow_depressao (adaptado)"
+        },
+        {
+          "id": "uso_substancias",
+          "label": "Uso ou Suspeita de Álcool/Drogas",
+          "flowId": "flow_uso_substancias",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        }
+      ],
+      "riskGroup": "psychosocial"
+    },
+    {
+      "id": "convivencia_conflitos",
+      "label": "Convivência e Conflitos",
+      "description": "Bullying, agressões, discriminação e situações que afetam a convivência escolar. Exigem mediação e gestão de conflitos.",
+      "icon": "Shield",
+      "color": "blue",
+      "weight": "HIGH",
+      "responseTime": "horas a dias",
+      "subcategories": [
+        {
+          "id": "bullying",
+          "label": "Bullying e Cyberbullying",
+          "flowId": "flow_bullying",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        },
+        {
+          "id": "agressao_fisica",
+          "label": "Agressão Física entre Estudantes",
+          "flowId": "flow_agressao_fisica",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        },
+        {
+          "id": "agressao_verbal",
+          "label": "Agressão Verbal ou Ameaças",
+          "flowId": "flow_agressao_verbal",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        },
+        {
+          "id": "discriminacao_racismo",
+          "label": "Discriminação ou Racismo",
+          "flowId": "flow_discriminacao",
+          "status": "EXISTING",
+          "movedFrom": "direitos_protecao",
+          "severity": "HIGH"
+        },
+        {
+          "id": "lgbtfobia",
+          "label": "Discriminação ou Violência LGBTQIA+",
+          "flowId": "flow_lgbtfobia",
+          "status": "EXISTING",
+          "movedFrom": "direitos_protecao",
+          "severity": "HIGH"
+        },
+        {
+          "id": "mediacao_restaurativa",
+          "label": "Mediação e Diálogo Restaurativo",
+          "flowId": "flow_mediacao_restaurativa",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        },
+        {
+          "id": "reintegracao_pos_suspensao",
+          "label": "Reintegração após Afastamento/Suspensão",
+          "flowId": "flow_reintegracao_pos_suspensao",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        },
+        {
+          "id": "plano_acompanhamento",
+          "label": "Plano Individual de Acompanhamento",
+          "flowId": "flow_plano_individual_acompanhamento",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        }
+      ],
+      "riskGroup": "violence"
+    },
+    {
+      "id": "protecao_direitos",
+      "label": "Proteção e Direitos",
+      "description": "Violência doméstica, abuso, negligência e violações de direitos da criança e adolescente. Exigem notificação legal e rede intersetorial obrigatória.",
+      "icon": "Scale",
+      "color": "teal",
+      "weight": "CRITICAL",
+      "responseTime": "horas a dias",
+      "mandatoryReporting": true,
+      "subcategories": [
+        {
+          "id": "violencia_domestica",
+          "label": "Suspeita de Violência Doméstica",
+          "flowId": "flow_violencia_domestica",
+          "status": "EXISTING",
+          "movedFrom": "violencia_conflitos",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "abuso_sexual",
+          "label": "Suspeita de Abuso Sexual",
+          "flowId": "flow_abuso_sexual",
+          "status": "EXISTING",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "negligencia_familiar",
+          "label": "Negligência Familiar",
+          "flowId": "flow_negligencia",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        },
+        {
+          "id": "trabalho_infantil",
+          "label": "Trabalho Infantil ou Exploração",
+          "flowId": "flow_trabalho_infantil",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        },
+        {
+          "id": "abandono_rua",
+          "label": "Abandono ou Situação de Rua",
+          "flowId": "flow_abandono",
+          "status": "EXISTING",
+          "severity": "CRITICAL"
+        },
+        {
+          "id": "outras_violacoes_direitos",
+          "label": "Outras Violações de Direitos",
+          "flowId": "flow_violacao_direitos",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        }
+      ],
+      "riskGroup": "rights"
+    },
+    {
+      "id": "apoio_social_familiar",
+      "label": "Apoio Social e Familiar",
+      "description": "Situações de vulnerabilidade social e familiar que precisam de suporte da assistência social. Abordagem preventiva e de apoio continuado.",
+      "icon": "Home",
+      "color": "yellow",
+      "weight": "MEDIUM",
+      "responseTime": "dias a semanas",
+      "subcategories": [
+        {
+          "id": "evasao_faltas",
+          "label": "Evasão ou Faltas Repetidas",
+          "flowId": "flow_evasao",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        },
+        {
+          "id": "inseguranca_alimentar",
+          "label": "Fome ou Insegurança Alimentar",
+          "flowId": "flow_inseguranca_alimentar",
+          "status": "EXISTING",
+          "severity": "HIGH"
+        },
+        {
+          "id": "vulnerabilidade_social_geral",
+          "label": "Outras Vulnerabilidades Sociais",
+          "flowId": "flow_vulnerabilidade_social",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        }
+      ],
+      "riskGroup": "social"
+    },
+    {
+      "id": "inclusao_acessibilidade",
+      "label": "Inclusão e Acessibilidade",
+      "description": "Apoio para diferentes formas de aprender, neurodivergências e adaptações pedagógicas necessárias.",
+      "icon": "Puzzle",
+      "color": "indigo",
+      "weight": "MEDIUM",
+      "responseTime": "dias a semanas",
+      "subcategories": [
+        {
+          "id": "suspeita_neurodivergencia",
+          "label": "Suspeita de TEA, TDAH ou Neurodivergência",
+          "flowId": "flow_suspeita_neurodivergencia",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        },
+        {
+          "id": "adaptacao_pedagogica",
+          "label": "Necessidade de Adaptação Pedagógica",
+          "flowId": "flow_adaptacao_pedagogica",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        },
+        {
+          "id": "barreira_acessibilidade",
+          "label": "Barreira de Acessibilidade Física ou Digital",
+          "flowId": "flow_barreira_acessibilidade",
+          "status": "EXISTING",
+          "severity": "MODERATE"
+        }
+      ],
+      "riskGroup": "structural"
+    }
+  ],
+  "services": [
+    {
+      "id": "direction",
+      "name": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "category": "internal",
+      "type": "internal",
+      "contact": {
+        "phone": "(11) 2546-4961",
+        "email": "e000000a@educacao.sp.gov.br"
+      },
+      "location": {
+        "name": "E.E. Ermelino Matarazzo",
+        "address": "Rua Miguel Rachid, 200, Ermelino Matarazzo, São Paulo/SP",
+        "lat": -23.50135,
+        "lng": -46.4707
+      }
+    },
+    {
+      "id": "pedagogical_coordination",
+      "name": "Coordenação Pedagógica",
+      "category": "internal",
+      "type": "internal",
+      "contact": {
+        "phone": "(11) 2546-4961"
+      }
+    },
+    {
+      "id": "UBS_ermelino",
+      "name": "UBS Ermelino Matarazzo",
+      "category": "health",
+      "type": "external",
+      "contact": {
+        "phone": "(11) 2545-8235"
+      }
+    },
+    {
+      "id": "CAPS_IJ",
+      "name": "CAPS Infantojuvenil II",
+      "category": "mental_health",
+      "type": "external",
+      "contact": {
+        "phone": "(11) 3294-3828"
+      }
+    },
+    {
+      "id": "CAPS_AD",
+      "name": "CAPS AD II (Álcool e Drogas)",
+      "category": "mental_health",
+      "type": "external",
+      "contact": {
+        "phone": "(11) 2943-9276"
+      }
+    },
+    {
+      "id": "UPA_24h",
+      "name": "UPA III 24h Ermelino Matarazzo",
+      "category": "emergency",
+      "type": "external",
+      "contact": {
+        "phone": "(11) 2574-3343"
+      }
+    },
+    {
+      "id": "CRAS",
+      "name": "CRAS Ermelino Matarazzo",
+      "category": "social_assistance",
+      "type": "external",
+      "contact": {
+        "phone": "(11) 2545-3211"
+      }
+    },
+    {
+      "id": "CREAS",
+      "name": "CREAS Ermelino Matarazzo",
+      "category": "social_assistance",
+      "type": "external",
+      "contact": {
+        "phone": "(11) 2545-3211"
+      }
+    },
+    {
+      "id": "conselho_tutelar",
+      "name": "Conselho Tutelar",
+      "category": "protection",
+      "type": "external",
+      "contact": {
+        "phone": "(11) 2214-9050"
+      }
+    },
+    {
+      "id": "PM_190",
+      "name": "Polícia Militar – 190",
+      "category": "emergency",
+      "type": "external",
+      "contact": {
+        "phone": "190"
+      }
+    },
+    {
+      "id": "SAMU_192",
+      "name": "SAMU – 192",
+      "category": "emergency",
+      "type": "external",
+      "contact": {
+        "phone": "192"
+      }
+    },
+    {
+      "id": "bombeiros_193",
+      "name": "Corpo de Bombeiros – 193",
+      "category": "emergency",
+      "type": "external",
+      "contact": {
+        "phone": "193"
+      }
+    },
+    {
+      "id": "CVV_188",
+      "name": "CVV – 188",
+      "category": "mental_health",
+      "type": "external",
+      "contact": {
+        "phone": "188"
+      }
+    },
+    {
+      "id": "disque_100",
+      "name": "Disque 100 – Direitos Humanos",
+      "category": "protection",
+      "type": "external",
+      "contact": {
+        "phone": "100"
+      }
+    }
+  ],
+  "flowsMap": {
+    "IMPLEMENTED": 6,
+    "EXISTING": 32,
+    "CONSOLIDATED": 1,
+    "TOTAL": 39,
+    "note": "Complete flow definitions available in flows.v2.json. Use model.v2.json for category/subcategory navigation and flows.v2.json for detailed triage/routing/guidance."
+  },
+  "migrationSummary": {
+    "fromVersion": "1.0",
+    "toVersion": "2.0",
+    "date": "2026-02-26",
+    "keyChanges": {
+      "categoryReduction": "10 → 7 (cognitive load -30%)",
+      "subcategoriesOptimized": "42 → 39",
+      "duplicationsResolved": 3,
+      "orphanedCategoriesRemoved": 1,
+      "flowsConsolidated": 1
+    },
+    "estimatedDevEffort": "~25 hours total (14h flows creation + 11h technical refactoring)"
+  }
+}

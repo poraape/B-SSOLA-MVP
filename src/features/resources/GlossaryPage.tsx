@@ -1,109 +1,225 @@
-import React, { useState } from 'react';
-import { Search, BookOpen, Info } from 'lucide-react';
-import { Card } from '../../components/ui/Card';
+import {
+  Suspense,
+  lazy,
+  useMemo,
+  useRef,
+  useState,
+  useEffect,
+  type FC,
+} from 'react';
+import { BookOpen } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { glossaryData } from './data/glossary';
+import { useGlossarySearch } from './hooks/useGlossarySearch';
+import { groupByAlphabet } from './utils/searchUtils';
+import { GlossarySearch } from '../../components/GlossarySearch';
 
-export const GlossaryPage: React.FC = () => {
+const GlossaryFilters = lazy(() =>
+  import('./components/GlossaryFilters').then((module) => ({
+    default: module.GlossaryFilters,
+  }))
+);
+
+const AlphabetNav = lazy(() =>
+  import('./components/AlphabetNav').then((module) => ({
+    default: module.AlphabetNav,
+  }))
+);
+
+const GlossaryCard = lazy(() =>
+  import('./components/GlossaryCard').then((module) => ({
+    default: module.GlossaryCard,
+  }))
+);
+
+export const GlossaryPage: FC = () => {
+  const [searchParams] = useSearchParams();
+  const termFromUrl = searchParams.get('term');
   const [search, setSearch] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedLetters, setSelectedLetters] = useState<string[]>([]);
+  const resultSectionRef = useRef<HTMLElement | null>(null);
+  const lastScrolledTermRef = useRef<string | null>(null);
 
-  const categories = ['all', ...Array.from(new Set(glossaryData.map(item => item.category)))];
+  const { categories, filteredItems, totalResults } = useGlossarySearch(
+    glossaryData,
+    search,
+    selectedCategory,
+    { includeRelated: true }
+  );
 
-  const filteredItems = glossaryData.filter(item => {
-    const matchesSearch = item.term.toLowerCase().includes(search.toLowerCase()) ||
-                         item.definition.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  const groupedItems = useMemo(() => groupByAlphabet(filteredItems), [filteredItems]);
+
+  const availableLetters = useMemo(
+    () => Object.keys(groupedItems).filter((letter) => /^[A-Z]$/.test(letter)),
+    [groupedItems]
+  );
+
+  const visibleLetters = useMemo(() => {
+    if (selectedLetters.length === 0) {
+      return availableLetters;
+    }
+
+    return availableLetters.filter((letter) => selectedLetters.includes(letter));
+  }, [availableLetters, selectedLetters]);
+
+  const buildGlossaryTermId = (term: string) =>
+    `glossary-term-${term
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')}`;
+
+  useEffect(() => {
+    if (!termFromUrl) return;
+    setSearch(termFromUrl);
+    setSelectedCategory('all');
+    setSelectedLetters([]);
+  }, [termFromUrl]);
+
+  useEffect(() => {
+    if (!termFromUrl || lastScrolledTermRef.current === termFromUrl) return;
+
+    const targetId = buildGlossaryTermId(termFromUrl);
+    const frame = requestAnimationFrame(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        lastScrolledTermRef.current = termFromUrl;
+      }
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [termFromUrl, filteredItems]);
+
+  const handleLetterSelect = (letter: string) => {
+    if (!availableLetters.includes(letter)) {
+      return;
+    }
+
+    setSelectedLetters((current) =>
+      current.includes(letter)
+        ? current.filter((existingLetter) => existingLetter !== letter)
+        : [...current, letter]
+    );
+
+    document
+      .getElementById(`letter-${letter}`)
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const handleRelatedClick = (term: string) => {
+    setSearch(term);
+    setSelectedCategory('all');
+    setSelectedLetters([]);
+    resultSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const handleClearFilters = () => {
+    setSearch('');
+    setSelectedCategory('all');
+    setSelectedLetters([]);
+  };
+
+  const handleSearchResultClick = (result: { id: string; term: string }) => {
+    setSearch(result.term);
+    setSelectedCategory('all');
+    setSelectedLetters([]);
+
+    requestAnimationFrame(() => {
+      const element = document.getElementById(result.id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        resultSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  };
 
   return (
-    <div className="space-y-8">
-      {/* Filters Section */}
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-        <div className="relative w-full md:max-w-md">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-          <input
-            type="text"
-            placeholder="Pesquisar termo ou gíria..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-12 pr-4 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all"
-          />
-        </div>
-
-        <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar w-full md:w-auto">
-          {categories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest whitespace-nowrap transition-all ${
-                selectedCategory === cat
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-200 dark:shadow-none'
-                  : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 hover:border-blue-400'
-              }`}
-            >
-              {cat === 'all' ? 'Todos' : cat}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Grid Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredItems.map((item, index) => (
-          <Card key={index} className="p-6 md:p-8 space-y-4 border-2 border-slate-100 dark:border-slate-800 flex flex-col h-full">
-            <div className="flex items-center justify-between">
-              <div className={`p-2 rounded-lg ${
-                item.category === 'Gírias Estudantis' 
-                  ? 'bg-purple-50 dark:bg-purple-900/20' 
-                  : 'bg-blue-50 dark:bg-blue-900/20'
-              }`}>
-                <BookOpen className={`w-5 h-5 ${
-                  item.category === 'Gírias Estudantis' ? 'text-purple-600' : 'text-blue-600'
-                }`} />
-              </div>
-              <span className={`text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded ${
-                item.category === 'Gírias Estudantis'
-                  ? 'bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-400'
-              }`}>
-                {item.category}
-              </span>
-            </div>
-            
-            <div className="flex-1 space-y-3">
-              <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
-                {item.term}
-              </h3>
-              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-medium">
-                {item.definition}
-              </p>
-            </div>
-
-            {item.context && (
-              <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex gap-3 items-start">
-                <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-                <p className="text-[11px] italic text-slate-500 dark:text-slate-400 leading-snug">
-                  <span className="font-bold not-italic uppercase tracking-tighter mr-1">Contexto:</span>
-                  {item.context}
-                </p>
-              </div>
-            )}
-          </Card>
-        ))}
-      </div>
-
-      {filteredItems.length === 0 && (
-        <div className="text-center py-20 bg-slate-50 dark:bg-slate-900/50 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800">
-          <p className="text-slate-500 font-medium">Nenhum termo encontrado para "{search}"</p>
-          <button 
-            onClick={() => { setSearch(''); setSelectedCategory('all'); }}
-            className="mt-4 text-blue-600 font-black uppercase text-[10px] tracking-widest hover:underline"
+    <main className="space-y-5" aria-label="Glossário educacional">
+      <section className="rounded-[20px] border border-slate-200/70 bg-white/45 p-5 shadow-[0_16px_36px_-26px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/35 md:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <BookOpen className="size-6 text-blue-700" aria-hidden="true" />
+            <h1 className="text-2xl font-black text-slate-900 md:text-[1.75rem]">
+              Glossário
+            </h1>
+          </div>
+          <Link
+            to="/recursos/glossario/grafo"
+            className="rounded-xl border border-slate-300/80 bg-white/80 px-3 py-2 text-sm font-semibold text-slate-700 shadow-[0_10px_22px_-18px_rgba(15,23,42,0.4)] transition-all hover:scale-[1.02] hover:border-blue-400 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900/70 dark:text-slate-200 dark:hover:border-blue-500 dark:hover:text-blue-300"
           >
-            Limpar filtros
-          </button>
+            Explorar grafo
+          </Link>
         </div>
+        <p className="mt-2 max-w-3xl text-sm text-slate-600 md:text-base">
+          Entenda termos usados no acolhimento, encaminhamento e contexto escolar.
+        </p>
+      </section>
+
+      <GlossarySearch onResultClick={handleSearchResultClick} className="mb-6" />
+
+      <Suspense fallback={<div className="h-20 animate-pulse rounded-2xl bg-slate-100" />}>
+        <GlossaryFilters
+          search={search}
+          onSearchChange={setSearch}
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+          onClear={handleClearFilters}
+        />
+      </Suspense>
+
+      {totalResults > 0 && (
+        <Suspense fallback={<div className="h-16 animate-pulse rounded-2xl bg-slate-100" />}>
+          <AlphabetNav
+            availableLetters={availableLetters}
+            onLetterSelect={handleLetterSelect}
+            activeLetters={selectedLetters}
+          />
+        </Suspense>
       )}
-    </div>
+
+      <p className="sr-only" aria-live="polite" aria-atomic="true">
+        {totalResults} {totalResults === 1 ? 'resultado encontrado' : 'resultados encontrados'}.
+      </p>
+
+      <section ref={resultSectionRef} aria-live="polite" aria-atomic="true" className="space-y-6">
+        {totalResults === 0 && (
+          <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center">
+            <p className="text-base font-semibold text-slate-700">Nenhum termo encontrado.</p>
+            <p className="mt-1 text-sm text-slate-600">
+              Ajuste a busca ou limpe os filtros para visualizar todos os termos.
+            </p>
+          </div>
+        )}
+
+        {visibleLetters.map((letter) => {
+          const items = groupedItems[letter] ?? [];
+
+          return (
+            <section key={letter} id={`letter-${letter}`} aria-label={`Termos da letra ${letter}`}>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">{letter}</h2>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <Suspense
+                  fallback={<div className="h-32 rounded-2xl border border-slate-200 bg-slate-50" />}
+                >
+                  {items.map((item) => (
+                    <GlossaryCard
+                      key={item.term}
+                      item={item}
+                      searchQuery={search}
+                      onRelatedClick={handleRelatedClick}
+                    />
+                  ))}
+                </Suspense>
+              </div>
+            </section>
+          );
+        })}
+      </section>
+    </main>
   );
 };
