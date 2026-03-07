@@ -48,7 +48,7 @@ describe('AtendimentoGatePage', () => {
     expect(screen.getByText('Nível de atenção: Baixo')).toBeTruthy();
     fireEvent.click(screen.getByLabelText('Sangramento grave'));
     expect(screen.getByText('Nível de atenção: Elevado')).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Ver recomendação inicial' }));
 
     expect(screen.getByText('Sinal crítico identificado.')).toBeTruthy();
 
@@ -60,8 +60,8 @@ describe('AtendimentoGatePage', () => {
     render(<AtendimentoGatePage />);
 
     fireEvent.click(screen.getByRole('button', { name: 'NÃO SEI' }));
-    expect(screen.getByText('Risco imediato: Baixo')).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
+    expect(screen.getByText('Nível de atenção: Baixo')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Ver recomendação inicial' }));
 
     expect(screen.getByText('Nenhum sinal crítico detectado.')).toBeTruthy();
 
