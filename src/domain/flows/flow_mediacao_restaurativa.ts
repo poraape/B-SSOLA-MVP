@@ -60,7 +60,7 @@ export const flow_mediacao_restaurativa: FlowSpec = {
       "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Plano formal de reparacao",
-        "Comunicacao aos responsaveis"
+        "Comunicacao aos responsáveis"
       ],
       "timeline": "Horas",
       "riskLevel": "MODERATE",
@@ -99,7 +99,7 @@ export const flow_mediacao_restaurativa: FlowSpec = {
           "riskLevel": "MODERATE",
           "flags": []
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

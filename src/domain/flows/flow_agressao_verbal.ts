@@ -28,7 +28,7 @@ export const flow_agressao_verbal: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Há ameaça de violencia física?",
+      "question": "Há ameaça de violência física?",
       "actions": [
         {
           "label": "Sim",
@@ -84,7 +84,7 @@ export const flow_agressao_verbal: FlowSpec = {
       "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Registrar formalmente a ocorrencia",
-        "Entrar em contato com os responsaveis",
+        "Entrar em contato com os responsáveis",
         "Definir plano de acompanhamento com a equipe escolar"
       ],
       "timeline": "Horas",
@@ -144,7 +144,7 @@ export const flow_agressao_verbal: FlowSpec = {
           "riskLevel": "MODERATE",
           "flags": []
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],
@@ -161,7 +161,7 @@ export const flow_agressao_verbal: FlowSpec = {
       },
       {
         "id": "ameaca_violencia",
-        "label": "Ameaça de violencia física",
+        "label": "Ameaça de violência física",
         "weight": 3
       },
       {

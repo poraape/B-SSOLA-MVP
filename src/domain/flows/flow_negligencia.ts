@@ -42,7 +42,7 @@ export const flow_negligencia: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Há risco imediato de abandono ou violencia?",
+      "question": "Há risco imediato de abandono ou violência?",
       "actions": [
         {
           "label": "Sim",
@@ -66,7 +66,7 @@ export const flow_negligencia: FlowSpec = {
       "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Escuta acolhedora e sem julgamento",
-        "Contato com os responsaveis"
+        "Contato com os responsáveis"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -144,7 +144,7 @@ export const flow_negligencia: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

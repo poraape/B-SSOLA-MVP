@@ -42,7 +42,7 @@ export const flow_violacao_direitos: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Há indicio de violencia, negligência grave ou exploração continua?",
+      "question": "Há indicio de violência, negligência grave ou exploração continua?",
       "actions": [
         {
           "label": "Sim",
@@ -145,7 +145,7 @@ export const flow_violacao_direitos: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

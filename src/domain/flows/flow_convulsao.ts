@@ -64,7 +64,7 @@ export const flow_convulsao: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -116,7 +116,7 @@ export const flow_convulsao: FlowSpec = {
       ],
       "HIGH": [
         "Avisar gestão escolar",
-        "Entrar em contato com os responsaveis",
+        "Entrar em contato com os responsáveis",
         "Encaminhar para avaliação em servico de saúde"
       ],
       "CRITICAL": [
@@ -202,7 +202,7 @@ export const flow_convulsao: FlowSpec = {
       "description": "Risco imediato. Acione emergência e mantenha supervisao continua.",
       "actions": [
         "Acionar 192 imediatamente",
-        "Avisar a gestão escolar e os responsaveis",
+        "Avisar a gestão escolar e os responsáveis",
         "Não deixar a pessoa sozinha ate chegada da equipe de urgência"
       ],
       "timeline": "Imediato",
@@ -224,7 +224,7 @@ export const flow_convulsao: FlowSpec = {
       "description": "Com melhora parcial, ainda há risco alto e necessidade de avaliação externa.",
       "actions": [
         "Avisar a gestão escolar",
-        "Entrar em contato com os responsaveis para busca imediata",
+        "Entrar em contato com os responsáveis para busca imediata",
         "Encaminhar para UPA/Hospital ou UBS conforme orientação da equipe de saúde"
       ],
       "timeline": "Horas",

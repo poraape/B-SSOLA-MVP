@@ -65,7 +65,7 @@ export const flow_emergencia_medica: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -118,7 +118,7 @@ export const flow_emergencia_medica: FlowSpec = {
       ],
       "HIGH": [
         "Avisar gestão escolar",
-        "Entrar em contato com responsaveis",
+        "Entrar em contato com responsáveis",
         "Encaminhar para UPA/Hospital ou UBS conforme gravidade"
       ],
       "CRITICAL": [
@@ -205,7 +205,7 @@ export const flow_emergencia_medica: FlowSpec = {
       "description": "Risco critico com necessidade de atendimento de emergência sem atraso.",
       "actions": [
         "Acionar 192 imediatamente",
-        "Avisar a gestão escolar e os responsaveis",
+        "Avisar a gestão escolar e os responsáveis",
         "Não deixar a pessoa sozinha ate chegada da equipe de urgência",
         "Registrar formalmente horario e medidas adotadas"
       ],
@@ -228,7 +228,7 @@ export const flow_emergencia_medica: FlowSpec = {
       "description": "Risco alto sem colapso imediato, com necessidade de avaliação externa no mesmo turno.",
       "actions": [
         "Avisar a gestão escolar",
-        "Entrar em contato com os responsaveis",
+        "Entrar em contato com os responsáveis",
         "Encaminhar para UPA/Hospital ou UBS de referência conforme orientação"
       ],
       "timeline": "Horas",

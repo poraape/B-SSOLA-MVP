@@ -23,7 +23,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "A barreira impede participacao escolar plena?",
+      "question": "A barreira impede participação escolar plena?",
       "actions": [
         {
           "label": "Sim",
@@ -94,7 +94,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
             "priorizar_acessibilidade"
           ]
         },
-        "rationale": "Restricao de participacao exige resposta prioritaria da escola."
+        "rationale": "Restricao de participação exige resposta prioritaria da escola."
       },
       {
         "id": "rule_critical",
@@ -117,7 +117,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
           "riskLevel": "MODERATE",
           "flags": []
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],
@@ -129,7 +129,7 @@ export const flow_barreira_acessibilidade: FlowSpec = {
       },
       {
         "id": "restricao_participacao",
-        "label": "Restricao de participacao escolar",
+        "label": "Restricao de participação escolar",
         "weight": 2
       },
       {

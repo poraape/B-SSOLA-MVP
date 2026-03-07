@@ -125,7 +125,7 @@ export const flow_vulnerabilidade_social: FlowSpec = {
           "riskLevel": "MODERATE",
           "flags": []
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

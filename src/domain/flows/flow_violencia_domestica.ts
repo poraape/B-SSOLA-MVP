@@ -5,11 +5,11 @@ export const flow_violencia_domestica: FlowSpec = {
     "id": "flow_violencia_domestica",
     "categoryId": "protecao_direitos",
     "subcategoryId": "violencia_domestica",
-    "title": "Suspeita de Violencia Domestica",
+    "title": "Suspeita de Violência Domestica",
     "description": "Orientações para proteger o estudante e acionar a rede de proteção de forma segura.",
     "severity": "CRITICAL",
     "keywords": [
-      "violencia domestica",
+      "violência domestica",
       "proteção",
       "escuta segura",
       "rede de direitos"
@@ -55,7 +55,7 @@ export const flow_violencia_domestica: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Sem risco imediato, mas com indicios consistentes de violencia e necessidade de rede."
+        "rationale": "Sem risco imediato, mas com indícios consistentes de violência e necessidade de rede."
       },
       {
         "id": "rule_default",
@@ -66,7 +66,7 @@ export const flow_violencia_domestica: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -77,7 +77,7 @@ export const flow_violencia_domestica: FlowSpec = {
     "riskSignals": [
       {
         "id": "ameaca_ativa",
-        "label": "Agressor proximo ou ameaça atual contra o estudante",
+        "label": "Agressor próximo ou ameaça atual contra o estudante",
         "examples": [
           "recado de ameaça recente",
           "responsavel agressivo aguardando na saída"
@@ -86,7 +86,7 @@ export const flow_violencia_domestica: FlowSpec = {
       },
       {
         "id": "lesao_grave_aparente",
-        "label": "Sinais físicos importantes de violencia",
+        "label": "Sinais físicos importantes de violência",
         "examples": [
           "hematomas extensos",
           "dor intensa com limitacao de movimento"
@@ -147,7 +147,7 @@ export const flow_violencia_domestica: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Suspeita de violencia domestica identificada. Priorize proteção e escuta segura.",
+      "content": "Suspeita de violência domestica identificada. Priorize proteção e escuta segura.",
       "riskSignals": [
         "relato_repetido",
         "medo_de_voltar_para_casa"
@@ -183,7 +183,7 @@ export const flow_violencia_domestica: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Existem sinais consistentes de violencia (relato repetido ou medo intenso de voltar para casa)?",
+      "question": "Existem sinais consistentes de violência (relato repetido ou medo intenso de voltar para casa)?",
       "actions": [
         {
           "label": "Sim",
@@ -229,12 +229,12 @@ export const flow_violencia_domestica: FlowSpec = {
     {
       "id": "outcome_acionar_rede_protecao",
       "label": "Acionar Rede de Proteção",
-      "description": "Risco alto com indicios consistentes. Organizar proteção e acompanhamento institucional.",
+      "description": "Risco alto com indícios consistentes. Organizar proteção e acompanhamento institucional.",
       "actions": [
         "Avisar a gestão escolar",
         "Registrar formalmente a situação",
         "Acionar Conselho Tutelar e CREAS",
-        "Entrar em contato com responsaveis quando isso não aumentar o risco"
+        "Entrar em contato com responsáveis quando isso não aumentar o risco"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",

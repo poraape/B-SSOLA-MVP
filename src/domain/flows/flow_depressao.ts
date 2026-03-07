@@ -80,7 +80,7 @@ export const flow_depressao: FlowSpec = {
       "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Encaminhamento para avaliação psicologica",
-        "Entrar em contato com os responsaveis"
+        "Entrar em contato com os responsáveis"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -153,7 +153,7 @@ export const flow_depressao: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

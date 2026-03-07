@@ -82,7 +82,7 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
             "encaminhamento_pedagogico_prioritario"
           ]
         },
-        "rationale": "Defasagem relevante com prejuizo de participacao exige resposta prioritaria."
+        "rationale": "Defasagem relevante com prejuizo de participação exige resposta prioritaria."
       },
       {
         "id": "rule_critical",
@@ -105,7 +105,7 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
           "riskLevel": "MODERATE",
           "flags": []
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],
@@ -127,7 +127,7 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
       },
       {
         "id": "prejuizo_participacao",
-        "label": "Prejuizo de participacao escolar",
+        "label": "Prejuizo de participação escolar",
         "weight": 2
       },
       {

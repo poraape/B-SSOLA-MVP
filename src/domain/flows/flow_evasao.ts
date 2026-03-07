@@ -5,8 +5,8 @@ export const flow_evasao: FlowSpec = {
     "id": "flow_evasao",
     "categoryId": "apoio_social_familiar",
     "subcategoryId": "evasao_faltas",
-    "title": "Risco de Evasao Escolar",
-    "description": "Orientações praticas para a equipe escolar sobre Evasao ou Faltas Repetidas.",
+    "title": "Risco de Evasão Escolar",
+    "description": "Orientações praticas para a equipe escolar sobre Evasão ou Faltas Repetidas.",
     "severity": "HIGH",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_evasao: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Evasao ou Faltas Repetidas. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Situação identificada: Evasão ou Faltas Repetidas. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "vulnerabilidade_economica"
       ]
@@ -42,7 +42,7 @@ export const flow_evasao: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Há indicios de trabalho infantil ou situação familiar grave?",
+      "question": "Há indícios de trabalho infantil ou situação familiar grave?",
       "actions": [
         {
           "label": "Sim",
@@ -138,7 +138,7 @@ export const flow_evasao: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

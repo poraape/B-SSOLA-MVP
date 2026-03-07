@@ -5,7 +5,7 @@ export const flow_crise_respiratoria: FlowSpec = {
     "id": "flow_crise_respiratoria",
     "categoryId": "saude_bem_estar",
     "subcategoryId": "crise_respiratoria",
-    "title": "Crise Respiratória ou Asmatica",
+    "title": "Crise Respiratória ou Asmática",
     "description": "Orientações para resposta segura em falta de ar e crise respiratória na escola.",
     "severity": "HIGH",
     "keywords": [
@@ -65,7 +65,7 @@ export const flow_crise_respiratoria: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -116,7 +116,7 @@ export const flow_crise_respiratoria: FlowSpec = {
       ],
       "HIGH": [
         "Avisar gestão escolar",
-        "Acionar responsaveis",
+        "Acionar responsáveis",
         "Encaminhar para UPA/Hospital ou UBS conforme gravidade"
       ],
       "CRITICAL": [
@@ -203,7 +203,7 @@ export const flow_crise_respiratoria: FlowSpec = {
       "description": "Risco critico com necessidade de atendimento de emergência.",
       "actions": [
         "Acionar 192 imediatamente",
-        "Avisar a gestão escolar e os responsaveis",
+        "Avisar a gestão escolar e os responsáveis",
         "Não deixar a pessoa sozinha ate chegada da equipe de urgência",
         "Registrar formalmente o ocorrido"
       ],
@@ -226,7 +226,7 @@ export const flow_crise_respiratoria: FlowSpec = {
       "description": "Risco alto sem colapso respiratório no momento, com avaliação rapida necessaria.",
       "actions": [
         "Avisar a gestão escolar",
-        "Entrar em contato com os responsaveis",
+        "Entrar em contato com os responsáveis",
         "Encaminhar para UPA/Hospital ou UBS de referência"
       ],
       "timeline": "Horas",

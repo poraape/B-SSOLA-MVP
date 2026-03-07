@@ -77,7 +77,7 @@ export const flow_mal_estar: FlowSpec = {
       "label": "Acompanhamento Institucional",
       "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
-        "Entrar em contato com os responsaveis",
+        "Entrar em contato com os responsáveis",
         "Encaminhar para avaliação médica"
       ],
       "timeline": "Horas",
@@ -117,7 +117,7 @@ export const flow_mal_estar: FlowSpec = {
           "riskLevel": "MODERATE",
           "flags": []
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

@@ -57,7 +57,7 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
       "label": "Acompanhamento Institucional",
       "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
-        "Orientar responsaveis para avaliação clinica",
+        "Orientar responsáveis para avaliação clinica",
         "Registrar plano pedagógico adaptado"
       ],
       "timeline": "Horas",
@@ -84,7 +84,7 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
           "riskLevel": "MODERATE",
           "flags": []
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

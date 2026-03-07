@@ -66,7 +66,7 @@ export const flow_agressao_fisica: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -117,7 +117,7 @@ export const flow_agressao_fisica: FlowSpec = {
       ],
       "HIGH": [
         "Avisar gestão escolar",
-        "Acionar responsaveis",
+        "Acionar responsáveis",
         "Organizar plano de convivência com monitoramento"
       ],
       "CRITICAL": [
@@ -206,8 +206,8 @@ export const flow_agressao_fisica: FlowSpec = {
       "label": "Proteção Critica e Suporte de Emergência",
       "description": "Risco critico com necessidade de proteção imediata e possível urgência externa.",
       "actions": [
-        "Acionar 192 em emergência médica e 190 se houver risco de violencia",
-        "Avisar a gestão escolar e os responsaveis",
+        "Acionar 192 em emergência médica e 190 se houver risco de violência",
+        "Avisar a gestão escolar e os responsáveis",
         "Não deixar envolvidos sozinhos ate estabilizacao",
         "Registrar formalmente a ocorrencia"
       ],
@@ -233,7 +233,7 @@ export const flow_agressao_fisica: FlowSpec = {
       "description": "Risco alto com potencial de reincidencia, exigindo ação institucional estruturada.",
       "actions": [
         "Avisar a gestão escolar",
-        "Acionar responsaveis para alinhamento",
+        "Acionar responsáveis para alinhamento",
         "Registrar formalmente e definir plano de convivência com acompanhamento"
       ],
       "timeline": "Horas",

@@ -5,12 +5,12 @@ export const flow_lgbtfobia: FlowSpec = {
     "id": "flow_lgbtfobia",
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "lgbtfobia",
-    "title": "Discriminacao ou Violencia LGBTQIA+",
-    "description": "Orientações praticas para a equipe escolar sobre Discriminacao ou Violencia LGBTQIA+.",
+    "title": "Discriminação ou Violência LGBTQIA+",
+    "description": "Orientações praticas para a equipe escolar sobre Discriminação ou Violência LGBTQIA+.",
     "severity": "HIGH",
     "keywords": [
       "lgbtfobia",
-      "discriminacao lgbtqia+",
+      "discriminação lgbtqia+",
       "homofobia",
       "transfobia"
     ],
@@ -20,7 +20,7 @@ export const flow_lgbtfobia: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Discriminacao ou Violencia LGBTQIA+. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Situação identificada: Discriminação ou Violência LGBTQIA+. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "conflito_recorrente"
       ]
@@ -87,7 +87,7 @@ export const flow_lgbtfobia: FlowSpec = {
       "actions": [
         "Acolhimento com escuta qualificada",
         "Plano de proteção e acompanhamento",
-        "Contato com os responsaveis quando apropriado e seguro"
+        "Contato com os responsáveis quando apropriado e seguro"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -147,7 +147,7 @@ export const flow_lgbtfobia: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

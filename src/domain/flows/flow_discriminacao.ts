@@ -5,8 +5,8 @@ export const flow_discriminacao: FlowSpec = {
     "id": "flow_discriminacao",
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "discriminacao_racismo",
-    "title": "Discriminacao ou Racismo",
-    "description": "Orientações praticas para a equipe escolar sobre Discriminacao ou Racismo.",
+    "title": "Discriminação ou Racismo",
+    "description": "Orientações praticas para a equipe escolar sobre Discriminação ou Racismo.",
     "severity": "HIGH",
     "keywords": [
       "discriminacao",
@@ -20,7 +20,7 @@ export const flow_discriminacao: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Discriminacao ou Racismo. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Situação identificada: Discriminação ou Racismo. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "conflito_recorrente"
       ]
@@ -105,7 +105,7 @@ export const flow_discriminacao: FlowSpec = {
       "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
         "Registrar ocorrencia institucional minima",
-        "Entrar em contato com os responsaveis quando apropriado",
+        "Entrar em contato com os responsáveis quando apropriado",
         "Plano de acompanhamento e prevenção"
       ],
       "timeline": "Horas",
@@ -166,7 +166,7 @@ export const flow_discriminacao: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

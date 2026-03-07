@@ -5,7 +5,7 @@ export const flow_ameaca_externa: FlowSpec = {
     "id": "flow_ameaca_externa",
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "ameaca_externa",
-    "title": "Ameaça Externa a Escola",
+    "title": "Ameaça Externa à Escola",
     "description": "Orientações para resposta institucional a ameaça no entorno da escola.",
     "severity": "HIGH",
     "keywords": [
@@ -65,7 +65,7 @@ export const flow_ameaca_externa: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -85,7 +85,7 @@ export const flow_ameaca_externa: FlowSpec = {
       },
       {
         "id": "violencia_em_andamento",
-        "label": "Violencia em andamento no entorno imediato",
+        "label": "Violência em andamento no entorno imediato",
         "examples": [
           "briga grave na porta",
           "barulho de disparos nas proximidades"
@@ -119,7 +119,7 @@ export const flow_ameaca_externa: FlowSpec = {
       "HIGH": [
         "Avisar gestão escolar",
         "Restringir circulacao em areas expostas",
-        "Informar responsaveis com orientação objetiva"
+        "Informar responsáveis com orientação objetiva"
       ],
       "CRITICAL": [
         "Acionar 190 imediatamente",
@@ -162,7 +162,7 @@ export const flow_ameaca_externa: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Há ameaça iminente ou violencia em andamento no entorno imediato?",
+      "question": "Há ameaça iminente ou violência em andamento no entorno imediato?",
       "actions": [
         {
           "label": "Sim",
@@ -205,7 +205,7 @@ export const flow_ameaca_externa: FlowSpec = {
       "description": "Risco critico no entorno com necessidade de resposta imediata.",
       "actions": [
         "Acionar 190 imediatamente",
-        "Avisar a gestão escolar e os responsaveis",
+        "Avisar a gestão escolar e os responsáveis",
         "Manter estudantes em area protegida e acompanhados",
         "Registrar formalmente os fatos e horarios"
       ],
@@ -229,7 +229,7 @@ export const flow_ameaca_externa: FlowSpec = {
       "description": "Risco alto sem ataque em curso, com medidas preventivas institucionais.",
       "actions": [
         "Avisar a gestão escolar e reforcar controle de acesso",
-        "Informar responsaveis sobre medidas de segurança",
+        "Informar responsáveis sobre medidas de segurança",
         "Registrar formalmente a ocorrencia para acompanhamento"
       ],
       "timeline": "Horas",

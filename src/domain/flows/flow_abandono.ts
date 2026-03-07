@@ -65,7 +65,7 @@ export const flow_abandono: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -88,7 +88,7 @@ export const flow_abandono: FlowSpec = {
         "label": "Exposicao atual a risco em rua",
         "examples": [
           "dorme em local aberto",
-          "relato de inseguranca noturna"
+          "relato de insegurança noturna"
         ],
         "weight": 3
       },
@@ -118,7 +118,7 @@ export const flow_abandono: FlowSpec = {
       "HIGH": [
         "Avisar gestão escolar",
         "Acionar CRAS/CREAS e Conselho Tutelar",
-        "Entrar em contato com responsaveis quando possível"
+        "Entrar em contato com responsáveis quando possível"
       ],
       "CRITICAL": [
         "Garantir proteção imediata na escola",

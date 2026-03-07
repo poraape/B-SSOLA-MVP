@@ -54,7 +54,7 @@ export const flow_risco_estrutural: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Dano estrutural relevante exige isolamento e avaliação tecnica com urgência."
+        "rationale": "Dano estrutural relevante exige isolamento e avaliação técnica com urgência."
       },
       {
         "id": "rule_default",
@@ -65,7 +65,7 @@ export const flow_risco_estrutural: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -118,7 +118,7 @@ export const flow_risco_estrutural: FlowSpec = {
       "HIGH": [
         "Avisar gestão escolar",
         "Isolar area afetada",
-        "Entrar em contato com responsaveis"
+        "Entrar em contato com responsáveis"
       ],
       "CRITICAL": [
         "Evacuar imediatamente",
@@ -180,7 +180,7 @@ export const flow_risco_estrutural: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "A area precisa permanecer interditada para avaliação tecnica?",
+      "question": "A area precisa permanecer interditada para avaliação técnica?",
       "actions": [
         {
           "label": "Sim",
@@ -200,12 +200,12 @@ export const flow_risco_estrutural: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_evacuacao_critica",
-      "label": "Evacuacao Critica da Area",
+      "label": "Evacuação Critica da Area",
       "description": "Risco critico de colapso. Retirar imediatamente e acionar suporte externo.",
       "actions": [
         "Evacuar imediatamente para ponto seguro",
         "Acionar 190 e suporte tecnico emergencial",
-        "Avisar a gestão escolar e responsaveis",
+        "Avisar a gestão escolar e responsáveis",
         "Não deixar estudantes sozinhos durante a retirada"
       ],
       "timeline": "Imediato",
@@ -228,8 +228,8 @@ export const flow_risco_estrutural: FlowSpec = {
       "description": "Risco alto sem colapso imediato, mantendo area interditada e monitorada.",
       "actions": [
         "Avisar a gestão escolar",
-        "Isolar area e interromper uso ate avaliação tecnica",
-        "Entrar em contato com responsaveis sobre ajustes de rotina"
+        "Isolar area e interromper uso ate avaliação técnica",
+        "Entrar em contato com responsáveis sobre ajustes de rotina"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -245,9 +245,9 @@ export const flow_risco_estrutural: FlowSpec = {
     {
       "id": "outcome_monitoramento_predial",
       "label": "Monitoramento Predial Continuo",
-      "description": "Sem risco imediato confirmado, com observação tecnica e registro preventivo.",
+      "description": "Sem risco imediato confirmado, com observação técnica e registro preventivo.",
       "actions": [
-        "Registrar evidencias observadas pela equipe",
+        "Registrar evidências observadas pela equipe",
         "Manter monitoramento continuo da estrutura",
         "Reavaliar imediatamente se houver novos sinais de agravamento"
       ],

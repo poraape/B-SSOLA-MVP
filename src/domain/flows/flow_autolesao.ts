@@ -65,7 +65,7 @@ export const flow_autolesao: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -118,7 +118,7 @@ export const flow_autolesao: FlowSpec = {
       ],
       "HIGH": [
         "Avisar gestão escolar",
-        "Entrar em contato com responsaveis",
+        "Entrar em contato com responsáveis",
         "Encaminhar ao CAPS infantojuvenil"
       ],
       "CRITICAL": [
@@ -206,7 +206,7 @@ export const flow_autolesao: FlowSpec = {
       "description": "Risco critico. Garantir supervisao continua e acionar urgência.",
       "actions": [
         "Acionar 192 imediatamente",
-        "Avisar a gestão escolar e os responsaveis",
+        "Avisar a gestão escolar e os responsáveis",
         "Não deixar o estudante sozinho",
         "Registrar formalmente as medidas adotadas"
       ],
@@ -230,7 +230,7 @@ export const flow_autolesao: FlowSpec = {
       "description": "Risco alto. Organizar plano de proteção e encaminhamento de saúde mental.",
       "actions": [
         "Avisar a gestão escolar",
-        "Entrar em contato com os responsaveis",
+        "Entrar em contato com os responsáveis",
         "Encaminhar ao CAPS infantojuvenil e UBS de referência",
         "Definir plano de acompanhamento com revisao frequente"
       ],

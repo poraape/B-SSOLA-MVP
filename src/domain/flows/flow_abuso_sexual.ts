@@ -12,7 +12,7 @@ export const flow_abuso_sexual: FlowSpec = {
       "abuso sexual",
       "proteção imediata",
       "escuta segura",
-      "preservar evidencias"
+      "preservar evidências"
     ],
     "status": "EXISTING"
   },
@@ -56,7 +56,7 @@ export const flow_abuso_sexual: FlowSpec = {
             "preserve_evidence"
           ]
         },
-        "rationale": "Indicios consistentes exigem encaminhamento formal mesmo sem flagrante."
+        "rationale": "Indícios consistentes exigem encaminhamento formal mesmo sem flagrante."
       },
       {
         "id": "rule_default",
@@ -67,7 +67,7 @@ export const flow_abuso_sexual: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -78,7 +78,7 @@ export const flow_abuso_sexual: FlowSpec = {
     "riskSignals": [
       {
         "id": "agressor_proximo",
-        "label": "Suspeita de agressor proximo no momento",
+        "label": "Suspeita de agressor próximo no momento",
         "examples": [
           "agressor aguardando na escola",
           "ameaça de retorno imediato"
@@ -96,7 +96,7 @@ export const flow_abuso_sexual: FlowSpec = {
       },
       {
         "id": "relato_consistente",
-        "label": "Relato consistente de violencia sexual",
+        "label": "Relato consistente de violência sexual",
         "examples": [
           "relato claro em escuta protegida",
           "relato repetido com os mesmos elementos"
@@ -105,10 +105,10 @@ export const flow_abuso_sexual: FlowSpec = {
       },
       {
         "id": "mudanca_comportamento_importante",
-        "label": "Mudanca brusca de comportamento com sofrimento intenso",
+        "label": "Mudança brusca de comportamento com sofrimento intenso",
         "examples": [
           "medo extremo de adulto especifico",
-          "queda abrupta de participacao"
+          "queda abrupta de participação"
         ],
         "weight": 2
       }
@@ -160,7 +160,7 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "step_2",
       "type": "action",
-      "action": "Não investigar sozinho, não repetir perguntas desnecessarias e preservar possiveis evidencias.",
+      "action": "Não investigar sozinho, não repetir perguntas desnecessarias e preservar possíveis evidências.",
       "riskSignals": [
         "relato_consistente"
       ]
@@ -168,7 +168,7 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "Existe risco imediato (agressor proximo, ameaça atual ou lesão grave)?",
+      "question": "Existe risco imediato (agressor próximo, ameaça atual ou lesão grave)?",
       "actions": [
         {
           "label": "Sim",
@@ -187,7 +187,7 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Há indicios consistentes para acionar formalmente a rede de proteção?",
+      "question": "Há indícios consistentes para acionar formalmente a rede de proteção?",
       "actions": [
         {
           "label": "Sim",
@@ -214,7 +214,7 @@ export const flow_abuso_sexual: FlowSpec = {
         "Não deixar o estudante sozinho",
         "Acionar Conselho Tutelar e registrar formalmente",
         "Acionar 190 ou 192 conforme risco em curso",
-        "Preservar evidencias sem manipulacao desnecessaria"
+        "Preservar evidências sem manipulacao desnecessaria"
       ],
       "timeline": "Imediato",
       "riskLevel": "CRITICAL",
@@ -237,12 +237,12 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "outcome_rede_direitos",
       "label": "Acionar Rede de Direitos",
-      "description": "Risco alto com indicios consistentes. Encaminhar formalmente e manter proteção escolar.",
+      "description": "Risco alto com indícios consistentes. Encaminhar formalmente e manter proteção escolar.",
       "actions": [
         "Avisar a gestão escolar",
         "Registrar formalmente a ocorrencia",
         "Acionar Conselho Tutelar, CREAS e Delegacia quando cabivel",
-        "Organizar contato com responsaveis sem expor a vítima a novo risco"
+        "Organizar contato com responsáveis sem expor a vítima a novo risco"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",

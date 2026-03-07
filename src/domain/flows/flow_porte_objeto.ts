@@ -63,7 +63,7 @@ export const flow_porte_objeto: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -107,7 +107,7 @@ export const flow_porte_objeto: FlowSpec = {
       ],
       "HIGH": [
         "Avisar gestão escolar",
-        "Entrar em contato com responsaveis",
+        "Entrar em contato com responsáveis",
         "Registrar formalmente a ocorrencia"
       ],
       "CRITICAL": [
@@ -216,7 +216,7 @@ export const flow_porte_objeto: FlowSpec = {
       "description": "Risco alto sem ameaça imediata, com necessidade de ação formal e preventiva.",
       "actions": [
         "Avisar a gestão escolar",
-        "Entrar em contato com responsaveis",
+        "Entrar em contato com responsáveis",
         "Registrar formalmente e avaliar encaminhamento de rede"
       ],
       "timeline": "Horas",

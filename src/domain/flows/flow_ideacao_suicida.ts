@@ -5,11 +5,11 @@ export const flow_ideacao_suicida: FlowSpec = {
     "id": "flow_ideacao_suicida",
     "categoryId": "saude_emocional",
     "subcategoryId": "ideacao_suicida",
-    "title": "Ideacao Suicida ou Desesperança",
+    "title": "Ideação Suicida ou Desesperança",
     "description": "Orientações para acolher, proteger e acionar apoio imediato em risco emocional grave.",
     "severity": "CRITICAL",
     "keywords": [
-      "ideacao suicida",
+      "ideação suicida",
       "risco grave",
       "proteção imediata",
       "acolhimento"
@@ -65,7 +65,7 @@ export const flow_ideacao_suicida: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -119,7 +119,7 @@ export const flow_ideacao_suicida: FlowSpec = {
       ],
       "HIGH": [
         "Avisar gestão escolar",
-        "Entrar em contato com responsaveis",
+        "Entrar em contato com responsáveis",
         "Encaminhar ao CAPS infantojuvenil"
       ],
       "CRITICAL": [
@@ -146,7 +146,7 @@ export const flow_ideacao_suicida: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Sinal de ideacao suicida identificado. Priorize proteção imediata e acolhimento sem julgamento.",
+      "content": "Sinal de ideação suicida identificado. Priorize proteção imediata e acolhimento sem julgamento.",
       "riskSignals": [
         "fala_intencao_clara",
         "desesperanca_intensa"
@@ -206,7 +206,7 @@ export const flow_ideacao_suicida: FlowSpec = {
       "description": "Risco critico. Acione urgência e mantenha supervisao constante.",
       "actions": [
         "Acionar 192 imediatamente",
-        "Avisar a gestão escolar e os responsaveis",
+        "Avisar a gestão escolar e os responsáveis",
         "Não deixar o estudante sozinho em nenhum momento",
         "Registrar formalmente as ações realizadas"
       ],
@@ -230,7 +230,7 @@ export const flow_ideacao_suicida: FlowSpec = {
       "description": "Risco alto. Organizar suporte rapido da escola com rede de saúde mental.",
       "actions": [
         "Avisar a gestão escolar",
-        "Entrar em contato com responsaveis",
+        "Entrar em contato com responsáveis",
         "Encaminhar ao CAPS infantojuvenil e/ou UBS de referência",
         "Definir plano de acompanhamento com revisao frequente"
       ],

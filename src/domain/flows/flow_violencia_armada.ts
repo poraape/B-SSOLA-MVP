@@ -5,11 +5,11 @@ export const flow_violencia_armada: FlowSpec = {
     "id": "flow_violencia_armada",
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "violencia_armada",
-    "title": "Violencia Armada ou Tiroteio",
+    "title": "Violência Armada ou Tiroteio",
     "description": "Orientações para proteger estudantes e equipe em risco armado na escola.",
     "severity": "CRITICAL",
     "keywords": [
-      "violencia armada",
+      "violência armada",
       "tiroteio",
       "abrigo seguro",
       "proteção imediata"
@@ -63,7 +63,7 @@ export const flow_violencia_armada: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -108,7 +108,7 @@ export const flow_violencia_armada: FlowSpec = {
       "HIGH": [
         "Avisar gestão escolar",
         "Restringir circulacao em areas expostas",
-        "Entrar em contato com responsaveis"
+        "Entrar em contato com responsáveis"
       ],
       "CRITICAL": [
         "Acionar 190 imediatamente",
@@ -219,7 +219,7 @@ export const flow_violencia_armada: FlowSpec = {
       "description": "Sem ataque em curso, mas com ameaça relevante para a escola.",
       "actions": [
         "Avisar a gestão escolar e reforcar controle de acesso",
-        "Entrar em contato com responsaveis com comunicacao objetiva",
+        "Entrar em contato com responsáveis com comunicacao objetiva",
         "Registrar formalmente a ocorrencia"
       ],
       "timeline": "Horas",

@@ -62,7 +62,7 @@ export const flow_acidente_escolar: FlowSpec = {
           "riskLevel": "MODERATE",
           "flags": []
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],
@@ -188,7 +188,7 @@ export const flow_acidente_escolar: FlowSpec = {
       "label": "Ação Imediata de Proteção",
       "description": "Risco imediato. Ative o protocolo interno sem atraso.",
       "actions": [
-        "Acionar 192 (SAMU) em emergência de saúde ou 190 em risco de violencia imediatamente"
+        "Acionar 192 (SAMU) em emergência de saúde ou 190 em risco de violência imediatamente"
       ],
       "timeline": "Imediato",
       "riskLevel": "CRITICAL",

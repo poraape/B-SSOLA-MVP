@@ -5,8 +5,8 @@ export const flow_inseguranca_alimentar: FlowSpec = {
     "id": "flow_inseguranca_alimentar",
     "categoryId": "apoio_social_familiar",
     "subcategoryId": "inseguranca_alimentar",
-    "title": "Inseguranca Alimentar",
-    "description": "Orientações praticas para a equipe escolar sobre Fome ou Inseguranca Alimentar.",
+    "title": "Insegurança Alimentar",
+    "description": "Orientações praticas para a equipe escolar sobre Fome ou Insegurança Alimentar.",
     "severity": "HIGH",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_inseguranca_alimentar: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Fome ou Inseguranca Alimentar. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Situação identificada: Fome ou Insegurança Alimentar. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "vulnerabilidade_economica"
       ]
@@ -105,7 +105,7 @@ export const flow_inseguranca_alimentar: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [],

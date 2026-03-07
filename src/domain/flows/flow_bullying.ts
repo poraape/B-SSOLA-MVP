@@ -64,7 +64,7 @@ export const flow_bullying: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -105,7 +105,7 @@ export const flow_bullying: FlowSpec = {
         "label": "Sofrimento emocional relevante associado ao bullying",
         "examples": [
           "medo de vir a escola",
-          "queda acentuada de participacao"
+          "queda acentuada de participação"
         ],
         "weight": 2
       }
@@ -118,7 +118,7 @@ export const flow_bullying: FlowSpec = {
       "HIGH": [
         "Avisar gestão escolar",
         "Registrar formalmente",
-        "Acionar responsaveis e plano de intervenção"
+        "Acionar responsáveis e plano de intervenção"
       ],
       "CRITICAL": [
         "Garantir proteção imediata da vítima",
@@ -199,7 +199,7 @@ export const flow_bullying: FlowSpec = {
       "description": "Risco critico para integridade emocional ou física, com resposta institucional imediata.",
       "actions": [
         "Garantir proteção imediata da vítima em local seguro",
-        "Avisar a gestão escolar e os responsaveis",
+        "Avisar a gestão escolar e os responsáveis",
         "Não deixar estudante sozinho quando houver risco grave",
         "Registrar formalmente e acionar rede de proteção quando necessario"
       ],
@@ -224,7 +224,7 @@ export const flow_bullying: FlowSpec = {
       "description": "Risco alto com bullying recorrente, exigindo acompanhamento estruturado.",
       "actions": [
         "Avisar gestão escolar e registrar formalmente",
-        "Acionar responsaveis dos envolvidos",
+        "Acionar responsáveis dos envolvidos",
         "Implementar plano de intervenção com equipe pedagógica e monitoramento"
       ],
       "timeline": "Horas",

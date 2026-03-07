@@ -5,7 +5,7 @@ export const flow_incendio: FlowSpec = {
     "id": "flow_incendio",
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "incendio_evacuacao",
-    "title": "Incendio ou Evacuacao de Emergência",
+    "title": "Incendio ou Evacuação de Emergência",
     "description": "Orientações para retirada segura da escola em caso de fogo, fumaca ou risco de explosao.",
     "severity": "CRITICAL",
     "keywords": [
@@ -64,7 +64,7 @@ export const flow_incendio: FlowSpec = {
             "notify_management"
           ]
         },
-        "rationale": "Regra padrao deterministica baseada na severidade de baseline."
+        "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
     "protectiveFactors": [
@@ -108,10 +108,10 @@ export const flow_incendio: FlowSpec = {
       "HIGH": [
         "Avisar gestão escolar",
         "Interditar area afetada",
-        "Entrar em contato com responsaveis"
+        "Entrar em contato com responsáveis"
       ],
       "CRITICAL": [
-        "Evacuacao imediata pela rota segura",
+        "Evacuação imediata pela rota segura",
         "Acionar 190 e bombeiros",
         "Não deixar estudantes sozinhos durante deslocamento"
       ]
@@ -192,12 +192,12 @@ export const flow_incendio: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_evacuacao_imediata",
-      "label": "Evacuacao Imediata com Acionamento Externo",
+      "label": "Evacuação Imediata com Acionamento Externo",
       "description": "Risco critico. Retirada imediata e acionamento dos servicos de emergência.",
       "actions": [
         "Acionar 190 e suporte de bombeiros imediatamente",
-        "Avisar a gestão escolar e os responsaveis",
-        "Não deixar estudantes sozinhos durante a evacuacao",
+        "Avisar a gestão escolar e os responsáveis",
+        "Não deixar estudantes sozinhos durante a evacuação",
         "Registrar formalmente horarios e medidas adotadas"
       ],
       "timeline": "Imediato",
@@ -221,7 +221,7 @@ export const flow_incendio: FlowSpec = {
       "actions": [
         "Avisar a gestão escolar",
         "Isolar area afetada e impedir circulacao",
-        "Entrar em contato com responsaveis com orientação objetiva"
+        "Entrar em contato com responsáveis com orientação objetiva"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -241,7 +241,7 @@ export const flow_incendio: FlowSpec = {
       "actions": [
         "Realizar acolhimento breve com a turma",
         "Registrar a ocorrencia e orientar equipe para prevenção",
-        "Monitorar qualquer sinal de inseguranca nos dias seguintes"
+        "Monitorar qualquer sinal de insegurança nos dias seguintes"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",
