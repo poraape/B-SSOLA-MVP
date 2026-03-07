@@ -5,7 +5,7 @@ export const flow_autolesao: FlowSpec = {
     "id": "flow_autolesao",
     "categoryId": "saude_emocional",
     "subcategoryId": "autolesao",
-    "title": "Autolesão ou Automutilacao",
+    "title": "Autolesão ou Automutilação",
     "description": "Flow consolidado de autolesão com foco em proteção imediata e rede de cuidado.",
     "severity": "CRITICAL",
     "keywords": [
