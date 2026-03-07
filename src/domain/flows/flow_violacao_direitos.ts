@@ -5,8 +5,8 @@ export const flow_violacao_direitos: FlowSpec = {
     "id": "flow_violacao_direitos",
     "categoryId": "protecao_direitos",
     "subcategoryId": "outras_violacoes_direitos",
-    "title": "Outras Violacoes de Direitos",
-    "description": "Orientações praticas para a equipe escolar sobre Outras Violacoes de Direitos.",
+    "title": "Outras Violações de Direitos",
+    "description": "Orientações praticas para a equipe escolar sobre Outras Violações de Direitos.",
     "severity": "HIGH",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_violacao_direitos: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Outras Violacoes de Direitos. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Situação identificada: Outras Violações de Direitos. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "relato_violacao"
       ]

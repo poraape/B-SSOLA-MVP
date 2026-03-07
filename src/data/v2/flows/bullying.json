@@ -78,7 +78,7 @@
         "Conduzir mediacao estruturada com acompanhamento",
         "Definir plano de proteção e seguimento por periodo letivo"
       ],
-      "summaryTag": "Convivencia - Acompanhamento ativo"
+      "summaryTag": "Convivência - Acompanhamento ativo"
     },
     "alto": {
       "severity": "alto",
@@ -90,7 +90,7 @@
         "Proteger estudante e interromper contato com agressor",
         "Formalizar encaminhamento institucional e avaliar rede de proteção"
       ],
-      "summaryTag": "Convivencia - Risco elevado"
+      "summaryTag": "Convivência - Risco elevado"
     }
   }
 }

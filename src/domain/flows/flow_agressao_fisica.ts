@@ -250,7 +250,7 @@ export const flow_agressao_fisica: FlowSpec = {
     },
     {
       "id": "outcome_mediacao_monitorada",
-      "label": "Mediacao Monitorada",
+      "label": "Mediação Monitorada",
       "description": "Sem sinal de gravidade imediata, com reparacao e acompanhamento pedagógico.",
       "actions": [
         "Realizar escuta qualificada com os envolvidos",

@@ -5,7 +5,7 @@ export const flow_violencia_domestica: FlowSpec = {
     "id": "flow_violencia_domestica",
     "categoryId": "protecao_direitos",
     "subcategoryId": "violencia_domestica",
-    "title": "Suspeita de Violência Domestica",
+    "title": "Suspeita de Violência Doméstica",
     "description": "Orientações para proteger o estudante e acionar a rede de proteção de forma segura.",
     "severity": "CRITICAL",
     "keywords": [
@@ -147,7 +147,7 @@ export const flow_violencia_domestica: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Suspeita de violência domestica identificada. Priorize proteção e escuta segura.",
+      "content": "Suspeita de violência doméstica identificada. Priorize proteção e escuta segura.",
       "riskSignals": [
         "relato_repetido",
         "medo_de_voltar_para_casa"

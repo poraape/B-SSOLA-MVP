@@ -5,8 +5,8 @@ export const flow_mediacao_restaurativa: FlowSpec = {
     "id": "flow_mediacao_restaurativa",
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "mediacao_restaurativa",
-    "title": "Mediacao Restaurativa entre Estudantes",
-    "description": "Orientações praticas para a equipe escolar sobre Mediacao e Diálogo Restaurativo.",
+    "title": "Mediação Restaurativa entre Estudantes",
+    "description": "Orientações praticas para a equipe escolar sobre Mediação e Diálogo Restaurativo.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_mediacao_restaurativa: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Mediacao e Diálogo Restaurativo. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Situação identificada: Mediação e Diálogo Restaurativo. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "conflito_recorrente"
       ]

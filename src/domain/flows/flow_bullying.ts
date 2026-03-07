@@ -242,7 +242,7 @@ export const flow_bullying: FlowSpec = {
     },
     {
       "id": "outcome_mediacao_preventiva",
-      "label": "Mediacao Preventiva e Monitoramento",
+      "label": "Mediação Preventiva e Monitoramento",
       "description": "Conflito pontual sem gravidade imediata, com foco em reparacao e prevenção de repeticao.",
       "actions": [
         "Realizar escuta com os envolvidos",
