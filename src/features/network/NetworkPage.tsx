@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getServices } from '../../domain/flows/selectors';
 import { ServiceFilters } from './components/ServiceFilters';
@@ -9,6 +9,7 @@ import { Service } from '../../types';
 import { toSafeServiceQuery } from '../../domain/services/serviceQuery';
 import { NetworkErrorBoundary } from './NetworkErrorBoundary';
 import { useTriageRecommendation } from '../../app/context/TriageRecommendationContext';
+import { loadNetworkServicesWithFacade } from './clients/networkClient';
 
 export const NetworkPage: React.FC = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -17,7 +18,7 @@ export const NetworkPage: React.FC = () => {
   const searchParams = new URLSearchParams(location.search);
   const queryType = searchParams.get('type');
   const highlightId = searchParams.get('highlight');
-  const allServices = getServices();
+  const [allServices, setAllServices] = useState<Service[]>(() => getServices());
   const servicesById = useMemo(() => new Map(allServices.map(service => [service.id, service])), [allServices]);
   const { recommendation, setRecommendation } = useTriageRecommendation();
 
@@ -25,6 +26,19 @@ export const NetworkPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isDrawerOpen, setIsDrawerOpen] = useState(!!serviceId);
   const [mobileView, setMobileView] = useState<'list' | 'map'>('list');
+
+  useEffect(() => {
+    let active = true;
+    void (async () => {
+      const services = await loadNetworkServicesWithFacade();
+      if (active) {
+        setAllServices(services);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const effectiveHighlightId = highlightId || recommendation.highlightId;
   const effectiveQueryType = queryType || recommendation.queryType;

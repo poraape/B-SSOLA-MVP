@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useParams, useLocation, Link, Navigate } from 'react-router-dom';
 import { getFlowById, getCategoryById } from '../../domain/flows/selectors';
 import { ResultPanel } from './components/ResultPanel';
@@ -10,6 +10,7 @@ import { logDecisionEvent } from '../../application/loggerService';
 import { PremiumResult } from '../../domain/flows/premiumEngine';
 import { InstitutionalPriority } from '../../domain/metrics/types';
 import { getFlowResultMessage } from '../../domain/flows/flowResultSelectors';
+import { runTriageWithFacade } from './clients/triageClient';
 
 interface ResultLocationState {
   result?: TriageResult;
@@ -46,17 +47,50 @@ export const ResultPage: React.FC = () => {
   const hasLoggedRef = useRef(false);
   const result = (location.state as ResultLocationState | null)?.result;
   const category = flow ? getCategoryById(flow.meta.categoryId) : undefined;
-  const decisionResult = flow && result
-    ? runDecision({
-      mode: 'result',
-      result,
-      flow,
-      category
-    })
-    : null;
-  const premiumResult = decisionResult && isPremiumResult(decisionResult) ? decisionResult : null;
+  const localDecisionResult = useMemo(
+    () => (flow && result
+      ? runDecision({
+        mode: 'result',
+        result,
+        flow,
+        category
+      })
+      : null),
+    [flow, result, category],
+  );
+  const [premiumResult, setPremiumResult] = React.useState<PremiumResult | null>(
+    localDecisionResult && isPremiumResult(localDecisionResult) ? localDecisionResult : null,
+  );
   const institutionalPriority = toInstitutionalPriority(premiumResult?.priority);
   const flowResultMessage = flow ? getFlowResultMessage(flow.meta.id, institutionalPriority) : undefined;
+
+  useEffect(() => {
+    setPremiumResult(localDecisionResult && isPremiumResult(localDecisionResult) ? localDecisionResult : null);
+  }, [localDecisionResult]);
+
+  useEffect(() => {
+    if (!flow || !result) {
+      return;
+    }
+
+    let active = true;
+    void (async () => {
+      const remoteResult = await runTriageWithFacade({
+        mode: 'result',
+        result,
+        flow,
+        category,
+      });
+
+      if (active && remoteResult) {
+        setPremiumResult(remoteResult);
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [flow, result, category]);
 
   useEffect(() => {
     if (!flow) return;

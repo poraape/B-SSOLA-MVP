@@ -5,6 +5,7 @@ import { AppRoutes } from './router/routes';
 import { Loader2, AlertCircle, RotateCcw } from 'lucide-react';
 import { ModelErrorBoundary } from './ModelErrorBoundary';
 import { telemetryService } from '../application/telemetry/TelemetryService';
+import { loadContentBootstrapWithFacade } from './clients/contentBootstrapClient';
 
 import { ThemeProvider } from './context/ThemeContext';
 import { AccessibilityProvider } from './context/AccessibilityContext';
@@ -67,8 +68,7 @@ export default function App() {
 
     const bootstrap = async () => {
       try {
-        const modelModule = await import('../domain/model/loadModel');
-        await Promise.resolve(modelModule.loadModel());
+        await loadContentBootstrapWithFacade();
 
         if (!isCancelled) {
           setIsModelReady(true);

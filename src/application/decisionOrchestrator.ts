@@ -5,8 +5,6 @@ import { assertInvariants } from '../domain/risk/invariants';
 import { applyRiskHeuristics } from '../domain/risk/riskRules';
 import { Flow, TriageResult, Category } from '../types';
 
-import { telemetryService } from './telemetry/TelemetryService';
-
 export type FlowInput =
   | {
       mode: 'flow';
@@ -22,6 +20,41 @@ export type FlowInput =
       category?: Category;
       guardrailTriggered?: boolean;
     };
+
+type InvariantViolationTelemetryPayload = {
+  event: 'invariant_violation';
+  flowId: string;
+  metadata: { message: string };
+};
+
+function isDevelopmentRuntime(): boolean {
+  const nodeEnv =
+    globalThis &&
+    typeof globalThis === 'object' &&
+    'process' in globalThis &&
+    typeof globalThis.process === 'object' &&
+    globalThis.process !== null &&
+    'env' in globalThis.process &&
+    typeof globalThis.process.env === 'object' &&
+    globalThis.process.env !== null &&
+    'NODE_ENV' in globalThis.process.env
+      ? String(globalThis.process.env.NODE_ENV)
+      : '';
+
+  return nodeEnv === 'development' || nodeEnv === 'test';
+}
+
+function trackInvariantViolation(payload: InvariantViolationTelemetryPayload): void {
+  if (typeof window === 'undefined') return;
+
+  void import('./telemetry/TelemetryService')
+    .then(({ telemetryService }) => {
+      telemetryService.track(payload);
+    })
+    .catch(() => {
+      // telemetria nunca pode interromper a decisão
+    });
+}
 
 /**
  * Orquestra a execução do fluxo (resposta de pergunta) e o pós-processamento de resultado.
@@ -52,7 +85,7 @@ export function runDecision(input: FlowInput): FlowState | PremiumResult | null 
     try {
       assertInvariants(result);
     } catch (error) {
-      if (import.meta.env.DEV) {
+      if (isDevelopmentRuntime()) {
         throw error;
       }
 
@@ -65,17 +98,13 @@ export function runDecision(input: FlowInput): FlowState | PremiumResult | null 
         priority: normalizedPriority,
       };
 
-      try {
-        telemetryService.track({
-          event: 'invariant_violation',
-          flowId: input.flow.meta.id,
-          metadata: {
-            message: error instanceof Error ? error.message : String(error),
-          },
-        });
-      } catch {
-        // não quebrar fluxo em produção
-      }
+      trackInvariantViolation({
+        event: 'invariant_violation',
+        flowId: input.flow.meta.id,
+        metadata: {
+          message: error instanceof Error ? error.message : String(error),
+        },
+      });
 
       return safeResult;
     }
