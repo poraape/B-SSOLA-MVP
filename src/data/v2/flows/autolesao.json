@@ -10,14 +10,14 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Ha risco imediato de agravamento?",
+      "text": "Há risco imediato de agravamento?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "alto"
         }
       ]
@@ -32,10 +32,10 @@
       },
       "secondaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "schoolActions": [
-        "Nao deixar estudante sozinho",
+        "Não deixar estudante sozinho",
         "Escuta ativa qualificada"
       ]
     },

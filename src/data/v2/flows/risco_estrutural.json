@@ -10,14 +10,14 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Ha risco imediato de colapso?",
+      "text": "Há risco imediato de colapso?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "alto"
         }
       ]
@@ -28,7 +28,7 @@
       "severity": "alto",
       "primaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "secondaryService": null,
       "schoolActions": [
@@ -43,7 +43,7 @@
       },
       "secondaryService": null,
       "schoolActions": [
-        "Evacuacao imediata",
+        "Evacuação imediata",
         "Acionar autoridades"
       ]
     }

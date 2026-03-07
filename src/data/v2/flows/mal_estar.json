@@ -10,14 +10,14 @@
   "questions": [
     {
       "id": "q1",
-      "text": "O estudante esta consciente e orientado?",
+      "text": "O estudante está consciente e orientado?",
       "options": [
         {
           "label": "Sim",
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "moderado"
         }
       ]
@@ -31,7 +31,7 @@
           "level": "moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "baixo"
         }
       ]
@@ -58,11 +58,11 @@
       },
       "secondaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "schoolActions": [
-        "Comunicar responsaveis",
-        "Encaminhar para avaliacao medica"
+        "Comunicar responsáveis",
+        "Encaminhar para avaliação medica"
       ]
     }
   }

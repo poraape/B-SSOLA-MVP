@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "flow_adaptacao_pedagogica",
-    "title": "Necessidade de Adaptacao Pedagogica",
+    "title": "Necessidade de Adaptação Pedagogica",
     "type": "standard",
     "categoryId": "inclusao_acessibilidade",
     "subcategoryId": "adaptacao_pedagogica",
@@ -10,14 +10,14 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Ha laudo ou indicacao formal?",
+      "text": "Há laudo ou indicacao formal?",
       "options": [
         {
           "label": "Sim",
           "level": "baixo"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "baixo"
         }
       ]
@@ -32,7 +32,7 @@
       },
       "secondaryService": null,
       "schoolActions": [
-        "Plano de adaptacao individual",
+        "Plano de adaptação individual",
         "Revisao trimestral"
       ]
     }

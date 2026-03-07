@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "flow_violencia_domestica",
-    "title": "Suspeita de Violencia Domestica",
+    "title": "Suspeita de Violência Domestica",
     "type": "standard",
     "categoryId": "protecao_direitos",
     "subcategoryId": "violencia_domestica",
@@ -10,14 +10,14 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Ha risco imediato a integridade do estudante?",
+      "text": "Há risco imediato a integridade do estudante?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "alto"
         }
       ]
@@ -36,14 +36,14 @@
       },
       "schoolActions": [
         "Escuta protegida",
-        "Comunicar gestao"
+        "Comunicar gestão"
       ]
     },
     "iminente": {
       "severity": "iminente",
       "primaryService": {
         "id": "policia-militar",
-        "name": "Policia Militar - 190"
+        "name": "Polícia Militar - 190"
       },
       "secondaryService": {
         "id": "conselho-tutelar",
@@ -51,7 +51,7 @@
       },
       "schoolActions": [
         "Acionar 190 imediatamente",
-        "Garantir protecao fisica"
+        "Garantir proteção física"
       ]
     }
   }

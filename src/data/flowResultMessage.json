@@ -218,7 +218,7 @@
     },
     "complementaryService": {
       "queryType": "type=externo",
-      "label": "Defesa Civil - 199",
+      "label": "Defesa Civil – 199",
       "description": "Vistoria técnica de estabilidade estrutural."
     },
     "teacherScope": {
@@ -236,7 +236,7 @@
     "nextStep": "Evacue a sala imediatamente e solicite a interdição total do bloco.",
     "priorityService": {
       "queryType": "type=externo",
-      "label": "Defesa Civil - 199",
+      "label": "Defesa Civil – 199",
       "description": "Interdição de prédios com risco de colapso."
     },
     "complementaryService": {

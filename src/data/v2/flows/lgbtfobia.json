@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "flow_lgbtfobia",
-    "title": "Discriminacao ou Violencia LGBTQIA+",
+    "title": "Discriminacao ou Violência LGBTQIA+",
     "type": "standard",
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "lgbtfobia",
@@ -15,14 +15,14 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Ha ameaca, perseguicao ou risco de agressao?",
+      "text": "Há ameaça, perseguicao ou risco de agressão?",
       "options": [
         {
           "label": "Sim",
           "level": "alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ]
@@ -36,7 +36,7 @@
           "level": "moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "baixo"
         }
       ]
@@ -51,7 +51,7 @@
       },
       "secondaryService": null,
       "schoolActions": [
-        "Intervencao pedagogica imediata",
+        "Intervenção pedagogica imediata",
         "Acolhimento e validacao do estudante",
         "Acordo de convivencia e monitoramento"
       ],
@@ -65,7 +65,7 @@
       "notifyManagement": true,
       "primaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "secondaryService": {
         "id": "caps-ij",
@@ -73,8 +73,8 @@
       },
       "schoolActions": [
         "Acolhimento com escuta qualificada",
-        "Plano de protecao e acompanhamento",
-        "Contato com responsaveis quando apropriado e seguro"
+        "Plano de proteção e acompanhamento",
+        "Contato com responsáveis quando apropriado e seguro"
       ],
       "uiFlags": {
         "confidential": true,
@@ -86,15 +86,15 @@
       "notifyManagement": true,
       "primaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "secondaryService": {
         "id": "creas-ermelino",
         "name": "CREAS Ermelino Matarazzo"
       },
       "schoolActions": [
-        "Cessar situacao imediatamente e proteger o estudante",
-        "Acionar gestao com confidencialidade",
+        "Cessar situação imediatamente e proteger o estudante",
+        "Acionar gestão com confidencialidade",
         "Encaminhar para apoio especializado quando necessario"
       ],
       "uiFlags": {

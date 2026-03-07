@@ -10,28 +10,28 @@
   "questions": [
     {
       "id": "q1",
-      "text": "A situacao compromete saude ou integridade do estudante?",
+      "text": "A situação compromete saúde ou integridade do estudante?",
       "options": [
         {
           "label": "Sim",
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "moderado"
         }
       ]
     },
     {
       "id": "q2",
-      "text": "Ha risco imediato de abandono ou violencia?",
+      "text": "Há risco imediato de abandono ou violência?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "alto"
         }
       ]
@@ -46,11 +46,11 @@
       },
       "secondaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "schoolActions": [
         "Escuta qualificada",
-        "Contato com responsaveis"
+        "Contato com responsáveis"
       ]
     },
     "alto": {
@@ -64,7 +64,7 @@
         "name": "Conselho Tutelar"
       },
       "schoolActions": [
-        "Comunicar gestao",
+        "Comunicar gestão",
         "Encaminhamento formal"
       ]
     },
@@ -76,10 +76,10 @@
       },
       "secondaryService": {
         "id": "policia-militar",
-        "name": "Policia Militar - 190"
+        "name": "Polícia Militar - 190"
       },
       "schoolActions": [
-        "Garantir protecao imediata",
+        "Garantir proteção imediata",
         "Acionar autoridade competente"
       ]
     }

@@ -10,28 +10,28 @@
   "questions": [
     {
       "id": "q1",
-      "text": "A situacao esta acontecendo agora ou ocorreu muito recentemente (risco imediato)?",
+      "text": "A situação está acontecendo agora ou ocorreu muito recentemente (risco imediato)?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ]
     },
     {
       "id": "q2",
-      "text": "Ha sinais de risco atual (ameaca, coercao, medo intenso de voltar para casa, possivel agressor proximo)?",
+      "text": "Há sinais de risco atual (ameaça, coerção, medo intenso de voltar para casa, possível agressor próximo)?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "alto"
         }
       ]
@@ -49,9 +49,9 @@
         "name": "CREAS Ermelino Matarazzo"
       },
       "schoolActions": [
-        "Acionar gestao imediatamente (minimas pessoas necessarias)",
-        "Garantir escuta protegida e sem insistencia em detalhes",
-        "Manter sigilo reforcado e minimizacao de dados"
+        "Acionar gestão imediatamente (mínimas pessoas necessárias)",
+        "Garantir escuta protegida e sem insistência em detalhes",
+        "Manter sigilo reforçado e minimização de dados"
       ],
       "uiFlags": {
         "confidential": true,
@@ -63,16 +63,16 @@
       "severity": "iminente",
       "primaryService": {
         "id": "policia-militar",
-        "name": "Policia Militar - 190"
+        "name": "Polícia Militar - 190"
       },
       "secondaryService": {
         "id": "conselho-tutelar",
         "name": "Conselho Tutelar"
       },
       "schoolActions": [
-        "Priorizar seguranca fisica imediata",
+        "Priorizar segurança física imediata",
         "Acionar 190 se houver risco atual",
-        "Acionar gestao imediatamente"
+        "Acionar gestão imediatamente"
       ],
       "uiFlags": {
         "confidential": true,

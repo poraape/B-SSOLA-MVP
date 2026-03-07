@@ -17,21 +17,21 @@
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "baixo"
         }
       ]
     },
     {
       "id": "q2",
-      "text": "Ha indicios de trabalho infantil ou situacao familiar grave?",
+      "text": "Há indicios de trabalho infantil ou situação familiar grave?",
       "options": [
         {
           "label": "Sim",
           "level": "alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "moderado"
         }
       ]
@@ -47,7 +47,7 @@
       "secondaryService": null,
       "schoolActions": [
         "Acompanhamento pedagogico",
-        "Contato com responsavel"
+        "Contato com responsável"
       ]
     },
     "moderado": {
@@ -72,7 +72,7 @@
         "name": "CREAS"
       },
       "schoolActions": [
-        "Comunicar gestao imediatamente",
+        "Comunicar gestão imediatamente",
         "Encaminhamento formal"
       ]
     }

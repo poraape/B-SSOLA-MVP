@@ -17,21 +17,21 @@
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "baixo"
         }
       ]
     },
     {
       "id": "q2",
-      "text": "Ha relato de desesperanca intensa ou isolamento extremo?",
+      "text": "Há relato de desesperanca intensa ou isolamento extremo?",
       "options": [
         {
           "label": "Sim",
           "level": "alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "moderado"
         }
       ]
@@ -58,8 +58,8 @@
       },
       "secondaryService": null,
       "schoolActions": [
-        "Encaminhamento para avaliacao psicologica",
-        "Comunicar responsaveis"
+        "Encaminhamento para avaliação psicologica",
+        "Comunicar responsáveis"
       ]
     },
     "alto": {
@@ -73,8 +73,8 @@
         "name": "Conselho Tutelar"
       },
       "schoolActions": [
-        "Protecao ativa",
-        "Comunicar gestao imediatamente"
+        "Proteção ativa",
+        "Comunicar gestão imediatamente"
       ]
     }
   }

@@ -10,14 +10,14 @@
   "questions": [
     {
       "id": "q1",
-      "text": "O estudante esta sob efeito neste momento?",
+      "text": "O estudante está sob efeito neste momento?",
       "options": [
         {
           "label": "Sim",
           "level": "alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "moderado"
         }
       ]
@@ -32,11 +32,11 @@
       },
       "secondaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "schoolActions": [
         "Escuta sem julgamento",
-        "Orientar responsavel"
+        "Orientar responsável"
       ]
     },
     "alto": {
@@ -50,8 +50,8 @@
         "name": "CAPS AD II"
       },
       "schoolActions": [
-        "Avaliacao medica imediata",
-        "Garantir seguranca"
+        "Avaliação medica imediata",
+        "Garantir segurança"
       ]
     }
   }

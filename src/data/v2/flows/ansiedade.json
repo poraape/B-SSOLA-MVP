@@ -17,21 +17,21 @@
           "next": "q2"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "baixo"
         }
       ]
     },
     {
       "id": "q2",
-      "text": "Ha perda de controle, risco fisico ou desmaio?",
+      "text": "Há perda de controle, risco fisico ou desmaio?",
       "options": [
         {
           "label": "Sim",
           "level": "alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "moderado"
         }
       ]
@@ -58,11 +58,11 @@
       },
       "secondaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "schoolActions": [
         "Escuta qualificada",
-        "Contato com responsavel"
+        "Contato com responsável"
       ]
     },
     "alto": {
@@ -77,7 +77,7 @@
       },
       "schoolActions": [
         "Monitorar sinais vitais",
-        "Nao deixar estudante sozinho"
+        "Não deixar estudante sozinho"
       ]
     }
   }

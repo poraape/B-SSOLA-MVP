@@ -17,21 +17,21 @@
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ]
     },
     {
       "id": "q2",
-      "text": "Ha plano definido ou acesso a meios?",
+      "text": "Há plano definido ou acesso a meios?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "alto"
         }
       ]
@@ -49,8 +49,8 @@
         "name": "CVV - 188"
       },
       "schoolActions": [
-        "Nao deixar estudante sozinho",
-        "Comunicar gestao imediatamente"
+        "Não deixar estudante sozinho",
+        "Comunicar gestão imediatamente"
       ]
     },
     "iminente": {

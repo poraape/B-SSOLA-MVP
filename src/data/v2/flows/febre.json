@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "flow_febre",
-    "title": "Febre ou Suspeita de Infeccao",
+    "title": "Febre ou Suspeita de Infecção",
     "type": "standard",
     "categoryId": "saude_bem_estar",
     "subcategoryId": "febre_infeccao",
@@ -10,28 +10,28 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Febre acima de 39C ou acompanhada de convulsao?",
+      "text": "Febre acima de 39°C ou acompanhada de convulsão?",
       "options": [
         {
           "label": "Sim",
           "level": "alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ]
     },
     {
       "id": "q2",
-      "text": "Ha sintomas respiratorios ou dor intensa?",
+      "text": "Há sintomas respiratórios ou dor intensa?",
       "options": [
         {
           "label": "Sim",
           "level": "moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "baixo"
         }
       ]
@@ -46,7 +46,7 @@
       },
       "secondaryService": null,
       "schoolActions": [
-        "Aguardar retirada por responsavel",
+        "Aguardar retirada por responsável",
         "Monitorar temperatura"
       ]
     },
@@ -58,7 +58,7 @@
       },
       "secondaryService": null,
       "schoolActions": [
-        "Orientar responsavel",
+        "Orientar responsável",
         "Encaminhar para UBS"
       ]
     },

@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "flow_reintegracao_pos_suspensao",
-    "title": "Reintegracao apos Suspensao",
+    "title": "Reintegracao apos Suspensão",
     "type": "standard",
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "reintegracao_pos_suspensao",
@@ -10,7 +10,7 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Suspensao cumprida integralmente?",
+      "text": "Suspensão cumprida integralmente?",
       "options": [
         {
           "label": "Sim",
@@ -24,7 +24,7 @@
       "severity": "baixo",
       "primaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "secondaryService": null,
       "schoolActions": [

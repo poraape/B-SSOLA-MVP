@@ -10,7 +10,7 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Ha fogo ativo ou fumaca?",
+      "text": "Há fogo ativo ou fumaca?",
       "options": [
         {
           "label": "Sim",
@@ -28,10 +28,10 @@
       },
       "secondaryService": {
         "id": "policia-militar",
-        "name": "Policia Militar - 190"
+        "name": "Polícia Militar - 190"
       },
       "schoolActions": [
-        "Evacuacao imediata",
+        "Evacuação imediata",
         "Seguir plano de abandono"
       ]
     }

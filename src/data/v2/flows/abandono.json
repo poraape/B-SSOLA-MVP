@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "flow_abandono",
-    "title": "Abandono ou Situacao de Rua",
+    "title": "Abandono ou Situação de Rua",
     "type": "standard",
     "categoryId": "protecao_direitos",
     "subcategoryId": "abandono_rua",
@@ -10,14 +10,14 @@
   "questions": [
     {
       "id": "q1",
-      "text": "O estudante esta atualmente sem responsavel ou moradia?",
+      "text": "O estudante está atualmente sem responsável ou moradia?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "alto"
         }
       ]
@@ -35,7 +35,7 @@
         "name": "Conselho Tutelar"
       },
       "schoolActions": [
-        "Comunicar gestao imediatamente"
+        "Comunicar gestão imediatamente"
       ]
     },
     "iminente": {
@@ -46,10 +46,10 @@
       },
       "secondaryService": {
         "id": "policia-militar",
-        "name": "Policia Militar - 190"
+        "name": "Polícia Militar - 190"
       },
       "schoolActions": [
-        "Garantir protecao imediata"
+        "Garantir proteção imediata"
       ]
     }
   }

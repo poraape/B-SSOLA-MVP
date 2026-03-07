@@ -1,13 +1,13 @@
 {
   "meta": {
     "id": "flow_agressao_verbal",
-    "title": "Agressao Verbal ou Ameacas",
+    "title": "Agressão Verbal ou Ameaças",
     "type": "standard",
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "agressao_verbal",
     "keywords": [
-      "agressao verbal",
-      "ameaca",
+      "agressão verbal",
+      "ameaça",
       "intimidacao",
       "humilhacao"
     ]
@@ -15,14 +15,14 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Ha ameaca de violencia fisica?",
+      "text": "Há ameaça de violência física?",
       "options": [
         {
           "label": "Sim",
           "level": "moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ]
@@ -36,7 +36,7 @@
           "level": "moderado"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "baixo"
         }
       ]
@@ -61,12 +61,12 @@
       "notifyManagement": true,
       "primaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "secondaryService": null,
       "schoolActions": [
         "Registrar formalmente a ocorrencia",
-        "Comunicar responsaveis",
+        "Comunicar responsáveis",
         "Definir plano de acompanhamento com a equipe escolar"
       ]
     }

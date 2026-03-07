@@ -17,21 +17,21 @@
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ]
     },
     {
       "id": "q2",
-      "text": "Houve ameaca de uso?",
+      "text": "Houve ameaça de uso?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "alto"
         }
       ]
@@ -42,23 +42,23 @@
       "severity": "alto",
       "primaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "secondaryService": {
         "id": "policia-militar",
-        "name": "Policia Militar - 190"
+        "name": "Polícia Militar - 190"
       },
       "schoolActions": [
         "Isolar estudante",
         "Recolher objeto se seguro",
-        "Comunicar responsaveis"
+        "Comunicar responsáveis"
       ]
     },
     "iminente": {
       "severity": "iminente",
       "primaryService": {
         "id": "policia-militar",
-        "name": "Policia Militar - 190"
+        "name": "Polícia Militar - 190"
       },
       "secondaryService": null,
       "schoolActions": [

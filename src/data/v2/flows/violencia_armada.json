@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "flow_violencia_armada",
-    "title": "Violencia Armada ou Tiroteio",
+    "title": "Violência Armada ou Tiroteio",
     "type": "security_emergency",
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "violencia_armada",
@@ -10,7 +10,7 @@
   "questions": [
     {
       "id": "q1",
-      "text": "Ha tiroteio ou ameaca armada ativa?",
+      "text": "Há tiroteio ou ameaça armada ativa?",
       "options": [
         {
           "label": "Sim",
@@ -24,12 +24,12 @@
       "severity": "iminente",
       "primaryService": {
         "id": "policia-militar",
-        "name": "Policia Militar - 190"
+        "name": "Polícia Militar - 190"
       },
       "secondaryService": null,
       "schoolActions": [
         "Protocolo de abrigo seguro",
-        "Nao evacuar (manter todos abrigados)",
+        "Não evacuar (manter todos abrigados)",
         "Acionar 190"
       ]
     }

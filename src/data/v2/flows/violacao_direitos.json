@@ -10,28 +10,28 @@
   "questions": [
     {
       "id": "q1",
-      "text": "A situacao envolve risco imediato a integridade do estudante?",
+      "text": "A situação envolve risco imediato a integridade do estudante?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "next": "q2"
         }
       ]
     },
     {
       "id": "q2",
-      "text": "Ha indicio de violencia, negligencia grave ou exploracao continua?",
+      "text": "Há indicio de violência, negligencia grave ou exploracao continua?",
       "options": [
         {
           "label": "Sim",
           "level": "alto"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "moderado"
         }
       ]
@@ -46,10 +46,10 @@
       },
       "secondaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "schoolActions": [
-        "Acionar gestao para triagem qualificada",
+        "Acionar gestão para triagem qualificada",
         "Encaminhar para suporte socioassistencial quando indicado"
       ],
       "uiFlags": {
@@ -68,8 +68,8 @@
         "name": "Conselho Tutelar"
       },
       "schoolActions": [
-        "Acionar gestao imediatamente",
-        "Encaminhar formalmente a rede de protecao (minimos dados necessarios)"
+        "Acionar gestão imediatamente",
+        "Encaminhar formalmente a rede de proteção (mínimos dados necessários)"
       ],
       "uiFlags": {
         "confidential": true,
@@ -80,16 +80,16 @@
       "severity": "iminente",
       "primaryService": {
         "id": "policia-militar",
-        "name": "Policia Militar - 190"
+        "name": "Polícia Militar - 190"
       },
       "secondaryService": {
         "id": "conselho-tutelar",
         "name": "Conselho Tutelar"
       },
       "schoolActions": [
-        "Priorizar seguranca imediata",
+        "Priorizar segurança imediata",
         "Acionar 190 quando houver risco atual",
-        "Acionar gestao imediatamente"
+        "Acionar gestão imediatamente"
       ],
       "uiFlags": {
         "confidential": true,

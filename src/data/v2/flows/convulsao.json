@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "flow_convulsao",
-    "title": "Convulsao",
+    "title": "Convulsão",
     "type": "medical_emergency",
     "categoryId": "emergencias_seguranca",
     "subcategoryId": "convulsao_perda_consciencia",
@@ -10,14 +10,14 @@
   "questions": [
     {
       "id": "q1",
-      "text": "A convulsao esta acontecendo agora?",
+      "text": "A convulsão está acontecendo agora?",
       "options": [
         {
           "label": "Sim",
           "level": "iminente"
         },
         {
-          "label": "Nao",
+          "label": "Não",
           "level": "alto"
         }
       ]
@@ -32,10 +32,10 @@
       },
       "secondaryService": {
         "id": "gestao-direcao",
-        "name": "Direcao Escolar"
+        "name": "Direção Escolar"
       },
       "schoolActions": [
-        "Posicao lateral de seguranca",
+        "Posicao lateral de segurança",
         "Monitorar respiracao"
       ]
     },
@@ -51,7 +51,7 @@
       },
       "schoolActions": [
         "Acionar 192 imediatamente",
-        "Nao colocar nada na boca do estudante"
+        "Não colocar nada na boca do estudante"
       ]
     }
   }
