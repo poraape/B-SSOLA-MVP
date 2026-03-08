@@ -24,8 +24,8 @@ export const NetworkPage: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [isDrawerOpen, setIsDrawerOpen] = useState(!!serviceId);
-  const [mobileView, setMobileView] = useState<'list' | 'map'>('list');
+  const [isDrawerOpen, setIsDrawerOpen] = useState(Boolean(serviceId));
+  const [mobileView, setMobileView] = useState<'list' | 'map'>(serviceId ? 'map' : 'list');
 
   useEffect(() => {
     let active = true;
@@ -39,6 +39,14 @@ export const NetworkPage: React.FC = () => {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    const hasSelectedService = Boolean(serviceId);
+    setIsDrawerOpen(hasSelectedService);
+    if (hasSelectedService) {
+      setMobileView('map');
+    }
+  }, [serviceId]);
 
   const effectiveHighlightId = highlightId || recommendation.highlightId;
   const effectiveQueryType = queryType || recommendation.queryType;
@@ -100,6 +108,13 @@ export const NetworkPage: React.FC = () => {
     return allServices.find(s => s.id === serviceId) || null;
   }, [allServices, serviceId]);
 
+  const highlightedService = useMemo(() => {
+    if (safeQuery?.kind !== 'highlight') return null;
+    return servicesById.get(safeQuery.id) || null;
+  }, [safeQuery, servicesById]);
+
+  const hasGuidedContext = Boolean(hasQueryContext || isUsingRecommendationContext);
+
   const handleSelectService = (service: Service) => {
     navigate(`/rede/servico/${service.id}`);
     setIsDrawerOpen(true);
@@ -111,6 +126,16 @@ export const NetworkPage: React.FC = () => {
       <header className="rounded-[20px] border border-slate-200/70 bg-white/45 px-5 py-4 shadow-[0_16px_36px_-26px_rgba(15,23,42,0.35)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/35">
         <h1 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">Rede de apoio</h1>
         <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">Localize serviços e encaminhamentos com mais rapidez.</p>
+        {hasGuidedContext && (
+          <div className="mt-3 rounded-[14px] border border-emerald-200 bg-emerald-50/85 px-3 py-2 text-xs text-emerald-900 dark:border-emerald-800 dark:bg-emerald-900/25 dark:text-emerald-200">
+            <p className="font-black uppercase tracking-widest text-[11px]">Continuação da orientação institucional</p>
+            <p className="mt-1">
+              {highlightedService
+                ? `Serviço indicado em destaque: ${highlightedService.name}.`
+                : 'Serviços indicados para esta situação em destaque.'}
+            </p>
+          </div>
+        )}
       </header>
 
       <div className="md:hidden space-y-4">
@@ -141,7 +166,7 @@ export const NetworkPage: React.FC = () => {
           <div className="flex w-full flex-col overflow-hidden rounded-[20px] border border-slate-200/85 bg-white/85 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/80">
             {isUsingRecommendationContext && (
               <div className="mx-4 mt-4 rounded-[14px] border border-emerald-200 bg-emerald-50/85 px-3 py-2 text-xs text-emerald-800 dark:border-emerald-800 dark:bg-emerald-900/25 dark:text-emerald-300">
-                <span>Serviços recomendados para esta situação · </span>
+                <span>Serviços indicados para esta situação · </span>
                 <button
                   onClick={() => {
                     setRecommendation({ highlightId: null, queryType: null });
@@ -209,7 +234,7 @@ export const NetworkPage: React.FC = () => {
         <div className="flex w-full flex-col overflow-hidden rounded-[20px] border border-slate-200/85 bg-white/85 shadow-[0_12px_24px_-20px_rgba(15,23,42,0.45)] dark:border-slate-700 dark:bg-slate-900/80 md:w-80">
           {isUsingRecommendationContext && (
             <div className="mx-4 mt-4 rounded-[14px] border border-emerald-200 bg-emerald-50/85 px-3 py-2 text-xs text-emerald-800 dark:border-emerald-800 dark:bg-emerald-900/25 dark:text-emerald-300">
-              <span>Serviços recomendados para esta situação · </span>
+              <span>Serviços indicados para esta situação · </span>
               <button
                 onClick={() => {
                   setRecommendation({ highlightId: null, queryType: null });

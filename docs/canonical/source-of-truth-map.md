@@ -40,6 +40,7 @@
 
 - Glossário de UI (linguagem): `docs/execution/ui-glossary.md`
 - Contratos de execução (CI): `docs/execution/contracts.md`
+- Matriz canônica de encaminhamento territorial (Bloco 3): `docs/canonical/referral-matrix-bloco-3.md`
 
 ## Pontos ainda não resolvidos (explícitos)
 
