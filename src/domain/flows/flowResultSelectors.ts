@@ -1,5 +1,5 @@
-import flowResultMessages from '../../data/flowResultMessage.json';
 import { FlowPriority, FlowResultMessage } from '../../types';
+import { model } from '../model/loadModel';
 
 const isFlowResultLevel = (
   level: FlowPriority | undefined
@@ -14,9 +14,7 @@ export const getFlowResultMessage = (
     return undefined;
   }
 
-  return  flowResultMessages.find(
-    message => message.flowId === flowId && message.level === level
-  ) as FlowResultMessage | undefined;
+  return model.flowResultMessagesByFlowIdAndLevel?.[flowId]?.[level];
 };
 
 export const buildNetworkServiceLink = (queryType: string): string => {

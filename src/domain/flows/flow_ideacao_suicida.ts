@@ -163,7 +163,7 @@ export const flow_ideacao_suicida: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "O estudante fala em se machucar agora ou apresenta plano com acesso a meio?",
+      "question": "Há fala de se machucar agora ou sinais de risco imediato de autoagressão percebidos pela escola (sem aprofundar detalhes)?",
       "actions": [
         {
           "label": "Sim",

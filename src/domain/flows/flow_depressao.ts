@@ -23,7 +23,7 @@ export const flow_depressao: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Os sintomas persistem por semanas e impactam desempenho escolar?",
+      "question": "A escola observou por algumas semanas tristeza, desinteresse ou isolamento com piora de participação e aprendizagem?",
       "actions": [
         {
           "label": "Sim",
@@ -42,7 +42,7 @@ export const flow_depressao: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Há relato de desesperança intensa ou isolamento extremo?",
+      "question": "Há piora importante do vínculo escolar, com sofrimento observável e dificuldade de manter a rotina na escola?",
       "actions": [
         {
           "label": "Sim",
@@ -77,10 +77,11 @@ export const flow_depressao: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situação que exige acompanhamento institucional estruturado.",
+      "description": "Situação que exige acompanhamento institucional estruturado e articulação com responsáveis.",
       "actions": [
-        "Encaminhamento para avaliação psicologica",
-        "Entrar em contato com os responsáveis"
+        "Avisar a gestão escolar e registrar sinais observáveis",
+        "Entrar em contato com os responsáveis para alinhamento de apoio",
+        "Orientar responsáveis sobre busca de avaliação especializada na rede"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -91,10 +92,11 @@ export const flow_depressao: FlowSpec = {
     {
       "id": "outcome_alto",
       "label": "Proteção e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
+      "description": "Situação de alta proteção escolar. Organize resposta imediata com a gestão e acionamento da rede.",
       "actions": [
-        "Proteção ativa",
-        "Avisar a gestão escolar imediatamente"
+        "Garantir acolhimento protegido e não deixar o estudante sem referência adulta",
+        "Avisar a gestão escolar imediatamente",
+        "Acionar responsáveis e orientar busca prioritária de avaliação especializada na rede"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",

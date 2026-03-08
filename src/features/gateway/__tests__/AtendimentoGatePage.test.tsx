@@ -50,7 +50,7 @@ describe('AtendimentoGatePage', () => {
     expect(screen.getByText('Nível de atenção: Elevado')).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Ver recomendação inicial' }));
 
-    expect(screen.getByText('Sinal crítico identificado.')).toBeTruthy();
+    expect(screen.getByText('Há sinais que exigem resposta imediata da escola.')).toBeTruthy();
 
     vi.advanceTimersByTime(600);
     expect(navigateMock).toHaveBeenCalledWith('/fluxo/flow_emergencia_medica');
@@ -63,7 +63,7 @@ describe('AtendimentoGatePage', () => {
     expect(screen.getByText('Nível de atenção: Baixo')).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Ver recomendação inicial' }));
 
-    expect(screen.getByText('Nenhum sinal crítico detectado.')).toBeTruthy();
+    expect(screen.getByText('Nenhum sinal crítico marcado.')).toBeTruthy();
 
     vi.advanceTimersByTime(600);
     expect(navigateMock).toHaveBeenCalledWith('/categorias');

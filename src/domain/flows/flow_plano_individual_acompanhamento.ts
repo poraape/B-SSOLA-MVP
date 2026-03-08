@@ -23,7 +23,7 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Há recorrência de situações de convivência ou participação escolar?",
+      "question": "Há repetição observável nas últimas semanas, com impacto na convivência ou participação, mesmo após apoios iniciais da escola?",
       "actions": [
         {
           "label": "Sim",

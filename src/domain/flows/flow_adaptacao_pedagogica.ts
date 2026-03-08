@@ -23,14 +23,10 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Há registros escolares de barreiras recorrentes à participação e aprendizagem?",
+      "question": "A equipe já registrou as barreiras observáveis de participação e aprendizagem para orientar os apoios pedagógicos?",
       "actions": [
         {
-          "label": "Sim",
-          "next": "outcome_baixo"
-        },
-        {
-          "label": "Não",
+          "label": "Continuar",
           "next": "outcome_baixo"
         }
       ],
