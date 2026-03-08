@@ -82,7 +82,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
             </div>
 
             <div className="rounded-2xl border border-slate-200 bg-white p-5">
-              <p className="text-xs font-bold uppercase tracking-widest text-slate-600">No escopo do professor</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-600">No escopo da atuação escolar</p>
               <ul className="mt-3 space-y-2">
                 {flowResultMessage.teacherScope.doThis.map((action, index) => (
                   <li key={`${action}-${index}`} className="text-sm text-slate-800">• {action}</li>
@@ -108,13 +108,13 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
           {result.uiFlags?.confidential && (
             <div className="bg-amber-50 border border-amber-200 p-4 rounded-2xl flex items-center gap-3 text-amber-800">
               <ShieldAlert className="w-5 h-5 shrink-0" />
-              <p className="text-xs font-bold uppercase tracking-widest">Protocolo de Sigilo Reforçado Ativado</p>
+              <p className="text-xs font-bold uppercase tracking-widest">Sigilo Reforçado Ativado</p>
             </div>
           )}
           {result.uiFlags?.avoidRetraumatization && (
             <div className="bg-rose-50 border border-rose-200 p-4 rounded-2xl flex items-center gap-3 text-rose-800">
               <Heart className="w-5 h-5 shrink-0" />
-              <p className="text-xs font-bold uppercase tracking-widest">Atenção: Evitar Revitimização / Escuta Única</p>
+              <p className="text-xs font-bold uppercase tracking-widest">Atenção: Evitar Revitimização e Repetição de Relato</p>
             </div>
           )}
         </div>
@@ -197,7 +197,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
       <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest leading-relaxed">
         {mode === 'formacao'
           ? 'Modo Formação ativo — Conteúdo ampliado para fins pedagógicos.'
-          : 'Ferramenta de apoio institucional. Não substitui avaliação técnica especializada.'}
+          : 'Ferramenta de apoio educacional-institucional. Não substitui avaliação clínica, socioassistencial, de proteção ou justiça.'}
       </p>
     </div>
   );

@@ -5,8 +5,8 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
     "id": "flow_suspeita_neurodivergencia",
     "categoryId": "inclusao_acessibilidade",
     "subcategoryId": "suspeita_neurodivergencia",
-    "title": "Suspeita de TEA ou TDAH",
-    "description": "Orientações praticas para a equipe escolar sobre Suspeita de TEA, TDAH ou Neurodivergencia.",
+    "title": "Sinais Persistentes de Necessidade de Apoio à Aprendizagem",
+    "description": "Orientações para registrar sinais observáveis de aprendizagem e participação, organizar apoio pedagógico e acionar gestão/rede quando necessário.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Suspeita de TEA, TDAH ou Neurodivergencia. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Situação identificada: sinais persistentes de necessidade de apoio à aprendizagem e participação. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "barreira_acesso"
       ]
@@ -23,7 +23,7 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Há prejuizo significativo no aprendizado?",
+      "question": "Há prejuízo persistente de participação e aprendizagem, mesmo com apoio pedagógico inicial?",
       "actions": [
         {
           "label": "Sim",
@@ -57,8 +57,9 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
       "label": "Acompanhamento Institucional",
       "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
-        "Orientar responsáveis para avaliação clinica",
-        "Registrar plano pedagógico adaptado"
+        "Registrar sinais observáveis em sala e no contexto escolar",
+        "Organizar plano pedagógico adaptado com gestão e equipe de apoio",
+        "Orientar responsáveis sobre acesso à rede especializada quando necessário"
       ],
       "timeline": "Horas",
       "riskLevel": "MODERATE",
@@ -91,12 +92,12 @@ export const flow_suspeita_neurodivergencia: FlowSpec = {
     "riskSignals": [
       {
         "id": "barreira_acesso",
-        "label": "Barreira de acesso",
+        "label": "Barreira de participação e acesso",
         "weight": 1
       },
       {
         "id": "dificuldade_persistente",
-        "label": "Dificuldade persistente",
+        "label": "Dificuldade persistente de aprendizagem",
         "weight": 2
       },
       {

@@ -16,17 +16,17 @@ const CATEGORY_PRESENTATION: Record<
   }
 > = {
   emergencias_seguranca: {
-    label: 'Emergências e Segurança',
+    label: 'Urgência Médica e Segurança Física',
     icon: 'ShieldAlert',
     color: 'from-rose-500/35 to-red-500/10',
   },
   saude_bem_estar: {
-    label: 'Saúde e Bem-Estar',
+    label: 'Saúde Física e Bem-Estar Escolar',
     icon: 'HeartPulse',
     color: 'from-emerald-500/35 to-green-500/10',
   },
   saude_emocional: {
-    label: 'Saúde Emocional',
+    label: 'Sofrimento Emocional e Saúde',
     icon: 'Brain',
     color: 'from-purple-500/35 to-fuchsia-500/10',
   },
@@ -36,17 +36,17 @@ const CATEGORY_PRESENTATION: Record<
     color: 'from-orange-500/35 to-amber-500/10',
   },
   protecao_direitos: {
-    label: 'Proteção e Direitos',
+    label: 'Proteção e Violação de Direitos',
     icon: 'Scale',
     color: 'from-blue-500/35 to-cyan-500/10',
   },
   apoio_social_familiar: {
-    label: 'Apoio Social e Familiar',
+    label: 'Vulnerabilidade Social e Familiar',
     icon: 'Home',
     color: 'from-teal-500/35 to-emerald-500/10',
   },
   inclusao_acessibilidade: {
-    label: 'Inclusão e Acessibilidade',
+    label: 'Pedagógico, Aprendizagem e Inclusão',
     icon: 'Accessibility',
     color: 'from-violet-500/35 to-indigo-500/10',
   },

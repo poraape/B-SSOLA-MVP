@@ -352,7 +352,7 @@
     "priorityService": {
       "queryType": "type=externo",
       "label": "SAMU - 192",
-      "description": "Intervenção médica de emergência e estabilização clínica."
+      "description": "Intervenção médica de emergência e estabilização inicial."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -387,7 +387,7 @@
         "Observe as características visuais",
         "Mantenha a aula normalmente"
       ],
-      "notYours": "Não aborde ou interrogue o indivíduo do lado de fora."
+      "notYours": "Não aborde ou pressione o indivíduo do lado de fora."
     }
   },
   {
@@ -433,7 +433,7 @@
         "Tranque a porta imediatamente",
         "Conte o número de alunos na sala"
       ],
-      "notYours": "Não saia no corredor para investigar o ocorrido."
+      "notYours": "Não saia no corredor para verificar sozinho o ocorrido."
     }
   },
   {
@@ -502,7 +502,7 @@
         "Registre fatos objetivos",
         "Encaminhe imediatamente à gestão"
       ],
-      "notYours": "Não investigue autores ou locais; preserve o aluno."
+      "notYours": "Não busque autores ou locais por conta própria; preserve o estudante."
     }
   },
   {
@@ -904,7 +904,7 @@
     "priorityService": {
       "queryType": "type=externo",
       "label": "SAMU - 192",
-      "description": "Manejo médico especializado em crise severa de base neuropsiquiátrica."
+      "description": "Atenção especializada em crise severa de saúde mental."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -1031,7 +1031,7 @@
         "Ouça atentamente sem alarmar",
         "Comunique a gestão formalmente"
       ],
-      "notYours": "Não reviste mochilas ou interrogue alunos."
+      "notYours": "Não reviste mochilas nem pressione estudantes com perguntas."
     }
   },
   {
@@ -1231,7 +1231,7 @@
     "complementaryService": {
       "queryType": "highlight=ubs-ermelino",
       "label": "UBS Ermelino Matarazzo",
-      "description": "Exame médico investigativo sobre o evento sincopal."
+      "description": "Avaliação médica para esclarecer o episódio de desmaio."
     },
     "teacherScope": {
       "doThis": [
@@ -1406,7 +1406,7 @@
     "flowId": "flow_isolamento",
     "level": "moderate",
     "headline": "Ausência total de fala com professores e colegas por dias consecutivos.",
-    "nextStep": "Comunique a gestão formalmente para convocar os pais e investigar causas.",
+    "nextStep": "Comunique a gestão formalmente para convocar os responsáveis, registrar sinais observados e definir apoio institucional.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
@@ -1415,7 +1415,7 @@
     "complementaryService": {
       "queryType": "highlight=caps-ij",
       "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
-      "description": "Atendimento psiquiátrico de transtornos de isolamento social."
+      "description": "Atenção especializada em saúde mental para isolamento social persistente."
     },
     "teacherScope": {
       "doThis": [
@@ -1606,7 +1606,7 @@
         "Relate impactos no aprendizado",
         "Ofereça rotinas previsíveis"
       ],
-      "notYours": "Não pressione a família a obter laudos nem faça cobrança de saúde."
+      "notYours": "Não pressione a família a obter documentação técnica especializada nem faça cobrança de saúde."
     }
   },
   {
@@ -1790,7 +1790,7 @@
         "Acompanhe o aluno até a gestão",
         "Relate a queixa com exatidão"
       ],
-      "notYours": "Não realize diagnósticos clínicos."
+      "notYours": "Não realize definições clínicas especializadas."
     }
   },
   {
@@ -1852,7 +1852,7 @@
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Contato familiar para investigar suspeita primária."
+      "description": "Contato com a família para registro inicial e definição de encaminhamento."
     },
     "teacherScope": {
       "doThis": [
@@ -1882,7 +1882,7 @@
         "Garanta acompanhante no trajeto",
         "Monitore sinais vitais visuais"
       ],
-      "notYours": "Não faça interrogatório investigativo sobre o que foi consumido."
+      "notYours": "Não faça perguntas para apuração sobre o que foi consumido."
     }
   },
   {
@@ -2059,7 +2059,7 @@
     "complementaryService": {
       "queryType": "highlight=ubs-ermelino",
       "label": "UBS Ermelino Matarazzo",
-      "description": "Avaliação médica clínica preventiva."
+      "description": "Avaliação médica preventiva."
     },
     "teacherScope": {
       "doThis": [
@@ -2261,7 +2261,7 @@
     "priorityService": {
       "queryType": "highlight=dp-62",
       "label": "62º DP – Ermelino Matarazzo",
-      "description": "Registro oficial e investigação por autoridade competente."
+      "description": "Registro oficial e apuração por autoridade competente."
     },
     "complementaryService": {
       "queryType": "highlight=mp-infancia",
@@ -2549,7 +2549,7 @@
         "Registre a fala sem interpretar",
         "Mantenha o aluno acompanhado"
       ],
-      "notYours": "Não investigue quem é o responsável nem faça perguntas invasivas."
+      "notYours": "Não tente identificar responsáveis por conta própria nem faça perguntas invasivas."
     }
   },
   {
@@ -2641,7 +2641,7 @@
         "Ouça o aluno sem julgamentos",
         "Repasse falas de risco à gestão"
       ],
-      "notYours": "Não investigue a fundo as causas familiares do sofrimento."
+      "notYours": "Não aprofunde apuração das causas familiares do sofrimento."
     }
   },
   {
@@ -2802,7 +2802,7 @@
         "Registre a fala com palavras exatas",
         "Acompanhe o aluno até a gestão"
       ],
-      "notYours": "Não conduza entrevistas longas nem faça investigação sozinho."
+      "notYours": "Não conduza entrevistas longas; registre sinais observáveis e acione a gestão."
     }
   },
   {
@@ -2963,7 +2963,7 @@
         "Anote o que o aluno relatou",
         "Mantenha a rotina da sala"
       ],
-      "notYours": "Não faça interrogatórios médicos ao aluno."
+      "notYours": "Não conduza avaliação clínica detalhada com o estudante."
     }
   },
   {
@@ -3515,7 +3515,7 @@
         "Anote dias e impactos nas aulas",
         "Evite expor o aluno"
       ],
-      "notYours": "Não interrogue sobre local, patrão ou detalhes do trabalho."
+      "notYours": "Não pressione por local, patrão ou detalhes do trabalho."
     }
   },
   {

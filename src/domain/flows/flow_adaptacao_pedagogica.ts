@@ -5,8 +5,8 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
     "id": "flow_adaptacao_pedagogica",
     "categoryId": "inclusao_acessibilidade",
     "subcategoryId": "adaptacao_pedagogica",
-    "title": "Necessidade de Adaptação Pedagógica",
-    "description": "Orientações praticas para a equipe escolar sobre Necessidade de Adaptação Pedagógica.",
+    "title": "Apoios e Adaptações Pedagógicas",
+    "description": "Orientações para identificar barreiras de aprendizagem e participação, organizar apoios pedagógicos e proteger o vínculo escolar.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Necessidade de Adaptação Pedagógica. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Situação identificada: necessidade de apoio pedagógico e adaptação para participação plena. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "barreira_aprendizagem_persistente"
       ]
@@ -23,7 +23,7 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Há laudo ou indicacao formal?",
+      "question": "Há registros escolares de barreiras recorrentes à participação e aprendizagem?",
       "actions": [
         {
           "label": "Sim",
@@ -47,7 +47,7 @@ export const flow_adaptacao_pedagogica: FlowSpec = {
       "description": "Situação de menor complexidade com monitoramento pedagógico.",
       "actions": [
         "Plano de adaptação individual",
-        "Revisao trimestral"
+        "Revisão trimestral com equipe escolar e responsáveis"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",

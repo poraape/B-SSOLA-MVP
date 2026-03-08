@@ -27,3 +27,19 @@
 | Nenhum serviço próximo           | Nenhum serviço próximo encontrado. Consulte a coordenação pedagógica. | — |
 | Fluxo sem perguntas              | Protocolo em atualização.                       | Escolher outro protocolo     |
 | Processando por muito tempo      | Aguarde um momento...                           | Ir para o início             |
+
+### Regra Editorial Institucional (SP2)
+- A UI deve priorizar linguagem observável, educacional e acionável.
+- Estrutura preferencial de texto: situação observada -> ação imediata -> acionamento da gestão/rede.
+- O app não é diagnóstico clínico e não substitui serviços especializados.
+- Em caso de dúvida, a UI deve reforçar acolhimento, proteção e limites da atuação escolar.
+
+### Termos a evitar na porta de entrada
+- diagnóstico, transtorno, laudo (como pré-condição), investigar causas, interrogatório, veracidade do relato
+
+### Termos preferidos
+- situação observada, sinais observáveis, apoio pedagógico, acolhimento inicial, proteção imediata, registro objetivo, acionar gestão, acionar rede
+
+### Regra para "comportamental"
+- "Comportamental" não deve ser eixo primário, categoria ampla ou rótulo-lixeira.
+- Quando necessário, usar como marcador secundário de apresentação, sempre vinculado a convivência, participação escolar ou aprendizagem.

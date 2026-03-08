@@ -5,8 +5,8 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
     "id": "flow_plano_individual_acompanhamento",
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "plano_acompanhamento",
-    "title": "Plano Individual de Acompanhamento",
-    "description": "Orientações praticas para a equipe escolar sobre Plano Individual de Acompanhamento.",
+    "title": "Plano Individual de Acompanhamento Escolar",
+    "description": "Orientações para organizar acompanhamento institucional em situações recorrentes de convivência e participação escolar.",
     "severity": "MODERATE",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Plano Individual de Acompanhamento. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Situação identificada: necessidade de acompanhamento escolar individual. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
         "conflito_recorrente"
       ]
@@ -23,7 +23,7 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Há reincidencia comportamental?",
+      "question": "Há recorrência de situações de convivência ou participação escolar?",
       "actions": [
         {
           "label": "Sim",
@@ -57,8 +57,8 @@ export const flow_plano_individual_acompanhamento: FlowSpec = {
       "label": "Acompanhamento Institucional",
       "description": "Situação que exige acompanhamento institucional estruturado.",
       "actions": [
-        "Construir PIA com metas claras",
-        "Revisao mensal"
+        "Construir plano individual com metas de convivência e aprendizagem",
+        "Revisão mensal com equipe escolar e responsáveis"
       ],
       "timeline": "Horas",
       "riskLevel": "MODERATE",

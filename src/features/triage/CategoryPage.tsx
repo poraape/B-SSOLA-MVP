@@ -5,7 +5,7 @@ import { getFlowsByCategory } from '../../domain/flows/selectors';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { Card } from '../../components/ui/Card';
 import { getPremiumCategoryIconByName } from '../shared/components/PremiumCategoryIcons';
-import { getCategoryIcon } from '../shared/utils/categoryPresentation';
+import { getCategoryDisplayLabel, getCategoryIcon } from '../shared/utils/categoryPresentation';
 
 const severityWeight: Record<'CRITICAL' | 'HIGH' | 'MODERATE', number> = {
   CRITICAL: 3,
@@ -70,8 +70,15 @@ export const CategoryPage: React.FC = () => {
             {getPremiumCategoryIconByName(getCategoryIcon(category.id), 'h-20 w-20')}
           </div>
           <div className="space-y-2">
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight">{category.label}</h2>
-            <p className="text-slate-500 text-lg max-w-2xl">{category.description}</p>
+            <h2 className="text-3xl font-black text-slate-900 tracking-tight">
+              {getCategoryDisplayLabel(category.id, category.label)}
+            </h2>
+            <p className="text-slate-500 text-lg max-w-2xl">
+              {category.description || 'Selecione uma situação observada para acessar orientações institucionais seguras.'}
+            </p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+              Proteção transversal em todas as decisões
+            </p>
           </div>
         </div>
 
