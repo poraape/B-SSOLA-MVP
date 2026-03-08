@@ -59,10 +59,10 @@ export const AtendimentoGatePage: React.FC = () => {
 
   const selectedCountText = useMemo(() => {
     if (selectedSignals.length === 0) {
-      return 'Nenhum sinal crítico selecionado.';
+      return 'Nenhum sinal crítico marcado.';
     }
 
-    return `${selectedSignals.length} sinal(is) crítico(s) selecionado(s).`;
+    return `${selectedSignals.length} sinal(is) crítico(s) marcado(s).`;
   }, [selectedSignals.length]);
 
   const currentScore = useMemo(
@@ -95,9 +95,11 @@ export const AtendimentoGatePage: React.FC = () => {
           </button>
         </div>
         <h1 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-          Há risco imediato neste momento?
+          Há risco imediato para o estudante ou para a comunidade escolar?
         </h1>
-        <p className="text-slate-600 dark:text-slate-300">Escolha a opção que melhor descreve a situação agora.</p>
+        <p className="text-slate-600 dark:text-slate-300">
+          Observe os sinais do momento. Em caso de dúvida, priorize proteção e acolhimento.
+        </p>
       </header>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -114,7 +116,7 @@ export const AtendimentoGatePage: React.FC = () => {
 
       {isUnsureExpanded && (
         <div className="space-y-4 rounded-2xl border border-blue-200 bg-blue-50/70 p-5 shadow-[0_12px_28px_-22px_rgba(37,99,235,0.7)] dark:border-blue-900 dark:bg-slate-800/90">
-          <h2 className="text-sm font-black uppercase tracking-wider text-slate-700 dark:text-slate-200">Sinais críticos observados</h2>
+          <h2 className="text-sm font-black uppercase tracking-wider text-slate-700 dark:text-slate-200">Sinais críticos observados agora</h2>
           <div className="space-y-3">
             {SIGNAL_OPTIONS.map((signal) => {
               const isChecked = selectedSignals.includes(signal.id);
@@ -149,7 +151,7 @@ export const AtendimentoGatePage: React.FC = () => {
           {explanation && (
             <div className="space-y-2 rounded-xl border border-slate-300 bg-white/85 p-4 shadow-[0_10px_22px_-20px_rgba(15,23,42,0.7)] dark:border-slate-600 dark:bg-slate-900/90">
               <p className="text-xs font-black uppercase tracking-wide text-slate-700 dark:text-slate-300">
-                Recomendação baseada em sinais críticos de risco imediato.
+                Recomendação inicial para primeira resposta escolar.
               </p>
               <p className="text-sm text-slate-800 dark:text-slate-100">{explanation}</p>
             </div>

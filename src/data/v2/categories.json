@@ -1,7 +1,8 @@
 [
   {
     "id": "emergencias_seguranca",
-    "label": "Emergências e Segurança",
+    "label": "Urgência Médica e Segurança Física",
+    "description": "Situações com risco imediato para integridade física que exigem primeira resposta rápida e proteção coletiva.",
     "riskGroup": "emergency",
     "icon": "AlertTriangle",
     "color": "red",
@@ -18,7 +19,8 @@
   },
   {
     "id": "saude_bem_estar",
-    "label": "Saúde e Bem-Estar",
+    "label": "Saúde Física e Bem-Estar Escolar",
+    "description": "Sinais físicos observáveis na rotina escolar que exigem acolhimento inicial, monitoramento e possível encaminhamento.",
     "riskGroup": "medical",
     "icon": "Heart",
     "color": "orange",
@@ -33,7 +35,8 @@
   },
   {
     "id": "saude_emocional",
-    "label": "Saúde Emocional",
+    "label": "Sofrimento Emocional e Saúde",
+    "description": "Sinais de sofrimento emocional que pedem acolhimento, proteção e articulação com apoio interno e rede.",
     "riskGroup": "psychosocial",
     "icon": "Brain",
     "color": "purple",
@@ -49,6 +52,7 @@
   {
     "id": "convivencia_conflitos",
     "label": "Convivência e Conflitos",
+    "description": "Situações de conflito na comunidade escolar com foco em proteção, reparação e acompanhamento institucional.",
     "riskGroup": "violence",
     "icon": "Shield",
     "color": "blue",
@@ -60,12 +64,13 @@
       { "id": "lgbtfobia", "label": "Discriminação ou Violência LGBTQIA+" },
       { "id": "mediacao_restaurativa", "label": "Mediação e Diálogo Restaurativo" },
       { "id": "reintegracao_pos_suspensao", "label": "Reintegração após Afastamento/Suspensão" },
-      { "id": "plano_acompanhamento", "label": "Plano Individual de Acompanhamento" }
+      { "id": "plano_acompanhamento", "label": "Plano Individual de Acompanhamento Escolar" }
     ]
   },
   {
     "id": "protecao_direitos",
-    "label": "Proteção e Direitos",
+    "label": "Proteção e Violação de Direitos",
+    "description": "Situações de possível violação de direitos que exigem proteção imediata e acionamento responsável da rede.",
     "riskGroup": "rights",
     "icon": "Scale",
     "color": "teal",
@@ -80,7 +85,8 @@
   },
   {
     "id": "apoio_social_familiar",
-    "label": "Apoio Social e Familiar",
+    "label": "Vulnerabilidade Social e Familiar",
+    "description": "Condições sociais e familiares que afetam permanência, segurança e aprendizagem, com articulação intersetorial.",
     "riskGroup": "social",
     "icon": "Home",
     "color": "yellow",
@@ -92,13 +98,14 @@
   },
   {
     "id": "inclusao_acessibilidade",
-    "label": "Inclusão e Acessibilidade",
+    "label": "Pedagógico, Aprendizagem e Inclusão",
+    "description": "Barreiras e necessidades de apoio pedagógico para garantir participação e aprendizagem de todos os estudantes.",
     "riskGroup": "structural",
     "icon": "Puzzle",
     "color": "indigo",
     "subcategories": [
-      { "id": "suspeita_neurodivergencia", "label": "Suspeita de TEA, TDAH ou Neurodivergência" },
-      { "id": "adaptacao_pedagogica", "label": "Necessidade de Adaptação Pedagógica" },
+      { "id": "suspeita_neurodivergencia", "label": "Sinais Persistentes de Necessidade de Apoio à Aprendizagem" },
+      { "id": "adaptacao_pedagogica", "label": "Apoios e Adaptações Pedagógicas" },
       { "id": "barreira_acessibilidade", "label": "Barreira de Acessibilidade Física ou Digital" }
     ]
   }

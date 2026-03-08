@@ -135,7 +135,7 @@ export const ResultPage: React.FC = () => {
             <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm">
               <CheckCircle2 className="w-6 h-6" />
             </div>
-            <span className="text-xs font-bold uppercase tracking-widest opacity-80">Resultado da Orientação</span>
+            <span className="text-xs font-bold uppercase tracking-widest opacity-80">Resultado da Orientação Institucional</span>
           </div>
           <h2 className="text-3xl font-black leading-tight tracking-tight">{flow.meta.title}</h2>
           {institutionalPriority && (
@@ -143,6 +143,9 @@ export const ResultPage: React.FC = () => {
               Risco: {PRIORITY_LABELS[institutionalPriority]}
             </div>
           )}
+          <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-blue-100/90">
+            Apoio educacional-institucional. Não substitui avaliação especializada.
+          </p>
         </div>
 
         <div className="p-6 md:p-10 space-y-10">
