@@ -6,18 +6,21 @@ import { ServiceList } from './components/ServiceList';
 import { NetworkMap } from './components/NetworkMap';
 import { ServiceDrawer } from './components/ServiceDrawer';
 import { Service } from '../../types';
-import { toSafeServiceQuery } from '../../domain/services/serviceQuery';
+import { assertServiceQueryAllowed, ParsedServiceQuery } from '../../domain/services/serviceQuery';
 import { NetworkErrorBoundary } from './NetworkErrorBoundary';
 import { useTriageRecommendation } from '../../app/context/TriageRecommendationContext';
 import { loadNetworkServicesWithFacade } from './clients/networkClient';
+
+const normalizeUrlType = (value: string | null): 'interno' | 'externo' | null =>
+  value === 'interno' || value === 'externo' ? value : null;
 
 export const NetworkPage: React.FC = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
   const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const queryType = searchParams.get('type');
-  const highlightId = searchParams.get('highlight');
+  const urlHighlightId = searchParams.get('highlight')?.trim() || null;
+  const urlType = normalizeUrlType(searchParams.get('type'));
   const [allServices, setAllServices] = useState<Service[]>(() => getServices());
   const servicesById = useMemo(() => new Map(allServices.map(service => [service.id, service])), [allServices]);
   const { recommendation, setRecommendation } = useTriageRecommendation();
@@ -48,19 +51,25 @@ export const NetworkPage: React.FC = () => {
     }
   }, [serviceId]);
 
-  const effectiveHighlightId = highlightId || recommendation.highlightId;
-  const effectiveQueryType = queryType || recommendation.queryType;
-  const hasQueryContext = Boolean(effectiveHighlightId || effectiveQueryType);
-  const safeQuery = hasQueryContext
-    ? toSafeServiceQuery(
-        effectiveHighlightId
-          ? `highlight=${effectiveHighlightId}`
-          : `type=${effectiveQueryType}`,
-        servicesById,
-      )
-    : null;
+  const hasExplicitUrlTarget = Boolean(urlHighlightId || urlType);
+  const effectiveHighlightId = urlHighlightId || (!hasExplicitUrlTarget ? recommendation.highlightId : null);
+  const effectiveQueryType = urlType || (!hasExplicitUrlTarget ? recommendation.queryType : null);
+  const safeQuery = useMemo<ParsedServiceQuery | null>(() => {
+    try {
+      if (effectiveHighlightId) {
+        return assertServiceQueryAllowed(`highlight=${effectiveHighlightId}`, servicesById);
+      }
+      if (effectiveQueryType) {
+        return assertServiceQueryAllowed(`type=${effectiveQueryType}`, servicesById);
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  }, [effectiveHighlightId, effectiveQueryType, servicesById]);
+  const hasQueryContext = Boolean(safeQuery);
   const isUsingRecommendationContext =
-    !highlightId && Boolean(recommendation.highlightId || recommendation.queryType);
+    !hasExplicitUrlTarget && Boolean(recommendation.highlightId || recommendation.queryType);
 
   const categories = useMemo(() => {
     return Array.from(new Set(allServices.map(s => s.category)));

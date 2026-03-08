@@ -1,11 +1,10 @@
 import { MapPin, Info, ShieldAlert, Heart } from 'lucide-react';
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { useTriageRecommendation } from '../../../app/context/TriageRecommendationContext';
 import { Collapsible } from '../../../components/ui/Collapsible';
 import { useAppMode } from '../../../domain/appMode/AppModeContext';
-import { buildNetworkServiceLink } from '../../../domain/flows/flowResultSelectors';
+import { buildNetworkNavigationTarget, buildNetworkServiceLink } from '../../../domain/flows/flowResultSelectors';
 import { PremiumResult } from '../../../domain/flows/premiumEngine';
 import { getServiceById } from '../../../domain/flows/selectors';
 import { TriageResult, Flow, FlowResultMessage } from '../../../types';
@@ -31,6 +30,9 @@ const getServiceTypeFromQueryType = (queryType: string | undefined): 'interno' |
   return serviceType === 'interno' || serviceType === 'externo' ? serviceType : null;
 };
 
+const toNetworkServiceType = (serviceType: string | undefined): 'interno' | 'externo' | null =>
+  serviceType === 'interno' || serviceType === 'externo' ? serviceType : null;
+
 interface ResultPanelProps {
   flow: Flow;
   result: TriageResult | PremiumResult;
@@ -39,7 +41,7 @@ interface ResultPanelProps {
 
 export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMessage }) => {
   const { mode } = useAppMode();
-  const { setRecommendation } = useTriageRecommendation();
+  const navigate = useNavigate();
   const primaryService = result.primaryService ? getServiceById(result.primaryService.id) : null;
   const secondaryService = result.secondaryService ? getServiceById(result.secondaryService.id) : null;
 
@@ -49,21 +51,76 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
     ? explanationPoints.map(translateFactor)
     : getTopFactors(appliedRules);
 
-  const recommendationHighlightId =
-    getHighlightIdFromQueryType(flowResultMessage?.priorityService.queryType) ||
-    primaryService?.id ||
-    secondaryService?.id ||
-    null;
-  const recommendationQueryType =
-    getServiceTypeFromQueryType(flowResultMessage?.priorityService.queryType) || null;
+  const priorityTarget = flowResultMessage
+    ? (() => {
+      const serviceId =
+        primaryService?.id ??
+        getHighlightIdFromQueryType(flowResultMessage.priorityService.queryType);
+      const serviceType =
+        toNetworkServiceType(primaryService?.type) ??
+        getServiceTypeFromQueryType(flowResultMessage.priorityService.queryType);
+      if (serviceId) {
+        return buildNetworkNavigationTarget({
+          serviceId,
+          serviceType,
+          source: 'result',
+          slot: 'priority',
+        });
+      }
+      return buildNetworkServiceLink(flowResultMessage.priorityService.queryType, {
+        source: 'result',
+        slot: 'priority',
+      });
+    })()
+    : (primaryService
+      ? buildNetworkNavigationTarget({
+        serviceId: primaryService.id,
+        serviceType: toNetworkServiceType(primaryService.type),
+        source: 'result',
+        slot: 'priority',
+      })
+      : '/rede');
 
-  useEffect(() => {
-    if (!recommendationHighlightId) return;
-    setRecommendation({
-      highlightId: recommendationHighlightId,
-      queryType: recommendationQueryType,
-    });
-  }, [recommendationHighlightId, recommendationQueryType, setRecommendation]);
+  const complementaryTarget = flowResultMessage
+    ? (() => {
+      const serviceId =
+        secondaryService?.id ??
+        getHighlightIdFromQueryType(flowResultMessage.complementaryService.queryType);
+      const serviceType =
+        toNetworkServiceType(secondaryService?.type) ??
+        getServiceTypeFromQueryType(flowResultMessage.complementaryService.queryType);
+      if (serviceId) {
+        return buildNetworkNavigationTarget({
+          serviceId,
+          serviceType,
+          source: 'result',
+          slot: 'complementary',
+        });
+      }
+      return buildNetworkServiceLink(flowResultMessage.complementaryService.queryType, {
+        source: 'result',
+        slot: 'complementary',
+      });
+    })()
+    : (secondaryService
+      ? buildNetworkNavigationTarget({
+        serviceId: secondaryService.id,
+        serviceType: toNetworkServiceType(secondaryService.type),
+        source: 'result',
+        slot: 'complementary',
+      })
+      : '/rede');
+
+  const goToRoute = (path: string) => {
+    navigate(path);
+    // Fallback defensivo para casos de travamento da navegação SPA nesta tela.
+    window.setTimeout(() => {
+      const targetPath = path.split('?')[0];
+      if (window.location.pathname !== targetPath) {
+        window.location.assign(path);
+      }
+    }, 120);
+  };
 
   return (
     <div className="space-y-8">
@@ -98,7 +155,18 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
                   Encaminhamento sugerido
                 </p>
                 <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
-                  <article className="rounded-2xl border border-blue-200/80 bg-blue-50/70 p-4">
+                  <article
+                    className="cursor-pointer rounded-2xl border border-blue-200/80 bg-blue-50/70 p-4"
+                    onClick={() => goToRoute(priorityTarget)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        goToRoute(priorityTarget);
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                  >
                     <p className="text-[11px] font-black uppercase tracking-widest text-blue-700">
                       Serviço Prioritário
                     </p>
@@ -108,14 +176,30 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
                       Acionar primeiro
                     </p>
                     <Link
-                      to={buildNetworkServiceLink(flowResultMessage.priorityService.queryType)}
+                      to={priorityTarget}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        goToRoute(priorityTarget);
+                      }}
                       className="mt-3 inline-flex rounded-full bg-blue-600 px-4 py-2 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-blue-700"
                     >
                       Ver serviços indicados
                     </Link>
                   </article>
 
-                  <article className="rounded-2xl border border-slate-200/80 bg-slate-50/85 p-4">
+                  <article
+                    className="cursor-pointer rounded-2xl border border-slate-200/80 bg-slate-50/85 p-4"
+                    onClick={() => goToRoute(complementaryTarget)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        goToRoute(complementaryTarget);
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                  >
                     <p className="text-[11px] font-black uppercase tracking-widest text-slate-700">
                       Apoio Complementar
                     </p>
@@ -125,7 +209,12 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
                       Pode entrar em seguida
                     </p>
                     <Link
-                      to={buildNetworkServiceLink(flowResultMessage.complementaryService.queryType)}
+                      to={complementaryTarget}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        goToRoute(complementaryTarget);
+                      }}
                       className="mt-3 inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-black uppercase tracking-widest text-slate-700 transition-colors hover:border-slate-400 hover:text-slate-900"
                     >
                       Ver serviços indicados
@@ -172,7 +261,18 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
       {!flowResultMessage && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {primaryService && (
-            <div className="bg-blue-50 border border-blue-100 p-6 rounded-3xl relative group">
+            <div
+              className="bg-blue-50 border border-blue-100 p-6 rounded-3xl relative group cursor-pointer"
+              onClick={() => goToRoute(priorityTarget)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  goToRoute(priorityTarget);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
               <div className="flex items-center gap-2 mb-3 text-blue-600">
                 <MapPin className="w-5 h-5" />
                 <span className="font-bold uppercase text-xs tracking-wider">Serviço Prioritário</span>
@@ -180,7 +280,12 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
               <p className="text-lg font-bold text-blue-900 leading-snug">{primaryService.name}</p>
               <p className="text-sm text-blue-700 mt-2 font-medium">{primaryService.contact.phone}</p>
               <Link
-                to={`/rede/servico/${primaryService.id}?type=interno&highlight=${primaryService.id}`}
+                to={priorityTarget}
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  goToRoute(priorityTarget);
+                }}
                 className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
               >
                 Ver serviços indicados →
@@ -188,7 +293,18 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
             </div>
           )}
           {secondaryService && (
-            <div className="bg-slate-50 border border-slate-100 p-6 rounded-3xl relative group">
+            <div
+              className="bg-slate-50 border border-slate-100 p-6 rounded-3xl relative group cursor-pointer"
+              onClick={() => goToRoute(complementaryTarget)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  goToRoute(complementaryTarget);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
               <div className="flex items-center gap-2 mb-3 text-slate-600">
                 <Info className="w-5 h-5" />
                 <span className="font-bold uppercase text-xs tracking-wider">Apoio Complementar</span>
@@ -196,7 +312,12 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
               <p className="text-lg font-bold text-slate-900 leading-snug">{secondaryService.name}</p>
               <p className="text-sm text-slate-700 mt-2 font-medium">{secondaryService.contact.phone}</p>
               <Link
-                to={`/rede/servico/${secondaryService.id}?highlight=${secondaryService.id}`}
+                to={complementaryTarget}
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  goToRoute(complementaryTarget);
+                }}
                 className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
               >
                 Ver serviços indicados →
