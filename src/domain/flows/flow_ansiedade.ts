@@ -89,10 +89,11 @@ export const flow_ansiedade: FlowSpec = {
     {
       "id": "outcome_alto",
       "label": "Proteção e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
+      "description": "Situação crítica de proteção. Garanta supervisão protegida e acione urgência com apoio da gestão.",
       "actions": [
-        "Monitorar sinais vitais",
-        "Não deixar estudante sozinho"
+        "Manter o estudante em local protegido, com supervisão contínua",
+        "Acionar a gestão escolar e os responsáveis imediatamente",
+        "Acionar urgência (192) se houver risco físico, desmaio ou piora importante"
       ],
       "timeline": "Imediato",
       "riskLevel": "CRITICAL",

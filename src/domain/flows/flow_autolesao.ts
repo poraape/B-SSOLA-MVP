@@ -182,7 +182,7 @@ export const flow_autolesao: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Há historico recorrente e sofrimento intenso?",
+      "question": "A escola observou repetição de episódios de autolesão ou piora recente que exige apoio prioritário?",
       "actions": [
         {
           "label": "Sim",
