@@ -19,6 +19,18 @@ const PrivacyBadge: React.FC = () => (
   </span>
 );
 
+const getHighlightIdFromQueryType = (queryType: string | undefined): string | null => {
+  if (!queryType || !queryType.startsWith('highlight=')) return null;
+  const id = queryType.slice('highlight='.length).trim();
+  return id || null;
+};
+
+const getServiceTypeFromQueryType = (queryType: string | undefined): 'interno' | 'externo' | null => {
+  if (!queryType || !queryType.startsWith('type=')) return null;
+  const serviceType = queryType.slice('type='.length).trim();
+  return serviceType === 'interno' || serviceType === 'externo' ? serviceType : null;
+};
+
 interface ResultPanelProps {
   flow: Flow;
   result: TriageResult | PremiumResult;
@@ -37,8 +49,13 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
     ? explanationPoints.map(translateFactor)
     : getTopFactors(appliedRules);
 
-  const recommendationHighlightId = primaryService?.id || secondaryService?.id || null;
-  const recommendationQueryType = primaryService ? 'interno' : null;
+  const recommendationHighlightId =
+    getHighlightIdFromQueryType(flowResultMessage?.priorityService.queryType) ||
+    primaryService?.id ||
+    secondaryService?.id ||
+    null;
+  const recommendationQueryType =
+    getServiceTypeFromQueryType(flowResultMessage?.priorityService.queryType) || null;
 
   useEffect(() => {
     if (!recommendationHighlightId) return;
@@ -49,46 +66,78 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
   }, [recommendationHighlightId, recommendationQueryType, setRecommendation]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
       <section className="space-y-4">
         {flowResultMessage ? (
           <>
-            <div className="rounded-2xl border border-sky-100 bg-sky-50 p-5">
-              <p className="text-xs font-bold uppercase tracking-widest text-sky-700">Situação observada</p>
-              <h3 className="mt-2 text-lg font-bold text-sky-950">{flowResultMessage.headline}</h3>
-              <p className="mt-3 text-sm font-medium text-sky-900">{flowResultMessage.nextStep}</p>
-            </div>
+            <div className="rounded-[30px] border border-slate-200/75 bg-gradient-to-br from-white via-slate-50/70 to-sky-50/50 p-6 shadow-[0_22px_45px_-34px_rgba(15,23,42,0.5)] md:p-7">
+              <div className="space-y-4">
+                <div className="inline-flex items-center rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-[11px] font-black uppercase tracking-widest text-sky-700">
+                  Situação observada e ação imediata
+                </div>
+                <h3 className="text-xl font-black leading-tight tracking-tight text-slate-950">
+                  {flowResultMessage.headline}
+                </h3>
+                <p className="text-sm font-semibold leading-relaxed text-slate-800">
+                  {flowResultMessage.nextStep}
+                </p>
+                <ul className="grid gap-2.5 md:grid-cols-2">
+                  {flowResultMessage.teacherScope.doThis.map((action, index) => (
+                    <li
+                      key={`${action}-${index}`}
+                      className="rounded-2xl border border-slate-200/80 bg-white/90 px-3.5 py-2.5 text-sm text-slate-800"
+                    >
+                      {action}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link
-                to={buildNetworkServiceLink(flowResultMessage.priorityService.queryType)}
-                className="rounded-2xl border border-blue-100 bg-blue-50 p-5 transition-colors hover:border-blue-300"
-              >
-                <p className="text-xs font-bold uppercase tracking-widest text-blue-700">Serviço Prioritário</p>
-                <p className="mt-2 text-base font-bold text-blue-950">{flowResultMessage.priorityService.label}</p>
-                <p className="mt-2 text-sm text-blue-900">{flowResultMessage.priorityService.description}</p>
-                <p className="mt-3 text-xs font-bold uppercase tracking-widest text-blue-700">Ver serviços indicados</p>
-              </Link>
+              <div className="mt-6 rounded-2xl border border-slate-200/75 bg-white/80 p-4 md:p-5">
+                <p className="text-[11px] font-black uppercase tracking-widest text-slate-600">
+                  Encaminhamento sugerido
+                </p>
+                <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
+                  <article className="rounded-2xl border border-blue-200/80 bg-blue-50/70 p-4">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-blue-700">
+                      Serviço Prioritário
+                    </p>
+                    <p className="mt-2 text-base font-black text-blue-950">{flowResultMessage.priorityService.label}</p>
+                    <p className="mt-1.5 text-sm text-blue-900/90">{flowResultMessage.priorityService.description}</p>
+                    <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-blue-700/90">
+                      Acionar primeiro
+                    </p>
+                    <Link
+                      to={buildNetworkServiceLink(flowResultMessage.priorityService.queryType)}
+                      className="mt-3 inline-flex rounded-full bg-blue-600 px-4 py-2 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-blue-700"
+                    >
+                      Ver serviços indicados
+                    </Link>
+                  </article>
 
-              <Link
-                to={buildNetworkServiceLink(flowResultMessage.complementaryService.queryType)}
-                className="rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-slate-300"
-              >
-                <p className="text-xs font-bold uppercase tracking-widest text-slate-700">Apoio Complementar</p>
-                <p className="mt-2 text-base font-bold text-slate-950">{flowResultMessage.complementaryService.label}</p>
-                <p className="mt-2 text-sm text-slate-700">{flowResultMessage.complementaryService.description}</p>
-                <p className="mt-3 text-xs font-bold uppercase tracking-widest text-slate-700">Ver serviços indicados</p>
-              </Link>
-            </div>
+                  <article className="rounded-2xl border border-slate-200/80 bg-slate-50/85 p-4">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-slate-700">
+                      Apoio Complementar
+                    </p>
+                    <p className="mt-2 text-base font-black text-slate-950">{flowResultMessage.complementaryService.label}</p>
+                    <p className="mt-1.5 text-sm text-slate-700">{flowResultMessage.complementaryService.description}</p>
+                    <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-slate-600">
+                      Pode entrar em seguida
+                    </p>
+                    <Link
+                      to={buildNetworkServiceLink(flowResultMessage.complementaryService.queryType)}
+                      className="mt-3 inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-black uppercase tracking-widest text-slate-700 transition-colors hover:border-slate-400 hover:text-slate-900"
+                    >
+                      Ver serviços indicados
+                    </Link>
+                  </article>
+                </div>
+              </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-5">
-              <p className="text-xs font-bold uppercase tracking-widest text-slate-600">No escopo da atuação escolar</p>
-              <ul className="mt-3 space-y-2">
-                {flowResultMessage.teacherScope.doThis.map((action, index) => (
-                  <li key={`${action}-${index}`} className="text-sm text-slate-800">• {action}</li>
-                ))}
-              </ul>
-              <p className="mt-4 text-sm font-semibold text-rose-700">{flowResultMessage.teacherScope.notYours}</p>
+              <div className="mt-4 rounded-2xl border border-rose-200/85 bg-rose-50/75 px-4 py-3">
+                <p className="text-[11px] font-black uppercase tracking-widest text-rose-700">Limites da atuação escolar</p>
+                <p className="mt-1.5 text-sm font-semibold text-rose-800">{flowResultMessage.teacherScope.notYours}</p>
+              </div>
             </div>
           </>
         ) : (
@@ -120,55 +169,55 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
         </div>
       )}
 
-      {/* Services */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {primaryService && (
-          <div className="bg-blue-50 border border-blue-100 p-6 rounded-3xl relative group">
-            <div className="flex items-center gap-2 mb-3 text-blue-600">
-              <MapPin className="w-5 h-5" />
-              <span className="font-bold uppercase text-xs tracking-wider">Serviço Prioritário</span>
+      {!flowResultMessage && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {primaryService && (
+            <div className="bg-blue-50 border border-blue-100 p-6 rounded-3xl relative group">
+              <div className="flex items-center gap-2 mb-3 text-blue-600">
+                <MapPin className="w-5 h-5" />
+                <span className="font-bold uppercase text-xs tracking-wider">Serviço Prioritário</span>
+              </div>
+              <p className="text-lg font-bold text-blue-900 leading-snug">{primaryService.name}</p>
+              <p className="text-sm text-blue-700 mt-2 font-medium">{primaryService.contact.phone}</p>
+              <Link
+                to={`/rede/servico/${primaryService.id}?type=interno&highlight=${primaryService.id}`}
+                className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
+              >
+                Ver serviços indicados →
+              </Link>
             </div>
-            <p className="text-lg font-bold text-blue-900 leading-snug">{primaryService.name}</p>
-            <p className="text-sm text-blue-700 mt-2 font-medium">{primaryService.contact.phone}</p>
-            <Link 
-              to={`/rede?type=interno&highlight=${primaryService.id}`}
-              className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
-            >
-              Ver serviços indicados →
-            </Link>
-          </div>
-        )}
-        {secondaryService && (
-          <div className="bg-slate-50 border border-slate-100 p-6 rounded-3xl relative group">
-            <div className="flex items-center gap-2 mb-3 text-slate-600">
-              <Info className="w-5 h-5" />
-              <span className="font-bold uppercase text-xs tracking-wider">Apoio Complementar</span>
+          )}
+          {secondaryService && (
+            <div className="bg-slate-50 border border-slate-100 p-6 rounded-3xl relative group">
+              <div className="flex items-center gap-2 mb-3 text-slate-600">
+                <Info className="w-5 h-5" />
+                <span className="font-bold uppercase text-xs tracking-wider">Apoio Complementar</span>
+              </div>
+              <p className="text-lg font-bold text-slate-900 leading-snug">{secondaryService.name}</p>
+              <p className="text-sm text-slate-700 mt-2 font-medium">{secondaryService.contact.phone}</p>
+              <Link
+                to={`/rede/servico/${secondaryService.id}?highlight=${secondaryService.id}`}
+                className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
+              >
+                Ver serviços indicados →
+              </Link>
             </div>
-            <p className="text-lg font-bold text-slate-900 leading-snug">{secondaryService.name}</p>
-            <p className="text-sm text-slate-700 mt-2 font-medium">{secondaryService.contact.phone}</p>
-            <Link 
-              to={`/rede?highlight=${secondaryService.id}`}
-              className="mt-4 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
-            >
-              Ver serviços indicados →
-            </Link>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
       <PrivacyBadge />
 
       {whyThisOrientation.length > 0 && (
-        <section className="space-y-2">
-          <h3 className="text-sm font-semibold text-slate-700">Por que esta orientação?</h3>
-          <ul className="list-disc pl-5 space-y-1">
+        <Collapsible title="Por que esta orientação?" defaultOpen={false}>
+          <ul className="mt-4 list-disc pl-5 space-y-1">
             {whyThisOrientation.map((point, index) => (
               <li key={index} className="text-sm text-slate-600">
                 {point}
               </li>
             ))}
           </ul>
-        </section>
+        </Collapsible>
       )}
 
       {/* School Actions */}
@@ -179,7 +228,7 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
               ? 'Recomendações Institucionais e Boas Práticas'
               : 'Recomendações Institucionais'
           }
-          defaultOpen={mode === 'operacional'}
+          defaultOpen={false}
         >
           <ul className="space-y-3 mt-4">
             {result.schoolActions.map((item, i) => (

@@ -81,37 +81,39 @@ ${result.schoolActions.map(a => `- ${a}`).join('\n')}
   };
 
   return (
-    <div className="flex flex-wrap gap-3 pt-6 border-t border-slate-100 print:hidden">
-      <Button 
-        variant="outline" 
-        onClick={handleCopyTechnical}
-        className="flex-1 min-w-[200px]"
-      >
-        <Copy className="w-4 h-4 mr-2" />
-        {mode === 'formacao' ? 'Copiar versão técnica (gestão)' : 'Copiar relatório técnico'}
-      </Button>
-      {mode === 'formacao' && (
-        <Button 
-          variant="outline" 
-          onClick={handleCopyOrientative}
-          className="flex-1 min-w-[200px]"
+    <div className="mt-3 grid gap-3 print:hidden md:grid-cols-[1fr_auto]">
+      <div className="flex flex-wrap gap-2">
+        <Button
+          variant="outline"
+          onClick={handleCopyTechnical}
+          className="min-w-[200px] flex-1"
         >
           <Copy className="w-4 h-4 mr-2" />
-          Copiar versão orientativa
+          {mode === 'formacao' ? 'Copiar versão técnica (gestão)' : 'Copiar relatório técnico'}
         </Button>
-      )}
-      <Button 
-        variant="outline" 
-        onClick={handlePrint}
-        className="flex-1 min-w-[200px]"
-      >
-        <Printer className="w-4 h-4 mr-2" />
-        Exportar PDF
-      </Button>
-      <Button 
-        variant="primary" 
+        {mode === 'formacao' && (
+          <Button
+            variant="outline"
+            onClick={handleCopyOrientative}
+            className="min-w-[200px] flex-1"
+          >
+            <Copy className="w-4 h-4 mr-2" />
+            Copiar versão orientativa
+          </Button>
+        )}
+        <Button
+          variant="outline"
+          onClick={handlePrint}
+          className="min-w-[160px] flex-1"
+        >
+          <Printer className="w-4 h-4 mr-2" />
+          Exportar PDF
+        </Button>
+      </div>
+      <Button
+        variant="primary"
         onClick={() => alert('Gestão acionada via protocolo interno.')}
-        className="flex-1 min-w-[200px]"
+        className="w-full min-w-[200px] md:w-auto"
       >
         <CheckCircle2 className="w-4 h-4 mr-2" />
         Acionar Gestão

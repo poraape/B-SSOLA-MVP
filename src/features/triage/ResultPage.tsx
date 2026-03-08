@@ -121,40 +121,43 @@ export const ResultPage: React.FC = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto space-y-8 print:p-0">
+    <div className="mx-auto max-w-5xl space-y-7 print:p-0">
       <div className="flex items-center justify-between print:hidden">
         <Link to={`/fluxo/${flowId}`} className="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-bold text-sm uppercase tracking-widest">
           <ArrowLeft className="w-4 h-4" /> Refazer triagem
         </Link>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/50">
+      <div className="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_30px_70px_-45px_rgba(15,23,42,0.65)] md:rounded-[2.5rem]">
         {/* Result Header */}
-        <div className="p-6 md:p-10 text-white bg-blue-600">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="bg-white/20 p-2 rounded-lg backdrop-blur-sm">
+        <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-blue-700 p-6 text-white md:p-8">
+          <div className="mb-4 flex items-center gap-3">
+            <div className="rounded-lg bg-white/20 p-2 backdrop-blur-sm">
               <CheckCircle2 className="w-6 h-6" />
             </div>
             <span className="text-xs font-bold uppercase tracking-widest opacity-80">Resultado da Orientação Institucional</span>
           </div>
-          <h2 className="text-3xl font-black leading-tight tracking-tight">{flow.meta.title}</h2>
+          <h2 className="text-2xl font-black leading-tight tracking-tight md:text-3xl">{flow.meta.title}</h2>
           {institutionalPriority && (
-            <div className="mt-4 inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-widest">
+            <div className="mt-4 inline-flex items-center rounded-full bg-white/20 px-3 py-1 text-[10px] font-black uppercase tracking-widest backdrop-blur-sm">
               Risco: {PRIORITY_LABELS[institutionalPriority]}
             </div>
           )}
-          <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-blue-100/90">
+          <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-blue-100/85">
             Apoio educacional-institucional. Não substitui avaliação especializada.
           </p>
         </div>
 
-        <div className="p-6 md:p-10 space-y-10">
+        <div className="space-y-8 p-6 md:p-8">
           <ResultPanel
             flow={flow}
             result={premiumResult || result}
             flowResultMessage={flowResultMessage}
           />
-          <SummaryActions flow={flow} result={premiumResult || result} />
+          <section className="rounded-2xl border border-slate-200/70 bg-slate-50/70 px-4 py-3">
+            <p className="text-[11px] font-black uppercase tracking-widest text-slate-600">Utilitários e ações finais</p>
+            <SummaryActions flow={flow} result={premiumResult || result} />
+          </section>
         </div>
       </div>
       
