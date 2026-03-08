@@ -23,7 +23,7 @@ export const flow_trabalho_infantil: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "A atividade coloca o estudante em risco físico ou exploração?",
+      "question": "Há indícios de exploração ou risco físico na atividade realizada pelo estudante?",
       "actions": [
         {
           "label": "Sim",
@@ -31,7 +31,26 @@ export const flow_trabalho_infantil: FlowSpec = {
         },
         {
           "label": "Não",
+          "next": "q2"
+        }
+      ],
+      "riskSignals": [
+        "relato_violacao",
+        "vulnerabilidade_grave"
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "question",
+      "question": "A atividade é recorrente e já compromete frequência, aprendizagem ou descanso do estudante?",
+      "actions": [
+        {
+          "label": "Sim",
           "next": "outcome_alto"
+        },
+        {
+          "label": "Não",
+          "next": "outcome_moderado"
         }
       ],
       "riskSignals": [
@@ -42,14 +61,30 @@ export const flow_trabalho_infantil: FlowSpec = {
   ],
   "outcomes": [
     {
-      "id": "outcome_alto",
-      "label": "Proteção e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
+      "id": "outcome_moderado",
+      "label": "Acompanhamento Protetivo Inicial",
+      "description": "Sem indício atual de exploração grave, mas com necessidade de prevenção e monitoramento escolar.",
       "actions": [
-        "Registro institucional",
-        "Avisar a gestão escolar"
+        "Registrar observações objetivas da rotina escolar",
+        "Avisar a gestão para acompanhamento do caso",
+        "Orientar responsáveis sobre impacto do trabalho na escolarização"
       ],
-      "timeline": "Imediato",
+      "timeline": "Dias",
+      "riskLevel": "MODERATE",
+      "flags": [
+        "notify_management"
+      ]
+    },
+    {
+      "id": "outcome_alto",
+      "label": "Proteção e Encaminhamento Prioritário",
+      "description": "Trabalho recorrente com prejuízo escolar relevante. Exige proteção e acionamento institucional da rede.",
+      "actions": [
+        "Avisar a gestão escolar",
+        "Registrar formalmente impactos em frequência, aprendizagem ou descanso",
+        "Acionar Conselho Tutelar e rede socioassistencial"
+      ],
+      "timeline": "Horas",
       "riskLevel": "HIGH",
       "flags": [
         "notify_management",
@@ -59,15 +94,19 @@ export const flow_trabalho_infantil: FlowSpec = {
     {
       "id": "outcome_iminente",
       "label": "Ação Imediata de Proteção",
-      "description": "Risco imediato. Ative o protocolo interno sem atraso.",
+      "description": "Situação com exploração ou risco físico atual. Ative proteção imediata e rede de direitos.",
       "actions": [
-        "Acionar imediatamente orgao competente"
+        "Garantir proteção imediata na escola",
+        "Avisar a gestão escolar sem atraso",
+        "Acionar Conselho Tutelar imediatamente",
+        "Acionar 190 quando houver risco atual"
       ],
       "timeline": "Imediato",
-      "riskLevel": "HIGH",
+      "riskLevel": "CRITICAL",
       "flags": [
         "notify_management",
-        "contact_council"
+        "contact_council",
+        "call_190"
       ]
     }
   ],
@@ -116,17 +155,17 @@ export const flow_trabalho_infantil: FlowSpec = {
     "riskSignals": [
       {
         "id": "relato_violacao",
-        "label": "Relato de violação",
+        "label": "Relato ou observação de trabalho infantil",
         "weight": 3
       },
       {
         "id": "indicio_negligencia",
-        "label": "Indicio de negligência",
+        "label": "Prejuízo recorrente em frequência, aprendizagem ou descanso",
         "weight": 2
       },
       {
         "id": "vulnerabilidade_grave",
-        "label": "Vulnerabilidade grave",
+        "label": "Exploração ou risco físico na atividade",
         "weight": 3
       }
     ],

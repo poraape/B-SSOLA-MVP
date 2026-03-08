@@ -183,7 +183,7 @@ export const flow_violencia_domestica: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Existem sinais consistentes de violência (relato repetido ou medo intenso de voltar para casa)?",
+      "question": "A escola observou sinais consistentes de risco no ambiente familiar, como relatos recorrentes ou medo intenso de voltar para casa?",
       "actions": [
         {
           "label": "Sim",

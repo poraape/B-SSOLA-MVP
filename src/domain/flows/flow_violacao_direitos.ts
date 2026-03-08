@@ -6,7 +6,7 @@ export const flow_violacao_direitos: FlowSpec = {
     "categoryId": "protecao_direitos",
     "subcategoryId": "outras_violacoes_direitos",
     "title": "Outras Violações de Direitos",
-    "description": "Orientações praticas para a equipe escolar sobre Outras Violações de Direitos.",
+    "description": "Fluxo curinga para violações de direitos que não se encaixam claramente em violência doméstica, abuso sexual, negligência, trabalho infantil ou abandono.",
     "severity": "HIGH",
     "keywords": [],
     "status": "EXISTING"
@@ -15,7 +15,7 @@ export const flow_violacao_direitos: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Outras Violações de Direitos. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Use este fluxo quando a situação não se encaixar claramente nos fluxos específicos de proteção e violação de direitos.",
       "riskSignals": [
         "relato_violacao"
       ]
@@ -23,15 +23,15 @@ export const flow_violacao_direitos: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "A situação envolve risco imediato a integridade do estudante?",
+      "question": "A situação não se encaixa claramente em violência doméstica, abuso sexual, negligência, trabalho infantil ou abandono?",
       "actions": [
         {
           "label": "Sim",
-          "next": "outcome_iminente"
+          "next": "q2"
         },
         {
           "label": "Não",
-          "next": "q2"
+          "next": "outcome_fluxo_especifico"
         }
       ],
       "riskSignals": [
@@ -42,7 +42,26 @@ export const flow_violacao_direitos: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Há indicio de violência, negligência grave ou exploração continua?",
+      "question": "A situação envolve risco imediato à integridade do estudante?",
+      "actions": [
+        {
+          "label": "Sim",
+          "next": "outcome_iminente"
+        },
+        {
+          "label": "Não",
+          "next": "q3"
+        }
+      ],
+      "riskSignals": [
+        "vulnerabilidade_grave",
+        "relato_violacao"
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "question",
+      "question": "Há elementos suficientes de preocupação para acionar proteção institucional e rede?",
       "actions": [
         {
           "label": "Sim",
@@ -61,27 +80,43 @@ export const flow_violacao_direitos: FlowSpec = {
   ],
   "outcomes": [
     {
+      "id": "outcome_fluxo_especifico",
+      "label": "Reclassificar para Fluxo Específico",
+      "description": "A situação está melhor contemplada por um fluxo específico de proteção e violação de direitos.",
+      "actions": [
+        "Retornar à seleção de protocolo e escolher o fluxo específico mais aderente",
+        "Manter acolhimento e proteção imediata enquanto a reclassificação é feita",
+        "Avisar a gestão escolar quando houver risco ou recorrência"
+      ],
+      "timeline": "Imediato",
+      "riskLevel": "MODERATE",
+      "flags": [
+        "notify_management"
+      ]
+    },
+    {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situação que exige acompanhamento institucional estruturado.",
+      "description": "Situação residual sem risco imediato, com necessidade de acompanhamento institucional e reavaliação.",
       "actions": [
-        "Acionar gestão para triagem qualificada",
+        "Registrar sinais observáveis e alinhar conduta com a gestão",
+        "Planejar acompanhamento e reavaliar se surgirem novos elementos de risco",
         "Encaminhar para suporte socioassistencial quando indicado"
       ],
       "timeline": "Horas",
-      "riskLevel": "HIGH",
+      "riskLevel": "MODERATE",
       "flags": [
-        "notify_management",
-        "contact_council"
+        "notify_management"
       ]
     },
     {
       "id": "outcome_alto",
-      "label": "Proteção e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
+      "label": "Proteção e Encaminhamento Prioritário",
+      "description": "Elementos de preocupação suficientes na situação residual. Acione proteção institucional e rede.",
       "actions": [
-        "Acionar gestão imediatamente",
-        "Encaminhar formalmente a rede de proteção (minimos dados necessarios)"
+        "Acionar gestão escolar imediatamente",
+        "Registrar formalmente a situação com dados mínimos necessários",
+        "Acionar Conselho Tutelar e rede socioassistencial conforme protocolo local"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",
@@ -93,14 +128,15 @@ export const flow_violacao_direitos: FlowSpec = {
     {
       "id": "outcome_iminente",
       "label": "Ação Imediata de Proteção",
-      "description": "Risco imediato. Ative o protocolo interno sem atraso.",
+      "description": "Risco imediato. Ative o protocolo institucional de proteção sem atraso.",
       "actions": [
         "Priorizar segurança imediata",
         "Acionar 190 quando houver risco atual",
-        "Acionar gestão imediatamente"
+        "Acionar gestão imediatamente",
+        "Acionar Conselho Tutelar sem atraso"
       ],
       "timeline": "Imediato",
-      "riskLevel": "HIGH",
+      "riskLevel": "CRITICAL",
       "flags": [
         "notify_management",
         "contact_council"
@@ -157,7 +193,7 @@ export const flow_violacao_direitos: FlowSpec = {
       },
       {
         "id": "indicio_negligencia",
-        "label": "Indicio de negligência",
+        "label": "Elementos de preocupação em violação de direitos",
         "weight": 2
       },
       {

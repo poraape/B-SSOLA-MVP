@@ -189,7 +189,7 @@ export const flow_abandono: FlowSpec = {
           "next": "outcome_rede_assistencia"
         },
         {
-          "label": "Não, caso inicial",
+          "label": "Não, sinais iniciais",
           "next": "outcome_acompanhamento_social"
         }
       ],
