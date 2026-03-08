@@ -2,93 +2,93 @@
   {
     "flowId": "flow_acidente_escolar",
     "level": "low",
-    "headline": "Escoriação leve ou batida pequena sem corte profundo.",
-    "nextStep": "Encaminhe o aluno para lavar o local com água e avise a coordenação.",
+    "headline": "Impacto leve, sem dor forte e sem limitação de movimento.",
+    "nextStep": "Faça cuidado local simples, mantenha observação no turno e avise a coordenação.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Suporte básico e fornecimento de água potável."
+      "description": "Apoio imediato para observação protegida e registro escolar."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Registro do incidente no diário da escola."
+      "description": "Alinhamento institucional e comunicação com responsáveis."
     },
     "teacherScope": {
       "doThis": [
-        "Mande lavar apenas com água",
-        "Acolha emocionalmente"
+        "Mantenha o estudante acompanhado e em repouso breve",
+        "Registre hora, local e sinais observados"
       ],
-      "notYours": "Não aplique pomadas, iodo ou medicamentos no ferimento."
+      "notYours": "Não administre medicamentos ou pomadas por conta própria."
     }
   },
   {
     "flowId": "flow_acidente_escolar",
     "level": "moderate",
-    "headline": "Corte sangrante, entorse ou suspeita de fratura fechada.",
-    "nextStep": "Imobilize o membro machucado, acalme o aluno e solicite ida à gestão.",
+    "headline": "Dor forte, inchaço progressivo ou dificuldade para apoiar e mover membro.",
+    "nextStep": "Mantenha repouso protegido, acione a gestão e comunique responsáveis no mesmo turno.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Comunicação urgente com a família para buscar o aluno."
+      "description": "Coordenação do encaminhamento escolar e contato com a família."
     },
     "complementaryService": {
       "queryType": "highlight=upa-ermelino",
       "label": "UPA III 24h Ermelino Matarazzo",
-      "description": "Sutura, Raio-X e atendimento traumatológico intermediário."
+      "description": "Avaliação de lesão quando há dor importante ou limitação funcional."
     },
     "teacherScope": {
       "doThis": [
-        "Pressione cortes com pano limpo",
-        "Evite que o aluno ande"
+        "Evite deslocamento sem apoio",
+        "Acompanhe o estudante até definição do encaminhamento"
       ],
-      "notYours": "Não tente colocar ossos deslocados no lugar."
+      "notYours": "Não tente reduzir luxações ou fraturas."
     }
   },
   {
     "flowId": "flow_acidente_escolar",
     "level": "high",
-    "headline": "Queda de altura, pancada forte na cabeça ou fratura exposta.",
-    "nextStep": "Mantenha o aluno estático no chão e exija socorro imediato via SAMU.",
+    "headline": "Lesão com suspeita relevante e necessidade de avaliação urgente de saúde.",
+    "nextStep": "Acione gestão imediatamente, mantenha proteção física e prepare encaminhamento prioritário.",
     "priorityService": {
-      "queryType": "highlight=samu",
-      "label": "SAMU – 192",
-      "description": "Imobilização profissional e resgate de traumatismo severo."
-    },
-    "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Acionamento do resgate e isolamento de alunos em pânico."
+      "description": "Acionamento institucional imediato e comunicação com responsáveis."
+    },
+    "complementaryService": {
+      "queryType": "highlight=upa-ermelino",
+      "label": "UPA III 24h Ermelino Matarazzo",
+      "description": "Avaliação rápida de trauma sem colapso vital aparente."
     },
     "teacherScope": {
       "doThis": [
-        "Não mova a cabeça do aluno",
-        "Cubra fraturas levemente"
+        "Mantenha o estudante em repouso e supervisionado",
+        "Observe sinais de piora durante a espera"
       ],
-      "notYours": "Não permita que o aluno levante ou seja transportado em carros."
+      "notYours": "Não liberar retorno à rotina sem avaliação da gestão."
     }
   },
   {
     "flowId": "flow_acidente_escolar",
     "level": "critical",
-    "headline": "Amputação, hemorragia arterial ou trauma craniano grave.",
-    "nextStep": "Faça compressão forte sobre o sangramento e grite para ligarem 192 urgente.",
+    "headline": "Sangramento que não estanca, perda de consciência, fratura aparente ou trauma forte de cabeça.",
+    "nextStep": "Acione 192 imediatamente, proteja a vítima sem movimentar e isole a área.",
     "priorityService": {
       "queryType": "highlight=samu",
       "label": "SAMU – 192",
-      "description": "Atendimento à vida em falência por perda extrema de sangue."
+      "description": "Atendimento de urgência para risco imediato à integridade física."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Evacuação total da área e apoio incondicional."
+      "description": "Controle do local e comunicação institucional com responsáveis."
     },
     "teacherScope": {
       "doThis": [
-        "Comprima o ferimento com força",
-        "Isole a área por completo"
+        "Mantenha a vítima protegida e sem deslocamento desnecessário",
+        "Dê orientações curtas à equipe até chegada do socorro"
       ],
-      "notYours": "Não retire objetos cravados profundamente no corpo."
+      "notYours": "Não transportar a vítima em veículo comum diante de risco imediato."
     }
   },
   {
@@ -1198,93 +1198,93 @@
   {
     "flowId": "flow_desmaio",
     "level": "low",
-    "headline": "Aluno relata tontura, fraqueza ou visão escura repentina.",
-    "nextStep": "Sente o aluno imediatamente no chão e peça para colocar a cabeça nos joelhos.",
+    "headline": "Recuperação rápida após mal-estar, sem sinais de alerta no momento.",
+    "nextStep": "Mantenha observação protegida no turno, acione a gestão e comunique responsáveis.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Apoio logístico para encaminhamento seguro à gestão."
+      "description": "Apoio para supervisão imediata e registro objetivo da ocorrência."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Aviso à família sobre mal-estar."
+      "description": "Comunicação institucional com responsáveis e definição de monitoramento."
     },
     "teacherScope": {
       "doThis": [
-        "Sente o aluno antes que caia",
-        "Ventile a área ao redor"
+        "Mantenha o estudante em local seguro e ventilado",
+        "Registre hora do episódio e tempo de recuperação"
       ],
-      "notYours": "Não force o aluno a caminhar até a diretoria sozinho."
+      "notYours": "Não liberar o estudante sem alinhamento com gestão e responsáveis."
     }
   },
   {
     "flowId": "flow_desmaio",
     "level": "moderate",
-    "headline": "Desmaio rápido de poucos segundos com recuperação total.",
-    "nextStep": "Mantenha o aluno deitado de barriga para cima e eleve as pernas dele.",
+    "headline": "Recuperou, mas há sinal de alerta: batida de cabeça, dor intensa, falta de ar ou novo episódio.",
+    "nextStep": "Mantenha supervisão contínua e organize avaliação de saúde no mesmo turno com a gestão.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Acionamento obrigatório dos pais para avaliação."
+      "description": "Acionamento imediato da família e organização do encaminhamento."
     },
     "complementaryService": {
-      "queryType": "highlight=ubs-ermelino",
-      "label": "UBS Ermelino Matarazzo",
-      "description": "Avaliação médica para esclarecer o episódio de desmaio."
+      "queryType": "highlight=upa-ermelino",
+      "label": "UPA III 24h Ermelino Matarazzo",
+      "description": "Avaliação rápida quando há sinais de alerta após desmaio."
     },
     "teacherScope": {
       "doThis": [
-        "Eleve as pernas do aluno",
-        "Converse de forma tranquila"
+        "Não deixe o estudante sozinho durante a espera",
+        "Observe piora respiratória, nova queda ou confusão"
       ],
-      "notYours": "Não dê água nem alimentos logo após o retorno à consciência."
+      "notYours": "Não adiar encaminhamento quando houver sinal de alerta."
     }
   },
   {
     "flowId": "flow_desmaio",
     "level": "high",
-    "headline": "Desmaio demorado ou retorno com confusão mental visível.",
-    "nextStep": "Acione resgate médico imediatamente via direção e monitore a respiração.",
+    "headline": "Piora rápida durante observação, com risco de novo desmaio ou rebaixamento de consciência.",
+    "nextStep": "Acione 192 sem atraso, mantenha proteção física e informe gestão e responsáveis.",
     "priorityService": {
       "queryType": "highlight=samu",
       "label": "SAMU – 192",
-      "description": "Avaliação neurológica e cardíaca de emergência."
+      "description": "Suporte de urgência para instabilidade clínica em ambiente escolar."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Contato familiar grave e facilitação de acesso."
+      "description": "Coordenação institucional do atendimento e comunicação com a família."
     },
     "teacherScope": {
       "doThis": [
-        "Observe se o peito sobe e desce",
-        "Lateralize a cabeça gentilmente"
+        "Mantenha supervisão contínua até chegada do socorro",
+        "Afaste aglomeração para preservar segurança"
       ],
-      "notYours": "Não tente levantar ou colocar o aluno sentado à força."
+      "notYours": "Não transportar em carro particular diante de piora clínica."
     }
   },
   {
     "flowId": "flow_desmaio",
     "level": "critical",
-    "headline": "Desmaio seguido de ausência de pulso ou parada respiratória.",
-    "nextStep": "Exija chamada de urgência ao 192 e inicie compressões torácicas contínuas.",
+    "headline": "Sem recuperação rápida da consciência, com risco imediato à vida.",
+    "nextStep": "Ligue 192 imediatamente, mantenha proteção contínua e siga orientações da urgência.",
     "priorityService": {
       "queryType": "highlight=samu",
       "label": "SAMU – 192",
-      "description": "Reanimação avançada e intervenção por parada cardíaca."
+      "description": "Resposta de emergência para perda de consciência com risco imediato."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Mobilização de rede externa e contenção da comunidade escolar."
+      "description": "Mobilização institucional e suporte na comunicação com responsáveis."
     },
     "teacherScope": {
       "doThis": [
-        "Apoie as mãos no centro do peito",
-        "Grite orientações curtas"
+        "Não deixe a pessoa sozinha em nenhum momento",
+        "Mantenha o espaço livre para chegada do socorro"
       ],
-      "notYours": "Não interrompa a massagem cardíaca se estiver apto a fazer."
+      "notYours": "Não esperar melhora espontânea sem acionar urgência."
     }
   },
   {
@@ -2026,93 +2026,93 @@
   {
     "flowId": "flow_intoxicacao",
     "level": "low",
-    "headline": "Contato da pele com produto de limpeza sem reação forte.",
-    "nextStep": "Lave o local afetado com água corrente abundante e comunique a gestão.",
+    "headline": "Exposição suspeita sem sinais atuais de agravamento.",
+    "nextStep": "Retire da fonte de risco, mantenha observação protegida e comunique a gestão.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Apoio prático para higiene e troca de roupas."
+      "description": "Apoio para monitoramento inicial e controle do ambiente."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Averiguação de manuseio indevido de materiais escolares."
+      "description": "Comunicação com responsáveis e registro institucional do episódio."
     },
     "teacherScope": {
       "doThis": [
-        "Enxágue apenas com água",
-        "Observe irritação na pele"
+        "Identifique e afaste a possível substância de risco",
+        "Observe surgimento de sinais nas horas seguintes"
       ],
-      "notYours": "Não passe manteiga, creme ou produtos químicos caseiros."
+      "notYours": "Não oferecer receitas caseiras para neutralizar substâncias."
     }
   },
   {
     "flowId": "flow_intoxicacao",
     "level": "moderate",
-    "headline": "Ingestão de substância não letal ou alergia de pele branda.",
-    "nextStep": "Encaminhe o aluno à direção e leve junto a embalagem do produto ingerido.",
+    "headline": "Exposição recente com sinais atuais como vômito, tontura, ardência ou sonolência.",
+    "nextStep": "Mantenha supervisão protegida e organize avaliação de saúde no mesmo turno.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Contatar responsáveis e orientar contato com centro de intoxicação."
+      "description": "Acionamento da família e definição do encaminhamento seguro."
     },
     "complementaryService": {
-      "queryType": "highlight=ubs-ermelino",
-      "label": "UBS Ermelino Matarazzo",
-      "description": "Avaliação médica preventiva."
+      "queryType": "highlight=upa-ermelino",
+      "label": "UPA III 24h Ermelino Matarazzo",
+      "description": "Avaliação de intoxicação quando há sintomas em evolução."
     },
     "teacherScope": {
       "doThis": [
-        "Recolha os restos do produto",
-        "Acompanhe o aluno de perto"
+        "Guarde embalagem ou nome da substância, se disponível",
+        "Acompanhe continuamente até decisão da gestão"
       ],
-      "notYours": "Não provoque vômito de forma alguma."
+      "notYours": "Não provocar vômito nem oferecer alimentos ou bebidas sem orientação."
     }
   },
   {
     "flowId": "flow_intoxicacao",
     "level": "high",
-    "headline": "Ingestão de medicamentos, venenos ou reação alérgica com inchaço.",
-    "nextStep": "Peça para a direção acionar o SAMU urgente e mantenha a embalagem próxima.",
+    "headline": "Sinais de piora ou risco de exposição coletiva no ambiente escolar.",
+    "nextStep": "Acione 192 com urgência, isole a área e mantenha todos afastados da fonte.",
     "priorityService": {
       "queryType": "highlight=samu",
       "label": "SAMU – 192",
-      "description": "Medicação antialérgica emergencial ou medicação especializada em via venosa."
+      "description": "Atendimento de urgência para intoxicação com agravamento clínico."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Repasse de informações vitais aos paramédicos e pais."
+      "description": "Coordenação do isolamento da área e comunicação imediata com responsáveis."
     },
     "teacherScope": {
       "doThis": [
-        "Mantenha o aluno acordado",
-        "Observe inchaços nos lábios"
+        "Afaste outros estudantes da área de risco",
+        "Repasse ao socorro o que foi observado e quando começou"
       ],
-      "notYours": "Não dê água, leite ou comidas para tentar reverter veneno."
+      "notYours": "Não subestimar risco ambiental quando houver mais de uma pessoa exposta."
     }
   },
   {
     "flowId": "flow_intoxicacao",
     "level": "critical",
-    "headline": "Inconsciência, asfixia ou convulsão após contato químico ou drogas.",
-    "nextStep": "Ligue 192 imediatamente, deite o aluno de lado e preserve a via aérea.",
+    "headline": "Falta de ar, desmaio, convulsão ou colapso após suspeita de intoxicação.",
+    "nextStep": "Ligue 192 imediatamente e acione 193 se houver vazamento, fumaça ou risco químico no local.",
     "priorityService": {
       "queryType": "highlight=samu",
       "label": "SAMU – 192",
-      "description": "suporte respiratório avançado e manutenção vital por toxicidade aguda."
+      "description": "Suporte avançado para risco imediato por toxicidade aguda."
     },
     "complementaryService": {
-      "queryType": "highlight=gestao-direcao",
-      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Isolamento extremo do ambiente de emergência."
+      "queryType": "highlight=bombeiros",
+      "label": "Corpo de Bombeiros - 193",
+      "description": "Resposta a risco químico ambiental e proteção coletiva imediata."
     },
     "teacherScope": {
       "doThis": [
-        "Lateralize a cabeça do aluno",
-        "Afaste aglomeração e pânico"
+        "Mantenha a vítima supervisionada até chegada do socorro",
+        "Isole o ambiente e interrompa novas exposições"
       ],
-      "notYours": "Não realize respiração boca a boca direta se ingeriu veneno."
+      "notYours": "Não aguardar melhora espontânea sem acionar urgência."
     }
   },
   {

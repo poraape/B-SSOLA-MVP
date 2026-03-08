@@ -17,13 +17,33 @@ export const flow_intoxicacao: FlowSpec = {
       "type": "alert",
       "content": "Situação identificada: Intoxicação. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
-        "sintoma_agudo"
+        "necessidade_avaliacao"
       ]
     },
     {
       "id": "q1",
       "type": "question",
-      "question": "Há sinais de agravamento que exigem prioridade imediata?",
+      "question": "Houve contato ou ingestao recente de substancia e existem sinais atuais (vomito, tontura, ardencia, sonolencia ou mal-estar)?",
+      "actions": [
+        {
+          "label": "Sim",
+          "next": "q2"
+        },
+        {
+          "label": "Não",
+          "next": "outcome_baixo"
+        }
+      ],
+      "riskSignals": [
+        "exposicao_recente_com_sinais",
+        "necessidade_avaliacao",
+        "risco_ambiental"
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "question",
+      "question": "Há falta de ar, desmaio, convulsao, vomitos repetidos ou risco de outras pessoas expostas no ambiente?",
       "actions": [
         {
           "label": "Sim",
@@ -35,36 +55,60 @@ export const flow_intoxicacao: FlowSpec = {
         }
       ],
       "riskSignals": [
-        "sintoma_agudo",
+        "agravamento_agudo",
         "risco_ambiental"
       ]
     }
   ],
   "outcomes": [
     {
-      "id": "outcome_moderado",
-      "label": "Acompanhamento Institucional",
-      "description": "Situação que exige acompanhamento institucional estruturado.",
+      "id": "outcome_baixo",
+      "label": "Observação Protegida e Controle de Exposição",
+      "description": "Sem sinais atuais de gravidade, com necessidade de vigilancia e prevencao de nova exposicao.",
       "actions": [
-        "Registrar observações e manter acompanhamento com a equipe escolar"
+        "Afastar o estudante da fonte de risco e manter supervisao no turno",
+        "Avisar a gestão e registrar qual substancia foi envolvida, se conhecida",
+        "Comunicar os responsáveis para observacao no restante do dia"
+      ],
+      "timeline": "Horas",
+      "riskLevel": "MODERATE",
+      "flags": [
+        "notify_management",
+        "notify_guardians"
+      ]
+    },
+    {
+      "id": "outcome_moderado",
+      "label": "Avaliação de Saúde no Mesmo Turno",
+      "description": "Com sinais atuais, precisa de supervisao protegida e avaliacao no mesmo turno.",
+      "actions": [
+        "Manter supervisao protegida ate definicao de encaminhamento com a gestão",
+        "Comunicar os responsáveis e organizar avaliacao de saude no mesmo turno",
+        "Preservar embalagem ou nome da substancia para orientar atendimento"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
       "flags": [
-        "notify_management"
+        "notify_management",
+        "notify_guardians"
       ]
     },
     {
       "id": "outcome_alto",
-      "label": "Proteção e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
+      "label": "Urgência com Isolamento do Risco",
+      "description": "Sinais de gravidade ou exposicao coletiva exigem urgencia e controle imediato do ambiente.",
       "actions": [
-        "Acionar gestão para encaminhamento prioritario e monitoramento imediato"
+        "Acionar 192 imediatamente e informar suspeita de intoxicacao",
+        "Isolar a area e afastar outras pessoas da possivel fonte de exposicao",
+        "Acionar 193 se houver fumaca, vazamento ou risco quimico ambiental"
       ],
       "timeline": "Imediato",
-      "riskLevel": "HIGH",
+      "riskLevel": "CRITICAL",
       "flags": [
-        "notify_management"
+        "notify_management",
+        "notify_guardians",
+        "call_192",
+        "call_193"
       ]
     }
   ],
@@ -75,21 +119,38 @@ export const flow_intoxicacao: FlowSpec = {
       {
         "id": "rule_signal_priority",
         "ifAny": [
-          "sintoma_agudo"
+          "agravamento_agudo",
+          "risco_ambiental"
+        ],
+        "then": {
+          "riskLevel": "CRITICAL",
+          "flags": [
+            "notify_management",
+            "call_192"
+          ]
+        },
+        "rationale": "Sinais de gravidade ou risco coletivo exigem resposta emergencial."
+      },
+      {
+        "id": "rule_exposicao_com_sinais",
+        "ifAny": [
+          "exposicao_recente_com_sinais",
+          "necessidade_avaliacao"
         ],
         "then": {
           "riskLevel": "HIGH",
           "flags": [
-            "notify_management"
+            "notify_management",
+            "notify_guardians"
           ]
         },
-        "rationale": "Sinal prioritario exige tratamento no nivel de baseline."
+        "rationale": "Com exposicao recente e sintomas atuais, precisa avaliacao no mesmo turno."
       },
       {
         "id": "rule_default",
-        "toRiskLevel": "HIGH",
+        "toRiskLevel": "MODERATE",
         "then": {
-          "riskLevel": "HIGH",
+          "riskLevel": "MODERATE",
           "flags": [
             "notify_management"
           ]
@@ -100,8 +161,13 @@ export const flow_intoxicacao: FlowSpec = {
     "protectiveFactors": [],
     "riskSignals": [
       {
-        "id": "sintoma_agudo",
-        "label": "sintoma agudo",
+        "id": "exposicao_recente_com_sinais",
+        "label": "exposicao recente com sinais atuais",
+        "weight": 2
+      },
+      {
+        "id": "agravamento_agudo",
+        "label": "agravamento agudo",
         "weight": 3
       },
       {

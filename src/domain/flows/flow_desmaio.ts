@@ -17,54 +17,97 @@ export const flow_desmaio: FlowSpec = {
       "type": "alert",
       "content": "Situação identificada: Desmaio ou Tontura. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
       "riskSignals": [
-        "sintoma_agudo"
+        "necessidade_avaliacao"
       ]
     },
     {
       "id": "q1",
       "type": "question",
-      "question": "Há sinais de agravamento que exigem prioridade imediata?",
+      "question": "A pessoa recuperou a consciencia rapidamente (ate 1 minuto) e consegue responder onde esta?",
       "actions": [
         {
           "label": "Sim",
-          "next": "outcome_alto"
+          "next": "q2"
         },
         {
           "label": "Não",
-          "next": "outcome_moderado"
+          "next": "outcome_alto"
         }
       ],
       "riskSignals": [
-        "sintoma_agudo",
+        "recuperacao_lenta_ou_incompleta",
+        "necessidade_avaliacao"
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "question",
+      "question": "Houve batida de cabeca, falta de ar, nova perda de consciencia, dor intensa ou repeticao do desmaio?",
+      "actions": [
+        {
+          "label": "Sim",
+          "next": "outcome_moderado"
+        },
+        {
+          "label": "Não",
+          "next": "outcome_baixo"
+        }
+      ],
+      "riskSignals": [
+        "sinal_alerta_pos_desmaio",
         "agravamento_progressivo"
       ]
     }
   ],
   "outcomes": [
     {
-      "id": "outcome_moderado",
-      "label": "Acompanhamento Institucional",
-      "description": "Situação que exige acompanhamento institucional estruturado.",
+      "id": "outcome_baixo",
+      "label": "Observação Protegida no Turno",
+      "description": "Recuperacao rapida e sem sinal de alerta no momento.",
       "actions": [
-        "Registrar observações e manter acompanhamento com a equipe escolar"
+        "Manter em local seguro e supervisionado ate estabilizar",
+        "Avisar a gestão e registrar hora, sinais observados e recuperacao",
+        "Comunicar os responsáveis para observacao no restante do dia"
+      ],
+      "timeline": "Horas",
+      "riskLevel": "MODERATE",
+      "flags": [
+        "notify_management",
+        "notify_guardians"
+      ]
+    },
+    {
+      "id": "outcome_moderado",
+      "label": "Avaliação de Saúde no Mesmo Turno",
+      "description": "Com sinais de alerta, precisa de avaliacao no mesmo turno com apoio da gestão.",
+      "actions": [
+        "Acionar gestão e manter supervisao protegida ate definicao de encaminhamento",
+        "Comunicar os responsáveis para avaliacao de saude no mesmo turno",
+        "Se houver piora durante a espera, acionar 192 imediatamente"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
       "flags": [
-        "notify_management"
+        "notify_management",
+        "notify_guardians"
       ]
     },
     {
       "id": "outcome_alto",
-      "label": "Proteção e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
+      "label": "Urgência Médica Imediata",
+      "description": "Sem recuperacao rapida ou com rebaixamento de consciencia: agir como urgencia.",
       "actions": [
-        "Acionar gestão para encaminhamento prioritario e monitoramento imediato"
+        "Acionar 192 imediatamente e informar que houve desmaio sem recuperacao rapida",
+        "Avisar gestão e responsáveis sem interromper a supervisao",
+        "Nao deixar a pessoa sozinha ate chegada do suporte"
       ],
       "timeline": "Imediato",
-      "riskLevel": "HIGH",
+      "riskLevel": "CRITICAL",
       "flags": [
-        "notify_management"
+        "notify_management",
+        "notify_guardians",
+        "call_192",
+        "do_not_leave_alone"
       ]
     }
   ],
@@ -75,21 +118,37 @@ export const flow_desmaio: FlowSpec = {
       {
         "id": "rule_signal_priority",
         "ifAny": [
-          "sintoma_agudo"
+          "recuperacao_lenta_ou_incompleta"
+        ],
+        "then": {
+          "riskLevel": "CRITICAL",
+          "flags": [
+            "notify_management",
+            "call_192"
+          ]
+        },
+        "rationale": "Sem recuperacao rapida apos desmaio indica risco imediato."
+      },
+      {
+        "id": "rule_signal_alerta",
+        "ifAny": [
+          "sinal_alerta_pos_desmaio",
+          "agravamento_progressivo"
         ],
         "then": {
           "riskLevel": "HIGH",
           "flags": [
-            "notify_management"
+            "notify_management",
+            "notify_guardians"
           ]
         },
-        "rationale": "Sinal prioritario exige tratamento no nivel de baseline."
+        "rationale": "Sinais de alerta apos o episodio exigem avaliacao no mesmo turno."
       },
       {
         "id": "rule_default",
-        "toRiskLevel": "HIGH",
+        "toRiskLevel": "MODERATE",
         "then": {
-          "riskLevel": "HIGH",
+          "riskLevel": "MODERATE",
           "flags": [
             "notify_management"
           ]
@@ -100,13 +159,18 @@ export const flow_desmaio: FlowSpec = {
     "protectiveFactors": [],
     "riskSignals": [
       {
-        "id": "sintoma_agudo",
-        "label": "sintoma agudo",
+        "id": "recuperacao_lenta_ou_incompleta",
+        "label": "recuperacao lenta ou incompleta",
         "weight": 3
       },
       {
         "id": "agravamento_progressivo",
         "label": "agravamento progressivo",
+        "weight": 2
+      },
+      {
+        "id": "sinal_alerta_pos_desmaio",
+        "label": "sinal de alerta apos desmaio",
         "weight": 2
       },
       {
