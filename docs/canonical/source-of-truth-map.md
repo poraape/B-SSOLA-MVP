@@ -31,6 +31,7 @@
 - Modelo runtime:
   - composição: `src/domain/model/v2/composeModelV2.ts`
   - carga/normalização/validação: `src/domain/model/loadModel.ts`, `src/domain/model/normalizeModel.ts`, `src/domain/validation/validateModel.ts`
+  - mensagens de resultado consumidas pela ResultPage/runtime: `model.flowResultMessagesByFlowIdAndLevel` (selector em `src/domain/flows/flowResultSelectors.ts`)
 
 - Scripts de validação ativos:
   - `src/scripts/modelCheck.mjs`
@@ -42,8 +43,10 @@
 
 ## Pontos ainda não resolvidos (explícitos)
 
-1. Dupla fonte de mensagens de resultado:
-- `src/data/flowResultMessage.json` vs `src/data/v2/flowResultMessages.json`
+1. Dupla fonte de mensagens de resultado (resolvida no runtime em 2026-03-08):
+- fonte canônica ativa: `src/data/v2/flowResultMessages.json` (via composição do modelo em `src/domain/model/v2/composeModelV2.ts`)
+- consumo da ResultPage: `getFlowResultMessage` lê `model.flowResultMessagesByFlowIdAndLevel`
+- `src/data/flowResultMessage.json` permanece apenas por compatibilidade/histórico
 
 2. Duplicidade de validação de modelo:
 - `src/domain/model/validateModel.ts` vs `src/domain/validation/validateModel.ts`

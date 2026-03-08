@@ -59,7 +59,8 @@
 - papel de `PrivacyNotice` na experiência final (listado em contratos, sem acoplamento direto ao bootstrap atual)
 
 ## Backlog de revisão futura
-1. Consolidar fonte única de `flowResultMessages`.
-2. Definir validador de modelo único e aposentar duplicado.
-3. Revisar necessidade de `model.v2.extensions` e loader associado.
-4. Decidir destino definitivo para `metadata.json`.
+1. `src/data/flowResultMessage.json` está preservado por compatibilidade/histórico e não é mais a fonte ativa da ResultPage (runtime usa `model.flowResultMessagesByFlowIdAndLevel` com origem em `src/data/v2/flowResultMessages.json`).
+2. Remoção definitiva do legado de mensagens depende de saneamento posterior dedicado.
+3. Definir validador de modelo único e aposentar duplicado.
+4. Revisar necessidade de `model.v2.extensions` e loader associado.
+5. Decidir destino definitivo para `metadata.json`.
