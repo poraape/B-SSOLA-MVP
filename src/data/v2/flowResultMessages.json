@@ -94,8 +94,8 @@
   {
     "flowId": "flow_agressao_fisica",
     "level": "low",
-    "headline": "Empurrões fortes, beliscões ou tapas leves no calor de uma discussão.",
-    "nextStep": "Intervenha com voz firme, separe os alunos e comunique a coordenação.",
+    "headline": "Conflito físico pontual já interrompido, sem lesão grave aparente.",
+    "nextStep": "Mantenha os envolvidos separados, registre o fato e acione a coordenação para acompanhamento.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
@@ -104,25 +104,25 @@
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Apoio administrativo e aplicação das normas da escola."
+      "description": "Alinhamento institucional para prevenir recorrencia."
     },
     "teacherScope": {
       "doThis": [
-        "Ordene o fim da confusão",
-        "Mantenha-se fisicamente no meio"
+        "Garanta separação segura dos envolvidos",
+        "Registre sinais observáveis e testemunhas"
       ],
-      "notYours": "Não exija que apontem imediatamente quem começou a briga."
+      "notYours": "Não pressione depoimentos no calor do conflito."
     }
   },
   {
     "flowId": "flow_agressao_fisica",
     "level": "moderate",
-    "headline": "Troca de socos, arranhões ou chutes resultando em dor ou hematomas leves.",
-    "nextStep": "Encaminhe ambos à direção, garantindo que não vão juntos pelo corredor.",
+    "headline": "Agressão física com dor ou lesões leves e potencial de nova tensão.",
+    "nextStep": "Acione a gestão no mesmo turno, mantenha os envolvidos separados e organize acompanhamento formal.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Aviso imediato aos responsáveis e aplicação de medida disciplinar."
+      "description": "Registro institucional e alinhamento com responsáveis."
     },
     "complementaryService": {
       "queryType": "highlight=ubs-ermelino",
@@ -131,17 +131,17 @@
     },
     "teacherScope": {
       "doThis": [
-        "Solicite apoio de outro adulto",
-        "Acompanhe o trajeto"
+        "Solicite apoio de outro adulto imediatamente",
+        "Acompanhe deslocamentos em separado"
       ],
-      "notYours": "Não tente segurar fisicamente alunos fortes em momento de ira."
+      "notYours": "Não force mediação direta enquanto houver tensão ativa."
     }
   },
   {
     "flowId": "flow_agressao_fisica",
     "level": "high",
-    "headline": "Briga generalizada ou agressão violenta resultando em cortes sangrantes.",
-    "nextStep": "Peça ajuda de outros professores, disperse a plateia e chame a direção.",
+    "headline": "Recorrência de agressão física ou ameaça concreta de novo episódio.",
+    "nextStep": "Ative contenção institucional imediata, proteja os envolvidos e acione a direção com urgência.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
@@ -150,14 +150,14 @@
     "complementaryService": {
       "queryType": "highlight=policia-militar",
       "label": "Ronda Escolar",
-      "description": "Apoio tático em tumultos escolares."
+      "description": "Apoio em situações com risco de reescalada de violência."
     },
     "teacherScope": {
       "doThis": [
-        "Mande os curiosos saírem",
-        "Grite orientações claras"
+        "Reduza estímulos e afaste plateia",
+        "Mantenha supervisão contínua até estabilizar"
       ],
-      "notYours": "Não filme a confusão para ter provas pessoais."
+      "notYours": "Não retome a rotina sem plano institucional de acompanhamento."
     }
   },
   {
@@ -554,12 +554,12 @@
   {
     "flowId": "flow_agressao_verbal",
     "level": "low",
-    "headline": "Palavrões esporádicos e xingamentos mútuos durante uma pequena discussão.",
-    "nextStep": "Corrija o comportamento imediatamente na sala e retome o foco da aula.",
+    "headline": "Ofensa verbal pontual, sem ameaça concreta e com conflito já cessado.",
+    "nextStep": "Interrompa a exposição, registre o episódio e pactue reparação pedagógica com monitoramento.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Apoio se o linguajar inadequado se tornar repetitivo."
+      "description": "Acompanhamento da convivência e pactos pedagógicos."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -568,21 +568,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Imponha limite de respeito",
-        "Mude a atividade rapidamente"
+        "Interrompa a ofensa com limite claro",
+        "Escute os envolvidos em separado"
       ],
-      "notYours": "Não retruque com xingamentos ou ironia."
+      "notYours": "Não minimizar como brincadeira quando houve humilhação."
     }
   },
   {
     "flowId": "flow_agressao_verbal",
     "level": "moderate",
-    "headline": "Ofensas verbais sistemáticas, xingamentos pesados e humilhação contínua.",
-    "nextStep": "Retire o ofensor do ambiente, encaminhe à gestão e tranquilize o ofendido.",
+    "headline": "Intimidação recorrente ou humilhação pública com impacto na convivência escolar.",
+    "nextStep": "Acione a gestão no mesmo turno, formalize registro e organize plano institucional de acompanhamento.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Condução disciplinar e notificação à família do agressor verbal."
+      "description": "Resposta institucional estruturada e alinhamento com responsáveis."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -591,21 +591,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Interrompa o discurso violento",
-        "Anote as palavras exatas usadas"
+        "Registrar palavras e contexto de forma objetiva",
+        "Proteger o estudante alvo de nova exposição"
       ],
-      "notYours": "Não entre em debate acalorado com o agressor descontrolado."
+      "notYours": "Não propor mediação direta enquanto houver intimidação ativa."
     }
   },
   {
     "flowId": "flow_agressao_verbal",
     "level": "high",
-    "headline": "Ameaça explícita de agressão física futura ou destruição de patrimônio.",
-    "nextStep": "Informe a gestão escolar imediatamente para registro e aviso aos pais.",
+    "headline": "Ameaça verbal concreta de agressão física ou perseguição fora da sala.",
+    "nextStep": "Ative proteção imediata, afaste os envolvidos e comunique a gestão com urgência.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Notificação formal da ameaça e acionamento de segurança."
+      "description": "Gestão de risco imediato e acionamentos institucionais."
     },
     "complementaryService": {
       "queryType": "highlight=policia-militar",
@@ -614,17 +614,17 @@
     },
     "teacherScope": {
       "doThis": [
-        "Mantenha tom neutro",
-        "Registre por escrito as falas"
+        "Mantenha o estudante ameaçado em local protegido",
+        "Registre as falas ameaçadoras de forma objetiva"
       ],
-      "notYours": "Não desafie o aluno dizendo para ele tentar cumprir a ameaça."
+      "notYours": "Não deixar os envolvidos sem supervisão após ameaça concreta."
     }
   },
   {
     "flowId": "flow_agressao_verbal",
     "level": "critical",
-    "headline": "Ameaça explícita de morte com postura de intimidação extrema no momento.",
-    "nextStep": "Afaste as vítimas, acione a direção para retirar o aluno e peça a polícia.",
+    "headline": "Ameaça grave e imediata à integridade, com risco de ataque iminente.",
+    "nextStep": "Proteja potenciais vítimas, acione direção e suporte de emergência sem atraso.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
       "label": "Polícia Militar – 190",
@@ -633,25 +633,25 @@
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Gestão de crise e registro formal de Boletim de Ocorrência."
+      "description": "Gestão de crise e proteção institucional imediata."
     },
     "teacherScope": {
       "doThis": [
-        "Garanta barreira visual com o agressor",
-        "Mantenha distanciamento"
+        "Garanta distanciamento e proteção das vítimas",
+        "Solicite apoio de adultos imediatamente"
       ],
-      "notYours": "Não minimize a ameaça de morte achando que é só 'fogo de palha'."
+      "notYours": "Não negociar confronto direto sem suporte institucional."
     }
   },
   {
     "flowId": "flow_discriminacao",
     "level": "low",
-    "headline": "Uso de expressões preconceituosas arraigadas na cultura como piada.",
-    "nextStep": "Interrompa a expressão, corrija pedagogicamente o erro e informe a coordenação.",
+    "headline": "Episódio isolado de fala discriminatória identificado na rotina escolar.",
+    "nextStep": "Interrompa a conduta, acolha o estudante afetado e registre para ação institucional.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Educação em diversidade e conscientização de turma."
+      "description": "Planejamento pedagógico antidiscriminatório e acompanhamento."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -660,21 +660,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Explique o viés discriminatório",
-        "Anote a expressão usada"
+        "Nomeie a conduta como discriminatória com objetividade",
+        "Registre frase, contexto e envolvidos"
       ],
-      "notYours": "Não minimize rindo da piada preconceituosa junto com a turma."
+      "notYours": "Não tratar discriminação como conflito comum sem registro."
     }
   },
   {
     "flowId": "flow_discriminacao",
     "level": "moderate",
-    "headline": "Insultos diretos e intencionais utilizando racismo, xenofobia ou capacitismo.",
-    "nextStep": "Encaminhe o caso e o agressor à direção para acionamento das normas legais.",
+    "headline": "Discriminação recorrente, com exposição pública ou exclusão intencional.",
+    "nextStep": "Formalize resposta institucional, acione gestão e organize plano de proteção ao estudante afetado.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Aplicação de penalidades e notificação formal às famílias envolvidas."
+      "description": "Coordenação da resposta institucional e comunicação com responsáveis."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -683,21 +683,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Preste apoio solidário à vítima",
-        "Acompanhe o agressor à gestão"
+        "Garantir acolhimento e proteção ao estudante alvo",
+        "Registrar recorrência e contextos de exposição"
       ],
-      "notYours": "Não force a vítima a desculpar o agressor imediatamente."
+      "notYours": "Não expor vítima em mediação forçada ou retratação pública."
     }
   },
   {
     "flowId": "flow_discriminacao",
     "level": "high",
-    "headline": "Ataques sistemáticos de ódio, pichações supremacistas ou exclusão grave.",
-    "nextStep": "Comunique a gestão exigindo preservação de provas e acionamento policial.",
+    "headline": "Violência discriminatória com ameaça ou risco concreto de agressão.",
+    "nextStep": "Priorize proteção imediata, preserve evidências e acione a gestão para resposta de crise.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Coordenação de resposta institucional e elaboração de atas de crime."
+      "description": "Coordenação da proteção imediata e acionamento da rede."
     },
     "complementaryService": {
       "queryType": "highlight=disque-100",
@@ -706,10 +706,10 @@
     },
     "teacherScope": {
       "doThis": [
-        "Fotografe murais ou pichações",
-        "Acolha o grupo agredido"
+        "Afastar risco e manter o estudante protegido",
+        "Registrar evidências sem revitimizar"
       ],
-      "notYours": "Não apague pichações ou rasgue papéis antes da documentação oficial."
+      "notYours": "Não adiar acionamentos quando houver risco de nova agressão."
     }
   },
   {
@@ -738,12 +738,12 @@
   {
     "flowId": "flow_bullying",
     "level": "low",
-    "headline": "Apelidos incômodos, risadinhas pontuais ou exclusão em atividades normais.",
-    "nextStep": "Interrompa a atitude, reafirme as regras da sala e informe a coordenação.",
+    "headline": "Conflito pontual sem repetição sistemática e sem impacto relevante observado.",
+    "nextStep": "Interrompa a conduta, registre o episódio e faça acompanhamento preventivo da convivência.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Trabalho pedagógico de convivência, empatia e regras."
+      "description": "Acompanhamento preventivo e fortalecimento dos pactos de convivência."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -752,21 +752,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Corrija o comportamento na hora",
-        "Inclua a vítima no grupo"
+        "Escute os envolvidos em separado",
+        "Monitorar sinais de repetição nas semanas seguintes"
       ],
-      "notYours": "Não diga à vítima que ela deve aprender a aguentar brincadeiras."
+      "notYours": "Não desqualificar relato com a ideia de que e apenas brincadeira."
     }
   },
   {
     "flowId": "flow_bullying",
     "level": "moderate",
-    "headline": "Perseguição continuada, humilhação pública repetida ou espalhamento de boatos.",
-    "nextStep": "Encaminhe agressor e vítima, em momentos distintos, para registro na direção.",
+    "headline": "Repetição sistemática de agressões, intimidação ou exclusão contra o mesmo estudante.",
+    "nextStep": "Formalize resposta institucional, acione gestão e organize plano estruturado de intervenção.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Mediação formal do conflito e convocação dos pais das partes."
+      "description": "Plano institucional de proteção e acompanhamento dos envolvidos."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -775,21 +775,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Acolha a vítima em separado",
-        "Identifique alunos testemunhas"
+        "Acolha estudante alvo em ambiente protegido",
+        "Registre recorrência e impactos na rotina escolar"
       ],
-      "notYours": "Não force um abraço de desculpas público diante de toda a classe."
+      "notYours": "Não propor mediação direta quando houver assimetria ou risco de revitimização."
     }
   },
   {
     "flowId": "flow_bullying",
     "level": "high",
-    "headline": "Ataques intensos na internet (cyberbullying) causando sofrimento severo à vítima.",
-    "nextStep": "Oriente a vítima a salvar as provas digitais e comunique a direção com urgência para registro formal e contato com a família.",
+    "headline": "Bullying com impacto relevante na segurança, no vínculo escolar ou na participação do estudante.",
+    "nextStep": "Acione gestão com urgência, organize proteção imediata e mantenha registro formal do caso.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Registro institucional da denúncia cibernética, contato com a família e avaliação de necessidade de acionar outros órgãos."
+      "description": "Coordenação do plano de intervenção, proteção e contato com responsáveis."
     },
     "complementaryService": {
       "queryType": "highlight=disque-100",
@@ -798,10 +798,10 @@
     },
     "teacherScope": {
       "doThis": [
-        "Aconselhe a não apagar as mensagens",
-        "Repasse prints à gestão para anexar ao registro formal"
+        "Preservar evidências relevantes sem ampliar exposição",
+        "Monitorar presença, participação e sensação de segurança"
       ],
-      "notYours": "Não interaja com perfis agressores online ou redes sociais."
+      "notYours": "Não tratar como caso pontual quando já há prejuízo relevante na rotina."
     }
   },
   {
@@ -1290,12 +1290,12 @@
   {
     "flowId": "flow_lgbtfobia",
     "level": "low",
-    "headline": "Comentários pejorativos leves ou uso de gírias que ofendem a diversidade sexual.",
-    "nextStep": "Repreenda o uso de forma firme, educativa e avise a coordenação ao final.",
+    "headline": "Episódio isolado de LGBTfobia, sem ameaça imediata identificada.",
+    "nextStep": "Interrompa a conduta, acolha o estudante e registre o fato para prevenção de recorrência.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Implementação de projetos de diversidade e respeito mútuo."
+      "description": "Acompanhamento pedagógico para proteção e convivência respeitosa."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -1304,21 +1304,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Corte o clima de gozação",
-        "Explique o dano e desrespeito"
+        "Interrompa a exposição e acolha em ambiente seguro",
+        "Registrar linguagem e contexto de forma objetiva"
       ],
-      "notYours": "Não valide os termos usando a desculpa de que 'sempre foi assim'."
+      "notYours": "Não exigir que o estudante se exponha para explicar sua identidade."
     }
   },
   {
     "flowId": "flow_lgbtfobia",
     "level": "moderate",
-    "headline": "Restrição de uso de banheiros por colegas, assédio direto e xingamentos intencionais.",
-    "nextStep": "Encaminhe o agressor à direção e garanta o acesso da vítima ao seu direito.",
+    "headline": "LGBTfobia recorrente, com exclusão de espaços ou humilhação repetida.",
+    "nextStep": "Ative plano institucional de proteção, com gestão e acompanhamento contínuo do caso.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Garantia institucional de direitos, normativas estaduais e sanções."
+      "description": "Coordenação de plano formal de proteção e monitoramento."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -1327,21 +1327,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Defenda o direito do aluno ofendido",
-        "Registre as negativas criadas"
+        "Garantir acesso seguro aos espaços escolares",
+        "Preservar confidencialidade quando a exposição aumentar risco"
       ],
-      "notYours": "Não mande o aluno usar banheiros da diretoria para 'evitar problemas'."
+      "notYours": "Não propor acordo direto quando houver medo, coação ou risco de revitimização."
     }
   },
   {
     "flowId": "flow_lgbtfobia",
     "level": "high",
-    "headline": "Ameaças diretas, exposição de fotos íntimas ou coação contra aluno LGBTQIA+.",
-    "nextStep": "Comunique a gestão na mesma hora para acolher o aluno e acionar o Estado.",
+    "headline": "Ameaça ou exposição não autorizada com risco relevante para estudante LGBTQIA+.",
+    "nextStep": "Priorize proteção imediata, acione gestão no mesmo momento e preserve sigilo de informações sensíveis.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Mobilização de rede externa de proteção contra violência severa."
+      "description": "Gestão de risco e articulação de proteção institucional e externa."
     },
     "complementaryService": {
       "queryType": "highlight=disque-100",
@@ -1350,10 +1350,10 @@
     },
     "teacherScope": {
       "doThis": [
-        "Retenha material digital ou impresso",
-        "Preste apoio emocional"
+        "Preservar evidências sem ampliar circulação de conteúdo",
+        "Manter o estudante acompanhado por adulto de referência"
       ],
-      "notYours": "Não responsabilize a vítima alegando que seu 'comportamento' atrai agressões."
+      "notYours": "Não divulgar identidade/orientação sem consentimento e avaliação de segurança."
     }
   },
   {
@@ -2670,8 +2670,8 @@
   {
     "flowId": "flow_mediacao_restaurativa",
     "level": "low",
-    "headline": "Clima de fofocas, pequenos atritos e indiretas afetando o grupo da sala.",
-    "nextStep": "Avise a coordenação para planejar roda de conversa sobre convivência saudável.",
+    "headline": "Conflito estabilizado, sem risco atual e com condições mínimas para mediação segura.",
+    "nextStep": "Planeje mediação restaurativa com facilitação institucional e acordos de acompanhamento.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
@@ -2684,21 +2684,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Desencoraje as fofocas ativamente",
-        "Promova trabalhos em duplas novas"
+        "Defina regras de segurança e escuta antes da mediação",
+        "Registrar acordos e responsáveis por acompanhamento"
       ],
-      "notYours": "Não exija que peçam perdão uns aos outros sem resolver a questão."
+      "notYours": "Não reduzir mediação a pedido de desculpas sem pactos concretos."
     }
   },
   {
     "flowId": "flow_mediacao_restaurativa",
     "level": "moderate",
-    "headline": "Conflito direto entre grupos, com recusa de comunicação e prejuízo na aula.",
-    "nextStep": "Solicite formalmente à direção uma mediação restaurativa com os envolvidos.",
+    "headline": "Sem risco imediato, mas sem elegibilidade para mediação direta no momento.",
+    "nextStep": "Acione plano institucional com escutas em separado e reavalie mediação após estabilização.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Agendamento e condução de círculo restaurativo mediado."
+      "description": "Coordenação de plano de convivência sem encontro direto imediato."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-coordenacao",
@@ -2707,21 +2707,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Anote o nome dos líderes do conflito",
-        "Evite agrupar rivais"
+        "Mantenha partes em ambientes separados quando necessário",
+        "Registrar sinais de coação, medo ou assimetria grave"
       ],
-      "notYours": "Não faça mediações improvisadas durante o tempo letivo normal."
+      "notYours": "Não forçar encontro restaurativo sem condições de segurança."
     }
   },
   {
     "flowId": "flow_mediacao_restaurativa",
     "level": "high",
-    "headline": "Ameaças constantes entre gangues ou grupos envolvendo famílias na escola.",
-    "nextStep": "Comunique a gestão para articular rede externa de práticas restaurativas amplas.",
+    "headline": "Ameaças ativas ou revitimização provável tornam a mediação inadequada neste momento.",
+    "nextStep": "Suspenda mediação, priorize proteção e acione gestão para resposta institucional imediata.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Articulação intersetorial de rede de pacificadores."
+      "description": "Gestão de proteção e reorganização da rotina para cessar risco."
     },
     "complementaryService": {
       "queryType": "type=externo",
@@ -2730,10 +2730,10 @@
     },
     "teacherScope": {
       "doThis": [
-        "Contenha insultos paralelos em sala",
-        "Mantenha rotina disciplinar estrita"
+        "Afastar risco e manter supervisão ativa dos envolvidos",
+        "Registrar formalmente a suspensão da mediação por segurança"
       ],
-      "notYours": "Não tome partido de nenhum dos grupos em conflito."
+      "notYours": "Não insistir em diálogo restaurativo com ameaça ativa."
     }
   },
   {
@@ -3130,12 +3130,12 @@
   {
     "flowId": "flow_reintegracao_pos_suspensao",
     "level": "low",
-    "headline": "Aluno recém-chegado de afastamento mostra desinteresse e apatia profunda.",
-    "nextStep": "Acolha o aluno de forma neutra e repasse os conteúdos perdidos com paciência.",
+    "headline": "Retorno após suspensão alinhado com a gestão, sem risco imediato de reescalada.",
+    "nextStep": "Realize acolhimento de retorno, pactue combinados e monitore as primeiras semanas.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Suporte pedagógico para reinserção nas disciplinas sem prejuízo."
+      "description": "Acompanhamento pedagógico e de convivência no retorno."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -3144,21 +3144,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Cumprimente o aluno normalmente",
-        "Ofereça os materiais atrasados"
+        "Retomar rotina com adulto de referência",
+        "Registrar evolução de convivência e participação"
       ],
-      "notYours": "Não faça discursos morais sobre o erro que gerou a punição dele."
+      "notYours": "Não transformar o retorno em exposição pública do estudante."
     }
   },
   {
     "flowId": "flow_reintegracao_pos_suspensao",
     "level": "moderate",
-    "headline": "Aluno retorna desafiando comandos e as regras combinadas em seu retorno.",
-    "nextStep": "Acione a coordenação para reafirmar limites com o aluno fora de sala.",
+    "headline": "Retorno sem pactuação institucional clara entre gestão, equipe e responsáveis.",
+    "nextStep": "Formalize plano de reintegração com metas objetivas e cronograma de acompanhamento.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Recalibragem do combinado disciplinar de reintegração."
+      "description": "Construção de plano de reintegração com acompanhamento contínuo."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -3167,21 +3167,21 @@
     },
     "teacherScope": {
       "doThis": [
-        "Repita a orientação de forma serena",
-        "Evite embates frontais"
+        "Acionar reunião rápida de alinhamento institucional",
+        "Definir combinados observáveis para sala e circulação"
       ],
-      "notYours": "Não ameace o aluno com nova suspensão de forma imediata e pública."
+      "notYours": "Não conduzir retorno apenas por improviso de sala sem plano formal."
     }
   },
   {
     "flowId": "flow_reintegracao_pos_suspensao",
     "level": "high",
-    "headline": "Hostilidade agressiva contra a turma ou o professor no primeiro dia de retorno.",
-    "nextStep": "Retire o aluno da sala com firmeza e encaminhe novamente à direção escolar.",
+    "headline": "Risco elevado de nova escalada no retorno, com hostilidade ou conflito reativado.",
+    "nextStep": "Priorize proteção imediata, reorganize o ambiente e acione a direção sem atraso.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Reavaliação imediata da medida socioeducativa ou suspensão."
+      "description": "Reorganização institucional para cessar risco e proteger envolvidos."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -3190,10 +3190,10 @@
     },
     "teacherScope": {
       "doThis": [
-        "Acompanhe o aluno de perto",
-        "Justifique a saída de modo claro"
+        "Separar envolvidos e manter supervisão contínua",
+        "Registrar sinais de risco para reavaliação imediata"
       ],
-      "notYours": "Não perca o controle gritando ou xingando o aluno de incorrigível."
+      "notYours": "Não retomar aula sem ação institucional de proteção."
     }
   },
   {

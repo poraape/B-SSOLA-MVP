@@ -53,7 +53,7 @@ export const flow_bullying: FlowSpec = {
             "document_formal"
           ]
         },
-        "rationale": "Bullying recorrente exige resposta formal, proteção e plano estruturado."
+        "rationale": "Repeticao sistematica ou impacto relevante na rotina exigem resposta formal e acompanhamento."
       },
       {
         "id": "rule_default",
@@ -175,19 +175,36 @@ export const flow_bullying: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "A situação e repetida e esta causando impacto emocional importante?",
+      "question": "Há repeticao sistematica da agressao contra o mesmo estudante?",
       "actions": [
         {
           "label": "Sim",
           "next": "outcome_plano_intervencao"
         },
         {
-          "label": "Não, foi episodio isolado",
+          "label": "Não",
+          "next": "step_4"
+        }
+      ],
+      "riskSignals": [
+        "repeticao_agressoes"
+      ]
+    },
+    {
+      "id": "step_4",
+      "type": "question",
+      "question": "Mesmo sem repeticao comprovada, houve impacto relevante na rotina, no vinculo escolar ou na sensação de segurança?",
+      "actions": [
+        {
+          "label": "Sim",
+          "next": "outcome_plano_intervencao"
+        },
+        {
+          "label": "Não, foi episodio pontual sem impacto relevante",
           "next": "outcome_mediacao_preventiva"
         }
       ],
       "riskSignals": [
-        "repeticao_agressoes",
         "impacto_emocional_importante"
       ]
     }
@@ -246,7 +263,7 @@ export const flow_bullying: FlowSpec = {
       "description": "Conflito pontual sem gravidade imediata, com foco em reparacao e prevenção de repeticao.",
       "actions": [
         "Realizar escuta com os envolvidos",
-        "Conduzir mediacao restaurativa com acordos de convivência",
+        "Conduzir mediacao restaurativa apenas quando houver condicoes seguras e sem risco de revitimizacao",
         "Monitorar evolucao e registrar acompanhamento"
       ],
       "timeline": "Dias",
