@@ -210,7 +210,7 @@
     "flowId": "flow_risco_estrutural",
     "level": "moderate",
     "headline": "Queda de reboco ou poça d'água próxima a equipamentos.",
-    "nextStep": "Isole a área afetada com as cadeiras e chame a direção imediatamente.",
+    "nextStep": "Isole a área, remova estudantes da zona de risco, acione direção e ligue 193 para avaliação técnica.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
@@ -218,8 +218,8 @@
     },
     "complementaryService": {
       "queryType": "highlight=bombeiros",
-      "label": "Defesa Civil – 199",
-      "description": "Vistoria técnica de estabilidade estrutural."
+      "label": "Corpo de Bombeiros – 193",
+      "description": "Avaliação emergencial de segurança estrutural quando houver risco físico ao coletivo."
     },
     "teacherScope": {
       "doThis": [
@@ -233,11 +233,11 @@
     "flowId": "flow_risco_estrutural",
     "level": "high",
     "headline": "Estrondo na estrutura, teto cedendo ou faíscas na rede.",
-    "nextStep": "Evacue a sala imediatamente e solicite a interdição total do bloco.",
+    "nextStep": "Evacue imediatamente o bloco, acione direção e ligue 193 para interdição e avaliação técnica.",
     "priorityService": {
       "queryType": "highlight=bombeiros",
-      "label": "Defesa Civil – 199",
-      "description": "Interdição de prédios com risco de colapso."
+      "label": "Corpo de Bombeiros – 193",
+      "description": "Resposta imediata para risco estrutural com possibilidade de colapso."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -256,11 +256,11 @@
     "flowId": "flow_risco_estrutural",
     "level": "critical",
     "headline": "Desabamento iminente com pessoas bloqueadas no local.",
-    "nextStep": "Abrigue os alunos sob mesas resistentes e grite por resgate urgente.",
+    "nextStep": "Retire todos da área de risco, acione 193 imediatamente e chame 192 se houver pessoas feridas.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "Corpo de Bombeiros - 193",
-      "description": "Resgate em estruturas colapsadas e salvamento em soterramento."
+      "queryType": "highlight=bombeiros",
+      "label": "Corpo de Bombeiros – 193",
+      "description": "Emergência crítica por risco de desabamento ou colapso estrutural iminente."
     },
     "complementaryService": {
       "queryType": "highlight=samu",
@@ -325,11 +325,11 @@
     "flowId": "flow_ansiedade",
     "level": "high",
     "headline": "Falta de ar intensa, taquicardia forte ou relato de dor no peito.",
-    "nextStep": "Sente o aluno em local arejado, acalme o ambiente e peça ajuda da direção.",
+    "nextStep": "Mantenha acolhimento protegido, acione a direção e organize contato com responsáveis para encaminhamento ao CAPS IJ.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "SAMU - 192",
-      "description": "Avaliação de sintomas físicos severos associados à ansiedade."
+      "queryType": "highlight=caps-ij",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Referência territorial para sofrimento emocional intenso sem risco vital imediato."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -348,11 +348,11 @@
     "flowId": "flow_ansiedade",
     "level": "critical",
     "headline": "Desmaio ou perda de consciência após extrema agitação por pânico.",
-    "nextStep": "Deite o aluno de lado e exija ligação imediata ao 192 para socorro vital.",
+    "nextStep": "Deite o aluno de lado, acione 192 imediatamente e mantenha a direção em apoio até chegada do socorro.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "SAMU - 192",
-      "description": "Intervenção médica de emergência e estabilização inicial."
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Atendimento de urgência quando houver risco vital, desmaio ou piora clínica aguda."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -509,16 +509,16 @@
     "flowId": "flow_violacao_direitos",
     "level": "high",
     "headline": "Indícios fortes de violação grave de direitos com risco de continuidade.",
-    "nextStep": "Acione a direção urgentemente para acionar CREAS e canal de denúncia.",
+    "nextStep": "Acione a direção com urgência para formalizar o caso e articular Conselho Tutelar e CREAS.",
     "priorityService": {
-      "queryType": "highlight=creas-ermelino",
-      "label": "CREAS Ermelino Matarazzo",
-      "description": "Atuação em violações graves e acompanhamento especializado."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Referência central de proteção infantojuvenil com resposta territorial."
     },
     "complementaryService": {
-      "queryType": "highlight=disque-100",
-      "label": "Disque 100 – Direitos Humanos",
-      "description": "Registro de denúncia e orientação para proteção imediata."
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Apoio especializado para violação grave/complexa e acompanhamento social."
     },
     "teacherScope": {
       "doThis": [
@@ -601,16 +601,16 @@
     "flowId": "flow_agressao_verbal",
     "level": "high",
     "headline": "Ameaça verbal concreta de agressão física ou perseguição fora da sala.",
-    "nextStep": "Ative proteção imediata, afaste os envolvidos e comunique a gestão com urgência.",
+    "nextStep": "Ative proteção imediata, acione gestão e responsáveis e escale para Conselho Tutelar se houver desproteção.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
       "description": "Gestão de risco imediato e acionamentos institucionais."
     },
     "complementaryService": {
-      "queryType": "highlight=policia-militar",
-      "label": "Ronda Escolar",
-      "description": "Averiguação preventiva após ameaças graves à comunidade."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Apoio protetivo quando há ameaça recorrente, vulnerabilidade ou omissão de cuidado."
     },
     "teacherScope": {
       "doThis": [
@@ -693,16 +693,16 @@
     "flowId": "flow_discriminacao",
     "level": "high",
     "headline": "Violência discriminatória com ameaça ou risco concreto de agressão.",
-    "nextStep": "Priorize proteção imediata, preserve evidências e acione a gestão para resposta de crise.",
+    "nextStep": "Priorize proteção imediata, preserve evidências e acione gestão e responsáveis; escale para Conselho Tutelar quando necessário.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
       "description": "Coordenação da proteção imediata e acionamento da rede."
     },
     "complementaryService": {
-      "queryType": "highlight=disque-100",
-      "label": "Disque 100 – Direitos Humanos",
-      "description": "Denúncia anônima de violações fundamentais aos Direitos Humanos."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Apoio protetivo em discriminação grave/recorrente com risco à integridade do estudante."
     },
     "teacherScope": {
       "doThis": [
@@ -716,16 +716,16 @@
     "flowId": "flow_discriminacao",
     "level": "critical",
     "headline": "Agressão física coletiva ou espancamento motivado por ódio racial/religioso.",
-    "nextStep": "Isole a vítima, afaste os agressores e grite para acionarem o 190 urgentemente.",
+    "nextStep": "Isole a vítima, acione 190 apenas em ameaça concreta e mantenha direção e Conselho Tutelar na proteção institucional.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
       "label": "Polícia Militar – 190",
       "description": "Contenção policial de violência agravada por crimes de ódio."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "SAMU - 192",
-      "description": "Suporte e resgate imediato por traumatismos decorrentes da agressão."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Acompanha proteção de direitos após contenção imediata de risco."
     },
     "teacherScope": {
       "doThis": [
@@ -785,16 +785,16 @@
     "flowId": "flow_bullying",
     "level": "high",
     "headline": "Bullying com impacto relevante na segurança, no vínculo escolar ou na participação do estudante.",
-    "nextStep": "Acione gestão com urgência, organize proteção imediata e mantenha registro formal do caso.",
+    "nextStep": "Acione gestão com urgência, proteja a vítima e articule responsáveis; acione Conselho Tutelar quando houver desproteção.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
       "description": "Coordenação do plano de intervenção, proteção e contato com responsáveis."
     },
     "complementaryService": {
-      "queryType": "highlight=disque-100",
-      "label": "Disque 100 – Direitos Humanos",
-      "description": "Denúncia de violações de direitos de crianças e adolescentes."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Acionamento quando há recorrência grave, desproteção ou omissão de cuidado."
     },
     "teacherScope": {
       "doThis": [
@@ -900,11 +900,11 @@
     "flowId": "flow_plano_individual_acompanhamento",
     "level": "critical",
     "headline": "Crise refratária de agressividade e autolesão grave devido ao dificuldade.",
-    "nextStep": "Afaste colegas e carteiras e chame a direção com urgência para acionar o SAMU.",
+    "nextStep": "Afaste colegas e objetos de risco, acione 192 imediatamente quando houver risco físico e mantenha direção no suporte institucional.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "SAMU - 192",
-      "description": "Atenção especializada em crise severa de saúde mental."
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Acionamento imediato em desorganização aguda com risco físico."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -1176,16 +1176,16 @@
     "flowId": "flow_inseguranca_alimentar",
     "level": "critical",
     "headline": "Necessidade imediata de alimentação e cuidado hoje, com possível ausência de proteção.",
-    "nextStep": "Mantenha o estudante acolhido com a direção e solicite acionamento imediato da rede socioassistencial.",
+    "nextStep": "Mantenha o estudante acolhido com a direção e acione CRAS e Conselho Tutelar imediatamente em situação crítica.",
     "priorityService": {
       "queryType": "highlight=cras-ermelino",
       "label": "CRAS Ermelino Matarazzo",
       "description": "Apoio emergencial e ativação de rede de assistência no território."
     },
     "complementaryService": {
-      "queryType": "highlight=creas-ermelino",
-      "label": "CREAS Ermelino Matarazzo",
-      "description": "Apoio quando há violação grave de cuidados e proteção."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Acionamento quando a privação alimentar indicar desproteção grave de direitos."
     },
     "teacherScope": {
       "doThis": [
@@ -1337,16 +1337,16 @@
     "flowId": "flow_lgbtfobia",
     "level": "high",
     "headline": "Ameaça ou exposição não autorizada com risco relevante para estudante LGBTQIA+.",
-    "nextStep": "Priorize proteção imediata, acione gestão no mesmo momento e preserve sigilo de informações sensíveis.",
+    "nextStep": "Priorize proteção imediata, acione gestão e responsáveis com sigilo e escale para Conselho Tutelar quando houver desproteção.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
       "description": "Gestão de risco e articulação de proteção institucional e externa."
     },
     "complementaryService": {
-      "queryType": "highlight=disque-100",
-      "label": "Disque 100 – Direitos Humanos",
-      "description": "Denúncia de crimes contra os Direitos Humanos e Diversidade."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Apoio protetivo para violência recorrente ou risco de desproteção."
     },
     "teacherScope": {
       "doThis": [
@@ -1360,16 +1360,16 @@
     "flowId": "flow_lgbtfobia",
     "level": "critical",
     "headline": "Ataque físico ou espancamento violento motivado abertamente por LGBTfobia.",
-    "nextStep": "Afaste os agressores, proteja a vítima e mande chamar a polícia imediatamente.",
+    "nextStep": "Afaste os agressores, acione 190 apenas em ameaça concreta e mantenha direção e Conselho Tutelar no manejo protetivo.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
       "label": "Polícia Militar – 190",
       "description": "Intervenção direta e prisão em flagrante por violência qualificada."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "SAMU - 192",
-      "description": "Apoio vital emergencial e resgate de feridos no local."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Proteção de direitos após contenção de ameaça concreta."
     },
     "teacherScope": {
       "doThis": [
@@ -1436,9 +1436,9 @@
       "description": "Acolhimento imediato fora do ambiente de estresse."
     },
     "complementaryService": {
-      "queryType": "highlight=ubs-ermelino",
+      "queryType": "highlight=caps-ij",
       "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
-      "description": "Avaliação e acolhimento especializado em crise aguda de saúde mental."
+      "description": "Apoio especializado quando há sofrimento emocional persistente com impacto funcional."
     },
     "teacherScope": {
       "doThis": [
@@ -1452,16 +1452,16 @@
     "flowId": "flow_isolamento",
     "level": "critical",
     "headline": "Fuga ou trancamento desesperado em banheiros com ameaça de se machucar.",
-    "nextStep": "Converse pelo lado de fora, solicite à direção abertura emergencial da porta e prepare encaminhamento imediato à rede de saúde mental.",
+    "nextStep": "Mantenha aproximação protegida, acione direção imediatamente e organize encaminhamento urgente ao CAPS IJ; use 192 se houver risco vital.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
-      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
-      "description": "Avaliação de risco de autolesão e acolhimento imediato após a contenção da crise."
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Coordena proteção imediata, contato com responsáveis e articulação com a rede de saúde mental."
     },
     "complementaryService": {
-      "queryType": "highlight=policia-militar",
-      "label": "Polícia Militar – 190",
-      "description": "Apoio para abertura forçada da porta e proteção física em caso de risco extremo."
+      "queryType": "highlight=caps-ij",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Referência prioritária para cuidado em sofrimento emocional grave sem ameaça externa ativa."
     },
     "teacherScope": {
       "doThis": [
@@ -1889,16 +1889,16 @@
     "flowId": "flow_uso_substancias",
     "level": "high",
     "headline": "Uso de álcool ou substâncias ilícitas dentro do ambiente escolar.",
-    "nextStep": "Solicite a presença da gestão imediatamente para intervir e apreender o material.",
+    "nextStep": "Acione a direção no mesmo momento, mantenha proteção do ambiente e organize contato com responsáveis e CAPS AD.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
       "description": "Ação disciplinar severa, apreensão e notificação familiar."
     },
     "complementaryService": {
-      "queryType": "highlight=conselho-tutelar",
-      "label": "Conselho Tutelar de Ermelino Matarazzo",
-      "description": "Aplicação de medidas protetivas e responsabilização familiar."
+      "queryType": "highlight=caps-ad",
+      "label": "CAPS AD II Ermelino Matarazzo (Álcool e Drogas)",
+      "description": "Referência territorial para cuidado especializado em uso de substâncias."
     },
     "teacherScope": {
       "doThis": [
@@ -1935,16 +1935,16 @@
     "flowId": "flow_incendio",
     "level": "low",
     "headline": "Cheiro de queimado ou fumaça leve sem origem visível.",
-    "nextStep": "Comunique a direção imediatamente para inspeção predial.",
+    "nextStep": "Comunique a direção e acione 193 ao identificar fogo, fumaça ou risco ambiental, mesmo sem vítimas.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
       "description": "Inspeção e manutenção da estrutura escolar."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Corpo de Bombeiros - 193",
-      "description": "Orientação técnica e prevenção de sinistros."
+      "queryType": "highlight=bombeiros",
+      "label": "Corpo de Bombeiros – 193",
+      "description": "Avaliação técnica quando houver fogo, fumaça ou risco ambiental no espaço escolar."
     },
     "teacherScope": {
       "doThis": [
@@ -1958,16 +1958,16 @@
     "flowId": "flow_incendio",
     "level": "moderate",
     "headline": "Fumaça visível em lixeira ou equipamento elétrico.",
-    "nextStep": "Isole o local, desligue a chave geral se próxima e avise a direção.",
+    "nextStep": "Isole o local, organize evacuação parcial com a direção e acione 193 imediatamente.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
       "description": "Uso de extintores por brigadistas ou pessoal treinado."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Corpo de Bombeiros - 193",
-      "description": "Contenção de princípio de incêndio antes do alastramento."
+      "queryType": "highlight=bombeiros",
+      "label": "Corpo de Bombeiros – 193",
+      "description": "Resposta técnica prioritária para foco de incêndio, fumaça e segurança da evacuação."
     },
     "teacherScope": {
       "doThis": [
@@ -1981,11 +1981,11 @@
     "flowId": "flow_incendio",
     "level": "high",
     "headline": "Fogo visível e crescente em ambiente fechado.",
-    "nextStep": "Evacue a sala ordenadamente pela rota de fuga e acione o alarme sonoro.",
+    "nextStep": "Evacue pela rota de fuga, acione o alarme e ligue 193 imediatamente com apoio da direção.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "Corpo de Bombeiros - 193",
-      "description": "Combate a incêndio estrutural."
+      "queryType": "highlight=bombeiros",
+      "label": "Corpo de Bombeiros – 193",
+      "description": "Resposta imediata para incêndio com risco de propagação e necessidade de evacuação."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -2004,11 +2004,11 @@
     "flowId": "flow_incendio",
     "level": "critical",
     "headline": "Incêndio alastrado bloqueando saídas ou com vítimas presas.",
-    "nextStep": "Mantenha os alunos agachados sob a fumaça e busque saídas alternativas.",
+    "nextStep": "Proteja o grupo da fumaça, busque rota segura e acione 193 imediatamente; chame 192 se houver vítimas.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "Corpo de Bombeiros - 193",
-      "description": "Resgate de vítimas e combate ao fogo de grande porte."
+      "queryType": "highlight=bombeiros",
+      "label": "Corpo de Bombeiros – 193",
+      "description": "Emergência crítica com risco elevado à integridade física por fogo/fumaça."
     },
     "complementaryService": {
       "queryType": "highlight=samu",
@@ -2165,16 +2165,16 @@
     "flowId": "flow_autolesao",
     "level": "high",
     "headline": "Aluno cortando-se ou ferindo-se com objeto na sala de aula ativamente.",
-    "nextStep": "Solicite que pare calmamente, afaste os demais e chame a direção urgente.",
+    "nextStep": "Interrompa o risco com calma, acione direção e organize encaminhamento prioritário ao CAPS IJ com responsáveis.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
       "description": "Intervenção e apreensão segura do objeto."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "SAMU - 192",
-      "description": "Contenção médica química se agitação severa se mantiver."
+      "queryType": "highlight=caps-ij",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Referência especializada para continuidade do cuidado após estabilização escolar."
     },
     "teacherScope": {
       "doThis": [
@@ -2188,11 +2188,11 @@
     "flowId": "flow_autolesao",
     "level": "critical",
     "headline": "Hemorragia severa após corte profundo provocado por autolesão.",
-    "nextStep": "Faça compressão direta forte no sangramento e grite para acionarem o SAMU.",
+    "nextStep": "Faça compressão direta quando indicado, acione 192 imediatamente e mantenha a direção no suporte institucional.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "SAMU - 192",
-      "description": "Estancamento de hemorragia grave e preservação da vida."
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Urgência médica imediata em sangramento, rebaixamento de consciência ou risco vital."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -2257,16 +2257,16 @@
     "flowId": "flow_abuso_sexual",
     "level": "high",
     "headline": "Relato direto e recente, com medo intenso de voltar para casa hoje.",
-    "nextStep": "Comunique a direção urgentemente e mantenha o aluno sob supervisão contínua.",
+    "nextStep": "Comunique a direção com urgência, mantenha supervisão protegida e acione Conselho Tutelar e CREAS sem revitimização.",
     "priorityService": {
-      "queryType": "highlight=dp-62",
-      "label": "62º DP – Ermelino Matarazzo",
-      "description": "Registro oficial e apuração por autoridade competente."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Pivô de proteção de criança/adolescente com acionamento territorial formal."
     },
     "complementaryService": {
-      "queryType": "highlight=mp-infancia",
-      "label": "Ministério Público do Estado de São Paulo (MPSP) – Infância",
-      "description": "Garantia de proteção e responsabilização institucional."
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Apoio especializado para violação grave/complexa com acompanhamento socioassistencial."
     },
     "teacherScope": {
       "doThis": [
@@ -2280,11 +2280,11 @@
     "flowId": "flow_abuso_sexual",
     "level": "critical",
     "headline": "Suspeito está no local ou há risco imediato de retirada forçada do aluno.",
-    "nextStep": "Acione a direção agora e mantenha o aluno em sala segura com portas fechadas.",
+    "nextStep": "Acione direção na hora, proteja o estudante e ligue 190 em ameaça ativa; acione 192 sem atraso se houver lesão ou risco médico.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
-      "label": "Emergência - 190",
-      "description": "Intervenção imediata quando há risco presente à integridade do aluno."
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato quando houver agressor próximo ou ameaça ativa."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -2441,16 +2441,16 @@
     "flowId": "flow_ideacao_suicida",
     "level": "high",
     "headline": "Aluno revela planejamento claro de método e data para tirar a própria vida.",
-    "nextStep": "Mantenha o aluno sob sua visão, afaste objetos perigosos e exija a direção.",
+    "nextStep": "Mantenha o aluno sob supervisão contínua, afaste meios de risco e acione direção para encaminhamento ao CAPS IJ.",
     "priorityService": {
       "queryType": "highlight=caps-ij",
       "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
       "description": "Intervenção intensiva para risco de suicídio estruturado."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "SAMU - 192",
-      "description": "Resgate e contenção se o risco se tornar iminente."
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Garante supervisão contínua, contato com responsáveis e proteção institucional imediata."
     },
     "teacherScope": {
       "doThis": [
@@ -2464,16 +2464,16 @@
     "flowId": "flow_ideacao_suicida",
     "level": "critical",
     "headline": "Tentativa em andamento na escola ou aluno prestes a pular de altura.",
-    "nextStep": "Afaste a turma silenciosamente, não faça movimentos bruscos e mande ligar 190.",
+    "nextStep": "Proteja o estudante, acione 192 imediatamente e mantenha a direção no manejo institucional da situação.",
     "priorityService": {
-      "queryType": "highlight=policia-militar",
-      "label": "Polícia Militar – 190",
-      "description": "Mediação técnica de crise com risco iminente de morte."
+      "queryType": "highlight=samu",
+      "label": "SAMU – 192",
+      "description": "Acionamento imediato em risco vital ou iminência de autoagressão."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Corpo de Bombeiros - 193",
-      "description": "Resgate em altura e salvamento especializado."
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Coordena proteção escolar e comunicação institucional durante a urgência."
     },
     "teacherScope": {
       "doThis": [
@@ -2556,16 +2556,16 @@
     "flowId": "flow_negligencia",
     "level": "critical",
     "headline": "Criança fica sem responsável na escola e não há local seguro para ir.",
-    "nextStep": "Mantenha a criança com a direção e solicite acionamento imediato do Conselho.",
+    "nextStep": "Mantenha a criança protegida com a direção e acione Conselho Tutelar e CREAS com prioridade.",
     "priorityService": {
       "queryType": "highlight=conselho-tutelar",
       "label": "Conselho Tutelar de Ermelino Matarazzo",
       "description": "Definição de proteção imediata e encaminhamento seguro."
     },
     "complementaryService": {
-      "queryType": "highlight=cras-ermelino",
-      "label": "CRAS Ermelino Matarazzo",
-      "description": "Apoio para rede de acolhimento e benefícios emergenciais."
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Suporte especializado em violação de direitos com alta complexidade."
     },
     "teacherScope": {
       "doThis": [
@@ -2625,16 +2625,16 @@
     "flowId": "flow_depressao",
     "level": "high",
     "headline": "Falta severa de higiene, recusa alimentar ou frases de desesperança intensa.",
-    "nextStep": "Comunique a direção imediatamente para reunião de urgência com a família.",
+    "nextStep": "Comunique a direção imediatamente para contato com responsáveis e encaminhamento prioritário ao CAPS IJ.",
     "priorityService": {
       "queryType": "highlight=caps-ij",
       "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
       "description": "Tratamento multiprofissional para sofrimento psíquico grave."
     },
     "complementaryService": {
-      "queryType": "highlight=conselho-tutelar",
-      "label": "Conselho Tutelar de Ermelino Matarazzo",
-      "description": "Garantia de que a família proverá tratamento de saúde."
+      "queryType": "highlight=gestao-direcao",
+      "label": "Direção Escolar – E.E. Ermelino Matarazzo",
+      "description": "Coordena contato com responsáveis e registro institucional protegido."
     },
     "teacherScope": {
       "doThis": [
@@ -2648,11 +2648,11 @@
     "flowId": "flow_depressao",
     "level": "critical",
     "headline": "Imobilidade física total e recusa em sair do lugar associadas a choro forte.",
-    "nextStep": "Mantenha companhia constante ao aluno e solicite que tragam a direção à sala.",
+    "nextStep": "Mantenha companhia constante, acione a direção e, se houver risco vital, ligue 192 sem atraso.",
     "priorityService": {
-      "queryType": "type=externo",
-      "label": "SAMU - 192",
-      "description": "avaliação de saúde mental de urgência e transporte seguro."
+      "queryType": "highlight=caps-ij",
+      "label": "CAPS Infantojuvenil II Ermelino Matarazzo",
+      "description": "Referência especializada para risco psíquico elevado com necessidade de resposta imediata da rede."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -2717,16 +2717,16 @@
     "flowId": "flow_mediacao_restaurativa",
     "level": "high",
     "headline": "Ameaças ativas ou revitimização provável tornam a mediação inadequada neste momento.",
-    "nextStep": "Suspenda mediação, priorize proteção e acione gestão para resposta institucional imediata.",
+    "nextStep": "Suspenda a mediação, priorize proteção e acione gestão; escale para Conselho Tutelar se houver risco ou violação de direitos.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
       "description": "Gestão de proteção e reorganização da rotina para cessar risco."
     },
     "complementaryService": {
-      "queryType": "type=externo",
-      "label": "Justiça Restaurativa - MP",
-      "description": "Apoio especializado do Estado para conflitos de grande escala."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Acionamento quando a mediação deixa de ser segura e há risco de desproteção."
     },
     "teacherScope": {
       "doThis": [
@@ -2832,11 +2832,11 @@
     "flowId": "flow_violencia_domestica",
     "level": "critical",
     "headline": "Agressor aparece na escola ou há ameaça imediata contra o aluno.",
-    "nextStep": "Acione a direção na hora e mantenha o aluno em local protegido e fora de vista.",
+    "nextStep": "Acione direção imediatamente, proteja o estudante e ligue 190 se houver ameaça ativa; acione 192 quando houver lesão ou risco médico.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
-      "label": "Emergência - 190",
-      "description": "Apoio imediato quando há ameaça presente e risco de agressão."
+      "label": "Polícia Militar – 190",
+      "description": "Acionamento imediato quando houver ameaça ativa e necessidade de proteção física urgente."
     },
     "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
@@ -3361,16 +3361,16 @@
     "flowId": "flow_evasao",
     "level": "high",
     "headline": "Risco importante de abandono escolar com barreiras sociais e familiares persistentes.",
-    "nextStep": "Acione a direção urgentemente para registrar o risco e articular rede socioassistencial e protetiva.",
+    "nextStep": "Acione direção com urgência para plano escola-família e articulação com CRAS; escale ao Conselho Tutelar em desproteção persistente.",
     "priorityService": {
-      "queryType": "highlight=conselho-tutelar",
-      "label": "Conselho Tutelar de Ermelino Matarazzo",
-      "description": "Atuação quando há risco de abandono escolar persistente."
-    },
-    "complementaryService": {
       "queryType": "highlight=cras-ermelino",
       "label": "CRAS Ermelino Matarazzo",
-      "description": "Apoio social para barreiras de transporte, renda e cuidado."
+      "description": "Porta principal da rede socioassistencial para risco de evasão sem ameaça imediata."
+    },
+    "complementaryService": {
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Acionamento protetivo quando houver desproteção persistente ou falha de cuidado."
     },
     "teacherScope": {
       "doThis": [
@@ -3384,16 +3384,16 @@
     "flowId": "flow_evasao",
     "level": "critical",
     "headline": "Ruptura prolongada do vínculo escolar, sem retorno e com risco de desproteção.",
-    "nextStep": "Comunique a direção imediatamente para acionar Conselho Tutelar e formalizar o caso com prioridade.",
+    "nextStep": "Comunique direção imediatamente e acione Conselho Tutelar e CREAS com prioridade; use 190 se houver risco imediato.",
     "priorityService": {
       "queryType": "highlight=conselho-tutelar",
       "label": "Conselho Tutelar de Ermelino Matarazzo",
       "description": "Busca de proteção e acionamento de rede quando o aluno desaparece."
     },
     "complementaryService": {
-      "queryType": "highlight=dp-62",
-      "label": "62º DP – Ermelino Matarazzo",
-      "description": "Registro oficial quando há desaparecimento e risco associado."
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Apoio especializado para desproteção grave, recorrente ou de alta complexidade."
     },
     "teacherScope": {
       "doThis": [
@@ -3430,16 +3430,16 @@
     "flowId": "flow_abandono",
     "level": "moderate",
     "headline": "Responsáveis não atendem e o aluno fica na escola sem destino em alguns dias.",
-    "nextStep": "Acione a direção para iniciar contatos e definir guarda segura no dia.",
+    "nextStep": "Acione a direção para contato com responsáveis e articulação com CRAS no mesmo turno.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
       "description": "Gestão de contatos e definição de saída segura do aluno."
     },
     "complementaryService": {
-      "queryType": "highlight=conselho-tutelar",
-      "label": "Conselho Tutelar de Ermelino Matarazzo",
-      "description": "Atuação quando não há responsável disponível de forma recorrente."
+      "queryType": "highlight=cras-ermelino",
+      "label": "CRAS Ermelino Matarazzo",
+      "description": "Porta territorial para proteção social em ausência de risco imediato grave."
     },
     "teacherScope": {
       "doThis": [
@@ -3476,16 +3476,16 @@
     "flowId": "flow_abandono",
     "level": "critical",
     "headline": "Aluno está sem responsável hoje e sem local seguro para ir ao final do turno.",
-    "nextStep": "Mantenha o aluno na direção e solicite acionamento imediato do Conselho Tutelar.",
+    "nextStep": "Mantenha o estudante protegido com a direção e acione Conselho Tutelar e CREAS imediatamente.",
     "priorityService": {
       "queryType": "highlight=conselho-tutelar",
       "label": "Conselho Tutelar de Ermelino Matarazzo",
       "description": "Definição imediata de proteção e encaminhamento seguro."
     },
     "complementaryService": {
-      "queryType": "highlight=cras-ermelino",
-      "label": "CRAS Ermelino Matarazzo",
-      "description": "Apoio para rede de acolhimento e acesso a serviços sociais."
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Apoio especializado para desproteção grave e recorrente."
     },
     "teacherScope": {
       "doThis": [
@@ -3545,16 +3545,16 @@
     "flowId": "flow_trabalho_infantil",
     "level": "high",
     "headline": "Trabalho pesado, noturno ou perigoso, com sinais de medo e exaustão.",
-    "nextStep": "Acione a direção imediatamente para chamar proteção e registrar a situação.",
+    "nextStep": "Acione direção imediatamente para formalizar o caso e acionar Conselho Tutelar e CREAS.",
     "priorityService": {
-      "queryType": "highlight=creas-ermelino",
-      "label": "CREAS Ermelino Matarazzo",
-      "description": "Atuação em violações graves e proteção social especializada."
+      "queryType": "highlight=conselho-tutelar",
+      "label": "Conselho Tutelar de Ermelino Matarazzo",
+      "description": "Acionamento prioritário para proteção de direitos de criança/adolescente."
     },
     "complementaryService": {
-      "queryType": "highlight=disque-100",
-      "label": "Disque 100 – Direitos Humanos",
-      "description": "Denúncia de exploração e violações de direitos de crianças."
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Acompanhamento especializado em exploração/violação com articulação socioassistencial."
     },
     "teacherScope": {
       "doThis": [
@@ -3568,16 +3568,16 @@
     "flowId": "flow_trabalho_infantil",
     "level": "critical",
     "headline": "Há coerção imediata ou retirada forçada do aluno para exploração.",
-    "nextStep": "Acione a direção agora e mantenha o aluno em local seguro e supervisionado.",
+    "nextStep": "Mantenha o estudante em local seguro com a direção, acione Conselho Tutelar e CREAS e ligue 190 se houver ameaça ativa.",
     "priorityService": {
-      "queryType": "highlight=policia-militar",
-      "label": "Emergência - 190",
-      "description": "Apoio imediato quando há coação presente e risco ao aluno."
-    },
-    "complementaryService": {
       "queryType": "highlight=conselho-tutelar",
       "label": "Conselho Tutelar de Ermelino Matarazzo",
-      "description": "Proteção formal e encaminhamento após estabilizar a segurança."
+      "description": "Pivô de proteção imediata em situação crítica de violação de direitos."
+    },
+    "complementaryService": {
+      "queryType": "highlight=creas-ermelino",
+      "label": "CREAS Ermelino Matarazzo",
+      "description": "Apoio especializado para continuidade do acompanhamento protetivo."
     },
     "teacherScope": {
       "doThis": [
