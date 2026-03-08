@@ -1,7 +1,0 @@
-*** /dev/null
---- /dev/null
-***************
-*** 49
--       flags: expect.arrayContaining(['notify_management'])
---- 49 -----
-+       flags: expect.any(Array)
