@@ -24,8 +24,8 @@ export const NetworkPage: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [isDrawerOpen, setIsDrawerOpen] = useState(!!serviceId);
-  const [mobileView, setMobileView] = useState<'list' | 'map'>('list');
+  const [isDrawerOpen, setIsDrawerOpen] = useState(Boolean(serviceId));
+  const [mobileView, setMobileView] = useState<'list' | 'map'>(serviceId ? 'map' : 'list');
 
   useEffect(() => {
     let active = true;
@@ -39,6 +39,14 @@ export const NetworkPage: React.FC = () => {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    const hasSelectedService = Boolean(serviceId);
+    setIsDrawerOpen(hasSelectedService);
+    if (hasSelectedService) {
+      setMobileView('map');
+    }
+  }, [serviceId]);
 
   const effectiveHighlightId = highlightId || recommendation.highlightId;
   const effectiveQueryType = queryType || recommendation.queryType;

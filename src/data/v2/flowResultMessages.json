@@ -149,7 +149,7 @@
     },
     "complementaryService": {
       "queryType": "highlight=policia-militar",
-      "label": "Ronda Escolar",
+      "label": "Polícia Militar – 190",
       "description": "Apoio em situações com risco de reescalada de violência."
     },
     "teacherScope": {
@@ -379,7 +379,7 @@
     },
     "complementaryService": {
       "queryType": "highlight=policia-militar",
-      "label": "Ronda Escolar",
+      "label": "Polícia Militar – 190",
       "description": "Averiguação de indivíduos suspeitos no entorno."
     },
     "teacherScope": {
@@ -535,7 +535,7 @@
     "nextStep": "Mantenha o aluno sob supervisão e acione a direção para chamar ajuda externa.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
-      "label": "Emergência - 190",
+      "label": "Polícia Militar – 190",
       "description": "Apoio imediato quando há risco presente à integridade."
     },
     "complementaryService": {
@@ -1023,7 +1023,7 @@
     },
     "complementaryService": {
       "queryType": "highlight=policia-militar",
-      "label": "Ronda Escolar",
+      "label": "Polícia Militar – 190",
       "description": "Policiamento preventivo e diálogo com a comunidade."
     },
     "teacherScope": {
@@ -1597,7 +1597,7 @@
       "description": "Reunião com responsáveis e definição do encaminhamento para avaliação externa."
     },
     "complementaryService": {
-      "queryType": "highlight=gestao-coordenacao",
+      "queryType": "highlight=ubs-ermelino",
       "label": "UBS Ermelino Matarazzo",
       "description": "Orientação à família sobre avaliação médica ou neuropsicológica, quando indicada."
     },
@@ -1644,7 +1644,7 @@
     },
     "complementaryService": {
       "queryType": "highlight=policia-militar",
-      "label": "Emergência - 190",
+      "label": "Polícia Militar – 190",
       "description": "Apoio quando há risco imediato fora do controle da escola."
     },
     "teacherScope": {
@@ -2104,7 +2104,7 @@
     },
     "complementaryService": {
       "queryType": "highlight=bombeiros",
-      "label": "Corpo de Bombeiros - 193",
+      "label": "Corpo de Bombeiros – 193",
       "description": "Resposta a risco químico ambiental e proteção coletiva imediata."
     },
     "teacherScope": {
@@ -3300,7 +3300,7 @@
     },
     "complementaryService": {
       "queryType": "highlight=policia-militar",
-      "label": "Emergência - 190",
+      "label": "Polícia Militar – 190",
       "description": "Apoio se a escola não conseguir garantir segurança imediata."
     },
     "teacherScope": {
