@@ -49,7 +49,23 @@ export const AtendimentoGatePage: React.FC = () => {
     if (import.meta.env.DEV) {
       console.debug('[GatewayDecision]', decision);
     }
-    setExplanation(decision.explanation);
+    const institutionalExplanation = (() => {
+      if (decision.route === 'emergency' && decision.score >= 2) {
+        return 'Há sinais que exigem resposta imediata da escola.';
+      }
+
+      if (decision.route === 'emergency') {
+        return 'A situação requer avaliação institucional imediata.';
+      }
+
+      if (selectedSignals.length === 0) {
+        return 'Não há sinal crítico marcado neste momento, mas o caso pode exigir acolhimento e acompanhamento.';
+      }
+
+      return 'A escola deve priorizar proteção e acionamento da gestão.';
+    })();
+
+    setExplanation(institutionalExplanation);
     setIsNavigating(true);
 
     window.setTimeout(() => {

@@ -20,7 +20,7 @@
   {
     "id": "saude_bem_estar",
     "label": "Saúde Física e Bem-Estar Escolar",
-    "description": "Sinais físicos observáveis na rotina escolar que exigem acolhimento inicial, monitoramento e possível encaminhamento.",
+    "description": "Primeira resposta escolar diante de sinais de mal-estar e necessidade de cuidado, com acolhimento, registro e acionamento adequado.",
     "riskGroup": "medical",
     "icon": "Heart",
     "color": "orange",

@@ -1606,7 +1606,7 @@
         "Relate impactos no aprendizado",
         "Ofereça rotinas previsíveis"
       ],
-      "notYours": "Não pressione a família a obter laudos nem faça cobrança de saúde."
+      "notYours": "Não pressione a família a obter documentação técnica especializada nem faça cobrança de saúde."
     }
   },
   {
@@ -1790,7 +1790,7 @@
         "Acompanhe o aluno até a gestão",
         "Relate a queixa com exatidão"
       ],
-      "notYours": "Não realize diagnósticos clínicos."
+      "notYours": "Não realize definições clínicas especializadas."
     }
   },
   {
@@ -1882,7 +1882,7 @@
         "Garanta acompanhante no trajeto",
         "Monitore sinais vitais visuais"
       ],
-      "notYours": "Não faça perguntas investigativas sobre o que foi consumido."
+      "notYours": "Não faça perguntas para apuração sobre o que foi consumido."
     }
   },
   {
@@ -2963,7 +2963,7 @@
         "Anote o que o aluno relatou",
         "Mantenha a rotina da sala"
       ],
-      "notYours": "Não faça perguntas clínicas aprofundadas ao estudante."
+      "notYours": "Não conduza avaliação clínica detalhada com o estudante."
     }
   },
   {
