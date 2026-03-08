@@ -922,8 +922,8 @@
   {
     "flowId": "flow_vulnerabilidade_social",
     "level": "low",
-    "headline": "Dificuldades pontuais de transporte, material ou organização familiar.",
-    "nextStep": "Registre a demanda e comunique a coordenação para orientação e apoio escolar.",
+    "headline": "Sinais sociais iniciais e pontuais, ainda sem agravamento claro na rotina escolar.",
+    "nextStep": "Registre sinais observáveis e alinhe com a coordenação um acompanhamento inicial no mesmo turno.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
@@ -936,8 +936,8 @@
     },
     "teacherScope": {
       "doThis": [
-        "Anote barreiras relatadas",
-        "Ajuste prazos quando autorizado"
+        "Anote barreiras observadas na rotina",
+        "Combine devolutiva com a coordenação"
       ],
       "notYours": "Não exponha a situação social do aluno para a turma."
     }
@@ -945,8 +945,8 @@
   {
     "flowId": "flow_vulnerabilidade_social",
     "level": "moderate",
-    "headline": "Problemas financeiros e moradia precária afetando frequência e rendimento.",
-    "nextStep": "Acione a direção para encaminhar a família ao CRAS e organizar suporte escolar.",
+    "headline": "Vulnerabilidade social recorrente, com impacto em frequência, participação ou aprendizagem.",
+    "nextStep": "Acione a direção para organizar plano institucional com responsáveis e acompanhamento contínuo.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
@@ -959,8 +959,8 @@
     },
     "teacherScope": {
       "doThis": [
-        "Registre impactos no estudo",
-        "Encaminhe relatos à gestão"
+        "Registre impactos recorrentes no estudo",
+        "Compartilhe evidências objetivas com a gestão"
       ],
       "notYours": "Não tente resolver com promessas pessoais ou doações sem coordenação."
     }
@@ -968,8 +968,8 @@
   {
     "flowId": "flow_vulnerabilidade_social",
     "level": "high",
-    "headline": "Risco de despejo, ausência de documentos e ruptura grave da rotina familiar.",
-    "nextStep": "Comunique a direção urgentemente para acionar CRAS e, se necessário, CREAS.",
+    "headline": "Recorrência grave de vulnerabilidade com risco de desproteção e possível abandono escolar.",
+    "nextStep": "Comunique a direção com urgência para articular CRAS, proteção e possível reclassificação para fluxo específico.",
     "priorityService": {
       "queryType": "highlight=cras-ermelino",
       "label": "CRAS Ermelino Matarazzo",
@@ -982,8 +982,8 @@
     },
     "teacherScope": {
       "doThis": [
-        "Registre urgências relatadas",
-        "Acompanhe o aluno à gestão"
+        "Registre urgências e sinais de desproteção",
+        "Acompanhe o estudante até a gestão"
       ],
       "notYours": "Não conduza o caso com serviços externos por conta própria."
     }
@@ -991,8 +991,8 @@
   {
     "flowId": "flow_vulnerabilidade_social",
     "level": "critical",
-    "headline": "Família sem abrigo hoje ou aluno sem lugar seguro para dormir nesta noite.",
-    "nextStep": "Acione a direção imediatamente para acionar assistência social e proteção.",
+    "headline": "Risco imediato de desproteção social ou ausência de referência segura para o estudante hoje.",
+    "nextStep": "Acione a direção imediatamente para proteção escolar e acionamento prioritário da rede protetiva.",
     "priorityService": {
       "queryType": "highlight=creas-ermelino",
       "label": "CREAS Ermelino Matarazzo",
@@ -1006,7 +1006,7 @@
     "teacherScope": {
       "doThis": [
         "Mantenha o aluno acompanhado",
-        "Registre a linha do tempo do dia"
+        "Registre horário e sequência dos fatos"
       ],
       "notYours": "Não leve o aluno para casa nem faça transporte ou abrigo por conta própria."
     }
@@ -1106,8 +1106,8 @@
   {
     "flowId": "flow_inseguranca_alimentar",
     "level": "low",
-    "headline": "Aluno pede comida com frequência e relata refeições insuficientes em casa.",
-    "nextStep": "Comunique a coordenação para acolher o aluno e orientar encaminhamento social.",
+    "headline": "Sinal inicial de insegurança alimentar, sem urgência clínica no momento.",
+    "nextStep": "Registre o episódio e alinhe com a coordenação monitoramento alimentar no dia a dia escolar.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
@@ -1121,7 +1121,7 @@
     "teacherScope": {
       "doThis": [
         "Registre o relato sem julgamento",
-        "Comunique a gestão no mesmo dia"
+        "Observe recorrência nos próximos dias"
       ],
       "notYours": "Não faça coleta de doações pessoais sem orientação da direção."
     }
@@ -1129,8 +1129,8 @@
   {
     "flowId": "flow_inseguranca_alimentar",
     "level": "moderate",
-    "headline": "Relato repetido de falta de comida em casa, com queda de atenção em aula.",
-    "nextStep": "Acione a direção para contatar responsáveis e encaminhar a família ao CRAS.",
+    "headline": "Recorrência de falta de alimentação com impacto em atenção, energia ou participação.",
+    "nextStep": "Acione a direção para contato institucional com responsáveis e articulação com CRAS.",
     "priorityService": {
       "queryType": "highlight=cras-ermelino",
       "label": "CRAS Ermelino Matarazzo",
@@ -1143,8 +1143,8 @@
     },
     "teacherScope": {
       "doThis": [
-        "Anote frequência dos relatos",
-        "Evite expor o aluno na turma"
+        "Anote frequência dos relatos e sinais",
+        "Evite expor o estudante na turma"
       ],
       "notYours": "Não responsabilize o aluno nem faça cobrança moral sobre a família."
     }
@@ -1152,8 +1152,8 @@
   {
     "flowId": "flow_inseguranca_alimentar",
     "level": "high",
-    "headline": "Aluno relata dias sem refeição e ausência total de comida no domicílio.",
-    "nextStep": "Comunique a direção urgentemente para acionar CRAS e proteção se necessário.",
+    "headline": "Insegurança alimentar recorrente associada a vulnerabilidade familiar e risco de desproteção.",
+    "nextStep": "Comunique a direção com urgência para acionar CRAS e rede protetiva conforme o caso.",
     "priorityService": {
       "queryType": "highlight=cras-ermelino",
       "label": "CRAS Ermelino Matarazzo",
@@ -1166,8 +1166,8 @@
     },
     "teacherScope": {
       "doThis": [
-        "Registre a fala com precisão",
-        "Acompanhe o aluno até a gestão"
+        "Registre relatos e sinais com precisão",
+        "Acompanhe o estudante até a gestão"
       ],
       "notYours": "Não tente resolver com dinheiro próprio nem leve o aluno para comer fora."
     }
@@ -1175,8 +1175,8 @@
   {
     "flowId": "flow_inseguranca_alimentar",
     "level": "critical",
-    "headline": "Aluno diz que hoje não tem o que comer e não tem adulto responsável presente.",
-    "nextStep": "Mantenha o aluno com a direção e solicite acionamento imediato do CRAS.",
+    "headline": "Necessidade imediata de alimentação e cuidado hoje, com possível ausência de proteção.",
+    "nextStep": "Mantenha o estudante acolhido com a direção e solicite acionamento imediato da rede socioassistencial.",
     "priorityService": {
       "queryType": "highlight=cras-ermelino",
       "label": "CRAS Ermelino Matarazzo",
@@ -1189,8 +1189,8 @@
     },
     "teacherScope": {
       "doThis": [
-        "Não deixe o aluno sozinho",
-        "Registre tentativas de contato familiar"
+        "Não deixe o estudante sozinho",
+        "Registre tentativas de contato com referência familiar"
       ],
       "notYours": "Não transporte o aluno nem faça encaminhamento externo sem a gestão."
     }
@@ -3314,8 +3314,8 @@
   {
     "flowId": "flow_evasao",
     "level": "low",
-    "headline": "Faltas pontuais e atrasos, sem padrão de abandono.",
-    "nextStep": "Registre faltas e comunique a coordenação para contato preventivo com a família.",
+    "headline": "Presença irregular inicial com sinais de enfraquecimento do vínculo escolar.",
+    "nextStep": "Registre faltas e presença irregular e acione a coordenação para busca ativa pedagógica inicial.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
@@ -3328,8 +3328,8 @@
     },
     "teacherScope": {
       "doThis": [
-        "Anote datas e motivos informados",
-        "Ofereça recuperação de conteúdo"
+        "Anote datas e padrão de presença",
+        "Ofereça recomposição de aprendizagem"
       ],
       "notYours": "Não faça cobranças diretas à família fora dos canais da escola."
     }
@@ -3337,8 +3337,8 @@
   {
     "flowId": "flow_evasao",
     "level": "moderate",
-    "headline": "Faltas repetidas por semanas, com perda clara de vínculo com a escola.",
-    "nextStep": "Comunique a direção para convocar responsáveis e acionar assistência social.",
+    "headline": "Faltas recorrentes com prejuízo de participação e vínculo com a escola.",
+    "nextStep": "Comunique a direção para organizar plano de permanência com responsáveis e acompanhamento institucional.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
@@ -3352,7 +3352,7 @@
     "teacherScope": {
       "doThis": [
         "Registre frequência por datas",
-        "Informe mudanças de rendimento"
+        "Informe mudanças de rendimento e participação"
       ],
       "notYours": "Não procure o aluno em casa nem faça visitas por conta própria."
     }
@@ -3360,8 +3360,8 @@
   {
     "flowId": "flow_evasao",
     "level": "high",
-    "headline": "Aluno está prestes a abandonar: recusa em vir e família sem resposta.",
-    "nextStep": "Acione a direção urgentemente para registrar o risco e chamar rede de proteção.",
+    "headline": "Risco importante de abandono escolar com barreiras sociais e familiares persistentes.",
+    "nextStep": "Acione a direção urgentemente para registrar o risco e articular rede socioassistencial e protetiva.",
     "priorityService": {
       "queryType": "highlight=conselho-tutelar",
       "label": "Conselho Tutelar de Ermelino Matarazzo",
@@ -3375,7 +3375,7 @@
     "teacherScope": {
       "doThis": [
         "Registre tentativas de contato",
-        "Relate fatores escolares observados"
+        "Relate fatores escolares e sociais observados"
       ],
       "notYours": "Não faça busca ativa externa sem coordenação da gestão."
     }
@@ -3383,8 +3383,8 @@
   {
     "flowId": "flow_evasao",
     "level": "critical",
-    "headline": "Aluno some por longo período e não há retorno nem localização pela escola.",
-    "nextStep": "Comunique a direção imediatamente para acionar Conselho Tutelar e registrar o caso.",
+    "headline": "Ruptura prolongada do vínculo escolar, sem retorno e com risco de desproteção.",
+    "nextStep": "Comunique a direção imediatamente para acionar Conselho Tutelar e formalizar o caso com prioridade.",
     "priorityService": {
       "queryType": "highlight=conselho-tutelar",
       "label": "Conselho Tutelar de Ermelino Matarazzo",
@@ -3398,7 +3398,7 @@
     "teacherScope": {
       "doThis": [
         "Entregue à gestão seu registro de faltas",
-        "Relate últimas interações conhecidas"
+        "Relate últimas interações e tentativas de contato"
       ],
       "notYours": "Não tente localizar o aluno sozinho nem expor dados pessoais em grupos."
     }

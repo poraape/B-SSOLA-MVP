@@ -32,7 +32,7 @@ export const flow_vulnerabilidade_social: FlowSpec = {
       "actions": [
         {
           "label": "Sim",
-          "next": "outcome_encaminhar_categoria"
+          "next": "outcome_protecao_imediata"
         },
         {
           "label": "Não",
@@ -47,50 +47,103 @@ export const flow_vulnerabilidade_social: FlowSpec = {
     {
       "id": "step_3",
       "type": "question",
-      "question": "A situação e recorrente ou esta se agravando?",
+      "question": "Os sinais de vulnerabilidade social e familiar são recorrentes ou estão se agravando na rotina escolar?",
       "actions": [
         {
           "label": "Sim",
-          "next": "outcome_encaminhar_categoria"
+          "next": "step_4"
         },
         {
           "label": "Não",
-          "next": "outcome_acompanhamento"
+          "next": "outcome_acompanhamento_inicial"
         }
       ],
       "riskSignals": [
         "vulnerabilidade_economica",
         "risco_abandono"
       ]
+    },
+    {
+      "id": "step_4",
+      "type": "question",
+      "question": "Há indicação clara de fluxo mais específico (evasão, insegurança alimentar, negligência ou trabalho infantil) para orientar melhor a conduta?",
+      "actions": [
+        {
+          "label": "Sim",
+          "next": "outcome_reclassificacao_assistida"
+        },
+        {
+          "label": "Não",
+          "next": "outcome_acompanhamento_institucional"
+        }
+      ],
+      "riskSignals": [
+        "vulnerabilidade_economica",
+        "instabilidade_familiar",
+        "risco_abandono"
+      ]
     }
   ],
   "outcomes": [
     {
-      "id": "outcome_acompanhamento",
-      "label": "Acompanhamento Pedagógico",
-      "description": "Conduzir acompanhamento pedagógico com escuta e monitoramento.",
+      "id": "outcome_acompanhamento_inicial",
+      "label": "Acompanhamento Inicial com Gestão",
+      "description": "Sinais iniciais sem agravamento atual. Organizar acolhimento e monitoramento institucional.",
       "actions": [
-        "Realizar escuta qualificada",
-        "Registrar acompanhamento pedagógico",
-        "Monitorar evolucao da situação",
-        "Revisar plano de apoio com a equipe"
+        "Realizar acolhimento e escuta sem julgamento",
+        "Registrar fatos observáveis na rotina escolar",
+        "Compartilhar o caso com coordenação para monitoramento"
       ],
       "timeline": "Dias",
       "riskLevel": "MODERATE",
       "flags": []
     },
     {
-      "id": "outcome_encaminhar_categoria",
-      "label": "Reavaliar Encaminhamento",
-      "description": "Reavaliar categoria e definir fluxo institucional mais adequado.",
+      "id": "outcome_acompanhamento_institucional",
+      "label": "Acompanhamento Social Institucional",
+      "description": "Recorrência ou agravamento sem risco imediato exige plano institucional com gestão, responsáveis e rede quando necessário.",
       "actions": [
-        "Reavaliar contexto com a gestão",
-        "Redirecionar para fluxo mais aderente quando necessario",
-        "Registrar decisao institucional"
+        "Avisar gestão para acompanhamento do caso",
+        "Organizar contato com responsáveis ou referência familiar",
+        "Registrar objetivamente impactos em presença, participação e proteção",
+        "Articular rede socioassistencial com a gestão quando houver barreiras persistentes"
       ],
-      "timeline": "Continuo",
-      "riskLevel": "MODERATE",
-      "flags": []
+      "timeline": "Horas",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management"
+      ]
+    },
+    {
+      "id": "outcome_reclassificacao_assistida",
+      "label": "Reclassificação Assistida para Fluxo Específico",
+      "description": "Há sinais mais aderentes a fluxo específico. Redirecionar para conduta mais precisa sem interromper proteção inicial.",
+      "actions": [
+        "Reclassificar o caso para fluxo específico com apoio da gestão",
+        "Manter acolhimento e registro objetivo durante a transição",
+        "Garantir continuidade do acompanhamento institucional"
+      ],
+      "timeline": "Horas",
+      "riskLevel": "HIGH",
+      "flags": [
+        "notify_management"
+      ]
+    },
+    {
+      "id": "outcome_protecao_imediata",
+      "label": "Proteção Imediata e Rede",
+      "description": "Risco imediato atual exige proteção na escola e acionamento prioritário da gestão e rede de proteção.",
+      "actions": [
+        "Acionar gestão escolar imediatamente",
+        "Garantir proteção imediata do estudante no espaço escolar",
+        "Registrar formalmente sinais e horário dos fatos",
+        "Acionar rede protetiva conforme protocolo institucional"
+      ],
+      "timeline": "Imediato",
+      "riskLevel": "CRITICAL",
+      "flags": [
+        "notify_management"
+      ]
     }
   ],
   "risk": {
