@@ -187,7 +187,7 @@ export const flow_abuso_sexual: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Há indícios consistentes para acionar formalmente a rede de proteção?",
+      "question": "Há elementos suficientes de preocupação para acionar formalmente a proteção, mesmo sem aprofundar relato?",
       "actions": [
         {
           "label": "Sim",

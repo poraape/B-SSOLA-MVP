@@ -23,7 +23,7 @@ export const flow_evasao: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "O estudante apresenta faltas recorrentes sem justificativa?",
+      "question": "O estudante vem apresentando faltas recorrentes ou presença muito irregular, com enfraquecimento do vínculo escolar?",
       "actions": [
         {
           "label": "Sim",
@@ -42,7 +42,7 @@ export const flow_evasao: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Há indícios de trabalho infantil ou situação familiar grave?",
+      "question": "Há sinais de vulnerabilidade familiar, necessidade de trabalho, cuidado de terceiros ou risco de abandono?",
       "actions": [
         {
           "label": "Sim",
@@ -62,11 +62,12 @@ export const flow_evasao: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagógica",
-      "description": "Situação de menor complexidade com monitoramento pedagógico.",
+      "label": "Busca Ativa Pedagógica Inicial",
+      "description": "Sinal inicial de irregularidade de presença, sem evidência atual de risco importante de abandono.",
       "actions": [
-        "Acompanhamento pedagógico",
-        "Contato com responsavel"
+        "Registrar padrão de faltas e presença irregular",
+        "Acionar coordenação para busca ativa pedagógica inicial",
+        "Realizar contato com responsáveis pelo canal institucional"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -77,9 +78,11 @@ export const flow_evasao: FlowSpec = {
     {
       "id": "outcome_moderado",
       "label": "Acompanhamento Institucional",
-      "description": "Situação que exige acompanhamento institucional estruturado.",
+      "description": "Recorrência de faltas com enfraquecimento de vínculo exige plano institucional de permanência.",
       "actions": [
-        "Encaminhar para acompanhamento socioassistencial"
+        "Avisar gestão escolar para acompanhamento do caso",
+        "Organizar plano de permanência com coordenação e responsáveis",
+        "Registrar objetivamente impacto em frequência e aprendizagem"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -90,10 +93,11 @@ export const flow_evasao: FlowSpec = {
     {
       "id": "outcome_alto",
       "label": "Proteção e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
+      "description": "Risco importante de abandono ou desproteção exige ação prioritária com rede de proteção.",
       "actions": [
         "Avisar a gestão escolar imediatamente",
-        "Encaminhamento formal"
+        "Registrar formalmente sinais de risco e tentativas de contato",
+        "Acionar rede socioassistencial e protetiva com a gestão"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",

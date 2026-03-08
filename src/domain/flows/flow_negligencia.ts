@@ -23,7 +23,7 @@ export const flow_negligencia: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "A situação compromete saúde ou integridade do estudante?",
+      "question": "A escola observou sinais recorrentes de falta de cuidados básicos (higiene, alimentação, medicação ou supervisão)?",
       "actions": [
         {
           "label": "Sim",
@@ -42,7 +42,26 @@ export const flow_negligencia: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Há risco imediato de abandono ou violência?",
+      "question": "Esses sinais já comprometem de forma importante o cuidado, a saúde ou a proteção do estudante?",
+      "actions": [
+        {
+          "label": "Sim",
+          "next": "q3"
+        },
+        {
+          "label": "Não",
+          "next": "outcome_moderado"
+        }
+      ],
+      "riskSignals": [
+        "indicio_negligencia",
+        "vulnerabilidade_grave"
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "question",
+      "question": "Há risco imediato neste momento (sem supervisão segura, adoecimento sem cuidado ou exposição atual a violência)?",
       "actions": [
         {
           "label": "Sim",
@@ -54,19 +73,36 @@ export const flow_negligencia: FlowSpec = {
         }
       ],
       "riskSignals": [
-        "relato_violacao",
-        "indicio_negligencia"
+        "vulnerabilidade_grave",
+        "relato_violacao"
       ]
     }
   ],
   "outcomes": [
     {
       "id": "outcome_moderado",
-      "label": "Acompanhamento Institucional",
-      "description": "Situação que exige acompanhamento institucional estruturado.",
+      "label": "Acompanhamento Protetivo Inicial",
+      "description": "Sinais iniciais de negligência, sem impacto importante no momento. Exige acompanhamento escolar estruturado.",
       "actions": [
         "Escuta acolhedora e sem julgamento",
-        "Contato com os responsáveis"
+        "Registrar observações objetivas da rotina escolar",
+        "Alinhar com gestão escolar contato orientador com responsáveis",
+        "Reavaliar rapidamente se os sinais se tornarem recorrentes ou agravarem"
+      ],
+      "timeline": "Dias",
+      "riskLevel": "MODERATE",
+      "flags": [
+        "notify_management"
+      ]
+    },
+    {
+      "id": "outcome_alto",
+      "label": "Proteção e Encaminhamento Prioritário",
+      "description": "Negligência recorrente com impacto relevante em cuidado, saúde ou proteção. Requer acionamento institucional e de rede.",
+      "actions": [
+        "Avisar a gestão escolar",
+        "Registrar formalmente sinais observáveis e impactos",
+        "Acionar Conselho Tutelar e rede socioassistencial"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
@@ -76,33 +112,22 @@ export const flow_negligencia: FlowSpec = {
       ]
     },
     {
-      "id": "outcome_alto",
-      "label": "Proteção e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
-      "actions": [
-        "Avisar a gestão escolar",
-        "Encaminhamento formal"
-      ],
-      "timeline": "Imediato",
-      "riskLevel": "HIGH",
-      "flags": [
-        "notify_management",
-        "contact_council"
-      ]
-    },
-    {
       "id": "outcome_iminente",
       "label": "Ação Imediata de Proteção",
-      "description": "Risco imediato. Ative o protocolo interno sem atraso.",
+      "description": "Risco imediato por ausência de cuidado ou proteção. Ative resposta institucional urgente.",
       "actions": [
         "Garantir proteção imediata",
-        "Acionar autoridade competente"
+        "Não deixar o estudante sem supervisão",
+        "Acionar Conselho Tutelar imediatamente",
+        "Acionar 190 quando houver risco atual"
       ],
       "timeline": "Imediato",
-      "riskLevel": "HIGH",
+      "riskLevel": "CRITICAL",
       "flags": [
         "notify_management",
-        "contact_council"
+        "contact_council",
+        "do_not_leave_alone",
+        "call_190"
       ]
     }
   ],
@@ -151,17 +176,17 @@ export const flow_negligencia: FlowSpec = {
     "riskSignals": [
       {
         "id": "relato_violacao",
-        "label": "Relato de violação",
+        "label": "Relato ou observação escolar de violação de cuidados",
         "weight": 3
       },
       {
         "id": "indicio_negligencia",
-        "label": "Indicio de negligência",
+        "label": "Sinais recorrentes de falta de cuidados básicos",
         "weight": 2
       },
       {
         "id": "vulnerabilidade_grave",
-        "label": "Vulnerabilidade grave",
+        "label": "Risco imediato por ausência de cuidado ou proteção",
         "weight": 3
       }
     ],

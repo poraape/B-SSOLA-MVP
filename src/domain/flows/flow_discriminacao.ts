@@ -6,7 +6,7 @@ export const flow_discriminacao: FlowSpec = {
     "categoryId": "convivencia_conflitos",
     "subcategoryId": "discriminacao_racismo",
     "title": "Discriminação ou Racismo",
-    "description": "Orientações praticas para a equipe escolar sobre Discriminação ou Racismo.",
+    "description": "Orientações para resposta institucional diante de discriminacao, racismo e outras violacoes de direitos na escola.",
     "severity": "HIGH",
     "keywords": [
       "discriminacao",
@@ -20,113 +20,108 @@ export const flow_discriminacao: FlowSpec = {
     {
       "id": "step_1",
       "type": "alert",
-      "content": "Situação identificada: Discriminação ou Racismo. Fazer acolhimento, avisar a gestão e seguir os próximos passos.",
+      "content": "Discriminação identificada. Interrompa a violacao, acolha o estudante afetado e acione a gestão.",
       "riskSignals": [
-        "conflito_recorrente"
+        "episodio_discriminatorio"
       ]
     },
     {
       "id": "q1",
       "type": "question",
-      "question": "O episodio ocorreu agora e ainda há conflito ativo?",
+      "question": "Há ameaca, perseguicao, tentativa de agressao fisica ou risco concreto a integridade do estudante?",
       "actions": [
         {
           "label": "Sim",
-          "next": "q2"
+          "next": "outcome_protecao_imediata"
         },
         {
           "label": "Não",
-          "next": "q3"
+          "next": "q2"
         }
       ],
       "riskSignals": [
-        "conflito_recorrente",
-        "agressividade"
+        "ameaca_violencia_odio"
       ]
     },
     {
       "id": "q2",
       "type": "question",
-      "question": "Há ameaça, perseguicao ou risco de agressão?",
+      "question": "Houve repeticao, exposicao publica ou exclusao intencional relacionada a discriminacao?",
       "actions": [
         {
           "label": "Sim",
-          "next": "outcome_alto"
+          "next": "outcome_resposta_formal"
         },
         {
-          "label": "Não",
-          "next": "outcome_moderado"
+          "label": "Não, foi episodio isolado",
+          "next": "outcome_intervencao_imediata"
         }
       ],
       "riskSignals": [
-        "conflito_recorrente",
-        "agressividade"
-      ]
-    },
-    {
-      "id": "q3",
-      "type": "question",
-      "question": "Foi um evento pontual sem repeticao aparente?",
-      "actions": [
-        {
-          "label": "Sim",
-          "next": "outcome_baixo"
-        },
-        {
-          "label": "Não / Reincidente",
-          "next": "outcome_moderado"
-        }
-      ],
-      "riskSignals": [
-        "conflito_recorrente",
-        "agressividade"
+        "repeticao_exclusao"
       ]
     }
   ],
   "outcomes": [
     {
-      "id": "outcome_baixo",
-      "label": "Resposta Inicial Pedagógica",
-      "description": "Situação de menor complexidade com monitoramento pedagógico.",
+      "id": "outcome_intervencao_imediata",
+      "label": "Intervenção Institucional Imediata",
+      "description": "Episodio isolado de discriminacao que exige resposta institucional, registro e ação pedagógica reparadora.",
       "actions": [
-        "Intervenção pedagógica e orientação imediata",
-        "Apoio ao estudante afetado",
-        "Acordo de convivência e monitoramento"
+        "Interromper a conduta discriminatoria e acolher o estudante afetado",
+        "Registrar objetivamente o episodio e comunicar a gestão no mesmo turno",
+        "Planejar ação pedagógica de reparacao e prevenção com a equipe escolar"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
+      "serviceTags": [
+        "ASSISTENCIA_SOCIAL_ESCOLAR",
+        "CAPS_IJ"
+      ],
       "flags": [
         "notify_management"
       ]
     },
     {
-      "id": "outcome_moderado",
-      "label": "Acompanhamento Institucional",
-      "description": "Situação que exige acompanhamento institucional estruturado.",
+      "id": "outcome_resposta_formal",
+      "label": "Resposta Formal com Proteção e Acompanhamento",
+      "description": "Discriminacao recorrente ou com exclusao sistematica exige plano institucional e proteção continuada.",
       "actions": [
-        "Registrar ocorrencia institucional minima",
-        "Entrar em contato com os responsáveis quando apropriado",
-        "Plano de acompanhamento e prevenção"
+        "Formalizar registro institucional e acionar gestão e responsáveis",
+        "Definir plano de proteção ao estudante afetado com monitoramento ativo",
+        "Acionar rede de direitos quando houver persistencia ou omissao de proteção"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
+      "serviceTags": [
+        "CONSELHO_TUTELAR",
+        "ASSISTENCIA_SOCIAL_ESCOLAR"
+      ],
       "flags": [
-        "notify_management"
+        "notify_management",
+        "contact_council"
       ]
     },
     {
-      "id": "outcome_alto",
-      "label": "Proteção e Encaminhamento Prioritario",
-      "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
+      "id": "outcome_protecao_imediata",
+      "label": "Proteção Imediata por Violência Discriminatória",
+      "description": "Ameaca ou risco de agressao por discriminacao requer proteção imediata e acionamento prioritario da rede.",
       "actions": [
-        "Proteger estudante e cessar situação imediatamente",
-        "Ação institucional com a gestão escolar",
-        "Encaminhar para apoio especializado quando necessario"
+        "Cessar a exposição e proteger imediatamente o estudante em local seguro",
+        "Acionar gestão e responsáveis sem atraso",
+        "Registrar formalmente e acionar rede externa de proteção quando houver risco iminente"
       ],
       "timeline": "Imediato",
-      "riskLevel": "HIGH",
+      "riskLevel": "CRITICAL",
+      "serviceTags": [
+        "CONSELHO_TUTELAR",
+        "DELEGACIA",
+        "ASSISTENCIA_SOCIAL_ESCOLAR"
+      ],
       "flags": [
-        "notify_management"
+        "notify_management",
+        "contact_council",
+        "do_not_leave_alone"
       ]
     }
   ],
@@ -135,27 +130,46 @@ export const flow_discriminacao: FlowSpec = {
     "baselineSeverity": "HIGH",
     "escalationRules": [
       {
-        "id": "rule_agressividade",
+        "id": "rule_risco_imediato",
         "ifAny": [
-          "agressividade"
+          "ameaca_violencia_odio"
+        ],
+        "then": {
+          "riskLevel": "CRITICAL",
+          "outcome": "outcome_protecao_imediata",
+          "flags": [
+            "notify_management",
+            "contact_council",
+            "do_not_leave_alone"
+          ]
+        },
+        "rationale": "Discriminacao com ameaca ou risco de agressao exige proteção imediata."
+      },
+      {
+        "id": "rule_repeticao_exclusao",
+        "ifAny": [
+          "repeticao_exclusao"
         ],
         "then": {
           "riskLevel": "HIGH",
+          "outcome": "outcome_resposta_formal",
           "flags": [
-            "notify_management"
+            "notify_management",
+            "contact_council"
           ]
         },
-        "rationale": "Sinais de agressividade exigem intervenção institucional."
+        "rationale": "Repeticao, exposição e exclusao exigem plano institucional estruturado."
       },
       {
         "id": "rule_default_baseline",
         "then": {
           "riskLevel": "HIGH",
+          "outcome": "outcome_intervencao_imediata",
           "flags": [
             "notify_management"
           ]
         },
-        "rationale": "Aplica severidade base definida no fluxo."
+        "rationale": "Discriminacao, ainda que isolada, exige resposta institucional e registro."
       },
       {
         "id": "rule_default",
@@ -169,33 +183,50 @@ export const flow_discriminacao: FlowSpec = {
         "rationale": "Regra padrão determinística baseada na severidade de baseline."
       }
     ],
-    "protectiveFactors": [],
+    "protectiveFactors": [
+      "adulto_referencia_disponivel",
+      "registro_objetivo",
+      "acao_pedagogica_antidiscriminatoria"
+    ],
     "riskSignals": [
       {
-        "id": "conflito_recorrente",
-        "label": "Conflito recorrente",
-        "weight": 1
-      },
-      {
-        "id": "agressividade",
-        "label": "Agressividade",
-        "weight": 3
-      },
-      {
-        "id": "escalada_tensao",
-        "label": "Escalada de tensao",
+        "id": "episodio_discriminatorio",
+        "label": "Episodio discriminatorio identificado",
         "weight": 2
+      },
+      {
+        "id": "repeticao_exclusao",
+        "label": "Repeticao, exclusao ou exposicao discriminatoria",
+        "weight": 2
+      },
+      {
+        "id": "ameaca_violencia_odio",
+        "label": "Ameaça ou risco de agressao por motivacao discriminatoria",
+        "weight": 3
       }
     ],
     "recommendedActionsByRisk": {
       "MODERATE": [],
-      "HIGH": [],
-      "CRITICAL": []
+      "HIGH": [
+        "Interromper conduta discriminatoria e registrar fato observavel",
+        "Acionar gestão e plano institucional de prevenção"
+      ],
+      "CRITICAL": [
+        "Garantir proteção imediata do estudante",
+        "Acionar rede externa de proteção sem atraso"
+      ]
     },
     "recommendedServiceTagsByRisk": {
       "MODERATE": [],
-      "HIGH": [],
-      "CRITICAL": []
+      "HIGH": [
+        "CONSELHO_TUTELAR",
+        "ASSISTENCIA_SOCIAL_ESCOLAR"
+      ],
+      "CRITICAL": [
+        "CONSELHO_TUTELAR",
+        "DELEGACIA",
+        "ASSISTENCIA_SOCIAL_ESCOLAR"
+      ]
     }
   }
 };

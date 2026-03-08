@@ -121,7 +121,7 @@ export const flow_acidente_escolar: FlowSpec = {
     {
       "id": "q1",
       "type": "question",
-      "question": "Há sangramento intenso ou fratura aparente?",
+      "question": "Há sangramento que não estanca, fratura aparente, batida forte na cabeça ou perda de consciência?",
       "actions": [
         {
           "label": "Sim",
@@ -140,7 +140,7 @@ export const flow_acidente_escolar: FlowSpec = {
     {
       "id": "q2",
       "type": "question",
-      "question": "Há dor persistente ou dificuldade de locomoção?",
+      "question": "Há dor forte, inchaço progressivo ou dificuldade para apoiar e mover o membro afetado?",
       "actions": [
         {
           "label": "Sim",
@@ -160,11 +160,12 @@ export const flow_acidente_escolar: FlowSpec = {
   "outcomes": [
     {
       "id": "outcome_moderado",
-      "label": "Acompanhamento Institucional",
-      "description": "Situação que exige acompanhamento institucional estruturado.",
+      "label": "Cuidado Local e Observação no Turno",
+      "description": "Impacto leve observavel, sem sinal de gravidade imediata.",
       "actions": [
-        "Primeiros socorros basicos",
-        "Comunicar responsavel"
+        "Realizar primeiros cuidados simples e manter observacao no turno",
+        "Comunicar gestão e responsáveis com registro objetivo do ocorrido",
+        "Orientar retorno imediato se houver piora da dor, inchaço ou mobilidade"
       ],
       "timeline": "Horas",
       "riskLevel": "MODERATE",
@@ -175,7 +176,9 @@ export const flow_acidente_escolar: FlowSpec = {
       "label": "Proteção e Encaminhamento Prioritario",
       "description": "Risco alto. Proteja o estudante e organize encaminhamento com a gestão.",
       "actions": [
-        "Encaminhar para avaliação urgente"
+        "Acionar gestão e manter o estudante em repouso protegido",
+        "Comunicar responsáveis para avaliacao de saude no mesmo turno",
+        "Evitar deslocamento sem apoio quando houver dor intensa ou limitacao funcional"
       ],
       "timeline": "Imediato",
       "riskLevel": "HIGH",

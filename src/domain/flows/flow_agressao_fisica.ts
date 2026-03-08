@@ -183,7 +183,7 @@ export const flow_agressao_fisica: FlowSpec = {
     {
       "id": "step_4",
       "type": "question",
-      "question": "Há recorrencia de brigas ou ameaça de novo episodio?",
+      "question": "Há recorrencia de brigas entre envolvidos ou ameaca concreta de novo episodio?",
       "actions": [
         {
           "label": "Sim",
@@ -234,7 +234,8 @@ export const flow_agressao_fisica: FlowSpec = {
       "actions": [
         "Avisar a gestão escolar",
         "Acionar responsáveis para alinhamento",
-        "Registrar formalmente e definir plano de convivência com acompanhamento"
+        "Registrar formalmente e definir plano de convivência com acompanhamento",
+        "Avaliar mediacao restaurativa apenas apos cessar risco e com condicoes seguras"
       ],
       "timeline": "Horas",
       "riskLevel": "HIGH",
