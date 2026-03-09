@@ -40,6 +40,51 @@ const toInstitutionalPriority = (
   return undefined;
 };
 
+const areStringArraysEqual = (left: string[] | undefined, right: string[] | undefined): boolean => {
+  const a = left ?? [];
+  const b = right ?? [];
+  if (a.length !== b.length) return false;
+  return a.every((value, index) => value === b[index]);
+};
+
+const areServiceRefsEqual = (
+  left: { id: string; name: string } | null | undefined,
+  right: { id: string; name: string } | null | undefined
+): boolean =>
+  (left?.id ?? null) === (right?.id ?? null) &&
+  (left?.name ?? null) === (right?.name ?? null);
+
+const areUiFlagsEqual = (left: PremiumResult['uiFlags'], right: PremiumResult['uiFlags']): boolean =>
+  Boolean(left?.confidential) === Boolean(right?.confidential) &&
+  Boolean(left?.avoidRetraumatization) === Boolean(right?.avoidRetraumatization) &&
+  Boolean(left?.showGuardrail) === Boolean(right?.showGuardrail);
+
+const arePremiumResultsEquivalent = (
+  flowId: string,
+  left: PremiumResult,
+  right: PremiumResult
+): boolean => {
+  const leftPriority = toInstitutionalPriority(left.priority);
+  const rightPriority = toInstitutionalPriority(right.priority);
+  const leftMessage = leftPriority ? getFlowResultMessage(flowId, leftPriority) : undefined;
+  const rightMessage = rightPriority ? getFlowResultMessage(flowId, rightPriority) : undefined;
+
+  return (
+    left.level === right.level &&
+    left.severity === right.severity &&
+    leftPriority === rightPriority &&
+    areServiceRefsEqual(left.primaryService, right.primaryService) &&
+    areServiceRefsEqual(left.secondaryService, right.secondaryService) &&
+    areStringArraysEqual(left.schoolActions, right.schoolActions) &&
+    areStringArraysEqual(left.explanationPoints, right.explanationPoints) &&
+    areStringArraysEqual(left.appliedRules, right.appliedRules) &&
+    areStringArraysEqual(left.institutionalScript, right.institutionalScript) &&
+    areUiFlagsEqual(left.uiFlags, right.uiFlags) &&
+    leftMessage?.flowId === rightMessage?.flowId &&
+    leftMessage?.level === rightMessage?.level
+  );
+};
+
 export const ResultPage: React.FC = () => {
   const { flowId } = useParams<{ flowId: string }>();
   const location = useLocation();
@@ -58,15 +103,19 @@ export const ResultPage: React.FC = () => {
       : null),
     [flow, result, category],
   );
-  const [premiumResult, setPremiumResult] = React.useState<PremiumResult | null>(
-    localDecisionResult && isPremiumResult(localDecisionResult) ? localDecisionResult : null,
+  const localPremiumResult = useMemo(
+    () => (localDecisionResult && isPremiumResult(localDecisionResult) ? localDecisionResult : null),
+    [localDecisionResult],
   );
-  const institutionalPriority = toInstitutionalPriority(premiumResult?.priority);
+  const [remotePremiumResult, setRemotePremiumResult] = React.useState<PremiumResult | null>(null);
+  const displayedPremiumResult = remotePremiumResult ?? localPremiumResult;
+  const displayedResult = displayedPremiumResult ?? result;
+  const institutionalPriority = toInstitutionalPriority(displayedResult?.priority);
   const flowResultMessage = flow ? getFlowResultMessage(flow.meta.id, institutionalPriority) : undefined;
 
   useEffect(() => {
-    setPremiumResult(localDecisionResult && isPremiumResult(localDecisionResult) ? localDecisionResult : null);
-  }, [localDecisionResult]);
+    setRemotePremiumResult(null);
+  }, [flow?.meta.id, result]);
 
   useEffect(() => {
     if (!flow || !result) {
@@ -82,15 +131,26 @@ export const ResultPage: React.FC = () => {
         category,
       });
 
-      if (active && remoteResult) {
-        setPremiumResult(remoteResult);
+      if (!active || !remoteResult) {
+        return;
       }
+
+      if (localPremiumResult && arePremiumResultsEquivalent(flow.meta.id, localPremiumResult, remoteResult)) {
+        return;
+      }
+
+      setRemotePremiumResult((previous) => {
+        if (previous && arePremiumResultsEquivalent(flow.meta.id, previous, remoteResult)) {
+          return previous;
+        }
+        return remoteResult;
+      });
     })();
 
     return () => {
       active = false;
     };
-  }, [flow, result, category]);
+  }, [flow, result, category, localPremiumResult]);
 
   useEffect(() => {
     if (!flow) return;
@@ -98,18 +158,18 @@ export const ResultPage: React.FC = () => {
   }, [flow?.meta.id]);
 
   useEffect(() => {
-    if (!flow || !premiumResult || hasLoggedRef.current) return;
+    if (!flow || !displayedPremiumResult || hasLoggedRef.current) return;
 
     logDecisionEvent({
       category: flow.meta.categoryId,
-      level: premiumResult.level,
+      level: displayedPremiumResult.level,
       type: flow.meta.type,
       emergency: flow.meta.type === 'medical_emergency' || flow.meta.type === 'security_emergency',
       flowId: flow.meta.id,
-      priority: isInstitutionalPriority(premiumResult.priority) ? premiumResult.priority : undefined
+      priority: isInstitutionalPriority(displayedPremiumResult.priority) ? displayedPremiumResult.priority : undefined
     });
     hasLoggedRef.current = true;
-  }, [flow, premiumResult]);
+  }, [flow, displayedPremiumResult]);
 
   if (!flow) {
     return <Navigate to="/" replace />;
@@ -153,13 +213,12 @@ export const ResultPage: React.FC = () => {
 
         <div className="space-y-7 p-6 md:space-y-8 md:p-8">
           <ResultPanel
-            flow={flow}
-            result={premiumResult || result}
+            result={displayedResult ?? result}
             flowResultMessage={flowResultMessage}
           />
           <section className="rounded-2xl border border-slate-200/70 bg-slate-50/70 px-4 py-3 md:px-5 md:py-4">
             <p className="text-[11px] font-black uppercase tracking-widest text-slate-600">Utilitários e ações finais</p>
-            <SummaryActions flow={flow} result={premiumResult || result} />
+            <SummaryActions flow={flow} result={displayedResult ?? result} />
           </section>
         </div>
       </div>

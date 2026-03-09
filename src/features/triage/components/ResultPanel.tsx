@@ -7,7 +7,7 @@ import { useAppMode } from '../../../domain/appMode/AppModeContext';
 import { buildNetworkNavigationTarget, buildNetworkServiceLink } from '../../../domain/flows/flowResultSelectors';
 import { PremiumResult } from '../../../domain/flows/premiumEngine';
 import { getServiceById } from '../../../domain/flows/selectors';
-import { TriageResult, Flow, FlowResultMessage } from '../../../types';
+import { TriageResult, FlowResultMessage } from '../../../types';
 
 import { getTopFactors, translateFactor } from './translateFactors';
 
@@ -34,7 +34,6 @@ const toNetworkServiceType = (serviceType: string | undefined): 'interno' | 'ext
   serviceType === 'interno' || serviceType === 'externo' ? serviceType : null;
 
 interface ResultPanelProps {
-  flow: Flow;
   result: TriageResult | PremiumResult;
   flowResultMessage?: FlowResultMessage;
 }
@@ -51,27 +50,34 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
     ? explanationPoints.map(translateFactor)
     : getTopFactors(appliedRules);
 
-  const priorityTarget = flowResultMessage
-    ? (() => {
-      const serviceId =
-        primaryService?.id ??
-        getHighlightIdFromQueryType(flowResultMessage.priorityService.queryType);
-      const serviceType =
-        toNetworkServiceType(primaryService?.type) ??
-        getServiceTypeFromQueryType(flowResultMessage.priorityService.queryType);
-      if (serviceId) {
-        return buildNetworkNavigationTarget({
-          serviceId,
-          serviceType,
-          source: 'result',
-          slot: 'priority',
-        });
-      }
-      return buildNetworkServiceLink(flowResultMessage.priorityService.queryType, {
+  const buildTargetFromService = (params: {
+    service: ReturnType<typeof getServiceById> | null;
+    queryType: string;
+    slot: 'priority' | 'complementary';
+  }): string => {
+    const serviceId = params.service?.id ?? getHighlightIdFromQueryType(params.queryType);
+    const serviceType =
+      toNetworkServiceType(params.service?.type) ?? getServiceTypeFromQueryType(params.queryType);
+    if (serviceId) {
+      return buildNetworkNavigationTarget({
+        serviceId,
+        serviceType,
         source: 'result',
-        slot: 'priority',
+        slot: params.slot,
       });
-    })()
+    }
+    return buildNetworkServiceLink(params.queryType, {
+      source: 'result',
+      slot: params.slot,
+    });
+  };
+
+  const priorityTarget = flowResultMessage
+    ? buildTargetFromService({
+      service: primaryService,
+      queryType: flowResultMessage.priorityService.queryType,
+      slot: 'priority',
+    })
     : (primaryService
       ? buildNetworkNavigationTarget({
         serviceId: primaryService.id,
@@ -82,26 +88,11 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
       : '/rede');
 
   const complementaryTarget = flowResultMessage
-    ? (() => {
-      const serviceId =
-        secondaryService?.id ??
-        getHighlightIdFromQueryType(flowResultMessage.complementaryService.queryType);
-      const serviceType =
-        toNetworkServiceType(secondaryService?.type) ??
-        getServiceTypeFromQueryType(flowResultMessage.complementaryService.queryType);
-      if (serviceId) {
-        return buildNetworkNavigationTarget({
-          serviceId,
-          serviceType,
-          source: 'result',
-          slot: 'complementary',
-        });
-      }
-      return buildNetworkServiceLink(flowResultMessage.complementaryService.queryType, {
-        source: 'result',
-        slot: 'complementary',
-      });
-    })()
+    ? buildTargetFromService({
+      service: secondaryService,
+      queryType: flowResultMessage.complementaryService.queryType,
+      slot: 'complementary',
+    })
     : (secondaryService
       ? buildNetworkNavigationTarget({
         serviceId: secondaryService.id,
