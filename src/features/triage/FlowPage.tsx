@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { telemetryService } from '../../application/telemetry/TelemetryService';
 import { initFlow, FlowState } from '../../domain/flows/flowEngine';
 import { getCategoryById, getFlowById } from '../../domain/flows/selectors';
-import { FeatureErrorBoundary } from '../shared/assets/FeatureErrorBoundary';
+import { FeatureErrorBoundary } from '../shared/components/FeatureErrorBoundary';
 import { getPremiumCategoryIconByName } from '../shared/components/PremiumCategoryIcons';
 import { getCategoryDisplayLabel, getCategoryIcon } from '../shared/utils/categoryPresentation';
 
