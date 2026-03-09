@@ -128,26 +128,48 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
         {flowResultMessage ? (
           <>
             <div className="rounded-[30px] border border-slate-200/75 bg-gradient-to-br from-white via-slate-50/70 to-sky-50/50 p-6 shadow-[0_22px_45px_-34px_rgba(15,23,42,0.5)] md:p-7">
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <div className="inline-flex items-center rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-[11px] font-black uppercase tracking-widest text-sky-700">
-                  Situação observada e ação imediata
+                  Situação observada
                 </div>
-                <h3 className="text-xl font-black leading-tight tracking-tight text-slate-950">
+                <h3 className="text-xl font-black leading-tight tracking-tight text-slate-950 md:text-2xl">
                   {flowResultMessage.headline}
                 </h3>
-                <p className="text-sm font-semibold leading-relaxed text-slate-800">
-                  {flowResultMessage.nextStep}
-                </p>
-                <ul className="grid gap-2.5 md:grid-cols-2">
-                  {flowResultMessage.teacherScope.doThis.map((action, index) => (
-                    <li
-                      key={`${action}-${index}`}
-                      className="rounded-2xl border border-slate-200/80 bg-white/90 px-3.5 py-2.5 text-sm text-slate-800"
-                    >
-                      {action}
-                    </li>
-                  ))}
-                </ul>
+
+                <div className="rounded-2xl border border-blue-200/80 bg-blue-50/75 p-4 md:p-5">
+                  <div className="flex items-start gap-3">
+                    <div className="rounded-lg bg-blue-100 p-2 text-blue-700">
+                      <Info className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] font-black uppercase tracking-widest text-blue-700">Ação imediata</p>
+                      <p className="mt-1.5 text-sm font-semibold leading-relaxed text-blue-950">
+                        {flowResultMessage.nextStep}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-slate-200/80 bg-white/85 p-4 md:p-5">
+                  <p className="text-[11px] font-black uppercase tracking-widest text-slate-600">
+                    Orientações práticas para agora
+                  </p>
+                  <ul className="mt-3 grid gap-2.5 md:grid-cols-2">
+                    {flowResultMessage.teacherScope.doThis.map((action, index) => (
+                      <li
+                        key={`${action}-${index}`}
+                        className="rounded-2xl border border-slate-200/80 bg-white px-3.5 py-2.5 text-sm text-slate-800"
+                      >
+                        {action}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rounded-2xl border border-rose-200/85 bg-rose-50/75 px-4 py-3">
+                  <p className="text-[11px] font-black uppercase tracking-widest text-rose-700">Limites da atuação escolar</p>
+                  <p className="mt-1.5 text-sm font-semibold text-rose-800">{flowResultMessage.teacherScope.notYours}</p>
+                </div>
               </div>
 
               <div className="mt-6 rounded-2xl border border-slate-200/75 bg-white/80 p-4 md:p-5">
@@ -167,9 +189,10 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
                     role="button"
                     tabIndex={0}
                   >
-                    <p className="text-[11px] font-black uppercase tracking-widest text-blue-700">
-                      Serviço Prioritário
-                    </p>
+                    <div className="flex items-center gap-2 text-blue-700">
+                      <MapPin className="h-4 w-4" />
+                      <p className="text-[11px] font-black uppercase tracking-widest">Serviço Prioritário</p>
+                    </div>
                     <p className="mt-2 text-base font-black text-blue-950">{flowResultMessage.priorityService.label}</p>
                     <p className="mt-1.5 text-sm text-blue-900/90">{flowResultMessage.priorityService.description}</p>
                     <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-blue-700/90">
@@ -200,9 +223,10 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
                     role="button"
                     tabIndex={0}
                   >
-                    <p className="text-[11px] font-black uppercase tracking-widest text-slate-700">
-                      Apoio Complementar
-                    </p>
+                    <div className="flex items-center gap-2 text-slate-700">
+                      <Info className="h-4 w-4" />
+                      <p className="text-[11px] font-black uppercase tracking-widest">Apoio Complementar</p>
+                    </div>
                     <p className="mt-2 text-base font-black text-slate-950">{flowResultMessage.complementaryService.label}</p>
                     <p className="mt-1.5 text-sm text-slate-700">{flowResultMessage.complementaryService.description}</p>
                     <p className="mt-2 text-[11px] font-bold uppercase tracking-widest text-slate-600">
@@ -221,11 +245,6 @@ export const ResultPanel: React.FC<ResultPanelProps> = ({ result, flowResultMess
                     </Link>
                   </article>
                 </div>
-              </div>
-
-              <div className="mt-4 rounded-2xl border border-rose-200/85 bg-rose-50/75 px-4 py-3">
-                <p className="text-[11px] font-black uppercase tracking-widest text-rose-700">Limites da atuação escolar</p>
-                <p className="mt-1.5 text-sm font-semibold text-rose-800">{flowResultMessage.teacherScope.notYours}</p>
               </div>
             </div>
           </>

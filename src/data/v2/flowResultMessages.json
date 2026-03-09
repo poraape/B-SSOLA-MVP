@@ -141,7 +141,7 @@
     "flowId": "flow_agressao_fisica",
     "level": "high",
     "headline": "Recorrência de agressão física ou ameaça concreta de novo episódio.",
-    "nextStep": "Ative contenção institucional imediata, proteja os envolvidos e acione a direção com urgência.",
+    "nextStep": "Ative o protocolo institucional de proteção, mantenha os envolvidos separados e acione a direção com urgência.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
@@ -164,11 +164,11 @@
     "flowId": "flow_agressao_fisica",
     "level": "critical",
     "headline": "Espancamento severo, uso de armas ou vítima caída e inconsciente.",
-    "nextStep": "Afaste todos imediatamente, proteja a vítima e exija ligação ao 190 e 192.",
+    "nextStep": "Afaste os demais imediatamente, proteja a vítima e solicite acionamento imediato do 190 e do 192.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
       "label": "Polícia Militar – 190",
-      "description": "Contenção de comportamento inadequado grave e segurança do espaço."
+      "description": "Apoio em ameaça ativa com risco imediato à integridade física no espaço escolar."
     },
     "complementaryService": {
       "queryType": "highlight=samu",
@@ -177,8 +177,8 @@
     },
     "teacherScope": {
       "doThis": [
-        "Isole totalmente a vítima",
-        "Comprima cortes sangrantes"
+        "Isole a área ao redor da vítima",
+        "Faça compressão de sangramentos visíveis, quando possível"
       ],
       "notYours": "Não levante uma vítima inconsciente que sofreu pancadas."
     }
@@ -318,7 +318,7 @@
         "Ofereça um copo de água",
         "Retire o aluno do foco da turma"
       ],
-      "notYours": "Não exija explicações sobre o motivo do choro durante a crise."
+      "notYours": "Não pressione o aluno por explicações durante a crise."
     }
   },
   {
@@ -440,7 +440,7 @@
     "flowId": "flow_ameaca_externa",
     "level": "critical",
     "headline": "Confronto armado ou invasão violenta próxima à sala.",
-    "nextStep": "Exija que todos deitem no chão, longe de portas e em absoluto silêncio.",
+    "nextStep": "Mantenha todos deitados no chão, longe de portas, em silêncio, e solicite acionamento imediato do 190 pela direção.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
       "label": "Polícia Militar – 190",
@@ -729,10 +729,10 @@
     },
     "teacherScope": {
       "doThis": [
-        "Garante barreira física para a vítima",
-        "Exija o fim do ataque"
+        "Garanta barreira física para a vítima",
+        "Solicite interrupção imediata do ataque e apoio de outros adultos"
       ],
-      "notYours": "Não normalize a violência alegando 'conflitos de gangue locais'."
+      "notYours": "Não normalize a violência alegando \"conflitos locais\"."
     }
   },
   {
@@ -755,7 +755,7 @@
         "Escute os envolvidos em separado",
         "Monitorar sinais de repetição nas semanas seguintes"
       ],
-      "notYours": "Não desqualificar relato com a ideia de que e apenas brincadeira."
+      "notYours": "Não desqualifique o relato com a ideia de que é apenas brincadeira."
     }
   },
   {
@@ -808,11 +808,11 @@
     "flowId": "flow_bullying",
     "level": "critical",
     "headline": "Incentivo em grupo a agressão física planejada contra o alvo do bullying.",
-    "nextStep": "Impeça a aproximação, proteja o alvo, grite por reforços e acione a direção.",
+    "nextStep": "Impeça a aproximação, proteja o alvo, solicite apoio imediato de outros adultos e acione a direção.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
       "label": "Polícia Militar – 190",
-      "description": "Contenção de multidão em caso de agressões múltiplas e linchamentos."
+      "description": "Apoio em ameaça ativa com risco de agressão coletiva."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -821,8 +821,8 @@
     },
     "teacherScope": {
       "doThis": [
-        "Disperse os agressores com voz de comando",
-        "Acolha a vítima fisicamente"
+        "Solicite apoio imediato de outros adultos e afaste o grupo do alvo",
+        "Acolha a vítima em local protegido"
       ],
       "notYours": "Não entre fisicamente na roda para lutar contra os agressores."
     }
@@ -858,7 +858,7 @@
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Reunião de alinhamento e possível busca por novo observação."
+      "description": "Reunião de alinhamento e necessidade de nova observação institucional."
     },
     "complementaryService": {
       "queryType": "highlight=caps-ij",
@@ -877,11 +877,11 @@
     "flowId": "flow_plano_individual_acompanhamento",
     "level": "high",
     "headline": "Agitação extrema, gritos e quebra de objetos inviabilizando a dinâmica da sala.",
-    "nextStep": "Solicite intervenção urgente da coordenação para retirada cuidadosa do aluno.",
+    "nextStep": "Solicite intervenção urgente da coordenação para condução do estudante a um local calmo e seguro.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
       "label": "Coordenação Pedagógica – E.E. Ermelino Matarazzo",
-      "description": "Abordagem descalonadora em local calmo com neurodivergentes."
+      "description": "Abordagem desescalonadora em local calmo, com foco em segurança e participação."
     },
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
@@ -899,7 +899,7 @@
   {
     "flowId": "flow_plano_individual_acompanhamento",
     "level": "critical",
-    "headline": "Crise refratária de agressividade e autolesão grave devido ao dificuldade.",
+    "headline": "Crise intensa com risco de autolesão e prejuízo à segurança no ambiente escolar.",
     "nextStep": "Afaste colegas e objetos de risco, acione 192 imediatamente quando houver risco físico e mantenha direção no suporte institucional.",
     "priorityService": {
       "queryType": "highlight=samu",
@@ -1084,11 +1084,11 @@
     "flowId": "flow_violencia_armada",
     "level": "critical",
     "headline": "Disparos ou ataque ativo ocorrendo na escola.",
-    "nextStep": "Tranque a porta, apague as luzes e deite no chão em silêncio absoluto.",
+    "nextStep": "Tranque a porta, apague as luzes, mantenha todos deitados no chão e solicite acionamento imediato do 190 pela direção.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
       "label": "Polícia Militar – 190",
-      "description": "Intervenção tática armada para neutralizar atirador."
+      "description": "Intervenção policial em ataque ativo com risco grave à vida."
     },
     "complementaryService": {
       "queryType": "highlight=samu",
@@ -1098,7 +1098,7 @@
     "teacherScope": {
       "doThis": [
         "Crie barricadas na porta",
-        "Exija silêncio total dos alunos"
+        "Solicite silêncio e proteção coletiva dos alunos"
       ],
       "notYours": "Não saia da sala para verificar a situação."
     }
@@ -1599,7 +1599,7 @@
     "complementaryService": {
       "queryType": "highlight=ubs-ermelino",
       "label": "UBS Ermelino Matarazzo",
-      "description": "Orientação à família sobre avaliação médica ou neuropsicológica, quando indicada."
+      "description": "Orientação à família sobre avaliação na rede de saúde, quando necessária."
     },
     "teacherScope": {
       "doThis": [
@@ -1629,7 +1629,7 @@
         "Diminua barulho e estímulos",
         "Peça apoio de outro adulto"
       ],
-      "notYours": "Não segure o aluno à força nem grite para controlar comportamento."
+      "notYours": "Não segure o estudante à força nem eleve o tom de voz para controlar comportamento."
     }
   },
   {
@@ -1698,7 +1698,7 @@
         "Registre barreiras na avaliação",
         "Aplique alternativas combinadas"
       ],
-      "notYours": "Não exija que o aluno se adapte sozinho sem suporte pedagógico."
+      "notYours": "Não transfira ao aluno, sozinho, a responsabilidade de se adaptar sem suporte pedagógico."
     }
   },
   {
@@ -1820,7 +1820,7 @@
     "flowId": "flow_emergencia_medica",
     "level": "critical",
     "headline": "Parada respiratória ou risco iminente de morte.",
-    "nextStep": "Grite por ajuda, exija ligação ao 192 e inicie compressões se treinado.",
+    "nextStep": "Solicite apoio imediato de outros adultos, acione o 192 sem atraso e inicie compressões se houver treinamento.",
     "priorityService": {
       "queryType": "highlight=samu",
       "label": "SAMU – 192",
@@ -1912,7 +1912,7 @@
     "flowId": "flow_uso_substancias",
     "level": "critical",
     "headline": "Inconsciência, convulsão ou agressividade extrema após uso de substância.",
-    "nextStep": "Proteja o aluno de quedas, afaste os colegas e exija ligação urgente ao 192.",
+    "nextStep": "Proteja o aluno de quedas, afaste os colegas e solicite acionamento urgente do 192.",
     "priorityService": {
       "queryType": "highlight=samu",
       "label": "SAMU – 192",
@@ -2118,7 +2118,7 @@
   {
     "flowId": "flow_autolesao",
     "level": "low",
-    "headline": "Uso constante de blusas de manga longa no calor para esconder os braços.",
+    "headline": "Uso recorrente de roupas longas no calor, com sinais de retraimento.",
     "nextStep": "Comunique a coordenação de forma confidencial para observar o padrão.",
     "priorityService": {
       "queryType": "highlight=gestao-coordenacao",
@@ -2128,14 +2128,14 @@
     "complementaryService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Investigação administrativa sobre histórico familiar e mudanças."
+      "description": "Acompanhamento institucional e contato com responsáveis, com foco em proteção."
     },
     "teacherScope": {
       "doThis": [
         "Anote quando e como ocorre",
         "Crie ambiente de confiança"
       ],
-      "notYours": "Não exija que o aluno arregaçe as mangas na frente da classe."
+      "notYours": "Não pressione o aluno para expor o corpo na frente da turma."
     }
   },
   {
@@ -2146,7 +2146,7 @@
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Convite imediato aos pais para encaminhamento ao CAPS."
+      "description": "Contato com responsáveis e organização de encaminhamento para cuidado em saúde."
     },
     "complementaryService": {
       "queryType": "highlight=caps-ij",
@@ -2155,7 +2155,7 @@
     },
     "teacherScope": {
       "doThis": [
-        "Ofereça ir ao banheiro lavar o local",
+        "Ofereça acolhimento em local reservado e apoio para cuidados imediatos",
         "Acolha a dor sem espanto"
       ],
       "notYours": "Não faça perguntas sobre os motivos das lesões no corpo."
@@ -2202,7 +2202,7 @@
     "teacherScope": {
       "doThis": [
         "Pressione o ferimento com pano limpo",
-        "Peça a um aluno para chamar ajuda"
+        "Solicite apoio imediato de outro adulto da equipe"
       ],
       "notYours": "Não deixe o ferimento sangrando para ir buscar gaze na secretaria."
     }
@@ -2372,7 +2372,7 @@
     "flowId": "flow_crise_respiratoria",
     "level": "critical",
     "headline": "Lábios roxos, incapacidade de falar ou parada respiratória.",
-    "nextStep": "Grite para acionar o 192 e inicie ventilação de resgate se for treinado.",
+    "nextStep": "Solicite apoio imediato de outros adultos para acionar o 192 e inicie ventilação de resgate se houver treinamento.",
     "priorityService": {
       "queryType": "highlight=samu",
       "label": "SAMU – 192",
@@ -2901,7 +2901,7 @@
     "flowId": "flow_mal_estar",
     "level": "high",
     "headline": "Vômitos repetidos, palidez extrema ou fraqueza severa.",
-    "nextStep": "Mantenha o aluno sentado na sala e exija a presença da direção urgente.",
+    "nextStep": "Mantenha o aluno sentado em segurança e solicite a presença imediata da direção.",
     "priorityService": {
       "queryType": "highlight=samu",
       "label": "SAMU – 192",
@@ -3089,7 +3089,7 @@
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
-      "description": "Intervenção hierárquica e contenção de conflito."
+      "description": "Intervenção institucional para proteção imediata e redução do risco de conflito."
     },
     "complementaryService": {
       "queryType": "highlight=policia-militar",
@@ -3200,7 +3200,7 @@
     "flowId": "flow_reintegracao_pos_suspensao",
     "level": "critical",
     "headline": "Aluno ataca sua vítima anterior novamente ou faz ameaças de morte a docentes.",
-    "nextStep": "Isole o agressor na direção e demande acionamento da polícia imediatamente.",
+    "nextStep": "Isole o agressor com segurança na direção e solicite acionamento da polícia imediatamente.",
     "priorityService": {
       "queryType": "highlight=policia-militar",
       "label": "Polícia Militar – 190",
@@ -3214,7 +3214,7 @@
     "teacherScope": {
       "doThis": [
         "Proteja a integridade da vítima",
-        "Avise a gestão por rádio ou grito"
+        "Avise a gestão por rádio ou voz alta"
       ],
       "notYours": "Não retome a aula fingindo que o ataque violento não foi grave."
     }
@@ -3292,7 +3292,7 @@
     "flowId": "flow_barreira_acessibilidade",
     "level": "critical",
     "headline": "Barreira impede saída segura em situação urgente ou deixa aluno em perigo imediato.",
-    "nextStep": "Acione a direção agora e conduza a turma para rota alternativa segura.",
+    "nextStep": "Acione a direção agora, conduza a turma por rota alternativa segura e mantenha supervisão contínua.",
     "priorityService": {
       "queryType": "highlight=gestao-direcao",
       "label": "Direção Escolar – E.E. Ermelino Matarazzo",
